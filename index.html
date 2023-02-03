@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Подробнее о PHP - PHP: Настройка окружения</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="hzBuR-TGA_mTosOreWkKZYwNopAuDNa4Qr6AU3WuZKsUmh9hxS35P8HjY_cPg_qqrosP7HPLdaXQ3dO4-go4Og" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <meta content='IE=Edge' http-equiv='X-UA-Compatible'>
+  <meta content='b9d3902d34' name='verify-admitad'>
+  <link href='theory_unit.html' rel='canonical'>
+  <meta content='article' property='og:type'>
+  <meta content='Подробнее о PHP / PHP: Настройка окружения' property='og:title'>
+  <meta content='Подробнее о PHP / PHP: Настройка окружения: Познакомиться с понятием &quot;интерпретация&quot;'
+    property='og:description'>
+  <meta content='Подробнее о PHP / PHP: Настройка окружения: Познакомиться с понятием &quot;интерпретация&quot;'
+    name='description'>
+  <meta content='noarchive' name='robots'>
+  <meta
+    content='https://cdn2.hexlet.io/derivations/image/fill/600/400/eyJpZCI6ImQwZTdmMjJlODY4Mzk1YzQyMjBlYzNmMzY1ZjZmM2UxLnBuZyIsInN0b3JhZ2UiOiJzdG9yZSJ9?signature=81a681f1ca604994242c6206d897e84695a1360c46c71b9ac3ce0c9fcf72458b'
+    property='og:image'>
+  <link
+    href='https://cdn2.hexlet.io/derivations/image/fill/600/400/eyJpZCI6ImQwZTdmMjJlODY4Mzk1YzQyMjBlYzNmMzY1ZjZmM2UxLnBuZyIsInN0b3JhZ2UiOiJzdG9yZSJ9?signature=81a681f1ca604994242c6206d897e84695a1360c46c71b9ac3ce0c9fcf72458b'
+    rel='image_src'>
+
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../composer-lock/quiz_unit.html">PHP: Настройка окружения</a>
+                    <h1 class='mt-0 mb-4'>Подробнее о PHP</h1>
+                    <p>Что вообще такое язык программирования? За этим понятием скрываются две связанных, но независимых
+                      темы.</p>
+                    <h2 id="yazyk-programmirovaniya">Язык программирования</h2>
+                    <p>С одной стороны, языком программирования называют правила (синтаксические и семантические), по
+                      которым записывается и работает исходный код. В отличие от естественных языков, эти правила
+                      достаточно строги. Любая мельчайшая ошибка и код либо не запустится, либо запустится, но не
+                      заработает, как ожидается. Например, в PHP нельзя написать <code>$name = 5</code> (без
+                      <code>;</code> в конце). Эти правила существуют не только в книгах, но и в головах конкретных
+                      программистов и разработчиков языка. Они очень чётко описаны в <a
+                        href="https://github.com/php/php-langspec" target="_blank" rel="nofollow">спецификации</a>,
+                      документе, который является эталоном и истиной в последней инстанции. Спецификация у языка, как
+                      правило, одна.
+                    </p>
+
+                    <p>С другой стороны, языком программирования называют программу, которая непосредственно запускает
+                      (или компилирует) наш код. В предыдущем уроке мы как раз установили такую. Обычно её называют
+                      средой выполнения, иногда &quot;рантаймом&quot;, если речь идёт про интерпретацию. Среда
+                      выполнения — конкретное воплощение спецификации. Интерпретаторов может быть сколько угодно, и
+                      делать их может кто угодно. Например, <a href="https://github.com/peachpiecompiler/peachpie"
+                        target="_blank" rel="nofollow">peachpie</a> - он позволяет запускать PHP программы на платформе
+                      .NET.</p>
+
+                    <p>PHP родился из хаоса. Его спецификация появилась всего лишь в 2014 году, что как раз и позволило
+                      сторонним разработчикам реализовывать свои среды выполнения.</p>
+                    <h2 id="php">PHP</h2>
+                    <p>PHP — динамический, слабо типизированный, интерпретируемый язык программирования. Разберём эти
+                      слова по отдельности.</p>
+                    <h3 id="interpretiruemyy">Интерпретируемый</h3>
+                    <p>У PHP отсутствует стадия компиляции, как у языков, подобных Java или C. Код непосредственно
+                      передаётся в интерпретатор, который его выполняет по мере чтения. Поэтому любая программа на PHP
+                      состоит из текстовых файлов.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>php <span style="color: #000080">-a</span>
+Interactive shell
+
+php&gt; <span style="color: #0086B3">echo </span>10 <span style="color: #000000;font-weight: bold">*</span> 3 + sqrt<span style="color: #000000;font-weight: bold">(</span>4<span style="color: #000000;font-weight: bold">)</span><span style="background-color: #f8f8f8">;</span>
+32
+</code></pre>
+                    <p>Откровенно говоря, это не совсем так. У PHP всё же есть стадия компиляции, но она скрыта от глаз
+                      пользователя, и внешне PHP ведёт себя именно как интерпретируемый язык программирования.</p>
+                    <h3 id="dinamicheskiy">Динамический</h3>
+                    <p>В отличие от статических языков, проверка типов в PHP происходит в момент выполнения кода.
+                      Поэтому если, мы случайно ошиблись и, например, вызываем несуществующую функцию, то ошибка
+                      всплывёт только во время вызова этой функции. В статических языках подобные ошибки отслеживаются
+                      на этапе анализа исходного текста без запуска кода на выполнение. Такие инструменты называются
+                      <em>статические анализаторы кода</em> (слово статический как раз означает, что программа не
+                      выполняется). Для динамических языков они тоже существуют, но отслеживают значительно меньшее
+                      число ошибок. Об одном таком инструменте мы поговорим в соответствующем уроке.
+                    </p>
+                    <h3 id="slabo-tipizirovannyy">Слабо типизированный</h3>
+                    <p>Слабая типизация означает то, что PHP автоматически приводит типы там, где считает нужным
+                      (описано в спецификации). С одной стороны, слабая типизация позволяет писать более короткий код,
+                      но с другой, количество ошибок резко возрастает, так как вместо падения, код продолжает работать
+                      там, где он не должен работать. Например, мы можем сложить число со строкой по ошибке, и PHP молча
+                      выполнит эту операцию. В языках типа Ruby или Python подобное невозможно. Выполнение кода
+                      прекратится с сообщением о невозможности выполнить операцию для этих типов. Нужно стараться
+                      никогда не полагаться на эту особенность языка во избежание проблем.</p>
+                    <pre class="hljs">
+                      <code class=sh>
+                        php <span style="color: #000080">-a</span>
+                      Interactive shell php 
+                    <span style="color: #000000;font-weight: bold">&gt;</span> <span style="color: #0086B3">echo</span> <span style="color: #d14">'234'</span> + 4<span style="background-color: #f8f8f8">;</span>
+238
+</code></pre>
+                  
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://ru.wikipedia.org/wiki/Компилятор">Что такое компиляция</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://ru.wikipedia.org/wiki/Интерпретатор">Что такое
+                          интерпретация</a>
+                      </li>
+                    </ol>
+                    <hr class='mt-5'>
+                    <div class='d-flex flex-wrap flex-lg-nowrap mt-md-4 pt-lg-2 align-items-start'>
+                      <div class='mr-3 flex-shrink-0'>
+                        <img
+                          data-src="https://cdn2.hexlet.io/assets/faces/mentors-c5a2c0d5be5b134e174aad63fdd756ea3c31e3cbf86a0a112936dda315ec1a93.png"
+                          class="lazyload" width="149" height="44"
+                          alt="<span class=&quot;translation_missing&quot; title=&quot;translation missing: ru.web.courses.lessons.mentors.mentor_avatars&quot;>Mentor Avatars</span>"
+                          src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
