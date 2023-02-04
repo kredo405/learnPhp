@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Объекты-Сущности, Объекты-Значения и внедренные объекты - PHP:...</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Объекты-Сущности, Объекты-Значения и внедренные объекты</h1>
+                    <p>Чаще всего когда говорят про ООП, то рассуждают про сущности предметной области, например
+                      пользователи, заказы, товары и тому подобное. У такого использования объектов есть определенные
+                      условия, которые должны соблюдаться для обеспечения нормального функционирования.</p>
+
+                    <p><em>Стоит сказать, что подобное использование ООП, хоть и описывается во всех учебниках как
+                        пример нужности ООП, имеет слабое отношение к реальному коду. На практике, большинство
+                        существующих классов и объектов в коде приложений, библиотек и фреймворков не имеют никакой
+                        связи с предметной областью. Их появление и использование крутится вокруг такой темы как
+                        полиморфизм, которая изучается в соответствующем <a
+                          href="https://ru.hexlet.io/courses/php-polymorphism" target="_blank">курсе</a>.</em></p>
+
+                    <p><strong>Время жизни</strong>. Подобные объекты создаются не ради одноразового использования, а
+                      живут какое-то время во время запуска программы или, что чаще, между запусками в каком-то
+                      хранилище. Например, пользователи на Хекслете представлены объектами класса User. Они создаются во
+                      время регистрации и потом существуют в системе бесконечное время. Изредка они удаляются по
+                      инициативе самих пользователей.</p>
+
+                    <p><strong>Идентификация</strong>. Каким образом один пользователь отличается от другого? На первый
+                      взгляд, кажется, что можно использовать имя и фамилию. Но если разобраться, то никакой набор
+                      параметров не даст 100% надежности с одной стороны, а с другой они все могут измениться и точно
+                      изменятся со временем. Поэтому при работе с сущностями вводят искусственные идентификаторы,
+                      которые, как правило, формирует база данных. Затем сравнение происходит именно по ним.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">User</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">__construct</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$id</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$name</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">id</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$id</span><span style="background-color: #f8f8f8">;</span>
+        <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">name</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$name</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">equals</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">id</span> <span style="color: #000000;font-weight: bold">===</span> <span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">id</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #999988;font-style: italic">// С точки зрения нашей системы это один и тот же пользователь</span>
+<span style="color: #999988;font-style: italic">// С точки зрения PHP – разные объекты</span>
+<span style="color: #008080">$user1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">User</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'mike'</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$user2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">User</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'mike'</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #008080">$user3</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">User</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'mike'</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #999988;font-style: italic">// Подобная схема проверки существует во всех ORM</span>
+<span style="color: #008080">$user1</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">equals</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user2</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// true</span>
+<span style="color: #008080">$user1</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">equals</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user3</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// false</span>
+</code></pre>
+                    <p><em>Это очень напоминает механизм строгого сравнения объектов в PHP. Они сравниваются не по
+                        совпадению данных, а по ссылке, которая внутри представлена каким-то числовым значением. Поэтому
+                        разные объекты хранящие одинаковые данные это всегда разные объекты, что логично.</em></p>
+
+                    <p>Объекты имеющие свою идентификацию и время жизни называют объектами-сущностями (entities), но
+                      кроме них существует и другая разновидность объектов, тоже, как правило, связанная с предметной
+                      областью – это объекты-значения. Что это?</p>
+                    <h2 id="ob-ekty-znacheniya-value-objects">Объекты-Значения (value objects)</h2>
+                    <p>Когда у нас в кошельке лежит 10$, то нам не важно какая конкретно это купюра. Мы легко можем
+                      взять эту купюру, поменять ее на другую эквивалентную по номиналу. Для нас в этот момент ничего не
+                      меняется. Десять долларов остались десятью долларами. Тоже самое можно сказать и про многое
+                      другое, например: адреса доставки, страна проживания, путь до файла, адрес страницы сайта, точки
+                      на плоскости. Во всех этих ситуациях нас волнует само значение, сам факт его существования.</p>
+
+                    <p>Представьте себе систему в которой идет работа с деньгами. Причем в разных валютах. В такой
+                      ситуации удобно представить деньги в виде объекта, который помимо номинала хранит информацию о
+                      валюте. Как в таком случае должно работать сравнение?</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$m1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Money</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">150</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'usd'</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$m2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Money</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">130</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'eur'</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #999988;font-style: italic">// Предположим что 150 долларов по текущему курсу равны 130 евро</span>
+<span style="color: #999988;font-style: italic">// Функция конвертирует деньги для сравнения</span>
+<span style="color: #008080">$m1</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">equals</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$m2</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// true</span>
+</code></pre>
+                    <p>Данный код выражает озвученную ранее идею. Нам не важны объекты, нам важны значения. Объект здесь
+                      служит лишь способом организации кода, но он никак не идентифицирует хранящиеся внутри него
+                      данные. Такие объекты называют <a href="https://martinfowler.com/bliki/ValueObject.html"
+                        target="_blank" rel="nofollow">объектами-значениями</a>.</p>
+
+                    <p><em>Если говорить откровенно, то реальность чуть сложнее. Одни и те же вещи могут быть как
+                        объектами-значениями так и объектами-сущностями. Всё зависит от конкретной предметной области.
+                        Для большинства компаний деньги - это действительно просто значения, но не для тех кто их
+                        печатает. Им очень важно различать купюры между собой и поэтому на каждой из них есть уникальный
+                        номер, который и позволяет проводить идентификацию.</em></p>
+
+                    <p>Объекты-значения – искусственная штука. Часто они не нужны и достаточно пользоваться простым
+                      значением, особенно если оно примитивное. С другой стороны, когда значение составное, такое как
+                      точка на плоскости, адрес или адрес страницы сайта (она состоит из многих частей), подобные
+                      объекты помогают упростить код за счет удобной абстракции.</p>
+                    <h2 id="vstraivaemye-ob-ekty-embedded-objects">Встраиваемые объекты (embedded objects)</h2>
+                    <p>Как правило, данные, с которыми работают веб-приложения, хранятся в реляционных базах данных. В
+                      них каждая сущность представляется строкой в таблице, где каждое поле соответствует свойству
+                      объекта. При такой организации хранения, иногда, возникают ситуации, когда часть свойств сущности
+                      описывают собой что-то одно. Распространенный пример – почтовый адрес:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Поиск из базы по идентификатору</span>
+<span style="color: #999988;font-style: italic">// Гипотетический код</span>
+<span style="color: #008080">$user</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$users</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">find</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">5</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">street</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999988;font-style: italic">// 'lenina'</span>
+<span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">zipcode</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999988;font-style: italic">// 432111</span>
+<span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">house</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999988;font-style: italic">// 10</span>
+</code></pre>
+                    <p>Существует два подхода для работы с такими данными. Первый, любая логика по работе с этими
+                      данными описывается внутри самой сущности. Например вывод адреса в виде текста:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">User</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Где-то здесь конструктор и другие методы</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">getFullAddress</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #d14">"</span><span style="color: #d14">{</span><span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">street</span><span style="color: #d14">}</span><span style="color: #d14">, </span><span style="color: #d14">{</span><span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">house</span><span style="color: #d14">}</span><span style="color: #d14">, </span><span style="color: #d14">{</span><span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">zipcode</span><span style="color: #d14">}</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getFullAddress</span><span style="background-color: #f8f8f8">();</span>
+</code></pre>
+                    <p>Главная проблема здесь, возможное дублирование если адрес встречается где-то еще кроме
+                      пользователя. Тогда придется реализовывать методы по работе с этими данными везде где они
+                      встречаются.</p>
+
+                    <p>Второй подход – создать отдельный класс и <strong>внедрить</strong> объект этого класса в
+                      основной объект. Звучит страшно, но на практике очень просто:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">Address</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">__construct</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$street</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$house</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$zipcode</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">street</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$street</span><span style="background-color: #f8f8f8">;</span>
+        <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">house</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$house</span><span style="background-color: #f8f8f8">;</span>
+        <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">zipcode</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$zipcode</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">toString</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #d14">"</span><span style="color: #d14">{</span><span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">street</span><span style="color: #d14">}</span><span style="color: #d14">, </span><span style="color: #d14">{</span><span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">house</span><span style="color: #d14">}</span><span style="color: #d14">, </span><span style="color: #d14">{</span><span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">zipcode</span><span style="color: #d14">}</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">User</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Где-то здесь конструктор и другие методы</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">getAddress</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">// Так как у нас объект-значение,</span>
+        <span style="color: #999988;font-style: italic">// то можно, не боясь, создавать его любое количество раз,</span>
+        <span style="color: #999988;font-style: italic">// но в случае необходимости можно этот процесс оптимизировать</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Address</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">street</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">house</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">zipcode</span><span style="background-color: #f8f8f8">);</span>
+  <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getAddress</span><span style="background-color: #f8f8f8">()</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">toString</span><span style="background-color: #f8f8f8">();</span>
+</code></pre>
+
+</body>
+
+</html>

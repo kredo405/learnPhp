@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Cookies - Протокол HTTP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  href='https://cdn2.hexlet.io/derivations/image/fill/600/400/eyJpZCI6IjZhMGY0ODY4NDJhOTg0NzIxODczMDFjZDU2OTAyMTM1LnBuZyIsInN0b3JhZ2UiOiJzdG9yZSJ9?signature=9f7c7c3e6fdb96beea66d41bf52dd9f38742a1988b4a13d6610e47b8f4ea146b'
+  rel='image_src'>
+
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Cookies</h1>
+                    <p>HTTP является протоколом без сохранения состояния (англ. stateless protocol). Это означает, что
+                      каждая пара запрос-ответ не связана с предыдущим запросом-ответом. В реальной жизни это
+                      оказывается не очень удобно, так как иногда нам нужно запомнить аутентификацию пользователя или,
+                      например, хранить данные корзины с товаром пользователя в интернет-магазине. Тут возникает
+                      проблема: &quot;Как запомнить, что это тот пользователь, с которым мы только что работали?&quot;
+                      Решение этой проблемы было найдено более 10 лет назад, когда был придуман механизм, который
+                      называется — Cookie.</p>
+
+                    <p><img alt="Механизм работы cookie" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjkxYTJmYzE4NTU2YzU2YmUzOTlkMjkwZjg4NTIwNjdkLmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=d0890468221636b60a3c7fd6f17a0cf6ae5740f1044c5e77fe3f66057cb08796"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Давайте сделаем запрос к сайту Хекслета и посмотрим как этот механизм работает. Мы будем
+                      использовать программу <a href="https://ru.wikipedia.org/wiki/CURL" target="_blank"
+                        rel="nofollow"><em>curl</em></a>. Она позволяет делать HTTP запросы и флагами управлять
+                      различными их параметрами. В отличии от <em>telnet</em> нам не нужно заранее устанавливать
+                      соединение и потом набирать сырой запрос. При работе с <em>curl</em> можно сразу определить
+                      параметры и она сама отправит все нужные заголовки запроса, в том числе и по HTTPS.</p>
+
+                    <p>Давайте выполним запрос для получения только заголовков, для этого добавим к запуску
+                      <em>curl</em> флаг <em>--head</em>.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>curl <span style="color: #000080">--head</span> https://ru.hexlet.io
+HTTP/2 200 
+server: nginx/1.19.1
+<span style="color: #0086B3">date</span>: Thu, 16 Jul 2020 03:38:11 GMT
+content-type: text/html<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">charset</span><span style="color: #000000;font-weight: bold">=</span>utf-8
+vary: Accept-Encoding
+x-xss-protection: 1<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">mode</span><span style="color: #000000;font-weight: bold">=</span>block
+x-content-type-options: nosniff
+x-download-options: noopen
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+strict-transport-security: max-age<span style="color: #000000;font-weight: bold">=</span>0
+x-frame-options: ALLOW-FROM http://webvisor.com
+etag: W/<span style="color: #d14">"eb99fa0d6ee702b85ba2a5e9b0425aea"</span>
+cache-control: max-age<span style="color: #000000;font-weight: bold">=</span>0, private, must-revalidate
+content-security-policy: 
+set-cookie: <span style="color: #008080">_hexlet_session2</span><span style="color: #000000;font-weight: bold">=</span>AiUPd6RFbcrnoGnZSLAYSBzdJqxsQ4sTc%2BW0xXuOKzlenyv5GwkkbpdkD6IVDybDlD8vQcOcgGax98%2FmzIBJrz9f%2BDIJxWRpknZsRSfBXuC9yRfndovBUG6w4fTql4qp7zPozd2veFDLOU4koPVYiUQxgBLM6NkyYg%2Bhs%2BQe%2FSZezleVgMBVD%2FFC070DjV7t2eN01o26kcbd0pQsf9k1LE4JN0aDzSxu8elxLyAWkIJ5l3m%2BcI%2BpgOxk87Uwh9WdTHVuDaraiRaVJz1aZq5hr%2FgzaZiK%2Bgi6ChX60nhha1an610b1v3EE7xgkEM332uFPU0w675fHEr4APTdPDVtJRa3--qQi0cqcljC8i4klD--fXTErw9bhX7%2Fd1xfPE4Gww%3D%3D<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">domain</span><span style="color: #000000;font-weight: bold">=</span>.hexlet.io<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">path</span><span style="color: #000000;font-weight: bold">=</span>/<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">expires</span><span style="color: #000000;font-weight: bold">=</span>Sun, 16 Aug 2020 03:38:11 GMT<span style="background-color: #f8f8f8">;</span> secure<span style="background-color: #f8f8f8">;</span> HttpOnly<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">SameSite</span><span style="color: #000000;font-weight: bold">=</span>Lax
+set-cookie: <span style="color: #008080">GCLB</span><span style="color: #000000;font-weight: bold">=</span>CLTE8bzdlaS6Zg<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">path</span><span style="color: #000000;font-weight: bold">=</span>/<span style="background-color: #f8f8f8">;</span> HttpOnly<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">expires</span><span style="color: #000000;font-weight: bold">=</span>Thu, 16-Jul-2020 03:39:50 GMT
+x-request-id: 2f554de2-a21d-4e7d-964e-085914ac3f77
+x-runtime: 0.056974
+access-control-allow-origin: <span style="color: #000000;font-weight: bold">*</span>
+via: 1.1 google
+alt-svc: clear
+</code></pre>
+                    <p>Мы видим два заголовка, которые занимаются установкой cookie — <em>set-cookie</em>. Обратите
+                      внимание, что каждая cookie посылается в отдельном заголовке. Соответственно таких заголовков
+                      может быть достаточно много. Внутри кука представляет из себя пару <em>ключ=значение</em> и
+                      отделяется от дополнительных параметров точкой с запятой. Куки сохраняются в браузере на клиенте и
+                      при следующем запросе он отправляет их обратно на сервер. Непосредственно в браузере они никак не
+                      используются. Хорошая аналогия — это как получить номерок в гардеробе и потом вернуть его, чтобы
+                      понять какая куртка ваша. При этом сам номерок никакой ценности не представляет и его нельзя
+                      использовать самостоятельно.</p>
+
+                    <p>Куки делятся как минимум на два типа:</p>
+
+                    <ul>
+                      <li>Сессионные</li>
+                      <li>Постоянные</li>
+                    </ul>
+
+                    <p>Сессионные куки в нашем запросе не устанавливаются, так как мы видим дополнительные параметры в
+                      заголовке <em>set-cookie</em>. Если бы их не было, то кука называлась бы сессионной. Основное их
+                      отличие от постоянных в том, что как только закрывается браузер кука удаляется. Например, на
+                      некоторых сайтах, если вы не отметите галочку &quot;запомнить меня&quot; и после закрытия браузера
+                      зайдёте на сайт снова, то будете не авторизованы. Так происходит потому, что используется
+                      сессионная кука.</p>
+                    <h2 id="vremya-zhizni-kuki">Время жизни куки</h2>
+                    <p><img alt="Время жизни куки" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6Ijg2ZjA3YmM0ZDI3MjE3MDNmZGQ2ZTQ0ZDI1YTVhNDQxLmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=42987fb282100b8c82adcfef2ab9a0385320bdb7da46766c784e3ec26afab913"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>В данном случае устанавливаются постоянные (персистентные) куки. Они сохраняются на жёстком диске
+                      и место их хранения может быть разным в зависимости от браузера. Такие куки отличаются от
+                      сессионных тем, что можно управлять длиной их жизни при помощи параметра <em>expires</em>.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">expires</span><span style="color: #000000;font-weight: bold">=</span>Thu, 16-Jul-2020 03:39:50 GMT<span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>В параметре <em>expires</em> указывается дата удаления куки, после которой она не будет
+                      отсылаться на сервер. Стоит сказать, что есть еще один параметр, который используется для тех же
+                      целей — <em>MAX-AGE</em>. В его значении указывается количество секунд по истечении которых куки
+                      будет удалена.</p>
+                    <pre class="hljs"><code class=sh>MAX-AGE<span style="color: #000000;font-weight: bold">=</span>2592000<span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>Так как часть браузеров не поддерживают <em>MAX-AGE</em>, некоторые фреймворки часто
+                      устанавливают сразу оба параметра и браузеры просто игнорируют тот который им не нужен. Таким
+                      образом заголовок <em>set-cookie</em>, который содержит два параметра <em>MAX-AGE</em> и
+                      <em>expires</em>, считается валидным. В стандарте также говорится и о том, что регистр имени куки
+                      не имеет значения.</p>
+                    <h2 id="parametry-domain-i-path">Параметры domain и path</h2>
+                    <p>Параметры <em>domain</em> и <em>path</em> задают область видимости куки, то есть URL на которые
+                      кука может отправляться. Если они не заданы, то по умолчанию кука будет пересылаться на сервер
+                      только для текущего пути и домена. В нашем примере в <em>path</em> указан корень сайта.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">domain</span><span style="color: #000000;font-weight: bold">=</span>.hexlet.io<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">path</span><span style="color: #000000;font-weight: bold">=</span>/<span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>То есть кука будет отправляться для всех страниц. Есть нюанс, если установлен
+                      <em>domain=.hexlet.io</em>, причём наличие точки перед именем домена не имеет значения, то кука
+                      будет работать не только для всех страниц сайта, но и для всех поддоменов. А если мы совсем не
+                      установим параметр <em>domain</em>, хотя по умолчанию его значение будет <em>hexlet.io</em>, то
+                      кука для поддоменов работать не будет.</p>
+
+                    <p>Уникальность куки определяется тремя параметрами <em>key</em> (имя куки), <em>domain</em> и
+                      <em>path</em>. Это значит, что если какую-то куку нужно переустановить, например, поменять время
+                      её жизни, то при следующем запросе в <em>set-cookie</em> эти параметры должны совпадать. Если хотя
+                      бы один из них отличается, то будет установлена новая кука.</p>
+                    <h2 id="udalenie-kuki">Удаление куки</h2>
+                    <p>Заголовка для удаления куки не существует, чтобы удалить её нужно установить нулевой или
+                      отрицательный <em>MAX-AGE</em>, либо задать <em>expires</em> в прошлом, тогда кука будет
+                      немедленно удалена.</p>
+                    <h2 id="httponly-cookie">HttpOnly cookie</h2>
+                    <p>Можно заметить, что в нашем примере установлен дополнительный параметр <em>HttpOnly</em>.
+                      HttpOnly куки передаются с AJAX-запросами, но их нельзя получить через JavaScript на странице
+                      сайта. Это дополнительный уровень безопасности от XSS атак.</p>
+                    <h2 id="otpravka-na-server">Отправка на сервер</h2>
+                    <p>После того как мы обновляем страницу в браузере, происходит отправка следующего заголовка:</p>
+                    <pre class="hljs"><code class=sh>cookie: <span style="color: #008080">GCLB</span><span style="color: #000000;font-weight: bold">=</span>CLiC7uWajOOrzAE<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">_hexlet_session2</span><span style="color: #000000;font-weight: bold">=</span>gu3n8MCidqZ28VfjpzJuF74d4ohla6uYq9Q%2B2XBcalsa3VUCzURBWTXvscuzSI%2BF3lnHAN%2FUt6IJnXgkH%2B6jDKgyStVb8W%2BLHwIbypoxajN3fB5ksFT3Qu28RvDQpL6hBmqq7V2eFdfLMGtkmtcpfAUYNGffwaBAlQyQKnvhkCpEf5IIWkwWfe9Nt8dG3lIueeir9fGxZP7Fpcw9IP9HfgSansgXugtFI1rw06UhgrrK%2BEnaf4EmIgVdH6KYpDBKXpUUXz8vFRvkOMX5j%2BZNMTu%2BKDBzmGlFjcm1mCZl4ozZWDCocFO4CTW7z9LmzKYbcEGkUEhRbOu%2BTvLgVo80LilK--x3y6jxx%2FjYcLp5tr--9nrQ0XmAhtGAuIFvMYvWig%3D%3D
+</code></pre>
+                    <p>Все куки отправляются одним заголовком в формате <em>key=value; key=value</em> без дополнительных
+                      параметров.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://developer.mozilla.org/ru/docs/Web/HTTP/Куки">HTTP Cookie /
+                          Mozilla</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://ru.wikipedia.org/wiki/HTTP_cookie">HTTP Куки / Википедия</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://tools.ietf.org/html/rfc6265">RFC 6265: стандарт, описывающий
+                          cookie</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

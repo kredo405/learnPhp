@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Конфигурация - PHP: Объектно-ориентированный дизайн</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Конфигурация</h1>
+                    <p>Markdown — упрощённый язык разметки, который удобен при работе с текстом (в отличие от HTML).
+                      Браузеры не умеют отображать Markdown напрямую, поэтому он транслируется в HTML и уже затем
+                      показывается. Трансляция Markdown в HTML описывается чистой функцией. Она не зависит от внешнего
+                      окружения, детерминирована и не порождает побочных эффектов.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$html</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">markdownToHtml</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$markdown</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>На входе текст (в формате Markdown), на выходе — тоже текст (в формате HTML). Если нужно изменить
+                      поведение трансляции, то достаточно передать вторым параметром массив опций.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$html</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">markdownToHtml</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$markdown</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'sanitize'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #000000;font-weight: bold">false</span><span style="background-color: #f8f8f8">]);</span>
+</code></pre>
+                    <p>Теперь давайте вообразим объектно-ориентированную версию этого кода. Перед тем, как двигаться
+                      дальше, попробуйте отвлечься от чтения и подумайте над следующими вопросами:</p>
+
+                    <ul>
+                      <li>Что мы вообще хотим получить такого от ООП, чего не даёт нам чистая функция?</li>
+                      <li>Как будет выглядеть получившийся интерфейс?</li>
+                    </ul>
+
+                    <p>Как вы помните, классы позволяют реализовать абстракцию. Можно ли сказать, что в процессе
+                      преобразования Markdown в HTML есть абстракция? Нет. Абстракция подразумевает наличие некоторого
+                      понятия (типа), значения которого обладают <em>временем жизни</em>. Это значит, что она создается
+                      и затем многократно и по-разному используется. Например, невозможно представить работу с
+                      пользователем в виде одной функции. Если говорить о Markdown, то конкретный текст этого формата не
+                      интересует нас сам по себе, мы не определяем над ним некоторый набор операций и не собираемся им
+                      активно пользоваться. Все, что мы хотим, прямо здесь и сейчас (в том коде) - получить HTML и
+                      забыть про Markdown.</p>
+
+                    <p>Если бы мы хотели построить вокруг текста абстракцию, то код выглядел бы так:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Объект md описывает собой переданный текст $markdown и позволяет им манипулировать</span>
+<span style="color: #008080">$md</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Markdown</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$markdown</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$html</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$md</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">();</span>
+</code></pre>
+                    <p>В примере выше тип Markdown представляет собой абстракцию над текстом в формате Markdown. Смысла
+                      в таком коде мало, а вот проблем он доставит. Эти две строчки начнут неразрывно встречаться в
+                      каждом месте, в котором требуется получить HTML. Объект <code>$md</code> становится сразу не
+                      нужен, как только получен HTML, у него нет времени жизни. Такой антипаттерн особенно часто
+                      встречается у новичков. Загвоздка здесь именно в том, чтобы разобраться, где у нас абстракция
+                      данных, а где нет.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Типичный избыточный код в том месте, где абстракцию сделали, но она не нужна</span>
+<span style="color: #008080">$md1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Markdown</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$markdown1</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$html1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$md1</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #999988;font-style: italic">// Еще раз для закрепления</span>
+<span style="color: #008080">$md2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Markdown</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$markdown2</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$html2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$md2</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">();</span>
+</code></pre>
+                    <p>Существует формальное правило, позволяющее это определить. Если создание объекта и вызов метода
+                      можно заменить на обычную функцию, то ни о какой абстракции речи не идёт, и правильный подход, в
+                      данной ситуации, сводится к переносу данных из конструктора в сам метод.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$md</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Markdown</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #999988;font-style: italic">// очень важно, чтобы render оставался чистой функцией и не сохранял $markdown внутри объекта</span>
+<span style="color: #008080">$html1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$md</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$markdown1</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$html2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$md</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$markdown2</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>В этом коде класс Markdown — тип, относящийся к транслятору, а не к тексту. У такого объекта
+                      жизненный цикл шире, чем ожидание однократного вызова функции <code>render</code> (как в
+                      предыдущем случае). Он может (и должен) переиспользоваться столько раз, сколько потребуется. Для
+                      этого важно оставить функцию <code>render</code> чистой и не менять состояние объекта между
+                      вызовами.</p>
+
+                    <p>Тогда становится непонятно, зачем здесь вообще объект. И на это есть 3 причины.</p>
+
+                    <ol>
+                      <li> Идиоматика. В PHP, как и в Java, принято практически всё оформлять в виде классов. К тому же
+                        для них работает автозагрузка.</li>
+                      <li> Полиморфизм подтипов. Разберём в последующих курсах.</li>
+                      <li> Третья и главная причина (для данного случая) — Конфигурация.</li>
+                    </ol>
+
+                    <p>Разберём последний пункт подробнее. Представьте что Markdown на проекте используется повсеместно
+                      (на Хекслете очень часто) и код генерации HTML выглядит так:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// В одном месте</span>
+<span style="color: #008080">$html1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">markdownToHtml</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$markdown1</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'sanitize'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">]);</span>
+
+<span style="color: #999988;font-style: italic">// Где-то в другом месте</span>
+<span style="color: #008080">$html2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">markdownToHtml</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$markdown2</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'sanitize'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">]);</span>
+</code></pre>
+                    <p>Чем больше возникает таких мест, тем больше дублируется передача опций. Изменение поведения
+                      потребует переписывания всех мест вызова этой функции. Логичным шагом было бы задать опции в одном
+                      месте и затем их переиспользовать.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// В одном месте</span>
+<span style="color: #008080">$html1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">markdownToHtml</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$markdown1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$options</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #999988;font-style: italic">// Где-то в другом месте</span>
+<span style="color: #008080">$html2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">markdownToHtml</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$markdown2</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$options</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Использование объекта позволяет убрать явную передачу (про которую легко забыть). Суть этого
+                      паттерна заключается в конфигурировании. То есть объект в данном случае выступает в роли
+                      контейнера, содержащего опции для Markdown, которые применяются при рендеринге, что позволяет их
+                      не передавать каждый раз.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$md</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Markdown</span><span style="background-color: #f8f8f8">([</span><span style="color: #d14">'sanitize'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">]);</span>
+<span style="color: #008080">$html1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$md</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$markdown1</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$html2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$md</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$markdown2</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Под конфигурированием всегда понимается передача опций (различных настроек, необходимых данной
+                      библиотеке) в конструктор во время создания объекта. Особенно полезной такая конфигурация
+                      становится тогда, когда объект создаётся в одном месте программы (на этапе инициализации
+                      приложения), а используется в других местах. Возможность конфигурации не навязывает саму
+                      конфигурацию, как правило, подобные объекты можно создавать и без указания чего-либо, тогда
+                      поведение остаётся &quot;дефолтным&quot;, но смысл от этого не меняется.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$md</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Markdown</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #008080">$html</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$md</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$markdown</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Популярная библиотека для HTTP-запросов построена по такому же принципу. Перед выполнением
+                      запроса необходимо создать объект. Конструктор соответствующего класса позволяет задать базовую
+                      конфигурацию, но через него нельзя указать запрашиваемый адрес, ведь это не часть конфигурации, а
+                      часть самого запроса.</p>
+
+                    <p><em>Попробуйте проверить себя. Выполнение HTTP-запроса это абстракция данных или нет?</em></p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$client</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">GuzzleHttp\Client</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #008080">$res</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$client</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'https://api.github.com/repos/guzzle/guzzle'</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$res</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getStatusCode</span><span style="background-color: #f8f8f8">();</span>
+</code></pre>
+                    <p><em>Данный приём не является прерогативой классов и объектов. В функциональных языках (и в JS) он
+                        крайне просто реализуется через замыкание</em></p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://commonmark.thephpleague.com/">Библиотека CommonMark</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

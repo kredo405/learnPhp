@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Файловая структура - Основы командной строки</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="wEeHR2GPGIqi7ZE-T-LixbrpqahzDrbmyKYmPEA6PKMrsLINeOc4262dqQTLsfNIu_zlPG6k_Q6oPODg_oCaSQ" />
+  <meta name="csp-nonce" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <meta content='IE=Edge' http-equiv='X-UA-Compatible'>
+  <meta content='b9d3902d34' name='verify-admitad'>
+  <meta content='article' property='og:type'>
+  <meta content='Файловая структура / Основы командной строки' property='og:title'>
+  <meta content='Файловая структура / Основы командной строки: Изучить файловую структуру *nix-систем'
+    property='og:description'>
+  <meta content='Файловая структура / Основы командной строки: Изучить файловую структуру *nix-систем'
+    name='description'>
+  <meta content='noarchive' name='robots'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Файловая структура</h1>
+                    <p>Файловая структура *nix-систем серьёзно отличается от структуры в Windows и заслуживает
+                      отдельного внимания. Начнём с базовых понятий. Файловая структура представляет собой
+                      <strong>дерево</strong>, в <em>узлах</em> которого находятся <strong>директории</strong> (файлы
+                      специального типа), а в <em>листьях</em> — <strong>файлы</strong>.
+                    </p>
+
+                    <p>Кстати, понятие &quot;папка&quot; в *nix-системах не используется, говорят &quot;директория&quot;
+                      или &quot;каталог&quot;, хотя по существу эти термины означают одно и то же.</p>
+
+                    <p><img alt="Файловая структура в Unix" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImI2YjJhMGI5ZjRkMzUyYTEyNTlkMTU3NzQ0NzNhYjk5LnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=de37bbd3b9c5621ce0a78d619239a14294fbfb5ae853c6071dd2174e4e6c897c"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>В Windows файловая структура представлена не одним, а несколькими деревьями, так как каждая
+                      структура находится на своём диске. В *nix-системах — единственное дерево с корнем в
+                      <code>/</code>. Все устройства, физические и логические диски находятся внутри этого дерева в виде
+                      директорий и файлов.
+                    </p>
+
+                    <p>Информация о любом файле или директории доступна по команде <code>stat</code> (file system
+                      <strong>stat</strong>us):
+                    </p>
+                    <pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># Не обращайте внимание на непонятные для вас данные, об их значении поговорим позже</span>
+<span style="color: #008080">$ </span><span style="color: #0086B3">stat</span> .bashrc
+  File: <span style="color: #d14">'.bashrc'</span>
+  Size: 3771        Blocks: 8          IO Block: 4096   regular file
+Device: ca01h/51713d    Inode: 259234      Links: 1
+Access: <span style="color: #000000;font-weight: bold">(</span>0644/-rw-r--r--<span style="color: #000000;font-weight: bold">)</span>  Uid: <span style="color: #000000;font-weight: bold">(</span> 1002/kirill.m<span style="color: #000000;font-weight: bold">)</span>   Gid: <span style="color: #000000;font-weight: bold">(</span> 1002/kirill.m<span style="color: #000000;font-weight: bold">)</span>
+Access: 2018-08-27 17:24:11.237498138 +0000
+Modify: 2015-08-31 23:27:45.000000000 +0000
+Change: 2018-01-22 08:13:27.611966864 +0000
+ Birth: -
+</code></pre>
+                    <script id="asciicast-evHx3Dudt2TZIJlkI38OmZpEv"
+                      src="https://asciinema.org/a/evHx3Dudt2TZIJlkI38OmZpEv.js" data-cols="120" data-rows="15"
+                      data-preload="1" async></script>
+
+                    <p>В Windows мы привыкли, что имя файла может быть набрано в разных регистрах, и это всегда один и
+                      тот же файл, то есть имена регистронезависимы. В *nix-системах регистр имеет значение. Файлы
+                      <code>index.html</code>, <code>Index.html</code>, <code>INDEX.HTML</code> и
+                      <code>index.HTML</code> — это разные файлы. Всегда обращайте внимание на регистр, потому что
+                      ошибиться довольно легко.
+                    </p>
+
+                    <p><em>macOS в этой ситуации идёт по пути Windows и тоже не учитывает регистр</em></p>
+
+                    <p>Говорят, что в *nix &quot;всё есть файл&quot;. На нижнем уровне так и есть (почти). Директория —
+                      это специальный файл, который содержит список файлов. Любое подключаемое устройство становится
+                      файлом или директорией, если это накопитель. Такая концепция довольно удобна для разработчиков,
+                      потому что печать на принтер и вывод на экран между собой ничем не отличаются — для кода это
+                      просто &quot;запись в файл&quot;. На пользовательском уровне директория всё же отличается от файла
+                      и имеет собственные команды для создания, удаления и модификации.</p>
+
+                    <p>В *nix-системах есть базовый набор каталогов, который стандартизирован (FHS). За каждым
+                      закреплена какая-то особая роль. Например, каталог <code>/etc</code> содержит конфигурацию
+                      программ в обычных текстовых файлах (в юниксах нет реестра, вся конфигурация лежит в обычных
+                      файлах), а каталог <code>/home</code> содержит домашние директории пользователей системы
+                      (исключением является суперпользователь <code>root</code>, его домашний каталог обычно находится
+                      по адресу <code>/root</code>). Обязательно пробегитесь по странице <a
+                        href="https://ru.wikipedia.org/wiki/FHS" target="_blank">https://ru.wikipedia.org/wiki/FHS</a> и
+                      посмотрите, что за что отвечает.</p>
+
+                    <p>Не во все директории можно заходить, не все файлы можно читать или менять, и не все программы
+                      можно запускать. В *nix-системах развитая система прав, завязанная на пользователей и группы. О
+                      ней мы поговорим отдельно позже. Сейчас достаточно знать, что такие ограничения есть. Их можно
+                      увидеть в выводе команды <code>ls -l</code>.</p>
+
+                    <p>В отличие от Windows, в *nix-системах отсутствует понятие &quot;расширение файла&quot;. Точка —
+                      полноправная часть имени. Это не значит, что в юниксах невозможно понять тип файла. Это возможно,
+                      более того, файлы почти всегда именуются так же, как и в Windows, например
+                      <strong>hello.mp3</strong>, но важно понимать, что вся эта строчка — имя файла. Нередко
+                      встречаются и такие имена: <code>index.html.haml</code>. В *nix также есть скрытые файлы, но, в
+                      отличие от Windows, это не свойство файла, а определённое имя файла. Все файлы и директории,
+                      начинающиеся с точки, считаются скрытыми. Вывести все файлы, включая скрытые, можно командой
+                      <code>ls -a</code>:
+                    </p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span><span style="color: #0086B3">ls</span> <span style="color: #000080">-a</span>
+<span style="color: #0086B3">.</span>  ..  .bash_history  .bash_logout  .bashrc  .cache  .profile  .ssh
+</code></pre>
+                    <p>Обратите внимание на две особые директории, обозначенные &quot;точкой&quot; (<code>.</code>) и
+                      &quot;двумя точками&quot; (<code>..</code>). Точка означает текущую директорию, а две точки —
+                      директорию верхнего уровня. Именно благодаря этой схеме работает команда <code>cd ..</code>,
+                      которая перемещает нас на уровень выше.</p>
+
+                    <p>Кроме обычных файлов, в *nix существует ряд других:</p>
+
+                    <ul>
+                      <li><strong>Hard Link</strong> — дополнительное имя для уже существующего файла.</li>
+                      <li><strong>Symbolic link</strong> — символическая ссылка, такой файл похож на ярлык в Windows.
+                        Если удалить основной файл, то символическая ссылка начнёт вести в никуда.</li>
+                      <li><strong>Socket</strong> — специальный файл через который происходит взаимодействие между
+                        разными процессами операционной системы. Программисты постоянно сталкиваются с сокетами в
+                        реальной жизни.</li>
+                    </ul>
+
+                    <p>Это наиболее важные на начальном этапе знакомства с файловой системой типы файлов. Есть ещё и
+                      другие типы, но не будем сейчас заострять на них внимание.</p>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>

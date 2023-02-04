@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>HTML в PHP - Веб-разработка на PHP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../session/exercise_unit.html">Веб-разработка на PHP</a>
+                    <h1 class='mt-0 mb-4'>HTML в PHP</h1>
+                    <p>Главный секрет PHP заключается в том, что сам язык — шаблонизатор. Если вы посмотрите любой
+                      другой язык, то в его файлах не увидите ничего похожего на теги: <code>&lt;?php ... ?&gt;</code>.
+                      В PHP любой файл с кодом это шаблон, причём этот шаблон не имеет никакой структуры (как бывает в
+                      <a href="http://slim-lang.com/" target="_blank" rel="nofollow">некоторых</a> шаблонизаторах). Вы
+                      можете создать PHP-файл, написать любой текст вне тегов <code>&lt;?php ?&gt;</code>, запустить код
+                      на выполнение и, внезапно, он не упадёт с указанием синтаксической ошибки.</p>
+
+                    <p>Содержимое <em>index.php</em>:</p>
+                    <pre class="hljs"><code class=php><span style="background-color: #f8f8f8">hi</span>
+<span style="background-color: #f8f8f8">i</span> <span style="background-color: #f8f8f8">am</span>
+<span style="background-color: #f8f8f8">the</span> <span style="background-color: #f8f8f8">template</span>
+</code></pre>
+                    <p>Запуск этого &quot;кода&quot; выведет весь текст на экран:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>php index.php
+hi
+i am
+the template
+</code></pre>
+                    <p>То же самое касается HTML, так как это всего лишь текст. Достаточно в любом PHP-файле добавить
+                      немного HTML и запустить его, как он будет выведен на экран:</p>
+
+                    <p>Содержимое <em>index.php</em>:</p>
+                    <pre class="hljs"><code class=php><span style="color: #000080">&lt;div&gt;</span>
+  <span style="color: #000080">&lt;a</span> <span style="color: #008080">href=</span><span style="color: #d14">"/lessons"</span><span style="color: #000080">&gt;</span>Lessons<span style="color: #000080">&lt;/a&gt;</span>
+<span style="color: #000080">&lt;/div&gt;</span>
+</code></pre>
+                    <p>Запуск этого &quot;кода&quot; выведет весь текст на экран:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>php index.php
+&lt;div&gt;
+    &lt;a <span style="color: #008080">href</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #d14">"/lessons"</span><span style="color: #000000;font-weight: bold">&gt;</span>Lessons&lt;/a&gt;
+&lt;/div&gt;
+</code></pre>
+                    <p>Такое поведение языка существует исключительно ради создания сайтов. Если запустить веб-сервер в
+                      директории с этим файлом <em>index.php</em>, то при обращении к этому &quot;сайту&quot;, мы
+                      получим ровно тот же вывод что и в терминале. А это значит, что мы можем заменить такой код:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">echo</span> <span style="color: #d14">'&lt;p&gt;hello, world&lt;/p&gt;'</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>На такой:</p>
+                    <pre class="hljs"><code class=php><span style="color: #000080">&lt;p&gt;</span>hello, world<span style="color: #000080">&lt;/p&gt;</span>
+</code></pre>
+                    <p>Отсюда следует очень важный вывод. Любой PHP файл, на самом деле – обычный текстовый файл со
+                      вставками PHP кода (с помощью тегов <code>&lt;?php ?&gt;</code>). Любой текст написанный внутри
+                      него, отдается в вывод как есть, будь то браузер или запуск в командной строке.</p>
+
+                    <p>Теперь добавим немного PHP. Шаблон становится шаблоном тогда, когда внутри него появляется
+                      подстановка данных. Принцип работы такой, абсолютно в любом месте шаблона вставляются теги
+                      <code>&lt;?php ?&gt;</code> внутри которых можно написать код. Фактически мы имеем дело с обычной
+                      строковой интерполяцией:</p>
+                    <pre class="hljs"><code class=php><span style="color: #000080">&lt;div&gt;</span>
+  <span style="color: #000080">&lt;a</span> <span style="color: #008080">href=</span><span style="color: #d14">"/lessons"</span><span style="color: #000080">&gt;</span><span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #d14">'Lessons'</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #000080">&lt;/a&gt;</span>
+<span style="color: #000080">&lt;/div&gt;</span>
+</code></pre>
+                    <p>Добавим немного программирования. Запуск следующего кода, вернёт такой же результат что и код
+                      выше:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+<span style="color: #008080">$name</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'Lessons'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #999999;font-weight: bold">?&gt;</span>
+
+<span style="color: #000080">&lt;div&gt;</span>
+  <span style="color: #000080">&lt;a</span> <span style="color: #008080">href=</span><span style="color: #d14">"/lessons"</span><span style="color: #000080">&gt;</span><span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$name</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #000080">&lt;/a&gt;</span>
+<span style="color: #000080">&lt;/div&gt;</span>
+</code></pre>
+                    <p>В данном примере я добавил один блок сверху файла, внутри которого создал переменную. Затем,
+                      использовал её в другой вставке. Все содержимое файла находится в одном пространстве и блоки кода
+                      определённые дальше по тексту имеют доступ к данным предыдущих блоков. Что важно, подстановка
+                      данных из кода происходит только в том случае, если этот код выполняет печать.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+<span style="color: #008080">$name</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'Lessons'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #008080">$id</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">23</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #999999;font-weight: bold">?&gt;</span>
+
+<span style="color: #000080">&lt;div&gt;</span>
+  <span style="color: #000080">&lt;a</span> <span style="color: #008080">href=</span><span style="color: #d14">"/lessons/</span><span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$id</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #d14">"</span><span style="color: #000080">&gt;</span><span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$name</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #000080">&lt;/a&gt;</span>
+<span style="color: #000080">&lt;/div&gt;</span>
+</code></pre>
+                    <p>Вывод на экран после запуска:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>php index.php
+&lt;div&gt;
+  &lt;a <span style="color: #008080">href</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #d14">"/lessons/23"</span><span style="color: #000000;font-weight: bold">&gt;</span>Lessons&lt;/a&gt;
+&lt;/div&gt;
+</code></pre>
+                    <p>Для удобства вставки кода в HTML, PHP предлагает альтернативный синтаксис для стандартных
+                      конструкций языка. Например, для вставки значения используется сокращённая версия тега начала
+                      PHP-кода: <code>&lt;?= &lt;код на php&gt; ?&gt;</code>, она отличается от полной тем что вместо
+                      <code>&lt;?php echo ...</code> используется <code>&lt;?= ...</code>.</p>
+
+                    <p><strong>Сокращённая вставка</strong></p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+<span style="color: #008080">$name</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'Lessons'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #999999;font-weight: bold">?&gt;</span>
+
+<span style="color: #000080">&lt;div&gt;</span>
+  <span style="color: #000080">&lt;a</span> <span style="color: #008080">href=</span><span style="color: #d14">"/lessons/</span><span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #009999">23</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #d14">"</span><span style="color: #000080">&gt;</span><span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #008080">$name</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #000080">&lt;/a&gt;</span>
+<span style="color: #000080">&lt;/div&gt;</span>
+</code></pre>
+                    <p><strong>If</strong></p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$a</span> <span style="color: #000000;font-weight: bold">===</span> <span style="color: #009999">5</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">:</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+  A is equal to 5
+<span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">endif</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+</code></pre>
+                    <p><strong>Switch</strong></p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">switch</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$foo</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">:</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+<span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">case</span> <span style="color: #009999">1</span><span style="color: #000000;font-weight: bold">:</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+    ...
+<span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">endswitch</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+</code></pre>
+                    <p><strong>Foreach</strong></p>
+                    <pre class="hljs"><code class=php><span style="color: #000080">&lt;ul&gt;</span>
+    <span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">foreach</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$users</span> <span style="color: #000000;font-weight: bold">as</span> <span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">:</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+        <span style="color: #000080">&lt;li&gt;</span><span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getName</span><span style="background-color: #f8f8f8">()</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #000080">&lt;/li&gt;</span>
+    <span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">endforeach</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+<span style="color: #000080">&lt;/ul&gt;</span>
+</code></pre>
+                    <p>С одной стороны, поддержка CGI внутри самого языка позволяет начать делать сайт буквально на
+                      коленке без особых знаний программирования и HTTP, что многие и делают. С другой, PHP толкает к
+                      созданию абсолютно не поддерживаемого кода, который не может никто прочитать кроме автора.
+                      Посмотрите сами:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;!DOCTYPE html&gt;</span>
+<span style="color: #000080">&lt;html&gt;</span>
+<span style="color: #000080">&lt;head&gt;</span>
+  <span style="color: #000080">&lt;title&gt;</span>Upload your files<span style="color: #000080">&lt;/title&gt;</span>
+<span style="color: #000080">&lt;/head&gt;</span>
+<span style="color: #000080">&lt;body&gt;</span>
+  <span style="color: #000080">&lt;form</span> <span style="color: #008080">enctype=</span><span style="color: #d14">"multipart/form-data"</span> <span style="color: #008080">action=</span><span style="color: #d14">"upload.php"</span> <span style="color: #008080">method=</span><span style="color: #d14">"POST"</span><span style="color: #000080">&gt;</span>
+    <span style="color: #000080">&lt;p&gt;</span>Upload your file<span style="color: #000080">&lt;/p&gt;</span>
+    <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"file"</span> <span style="color: #008080">name=</span><span style="color: #d14">"uploaded_file"</span><span style="color: #000080">&gt;&lt;/input&gt;&lt;br</span> <span style="color: #000080">/&gt;</span>
+    <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"submit"</span> <span style="color: #008080">value=</span><span style="color: #d14">"Upload"</span><span style="color: #000080">&gt;&lt;/input&gt;</span>
+  <span style="color: #000080">&lt;/form&gt;</span>
+<span style="color: #000080">&lt;/body&gt;</span>
+<span style="color: #000080">&lt;/html&gt;</span>
+
+<span style="color: #999999;font-weight: bold">&lt;?php</span>
+  <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">!</span><span style="color: #0086B3">empty</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$_FILES</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'uploaded_file'</span><span style="background-color: #f8f8f8">]))</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$path</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">"uploads/"</span><span style="background-color: #f8f8f8">;</span>
+    <span style="color: #008080">$path</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$path</span> <span style="color: #009999">.</span> <span style="color: #0086B3">basename</span><span style="background-color: #f8f8f8">(</span> <span style="color: #008080">$_FILES</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'uploaded_file'</span><span style="background-color: #f8f8f8">][</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">]);</span>
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #0086B3">move_uploaded_file</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$_FILES</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'uploaded_file'</span><span style="background-color: #f8f8f8">][</span><span style="color: #d14">'tmp_name'</span><span style="background-color: #f8f8f8">],</span> <span style="color: #008080">$path</span><span style="background-color: #f8f8f8">))</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #d14">"The file "</span> <span style="color: #009999">.</span>  <span style="color: #0086B3">basename</span><span style="background-color: #f8f8f8">(</span> <span style="color: #008080">$_FILES</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'uploaded_file'</span><span style="background-color: #f8f8f8">][</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">])</span> <span style="color: #009999">.</span> <span style="color: #d14">" has been uploaded"</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span> <span style="color: #000000;font-weight: bold">else</span><span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #d14">"There was an error uploading the file, please try again!"</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+  <span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Такой способ программирования возможен только в PHP (потому что только PHP это сразу и язык и
+                      шаблонизатор и CGI-скрипт). При таком способе организации кода, сайт очень быстро начинает
+                      представлять из себя мешанину HTML и PHP. Если количество разных страниц сайта достигнет хотя бы
+                      десятка (а их обычно сотни и больше), то поддержка уже станет невероятно сложной. Безопасность
+                      такой шаблонизации находится на нуле (см. <a
+                        href="https://ru.wikipedia.org/wiki/Межсайтовый_скриптинг" target="_blank"
+                        rel="nofollow">XSS</a>). Также PHP не поддерживает макеты, то есть специализированные шаблоны,
+                      содержащие обвязку сайта, в которую вставляется HTML конкретного обработчика.</p>
+
+                    <p>По этой причине в PHP, как и в других языках, используют шаблонизаторы, написанные на самом PHP.
+                      Наиболее популярные среди них <a href="https://laravel.com/docs/master/blade" target="_blank"
+                        rel="nofollow">Blade</a> и <a href="https://twig.symfony.com/" target="_blank"
+                        rel="nofollow">Twig</a>. Лично мне больше импонируют шаблоны на основе <a
+                        href="http://slim-lang.com/" target="_blank" rel="nofollow">Slim</a>, но в PHP они не так
+                      популярны, как в JS или Ruby. Шаблонизаторы будут одной из тем следующих уроков.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Добавьте в <em>index.php</em> заголовок <code>&lt;h1&gt;hello, php!&lt;/h1&gt;</code> вне PHP
+                        кода.</li>
+                      <li> Добавьте в <em>index.php</em> заголовок <code>&lt;h1&gt;i am from PHP!&lt;/h1&gt;</code>
+                        внутри PHP кода через <code>echo</code>.</li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://php.net/manual/ru/control-structures.alternative-syntax.php">Альтернативный
+                          синтаксис управляющих конструкций</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

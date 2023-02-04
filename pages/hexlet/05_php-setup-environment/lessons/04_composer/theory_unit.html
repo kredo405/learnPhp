@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Composer - PHP: Настройка окружения</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="-XX0EkUndN7tCgbc5ecCeIqvm9JLZCOBkWC54QFLi0hq34U0ZMyOGL9LpoCTDfK3qCk2rhajgJwDA-oKju_X2Q" />
+  <meta name="csp-nonce" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Composer</h1>
+                    <p>Ключевая программа в экосистеме PHP — <em>Composer</em>. Она выполняет очень много функций,
+                      которые не представляется возможным рассмотреть в рамках текущего курса. Общая рекомендация
+                      состоит в том, чтобы периодически посматривать на её команды и изучать информацию по ним. Ключевая
+                      задача, которую решает Composer — <em>управление зависимостями</em>, и именно о ней мы поговорим.
+                      Процесс установки самого Composer для каждой операционной системы описан в официальном
+                      руководстве:</p>
+
+                    <ul>
+                      <li><a href="https://getcomposer.org/download/"
+                          target="_blank">https://getcomposer.org/download/</a></li>
+                      <li><a href="https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos"
+                          target="_blank">https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos</a></li>
+                    </ul>
+
+                    <p><em>Для успешной установки и настройки Composer, необходимо хотя бы немного разбираться с работой
+                        командных интерпретаторов. Рекомендуем пройти <a href="https://ru.hexlet.io/courses/cli-basics"
+                          target="_blank">соответствующий курс</a> на Хекслете, если вы этого ещё не сделали</em></p>
+
+                    <p>Кроме самого Composer установите следующие программы, используя пакетный менеджер вашей
+                      операционной системы:</p>
+
+                    <ul>
+                      <li><a href="https://ru.wikipedia.org/wiki/Git" target="_blank" rel="nofollow">git</a></li>
+                      <li><a href="https://ru.wikipedia.org/wiki/CURL" target="_blank" rel="nofollow">curl</a></li>
+                    </ul>
+
+                    <p>Убедитесь, что Composer работает:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>composer
+   ______
+  / ____/___  ____ ___  ____  ____  ________  _____
+ / /   / __ <span style="color: #d14">\/</span> __ <span style="color: #d14">`</span>__ <span style="color: #d14">\/</span> __ <span style="color: #d14">\/</span> __ <span style="color: #d14">\/</span> ___/ _ <span style="color: #d14">\/</span> ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ <span style="color: #000000;font-weight: bold">(</span>__  <span style="color: #000000;font-weight: bold">)</span>  __/ /
+<span style="color: #d14">\_</span>___/<span style="color: #d14">\_</span>___/_/ /_/ /_/ .___/<span style="color: #d14">\_</span>___/____/<span style="color: #d14">\_</span>__/_/
+                    /_/
+Composer version 1.8.0 2018-12-03 10:31:16
+
+<span style="color: #999988;font-style: italic"># Тут много вывода</span>
+</code></pre>
+                    <p>Запуск Composer без аргументов, выведет весь список доступных команд с их описанием. Пробегитесь
+                      по ним, чтобы сформировать первое впечатление.</p>
+
+                    <p>Практически с самого зарождения программирования (когда код стал храниться в памяти компьютера),
+                      появилась идея повторного использования кода не только в рамках одного проекта, но и в других
+                      проектах. Например, функции для работы с датами, математическими формулами, всевозможными
+                      расчётами одни и те же во всех проектах, где они требуются. Подобное переиспользование приводит к
+                      резкому возрастанию производительности. Программисты современности могут сосредоточиться на
+                      решении уникальных задач бизнеса, вместо создания своих велосипедов для решения инфраструктурных
+                      задач. Особенно просто стало жить во времена Git и GitHub.</p>
+
+                    <p>Первоначально общий код выносился в файлы, которые программисты часто держали на своих
+                      собственных компьютерах и копировали из проекта в проект. Такой способ обладает рядом существенных
+                      недостатков:</p>
+
+                    <ol>
+                      <li> Сложно передать другим</li>
+                      <li> У каждого своя собственная копия решений одних и тех же решений (немного разных решений)</li>
+                      <li> Доработкой занимается только автор</li>
+                      <li> В сумме много разных копий без возможности быстрого обновления</li>
+                      <li> Из-за того, что код копируется прямо в другой проект, он, как правило, модифицируется и
+                        становится специфичным</li>
+                    </ol>
+
+                    <p>Если использовать Git, то часть проблем решается автоматически. Мы можем сказать, что набор общих
+                      файлов называется &quot;библиотека&quot;, а конечные проекты начинают использовать библиотеки как
+                      написанные нами, так и сторонними разработчиками. Но тут возникает следующая сложность — когда
+                      таких библиотек становится много, то у них также появляется общий код более низкого уровня.
+                      Например, финансовые библиотеки могут использовать функции для преобразования валют. Чтобы
+                      подобный код не дублировался, хочется его вынести в общее место. Этот процесс может продолжаться
+                      бесконечно. Одни библиотеки зависят от других, те в свою очередь от третьих и так далее. С точки
+                      зрения переиспользования кода всё хорошо, большое число маленьких библиотек, решающих всевозможные
+                      задачи, позволяет быстро двигаться вперёд, но с точки зрения управления появляются проблемы:</p>
+
+                    <ol>
+                      <li> Необходимо ввести понятие &quot;версия&quot;, а библиотеки начинают зависеть не только друг
+                        от друга, но и от версий друг друга. Почему это нужно? Очень просто. Предположим, что создатель
+                        библиотеки обновил её, изменив сигнатуры функций (другое число параметров, другие параметры,
+                        другой возврат), или, как говорят, сломал обратную совместимость. В такой ситуации наша
+                        первоначальная библиотека перестанет работать (если мы обновим вторую библиотеку), так как она
+                        рассчитывала на одно поведение зависимой библиотеки, а получила другое.</li>
+                      <li> Необходимо стандартизировать способ создания библиотек, только в таком случае станет
+                        возможным автоматизировать процесс их соединения без ручного управления. Скажу навскидку,
+                        типичный веб-проект может зависеть от сотни библиотек, которые в свою очередь зависят от других
+                        библиотек. Общее число зависимостей может легко перевалить за тысячу. Вручную управлять таким
+                        зоопарком не представляется возможным.</li>
+                      <li> Проблема, описанная выше, также требует наличия автоматизированного средства по управлению
+                        зависимостями. Обновлению, установке и удалению.</li>
+                    </ol>
+
+                    <p>Всеми этими вопросами занимаются <strong>пакетные менеджеры</strong>. В большинстве языков
+                      пакетный менеджер поставляется прямо с самим языком, так как в современном мире сложно представить
+                      себе код, который не использует ни одной зависимости.</p>
+                    <h2 id="terminologiya">Терминология</h2>
+                    <p>В PHP используются следующие понятия.</p>
+
+                    <p><strong>Пакет</strong> — собственно, та самая библиотека, которую мы либо пишем, либо используем
+                      в проекте как зависимость.</p>
+
+                    <p><strong>Репозиторий</strong> (Registry) — хранилище пакетов PHP, которое называется <a
+                        href="https://packagist.org/" target="_blank" rel="nofollow">Packagist</a>. Каждый желающий
+                      может опубликовать пакет в Packagist, потратив буквально минуту времени, а остальные смогут его
+                      использовать. В хранилище, на текущий момент, сотни тысяч пакетов и их количество растёт. Исходный
+                      код пакетов, как правило, хранится на GitHub, но это не обязательно.</p>
+                    <h2 id="globalnaya-ustanovka-paketov">Глобальная установка пакетов</h2>
+                    <p>Многие пакеты в PHP представляют из себя законченные программы. Их можно установить и запустить
+                      как обычную утилиту командной строки. Эти пакеты ставятся в системные директории и не связаны с
+                      конкретным проектом.</p>
+
+                    <p>Попробуем установить утилиту <code>phploc</code>, которая умеет считать количество строк и
+                      сущностей в PHP-проекте. Инструкция по установке подобных пакетов обычно присутствует на странице
+                      <a href="https://github.com/sebastianbergmann/phploc" target="_blank"
+                        rel="nofollow">репозитория</a> на GitHub.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># Composer скачает исходный код этого пакета и положит его куда-то к себе.</span>
+<span style="color: #999988;font-style: italic"># Конкретный путь зависит от настроек и операционной системы</span>
+<span style="color: #008080">$ </span>composer global require phploc/phploc
+</code></pre>
+                    <script src="https://asciinema.org/a/R060CUPqeyZ9b3ZU4N4LTAK8t.js"
+                      id="asciicast-R060CUPqeyZ9b3ZU4N4LTAK8t" data-rows="20" async></script>
+
+                    <ul>
+                      <li><em>global</em> означает, что установка глобальная, то есть пакет ставится в операционную
+                        систему как обычная программа.</li>
+                      <li>Чтобы командный интерпретатор увидел программу, установленную глобально, нужно правильно
+                        настроить переменную окружения <code>$PATH</code> добавив в неё путь к исполняемым файлам
+                        Composer. Его можно узнать выполнив в терминале команду
+                        <code>composer global config bin-dir</code>.</li>
+                    </ul>
+
+                    <p>Процесс установки занимает некоторое время, в течение которого видно как скачивается не только
+                      сам пакет, но и его зависимости. Дальше ничего делать не нужно, так как <code>phploc</code> создан
+                      утилитой командной строки, он сразу готов к использованию.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># Как аргумент эта утилита принимает путь до директории с исходным кодом</span>
+<span style="color: #008080">$ </span>phploc path/to/project
+
+phploc 4.0.0 by Sebastian Bergmann.
+
+Directories                                          3
+Files                                               10
+
+Size
+  Lines of Code <span style="color: #000000;font-weight: bold">(</span>LOC<span style="color: #000000;font-weight: bold">)</span>                             1882
+  Comment Lines of Code <span style="color: #000000;font-weight: bold">(</span>CLOC<span style="color: #000000;font-weight: bold">)</span>                     255 <span style="color: #000000;font-weight: bold">(</span>13.55%<span style="color: #000000;font-weight: bold">)</span>
+  Non-Comment Lines of Code <span style="color: #000000;font-weight: bold">(</span>NCLOC<span style="color: #000000;font-weight: bold">)</span>               1627 <span style="color: #000000;font-weight: bold">(</span>86.45%<span style="color: #000000;font-weight: bold">)</span>
+  Logical Lines of Code <span style="color: #000000;font-weight: bold">(</span>LLOC<span style="color: #000000;font-weight: bold">)</span>                     377 <span style="color: #000000;font-weight: bold">(</span>20.03%<span style="color: #000000;font-weight: bold">)</span>
+    Classes                                        351 <span style="color: #000000;font-weight: bold">(</span>93.10%<span style="color: #000000;font-weight: bold">)</span>
+      Average Class Length                          35
+        Minimum Class Length                         0
+        Maximum Class Length                       172
+      Average Method Length                          2
+        Minimum Method Length                        1
+        Maximum Method Length                      117
+    Functions                                        0 <span style="color: #000000;font-weight: bold">(</span>0.00%<span style="color: #000000;font-weight: bold">)</span>
+      Average Function Length                        0
+    Not <span style="color: #000000;font-weight: bold">in </span>classes or functions                     26 <span style="color: #000000;font-weight: bold">(</span>6.90%<span style="color: #000000;font-weight: bold">)</span>
+</code></pre>
+                    <p>Если что-то пошло не так, убедитесь что вы всё правильно настроили:</p>
+
+                    <ul>
+                      <li>
+                        <p>Изучите вывод <code>echo $PATH</code>. Есть ли там путь до исполняемых файлов Composer.</p>
+                        <pre class="hljs"><code class=sh><span style="color: #008080">$ </span><span style="color: #0086B3">echo</span> <span style="color: #008080">$PATH</span>
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/hex/.composer/vendor/bin
+</code></pre>
+                      </li>
+                      <li>
+                        <p>Проверьте, все ли установилось командой <code>which phploc</code>.</p>
+                        <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>which phploc
+/home/hex/.composer/vendor/bin/phploc
+</code></pre>
+                      </li>
+                    </ul>
+                    <h2 id="oshibki">Ошибки</h2>
+                    <p>Во время установки пакетов, Composer может начать ругаться на различные ошибки. Например так:</p>
+                    <pre class="hljs"><code class=sh>- Installation request <span style="color: #000000;font-weight: bold">for </span>phar-io/manifest 1.0.x-dev -&gt; satisfiable by phar-io/manifest[1.0.x-dev].
+- phar-io/manifest 1.0.x-dev requires ext-dom <span style="color: #000000;font-weight: bold">*</span> -&gt; the requested PHP extension dom is missing from your system.
+Problem 2
+- Installation request <span style="color: #000000;font-weight: bold">for </span>phar-io/manifest dev-master -&gt; satisfiable by phar-io/manifest[dev-master].
+- phar-io/manifest dev-master requires ext-dom <span style="color: #000000;font-weight: bold">*</span> -&gt; the requested PHP extension dom is missing from your system.
+Problem 3
+- Installation request <span style="color: #000000;font-weight: bold">for </span>phpunit/php-code-coverage 7.0.x-dev -&gt; satisfiable by phpunit/php-code-coverage[7.0.x-dev].
+- phpunit/php-code-coverage 7.0.x-dev requires ext-dom <span style="color: #000000;font-weight: bold">*</span> -&gt; the requested PHP extension dom is missing from your system.
+  Problem 4
+</code></pre>
+                    <p>Эти ошибки говорят нам о том, что устанавливаемые библиотеки хотят использовать PHP-расширение,
+                      которое не установлено в систему. Это прямо написано в выводе:</p>
+
+                    <blockquote>
+                      <p>requires ext-dom * -&gt; the requested PHP extension dom is missing from your system.</p>
+                    </blockquote>
+
+                    <p>Когда вы встречаете такую ошибку, то первым делом нужно увидеть название расширения. В данном
+                      случае это <em>dom</em>. Затем нужно попробовать найти инструкцию, которая объяснит как установить
+                      это расширение в вашу операционную систему. Проще всего это сделать таким запросом: <em>php
+                        &lt;название операционной системы&gt; &lt;название расширения&gt; install extension</em>.</p>
+                    <h2 id="proekt">Проект</h2>
+                    <p>Composer – универсальный способ описывать любой код на PHP. Не важно с чем мы имеем дело, с
+                      библиотекой или с полноценным сайтом. В любом случае внутри будет Composer. Фактически, любой
+                      новый проект начинается не с написания кода, а с инициализации Composer. Для этого нужно запустить
+                      команду <em>init</em>. Она задаст несколько вопросов и на основе ваших ответов сформирует файл
+                      <em>composer.json</em>.</p>
+
+                    <p><em>Если вы не понимаете значение некоторых вопросов, то смело жмите Enter, потом всё можно будет
+                        поправить.</em></p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>composer init
+
+
+  Welcome to the Composer config generator
+
+This <span style="color: #0086B3">command </span>will guide you through creating your composer.json config.
+Package name <span style="color: #000000;font-weight: bold">(</span>&lt;vendor&gt;/&lt;name&gt;<span style="color: #000000;font-weight: bold">)</span> <span style="color: #000000;font-weight: bold">[</span>hex/hex]: hex/example
+Description <span style="color: #000000;font-weight: bold">[]</span>: example package
+Author <span style="color: #000000;font-weight: bold">[</span>, n to skip]: hex &lt;hex@hexlet.io&gt;
+Minimum Stability <span style="color: #000000;font-weight: bold">[]</span>:
+Package Type <span style="color: #000000;font-weight: bold">(</span>e.g. library, project, metapackage, composer-plugin<span style="color: #000000;font-weight: bold">)</span> <span style="color: #000000;font-weight: bold">[]</span>:
+License <span style="color: #000000;font-weight: bold">[]</span>:
+
+Define your dependencies.
+
+Would you like to define your dependencies <span style="color: #000000;font-weight: bold">(</span>require<span style="color: #000000;font-weight: bold">)</span> interactively <span style="color: #000000;font-weight: bold">[</span><span style="color: #0086B3">yes</span><span style="color: #000000;font-weight: bold">]</span>? n
+Would you like to define your dev dependencies <span style="color: #000000;font-weight: bold">(</span>require-dev<span style="color: #000000;font-weight: bold">)</span> interactively <span style="color: #000000;font-weight: bold">[</span><span style="color: #0086B3">yes</span><span style="color: #000000;font-weight: bold">]</span>? n
+
+<span style="color: #000000;font-weight: bold">{</span>
+    <span style="color: #d14">"name"</span>: <span style="color: #d14">"hex/example"</span>,
+    <span style="color: #d14">"description"</span>: <span style="color: #d14">"example package"</span>,
+    <span style="color: #d14">"authors"</span>: <span style="color: #000000;font-weight: bold">[</span>
+        <span style="color: #000000;font-weight: bold">{</span>
+            <span style="color: #d14">"name"</span>: <span style="color: #d14">"hex"</span>,
+            <span style="color: #d14">"email"</span>: <span style="color: #d14">"hex@hexlet.io"</span>
+        <span style="color: #000000;font-weight: bold">}</span>
+    <span style="color: #000000;font-weight: bold">]</span>,
+    <span style="color: #d14">"require"</span>: <span style="color: #000000;font-weight: bold">{}</span>
+<span style="color: #000000;font-weight: bold">}</span>        
+Do you  confirm generation <span style="color: #000000;font-weight: bold">[</span><span style="color: #0086B3">yes</span><span style="color: #000000;font-weight: bold">]</span>?
+</code></pre>
+                    <p>Когда вопросы закончатся, Composer покажет конечный результат в виде JSON. <a
+                        href="https://ru.wikipedia.org/wiki/JSON" target="_blank" rel="nofollow">JSON</a> — это
+                      текстовый формат для представления структурированных данных. Если вы не знакомы с ним, то не стоит
+                      переживать, формат это не язык программирования. Достаточно выучить несколько правил по
+                      формированию данных в виде JSON для того, чтобы чувствовать себя комфортно.</p>
+                    <pre class="hljs"><code class=json><span style="background-color: #f8f8f8">{</span><span style="color: #bbbbbb">
+    </span><span style="color: #990000;font-weight: bold">"name"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"hex/example"</span><span style="background-color: #f8f8f8">,</span><span style="color: #bbbbbb">
+    </span><span style="color: #990000;font-weight: bold">"description"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"example package"</span><span style="background-color: #f8f8f8">,</span><span style="color: #bbbbbb">
+    </span><span style="color: #990000;font-weight: bold">"authors"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="background-color: #f8f8f8">[</span><span style="color: #bbbbbb">
+        </span><span style="background-color: #f8f8f8">{</span><span style="color: #bbbbbb">
+            </span><span style="color: #990000;font-weight: bold">"name"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"hex"</span><span style="background-color: #f8f8f8">,</span><span style="color: #bbbbbb">
+            </span><span style="color: #990000;font-weight: bold">"email"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"hex@hexlet.io"</span><span style="color: #bbbbbb">
+        </span><span style="background-color: #f8f8f8">}</span><span style="color: #bbbbbb">
+    </span><span style="background-color: #f8f8f8">],</span><span style="color: #bbbbbb">
+    </span><span style="color: #990000;font-weight: bold">"require"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="background-color: #f8f8f8">{}</span><span style="color: #bbbbbb">
+</span><span style="background-color: #f8f8f8">}</span><span style="color: #bbbbbb">        
+</span></code></pre>
+                    <p>Если вас всё устраивает, то Composer создаст файл <em>composer.json</em>. Именно этот файл
+                      является ключевым. Абсолютно всё, что касается зависимостей (и не только), полностью описывается в
+                      нём. С этого момента, все команды <em>composer</em>, которые непосредственно связаны с проектом (о
+                      них пойдёт речь далее), выполняются именно в той директории, в которой находится файл
+                      <em>composer.json</em>.</p>
+
+                    <p>Имя пакета, записанное в <em>composer.json</em>, состоит из двух частей. Первая — <em>vendor
+                        name</em>, имя, под которым вы зарегистрированы в Packagist, вторая — <em>project name</em>.
+                      Причём <em>vendor name</em> уникален глобально (то есть все пользователи имеют своё собственное
+                      неповторимое имя), а вот <em>project name</em> должен быть уникален только в пределах <em>vendor
+                        name</em>.</p>
+
+                    <p>Composer рекомендует именовать пакет словами в нижнем регистре и в качестве разделителя
+                      использовать дефис, например: <em>dependency-injection</em>.</p>
+                    <h3 id="problemy">Проблемы</h3>
+                    <p>Если в файле <em>composer.json</em> содержатся синтаксические ошибки, иными словами, есть
+                      нарушения правила форматирования JSON, то при попытке сделать что-то с проектом будут появляться
+                      подобные ошибки:</p>
+                    <pre class="hljs"><code class=bash><span style="color: #000000;font-weight: bold">[</span>Seld<span style="color: #d14">\J</span>sonLint<span style="color: #d14">\P</span>arsingException]
+<span style="color: #d14">"./composer.json"</span> does not contain valid JSON
+Parse error on line 2:
+<span style="color: #d14">"name"</span>: <span style="color: #d14">"mokevnin/myproject"</span>,
+<span style="color: #000080">---------</span>^
+</code></pre>
+                    <p>Обычно любые сообщения с &quot;неожиданными&quot; (unexpected) символами или строками говорят о
+                      наличии синтаксической ошибки.</p>
+
+                    <p>Воспользуйтесь валидаторами JSON для проверки корректности своего файла. Например, <a
+                        href="https://jsonlint.com/" target="_blank" rel="nofollow">jsonlint.com</a> или другими
+                      подобными инструментами, которые можно загуглить по запросу &quot;json validator&quot;.</p>
+
+                    <script id="asciicast-fmo2z9OYBDY7P3XJ7lF6hSa7q"
+                      src="https://asciinema.org/a/fmo2z9OYBDY7P3XJ7lF6hSa7q.js" async></script>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> В проекте <em>hexlet-php</em> инициализируйте PHP-проект.</li>
+                      <li> Заполните пустые поля файла <em>composer.json</em>, подробное описание каждого поля можно
+                        посмотреть в <a href="https://getcomposer.org/doc/04-schema.md" target="_blank"
+                          rel="nofollow">документации composer</a></li>
+                      <li> Добавьте все изменения на гитхаб</li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://en.wikipedia.org/wiki/PATH_(variable)
+">Переменная PATH</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://ru.hexlet.io/courses/cli-basics/lessons/execution/theory_unit#izmenenie-peremennoy-path
+">Изменение переменной PATH</a>
+                      </li>
+                    </ol>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+
+</html>

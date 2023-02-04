@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Структуры - PHP: Введение в ООП</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Структуры</h1>
+                    <p>Рассмотренные темы: модели данных, абстракция с помощью данных, data hiding (для соблюдения
+                      инвариантов) неспецифичны для PHP. Они касаются всех в одинаковой степени и в большинстве языков
+                      могут быть реализованы исключительно с помощью функций. С другой стороны, почти каждый язык
+                      предоставляет готовые механизмы для моделирования и создания абстракций с помощью данных. В PHP
+                      для этого используются классы.</p>
+
+                    <p><em>С этого момента мы начнём погружаться в тему объектно-ориентированного программирования, и c
+                        ней сопряжены определённые сложности. Во-первых, ООП в PHP содержит невероятно большое
+                        количество новых конструкций (а значит — синтаксиса) и терминов, с которыми нам предстоит
+                        познакомиться. Во-вторых, за всеми ними прячется идея или идеи, которые очень сложно рассмотреть
+                        сквозь нагромождение кода. В-третьих, вокруг ООП ходит множество домыслов и философии,
+                        искажающих реальное положение вещей. По этой причине, наше погружение пойдёт медленно. Мы
+                        специально будем опускать некоторые детали или недоговаривать до поры, чтобы не нагружать вас
+                        лишней информацией, сбивающей с толку. Если у вас уже есть какой-то опыт или вы набрались знаний
+                        в интернете, то, вероятно, в вашей голове сформировалась некоторая модель, сквозь которую вы
+                        смотрите на ООП. Велика вероятность того, что эта модель идёт вразрез с последующим
+                        материалом.</em></p>
+
+                    <p><em>Кроме того, многие тратят годы на то, чтобы понять ООП, и не всегда понимают. Неизбежна
+                        ситуация, когда вам будет казаться, что вы все поняли, а через минуту — что вы вообще ничего не
+                        поняли. Мозгу нужно время и, главное, практика для адаптации. Самый лучший способ по-настоящему
+                        понять ООП — изучить и прорешать вторую главу в SICP</em>.</p>
+
+                    <p>В предыдущих уроках мы познакомились с универсальным способом реализовывать абстракции —
+                      ассоциативным массивом. Он не требует написания никакого дополнительного кода, его можно брать и
+                      заполнять так, как нам вздумается в зависимости от ситуации. С другой стороны, он не обеспечивает
+                      безопасности типов. Так как любая сущность представляется этим массивом, то по ошибке можно
+                      вызывать функцию, предназначенную для одной абстракции, например, точки, на другой абстракции,
+                      например, отрезке.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$num1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">makeRational</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">10</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">20</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// Этот код выполнится, но в $num2 окажется что-то странное</span>
+<span style="color: #008080">$num2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">makeRational</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$num1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">20</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Что при этом произойдёт — непонятно и зависит от того, насколько удачно совпали структуры. И если
+                      такое произошло, то функция внезапно может отработать без ошибок и даже что-то вернуть. В итоге
+                      программа продолжит работать некорректно, вместо того, чтобы завершиться с ошибкой. Кроме того, не
+                      существует универсального способа проверить тип данных, так как всё есть массив. Описанные
+                      проблемы далеко не всегда являются проблемами. То есть нет движения за отказ от ассоциативных
+                      массивов. Но есть ситуации, где действительно лучше использовать специализированные средства.</p>
+
+                    <p><em>Отдельного внимания заслуживают языки со статической типизацией. В этих языках нельзя просто
+                        так взять и начать использовать ассоциативный массив как в динамических языках. Любые составные
+                        данные должны быть типизированы и описаны, причём до начала использования. По этой причине в
+                        таких языках для работы с составными данными используются, например, записи, структуры или
+                        классы.</em></p>
+
+                    <p>Перед тем как переходить непосредственно к объектам, посмотрим на структуры языка Си, так вы
+                      лучше поймёте происходящее. К счастью, их синтаксис достаточно прост и нагляден.</p>
+
+                    <p><em>Примеры несколько упрощены, так как использование указателей в данном случае помешает нам
+                        понять суть.</em></p>
+                    <pre class="hljs"><code class=c><span style="color: #999988;font-style: italic">// Описание структуры Точка</span>
+<span style="color: #000000;font-weight: bold">typedef</span> <span style="color: #000000;font-weight: bold">struct</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #445588;font-weight: bold">int</span> <span style="background-color: #f8f8f8">x</span><span style="background-color: #f8f8f8">;</span>
+    <span style="color: #445588;font-weight: bold">int</span> <span style="background-color: #f8f8f8">y</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span> <span style="background-color: #f8f8f8">point</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>Здесь <code>typedef</code> и <code>struct</code> ключевые слова языка, а <code>point</code> —
+                      название, которое выбрано программистом для именования структуры. <code>x</code> и <code>y</code>
+                      — элементы (члены) структуры.</p>
+
+                    <p>Структура всегда имеет название, которое может являться её типом, как в примере выше (благодаря
+                      typedef). В теле структуры (всё, что между <code>{}</code>) описываются элементы структуры, имена
+                      и их типы.</p>
+                    <pre class="hljs"><code class=c><span style="color: #445588;font-weight: bold">int</span> <span style="color: #990000;font-weight: bold">main</span><span style="background-color: #f8f8f8">()</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Создание переменной p1 типа point.</span>
+    <span style="background-color: #f8f8f8">point</span> <span style="background-color: #f8f8f8">p1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">{</span> <span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">x</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">y</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">1</span> <span style="background-color: #f8f8f8">};</span>
+
+    <span style="color: #999988;font-style: italic">// Печать на экран. Доступ к частям структуры происходит через точку p1.x и p1.y</span>
+    <span style="background-color: #f8f8f8">printf</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"%d"</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">p1</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">x</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; 0</span>
+    <span style="background-color: #f8f8f8">printf</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"%d"</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">p1</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">y</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; 1</span>
+
+    <span style="color: #999988;font-style: italic">// Изменение значения в структуре</span>
+    <span style="background-color: #f8f8f8">p1</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">x</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">20</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">p1</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">y</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">-</span><span style="color: #009999">10</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Доступ к элементам структуры происходит через точечную нотацию. Например, если в программе
+                      присутствует переменная <code>p1</code>, являющаяся структурой <code>point</code>, то для чтения
+                      <code>x</code> нужно написать <code>p1.x</code>, а для чтения <code>y</code> — <code>p1.y</code>.
+                      Практически то же самое и в случае присваивания — для изменения <code>x</code> нужно написать
+                      <code>p1.x = 5</code>.</p>
+
+                    <p>Как и ассоциативный массив, тип &quot;структура&quot; в Си — рекурсивная (древовидная) структура
+                      данных. Другими словами, элементом структуры может быть другая структура.</p>
+                    <pre class="hljs"><code class=c><span style="color: #000000;font-weight: bold">typedef</span> <span style="color: #000000;font-weight: bold">struct</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="background-color: #f8f8f8">point</span> <span style="background-color: #f8f8f8">center</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999988;font-style: italic">// point — это структура</span>
+    <span style="color: #445588;font-weight: bold">int</span> <span style="background-color: #f8f8f8">radius</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span> <span style="background-color: #f8f8f8">circle</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <pre class="hljs"><code class=c><span style="color: #445588;font-weight: bold">int</span> <span style="color: #990000;font-weight: bold">main</span><span style="background-color: #f8f8f8">()</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// При создании круга одновременно создаётся точка</span>
+    <span style="background-color: #f8f8f8">circle</span> <span style="background-color: #f8f8f8">c1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">{</span> <span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">center</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">{</span> <span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">x</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">y</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">3</span> <span style="background-color: #f8f8f8">},</span> <span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">radius</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">10</span> <span style="background-color: #f8f8f8">};</span>
+
+    <span style="color: #999988;font-style: italic">// Доступ к вложенным членам происходит через дополнительные точки</span>
+    <span style="background-color: #f8f8f8">printf</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"%d"</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">c1</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">center</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">x</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; 3</span>
+    <span style="background-color: #f8f8f8">printf</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"%d"</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">c1</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">radius</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; 10</span>
+
+    <span style="color: #999988;font-style: italic">// Изменение значения в структуре</span>
+    <span style="background-color: #f8f8f8">c1</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">center</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">y</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">20</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">c1</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">radius</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">-</span><span style="color: #009999">10</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>С помощью структур в Си описывают практически любые композитные (составные) данные. Посмотрев на
+                      определения структур, можно сказать, с чем работает данная программа, какие сущности в ней
+                      выделены и как они связаны между собой.</p>
+
+</body>
+
+</html>

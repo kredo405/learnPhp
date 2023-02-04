@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Объектная композиция - PHP: Полиморфизм</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="EiYdAyFu4dXmtrm_TjkmsA5Yb8koEGjdu1wvHYorqFu-m5PywNX4xA2WKFJTuEJa7-mie2c3DwboY8NrEyMGyQ" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../dependency-management/exercise_unit.html">PHP: Полиморфизм</a>
+                    <h1 class='mt-0 mb-4'>Объектная композиция</h1>
+                    <p>В этом уроке описывается система, которая помогает правильно организовывать код, построенный на
+                      классах.</p>
+
+                    <p><em>В языках, где ООП построено без инкапсуляции, подобные проблемы решаются проще и возникают
+                        реже. Если хочется узнать как это бывает, попробуйте пописать код на Clojure или Elixir</em>.
+                    </p>
+
+                    <p>Предположим, что мы делаем сайт имеющий механизм аутентификации. После её выполнения,
+                      пользователю выводится приветствие, которое строится по разному в зависимости от возраста
+                      пользователя. Если пользователю не исполнилось 18, то пишется одно, всем остальным — другое.</p>
+
+                    <p><em>В данном случае, реализация в лоб, через if, будет лучшим решением задачи. Но в этом уроке мы
+                        отрабатываем использование полиморфизма в рамках классовой модели, поэтому пойдём другим путём.
+                        Сама задача специально упрощена, чтобы не тратить время на её анализ</em></p>
+
+                    <p>Первый порыв у многих разработчиков ввести два типа (интерфейса и класса): <code>Under18</code> и
+                      <code>Above18</code>. Дальше в каждом из классов, которые реализуют эти интерфейсы добавить по
+                      методу <code>getGreetingMessage()</code>. В итоге мы получили полиморфизм подтипов:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999988;font-style: italic">&lt;!-- Где-то в шаблоне --&gt;</span>
+<span style="color: #999988;font-style: italic">&lt;!-- Правильный класс для пользователя выбирается на момент начала обработки http-запроса --&gt;</span>
+<span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getGreetingMessage</span><span style="background-color: #f8f8f8">()</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+</code></pre>
+                    <p>Это решение хоть и работает, но ведёт не по тому пути. Сегодня у нас до 18 и после, потом
+                      появится отдельное поведение для тех кто старше 65. Всё станет ещё хуже, когда кроме этих
+                      разделений, появится дополнительное разделение на девушек и парней. В таком случае мы получим
+                      большое число комбинаций, под каждую из которых придётся создать отдельный класс пользователя:</p>
+
+                    <ul>
+                      <li>девушки старше 18</li>
+                      <li>девушки младше 18</li>
+                      <li>парни старше 18</li>
+                      <li>парни младше 18</li>
+                      <li>...</li>
+                    </ul>
+
+                    <p>В книжках по паттернам любят приводить пример с разделением средств передвижения по типам:
+                      плавающие, летающие и ездящие. А потом, внезапно оказывается, что некоторые одновременно и плавают
+                      и ездят.</p>
+
+                    <p>Теперь попробуем ответить на вопрос, почему эту задачу не надо решать подтипами в любом случае.
+                      Сам по себе, пользователь — это сущность взятая из нашей предметной области. Предметная область и
+                      вывод текста на экран, это совершенно разные вещи. Второе относится к логике приложения, но не
+                      бизнес-логике. Если об этом не задумываться, то в конце концов настанет момент, когда внутри
+                      пользователя окажется вообще всё что только происходит на сайте, ведь оно всё так или иначе
+                      связано с самим пользователем. И мы получим <a
+                        href="https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%B6%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9_%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82"
+                        target="_blank" rel="nofollow">божественный объект</a>.</p>
+
+                    <p>Правильное решение основано на композиции, подходе при котором создаются классы под конкретные
+                      задачи. Начнём сначала. В нашей задаче есть две ситуации: пользователи до 18 лет и пользователи
+                      старше. Создадим интерфейс <em>GreetingMessage</em> с методом <code>getGreetingMessage</code> и
+                      реализуем его в двух классах, один <em>GreetingForUnder18</em> и другой
+                      <em>GreetingForAbove18</em>. В каждом из них, будет тот вывод, который нужен для конкретного
+                      пользователя.</p>
+
+                    <p>Как пользователь будет взаимодействовать с объектами этих классов? Варианта два, либо мы передаём
+                      его в конструктор, либо в сам метод <code>getGreetingMessage</code>. Что правильнее? Всегда
+                      пытайтесь понять, имеем ли мы дело с абстракцией данных или нет. С самим пользователем всё
+                      понятно. Пользователь это абстракция данных, у него есть уникальность (все пользователи
+                      отличаются) и время жизни. А вот вывод сообщения, это операция без состояния. Само наличие класса
+                      и объекта для него обусловлено желанием получить полиморфизм подтипов и ничем более. Поэтому в
+                      данном примере лучше передавать пользователя через метод:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999988;font-style: italic">&lt;!-- Где-то в шаблоне --&gt;</span>
+<span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #008080">$greeting</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getGreetingMessage</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+</code></pre>
+                    <p>За кадром остался вопрос выбора и создания соответствующего объекта. За это отвечает фабрика,
+                      которая вызывается где-то до формирования вывода из шаблона.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">buildGreetingObject</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getAge</span><span style="background-color: #f8f8f8">()</span> <span style="color: #000000;font-weight: bold">&lt;</span> <span style="color: #009999">18</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">GreetingForUnder18</span><span style="background-color: #f8f8f8">();</span>
+    <span style="background-color: #f8f8f8">}</span> <span style="color: #000000;font-weight: bold">else</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">GreetingForAbove18</span><span style="background-color: #f8f8f8">();</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Главное в этой схеме, то что пользователь остался пользователем. Он по-прежнему отвечает только
+                      за логику ядра приложения. Даже если добавятся новые условия вывода сообщения и наши два класса
+                      превратятся в 10 классов (потому что 10 вариантов вывода в зависимости от разных параметров), то
+                      это никак не повлияет на пользователя.</p>
+
+                    <p>Что ещё более важно, при появлении новых задач, не связанных с выводом сообщения, пользователь
+                      по-прежнему не будет затронут. Например, мы захотим отправлять письма разным пользователям после
+                      регистрации. В зависимости от количества видов писем, будет создано такое же количество классов,
+                      реализующих интерфейс <em>RegistrationEmailText</em>. Принцип работы останется таким же. Фабрика,
+                      выбор нужного типа в начале процесса регистрации и полиморфное поведение при отправке письма.</p>
+
+                    <p><em>Внимательный читатель заметит, что результат подозрительно похож на стратегию. Как ни
+                        странно, это и есть стратегия.</em></p>
+
+                    <p>В итоге, в коде появляется большое количество небольших интерфейсов (типов) и множество классов
+                      их реализующих. Количество классов, реализующих конкретный интерфейс, равно количеству возможных
+                      вариантов поведения. Большинство объектов этих классов не имеют своего состояния и нужны для
+                      организации полиморфного кода.</p>
+
+                    <p>Стоит ли так писать код? Иногда да, но чаще нет. Слепое следование ООП, делает код сложнее и
+                      тяжелее, там где подходит простая функция или условная конструкция, начинают вырастать
+                      параллельные иерархии классов. В примерах выше это хорошо прослеживается. Задача, которая может
+                      быть реализована десятью строчками, решается многими десятками строчек и четырьмя файлами
+                      (фабрика, классы и интерфейс). А программист знакомый с абстрактными классами и наследованием,
+                      наворотит ещё больше файлов.</p>
+
+                    <p>Обычно, получаемая сложность оправдывается расширяемостью, но это так не работает. Расширяемость
+                      нужно добавлять тогда когда нужно и только туда куда нужно. Другой вопрос, что сам способ
+                      организации кода через композицию объектов, является краеугольным камнем при организации кода
+                      построенного на классах. При этом надо чётко отслеживать, где у нас абстракция данных, а где
+                      действия без состояния, представленные объектами.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://ru.hexlet.io/blog/posts/arhitektura-i-oop">Архитектура и
+                          ООП</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF_%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0">Принцип
+                          разделения интерфейса</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

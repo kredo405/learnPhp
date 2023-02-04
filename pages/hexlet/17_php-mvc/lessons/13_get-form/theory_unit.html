@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Поисковые формы - Веб-разработка на PHP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WK88TH" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+
+  <script type='application/ld+json'>
+{&quot;@context&quot;:&quot;https://schema.org&quot;,&quot;@type&quot;:&quot;TechArticle&quot;,&quot;isAccessibleForFree&quot;:false,&quot;headline&quot;:&quot;Поисковые формы&quot;,&quot;datePublished&quot;:&quot;2018-07-12T18:44:59.275Z&quot;,&quot;dateModified&quot;:&quot;2020-12-24T14:06:18.674Z&quot;,&quot;image&quot;:&quot;https://cdn2.hexlet.io/assets/hexlet_logo-e99fc2b3b7c1eec88899f3af1435a39aaac6fd29d011dfe2342499c0884b7a96.png&quot;,&quot;author&quot;:{&quot;@type&quot;:&quot;Person&quot;,&quot;name&quot;:&quot;Кирилл Мокевнин&quot;,&quot;description&quot;:&quot;Сооснователь и CEO образовательного проекта Хекслет. Программирую с 2007 года. За это время прошёл путь от разработчика до технического директора и управляющего отдельным подразделением (филиалом). Управлял командами, в которых больше 50 разработчиков. \r\n\r\n- Программирую на языках: Elixir, Clojure, JavaScript, PHP, Ruby. \r\n- Соорганизатор конференции Nastachku.ru. \r\n- Вимер. \r\n- Топлю за DevOps и автоматизированные тесты.\r\n&quot;},&quot;publisher&quot;:{&quot;@context&quot;:&quot;https://schema.org&quot;,&quot;@type&quot;:&quot;Organization&quot;,&quot;name&quot;:&quot;Hexlet&quot;,&quot;url&quot;:&quot;https://hexlet.io&quot;,&quot;sameAs&quot;:[&quot;https://www.facebook.com/Hexlet&quot;,&quot;https://www.youtube.com/user/HexletUniversity&quot;,&quot;https://twitter.com/HexletHQ&quot;,&quot;https://soundcloud.com/hexlet&quot;],&quot;legalName&quot;:&quot;Hexlet Ltd.&quot;,&quot;address&quot;:&quot;UMA Esplanadi, Pohjoisesplanadi 39, 00100 Helsinki, Finland&quot;,&quot;vatID&quot;:&quot;VAT ID: FI26641607&quot;,&quot;telephone&quot;:&quot;+7 (495) 147-73-79&quot;,&quot;logo&quot;:{&quot;@type&quot;:&quot;ImageObject&quot;,&quot;url&quot;:&quot;https://cdn2.hexlet.io/assets/hexlet_logo-e99fc2b3b7c1eec88899f3af1435a39aaac6fd29d011dfe2342499c0884b7a96.png&quot;}},&quot;hasPart&quot;:{&quot;@type&quot;:&quot;WebPageElement&quot;,&quot;isAccessibleForFree&quot;:false,&quot;cssSelector&quot;:&quot;.paywall&quot;}}
+
+
+</script>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Поисковые формы</h1>
+                    <p>HTML Формы — основной инструмент для создания интерактивных сайтов. Через них происходит
+                      регистрация пользователя, добавление в друзья, оплата покупок, фильтрация товара в магазине и тому
+                      подобное. Самые простые формы - поисковые. Они ничего не изменяют и не создают, а используются
+                      только для фильтрации данных. Такой поиск реализован на Хекслете на странице поиска <a
+                        href="https://ru.hexlet.io/courses" target="_blank">https://ru.hexlet.io/courses</a>.
+                      Аналогичная строка поиска используется и в поисковых системах.</p>
+
+                    <p><img alt="Search Form" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjE5YWQ5NDhlMzcxMzRhMjcwNDdlZTgwZDE0ZDMwZDI3LnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=d3c69b6f0ece61f1feb1806eceaa5ba63a2f81d3b3e4c8adfc8ee2d277e21226"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+                    <pre class="hljs"><code class=html><span style="color: #000080">&lt;form</span> <span style="color: #008080">action=</span><span style="color: #d14">"/courses"</span> <span style="color: #008080">method=</span><span style="color: #d14">"get"</span><span style="color: #000080">&gt;</span>
+  <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"search"</span> <span style="color: #008080">required</span> <span style="color: #008080">name=</span><span style="color: #d14">"term"</span><span style="color: #000080">&gt;</span>
+<span style="color: #000080">&lt;/form&gt;</span>
+</code></pre>
+                    <p>Основной элемент формы тег <code>&lt;form&gt;</code>. Все элементы формы должны быть вложены в
+                      него. У этого тега есть атрибут <code>action</code>, в котором можно указать адрес на который
+                      отправятся данные формы (по умолчанию будет использован адрес текущей страницы). Второй часто
+                      используемый атрибут - <code>method</code>. Он принимает два возможных параметра <code>get</code>
+                      или <code>post</code>, что соответствует HTTP методам. Напомню что семантика этих методов в том,
+                      что <em>GET</em> используется для чтения информации и не изменяет состояние системы, а
+                      <em>POST</em> неидемпотентный глагол, который используется при отправке форм изменяющих состояние
+                      системы, например, во время регистрации нового пользователя. По умолчанию значение этого атрибута
+                      <code>get</code>. После отправки формы этим методом, ее данные передаются как параметры запроса.
+                      Если в форму выше ввести строчку <em>sql</em> и нажать Enter, то браузер откроет страницу по
+                      адресу <a href="https://ru.hexlet.io/courses?term=sql"
+                        target="_blank">https://ru.hexlet.io/courses?term=sql</a>. Такой страницей можно поделиться с
+                      другими людьми и они увидят те же данные (если выдача не персонализированная).</p>
+
+                    <p><em>Интересный факт. Поисковые боты (программы, индексирующие контент в интернете) распознают
+                        поисковые формы (смотрят что метод отправки GET) и пытаются их использовать для того чтобы
+                        добавить в индекс поисковых систем как можно больше данных.</em></p>
+
+                    <p>Для элементов формы используются теги <a
+                        href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/input" target="_blank"
+                        rel="nofollow">input</a>, <a
+                        href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/button" target="_blank"
+                        rel="nofollow">button</a>, <a
+                        href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/select" target="_blank"
+                        rel="nofollow">select</a> и <a
+                        href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/textarea" target="_blank"
+                        rel="nofollow">textarea</a>.</p>
+
+                    <p>В свою очередь тег <code>&lt;input&gt;</code> благодаря атрибуту <code>type</code> может
+                      принимать множество различных форм:</p>
+
+                    <ul>
+                      <li>Множественный выбор (checkbox)</li>
+                      <li>Одиночный выбор (radio)</li>
+                      <li>Кнопка отправки формы (submit)</li>
+                      <li>Поле для ввода пароля (password)</li>
+                      <li>Множество других таких как: tel, email, range и т.п.</li>
+                    </ul>
+
+                    <p>У всех элементов формы есть как общие, так и специфические атрибуты. К общим атрибутам относится
+                      имя. Его указание обязательно для всех элементов формы кроме кнопок, так как имя используется для
+                      доступа к содержимому. В примере выше используется текстовое поле с типом <code>search</code> и
+                      именем <code>term</code>. Именно поэтому после отправки формы в адресе появляется запись
+                      <em>?term=sql</em>. Кроме того во всех формах почти всегда присутствует кнопка с типом
+                      <code>submit</code>, она отвечает за отправку данных. Имя кнопки задается через атрибут
+                      <code>value</code>.</p>
+                    <pre class="hljs"><code class=html><span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"submit"</span> <span style="color: #008080">value=</span><span style="color: #d14">"Search"</span><span style="color: #000080">&gt;</span>
+</code></pre>
+                    <p>Наличие кнопки отправки не обязательно. По умолчанию достаточно нажать <kbd>Enter</kbd> и браузер
+                      отправит форму на сервер.</p>
+
+                    <p>К общим атрибутам относится атрибут <code>required</code>. Его наличие включает проверку
+                      обязательности заполнения на клиенте (в браузере). Попытка отправить форму с незаполненными
+                      элементами, помеченными этим атрибутом, приведет к показу сообщения о том что требуется
+                      заполнение. Не забывайте, что клиентская проверка данных легко обходится посылкой данных в обход
+                      браузера (например через Curl). Поэтому проверка на клиенте не может быть основной, она лишь
+                      дублирует серверные проверки.</p>
+
+                    <p>С точки зрения серверной части - никакой формы не существует. Выполняется обычный обработчик, в
+                      который приходит типичный запрос с дополнительным набором параметров.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/courses'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$term</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$request</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getQueryParam</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'term'</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #008080">$courses</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #999988;font-style: italic">/* filter courses by term */</span><span style="background-color: #f8f8f8">;</span>
+    <span style="color: #008080">$params</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'courses'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$courses</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'renderer'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">"courses/index.phtml"</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$params</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>Последняя деталь в работе поисковых форм - подстановка текущих значений. Обычно форма поиска
+                      продолжает отображаться на странице результатов, причем её поля заполнены значениями, введёнными
+                      пользователем. Для реализации этой возможности нужно выполнить два действия. Во-первых, передать
+                      данные из объекта запроса в шаблон <code>$params = [&#39;term&#39; =&gt; $term]</code>. Во-вторых,
+                      подставить их в саму форму:</p>
+                    <pre class="hljs"><code class=html><span style="color: #000080">&lt;form</span> <span style="color: #008080">action=</span><span style="color: #d14">"/courses"</span> <span style="color: #008080">method=</span><span style="color: #d14">"get"</span><span style="color: #000080">&gt;</span>
+  <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"search"</span> <span style="color: #008080">name=</span><span style="color: #d14">"term"</span> <span style="color: #008080">value=</span><span style="color: #d14">"&lt;?= htmlspecialchars($term) ?&gt;"</span> <span style="color: #000080">/&gt;</span>
+  <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"submit"</span> <span style="color: #008080">value=</span><span style="color: #d14">"Search"</span> <span style="color: #000080">/&gt;</span>
+<span style="color: #000080">&lt;/form&gt;</span>
+</code></pre>
+                    <p>Для подобного поля ввода нужно указать атрибут <code>value</code> и подставить туда текущее
+                      значение, не забыв его преобразовать в безопасную форму.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Создайте шаблон для вывода списка пользователей <em>templates/users/index.phtml</em>.</li>
+                      <li> Добавьте в файл <em>public/index.php</em> массив
+                        <code>$users = [&#39;mike&#39;, &#39;mishel&#39;, &#39;adel&#39;, &#39;keks&#39;, &#39;kamila&#39;];</code>.
+                      </li>
+                      <li> Настройте обработчик маршрута <em>/users</em> и выведите имена пользователей из массива на
+                        странице <em>/users</em>.</li>
+                      <li> Реализуйте на странице <em>/users</em> поисковую форму, в которой можно указать часть имени
+                        пользователя, по которому произойдет поиск этого пользователя. Форма должна отправляться на эту
+                        же страницу.</li>
+                      <li> Допишите обработчик <em>/users</em> так, чтобы внутри производилась фильтрация имен (через
+                        проверку <code>strpos()</code>).</li>
+                      <li> Попробуйте отфильтровать пользователей. Запрос <em>mi</em> должен вернуть три имени:
+                        <em>mike</em>, <em>mishel</em> и <em>kamila</em>.</li>
+                    </ol>
+
+
+</body>
+
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Ресурсная маршрутизация - PHP: Laravel</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="k89wRHTIDjEwY6geNg-G9sfsnphUPMlsOx_6pURHp_1qhgJxgQwXTSmjLT15nxVsuUTV0561bPQwP93EmT7V8g" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover" href="exercise_unit.html">PHP:
+                      Laravel</a>
+                    <h1 class='mt-0 mb-4'>Ресурсная маршрутизация</h1>
+                    <p>Фактически, любой CRUD состоит из 7 маршрутов, контроллера и шаблонов. Причём большая часть этого
+                      кода идентична, особенно маршруты. Они не содержат логики и всегда строятся по одному и тому же
+                      принципу.</p>
+
+                    <p>Laravel частично заимствовал из Rails ещё один механизм, который называется &quot;ресурсная
+                      маршрутизация&quot;. Он упрощает создание типичных CRUD, за счёт полной унификации всех маршрутов
+                      и способов их обработки. Вместо описания 7 разных маршрутов, ресурсная маршрутизация позволяет
+                      указать один метамаршрут:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #445588;font-weight: bold">Route</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">resource</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #445588;font-weight: bold">ArticleController</span><span style="color: #000000;font-weight: bold">::</span><span style="background-color: #f8f8f8">class</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Внутри себя он превращается в те самые семь маршрутов, которые мы реализовывали в предыдущих
+                      уроках. Их можно увидеть с помощью команды <em>artisan</em>:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>php artisan route:list
++-----------+-------------------------+------------------+---------+
+| Method    | URI                     | Name             | Action  |
++-----------+-------------------------+------------------+---------+
+| GET|HEAD  | /                       |                  | Closure |
+| GET|HEAD  | articles                | articles.index   | index   |
+| POST      | articles                | articles.store   | store   |
+| GET|HEAD  | articles/create         | articles.create  | create  |
+| GET|HEAD  | articles/<span style="color: #000000;font-weight: bold">{</span>article<span style="color: #000000;font-weight: bold">}</span>      | articles.show    | show    |
+| PUT|PATCH | articles/<span style="color: #000000;font-weight: bold">{</span>article<span style="color: #000000;font-weight: bold">}</span>      | articles.update  | update  |
+| DELETE    | articles/<span style="color: #000000;font-weight: bold">{</span>article<span style="color: #000000;font-weight: bold">}</span>      | articles.destroy | destroy |
+| GET|HEAD  | articles/<span style="color: #000000;font-weight: bold">{</span>article<span style="color: #000000;font-weight: bold">}</span>/edit | articles.edit    | edit    |
++-----------+-------------------------+------------------+---------+
+<span style="color: #999988;font-style: italic"># Обратите внимание на имя плейсхолдера. Ниже станет понятно почему здесь article, а не id</span>
+</code></pre>
+                    <p>Довольно неплохо. В проектах где подобных CRUD много (любой типичный веб-проект), ресурсный
+                      маршрутизатор очень помогает. Он не просто сокращает количество кода, но и даёт хорошую
+                      унификацию. Нужно меньше думать и меньше спорить. Всё уже спроектировано.</p>
+
+                    <p>Следующий шаг – упрощение контроллера. Во-первых можно сразу сгенерировать контроллер, со всеми
+                      нужными обработчиками. Во-вторых, этот контроллер можно интегрировать с нужной моделью:</p>
+                    <pre class="hljs"><code class=sh>php artisan make:controller ArticleController <span style="color: #000080">--resource</span> <span style="color: #000080">--model</span> Article
+</code></pre>
+                    <p>На выходе получим такой контроллер:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">namespace</span> <span style="color: #555555">App\Http\Controllers</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">App\Models\Article</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Illuminate\Http\Request</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">ArticleController</span> <span style="color: #000000;font-weight: bold">extends</span> <span style="color: #445588;font-weight: bold">Controller</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">/**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">index</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">//</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #999988;font-style: italic">/**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">create</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">//</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #999988;font-style: italic">/**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">store</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">Request</span> <span style="color: #008080">$request</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">//</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #999988;font-style: italic">/**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Article  $article
+     * @return \Illuminate\Http\Response
+     */</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">show</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">Article</span> <span style="color: #008080">$article</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">//</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #999988;font-style: italic">/**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Article  $article
+     * @return \Illuminate\Http\Response
+     */</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">edit</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">Article</span> <span style="color: #008080">$article</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">//</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #999988;font-style: italic">/**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Article  $article
+     * @return \Illuminate\Http\Response
+     */</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">update</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">Request</span> <span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #445588;font-weight: bold">Article</span> <span style="color: #008080">$article</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">//</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #999988;font-style: italic">/**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Article  $article
+     * @return \Illuminate\Http\Response
+     */</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">destroy</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">Article</span> <span style="color: #008080">$article</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">//</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+</code></pre>
+                    <p>Обратите внимание на параметры обработчиков. Laravel самостоятельно находит нужную сущность и
+                      достаёт её из базы данных. Это позволяет хоть немного, но сократить код.</p>
+
+                    <p>Ресурсы могут быть вложенными. Это даёт возможность строить пути, отражающие зависимости между
+                      сущностями на сайте:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># Примеры с Хекслета</span>
+
+<span style="color: #999988;font-style: italic"># Урок /courses/{course}/lessons/{lesson}</span>
+/courses/js-testing/lessons/asserts
+<span style="color: #999988;font-style: italic"># Список пройденных курсов /u/{user}/courses</span>
+/u/mokevnin/courses
+</code></pre>
+                    <p>Принцип построения адресов точно такой же, как и для обычного ресурса, но с включением указания
+                      на родительский ресурс:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># Список</span>
+/entities/<span style="color: #000000;font-weight: bold">{</span>entity<span style="color: #000000;font-weight: bold">}</span>/subentities
+
+<span style="color: #999988;font-style: italic"># Сущность</span>
+/entities/<span style="color: #000000;font-weight: bold">{</span>entity<span style="color: #000000;font-weight: bold">}</span>/subentity/<span style="color: #000000;font-weight: bold">{</span>subentity<span style="color: #000000;font-weight: bold">}</span>
+
+<span style="color: #999988;font-style: italic"># Все остальные маршруты строятся по такому же принципу.</span>
+<span style="color: #999988;font-style: italic"># Впереди добавляется /entities/{entity}.</span>
+</code></pre>
+                    <p>Вложенный ресурс можно генерировать автоматически:</p>
+                    <pre class="hljs"><code class=sh>php artisan make:controller ArticleCommentController <span style="color: #000080">--resource</span> <span style="color: #000080">--model</span> ArticleComment <span style="color: #000080">--parent</span> Article
+</code></pre>
+                    <p>Например, вот так выглядит ресурс комментарии к статьям:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #445588;font-weight: bold">Route</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">resource</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles.comments'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #445588;font-weight: bold">ArticleCommentController</span><span style="color: #000000;font-weight: bold">::</span><span style="background-color: #f8f8f8">class</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Для вложенного ресурса, в экшены, кроме самой сущности передаётся и родительская сущность:</p>
+                    <pre class="hljs"><code class=sh>&lt;?php
+
+<span style="color: #999988;font-style: italic"># /articles/{article}/comments/{comment}</span>
+<span style="color: #999988;font-style: italic"># Обе сущности можно получить через параметры</span>
+public <span style="color: #000000;font-weight: bold">function </span>edit<span style="color: #000000;font-weight: bold">(</span>Article <span style="color: #008080">$article</span>, ArticleComment <span style="color: #008080">$comment</span><span style="color: #000000;font-weight: bold">)</span>
+<span style="color: #000000;font-weight: bold">{</span>
+    <span style="color: #000000;font-weight: bold">return </span>view<span style="color: #000000;font-weight: bold">(</span><span style="color: #d14">'article_comment.edit'</span>, compact<span style="color: #000000;font-weight: bold">(</span><span style="color: #d14">'article'</span>, <span style="color: #d14">'comment'</span><span style="color: #000000;font-weight: bold">))</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">}</span>
+</code></pre>
+                    <p>Немного по другому начинает работать хелпер <code>route</code>. Для построения ссылок, там где
+                      участвуют оба ресурса, нужно использовать массив для их передачи:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #990000;font-weight: bold">route</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles.comments.edit'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #008080">$article</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$comment</span><span style="background-color: #f8f8f8">]);</span>
+</code></pre>
+                    <h2 id="zaklyuchenie">Заключение</h2>
+                    <p>Ресурсная маршрутизация – удобный механизм, позволяющий немного упростить создание CRUD. Он берёт
+                      на себя много работы и даёт программисту возможность сосредоточиться на логике.</p>
+
+                    <p>Существует негласное правило, насколько вложенной может быть вложенная маршрутизация. Считается,
+                      что не стоит делать более одного вложения. Иначе ссылки получаются очень длинными, а код начинает
+                      усложняться, так как приходится оперировать сразу тремя сущностями и более.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Удалите все маршруты связанные со статьями</li>
+                      <li> Удалите контроллер статей (шаблоны оставьте)</li>
+                      <li> Добавьте ресурсную маршрутизацию <code>articles</code></li>
+                      <li> Сгенерируйте для него контроллер <code>ArticleController</code></li>
+                      <li> Реализуйте CRUD</li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://laravel.com/docs/8.x/controllers#resource-controllers">Ресурсная
+                          маршрутизация</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

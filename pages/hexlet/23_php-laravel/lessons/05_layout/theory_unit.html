@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Макеты (Layout) - PHP: Laravel</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="1s6Iumwy7AkNBFC24lKQ6aBQkO-Em5Xcc1hIV3WPX4Qvh_qPmfb1dRTE1ZWtwgNz3vjbpE4SMER4eG82qPYtiw" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../resource/exercise_unit.html">PHP: Laravel</a>
+                    <h1 class='mt-0 mb-4'>Макеты (Layout)</h1>
+                    <p>Каждая страница любого сайта, содержит своё собственное содержимое и общие части, такие как футер
+                      или боковое меню. Существует два подхода по работе с этими общими частями.</p>
+                    <h2 id="vklyuchenie">Включение</h2>
+                    <p>До эры фреймворков фактически был ровно один способ выделять общие части. Он сводился к созданию
+                      двух шаблонов: хедера (шапка сайта) и футера (подвал). Затем эти шаблоны включались во всех
+                      остальных шаблонах, отвечающих за основную часть страницы. Выглядело это так:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #000000;font-weight: bold">include</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'header.php'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+
+<span style="color: #000080">&lt;div</span> <span style="color: #008080">id=</span><span style="color: #d14">"page-content"</span><span style="color: #000080">&gt;</span>
+    <span style="color: #999988;font-style: italic">&lt;!-- Тут основная часть --&gt;</span>
+<span style="color: #000080">&lt;/div&gt;</span>
+
+<span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #000000;font-weight: bold">include</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'footer.php'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+</code></pre>
+                    <p>Такой подход все ещё популярен в самописных решениях и в популярных CMS. Где-то в силу
+                      исторических причин, где-то потому, что его очень просто понять и начать использовать.</p>
+
+                    <p>С другой стороны, у такого подхода слишком много недостатков, из-за которых фреймворки отказались
+                      от него:</p>
+
+                    <ul>
+                      <li>Футер и хедер хранят куски кода, которые сами по себе не являются правильным HTML: в хедере —
+                        открывающие теги, в футере — закрывающие. Из-за этого крайне легко ошибиться и потом долго
+                        искать незакрытый тег.</li>
+                      <li>Страница, разбитая на хедер и футер, не даёт увидеть всю картину целиком. Придётся скакать
+                        туда-сюда для понимания того, что из себя представляет страница.</li>
+                      <li>Появляется очень много дублирования из-за постоянных вставок хедера и футера</li>
+                      <li>Все сильно усложняется, если хедеры и футеры могут быть разными</li>
+                      <li>Невозможно обработать ситуацию, когда страницы имеют более сложное разбиение и включение
+                        хедера и футера не поможет.</li>
+                    </ul>
+                    <h2 id="makety">Макеты</h2>
+                    <p>Это совершенно другой подход при работе с шаблонами. Он строится не от шаблона конкретного
+                      обработчика (экшена), а от макета. Макет – это базовая структура страницы, в которую вставляются
+                      данные, сгенерированные конкретным обработчиком. Для работы макетов недостаточно стандартных
+                      PHP-файлов с HTML разметкой. Разработчикам шаблонизаторов приходится придумывать специальные
+                      маркеры, которые указывают, куда и какой блок можно поместить.</p>
+
+                    <p>В Laravel используется шаблонизатор <a href="https://laravel.com/docs/7.x/blade" target="_blank"
+                        rel="nofollow">Blade</a>. Фактически, Blade это свой собственный язык, с помощью которого
+                      создаются шаблоны. Blade-специфичные команды в шаблонах начинаются со знака <em>@</em> и
+                      называются директивами. Большинство директив похожи на вызов функций, в которые передаются
+                      аргументы.</p>
+                    <pre class="hljs"><code class=blade>&lt;!-- Хранится в resources/views/layouts/app.blade.php --&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Hexlet Blog - @yield('title')&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class="container"&gt;
+            @yield('content')
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+                    <p>В макете выше используется директива <code>@yield</code>. Она указывает на то, куда будет
+                      вставлен контент конкретного обработчика.</p>
+
+                    <p>В шаблоне самого обработчика, используется директива <code>@section</code>, которая определяет
+                      блок контента. Каждый такой блок имеет собственное имя, что позволяет одновременно делать вставку
+                      сразу множества блоков. Это особенно удобно для сложных макетов, где кроме самого контента, есть и
+                      другие блоки, специфичные для конкретных страниц.</p>
+                    <pre class="hljs"><code class=blade>&lt;!-- Хранится в resources/views/about.blade.php --&gt;
+
+@extends('layouts.app')
+
+&lt;!-- Секция, содержимое которой обычный текст. --&gt;
+@section('title', 'О блоге')
+
+&lt;!-- Секция, содержащая HTML блок. Имеет открывающую и закрывающую часть. --&gt;
+@section('content')
+    &lt;h1&gt;О блоге&lt;/h1&gt;
+    &lt;p&gt;Эксперименты с Laravel на Хекслете&lt;/p&gt;
+@endsection
+</code></pre>
+                    <p>Директива <code>@extends</code> указывает на макет, внутрь которого должны попасть данные из
+                      текущего шаблона. В эту директиву передаётся путь относительно директории
+                      <em>resources/views</em>. Обратите внимание что вместо <em>/</em> используется точка.</p>
+
+                    <p>Далее идут секции. У каждой секции есть имя, благодаря которому можно точечно управлять местом её
+                      отображения. Выше создаются две секции <em>content</em> и <em>title</em>. Одна из них отображается
+                      в теге <code>&lt;title&gt;</code>, другая внутри <code>&lt;body&gt;</code> и является центральной
+                      контентной частью страницы.</p>
+
+                    <p>Имена выбираются произвольно. Количество секций не ограничено. Количество макетов тоже.</p>
+
+                    <p>Несмотря на наличие макетов, иногда бывает полезно иметь общий шаблон, который вставляется в
+                      конкретных местах. Blade позволяет создавать и включать такие шаблоны с помощью директивы
+                      <code>@include</code>:</p>
+                    <pre class="hljs"><code class=blade>&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Hexlet Blog - @yield('title')&lt;/title&gt;
+        @include('shared.metatags')
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class="container"&gt;
+            @yield('content')
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+                    <p>Код, подобный, тому что выше, часто встречается в тех проектах где несколько макетов. Как
+                      правило, их общие части выносят в общие шаблоны, которые затем включаются через
+                      <code>@include</code>. Хорошей практикой считается помещать общие шаблоны в директорию
+                      <em>resources/views/shared</em>. Так легче понять какие шаблоны можно переиспользовать.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li>
+                        <p>Создайте макет <em>resources/views/layouts/app.blade.php</em> со следующим содержимым:</p>
+                        <pre class="hljs"><code class=blade>&lt;!doctype html&gt;
+&lt;html lang="{{ str_replace('_', '-', app()-&gt;getLocale()) }}"&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+        &lt;title&gt;Hexlet Blog - @yield('title')&lt;/title&gt;
+        &lt;meta name="csrf-token" content="{{ csrf_token() }}"&gt;
+        &lt;meta name="csrf-param" content="_token" /&gt;
+        &lt;link href="{{ asset('css/app.css') }}" rel="stylesheet"&gt;
+        &lt;script src="{{ asset('js/app.js') }}"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class="container mt-4"&gt;
+            &lt;h1&gt;@yield('header')&lt;/h1&gt;
+            &lt;div&gt;
+                @yield('content')
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+                      </li>
+                      <li>
+                        <p>Переделайте шаблон <em>about.blade.php</em> так, как показано в уроке (возможно понадобится
+                          почистить кеш с помощью <code>php artisan view:clear</code>).</p>
+                      </li>
+                      <li>
+                        <p>Прочитайте про CSRF.</p>
+                      </li>
+                      <li>
+                        <p>Зафиксируйте изменения в git (дальше этот пункт повторяться не будет. Не забывайте
+                          фиксировать любые изменения в git)</p>
+                      </li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://laravel.com/docs/8.x/blade#template-inheritance">Документация
+                          Blade</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

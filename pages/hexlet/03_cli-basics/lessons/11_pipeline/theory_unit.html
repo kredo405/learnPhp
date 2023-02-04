@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Пайплайн (Конвейер) - Основы командной строки</title>
+  <meta name="csp-nonce" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <meta content='article' property='og:type'>
+  <meta content='Пайплайн (Конвейер) / Основы командной строки' property='og:title'>
+  <meta
+    content='Пайплайн (Конвейер) / Основы командной строки: Познакомиться с пайпом и научиться строить цепочки из программ'
+    property='og:description'>
+  <meta
+    content='Пайплайн (Конвейер) / Основы командной строки: Познакомиться с пайпом и научиться строить цепочки из программ'
+    name='description'>
+  <meta content='noarchive' name='robots'>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Пайплайн (Конвейер)</h1>
+                    <p>Раз у одного процесса есть вход, а у другого — выход, и их можно подменять, то логично
+                      предположить, что их можно соединить. Данный подход носит название <strong>pipeline</strong>
+                      (конвейер). Благодаря пайплайну можно соединять программы и протаскивать данные сквозь них, как
+                      сквозь цепочку функций, каждая из которых выступает в роли преобразователя или фильтра.</p>
+
+                    <p>Когда мы грепали, то делали это по какому-то одному слову, но часто возникает задача грепать по
+                      нескольким словам. Не важно, как они расположены внутри строки, главное, что они встречаются там
+                      вместе. Такую функциональность можно было бы сделать, усложнив саму программу <code>grep</code>.
+                      Но пайплайн позволяет добиться такого же поведения без необходимости писать сложную программу.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span><span style="color: #0086B3">grep alias</span> .bashrc | <span style="color: #0086B3">grep </span>color
+<span style="color: #999988;font-style: italic"># enable color support of handy aliases</span>
+<span style="color: #0086B3">alias grep</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #d14">'grep --color=auto'</span>
+<span style="color: #0086B3">alias </span><span style="color: #008080">fgrep</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #d14">'fgrep --color=auto'</span>
+<span style="color: #0086B3">alias </span><span style="color: #008080">egrep</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #d14">'egrep --color=auto'</span>
+</code></pre>
+                    <p><code>|</code> — этот символ называется <strong>пайп</strong>, он указывает шеллу взять STDOUT
+                      одного процесса, и соединить его с STDIN другого процесса. Поскольку grep принимает на вход текст
+                      (как я говорил в прошлом уроке, все утилиты, которые читают файлы, могут принимать данные через
+                      STDIN) и возвращает текст, то его можно комбинировать бесконечно.</p>
+
+                    <p><img alt="Pipeline" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImIxZTc0MzcyY2NjNGYzZjVmNTY3OTg4YTBmOTExMmEwLnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=75e294faeee1ac53bf7c428d6e76476579a062ac717f894f72182aefb799d5bd"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Запись <code>grep alias .bashrc | grep color</code> можно изменить, используя перенаправление.
+                      Так она станет проще для модификации:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span><span style="color: #0086B3">cat</span> .bashrc | <span style="color: #0086B3">grep alias</span> | <span style="color: #0086B3">grep </span>color
+</code></pre>
+                    <p>В примере выше файл читается катом и отправляется в STDIN грепа.</p>
+
+                    <p>Ещё один пример:</p>
+
+                    <script src="https://asciinema.org/a/9Xb9BQi5GEWabm0bATlG2SOV7.js"
+                      id="asciicast-9Xb9BQi5GEWabm0bATlG2SOV7" data-cols="120" data-rows="17" data-preload="1"
+                      async></script>
+                    <pre class="hljs"><code class=sh><span style="color: #0086B3">cat source</span> | <span style="color: #0086B3">grep </span>Dog | <span style="color: #0086B3">uniq</span> | <span style="color: #0086B3">sort</span>
+</code></pre>
+                    <ol>
+                      <li> Читается файл source</li>
+                      <li> Входные данные грепаются по подстроке &quot;Dog&quot;</li>
+                      <li> Убираются дубли (в исходном файле две одинаковых строки &quot;Dog&quot;)</li>
+                      <li> Входные данные сортируются и выводятся на экран</li>
+                    </ol>
+
+                    <p>Пайплайн стал основой философии Unix, которая звучит так:</p>
+
+                    <ul>
+                      <li>Пишите программы, которые делают что-то одно и делают это хорошо.</li>
+                      <li>Пишите программы, которые бы работали вместе.</li>
+                      <li>Пишите программы, которые бы поддерживали текстовые потоки, поскольку это универсальный
+                        интерфейс.</li>
+                    </ul>
+
+                    <p>Именно поэтому большинство утилит работают с сырым текстом — принимают его на вход и возвращают в
+                      STDOUT. Такой подход позволяет получать сложное поведение из крайне простых составных блоков.
+                      Такая концепция называется стандартные интерфейсы и хорошо отражена в конструкторах Lego.</p>
+
+
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+                      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+                      crossorigin="anonymous"></script>
+</body>
+
+</html>

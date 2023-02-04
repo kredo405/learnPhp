@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Онтология - Основы реляционных баз данных</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="LM3XV-EEDn26UHSJADzoTv9ISp1ATIMqIFhKtfxAPPrVEHk8Ei1TWoilJmTtlCvJ4V8rzF9uiZ1yCNAqN4Fj8g" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../transactions/exercise_unit.html">Основы реляционных баз данных</a>
+                    <h1 class='mt-0 mb-4'>Онтология</h1>
+                    <p>Ключ к овладению принципами организации данных в реляционных базах лежит не в заучивании форм
+                      нормализации и изучении реляционной алгебры, а в понимании смыслов, которые лежат вне области
+                      программирования.</p>
+
+                    <p>Программы, которые пишут программисты, всегда создаются под определённую предметную область.
+                      Например, бухгалтерский софт основывается на правилах ведения бухгалтерского учёта, а сайт для
+                      просмотра сериалов — на понятиях из телеиндустрии, таких как &quot;сезон&quot; или
+                      &quot;эпизод&quot;. То же самое относится и ко всему остальному: бронирование авиабилетов, отелей,
+                      поиск туров, продажа/покупка недвижимости/автомобилей и так далее.</p>
+
+                    <p><img alt="Domain" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImVhZDhhNzkzNWFkYzIzMTVlMDM2MWE3NzU5N2QxODAzLmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=ed4c0a0dd4e3814ca21a4950079474898bf90091125cc1e872d144a58d262918"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Понимание предметной области, для которой вы пишете программу, так же важно, как и умение
+                      программировать. Это не значит, что её нужно знать досконально — иногда область может быть
+                      по-настоящему сложной (например, та же бухгалтерия или технологическое производство), но общее
+                      понимание всё же требуется.</p>
+
+                    <p>Рассмотрим как пример Хекслет, так как вы с ним достаточно хорошо знакомы. Вы неплохо знаете его
+                      предметную область, хотя вряд ли думали о ней так, как мы сделаем сейчас. В первую очередь, для её
+                      понимания нужно выделить ключевые понятия, а именно <strong>сущности</strong>, вокруг которых
+                      строится вся логика. У обучающих ресурсов это, как правило, &quot;<em>курс</em>&quot; и
+                      &quot;<em>урок</em>&quot;. Но на самом деле сущностей гораздо больше. В случае Хекслета ещё можно
+                      выделить <em>профессию</em>, <em>испытание</em> (практика после курса), <em>code review</em>,
+                      <em>квиз</em> (набор вопросов и ответов), <em>участника курса</em> (вы становитесь участником,
+                      когда вступаете в курс), <em>проект</em>. Этот список можно продолжать ещё долго. Но сущности не
+                      существуют сами по себе, они находятся в некоторых взаимоотношениях друг с другом. Например,
+                      <em>квиз</em> содержит (агрегирует) в себе <em>вопросы</em>, которые, в свою очередь, содержат в
+                      себе <em>ответы</em>. <em>Профессия</em> состоит из <em>курсов</em>, а <em>курсы</em> из
+                      <em>уроков</em>, <em>уроки</em> — из <em>теории</em>, <em>квиза</em> и <em>практики</em>. Эти
+                      связи имеют конкретные названия. Например, один <em>урок</em> может находиться только в одном
+                      <em>курсе</em>, но <em>курс</em> содержит множество <em>уроков</em>. Такая связь называется
+                      <strong>один ко многим</strong> (<code>one-to-many</code> или <code>o2m</code>). В свою очередь,
+                      один <em>курс</em> могут проходить множество <em>пользователей</em>, и один <em>пользователь</em>
+                      может проходить много <em>курсов</em>. Такая связь уже называется <strong>многие ко
+                        многим</strong> (<code>many-to-many</code> или <code>m2m</code>). Реже встречается связь
+                      <strong>один к одному</strong> (<code>one-to-one</code> или <code>o2o</code>). На Хекслете такая
+                      связь установлена между <em>пользователем</em> и <em>наставником</em>.</p>
+
+                    <p><img alt="ERD" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImVjZTRjYzE1NDljOTE2ZjFiNmM1ODBhMjA4OTVmMDRkLnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=50c3a28a8d29f4948fab2e292a77716f5df40d8625b06bd56272fadc03cc8904"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Описание объектов рассматриваемой области и связей между ними называется
+                      <strong>онтологией</strong> предметной области. Эту онтологию хорошо знают эксперты
+                      соответствующей области: в бухгалтерии — бухгалтер, в обучении — преподаватель. Но, в отличие от
+                      программистов, они часто представляют её на интуитивном уровне, неформально. На практике
+                      программисты (или бизнес-аналитики и менеджеры) общаются с заказчиками, которые могут сами
+                      выступать в роли экспертов и строят вместе с ними формальную онтологию (этот процесс происходит
+                      постоянно в процессе развития проекта и не выделяется в отдельный этап проектирования). То есть
+                      выделяют конкретные термины, договариваются о том, что они означают и как связаны друг с другом.
+                      Затем, используя <a href="https://ru.wikipedia.org/wiki/ER-%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C"
+                        target="_blank" rel="nofollow">ER-модель</a>, программист формирует необходимую модель данных.
+                      Не обязательно на бумаге или в специализированных программах, чаще такая модель существует только
+                      в голове и коде.</p>
+
+                    <p>Именно эта модель и становится основной для проектирования базы данных. <strong>Каждая сущность в
+                        реляционной базе данных представлена таблицей, а связи между сущностями реализуются через
+                        внешние ключи</strong>.</p>
+                    <h2 id="entity-relationship-diagram">Entity-Relationship Diagram</h2>
+                    <p>В ERD, каждая сущность представлена блоком, в котором перечисляются поля. Между блоками рисуются
+                      линии, имеющие некоторые заранее определенные концы, они определяют тип связи между сущностями.
+                    </p>
+
+                    <p><img alt="ERD Нотация" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjFkZWJiMGU4MDg1MzFhZGU3Y2ZmMmIxNWE1MmQ1NDZhLnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=e11daf8ed2bbd5bfe1ca41b584c7919a29c04a74597a1f40ef224dc6c0a7598b"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Далее мы подробнее рассмотрим каждый вид связи.</p>
+                    <h2 id="vidy-svyazey">Виды связей</h2>
+                    <h3 id="odin-ko-mnogim-one2many">Один ко Многим (one2many)</h3>
+                    <p><img alt="Один ко Многим" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImQ1NzBmMDU1Njk2MmYxNmRlYzliNTU0M2QwZTkxNDA3LnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=979e0109ced445b1f5d141fd2523857dbcd0cb23cb72a7cb5b6db5c6430428f7"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Наиболее распространенный вид связи. Например, у одного человека может быть много машин,
+                      телефонов, ноутбуков и так далее (все вещи, находящиеся в индивидуальной собственности).
+                      Технически, такая связь организуется через внешний ключ, добавленный в зависимую сущность (ту,
+                      которая &quot;many&quot;).</p>
+
+                    <p><strong>users</strong></p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>id</th>
+                          <th>first_name</th>
+                          <th>last_name</th>
+                          <th>created_at</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>Сергей</td>
+                          <td>Петров</td>
+                          <td>11.10.2005</td>
+                        </tr>
+                        <tr>
+                          <td>38</td>
+                          <td>Иван</td>
+                          <td>Носов</td>
+                          <td>03.08.2000</td>
+                        </tr>
+                        <tr>
+                          <td>22</td>
+                          <td>Виктор</td>
+                          <td>Пирогов</td>
+                          <td>23.12.2011</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p><strong>emails</strong></p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>id</th>
+                          <th>user_id</th>
+                          <th>email</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>1</td>
+                          <td><a href="mailto:serj@gmail.com" target="_blank">serj@gmail.com</a></td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>1</td>
+                          <td><a href="mailto:petrov@mail.ru" target="_blank">petrov@mail.ru</a></td>
+                        </tr>
+                        <tr>
+                          <td>10</td>
+                          <td>38</td>
+                          <td><a href="mailto:ivan@yahoo.com" target="_blank">ivan@yahoo.com</a></td>
+                        </tr>
+                        <tr>
+                          <td>22</td>
+                          <td>22</td>
+                          <td><a href="mailto:vkurg@indbox.com" target="_blank">vkurg@indbox.com</a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p>Если мы хотим узнать все емейлы, которые есть у пользователя с идентификатором <code>1</code>, то
+                      нужно выполнить такой запрос:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">SELECT</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">emails</span> <span style="color: #000000;font-weight: bold">WHERE</span> <span style="background-color: #f8f8f8">user_id</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <h3 id="odin-k-odnomu">Один к Одному</h3>
+                    <p><img alt="Один ко Одному" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjIxNDRhMmQ2NjMxMzE2ZWUyNDM2MjdjNzE5ZjMxYTI1LnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=5e82131d4c071aa8da440c8c2b033e621f906f77538ddda64585897769652c09"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Например, у каждой страны есть ровно одна столица:</p>
+
+                    <p><strong>countries</strong></p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>id</th>
+                          <th>name</th>
+                          <th>created_at</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>2</td>
+                          <td>Russia</td>
+                          <td>11.10.2005</td>
+                        </tr>
+                        <tr>
+                          <td>38</td>
+                          <td>Spain</td>
+                          <td>03.08.2000</td>
+                        </tr>
+                        <tr>
+                          <td>22</td>
+                          <td>Germany</td>
+                          <td>23.12.2011</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p><strong>cities</strong></p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>id</th>
+                          <th>name</th>
+                          <th>country_id</th>
+                          <th>capital</th>
+                          <th>created_at</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>34</td>
+                          <td>Moscow</td>
+                          <td>2</td>
+                          <td>true</td>
+                          <td>11.10.2005</td>
+                        </tr>
+                        <tr>
+                          <td>33</td>
+                          <td>Valencia</td>
+                          <td>38</td>
+                          <td></td>
+                          <td>03.08.2000</td>
+                        </tr>
+                        <tr>
+                          <td>99</td>
+                          <td>Voronezh</td>
+                          <td>2</td>
+                          <td></td>
+                          <td>23.12.2011</td>
+                        </tr>
+                        <tr>
+                          <td>4</td>
+                          <td>Ulyanovsk</td>
+                          <td>2</td>
+                          <td></td>
+                          <td>23.12.2011</td>
+                        </tr>
+                        <tr>
+                          <td>5</td>
+                          <td>Berlin</td>
+                          <td>22</td>
+                          <td>true</td>
+                          <td>23.12.2011</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p>Связь o2o обычно существует не сама по себе, а внутри связи o2m. То есть у каждой страны есть
+                      города, но только один из них столица.</p>
+                    <h3 id="mnogie-ko-mnogim-many2many">Многие ко многим (many2many)</h3>
+                    <p><img alt="Многие ко многим" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6Ijk3MzRlZmI2NjM1YThjOWJiZjkwMzE4ZDNhMDk4NjlkLmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=a4a6f3baf93d68d4b296e1c40692b58644424a813094b602f60cdcf6ef85cfd5"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p><code>many2many</code> встречается очень часто:</p>
+
+                    <ul>
+                      <li>У каждого человека множество друзей, каждый человек друг для множества других.</li>
+                      <li>Один человек проходит множество курсов, один курс проходится множеством людей.</li>
+                    </ul>
+
+                    <p>Эта связь реализуется уже не так просто. Технически невозможно связать две таблицы связью многие
+                      ко многим без введения третьей таблицы.</p>
+
+                    <p><strong>users</strong></p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>id</th>
+                          <th>first_name</th>
+                          <th>created_at</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>2</td>
+                          <td>Сергей</td>
+                          <td>11.10.2005</td>
+                        </tr>
+                        <tr>
+                          <td>38</td>
+                          <td>Иван</td>
+                          <td>03.08.2000</td>
+                        </tr>
+                        <tr>
+                          <td>22</td>
+                          <td>Виктор</td>
+                          <td>23.12.2011</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p><strong>courses</strong></p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>id</th>
+                          <th>name</th>
+                          <th>created_at</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>8</td>
+                          <td>PHP basics</td>
+                          <td>11.10.2005</td>
+                        </tr>
+                        <tr>
+                          <td>55</td>
+                          <td>Python basics</td>
+                          <td>03.08.2000</td>
+                        </tr>
+                        <tr>
+                          <td>22</td>
+                          <td>Ruby basics</td>
+                          <td>23.12.2011</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p><strong>course_members</strong></p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>id</th>
+                          <th>user_id</th>
+                          <th>course_id</th>
+                          <th>created_at</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>34</td>
+                          <td>2</td>
+                          <td>8</td>
+                          <td>11.10.2005</td>
+                        </tr>
+                        <tr>
+                          <td>33</td>
+                          <td>38</td>
+                          <td>55</td>
+                          <td>03.08.2000</td>
+                        </tr>
+                        <tr>
+                          <td>99</td>
+                          <td>22</td>
+                          <td>22</td>
+                          <td>23.12.2011</td>
+                        </tr>
+                        <tr>
+                          <td>4</td>
+                          <td>22</td>
+                          <td>8</td>
+                          <td>23.12.2011</td>
+                        </tr>
+                        <tr>
+                          <td>5</td>
+                          <td>38</td>
+                          <td>22</td>
+                          <td>23.12.2011</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p>Здесь исходные таблицы — это <code>users</code> и <code>courses</code>, а связующая —
+                      <code>course_members</code>. Она имеет свой первичный ключ, и каждая запись содержит ссылки как на
+                      конкретный курс, так и на конкретного пользователя. На Хекслете эта таблица начинает заполняться в
+                      тот момент, когда пользователь нажимает кнопку &quot;Вступить в курс&quot;. Для данного
+                      пользователя создаётся запись с его идентификатором и идентификатором курса, который он собрался
+                      проходить.</p>
+
+                    <p>Если мы захотим узнать все курсы, которые проходит пользователь, то выполним такой запрос:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">SELECT</span> <span style="background-color: #f8f8f8">course_id</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">course_members</span> <span style="color: #000000;font-weight: bold">WHERE</span> <span style="background-color: #f8f8f8">user_id</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>Если захотим узнать, кто проходит данный курс, то такой запрос:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">SELECT</span> <span style="background-color: #f8f8f8">user_id</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">course_members</span> <span style="color: #000000;font-weight: bold">WHERE</span> <span style="background-color: #f8f8f8">course_id</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p><strong>Такая структура соблюдается для любых двух сущностей, которые надо связать</strong>. В
+                      общем виде схема выглядит так: Есть исходные таблицы <em>A</em> и <em>B</em>. Для них создаётся
+                      новая таблица <em>AB</em>, внутри которой есть два внешних ключа — <em>a_id</em> и <em>b_id</em>,
+                      которые связаны с исходными таблицами.</p>
+
+                    <p>Как показывает жизнь, такая промежуточная таблица почти наверняка становится самостоятельной
+                      сущностью. Если брать курсы, то важно понимать, закончил ли пользователь курс или нет, хочется
+                      знать, когда конкретно он это сделал, сколько заданий решил и так далее. Вся эта информация может
+                      храниться только в одном месте, именно в той связанной таблице.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://ru.wikipedia.org/wiki/%D0%9E%D0%BD%D1%82%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F_(%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%D0%B8%D0%BA%D0%B0)">Онтология
+                          (информатика)</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

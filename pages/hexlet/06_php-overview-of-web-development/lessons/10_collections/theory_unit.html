@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Коллекции - Ключевые аспекты веб-разработки на PHP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <meta content='IE=Edge' http-equiv='X-UA-Compatible'>
+  <meta content='b9d3902d34' name='verify-admitad'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Коллекции</h1>
+                    <p>Вероятно, тема текущего урока — самая простая и самая базовая из всего, что описывалось и будет
+                      описываться в курсе. Но одновременно она наиболее «мозговзрывная».</p>
+
+                    <p>Обработка коллекций — крайне частая операция в коде. Так или иначе, почти все, с чем мы имеем
+                      дело, представлено набором данных. Список пользователей, список страниц, список дат, список строк,
+                      список серверов и так далее. Львиная доля информации представлена в виде списков или появляется в
+                      результате обработки списков.</p>
+
+                    <p>На текущий момент, вероятно, вам известен только один подход к их обработке —
+                      <strong>циклы</strong>. И хотя циклы действительно решают любую задачу, есть более удобные
+                      механизмы, позволяющие писать код, который проще читать и легче поддерживать. Например, в
+                      JavaScript канонический способ работы с коллекциями — <strong>функции высшего порядка</strong>.
+                      Посмотрите внимательно:</p>
+                    <pre class="hljs"><code class=javascript><span style="color: #999988;font-style: italic">// Задача: извлечь имена пользователей, оканчивающиеся на `ya` без учёта регистра, и привести имена к нижнему регистру</span>
+<span style="color: #000000;font-weight: bold">const</span> <span style="background-color: #f8f8f8">users</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'</span><span style="color: #d14">PetYA</span><span style="color: #d14">'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'</span><span style="color: #d14">Vasya</span><span style="color: #d14">'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'</span><span style="color: #d14">KolyA</span><span style="color: #d14">'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'</span><span style="color: #d14">Mark</span><span style="color: #d14">'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'</span><span style="color: #d14">TonYa</span><span style="color: #d14">'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'</span><span style="color: #d14">John</span><span style="color: #d14">'</span><span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #000000;font-weight: bold">const</span> <span style="background-color: #f8f8f8">filteredUsers</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">users</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">map</span><span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">n</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="background-color: #f8f8f8">n</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">toLowerCase</span><span style="background-color: #f8f8f8">()).</span><span style="background-color: #f8f8f8">filter</span><span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">n</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="background-color: #f8f8f8">n</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">endsWith</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'</span><span style="color: #d14">ya</span><span style="color: #d14">'</span><span style="background-color: #f8f8f8">));</span>
+</code></pre>
+                    <p>Возможность так писать доступна в js из коробки, но php — другое дело. Для эффективной работы вам
+                      придётся «обмазаться» дополнительными библиотеками, такими как <a
+                        href="https://laravel.com/docs/8.x/collections" target="_blank" rel="nofollow">эта</a>. Тогда
+                      код на php для той же задачи станет таким:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">Stringy\create</span> <span style="color: #000000;font-weight: bold">as</span> <span style="background-color: #f8f8f8">s</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Illuminate\Support\Collection</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #008080">$users</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'PetYA'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'Vasya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'KolyA'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'Mark'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'TonYa'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'John'</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #008080">$collection</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">collect</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$users</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$filteredUsers</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$collection</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">map</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">function</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$n</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #0086B3">strtolower</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$n</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">})</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">filter</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">function</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$n</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #990000;font-weight: bold">s</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$n</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">endsWith</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'ya'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>Кода, конечно, значительно больше (таков уж php), и используются аж две новых библиотеки, но
+                      появляется высокая выразительность. Когда вы начнёте понимать соответствующий синтаксис, то
+                      полюбите подобные конструкции.</p>
+
+                    <p>Коллекциям на Хекслете посвящено аж целых два с половиной курса (один из курсов готовит
+                      необходимую почву для них). Здесь тот самый случай, когда лучше значит больше. Обработка
+                      коллекций, во многом, — алгоритмическая история, и она просто так сама в голове не сформируется.
+                      Нужно время и задачки, чтобы появились необходимые связи в мозгу. И даже этого времени не хватит.
+                      Во всех оставшихся курсах так или иначе будут появляться коллекции, и вы сможете отточить свои
+                      навыки по работе с ними. А так как эта тема базовая и мало зависит от других аспектов, мы начнём
+                      затрагивать её в самом начале, буквально со следующих курсов.</p>
+
+                    <p>Важно, что кроме самих коллекций, навыки решения даже простейших алгоритмов хорошо развивают и
+                      структурируют рассудочное мышление. То есть эти курсы преследуют две цели:</p>
+
+                    <ol>
+                      <li> Научиться алгоритмически мыслить.</li>
+                      <li> Научиться быстро решать типичные задачи по работе с коллекциями.</li>
+                    </ol>
+
+</body>
+
+</html>

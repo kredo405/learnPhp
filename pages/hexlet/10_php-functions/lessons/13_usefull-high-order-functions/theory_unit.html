@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Полезные функции высшего порядка - PHP: Функции</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Полезные функции высшего порядка</h1>
+                    <p>Библиотека Funct, которую мы рассматривали ранее, кроме обычных функций содержит функции высшего
+                      порядка. В этом уроке мы рассмотрим некоторые из них, которые могут быть полезными в будущем.</p>
+                    <h2 id="partition-collection-callable-callback">partition($collection, callable $callback)</h2>
+                    <p>Разбивает массив на два на основании предиката. Те элементы, которые удовлетворяют предикату,
+                      попадают в первый массив, другие - во второй.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="background-color: #f8f8f8">[</span><span style="color: #008080">$first</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$second</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">Collection\partition</span><span style="background-color: #f8f8f8">([</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">4</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">5</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">6</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">7</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">8</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">9</span><span style="background-color: #f8f8f8">],</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$num</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+  <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$num</span> <span style="color: #000000;font-weight: bold">%</span> <span style="color: #009999">2</span> <span style="color: #000000;font-weight: bold">===</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">});</span> <span style="color: #999988;font-style: italic">// [[2, 4, 6, 8], [1, 3, 5, 7, 9]]</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$first</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; [2, 4, 6, 8]</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$second</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; [1, 3, 5, 7, 9]</span>
+</code></pre>
+                    <h2 id="every-collection-callable-callback-null">every($collection, callable $callback = null)</h2>
+                    <p>Возвращает <code>true</code>, если каждый элемент коллекции удовлетворяет предикату. По умолчанию
+                      проверяет на истинность (<code>== true</code>).</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #990000;font-weight: bold">Collection\every</span><span style="background-color: #f8f8f8">([</span><span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">null</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'yes'</span><span style="background-color: #f8f8f8">]);</span> <span style="color: #999988;font-style: italic">// false</span>
+<span style="color: #990000;font-weight: bold">Collection\every</span><span style="background-color: #f8f8f8">([</span><span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'yes'</span><span style="background-color: #f8f8f8">]);</span> <span style="color: #999988;font-style: italic">// true</span>
+<span style="color: #990000;font-weight: bold">Collection\every</span><span style="background-color: #f8f8f8">(</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #009999">2</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">4</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">6</span><span style="background-color: #f8f8f8">],</span>
+    <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$value</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$value</span> <span style="color: #000000;font-weight: bold">%</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">===</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// true</span>
+</code></pre>
+                    <h2 id="groupby-collection-callable-callback">groupBy($collection, callable $callback)</h2>
+                    <p>Группирует элементы коллекции в множества на основании ключа, полученного в результате вызова
+                      колбека.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #990000;font-weight: bold">Collection\groupBy</span><span style="background-color: #f8f8f8">([</span><span style="color: #009999">1.3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2.1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2.4</span><span style="background-color: #f8f8f8">],</span> <span style="color: #000000;font-weight: bold">function</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$num</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #0086B3">floor</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$num</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span> <span style="color: #999988;font-style: italic">// [1 =&gt; [1.3], 2 =&gt; [2.1, 2.4]]</span>
+</code></pre>
+                    <h2 id="minvalue-collection-callable-callback">minValue($collection, callable $callback)</h2>
+                    <p>Возвращает минимальный элемент коллекции на основании результата переданной функции. Если
+                      несколько разнотипных значений посчитаются идентичными, функция вернёт последнее из них.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #990000;font-weight: bold">Collection\minValue</span><span style="background-color: #f8f8f8">(</span>
+    <span style="background-color: #f8f8f8">[</span>
+        <span style="color: #009999">10</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="background-color: #f8f8f8">[</span>
+            <span style="color: #d14">'title'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'a'</span><span style="background-color: #f8f8f8">,</span>
+            <span style="color: #d14">'size'</span>  <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">1</span>
+        <span style="background-color: #f8f8f8">],</span>
+        <span style="color: #009999">20</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="background-color: #f8f8f8">[</span>
+            <span style="color: #d14">'title'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'b'</span><span style="background-color: #f8f8f8">,</span>
+            <span style="color: #d14">'size'</span>  <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">2</span>
+        <span style="background-color: #f8f8f8">],</span>
+        <span style="color: #009999">30</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="background-color: #f8f8f8">[</span>
+            <span style="color: #d14">'title'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'c'</span><span style="background-color: #f8f8f8">,</span>
+            <span style="color: #d14">'size'</span>  <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">3</span>
+        <span style="background-color: #f8f8f8">],</span>
+        <span style="color: #009999">40</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="background-color: #f8f8f8">[</span>
+            <span style="color: #d14">'title'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'d'</span><span style="background-color: #f8f8f8">,</span>
+            <span style="color: #d14">'size'</span>  <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">1</span>
+        <span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">],</span>
+    <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$item</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$item</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'size'</span><span style="background-color: #f8f8f8">];</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic"># Array (</span>
+<span style="color: #999988;font-style: italic">#    'title' =&gt; 'd',</span>
+<span style="color: #999988;font-style: italic">#    'size'  =&gt; 1</span>
+<span style="color: #999988;font-style: italic"># )</span>
+</code></pre>
+                 
+
+</body>
+
+</html>

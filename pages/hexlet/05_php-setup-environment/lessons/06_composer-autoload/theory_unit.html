@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Автозагрузка - PHP: Настройка окружения</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="2rqIoQ2dxng2_3cgbGmWblKdCk-ZcBv4pK4JJLg-kDRJEPmHLHY8vmS-13wag2ahcBunM8S3uOU2zVrPN5rMpQ" />
+  <meta name="csp-nonce" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Автозагрузка</h1>
+                    <h2 id="prostranstva-imyon">Пространства имён</h2>
+                    <p>Любой код на PHP, написанный в современном стиле, вызывается с указанием пространства имён. Не
+                      важно, о каком коде идёт речь, будь то вызов кода из файла, лежащего в соседней директории, или
+                      вызов кода из установленной зависимости. Это касается любой библиотеки, включая те, которые пишем
+                      мы сами. По этой причине нужно как-то выбрать имя пространства имён. Имя пакета отображается в
+                      имени пространства имён таким образом — <code>Dependency\Injection</code>, где дефис заменяется на
+                      <code>\</code> (обратный слеш), а каждое слово начинается с заглавной буквы.
+                    </p>
+
+                    <p>К сожалению, из-за того, что пространства имён в языке появились не сразу, PHP позволяет
+                      создавать файловую структуру и структуру пространств имён независимо. Кроме того, в разных пакетах
+                      разные способы именования файлов, разные способы формирования самих имён пакетов, разные способы
+                      организации файлов внутри пакета. По этой причине я постарался использовать в <a
+                        href="https://github.com/hexlet-boilerplates/php-package" target="_blank"
+                        rel="nofollow">php-package</a> те практики, которые наиболее распространены и похожи на то, как
+                      всё организовано в других языках.</p>
+
+                    <ul>
+                      <li>Пакет именуется в &quot;шашлычной нотации&quot; (<em>kebab-case</em>).</li>
+                      <li>Каждый пакет может выставлять наружу только одно пространство имён, что снижает риск
+                        пересечения с другими пакетами, а также позволяет легко определить принадлежность пространства
+                        имён к пакету. В терминологии стандарта PSR-4, такое пространство имён называется &quot;vendor
+                        namespace&quot;.</li>
+                      <li>Пространства имён именуются в стиле <a href="https://en.wikipedia.org/wiki/Studly_caps"
+                          target="_blank" rel="nofollow">StudlyCaps</a> и напрямую отображаются на файловую систему.
+                        Исключением является корневое пространство имён, которое получается путём трансформации имени
+                        пакета.</li>
+                      <li>Исходный код проекта находится в папке <em>src</em>, а тесты в директории <em>tests</em>.</li>
+                    </ul>
+
+                    <p>Что касается именования файлов, то, что бы ни хранилось внутри, придерживайтесь именования в
+                      стиле <em>StudlyCaps</em> (например, <code>MySuperFile.php</code>).</p>
+                    <h2 id="avtozagruzka">Автозагрузка</h2>
+                    <p>В предыдущем уроке мы создали файл <code>src/Runner.php</code>, но попытка запустить его
+                      завершится с ошибкой. Дело в том, что попытка использовать любой сторонний код, включая другие
+                      файлы, принадлежащие текущему пакету, требует загрузки этих файлов. Указание пространства имён,
+                      само по себе, никак не влияет на их загрузку. По умолчанию считается, что если вы пытаетесь
+                      использовать какой-то код, то он уже загружен, используя <code>require</code> или
+                      <code>require_once</code>. Чисто технически можно так и делать. Каждый раз, когда нам нужно
+                      использовать сторонний код, мы можем сначала делать его подгрузку через <code>require</code>. К
+                      счастью, этого делать не нужно. Более того, линтер ругается на попытку использовать
+                      <code>require</code> самостоятельно.
+                    </p>
+
+                    <p>Дело в том, что Composer умеет автоматически загружать все необходимые файлы. Эта
+                      функциональность частично опирается на возможности автозагрузки самого PHP. Мы ещё не проходили
+                      классы, но стандарт PSR-4 описывает автозагрузку именно классов. Грубо говоря, если правильно
+                      сконфигурировать автозагрузчик, то при добавлении нового файла с классом, тот будет загружен
+                      автоматически. В случае с файлами, в которых есть только пространство имён и функции, всё чуть
+                      сложнее. Каждый новый файл должен быть прописан внутри <code>composer.json</code>, только тогда он
+                      будет загружен. Вот как это выглядит:</p>
+                    <pre class="hljs"><code class=json><span style="background-color: #f8f8f8">{</span><span style="color: #bbbbbb">
+    </span><span style="color: #990000;font-weight: bold">"name"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"hexlet/pairs"</span><span style="background-color: #f8f8f8">,</span><span style="color: #bbbbbb">
+    </span><span style="color: #990000;font-weight: bold">"autoload"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="background-color: #f8f8f8">{</span><span style="color: #bbbbbb">
+        </span><span style="color: #990000;font-weight: bold">"files"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="background-color: #f8f8f8">[</span><span style="color: #bbbbbb">
+            </span><span style="color: #d14">"src/Pairs.php"</span><span style="background-color: #f8f8f8">,</span><span style="color: #bbbbbb">
+            </span><span style="color: #d14">"src/Lists.php"</span><span style="color: #bbbbbb">
+        </span><span style="background-color: #f8f8f8">]</span><span style="color: #bbbbbb">
+    </span><span style="background-color: #f8f8f8">}</span><span style="color: #bbbbbb">
+</span><span style="background-color: #f8f8f8">}</span><span style="color: #bbbbbb">
+</span></code></pre>
+                    <p>В файл <code>composer.json</code> добавляется секция <code>autoload</code>. Внутрь этой секции
+                      добавляется ещё одна секция <code>files</code>. Она в свою очередь содержит список файлов, которые
+                      надо загрузить. После обновления секции <code>autoload</code> нужно обязательно запускать команду
+                      <code>composer dump-autoload</code>. Она генерирует необходимый код в директории
+                      <code>vendor</code>, реализующий указанную загрузку. Затем остаётся только один шаг. Чтобы ваш код
+                      начал использовать всё, что сделал Composer, необходимо в начале вашего кода прописать следующую
+                      строку:
+                    </p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">require</span> <span style="color: #000000;font-weight: bold">__DIR__</span> <span style="color: #009999">.</span> <span style="color: #d14">'/../vendor/autoload.php'</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>Конкретный путь зависит от того, где находится директория <code>vendor</code>. При работе с
+                      локальным проектом Composer по умолчанию создаст директорию <code>vendor</code> в его корне. Но в
+                      случае глобальной установки пакета путь к директории <code>vendor</code> будет другим. Его можно
+                      узнать, выполнив команду в терминале:</p>
+                    <pre class="hljs"><code class=bash><span style="color: #008080">$ </span>composer global config vendor-dir
+<span style="color: #999988;font-style: italic"># Changed current directory to /home/user/.config/composer</span>
+<span style="color: #999988;font-style: italic"># vendor</span>
+</code></pre>
+                    <p>После установки сам пакет, его зависимости и файл <code>autoload.php</code> будут созданы именно
+                      в этой директории. И путь, который мы указали выше, уже не сработает, так как при глобальной
+                      установке путь к директории <code>vendor</code> отличается. Поэтому, чтобы файл
+                      <code>autoload.php</code> был найден в любом случае, используют следующую запись:
+                    </p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Путь который будет использован при глобальной установке пакета</span>
+<span style="color: #008080">$autoloadPath1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">__DIR__</span> <span style="color: #009999">.</span> <span style="color: #d14">'/../../../autoload.php'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #999988;font-style: italic">// Путь для локальной работы с проектом</span>
+<span style="color: #008080">$autoloadPath2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">__DIR__</span> <span style="color: #009999">.</span> <span style="color: #d14">'/../vendor/autoload.php'</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #0086B3">file_exists</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$autoloadPath1</span><span style="background-color: #f8f8f8">))</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">require_once</span> <span style="color: #008080">$autoloadPath1</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span> <span style="color: #000000;font-weight: bold">else</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">require_once</span> <span style="color: #008080">$autoloadPath2</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ul>
+                      <li>
+                        <p>Добавьте файл <em>Runner.php</em> в автозагрузку (секция <em>files</em>).</p>
+                      </li>
+                      <li>
+                        <p>Измените ранее созданный файл index.php в корне проекта (вне директории src). Он должен
+                          выглядеть следующим образом:</p>
+                        <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">require</span> <span style="color: #000000;font-weight: bold">__DIR__</span> <span style="color: #009999">.</span> <span style="color: #d14">'/vendor/autoload.php'</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #999988;font-style: italic">// Файл не включается на прямую</span>
+<span style="color: #999988;font-style: italic">// Он загрузится автоматически благодаря автозагрузке</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Hexlet\Php\Runner</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">Runner\run</span><span style="background-color: #f8f8f8">());</span>
+</code></pre>
+                      </li>
+                      <li>
+                        <p>Запустите файл <em>index.php</em> на выполнение из корня проекта:</p>
+                        <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>php index.php
+<span style="color: #999988;font-style: italic"># ['TAYLOR', 'ABIGAIL', '']</span>
+</code></pre>
+                      </li>
+                    </ul>
+
+
+</body>
+
+</html>

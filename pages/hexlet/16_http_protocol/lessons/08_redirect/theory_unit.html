@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Перенаправления - Протокол HTTP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Перенаправления</h1>
+                    <p>Давайте посмотрим, как в HTTP работают редиректы. Если сделать запрос на hexlet.io, то в ответ мы
+                      получим редирект:</p>
+                    <pre class="hljs"><code class=sh>telnet hexlet.io 80
+GET / HTTP/1.1
+host: hexlet.io
+
+HTTP/1.1 301 Moved Permanently
+Date: Thu, 14 May 2020 15:00:05 GMT
+Transfer-Encoding: chunked
+Connection: keep-alive
+Cache-Control: max-age<span style="color: #000000;font-weight: bold">=</span>3600
+Expires: Thu, 14 May 2020 16:00:05 GMT
+Location: https://hexlet.io/
+Server: cloudflare
+CF-RAY: 59357c73fadaf2a0-WAW
+cf-request-id: 02b54c363b0000f2a07c8f0200000001
+
+0
+</code></pre>
+                    <p>Это связано с тем что, hexlet.io работает только по HTTPS. Но HTTP он тоже обрабатывает. Ведь
+                      браузеру, который будет обращаться к сайту, нужно подсказать, что нужно сделать редирект.</p>
+
+                    <p><img alt="301 Redirect" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjczY2EyZjc5NzIyMGEyMTQxZmUyZGE4OGViMjVhNjNiLmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=9fd76e3a75784e567ad6dddcf425397b3b3d9f8b09362bd09929e948f2ca2bde"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Как это работает? Возвращается заголовок 300 (формат редиректов). В нашем примере мы видим
+                      <em>301 Moved Permanently</em>. Это означает, что ресурс, на который послали запрос, перемещён
+                      навсегда, и больше не имеет смысла сюда никогда заходить. Этим активно пользуются при SEO.
+                      Поисковики сохраняют все параметры страниц по старому адресу в индексе.</p>
+
+                    <p>Редиректы бывают разных видов, например, временный редирект <em>302 Found</em>. Он используется,
+                      если что-то произошло: сайт не работает, заблокирован и т.д. В основном это технические истории.
+                    </p>
+
+                    <p>Но как узнать, куда происходит перенаправление? И вновь никакой магии — всё основано на
+                      заголовках. В принципе не важен даже <em>body</em>. В зависмости от того, как работает система,
+                      через которую послан запрос, <em>body</em> может отобразиться, а может и нет. Главное, что
+                      появляется заголовок <em>Location</em>. Он обязан быть в случае такого статуса ответа, который
+                      указывает то место, куда нужно перейти.</p>
+
+                    <p>Всё. Дальше, браузер сделал бы перенаправление автоматически. Но так как мы находимся в telnet,
+                      то никакую работу он за нас не делает и просто возвращает этот редирект.</p>
+
+                    <p>Иногда на сайтах происходят ошибки, и те постоянно выдают редиректы. Браузер будет пытаться
+                      бесконечно переходить по ним. Чтобы не убить систему, существуют различные защиты. Например, они
+                      умеют отслеживать циклические редиректы, и сообщать о том, что необходимо остановить работу.</p>
+
+                    <p>Библиотеки, с которыми часто работают программисты, обычно имеют опции, которые говорят, нужно ли
+                      следовать за редиректом, и если следовать, то на какую глубину.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://ru.wikipedia.org/wiki/HTTP_301">HTTP 301</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

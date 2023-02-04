@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Генерация строки в цикле - PHP: Массивы</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Генерация строки в цикле</h1>
+                    <p>Генерация строк в циклах — задача, часто возникающая на практике. Типичный пример в вебе —
+                      функция-хелпер, помогающая генерировать HTML-списки в шаблонах. Она принимает на вход коллекцию
+                      элементов и возвращает список из них:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$coll</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'milk'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'butter'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'eggs'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'bread'</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #990000;font-weight: bold">buildList</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// &lt;ul&gt;&lt;li&gt;milk&lt;/li&gt;&lt;li&gt;butter&lt;/li&gt;&lt;li&gt;eggs&lt;/li&gt;&lt;li&gt;bread&lt;/li&gt;&lt;/ul&gt;</span>
+</code></pre>
+                    <p>Самый примитивный алгоритм, который приходит в голову. Пройтись циклом по элементам коллекции и
+                      дописать в результирующую строку очередной тег <code>&lt;li&gt;</code>. В начале и конце добавить
+                      <code>&lt;ul&gt;</code> и вернуть строчку наружу.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$result</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">''</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">foreach</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$coll</span> <span style="color: #000000;font-weight: bold">as</span> <span style="color: #008080">$item</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$result</span> <span style="color: #009999">.</span><span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">"&lt;li&gt;</span><span style="color: #d14">{</span><span style="color: #008080">$item</span><span style="color: #d14">}</span><span style="color: #d14">&lt;/li&gt;"</span><span style="background-color: #f8f8f8">;</span>
+    <span style="color: #999988;font-style: italic">// либо так</span>
+    <span style="color: #999988;font-style: italic">// $result = "{$result}&lt;li&gt;{$item}&lt;/li&gt;";</span>
+<span style="background-color: #f8f8f8">}</span>
+<span style="color: #008080">$result</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">"&lt;ul&gt;</span><span style="color: #d14">{</span><span style="color: #008080">$result</span><span style="color: #d14">}</span><span style="color: #d14">&lt;/ul&gt;"</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>Такой способ вполне рабочий, но для большинства языков программирования максимально
+                      неэффективный. Дело в том, что конкатенация и интерполяция порождают новую строчку вместо старой и
+                      подобная ситуация повторяется на каждой итерации. Причём строка становится все больше и больше.
+                      Копирование строк приводит к серьёзному расходу памяти и может влиять на производительность.
+                      Конечно, для большинства приложений данная проблема неактуальна из-за малого объёма прогоняемых
+                      данных, но более эффективный подход не сложнее в реализации и обладает дополнительными плюсами.
+                      Поэтому стоит сразу приучить себя работать правильно и никогда больше не возвращаться к этому
+                      вопросу. В статических языках для подобной цели используется так называемый <a
+                        href="https://wiki.c2.com/?StringBufferExample" target="_blank" rel="nofollow">String
+                        Buffer</a>. В динамических — обычный массив. Перепишем программу выше, используя новое знание:
+                    </p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$parts</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[];</span> <span style="color: #999988;font-style: italic">// переименовал для того, чтобы не менять значения переменной</span>
+<span style="color: #000000;font-weight: bold">foreach</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$coll</span> <span style="color: #000000;font-weight: bold">as</span> <span style="color: #008080">$item</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$parts</span><span style="background-color: #f8f8f8">[]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">"&lt;li&gt;</span><span style="color: #d14">{</span><span style="color: #008080">$item</span><span style="color: #d14">}</span><span style="color: #d14">&lt;/li&gt;"</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+<span style="color: #008080">$innerValue</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">implode</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">' '</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$parts</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$result</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">"&lt;ul&gt;</span><span style="color: #d14">{</span><span style="color: #008080">$innerValue</span><span style="color: #d14">}</span><span style="color: #d14">&lt;/ul&gt;"</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>Как видите, код не сильно поменялся. Разница в том, что теперь собирается массив вместо строки, и
+                      в конце он собирается в строку с помощью <code>implode</code>. Помимо эффективности у такого
+                      подхода есть дополнительные плюсы:</p>
+
+                    <ul>
+                      <li>Такой код проще отлаживать и анализировать внутренности</li>
+                      <li>Массив можно дообработать, если надо, а строчку — уже нет</li>
+                    </ul>
+
+                    <p>Регулируя разделитель, строки можно объединять разными способами. Например, через запятую:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$parts</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'JavaScript'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'PHP'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'Python'</span><span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #008080">$output</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">implode</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">','</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$parts</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$output</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; JavaScript,PHP,Python</span>
+</code></pre>
+                    <p>А пробел после запятой добавит пространство между словами, сделает вывод более аккуратным:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$parts</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'JavaScript'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'PHP'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'Python'</span><span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #008080">$output</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">implode</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">', '</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$parts</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// поменяли разделитель, добавив пробел</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$output</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; JavaScript, PHP, Python</span>
+</code></pre>
+                    <p>Если каждое слово надо вывести на новой строчке, то в качестве разделителя используем символ
+                      перевода строки <code>&quot;\n&quot;</code></p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$parts</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'JavaScript'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'PHP'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'Python'</span><span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #008080">$output</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">implode</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"</span><span style="color: #d14">\n</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$parts</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// теперь каждое слово будет начинаться с новой строки</span>
+<span style="color: #999988;font-style: italic">// или с предопределённой константой</span>
+<span style="color: #999988;font-style: italic">// $output = implode(PHP_EOL, $parts);</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$output</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt;</span>
+<span style="color: #999988;font-style: italic">// JavaScript</span>
+<span style="color: #999988;font-style: italic">// PHP</span>
+<span style="color: #999988;font-style: italic">// Python</span>
+</code></pre>
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://www.joelonsoftware.com/2001/12/11/back-to-basics/">Джоэль
+                          Спольски. Назад к основам (английская версия)</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

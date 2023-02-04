@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Шаблонизатор Blade - PHP: Laravel</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="rcUnHIWCO8P18pIzL6cgUfmdoFF0FU6CGIKAdXCi1MBUjFUpcEYiv-wyFxBgN7PLhzXrGr6c6xoToqcUrdumzw" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../resource/exercise_unit.html">PHP: Laravel</a>
+                    <h1 class='mt-0 mb-4'>Шаблонизатор Blade</h1>
+                    <p>Мы знаем из курса по <a href="https://ru.hexlet.io/courses/php-mvc"
+                        target="_blank">веб-разработке</a>, что PHP это не только язык программирования, но и
+                      шаблонизатор. Он позволяет использовать PHP- и HTML-код в одном файле, формируя из этого общий
+                      ответ в консоль или браузер пользователя. Это одна из важных причин его популярности, но за все
+                      приходится платить.</p>
+
+                    <p>Когда создавался PHP, интернет только начинал свой путь. Разработчики PHP в то время о многих
+                      вещах либо не знали, либо не подумали. Это привело к серьёзным проблемам, с которыми придётся жить
+                      всегда, потому что никто не будет ломать обратную совместимость. К таким проблемам относится
+                      безопасность. Обычные PHP-шаблоны по умолчанию не безопасны. Любой текст из кода вставляется как
+                      есть. Это значит, что если специально об этом не подумать, то сайт станет подвержен XSS-атаке. Она
+                      выполняется через внедрение JS-кода на страницу, который начинает работать, а не отображаться как
+                      текст:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999988;font-style: italic">&lt;!-- Можно передать url.../?query=&lt;script&gt;alert('boom!')&lt;/script&gt; --&gt;</span>
+<span style="color: #999988;font-style: italic">&lt;!-- При выводе вместо PHP-кода подставится тег script, который будет выполнен браузером --&gt;</span>
+<span style="color: #000080">&lt;p&gt;</span><span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #008080">$_GET</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'query'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #000080">&lt;/p&gt;</span>
+</code></pre>
+                    <p>Есть способы избежать этого, но все они требуют постоянного внимания. С точки зрения организации
+                      безопасной среды это в корне неверно и гарантированно будет приводить к ошибкам. Должно быть ровно
+                      наоборот: по умолчанию все безопасно и только там где нужно, поведение меняется.</p>
+
+                    <p>Можно ли как-то изменить эту ситуацию? Да, первый путь это изменение самого языка. Этот путь,
+                      которым никто никогда не пойдёт. Такое изменение гарантированно сломает все существующие сайты.
+                      Другой путь – создание шаблонизаторов, написанных на PHP. Именно так и делают уже очень много лет.
+                    </p>
+
+                    <p><em>В итоге то, что помогло PHP взлететь, теперь только мешает и создаёт у многих несерьёзное
+                        отношение к языку. До сих пор можно встретить людей, которые говорят, что PHP это не язык
+                        программирования, а шаблонизатор.</em></p>
+
+                    <p>За время существования PHP были созданы десятки только популярных шаблонизаторов и сотни тех, что
+                      не взлетели. Со временем они развивались и становились лучше. Когда-то популярный Smarty сейчас
+                      уже никто не вспомнит. А вот Blade, входящий в состав Laravel, знают почти все.</p>
+
+                    <p><em>Это на самом деле важно, потому что до сих пор огромное число сайтов и CMS используют
+                        встроенную шаблонизацию PHP. Как по историческим причинам, так и из-за общей низкой культуры
+                        разработки и кустарного обучения программированию. Стоит ли говорить о том, что большинство этих
+                        сайтов легко взломать.</em></p>
+
+                    <p>Посмотрите на пример простого Blade-шаблона:</p>
+                    <pre class="hljs"><code class=blade>&lt;h1&gt;{{ $object-&gt;title }}&lt;/h1&gt;
+&lt;p&gt;{{ $object-&gt;description }}&lt;/p&gt;
+&lt;pre&gt;
+    {{ $object-&gt;code }}
+&lt;/pre&gt;
+&lt;p&gt;Question submitted at: {{ $object-&gt;created_at }}&lt;/p&gt;
+</code></pre>
+                    <p>На первый взгляд похоже, что шаблон выглядит как HTML, но со вставками кода. В отличие от самого
+                      PHP, в Blade вставка любого значения выполняется в двойных фигурных скобках
+                      <code>{{ ... }}</code>. Это очень похоже на интерполяцию, если сам шаблон рассматривать как
+                      строку. Под капотом Blade выполняет дополнительную обработку и экранирует любые данные,
+                      вставленные таким образом. Это значит, что нам больше не нужно прилагать усилия к обеспечению
+                      безопасности в шаблонах.</p>
+
+                    <p>Откуда в этом шаблоне взялся <code>$object</code>? Вспомним код обработчика:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #445588;font-weight: bold">Route</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'about'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">()</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #990000;font-weight: bold">view</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'about'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>Такой вариант использования шаблонов подходит только для простых информационных страниц, в
+                      которых нет динамического содержимого (получаемого, например, из базы). В большинстве же реальных
+                      ситуаций контроллер получает какие-то данные, обрабатывает их, если нужно, и передаёт в шаблон.
+                      Делается это крайне просто, достаточно передать ассоциативный массив с данными вторым параметром
+                      функции <code>view</code>. В шаблоне каждое значение этого массива становится доступно под именем
+                      переменной, соответствующей ключу массива:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+<span style="color: #999988;font-style: italic">// routes/web.php</span>
+
+<span style="color: #445588;font-weight: bold">Route</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'about'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">()</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$tags</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'обучение'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'программирование'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'php'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'oop'</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #990000;font-weight: bold">view</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'about'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'tags'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$tags</span><span style="background-color: #f8f8f8">]);</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <pre class="hljs"><code class=blade>&lt;!-- resources/views/about.blade.php --&gt;
+
+&lt;h1&gt;О блоге&lt;/h1&gt;
+&lt;p&gt;Эксперименты с Laravel на Хекслете&lt;/p&gt;
+&lt;p&gt;{{ implode(', ', $tags) }}&lt;/p&gt;
+</code></pre>
+                    <p>Как видно из примера выше, двойные фигурные скобки позволяют выполнять произвольный PHP-код.
+                      Главное — не злоупотреблять. В основном данные должны быть подготовлены в обработчике до того, как
+                      они попадут в шаблон. Тут стоит сказать отдельно, что PHP как шаблонизатор давал слишком много
+                      свободы, которая очень влияла на качество кода. При таком использовании PHP, в шаблоне нередко
+                      выполнялись SQL-запросы, HTTP-вызовы и т.п. По понятным причинам этого делать ни в коем случае
+                      нельзя: шаблоны про отображение, а не про логику работы.</p>
+
+                    <p>Кроме подстановки, в Blade есть директивы. С их помощью реализованы все управляющие конструкции,
+                      такие как циклы, условия и многое другое:</p>
+                    <pre class="hljs"><code class=blade>@if (count($records) === 1)
+    I have one record!
+@endif
+
+@foreach ($users as $user)
+    &lt;p&gt;This is user {{ $user-&gt;id }}&lt;/p&gt;
+@endforeach
+</code></pre>
+                    <p>Директивы всегда начинаются со знака <code>@</code> и часто (но не всегда) имеют закрывающую
+                      часть. Синтаксис директив содержит меньше деталей и он проще чем синтаксис чистого PHP. С его
+                      помощью можно делать практически всё то же самое, что и в самом PHP. Более того, можно сказать,
+                      что Blade фактически является самостоятельным языком программирования. Но лучше про это сразу
+                      забыть)</p>
+
+                    <p>Blade имеет встроенную поддержку разных полезных фич. То, что в шаблонах на PHP нужно делать
+                      вручную, тут уже есть из коробки. К таким возможностям, например, относится определение первой и
+                      последней итерации в цикле:</p>
+                    <pre class="hljs"><code class=blade>@foreach ($users as $user)
+    &lt;!-- $loop - специальная переменная доступная внутри цикла --&gt;
+    @if ($loop-&gt;first)
+        This is the first iteration.
+    @endif
+
+    @if ($loop-&gt;last)
+        This is the last iteration.
+    @endif
+
+    &lt;p&gt;This is user {{ $user-&gt;id }}&lt;/p&gt;
+@endforeach
+</code></pre>
+                    <p>Кроме указанных структур, директивы Blade поддерживают цикл <em>for</em>, <em>switch</em>,
+                      <em>isset</em> и некоторые другие, более специфичные. Часть из них будет рассмотрена дальше, в
+                      уроках посвящённых макетам и формам.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://laravel.com/docs/8.x/blade">Blade</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

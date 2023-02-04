@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Создание (CRUD) - PHP: Laravel</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="nDxHYHddRSXtr-nUm2bBxKe_-I9IDiDQxML_KdPhAwJldTVVgplcWfRvbPfU9lJe2RezxIKHhUjP4thIDphxDQ" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../resource/exercise_unit.html">PHP: Laravel</a>
+                    <h1 class='mt-0 mb-4'>Создание (CRUD)</h1>
+                    <p>Создание сущности в CRUD требует наличия двух маршрутов: один для отображения формы, другой для
+                      обработки формы. Кроме того, важно понимать как взаимодействуют между собой эти маршруты, как
+                      обрабатываются ошибки и так далее. Начнём с того что у нас есть три состояния:</p>
+
+                    <ul>
+                      <li>Отображение новой формы</li>
+                      <li>Отображение формы с подсвеченными ошибками валидации после её отправки</li>
+                      <li>Редирект на какую-то страницу (обычно это редактирование сущности или список сущностей) после
+                        успешной обработки формы</li>
+                    </ul>
+
+                    <p>Самое интересное здесь – вторая часть. Когда данные формы приходят в обработчик формы
+                      (пользователь нажал кнопку отправки), этот обработчик выполняет &quot;валидацию&quot;, то есть
+                      проверку введённых данных. Например, проверяет, что данные в принципе есть, то есть они не пустые.
+                      Если данные корректные, то обработка завершается и пользователя отправляют в другое место, но если
+                      нет, то Laravel должен отработать эту ситуацию по особенному.</p>
+
+                    <p>С точки зрения пользователя, это выглядит просто. Сайт снова отображает форму с подставленными
+                      значениями, которые он ввёл раньше. Кроме этого, на странице выводятся возникшие ошибки. Дальше
+                      пользователь их исправляет и отправляет форму заново. Этот процесс может повторяться много раз
+                      перед тем, как пользователь сделает все правильно.</p>
+
+                    <p>Технически Laravel ведёт себя так. Если пользователь ввёл что-то некорректно, то происходит
+                      редирект на страницу с формой. Laravel автоматически записывает данные формы в сессию, а затем
+                      использует эти данные для подстановки в форму (тут участвует <code>Form::model</code>).</p>
+                    <h2 id="forma">Форма</h2>
+                    <p>Как обычно нам придётся добавить три вещи: маршрут, обработчик маршрута, шаблон.</p>
+                    <h3 id="marshrut">Маршрут</h3>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #445588;font-weight: bold">Route</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles/create'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'ArticleController@create'</span><span style="background-color: #f8f8f8">)</span>
+  <span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">name</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles.create'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Важно добавить этот маршрут до маршрута <em>articles/{id}</em>. Иначе последний перехватит
+                      обращение к <em>articles/create</em>, так как он соответствует шаблону.</p>
+                    <h3 id="obrabotchik">Обработчик</h3>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">namespace</span> <span style="color: #555555">App\Http\Controllers</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">App\Models\Article</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">ArticleController</span> <span style="color: #000000;font-weight: bold">extends</span> <span style="color: #445588;font-weight: bold">Controller</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Вывод формы</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">create</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">// Передаём в шаблон вновь созданный объект. Он нужен для вывода формы через Form::model</span>
+        <span style="color: #008080">$article</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Article</span><span style="background-color: #f8f8f8">();</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #990000;font-weight: bold">view</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'article.create'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #0086B3">compact</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'article'</span><span style="background-color: #f8f8f8">));</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <h3 id="shablon">Шаблон</h3>
+                    <pre class="hljs"><code class=blade>
+{{ Form::model($article, ['url' =&gt; route('articles.store')]) }}
+    {{ Form::label('name', 'Название') }}
+    {{ Form::text('name') }}&lt;br&gt;
+    {{ Form::label('body', 'Содержание') }}
+    {{ Form::textarea('body') }}&lt;br&gt;
+    {{ Form::submit('Создать') }}
+{{ Form::close() }}
+</code></pre>
+                    <h2 id="obrabotchik-dannyh-formy">Обработчик данных формы</h2>
+                    <h3 id="marshrut-1">Маршрут</h3>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// POST-запрос</span>
+<span style="color: #445588;font-weight: bold">Route</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">post</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'ArticleController@store'</span><span style="background-color: #f8f8f8">)</span>
+  <span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">name</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles.store'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <h2 id="obrabotchik-1">Обработчик</h2>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">namespace</span> <span style="color: #555555">App\Http\Controllers</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">App\Models\Article</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #999988;font-style: italic">// Нам понадобится объект запроса</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Illuminate\Http\Request</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">ArticleController</span> <span style="color: #000000;font-weight: bold">extends</span> <span style="color: #445588;font-weight: bold">Controller</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Здесь нам понадобится объект запроса для извлечения данных</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">store</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">Request</span> <span style="color: #008080">$request</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">// Проверка введённых данных</span>
+        <span style="color: #999988;font-style: italic">// Если будут ошибки, то возникнет исключение</span>
+        <span style="color: #999988;font-style: italic">// Иначе возвращаются данные формы</span>
+        <span style="color: #008080">$data</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">validate</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span>
+            <span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'required|unique:articles'</span><span style="background-color: #f8f8f8">,</span>
+            <span style="color: #d14">'body'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'required|min:1000'</span><span style="background-color: #f8f8f8">,</span>
+        <span style="background-color: #f8f8f8">]);</span>
+
+        <span style="color: #008080">$article</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Article</span><span style="background-color: #f8f8f8">();</span>
+        <span style="color: #999988;font-style: italic">// Заполнение статьи данными из формы</span>
+        <span style="color: #008080">$article</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">fill</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$data</span><span style="background-color: #f8f8f8">);</span>
+        <span style="color: #999988;font-style: italic">// При ошибках сохранения возникнет исключение</span>
+        <span style="color: #008080">$article</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">save</span><span style="background-color: #f8f8f8">();</span>
+
+        <span style="color: #999988;font-style: italic">// Редирект на указанный маршрут</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #990000;font-weight: bold">redirect</span><span style="background-color: #f8f8f8">()</span>
+            <span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">route</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles.index'</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>В данном обработчике нам понадобился доступ к объекту запроса. Любая информация о HTTP-запросе,
+                      любые данные, отправленные по HTTP, можно получить только через <code>$request</code>.</p>
+
+                    <p><em>Как и раньше тут может возникнуть вопрос, каким образом Laravel понимает что в этот метод
+                        надо передать объект запроса, а в другие ничего передавать не надо. Ответ кроется в
+                        метапрограммировании, которое в PHP делается через <a
+                          href="https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D1%84%D0%BB%D0%B5%D0%BA%D1%81%D0%B8%D1%8F_(%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)"
+                          target="_blank" rel="nofollow">Reflection API</a>.</em></p>
+
+                    <p>Первым делом объект <code>$request</code> используется в валидации. Валидация в Laravel привязана
+                      к запросу. Она выполняется с помощью метода <code>validate($request, $params)</code>, доступного в
+                      каждом контроллере. Второй аргумент в этом методе – массив, в котором ключ это название поля из
+                      формы, а значение, это набор &quot;валидаторов&quot;, правил, которые применяются к значению для
+                      проверки его корректности. Валидаторы отделяются друг от друга вертикальной чертой. Вот что они
+                      означают:</p>
+
+                    <ul>
+                      <li><em>required</em> – не может быть пустым</li>
+                      <li><em>min:1000</em> – минимум 1000 символов</li>
+                      <li><em>unique:articles</em> – поле (<em>name</em>) должно быть уникально в таблице
+                        <em>articles</em></li>
+                    </ul>
+
+                    <p>Метод <code>validate</code> ничего не делает, если с данными всё в порядке, и выбрасывает
+                      исключение в случае ошибок. Затем Laravel перехватывает это исключение и выполняет всю остальную
+                      работу за нас. Он сохраняет данные формы, делает редирект на страницу отображения формы и
+                      формирует переменную <code>$errors</code>, доступную в шаблоне. Самый простой способ вывести
+                      ошибки, добавить над формой такой код:</p>
+                    <pre class="hljs"><code class=blade>@if ($errors-&gt;any())
+    &lt;div&gt;
+        &lt;ul&gt;
+            @foreach ($errors-&gt;all() as $error)
+                &lt;li&gt;{{ $error }}&lt;/li&gt;
+            @endforeach
+        &lt;/ul&gt;
+    &lt;/div&gt;
+@endif
+</code></pre>
+                    <p>Вернёмся к нашему обработчику. Сразу после валидации выполняется создание сущности, наполнение её
+                      данными формы и сохранение.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$article</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Article</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #008080">$article</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">fill</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$data</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$article</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">save</span><span style="background-color: #f8f8f8">();</span>
+</code></pre>
+                    <p>Метод <code>fill($params)</code> выполняет, так называемый <a
+                        href="https://laravel.com/docs/7.x/eloquent#mass-assignment" target="_blank"
+                        rel="nofollow">mass-assignment</a>, то есть установку сразу всех значений через передачу
+                      ассоциативного массива. Такой способ удобнее чем копировать каждое значение индивидуально:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Может получиться много кода!</span>
+<span style="color: #008080">$article</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">name</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$request</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">input</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$article</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">body</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$request</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">input</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'body'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Но mass-assignment обладает одним недостатком, который приходится обрабатывать отдельно. Такой
+                      способ установки значений опасен, так как пользователь может послать любые данные, включая те,
+                      которых нет в форме (это HTTP, пользователь может отправить всё, что угодно). Это значит, что
+                      пользователь может переписать любые данные, включая пароли, идентификаторы и всё что угодно, до
+                      чего он, по идее, не должен иметь доступ.</p>
+
+                    <p>Разные фреймворки обрабатывают эту ситуацию по разному. Laravel предлагает создавать внутри
+                      модели массив, в котором перечисляются поля, доступные для mass-assignment. Всё, что там не
+                      перечислено, будет игнорироваться:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">namespace</span> <span style="color: #555555">App\Models</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Illuminate\Database\Eloquent\Model</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">Article</span> <span style="color: #000000;font-weight: bold">extends</span> <span style="color: #445588;font-weight: bold">Model</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">protected</span> <span style="color: #008080">$fillable</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'body'</span><span style="background-color: #f8f8f8">];</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Это легко проверить в Tinker:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #000000;font-weight: bold">&gt;&gt;&gt;</span> <span style="color: #008080">$article</span> <span style="color: #000000;font-weight: bold">=</span> new Article<span style="color: #000000;font-weight: bold">()</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">=&gt;</span> App<span style="color: #d14">\M</span>odels<span style="color: #d14">\A</span>rticle <span style="color: #000000;font-weight: bold">{</span><span style="color: #999988;font-style: italic">#3033}</span>
+<span style="color: #000000;font-weight: bold">&gt;&gt;&gt;</span> <span style="color: #008080">$article</span>-&gt;fill<span style="color: #000000;font-weight: bold">([</span><span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'supername'</span>, <span style="color: #d14">'wrongfield'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'boom!'</span><span style="color: #000000;font-weight: bold">])</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">=&gt;</span> App<span style="color: #d14">\M</span>odels<span style="color: #d14">\A</span>rticle <span style="color: #000000;font-weight: bold">{</span><span style="color: #999988;font-style: italic">#3033</span>
+     name: <span style="color: #d14">"supername"</span>,
+   <span style="color: #000000;font-weight: bold">}</span>
+</code></pre>
+                    <p>После того как объект сохранился в базе данных, осталось перенаправить пользователя в то место,
+                      куда мы хотим его отправить после успешного создания. Обычно отправка идёт на список сущностей или
+                      страницу редактирования.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Не забудьте сделать return</span>
+<span style="color: #000000;font-weight: bold">return</span> <span style="color: #990000;font-weight: bold">redirect</span><span style="background-color: #f8f8f8">()</span>
+    <span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">route</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles.index'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Обратите внимание, что у обработчика данных формы нет своего шаблона. Он в любом случае выполняет
+                      редирект: либо на исходную форму, либо на результирующую.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Выполните все шаги из теории.</li>
+                      <li> Создайте через интерфейс несколько статей. Проверьте работу валидации.</li>
+                      <li> Попробуйте самостоятельно добавить вывод флеш-сообщений.</li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://laravel.com/docs/8.x/validation">Валидаторы</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://laravel.com/docs/8.x/session#flash-data">Flash-сообщения</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

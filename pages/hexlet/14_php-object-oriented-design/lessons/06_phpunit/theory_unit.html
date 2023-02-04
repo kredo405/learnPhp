@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>PHPUnit - PHP: Объектно-ориентированный дизайн</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>PHPUnit</h1>
+                    <p>Практика на Хекслете проверяется автоматическими тестами, к которым вы уже немного привыкли, если
+                      смогли добраться до текущего урока. Для тестирования PHP-кода мы используем фреймворк PHPUnit,
+                      который, хоть и не единственный, но до сих пор — самый популярный. Имея некоторое представление об
+                      ООП, мы можем поговорить о его устройстве.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">namespace</span> <span style="color: #555555">App\Tests</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">PHPUnit\Framework\TestCase</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">App\Math\average</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #999988;font-style: italic">// Единственная незнакомая синтаксическая конструкция в этом тесте — `extends TestCase`.</span>
+<span style="color: #999988;font-style: italic">// С её помощью реализуется наследование. О наследовании пойдёт разговор в следующих курсах,</span>
+<span style="color: #999988;font-style: italic">// а сейчас достаточно знать, что все методы, которые мы вызываем внутри нашего теста,</span>
+<span style="color: #999988;font-style: italic">// определены в классе `TestCase`, и именно наследование позволяет их использовать.</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">MathTest</span> <span style="color: #000000;font-weight: bold">extends</span> <span style="color: #445588;font-weight: bold">TestCase</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">testAverage</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">assertEquals</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">,</span> <span style="color: #990000;font-weight: bold">average</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">));</span>
+        <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">assertEquals</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">5</span><span style="background-color: #f8f8f8">,</span> <span style="color: #990000;font-weight: bold">average</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">10</span><span style="background-color: #f8f8f8">));</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Не имеет значения предмет тестирования; любой тест PHPUnit всегда описывается в классе с именем
+                      <code>Что-тоTest</code> внутри директории <code>tests</code>. Если тестируется какой-то конкретный
+                      класс с именем <code>Foo</code>, то по соглашению его тесты располагаются в классе
+                      <code>FooTest</code>. Точно такое же правило с пространством имён без классов. Как правило,
+                      структура директорий внутри <code>tests</code> совпадает со структурой исходных файлов — так проще
+                      ориентироваться, и некоторые редакторы позволяют автоматически переключаться между тестом и
+                      исходным файлом при такой структуре и именовании.</p>
+                    <pre class="hljs"><code class=>src/                                tests/
+`-- Money/Currency.php              `-- Money/CurrencyTest.php
+`-- IntlFormatter.php               `-- IntlFormatterTest.php
+`-- Money.php                       `-- MoneyTest.php
+</code></pre>
+                    <p>Каждый тестовый класс состоит из тестовых методов. Тестовые методы всегда начинаются с префикса
+                      <code>test</code>, например, <code>testAverage</code> — только тогда PHPUnit понимает, что это
+                      тестовый метод и выполняет его автоматически при прогоне тестов. Тестовые методы пишутся
+                      программистом. Нет никаких правил в том, сколько их должно быть и какова должна быть их структура.
+                      Если необходимо написать десять разных тестов на одну функцию, то так и нужно делать.</p>
+
+                    <p>Главная задача любого тестового метода — выполнить ту проверку, ради которой задумывался
+                      соответствующий тест. В примере выше тестируется функция <code>average</code>, находящая среднее
+                      арифметическое всех переданных в эту функцию чисел. Average — чистая функция, а значит, её легко
+                      тестировать. Достаточно передать в функцию несколько чисел и проверить возвращаемое значение.</p>
+
+                    <p>Проверки в PHPUnit выполняются с помощью специальных функций — утверждений. Этих функций довольно
+                      <a href="https://phpunit.readthedocs.io/ru/latest/assertions.html" target="_blank"
+                        rel="nofollow">много</a>, но среди них есть несколько наиболее используемых. Метод
+                      <code>assertEquals</code> принимает на вход два значения:</p>
+
+                    <ol>
+                      <li> Expected. Ожидаемый результат — то, что должна вернуть функция.</li>
+                      <li> Actual. Результат, который на самом деле вернула функция.</li>
+                    </ol>
+
+                    <p>Порядок важен. На его основе PHPUnit формирует вывод, в котором указывает, что ожидалось, а что
+                      пришло на самом деле.</p>
+
+                    <p>Другое популярное утверждение <code>assertTrue</code> (и <code>assertFalse</code>). Оно принимает
+                      только один аргумент и отлично подходит для тестирования предикатов.</p>
+                    <h2 id="analiz-dizayna">Анализ дизайна</h2>
+                    <p>Дизайн тестов на основе классов теряет свою популярность, а во многих языках уже давно не
+                      используется. Современный подход растёт из <a
+                        href="https://ru.wikipedia.org/wiki/BDD_(%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)"
+                        target="_blank" rel="nofollow">BDD</a> процесса. Синтаксически такие тесты часто полагаются на
+                      функции высшего порядка <code>describe</code> и <code>it</code>.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #990000;font-weight: bold">describe</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Example'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">()</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$object</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">stdClass</span><span style="background-color: #f8f8f8">();</span>
+    <span style="color: #008080">$object</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">name</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'pho'</span><span style="background-color: #f8f8f8">;</span>
+
+    <span style="color: #990000;font-weight: bold">context</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">()</span> <span style="color: #000000;font-weight: bold">use</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$object</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #990000;font-weight: bold">it</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'is set to pho'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span><span style="background-color: #f8f8f8">()</span>  <span style="color: #000000;font-weight: bold">use</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$object</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+            <span style="color: #990000;font-weight: bold">expect</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$object</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">name</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">toBe</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'pho'</span><span style="background-color: #f8f8f8">);</span>
+        <span style="background-color: #f8f8f8">});</span>
+    <span style="background-color: #f8f8f8">});</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>Замечу, что в PHP такой стиль выглядит немного тяжёлым из-за обилия синтаксических конструкций.
+                    </p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://phpunit.de/manual/6.5/en/writing-tests-for-phpunit.html">Официальная
+                          документация</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://behat.org/en/latest/quick_start.html">Behat (BDD Framework)</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://codeception.com/">Codeception (Браузерные тесты)</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://ru.hexlet.io/blog/posts/how-to-test-code">Начинаем писать тесты
+                          (Правильно)</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

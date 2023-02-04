@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Теория Множеств - PHP: Массивы</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Теория Множеств</h1>
+                    <p>Теория множеств. Знаю, как многие пугаются математики, но конкретно теория множеств (наивная)
+                      очень проста и понятна. Более того, мы постоянно используем её элементы в обычной жизни. А уж в
+                      программировании она встречается на каждом шагу.</p>
+
+                    <p>Основное понятие теории множеств, как не удивительно — <strong>множество</strong>. Множеством
+                      обозначают совокупность объектов произвольной природы, рассматривающихся как единое целое.
+                      Простейший пример — цифры. Множество арабских цифр включает в себя 10 элементов и является
+                      <strong>конечным</strong>. Понятие конечности носит интуитивный характер и обозначает, что в
+                      множестве конечное число элементов.</p>
+
+                    <p>Пример бесконечного множества — натуральные числа. В свою очередь множество натуральных чисел
+                      является подмножеством целых чисел, которые в свою очередь являются подмножеством рациональных
+                      чисел и так далее.</p>
+
+                    <p>«Подмножество» означает, что все элементы одного множества также входят в другое множество,
+                      называемое <strong>надмножеством</strong> (по отношению к подмножеству).</p>
+
+                    <p><img alt="Real Set" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjM4ZTNlZTgwYjhhNmZmMzAwYTIxNDIzNDA0M2IwNTk2LmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=a679a449faffe9c3b59490f9d24852add7e13c696054aa425d5aa0d6dcda03ec"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Представление множеств кружками довольно удобно. Можно быстро оценить как друг с другом
+                      соотносятся разные множества.</p>
+
+                    <p>Но математические объекты, такие как числа, не единственные возможные объекты множеств.
+                      Множеством можно назвать группу людей, стоящих на остановке в ожидании своего автобуса, или
+                      жильцов квартир одного дома, города или страны. Любой набор любых объектов, которые мы хотим
+                      рассматривать как одно целое.</p>
+
+                    <p>Главное для нас в теории множеств — операции над ними. К ним относятся: дополнение, объединение,
+                      пересечение, разность, декартово произведение и некоторые другие.</p>
+
+                    <p>Простой пример. Когда в Фейсбуке вы заходите на страницу другого человека, то Фейсбук показывает
+                      вам блок с общими друзьями. Если принять, что ваши друзья и друзья вашего друга — два множества,
+                      то общие друзья — множество, полученное как пересечение исходных множеств друзей.</p>
+
+                    <p>Переходя к программированию, можно заметить, что массив очень похож на множество, и его
+                      действительно можно так рассматривать. Почему это так важно? Понимая принципы, на которых основаны
+                      некоторые операции, вы сможете реализовывать их наиболее быстрым и эффективным способом. Например,
+                      зная, что вам нужна операция пересечения множеств в PHP, вы можете попытаться найти функцию,
+                      которая делает поставленную задачу. Для этого достаточно ввести в гугл запрос: <em>php set
+                        intersect</em> (set — множество, intersect — пересечение). Первая (по крайней мере, у меня)
+                      ссылка в поисковой выдаче ведёт на <a
+                        href="https://php.net/manual/ru/function.array-intersect.php" target="_blank"
+                        rel="nofollow">нужную</a> функцию <code>array_intersect</code>. То же самое вас ждёт и с другими
+                      операциями. Это частичный ответ на вопрос «нужна ли математика программистам?».</p>
+
+                    <p>Кстати, не во всех языках есть встроенные функции для работы со множествами. В некоторых для
+                      этого нужно ставить дополнительные библиотеки, а в таких как, например, Ruby, операции со
+                      множествами реализованы с использованием арифметических операторов (объединение множеств:
+                      <code>coll1 + coll2</code>).</p>
+
+                    <p>Отдельно стоит сказать, что реляционные базы данных построены на идеях реляционной алгебры, в
+                      которой теория множеств играет центральную роль. Базы данных — неотъемлемая часть веб-разработки,
+                      и позже мы с ними познакомимся.</p>
+
+                    <p>Рассмотрим основные операции:</p>
+                    <h2 id="peresechenie">Пересечение</h2>
+                    <p>Пересечением множеств называется множество, в которое входят элементы, встречающиеся во всех
+                      данных множествах одновременно.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$friends1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'vasya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'kolya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'petya'</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #008080">$friends2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'igor'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'petya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'sergey'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'vasya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'sasha'</span><span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #0086B3">array_intersect</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$friends1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$friends2</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// ['vasya', 'petya']</span>
+</code></pre>
+                    <p>Эта функция принимает любое количество массивов. То есть вы можете находить пересечение любого
+                      количества массивов за один вызов.</p>
+                    <h2 id="ob-edinenie">Объединение</h2>
+                    <p>Объединением множеств называется множество, в которое входят элементы всех данных множеств.
+                      Объединение множеств в PHP нельзя сделать одним вызовом, но его можно имитировать, соединив две
+                      функции:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$friends1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'vasya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'kolya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'petya'</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #008080">$friends2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'igor'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'petya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'sergey'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'vasya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'sasha'</span><span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #999988;font-style: italic">// merge выполняет слияние двух массивов. В отличие от пересечения,</span>
+<span style="color: #999988;font-style: italic">// в нём повторяются элементы, которые встречаются там и там (а не должны)</span>
+<span style="color: #008080">$friends</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_merge</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$friends1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$friends2</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// ['vasya', 'kolya', 'petya', 'igor', 'petya', 'sergey', 'vasya', 'sasha'];</span>
+
+<span style="color: #999988;font-style: italic">// unique удаляет дубли</span>
+<span style="color: #008080">$sharedFriends</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_unique</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$friends</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// ['vasya', 'kolya', 'petya', 'igor', 'sergey', 'sasha']</span>
+</code></pre>
+                    <h2 id="dopolnenie-raznost">Дополнение (разность)</h2>
+                    <p>Разностью двух множеств называется множество, в которое входят элементы первого множества, не
+                      входящие во второе. В программировании такая операция часто называется <em>diff</em>.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$friends1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'vasya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'kolya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'petya'</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #008080">$friends2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'igor'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'petya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'sergey'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'vasya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'sasha'</span><span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #0086B3">array_diff</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$friends1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$friends2</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// ['kolya']</span>
+</code></pre>
+                    <h2 id="prinadlezhnost-mnozhestvu">Принадлежность множеству</h2>
+                    <p>Проверку принадлежности элемента множеству можно выполнить с помощью функции
+                      <code>in_array</code>:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$terribleNumbers</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #009999">4</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">13</span><span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #0086B3">in_array</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">10</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$terribleNumbers</span><span style="background-color: #f8f8f8">))</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'woah!'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://ru.hexlet.io/blog/posts/teoriya-mnozhestv-osnovy-i-bazovye-operatsii-nad-mnozhestvami">Основы
+                          и базовые операции над множествами</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="http://ilib.mccme.ru/djvu/rasomn1.djvu">Рассказы о множествах
+                          (djvu)</a>
+                      </li>
+                    </ol>           
+
+</body>
+
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Модифицирующие формы - Веб-разработка на PHP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Модифицирующие формы</h1>
+                    <p>Формы, изменяющие данные, устроены сложнее как с клиентской стороны, так и с серверной. Для
+                      уверенной работы с ними необходимо разбираться в следующих вопросах:</p>
+
+                    <ul>
+                      <li>Знание соответствующих HTML тегов.</li>
+                      <li>Понимание того как отправляются формы по HTTP.</li>
+                      <li>Обработка на стороне сервера.</li>
+                      <li>Валидация и вывод ошибок.</li>
+                    </ul>
+
+                    <p>Начнём с того, что за вывод формы и её обработку должны отвечать два разных обработчика (а значит
+                      это разные маршруты). Ниже пример маршрутов для создания нового пользователя:</p>
+
+                    <ul>
+                      <li>GET <em>/users/new</em> — страница с формой, которую заполняет пользователь. Эта форма
+                        отправляет POST-запрос на адрес <em>/users</em>, указанный в атрибуте <code>action</code>.</li>
+                      <li>POST <em>/users</em> — маршрут, обрабатывающий данные формы</li>
+                    </ul>
+
+                    <p>Я выбрал именно такие маршруты не случайно. Подобная схема именования <a
+                        href="https://guides.rubyonrails.org/routing.html#resource-routing-the-rails-default"
+                        target="_blank" rel="nofollow">рекомендуется</a> и автоматически создаётся многими фреймворками,
+                      такими как Rails. Она хорошо ложится на REST-архитектуру, о которой мы ещё поговорим.</p>
+                    <h2 id="forma">Форма</h2>
+                    <pre class="hljs"><code class=html><span style="color: #999988;font-style: italic">&lt;!-- templates/users/new.phtml --&gt;</span>
+<span style="color: #000080">&lt;form</span> <span style="color: #008080">action=</span><span style="color: #d14">"/users"</span> <span style="color: #008080">method=</span><span style="color: #d14">"post"</span><span style="color: #000080">&gt;</span>
+  <span style="color: #000080">&lt;div&gt;</span>
+    <span style="color: #000080">&lt;label&gt;</span>
+        Имя
+      <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"text"</span> <span style="color: #008080">name=</span><span style="color: #d14">"user[name]"</span><span style="color: #000080">&gt;</span>
+    <span style="color: #000080">&lt;/label&gt;</span>
+  <span style="color: #000080">&lt;/div&gt;</span>
+  <span style="color: #000080">&lt;div&gt;</span>
+    <span style="color: #000080">&lt;label&gt;</span>
+      Email
+      <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"email"</span> <span style="color: #008080">required</span> <span style="color: #008080">name=</span><span style="color: #d14">"user[email]"</span><span style="color: #000080">&gt;</span>
+    <span style="color: #000080">&lt;/label&gt;</span>
+    <span style="color: #000080">&lt;/div&gt;</span>
+  <span style="color: #000080">&lt;div&gt;</span>
+    <span style="color: #000080">&lt;label&gt;</span>
+        Пароль
+    <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"password"</span> <span style="color: #008080">required</span> <span style="color: #008080">name=</span><span style="color: #d14">"user[password]"</span><span style="color: #000080">&gt;</span>
+    <span style="color: #000080">&lt;/label&gt;</span>
+    <span style="color: #000080">&lt;/div&gt;</span>
+  <span style="color: #000080">&lt;div&gt;</span>
+    <span style="color: #000080">&lt;label&gt;</span>
+        Подтверждение пароля
+    <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"password"</span> <span style="color: #008080">required</span> <span style="color: #008080">name=</span><span style="color: #d14">"user[passwordConfirmation]"</span><span style="color: #000080">&gt;</span>
+    <span style="color: #000080">&lt;/label&gt;</span>
+  <span style="color: #000080">&lt;/div&gt;</span>
+  <span style="color: #000080">&lt;div&gt;</span>
+    <span style="color: #000080">&lt;label&gt;</span>
+      Город
+      <span style="color: #000080">&lt;select</span> <span style="color: #008080">name=</span><span style="color: #d14">"user[city]"</span><span style="color: #000080">&gt;</span>
+        <span style="color: #000080">&lt;option</span> <span style="color: #008080">value=</span><span style="color: #d14">"3"</span><span style="color: #000080">&gt;</span>Москва<span style="color: #000080">&lt;/option&gt;</span>
+        <span style="color: #000080">&lt;option</span> <span style="color: #008080">value=</span><span style="color: #d14">"13"</span><span style="color: #000080">&gt;</span>Пенза<span style="color: #000080">&lt;/option&gt;</span>
+        <span style="color: #000080">&lt;option</span>  <span style="color: #008080">value=</span><span style="color: #d14">"399"</span><span style="color: #000080">&gt;</span>Томск<span style="color: #000080">&lt;/option&gt;</span>
+      <span style="color: #000080">&lt;/select&gt;</span>
+    <span style="color: #000080">&lt;/label&gt;</span>
+  <span style="color: #000080">&lt;/div&gt;</span>
+  <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"submit"</span> <span style="color: #008080">value=</span><span style="color: #d14">"Sign Up"</span><span style="color: #000080">&gt;</span>
+<span style="color: #000080">&lt;/form&gt;</span>
+</code></pre>
+                    <p>Интересный момент в форме выше, то как задаются имена. Каждое имя определяется как ключ в массиве
+                      <code>user</code>. Такой способ определения имён не является обязательным, но он очень удобен для
+                      массовой обработки значений формы. Их изоляция в одном массиве позволяет избежать потенциальных
+                      пересечений с другими данными. В поисковых формах эта схема тоже удобна, если количество элементов
+                      больше одного.</p>
+
+                    <p>Здесь стоит сказать, что с точки зрения HTTP не существует способа передавать массивы. Если не
+                      указано иного, то данные формы кодируются в теле запроса как
+                      <em>application/x-www-form-urlencoded</em>. Чисто технически это выглядит, как строка запроса с
+                      парами &quot;ключ-значение&quot;, объединённые символом <em>&amp;</em>.</p>
+                    <pre class="hljs"><code class=>POST /users HTTP/1.1
+Host: example.com
+Content-type: application/x-www-form-urlencoded
+Content-length: 42
+
+key=value&amp;key2=value2&amp;user%5Bname%5D%3Djon
+</code></pre>
+                    <p>В конце тела закодирован ключ <code>user[name]</code>. Превращение таких ключей в массив идёт на
+                      уровне интерпретатора, в случае PHP, либо самого фреймворка в случае остальных языков.</p>
+                    <h2 id="obrabotka-dannyh">Обработка данных</h2>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$repo</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">App\UserRepository</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">post</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/users'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">use</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$repo</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$validator</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Validator</span><span style="background-color: #f8f8f8">();</span>
+    <span style="color: #008080">$user</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$request</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getParsedBodyParam</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'user'</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #008080">$errors</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$validator</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">validate</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #0086B3">count</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$errors</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">===</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$repo</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">save</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">);</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">withRedirect</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/users'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">302</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">}</span>
+    <span style="color: #008080">$params</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span>
+        <span style="color: #d14">'user'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$user</span><span style="background-color: #f8f8f8">,</span>
+        <span style="color: #d14">'errors'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$errors</span>
+    <span style="background-color: #f8f8f8">];</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'renderer'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">"users/new.phtml"</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$params</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>Обработка данных формы начинается с извлечения данных из тела запроса. Это можно сделать двумя
+                      способами, похожими на то как мы извлекаем параметры запроса:</p>
+
+                    <ul>
+                      <li><code>getParsedBody()</code> – извлекает все данные</li>
+                      <li><code>getParsedBodyParam($name, $defaultValue)</code> – извлекает значение конкретного
+                        параметра. Вторым параметром принимает значение по умолчанию.</li>
+                    </ul>
+
+                    <!-- end list -->
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$user</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$request</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getParsedBodyParam</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'user'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Далее нужно убедиться в том, что данные введены верно. Процесс проверки корректности данных
+                      называется валидацией. Slim, как и большинство микрофреймворков, не предоставляет никаких
+                      механизмов для валидации. Её можно получить из сторонних библиотек. В нашем случае валидация
+                      реализуется классом с одним методом <code>validate()</code>, который проверяет данные формы и
+                      возвращает специальный массив <code>$errors</code>, в котором ключ — это название поля, а значение
+                      — текст ошибки, который нужно вывести в форме.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$validator</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Validator</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #999988;font-style: italic">// function validate($user)</span>
+<span style="color: #999988;font-style: italic">// {</span>
+<span style="color: #999988;font-style: italic">//     $errors = [];</span>
+<span style="color: #999988;font-style: italic">//     if (empty($user['name'])) {</span>
+<span style="color: #999988;font-style: italic">//         $errors['name'] = "Can't be blank"</span>
+<span style="color: #999988;font-style: italic">//     }</span>
+<span style="color: #999988;font-style: italic">//</span>
+<span style="color: #999988;font-style: italic">//     // ...</span>
+<span style="color: #999988;font-style: italic">//</span>
+<span style="color: #999988;font-style: italic">//     return $errors;</span>
+<span style="color: #999988;font-style: italic">// }</span>
+<span style="color: #008080">$errors</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$validator</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">validate</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Если ошибок нет, то данные формы сохраняются, например, в базу данных. Об этом подробнее в
+                      следующем уроке. После сохранения выполняется перенаправление (HTTP redirect). За перенаправление
+                      отвечает заголовок <em>Location</em> и статусы с кодом 3XX.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #0086B3">count</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$errors</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">===</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$repo</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">save</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">withRedirect</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/users'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Если в процессе обработки возникли ошибки, выполняется рендеринг формы из того же шаблона, что мы
+                      использовали для <em>/users/new</em>. В этот шаблон передаются как данные формы, так и список
+                      ошибок. Редиректа не происходит, в адресной строке остаётся адрес <em>/users</em>. Если
+                      попробовать в этот момент нажать <kbd>f5</kbd>, то браузер выдаст предупреждение о том, что вы
+                      пытаетесь повторно отправить данные. Это сообщение предупреждает о том, что метод POST не
+                      идемпотентен, и повторная отправка формы может привести к повторному созданию пользователя.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$params</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span>
+    <span style="color: #d14">'user'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$user</span><span style="background-color: #f8f8f8">,</span>
+    <span style="color: #d14">'errors'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$errors</span>
+<span style="background-color: #f8f8f8">];</span>
+<span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'renderer'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">"users/new.phtml"</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$params</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Теперь давайте вернёмся к нашей форме и изменим её так, чтобы в неё подставлялись как возникающие
+                      ошибки, так и значения полей, введённые пользователем.</p>
+                    <pre class="hljs"><code class=html><span style="color: #999988;font-style: italic">&lt;!-- templates/users/new.phtml --&gt;</span>
+<span style="color: #000080">&lt;form</span> <span style="color: #008080">action=</span><span style="color: #d14">"/users"</span> <span style="color: #008080">method=</span><span style="color: #d14">"post"</span><span style="color: #000080">&gt;</span>
+  <span style="color: #000080">&lt;div&gt;</span>
+    <span style="color: #000080">&lt;label&gt;</span>
+        Имя
+      <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"text"</span> <span style="color: #008080">name=</span><span style="color: #d14">"user[name]"</span> <span style="color: #008080">value=</span><span style="color: #d14">"&lt;?= htmlspecialchars($user['name']) ?&gt;"</span><span style="color: #000080">&gt;</span>
+    <span style="color: #000080">&lt;/label&gt;</span>
+    <span style="color: #999999;font-weight: bold">&lt;?php if (isset($errors['name'])): ?&gt;</span>
+      <span style="color: #000080">&lt;div&gt;</span><span style="color: #999999;font-weight: bold">&lt;?= $errors['name'] ?&gt;</span><span style="color: #000080">&lt;/div&gt;</span>
+    <span style="color: #999999;font-weight: bold">&lt;?php endif ?&gt;</span>
+  <span style="color: #000080">&lt;/div&gt;</span>
+  <span style="color: #000080">&lt;div&gt;</span>
+    <span style="color: #000080">&lt;label&gt;</span>
+        Email
+      <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"email"</span> <span style="color: #008080">required</span> <span style="color: #008080">name=</span><span style="color: #d14">"user[email]"</span> <span style="color: #008080">value=</span><span style="color: #d14">"&lt;?= htmlspecialchars($user['email']) ?&gt;"</span><span style="color: #000080">&gt;</span>
+    <span style="color: #000080">&lt;/label&gt;</span>
+    <span style="color: #999999;font-weight: bold">&lt;?php if (isset($errors['email'])): ?&gt;</span>
+      <span style="color: #000080">&lt;div&gt;</span><span style="color: #999999;font-weight: bold">&lt;?= $errors['email'] ?&gt;</span><span style="color: #000080">&lt;/div&gt;</span>
+    <span style="color: #999999;font-weight: bold">&lt;?php endif ?&gt;</span>
+  <span style="color: #000080">&lt;/div&gt;</span>
+  <span style="color: #000080">&lt;div&gt;</span>
+    <span style="color: #000080">&lt;label&gt;</span>
+        Пароль
+      <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"password"</span> <span style="color: #008080">required</span> <span style="color: #008080">name=</span><span style="color: #d14">"user[password]"</span> <span style="color: #008080">value=</span><span style="color: #d14">"&lt;?= htmlspecialchars($user['password']) ?&gt;"</span><span style="color: #000080">&gt;</span>
+    <span style="color: #000080">&lt;/label&gt;</span>
+    <span style="color: #999999;font-weight: bold">&lt;?php if (isset($errors['password'])): ?&gt;</span>
+      <span style="color: #000080">&lt;div&gt;</span><span style="color: #999999;font-weight: bold">&lt;?= $errors['password'] ?&gt;</span><span style="color: #000080">&lt;/div&gt;</span>
+    <span style="color: #999999;font-weight: bold">&lt;?php endif ?&gt;</span>
+  <span style="color: #000080">&lt;/div&gt;</span>
+  <span style="color: #000080">&lt;div&gt;</span>
+    <span style="color: #000080">&lt;label&gt;</span>
+        Подтверждение пароля
+      <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"password"</span> <span style="color: #008080">required</span> <span style="color: #008080">name=</span><span style="color: #d14">"user[passwordConfirmation]"</span> <span style="color: #008080">value=</span><span style="color: #d14">"&lt;?= htmlspecialchars($user['passwordConfirmation']) ?&gt;"</span><span style="color: #000080">&gt;</span>
+    <span style="color: #000080">&lt;/label&gt;</span>
+  <span style="color: #000080">&lt;/div&gt;</span>
+  <span style="color: #000080">&lt;div&gt;</span>
+    <span style="color: #000080">&lt;label&gt;</span>
+      Город
+      <span style="color: #000080">&lt;select</span> <span style="color: #008080">name=</span><span style="color: #d14">"user[city]"</span><span style="color: #000080">&gt;</span>
+        <span style="color: #000080">&lt;option</span> <span style="color: #008080">value=</span><span style="color: #d14">""</span><span style="color: #000080">&gt;</span>Select<span style="color: #000080">&lt;/option&gt;</span>
+        <span style="color: #000080">&lt;option</span> <span style="color: #a61717;background-color: #e3d2d2">&lt;?=</span> <span style="color: #a61717;background-color: #e3d2d2">$</span><span style="color: #008080">user</span><span style="color: #a61717;background-color: #e3d2d2">['</span><span style="color: #008080">city</span><span style="color: #a61717;background-color: #e3d2d2">'</span><span style="color: #008080">] =</span><span style="color: #d14">==</span> <span style="color: #a61717;background-color: #e3d2d2">'3'</span> <span style="color: #a61717;background-color: #e3d2d2">?</span> <span style="color: #a61717;background-color: #e3d2d2">'</span><span style="color: #008080">selected</span><span style="color: #a61717;background-color: #e3d2d2">'</span> <span style="color: #008080">:</span> <span style="color: #a61717;background-color: #e3d2d2">''</span> <span style="color: #a61717;background-color: #e3d2d2">?</span><span style="color: #000080">&gt;</span> value="3"&gt;Москва<span style="color: #000080">&lt;/option&gt;</span>
+        <span style="color: #000080">&lt;option</span> <span style="color: #a61717;background-color: #e3d2d2">&lt;?=</span> <span style="color: #a61717;background-color: #e3d2d2">$</span><span style="color: #008080">user</span><span style="color: #a61717;background-color: #e3d2d2">['</span><span style="color: #008080">city</span><span style="color: #a61717;background-color: #e3d2d2">'</span><span style="color: #008080">] =</span><span style="color: #d14">==</span> <span style="color: #a61717;background-color: #e3d2d2">'13'</span> <span style="color: #a61717;background-color: #e3d2d2">?</span> <span style="color: #a61717;background-color: #e3d2d2">'</span><span style="color: #008080">selected</span><span style="color: #a61717;background-color: #e3d2d2">'</span> <span style="color: #008080">:</span> <span style="color: #a61717;background-color: #e3d2d2">''</span> <span style="color: #a61717;background-color: #e3d2d2">?</span><span style="color: #000080">&gt;</span> value="13"&gt;Пенза<span style="color: #000080">&lt;/option&gt;</span>
+        <span style="color: #000080">&lt;option</span> <span style="color: #a61717;background-color: #e3d2d2">&lt;?=</span> <span style="color: #a61717;background-color: #e3d2d2">$</span><span style="color: #008080">user</span><span style="color: #a61717;background-color: #e3d2d2">['</span><span style="color: #008080">city</span><span style="color: #a61717;background-color: #e3d2d2">'</span><span style="color: #008080">] =</span><span style="color: #d14">==</span> <span style="color: #a61717;background-color: #e3d2d2">'399'</span> <span style="color: #a61717;background-color: #e3d2d2">?</span> <span style="color: #a61717;background-color: #e3d2d2">'</span><span style="color: #008080">selected</span><span style="color: #a61717;background-color: #e3d2d2">'</span> <span style="color: #008080">:</span> <span style="color: #a61717;background-color: #e3d2d2">''</span> <span style="color: #a61717;background-color: #e3d2d2">?</span><span style="color: #000080">&gt;</span> value="399"&gt;Томск<span style="color: #000080">&lt;/option&gt;</span>
+      <span style="color: #000080">&lt;/select&gt;</span>
+    <span style="color: #000080">&lt;/label&gt;</span>
+    <span style="color: #999999;font-weight: bold">&lt;?php if (isset($errors['city'])): ?&gt;</span>
+      <span style="color: #000080">&lt;div&gt;</span><span style="color: #999999;font-weight: bold">&lt;?= $errors['city'] ?&gt;</span><span style="color: #000080">&lt;/div&gt;</span>
+    <span style="color: #999999;font-weight: bold">&lt;?php endif ?&gt;</span>
+  <span style="color: #000080">&lt;/div&gt;</span>
+  <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"submit"</span> <span style="color: #008080">value=</span><span style="color: #d14">"Sign Up"</span><span style="color: #000080">&gt;</span>
+<span style="color: #000080">&lt;/form&gt;</span>
+</code></pre>
+                    <p>В свою очередь такое изменение формы требует изменения обработчика <em>/users/new</em>. Во
+                      избежание ошибок необходимо передать в шаблон пустой массив <code>$errors</code> и массив
+                      <code>$user</code>, в котором необходимо задать значения по умолчанию для соответствующих полей
+                      формы. Таким образом в шаблоне не придётся выполнять проверку данных формы на существование.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/users/new'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$params</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span>
+        <span style="color: #d14">'user'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">''</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'email'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">''</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'password'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">''</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'passwordConfirmation'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">''</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'city'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">''</span><span style="background-color: #f8f8f8">],</span>
+        <span style="color: #d14">'errors'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="background-color: #f8f8f8">[]</span>
+    <span style="background-color: #f8f8f8">];</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'renderer'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">"users/new.phtml"</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$params</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>Обратите внимание на то, как увеличилась в размерах форма. На практике она будет ещё больше из-за
+                      дополнительного оформления, например, отступов и подсветки ошибок. Сделав десяток форм вы быстро
+                      поймёте что так жить нельзя. Ради простейшей обработки придётся писать много практически
+                      идентичного кода в HTML. Эта работа требует автоматизации и, к счастью, давно автоматизирована.
+                      Для генерации форм используются специальные билдеры. По традиции, микрофреймворки не имеют
+                      встроенных билдеров, поэтому придётся искать их самостоятельно. Довольно популярны <a
+                        href="https://symfony.com/doc/current/components/form.html" target="_blank"
+                        rel="nofollow">формы</a> из фреймворка Symfony. В этом компоненте каждая форма представлена
+                      своим собственным классом. Компонент поддерживает валидацию, имеет встроенные механизмы защиты от
+                      некоторых атак и многое другое.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Создайте шаблон и добавьте обработчик, выводящий форму создания пользователя. Поля: nickname,
+                        email, id (должен генерироваться внутри приложения).</li>
+                      <li> Добавьте обработчик, который сохраняет введенные данные. Для хранения пользователя
+                        используйте файл. Записывайте в него пользователей построчно. Одна строка один пользователь.
+                        Сами данные можно кодировать в <em>json</em> с помощью <code>json_encode()</code> и декодировать
+                        с помощью <code>json_decode()</code>. Для работы с файлом используйте функции <a
+                          href="https://www.php.net/manual/ru/function.file-put-contents.php" target="_blank"
+                          rel="nofollow">file_put_contents()</a> и <a
+                          href="https://www.php.net/manual/ru/function.file-get-contents.php" target="_blank"
+                          rel="nofollow">file_get_contents()</a></li>
+                      <li> После добавления данных в файл должен происходить редирект на адрес <em>/users</em>.</li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://github.com/kristijanhusak/laravel-form-builder">Laravel Form
+                          builder</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://php.net/manual/ru/migration70.new-features.php#migration70.new-features.null-coalesce-op">Null-коалесцентный
+                          оператор</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

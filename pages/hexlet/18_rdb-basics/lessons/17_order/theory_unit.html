@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Сортировка (ORDER) - Основы реляционных баз данных</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="0QKoiLUBaS5PA2CT_aqP43R964ZBzbGszfTJEB_1IEko3wbjRig0CX32Mn4QAkxkamqK117vuxufpFOP1DR_QQ" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../transactions/exercise_unit.html">Основы реляционных баз данных</a>
+                    <h1 class='mt-0 mb-4'>Сортировка (ORDER)</h1>
+                    <p><em>Попробуйте выполнить запросы из урока на локальной базе данных, которую мы установили
+                        ранее</em></p>
+                    <h2 id="neopredelyonnost-poryadka-sortirovki">Неопределённость порядка сортировки</h2>
+                    <p>Выборка данных из базы не имеет определённого порядка, точнее порядок есть, но он никак логически
+                      не обоснован. База данных, по умолчанию, возвращает данные в том порядке, в котором ей удобнее. По
+                      счастливому стечению обстоятельств этот порядок может совпасть с желаемым, но рассчитывать на это
+                      нельзя. Теоретически он может поменяться при следующем запросе или когда количество данных в
+                      таблице изменится. Обновление версии базы данных тоже может повлиять на это.</p>
+                    <h2 id="obschaya-shema-zaprosa-na-sortirovku">Общая схема запроса на сортировку</h2>
+                    <p><img alt="Сортировка данных в таблице" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjliYTBkMWY2ODAxZjM1ZTFmNTI2MzYzYjJkZGE2YTI3LmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=f1fda93921a06ba98dd79b17c773f48917629983684d62f96da824166f02245f"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Сортировка задаётся с помощью части <em>ORDER BY</em>, за которой следует имя поля, по которому
+                      происходит сортировка:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">SELECT</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">users</span> <span style="color: #000000;font-weight: bold">ORDER</span> <span style="color: #000000;font-weight: bold">BY</span> <span style="background-color: #f8f8f8">username</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>База данных — умная штука, она знает, как сравнивать не только числа, но и строки, и даты.
+                      Сортировка по датам — крайне частая операция, выглядит она идентично любой другой сортировке:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">SELECT</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">users</span> <span style="color: #000000;font-weight: bold">ORDER</span> <span style="color: #000000;font-weight: bold">BY</span> <span style="background-color: #f8f8f8">created_at</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <h2 id="upravlenie-poryadkom-sortirovki">Управление порядком сортировки</h2>
+                    <p>Если ничего дополнительно не указывать, то <em>ORDER BY</em> сортирует в <strong>прямом
+                        порядке</strong> — от меньшего к большему. Запрос выше — это сокращённая версия полного запроса
+                      с сортировкой: полный запрос включает в себя <em>ASC</em>, который подставляется автоматически,
+                      если ничего не указано:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">SELECT</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">users</span> <span style="color: #000000;font-weight: bold">ORDER</span> <span style="color: #000000;font-weight: bold">BY</span> <span style="background-color: #f8f8f8">created_at</span> <span style="color: #000000;font-weight: bold">ASC</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #999988;font-style: italic">-- то же самое что и SELECT * FROM users ORDER BY created_at;</span>
+</code></pre>
+                    <p>Для сортировки в обратном порядке указывается <em>DESC</em>:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">SELECT</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">users</span> <span style="color: #000000;font-weight: bold">ORDER</span> <span style="color: #000000;font-weight: bold">BY</span> <span style="background-color: #f8f8f8">created_at</span> <span style="color: #000000;font-weight: bold">DESC</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>Иногда возникает необходимость сортировать данные сразу по нескольким полям. Этого легко
+                      добиться, просто перечисляя поля через запятую:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">SELECT</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">users</span> <span style="color: #000000;font-weight: bold">ORDER</span> <span style="color: #000000;font-weight: bold">BY</span> <span style="background-color: #f8f8f8">first_name</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">created_at</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>Порядок сортировки в таком случае задаётся для каждого поля индивидуально:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">SELECT</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">users</span> <span style="color: #000000;font-weight: bold">ORDER</span> <span style="color: #000000;font-weight: bold">BY</span> <span style="background-color: #f8f8f8">first_name</span> <span style="color: #000000;font-weight: bold">DESC</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">created_at</span> <span style="color: #000000;font-weight: bold">DESC</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">SELECT</span> <span style="background-color: #f8f8f8">first_name</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">created_at</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">users</span> <span style="color: #000000;font-weight: bold">ORDER</span> <span style="color: #000000;font-weight: bold">BY</span> <span style="background-color: #f8f8f8">first_name</span> <span style="color: #000000;font-weight: bold">ASC</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">created_at</span> <span style="color: #000000;font-weight: bold">DESC</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>first_name</th>
+                          <th>created_at</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Maryse</td>
+                          <td>2019-03-04 13:03:01</td>
+                        </tr>
+                        <tr>
+                          <td>Maryse</td>
+                          <td>2018-12-06 10:24:04</td>
+                        </tr>
+                        <tr>
+                          <td>Maryse</td>
+                          <td>2018-12-06 10:09:48</td>
+                        </tr>
+                        <tr>
+                          <td>Sunny</td>
+                          <td>2019-03-04 13:04:28</td>
+                        </tr>
+                        <tr>
+                          <td>Sunny</td>
+                          <td>2018-12-06 06:19:30</td>
+                        </tr>
+                        <tr>
+                          <td>Tanya</td>
+                          <td>2018-12-06 07:12:01</td>
+                        </tr>
+                        <tr>
+                          <td>Tanya</td>
+                          <td>2018-12-05 23:55:15</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p>В этой выборке сначала выполняется сортировка по имени в прямом порядке. Затем, внутри групп с
+                      одинаковым именем, происходит сортировка по <em>created_at</em> в обратном порядке.</p>
+                    <h2 id="sortirovka-null-znacheniy">Сортировка NULL-значений</h2>
+                    <p>У сортировки есть один тонкий момент, связанный с сортировкой полей, содержащих
+                      <code>NULL</code>. Если ничего не указано дополнительно, то считается, что <code>NULL</code>
+                      больше любого значения. Другими словами, при прямой сортировке они окажутся в конце выборки, а при
+                      обратной — в начале. Этим поведением можно управлять с помощью фразы <code>NULLS FIRST</code>:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #999988;font-style: italic">-- сортируем по возрастанию даты (поле "created_at")</span>
+<span style="color: #999988;font-style: italic">-- поведение по умолчанию:</span>
+<span style="color: #999988;font-style: italic">-- поля, содержащие NULL, идут последними</span>
+<span style="color: #000000;font-weight: bold">SELECT</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">users</span> <span style="color: #000000;font-weight: bold">ORDER</span> <span style="color: #000000;font-weight: bold">BY</span> <span style="background-color: #f8f8f8">created_at</span> <span style="color: #000000;font-weight: bold">ASC</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #999988;font-style: italic">-- сортируем по возрастанию даты (поле "created_at")</span>
+<span style="color: #999988;font-style: italic">-- поля, содержащие NULL, идут первыми</span>
+<span style="color: #000000;font-weight: bold">SELECT</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">users</span> <span style="color: #000000;font-weight: bold">ORDER</span> <span style="color: #000000;font-weight: bold">BY</span> <span style="background-color: #f8f8f8">created_at</span> <span style="color: #000000;font-weight: bold">ASC</span> <span style="background-color: #f8f8f8">NULLS</span> <span style="color: #000000;font-weight: bold">FIRST</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>и <code>NULLS LAST</code>:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #999988;font-style: italic">-- сортируем по убыванию даты (поле "created_at")</span>
+<span style="color: #999988;font-style: italic">-- поведение по умолчанию:</span>
+<span style="color: #999988;font-style: italic">-- поля, содержащие NULL, идут первыми</span>
+<span style="color: #000000;font-weight: bold">SELECT</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">users</span> <span style="color: #000000;font-weight: bold">ORDER</span> <span style="color: #000000;font-weight: bold">BY</span> <span style="background-color: #f8f8f8">created_at</span> <span style="color: #000000;font-weight: bold">DESC</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #999988;font-style: italic">-- сортируем по убыванию даты (поле "created_at")</span>
+<span style="color: #999988;font-style: italic">-- поля, содержащие NULL, идут последними</span>
+<span style="color: #000000;font-weight: bold">SELECT</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">users</span> <span style="color: #000000;font-weight: bold">ORDER</span> <span style="color: #000000;font-weight: bold">BY</span> <span style="background-color: #f8f8f8">created_at</span> <span style="color: #000000;font-weight: bold">DESC</span> <span style="background-color: #f8f8f8">NULLS</span> <span style="color: #000000;font-weight: bold">LAST</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://postgrespro.ru/docs/postgresql/11/sql-select">Официальная
+                          документация</a>
+                      </li>
+                    </ol>
+</body>
+
+</html>

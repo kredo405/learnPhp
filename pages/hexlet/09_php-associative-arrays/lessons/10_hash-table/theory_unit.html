@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Хеш-таблицы - PHP: Ассоциативные массивы</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Хеш-таблицы</h1>
+                    <p>Ассоциативный массив — абстрактный тип данных (АТД), с помощью которого хранятся пары
+                      ключ-значение. У него есть и другие названия: &quot;словарь&quot;, &quot;мап&quot; (от слова map).
+                      В разных языках ему соответствуют разные типы данных. Например, в других языках это:</p>
+
+                    <ul>
+                      <li>Ruby — Hash</li>
+                      <li>Lua — Table</li>
+                      <li>Python — Dictionary</li>
+                      <li>JavaScript — Object</li>
+                      <li>Elixir/Java — Map</li>
+                    </ul>
+
+                    <p>Для чего он нужен? Ассоциативные массивы крайне популярны в прикладном программировании. С их
+                      помощью удобно представлять составные данные, содержащие множество различных параметров.</p>
+
+                    <p>Ассоциативный массив, в отличие от обычного массива (называемого индексированным, так как
+                      значения в нем расположены по индексам), нельзя положить в память &quot;как есть&quot;. У них нет
+                      индексов, которые бы могли определить порядок и простой способ добраться до значений. Для
+                      реализации ассоциативных массивов часто используют специальную структуру данных — хеш-таблицу. Она
+                      позволяет организовать данные ассоциативного массива удобным для хранения способом. Для этого
+                      хеш-таблица использует две вещи: индексированный массив и функцию для хеширования ключей. Обратите
+                      внимание, что хеш-таблица это не просто способ размещать данные, она включает в себя логику.</p>
+
+                    <p><em>Ниже пойдет речь про то, как ассоциативные массивы бывают устроены внутри, будет много
+                        терминов. Эта информация крайне важна для любых разработчиков. Она снимает магичность с
+                        происходящего, даёт понимание эффективности, ценой которой приходится платить за удобства.</em>
+                    </p>
+                    <h2 id="heshirovanie">Хеширование</h2>
+                    <p>Любая операция внутри хеш-таблицы начинается с того, что ключ каким-то образом преобразуется в
+                      индекс обычного массива. Для получения индекса из ключа нужно выполнить два действия: найти хеш
+                      (хешировать ключ) и привести его к индексу (например, через остаток от деления).</p>
+
+                    <p>Хеширование — операция, которая преобразует любые входные данные в строку (реже число)
+                      фиксированной длины. Функция, реализующая алгоритм преобразования, называется
+                      &quot;хеш-функцией&quot;, а результат называют &quot;хешем&quot; или &quot;хеш-суммой&quot;.
+                      Наиболее известны CRC32, MD5 и SHA (много разновидностей).</p>
+
+                    <p>Самый простой способ хешировать данные на PHP — использовать функцию <code>crc32</code>:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Любые данные которые мы хотим хешировать</span>
+<span style="color: #008080">$checksum</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">crc32</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'The quick brown fox jumped over the lazy dog.'</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #999988;font-style: italic">// Для одних и тех же данных хеш всегда одинаковый!</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$checksum</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; 2191738434</span>
+</code></pre>
+                    <p>С хешированием мы встречаемся в разработке часто. Например, идентификатор коммита в git
+                      <code>0481e0692e2501192d67d7da506c6e70ba41e913</code> не что иное, как хеш, полученный в
+                      результате хеширования данных коммита.</p>
+
+                    <p>После того как хеш получен, его можно преобразовать в индекс массива, например, через получение
+                      остатка от деления:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$index</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">crc32</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$key</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">%</span> <span style="color: #009999">1000</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999988;font-style: italic">// по модулю</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$index</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; 434</span>
+</code></pre>
+                    <p><img alt="хеширование" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImM5NWQ0MmVkYzUzYjlkZGRlOGY2NmVmMzEzNTgzYTNlLmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=095895f1580883c0159a773033eb7837d4d12c0d5e7f9a61a0d7486494baeb7d"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+                    <h3 id="za-kulisami">За кулисами</h3>
+                    <p>Рассмотрим процесс добавления нового значения в ассоциативный массив. Программист пишет:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$data</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[];</span>
+<span style="color: #008080">$data</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'key'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'value'</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>Такая простая, на первый взгляд, строчка, запускает целый процесс. Ниже его грубое описание, без
+                      деталей и с упрощениями:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Для простоты показано на PHP, хотя в реальности всё это происходит на более низком уровне.</span>
+
+<span style="color: #999988;font-style: italic">// Создание ассоциативного массива приводит к инициализации </span>
+<span style="color: #999988;font-style: italic">// индексированного массива внутри интерпретатора.</span>
+<span style="color: #008080">$internal</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[];</span>
+
+<span style="color: #999988;font-style: italic">// Во время присвоения значения `$data['key'] = 'value'`</span>
+<span style="color: #999988;font-style: italic">// интерпретатор выполняет несколько действий:</span>
+
+<span style="color: #999988;font-style: italic">// 1. Хеширует ключ. Результатом хеширования становится число.</span>
+<span style="color: #008080">$hash</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">crc32</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'key'</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// 2. Число, полученное на предыдущем шаге преобразуется в индекс массива.</span>
+<span style="color: #008080">$index</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$hash</span> <span style="color: #000000;font-weight: bold">%</span> <span style="color: #009999">1000</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #999988;font-style: italic">// В значение внутреннего индексированного массива, по найденному индексу,</span>
+<span style="color: #999988;font-style: italic">// записывается ещё один массив, первым элементом которого становится ключ `'key'`,</span>
+<span style="color: #999988;font-style: italic">// а вторым значение `'value'`.</span>
+<span style="color: #008080">$internal</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$index</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'key'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'value'</span><span style="background-color: #f8f8f8">];</span>
+</code></pre>
+                    <p>Почему такая странная структура для хранения? Зачем там нужен ключ? Ответ на этот вопрос будет
+                      ниже — там, где мы поговорим про коллизии.</p>
+
+                    <p>Теперь посмотрим на чтение:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$data</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[];</span>
+<span style="color: #008080">$data</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'key'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'value'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$data</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'key'</span><span style="background-color: #f8f8f8">]);</span>
+</code></pre>
+                    <ol>
+                      <li> Интерпретатор хеширует ключ. Результатом хеширования становится число.</li>
+                      <li> Это число используется как индекс внутреннего массива для поиска значения.</li>
+                      <li> Если индекс существует, то извлекается значение, которое находилось внутри, и возвращается
+                        наружу.</li>
+                    </ol>
+                    <h2 id="kollizii">Коллизии</h2>
+                    <p>Ключом в ассоциативном массиве может быть абсолютно любая строка (любой длины и содержания).
+                      Другими словами, множество всех возможных ключей — бесконечно. В свою очередь, результат любой
+                      хешируемой функции — строка фиксированной длины, а значит множество всех выходных значений —
+                      конечно.</p>
+
+                    <p>Из этого факта следует, что не для всех входных данных найдётся уникальный хеш. На каком-то этапе
+                      возможно появление дублей (когда для разных значений получается один и тот же хеш). Такую ситуацию
+                      принято называть коллизией. Способов разрешения коллизий несколько, и каждому из них соответствует
+                      свой тип хеш-таблицы.</p>
+
+                    <p>Пример коллизии:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Две разных строчки возвращают одинаковый хеш!</span>
+<span style="color: #0086B3">crc32</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'aaaaa0.462031558722291'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// 1938556049</span>
+<span style="color: #0086B3">crc32</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'aaaaa0.0585754039730588'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// 1938556049</span>
+</code></pre>
+                    <h3 id="metod-tsepochek">Метод цепочек</h3>
+                    <p>Суть этого способа заключается в том, что каждая ячейка хеш-таблицы является ссылкой на связный
+                      список. Каждый новый элемент добавляется в конец этого списка. Коллизии приводят к тому, что в
+                      таблице появляются списки, которые содержат несколько элементов.</p>
+
+                    <p><img alt="Разрешение коллизий методом цепочек" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImNkYzMwYmI0MTAyN2ZjZDBmODQyNGIyNGZhYTYzN2NjLnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=b9744d0e6a200da094f1d82cad45e0ef5828d301f713b38407ba0073da7c0e55"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+                    <h3 id="metod-otkrytoy-adresatsii">Метод открытой адресации</h3>
+                    <p>Ещё один способ называется <em>метод открытой адресации</em>. В таблице хранятся непосредственно
+                      пары ключ-значение. При возникновении коллизии используется специальный алгоритм вставки элемента.
+                      Он проверяет ячейки таблицы в некотором порядке и добавляет новый элемент в первую свободную
+                      ячейку. Этот же алгоритм используется для поиска значений.</p>
+
+                    <p><img alt="Разрешение коллизий методом открытой адресации"
+                        class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImNmZjMxNzE3YWU0ZjgzMDU1NGVkZWRkNzUxZDE5MjhmLnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=0dc3e44b0c1126c776e914a9ebe7768e40f19892867919393cdba318ef972587"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Коллизии не так редки, как может показаться. Убедиться в этом можно, изучив <a
+                        href="https://ru.wikipedia.org/wiki/Парадокс_дней_рождения" target="_blank"
+                        rel="nofollow">парадокс дней рождений</a>.</p>
+
+</body>
+
+</html>

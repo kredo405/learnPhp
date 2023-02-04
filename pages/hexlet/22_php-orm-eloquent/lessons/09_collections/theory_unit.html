@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Коллекции - PHP: Eloquent (ORM)</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="E7l6dm9wbW1-1xfc_RQMN3RhZYSqP2EpN-7sjsPbgV7rUzQISRZf8sLUYvwpJ-kc8wcuaeW0EfVsRnbn63n1Yg" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../scopes/exercise_unit.html">PHP: Eloquent (ORM)</a>
+                    <h1 class='mt-0 mb-4'>Коллекции</h1>
+                    <p>Любая выборка, построенная с помощью языка запросов или связей, это объект, который позволяет
+                      получить выбранные данные через метод <code>get()</code>. Сами данные при этом ведут себя как
+                      массив объектов, но в реальности не являются массивом:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #000000;font-weight: bold">&gt;&gt;&gt;</span> <span style="color: #008080">$users</span> <span style="color: #000000;font-weight: bold">=</span> App<span style="color: #d14">\M</span>odels<span style="color: #d14">\U</span>ser::where<span style="color: #000000;font-weight: bold">(</span><span style="color: #d14">'id'</span>, <span style="color: #d14">'&gt;'</span>, 1<span style="color: #000000;font-weight: bold">)</span>-&gt;get<span style="color: #000000;font-weight: bold">()</span>
+<span style="color: #000000;font-weight: bold">=&gt;</span> Illuminate<span style="color: #d14">\D</span>atabase<span style="color: #d14">\E</span>loquent<span style="color: #d14">\C</span>ollection <span style="color: #000000;font-weight: bold">{</span><span style="color: #999988;font-style: italic">#2399}</span>
+
+<span style="color: #000000;font-weight: bold">&gt;&gt;&gt;</span> <span style="color: #008080">$posts</span> <span style="color: #000000;font-weight: bold">=</span> App<span style="color: #d14">\M</span>odels<span style="color: #d14">\U</span>ser::find<span style="color: #000000;font-weight: bold">(</span>1<span style="color: #000000;font-weight: bold">)</span>-&gt;posts<span style="color: #000000;font-weight: bold">()</span>-&gt;get<span style="color: #000000;font-weight: bold">()</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">=&gt;</span> Illuminate<span style="color: #d14">\D</span>atabase<span style="color: #d14">\E</span>loquent<span style="color: #d14">\C</span>ollection <span style="color: #000000;font-weight: bold">{</span><span style="color: #999988;font-style: italic">#2396}</span>
+</code></pre>
+                    <p>Вместо массива Eloquent возвращает экземпляр <em>Illuminate\Database\Eloquent\Collection</em>.
+                      Это класс, расширяющий другой класс, <a href="https://laravel.com/docs/7.x/collections"
+                        target="_blank" rel="nofollow">Collection</a>, созданный для упрощения обработки наборов данных.
+                      Он содержит внутри себя десятки удобных методов, с помощью которых данные можно фильтровать,
+                      сортировать, агрегировать и так далее.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Сразу возвращает Collection</span>
+<span style="color: #008080">$users</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">App\Models\User</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">all</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #999988;font-style: italic">// Такую операцию правильно делать напрямую в базе данных</span>
+<span style="color: #999988;font-style: italic">// Здесь она только для демонстрации</span>
+<span style="color: #008080">$names</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$users</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">filter</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span> <span style="color: #999988;font-style: italic">// фильтруем</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">active</span> <span style="color: #000000;font-weight: bold">===</span> <span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">})</span>
+<span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">map</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span> <span style="color: #999988;font-style: italic">// отображаем</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">name</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>В результате работы этого кода, внутри <code>$names</code> останутся имена активных
+                      пользователей.</p>
+
+                    <p>Ниже посмотрим на некоторые полезные методы, которые могут пригодиться в повседневной работе:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+<span style="color: #008080">$users</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">App\Models\User</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">all</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #999988;font-style: italic">// contains – проверяет, содержит ли коллекция объект с указанным идентификатором (id)</span>
+<span style="color: #008080">$users</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">contains</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// true</span>
+<span style="color: #008080">$users</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">contains</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// false</span>
+
+<span style="color: #999988;font-style: italic">// unique – возвращает уникальные объекты</span>
+<span style="color: #008080">$users</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$users</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">unique</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #999988;font-style: italic">// modelKeys – возвращает список первичных ключей</span>
+<span style="color: #008080">$users</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">modelKeys</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #999988;font-style: italic">// intersect – возвращает пересечение между двумя коллекциями</span>
+<span style="color: #008080">$users</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$users</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">intersect</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">User</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">whereIn</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'id'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">])</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">());</span>
+
+<span style="color: #999988;font-style: italic">// diff – возвращает разницу между двумя коллекциями</span>
+<span style="color: #008080">$users</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$users</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">diff</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">User</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">whereIn</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'id'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">])</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">());</span>
+</code></pre>
+                    <p>Это только верхушка айсберга. Более подробно нужно смотреть в <a
+                        href="https://laravel.com/docs/7.x/collections" target="_blank" rel="nofollow">официальной
+                        документации</a>. Библиотека <em>Collections</em> относится к такому типу библиотек, в которые
+                      нужно постоянно заглядывать и изучать её возможности. В любом случае, её использование значительно
+                      сокращает количество кода и делает код качественнее.</p>
+
+                    <p>Однако, с ней легко увлечься. Эта библиотека работает с коллекциями в памяти. То есть сначала
+                      данные выгружаются из базы и затем над ними производятся нужные преобразования. Если данных много,
+                      то приложение начнет потреблять очень много памяти и станет работать медленнее. Поэтому, все
+                      операции фильтрации, группировки и сортировки которые можно выполнить прямо в базе данных, нужно
+                      делать в базе данных. Коллекции в памяти должны быть небольшими.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://laravel.com/docs/8.x/collections">Коллекции в Laravel</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

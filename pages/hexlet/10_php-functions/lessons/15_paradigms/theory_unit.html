@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Парадигмы программирования - PHP: Функции</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Парадигмы программирования</h1>
+                    <p>В программировании часто используется термин &quot;парадигма&quot;.</p>
+
+                    <blockquote>
+                      <p>Паради́гма программи́рования — это совокупность идей и понятий, определяющих стиль написания
+                        компьютерных программ (подход к программированию). Это способ концептуализации, определяющий
+                        организацию вычислений и структурирование работы, выполняемой компьютером. (Wikipedia)</p>
+                    </blockquote>
+
+                    <p>Парадигма — это больше, чем просто другой алгоритм решения задачи. Как правило, структура кода
+                      при использовании разных парадигм отличается очень значительно и требует знаний, выходящих за
+                      рамки только синтаксиса языка (например, автоматное программирование требует хотя бы базового
+                      понимания теории автоматов). Причём подавляющее большинство современных (и не очень) языков
+                      программирования являются мультипарадигменными и позволяют писать код, используя множество стилей.
+                      Иногда эти стили взаимоисключающие, иногда они дополняют друг друга. К текущему моменту мы писали
+                      код, используя две парадигмы: императивную и декларативную.</p>
+
+                    <p><img alt="Paradigms" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6Ijk4MjcwMTFiNTg0MGM4Y2M5NWU1MTFlZTA1OGI1MDhhLnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=9ac1769ad73fc8152703b0ed1099988029eddd8b56e08068f136f946899dae4a"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+                    <h2 id="imperativnaya-paradigma">Императивная парадигма</h2>
+                    <p>Императивная парадигма — стиль написания кода в виде набора последовательных инструкций (команд)
+                      с активным использованием переменных. Возможно, данное определение звучит страшно, но на практике
+                      императивный стиль является доминирующим. Не считая этого курса, весь остальной код мы писали
+                      именно в императивном стиле.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Поиск максимального числа</span>
+<span style="color: #008080">$numbers</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #009999">10</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">20</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">52</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">105</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">56</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">89</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">96</span><span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #008080">$max</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$numbers</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #000000;font-weight: bold">foreach</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$numbers</span> <span style="color: #000000;font-weight: bold">as</span> <span style="color: #008080">$number</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$number</span> <span style="color: #000000;font-weight: bold">&gt;</span> <span style="color: #008080">$max</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$max</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$number</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$max</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; 105</span>
+</code></pre>
+                    <p>В императивном стиле широко используется присваивание (а, значит, и переменные) и циклы. Эта
+                      парадигма популярна потому, что она в точности соответствует тому, как работает компьютер:
+                      последовательно выполняет инструкции и использует память для хранения промежуточных результатов.
+                      Обычно говорят, что императивная программа отвечает на вопрос <em>КАК</em> («как достичь нужного
+                      результата»).</p>
+
+                    <p>PHP как, впрочем и Java/Ruby/Python/C#/Perl/JavaScript/Go, относится к императивным языкам. То
+                      есть языкам, в которых доминирующей является императивная парадигма (язык толкает к её
+                      использованию). Что, однако, не мешает использовать и другие парадигмы в рамках этих языков.</p>
+                    <h2 id="deklarativnaya-paradigma">Декларативная парадигма</h2>
+                    <p>Императивному стилю противопоставляют декларативный, который нередко называют функциональным.
+                      Ключевое отличие функционального стиля от императивного в том, что при таком стиле программа
+                      выглядит как описание нужного результата, а не как набор инструкций. То есть программа отвечает на
+                      вопрос <em>ЧТО</em> («что мы хотим получить»). Эту грань довольно трудно уловить сразу, но,
+                      например, вся математика по своей сути декларативна. Например <a
+                        href="https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%BA%D1%82%D0%BE%D1%80%D0%B8%D0%B0%D0%BB#%D0%A0%D0%B5%D0%BA%D1%83%D1%80%D1%80%D0%B5%D0%BD%D1%82%D0%BD%D0%B0%D1%8F_%D1%84%D0%BE%D1%80%D0%BC%D1%83%D0%BB%D0%B0"
+                        target="_blank" rel="nofollow">математическое определение</a> факториала фактически является
+                      декларативным кодом:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">factorial</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$number</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span> 
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$number</span> <span style="color: #000000;font-weight: bold">&lt;=</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span> <span style="color: #000000;font-weight: bold">else</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$number</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #990000;font-weight: bold">factorial</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$number</span> <span style="color: #000000;font-weight: bold">-</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Пример с поиском максимального числа:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$numbers</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #009999">10</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">20</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">52</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">105</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">56</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">89</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">96</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #008080">$max</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_reduce</span><span style="background-color: #f8f8f8">(</span>
+    <span style="color: #008080">$numbers</span><span style="background-color: #f8f8f8">,</span>
+    <span style="color: #000000;font-weight: bold">fn</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$acc</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$number</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$number</span> <span style="color: #000000;font-weight: bold">&gt;</span> <span style="color: #008080">$acc</span> <span style="color: #000000;font-weight: bold">?</span> <span style="color: #008080">$number</span> <span style="color: #000000;font-weight: bold">:</span> <span style="color: #008080">$acc</span><span style="background-color: #f8f8f8">,</span>
+    <span style="color: #008080">$numbers</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">]</span>
+<span style="background-color: #f8f8f8">);</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$max</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; 105</span>
+</code></pre>
+                    <p>Главное отличие декларативной парадигмы от императивной на практике - отсутствие присваивания. Вы
+                      можете возразить, что в коде выше переменные есть и чисто технически это правда. Присмотритесь к
+                      коду внимательнее, вы заметите что переменная создана ровно один раз и больше не меняется. По
+                      сути, она рассматривается как константа или, если копнуть глубже, как логическое высказывание. В
+                      математике это звучало бы так: допустим &quot;A — это множество чисел&quot;. Что бы мы дальше ни
+                      делали, &quot;A&quot; остаётся всегда тем же, чем было во время определения.</p>
+
+                    <p><em>Дело в том, что в математике доказательства строятся с помощью логических цепочек. Из одних
+                        утверждений следуют другие, и таким образом мы можем прийти к решению задачи. Всё это возможно
+                        только в том случае, когда утверждения не изменяются. Иначе, следствия могут оказаться неверными
+                        уже после того, как они были получены, а значит мы не сможем рассуждать логически.</em></p>
+
+                    <p>То же самое касается и <code>$acc</code> с <code>$number</code>. Эти параметры всегда
+                      определяются ровно один раз, так как каждый вызов функции при таком определении (без использования
+                      ссылок) не зависит от другого вызова (спасибо чистым функциям). В мире функциональных языков такую
+                      операцию называют <strong>связывание</strong>. Визуально оно выглядит как присваивание, но это не
+                      оно. Попытка связать уже связанный идентификатор (в функциональных языках нет переменных)
+                      завершится ошибкой. Ниже пример на языке Erlang:</p>
+                    <pre class="hljs"><code class=erlang><span style="color: #009999">1</span><span style="color: #000000;font-weight: bold">&gt;</span> <span style="color: #008080">A</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">4</span><span style="background-color: #f8f8f8">.</span>
+<span style="color: #009999">4</span>
+<span style="color: #009999">2</span><span style="color: #000000;font-weight: bold">&gt;</span> <span style="color: #008080">A</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">'hey'</span><span style="background-color: #f8f8f8">.</span>
+<span style="color: #000000;font-weight: bold">**</span> <span style="background-color: #f8f8f8">exception</span> <span style="color: #555555">error</span><span style="background-color: #f8f8f8">:</span> <span style="background-color: #f8f8f8">no</span> <span style="background-color: #f8f8f8">match</span> <span style="color: #000000;font-weight: bold">of</span> <span style="background-color: #f8f8f8">right</span> <span style="background-color: #f8f8f8">hand</span> <span style="background-color: #f8f8f8">side</span> <span style="background-color: #f8f8f8">value</span> <span style="background-color: #f8f8f8">hey</span>
+</code></pre>
+                    <p>Отсутствие присваивания автоматически означает то, что в функциональной парадигме невозможно
+                      использование циклов. Вместо них используется рекурсия. Другой важной особенностью функционального
+                      стиля считается активное использование функций как объектов первого рода. В основном в функциях
+                      высшего порядка. Причём они способны заменить рекурсию в подавляющем большинстве задач, в чем мы
+                      уже убедились в предыдущих уроках (убедились так, что даже не рассматривали рекурсию). Любая
+                      задача из представленных решалась основной тройкой функций высшего порядка.</p>
+
+                    <p>Языков, использующих декларативную парадигму, довольно много. Они, в своей массе, менее
+                      популярны, чем императивные, но прочно занимают определённые ниши и активно используются в
+                      промышленном программировании. К таким языкам относятся: Haskell/Erlang/Elixir/OCaml/F#. В этих
+                      языках нет присваивания и циклов. Императивный код на них написать просто невозможно. Немного
+                      особняком стоят такие языки, как Scala и Clojure (и другие из семейства LISP). В этих языках
+                      основная парадигма — декларативная, и язык толкает к тому, чтобы писать в таком стиле, но при
+                      необходимости на них можно написать самый настоящий императивный код с присваиванием и циклами. А
+                      вот почти все императивные языки позволяют писать декларативно. Причём, если одни языки имеют
+                      довольно слабую поддержку декларативной парадигмы, то другие настолько мощную, что в них можно
+                      писать только декларативно (если хочется). К последним относится и современный JavaScript.</p>
+
+                    <p>В PHP поддержка функционального программирования слабее, чем в большинстве других языков, но все
+                      же она достаточно серьёзная. С каждой новой версией PHP вбирает в себя все больше и больше
+                      возможностей, взятых из функциональных языков, многие из которых достаточно быстро становятся
+                      популярными и начинают использоваться повсеместно, например, лямбда-функции. С другой стороны, в
+                      PHP невозможно обновить массив не используя присваивания (говорят, «в иммутабельном (неизменяемом)
+                      стиле»). Поэтому любой код на PHP использующий функциональные возможности, так или иначе имеет
+                      императивные куски.</p>
+                    <h2 id="drugie-paradigmy">Другие парадигмы</h2>
+                    <p>Большинство других парадигм являются разновидностями функциональной или императивной парадигм. Из
+                      наиболее значимых я бы выделил следующие:</p>
+
+                    <ul>
+                      <li>Логическое программирование</li>
+                      <li>Автоматное программирование</li>
+                      <li>Объектно-ориентированное программирование</li>
+                      <li>Метапрограммирование</li>
+                    </ul>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://ru.wikipedia.org/wiki/Парадигма_программирования">Парадигмы</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="http://www.phptherightway.ru/pages/Функциональное-программирование.html">Функциональное
+                          программирование в PHP</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://ru.wikipedia.org/wiki/%D0%A1%D1%81%D1%8B%D0%BB%D0%BE%D1%87%D0%BD%D0%B0%D1%8F_%D0%BF%D1%80%D0%BE%D0%B7%D1%80%D0%B0%D1%87%D0%BD%D0%BE%D1%81%D1%82%D1%8C
+">Ссылочная (референциальная) прозрачность</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

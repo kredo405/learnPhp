@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Вставка и модификация данных - Основы реляционных баз данных</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="VvPLjsTqp5QmFvlRBfTm3gMIrO8E1-sn_-jhGU1ghJqvLmXlN8P6sxTjq7zoXCVZHR_Nvhv14ZCtuHuGhqHbkg" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../transactions/exercise_unit.html">Основы реляционных баз данных</a>
+                    <h1 class='mt-0 mb-4'>Вставка и модификация данных</h1>
+                    <p>Со <strong>структурой</strong> закончили, теперь добавим <strong>данные</strong>. За манипуляцию
+                      данными в SQL отвечает подмножество <strong>DML</strong> (Data Manipulation Language), включающее
+                      в себя <code>INSERT</code>, <code>UPDATE</code> и <code>DELETE</code> запросы.</p>
+                    <h2 id="vstavka-dobavlenie-dannyh-v-tablitsu">Вставка (добавление) данных в таблицу</h2>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">INSERT</span> <span style="color: #000000;font-weight: bold">INTO</span> <span style="background-color: #f8f8f8">courses</span> <span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">name</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">slug</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">lessons_count</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">body</span><span style="background-color: #f8f8f8">)</span>
+  <span style="color: #000000;font-weight: bold">VALUES</span> <span style="background-color: #f8f8f8">(</span><span style="color: #d14">'basics of programming'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'basics'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">10</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'this is theory'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>В левой части этого запроса указывается таблица и после пробела в круглых скобках, список полей,
+                      которые нужно вставить. А справа от ключевого слова <code>VALUES</code>, значения этих полей,
+                      указанные в том же порядке. <code>INSERT</code> не является <strong>идемпотентным</strong>
+                      запросом: его повторное выполнение всегда приводит к попытке вставить ещё одну запись, даже если
+                      значения остались те же.</p>
+
+                    <p>Если мы хотим оставить какие-то поля пустыми, то достаточно пропустить их при вставке в обеих
+                      частях запроса.</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">INSERT</span> <span style="color: #000000;font-weight: bold">INTO</span> <span style="background-color: #f8f8f8">courses</span> <span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">name</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">slug</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">VALUES</span> <span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Bash'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'bash'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p><code>INSERT</code> позволяет вставить сразу несколько записей в рамках одного запроса:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">INSERT</span> <span style="color: #000000;font-weight: bold">INTO</span> <span style="background-color: #f8f8f8">courses</span> <span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">name</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">slug</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">VALUES</span>
+  <span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Bash'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'bash'</span><span style="background-color: #f8f8f8">),</span> <span style="background-color: #f8f8f8">(</span><span style="color: #d14">'PHP'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'php'</span><span style="background-color: #f8f8f8">),</span> <span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Ruby'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'ruby'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Для этого достаточно перечислить все необходимые значения в круглых скобках через запятую после
+                      ключевого слова <code>VALUES</code>.</p>
+
+                    <p>Ну и последний вариант выполнения этой команды без перечисления полей. Если они не указаны, то
+                      это равносильно их полному перечислению:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">INSERT</span> <span style="color: #000000;font-weight: bold">INTO</span> <span style="background-color: #f8f8f8">courses</span> <span style="color: #000000;font-weight: bold">VALUES</span> <span style="background-color: #f8f8f8">(</span><span style="color: #d14">'linux'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'linux'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'something about linux'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Обратите внимание на то, как записаны значения: числовое значение указано как есть, строковые
+                      взяты в одинарные кавычки (двойные использовать для этой цели нельзя).</p>
+
+                    <p>На текущий момент в нашей таблице три записи. Для их извлечения предназначен <code>SELECT</code>
+                      запрос, который не является частью DML. Подробнее поговорим о нём в следующем уроке, а сейчас
+                      воспользуемся его базовой формой, которая позволяет извлечь всю таблицу и посмотреть её
+                      содержимое:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">hexlet</span><span style="color: #000000;font-weight: bold">=&gt;</span> SELECT <span style="color: #000000;font-weight: bold">*</span> FROM courses<span style="background-color: #f8f8f8">;</span>
+         name          |  slug  | lessons_count |         body
+<span style="color: #000080">-----------------------</span>+--------+---------------+-----------------------
+ basics of programming | basics |            10 | this is theory
+ bash                  | bash   |               |
+ linux                 | linux  |             3 | something about linux
+<span style="color: #000000;font-weight: bold">(</span>3 rows<span style="color: #000000;font-weight: bold">)</span>
+</code></pre>
+                    <h2 id="obnovlenie-izmenenie-dannyh">Обновление (изменение) данных</h2>
+                    <p>Обновление записей в таблице выполняется <code>UPDATE</code> запросом:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">UPDATE</span> <span style="background-color: #f8f8f8">courses</span> <span style="color: #000000;font-weight: bold">SET</span> <span style="background-color: #f8f8f8">body</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'updated!'</span> <span style="color: #000000;font-weight: bold">WHERE</span> <span style="background-color: #f8f8f8">slug</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'bash'</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>Обычно <code>UPDATE</code> запрос состоит из двух частей. В первой (там, где <code>SET</code>)
+                      описывается какое значение установить в какое поле. Во второй (той, что идёт после
+                      <code>WHERE</code>) указывается ограничение на то, к каким строкам применить обновление.</p>
+
+                    <p>Обратите внимание на то, что <code>=</code> в <code>WHERE</code> части это не присваивание, а
+                      проверка на совпадение, хотя в <code>SET</code> равно уже используется как обычное присваивание.
+                    </p>
+
+                    <p>Поскольку в нашей таблице только одна запись удовлетворяет условию
+                      <code>slug = &#39;bash&#39;</code>, то и обновится одна запись. Если бы их было больше, то
+                      обновились бы все соответствующие записи. <code>UPDATE</code> может быть как идемпотентным
+                      запросом, так и нет: всё зависит от того, как он написан. Конкретно в нашем случае он
+                      идемпотентен, то есть его повторные выполнения всегда приведут к одному и тому же результату.</p>
+
+                    <p>За одну операцию можно обновить несколько полей. Для этого достаточно перечислить каждое
+                      присваивание через запятую в части <code>SET</code>. Порядок в котором изменяются поля — не важен:
+                    </p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">UPDATE</span> <span style="background-color: #f8f8f8">courses</span> <span style="color: #000000;font-weight: bold">SET</span> <span style="background-color: #f8f8f8">body</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'updated!'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">name</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'Bash'</span> <span style="color: #000000;font-weight: bold">WHERE</span> <span style="background-color: #f8f8f8">slug</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'bash'</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>Самое интересное происходит в части <code>WHERE</code>. Для начала стоит знать, что её можно не
+                      указывать:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">UPDATE</span> <span style="background-color: #f8f8f8">courses</span> <span style="color: #000000;font-weight: bold">SET</span> <span style="background-color: #f8f8f8">body</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'oops'</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>Этот запрос обновит <strong>ВСЕ</strong> записи. Это довольно распространённая и страшная ошибка.
+                      Если записей в таблице много и они важны, то такой запрос может повлечь за собой серьёзные
+                      последствия. Случаи, когда действительно нужно обновить сразу все записи таблицы, очень редки.</p>
+
+                    <p>С другой стороны, не всегда достаточно простого сравнения по одному полю. Запросы с
+                      <code>WHERE</code> нередко требуют других операций, например, <strong>сравнения</strong>. SQL без
+                      проблем позволяет всё это делать, более того, он позволяет использовать логические выражения.
+                      Рассмотрим несколько примеров:</p>
+
+                    <ul>
+                      <li>
+                        <p>Операции сравнения</p>
+                        <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">UPDATE</span> <span style="background-color: #f8f8f8">courses</span> <span style="color: #000000;font-weight: bold">SET</span> <span style="background-color: #f8f8f8">name</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'new name'</span> <span style="color: #000000;font-weight: bold">WHERE</span> <span style="background-color: #f8f8f8">lessons_count</span> <span style="color: #000000;font-weight: bold">&gt;</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">UPDATE</span> <span style="background-color: #f8f8f8">courses</span> <span style="color: #000000;font-weight: bold">SET</span> <span style="background-color: #f8f8f8">name</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'another new name'</span> <span style="color: #000000;font-weight: bold">WHERE</span> <span style="background-color: #f8f8f8">lessons_count</span> <span style="color: #000000;font-weight: bold">&lt;</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                      </li>
+                      <li>
+                        <p>Логические операции</p>
+                        <pre class="hljs"><code class=sql><span style="color: #999988;font-style: italic">-- И</span>
+<span style="color: #000000;font-weight: bold">UPDATE</span> <span style="background-color: #f8f8f8">courses</span> <span style="color: #000000;font-weight: bold">SET</span> <span style="background-color: #f8f8f8">name</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'new name'</span>
+  <span style="color: #000000;font-weight: bold">WHERE</span> <span style="background-color: #f8f8f8">slug</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'bash'</span> <span style="color: #000000;font-weight: bold">AND</span> <span style="background-color: #f8f8f8">lessons_count</span> <span style="color: #000000;font-weight: bold">&gt;</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #999988;font-style: italic">-- ИЛИ</span>
+<span style="color: #000000;font-weight: bold">UPDATE</span> <span style="background-color: #f8f8f8">courses</span> <span style="color: #000000;font-weight: bold">SET</span> <span style="background-color: #f8f8f8">name</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'another new name'</span>
+  <span style="color: #000000;font-weight: bold">WHERE</span> <span style="background-color: #f8f8f8">lessons_count</span> <span style="color: #000000;font-weight: bold">&lt;</span> <span style="color: #009999">2</span> <span style="color: #000000;font-weight: bold">OR</span> <span style="background-color: #f8f8f8">lessons_count</span> <span style="color: #000000;font-weight: bold">&gt;</span> <span style="color: #009999">8</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                        <p>Для логических операций используются ключевые слова <code>AND</code> и <code>OR</code>. Их
+                          можно добавлять и комбинировать в любых количествах. Как и в случае с обычными языками
+                          программирования, в составных выражениях полезно использовать явное задание приоритета за счёт
+                          круглых скобок.</p>
+                        <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">UPDATE</span> <span style="background-color: #f8f8f8">courses</span> <span style="color: #000000;font-weight: bold">SET</span> <span style="background-color: #f8f8f8">name</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'another new name'</span>
+  <span style="color: #000000;font-weight: bold">WHERE</span> <span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">lessons_count</span> <span style="color: #000000;font-weight: bold">&lt;</span> <span style="color: #009999">2</span> <span style="color: #000000;font-weight: bold">AND</span> <span style="background-color: #f8f8f8">lessons_count</span> <span style="color: #000000;font-weight: bold">&gt;</span> <span style="color: #009999">8</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">OR</span> <span style="background-color: #f8f8f8">slug</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'linux'</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                      </li>
+                    </ul>
+                    <h2 id="udalenie-dannyh">Удаление данных</h2>
+                    <p>Последний запрос из DML — <code>DELETE</code>:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">DELETE</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">courses</span> <span style="color: #000000;font-weight: bold">WHERE</span> <span style="background-color: #f8f8f8">slug</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'bash'</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>Этот запрос практически идентичен тому, как работает <code>UPDATE</code>. Разница лишь в том, что
+                      здесь ничего не надо указывать после <code>DELETE</code>. Его так же опасно выполнять (ещё
+                      опаснее!) и он отработает даже, если не указана секция <code>WHERE</code>. Секция
+                      <code>WHERE</code> в разных видах запросов работает идентично, поэтому всё, что описывалось выше
+                      для <code>UPDATE</code>, справедливо и для <code>DELETE</code>.</p>
+
+                    <p>В базах данных есть ещё один способ удалять данные в таблице — <code>TRUNCATE</code>. Он не
+                      является частью стандарта, но реализован большинством баз данных. У него две особенности:</p>
+
+                    <ol>
+                      <li> Он предназначен для полной очистки таблиц.</li>
+                      <li> В отличие от <code>DELETE</code>, он выполняется очень эффективно так как у
+                        <code>TRUNCATE</code> нет возможности задавать условия, а значит СУБД не нужно ничего
+                        дополнительно анализировать. Она сразу очищает место на диске минуя все промежуточные этапы.
+                      </li>
+                    </ol>
+
+                    <!-- end list -->
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">TRUNCATE</span> <span style="background-color: #f8f8f8">courses</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://www.postgresql.org/docs/current/static/sql-insert.html">INSERT</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://www.postgresql.org/docs/current/static/sql-update.html">UPDATE</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://www.postgresql.org/docs/current/static/sql-delete.html">DELETE</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://www.postgresql.org/docs/current/sql-truncate.html">TRUNCATE</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

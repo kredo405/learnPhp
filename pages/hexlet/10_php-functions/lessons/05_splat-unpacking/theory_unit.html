@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Распаковка аргументов - PHP: Функции</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Распаковка аргументов</h1>
+                    <p>Spread Operator в <strong>вызовах</strong> функций <strong>синтаксически</strong> идентичен
+                      Spread Operator в определениях, но выполняет <strong>обратное</strong> действие:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$arrayOfArrays</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #009999">2</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">]</span>
+<span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #0086B3">array_merge</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">...</span><span style="color: #008080">$arrayOfArrays</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic"># Array</span>
+<span style="color: #999988;font-style: italic"># (</span>
+<span style="color: #999988;font-style: italic">#     [0] =&gt; 1</span>
+<span style="color: #999988;font-style: italic">#     [1] =&gt; 2</span>
+<span style="color: #999988;font-style: italic">#     [2] =&gt; 2</span>
+<span style="color: #999988;font-style: italic">#     [3] =&gt; 3</span>
+<span style="color: #999988;font-style: italic"># )</span>
+</code></pre>
+                    <p>Другими словами, Spread Operator раскладывает массив на аргументы. Количество аргументов,
+                      полученных Spread Operator, равно количеству элементов массива. По сути код выше преобразуется в
+                      вызов:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #0086B3">array_merge</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$arrayOfArrays</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">],</span> <span style="color: #008080">$arrayOfArrays</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">]);</span>
+<span style="color: #999988;font-style: italic">// array_merge([1, 2], [2, 3]);</span>
+</code></pre>
+                    <p>Как и в случае с определением функций, Spread Operator может использоваться совместно с
+                      позиционными аргументами:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #0086B3">array_merge</span><span style="background-color: #f8f8f8">([</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">],</span> <span style="color: #009999">...</span><span style="color: #008080">$arrayOfArrays</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic"># Array</span>
+<span style="color: #999988;font-style: italic"># (</span>
+<span style="color: #999988;font-style: italic">#     [0] =&gt; 3</span>
+<span style="color: #999988;font-style: italic">#     [1] =&gt; 1</span>
+<span style="color: #999988;font-style: italic">#     [2] =&gt; 2</span>
+<span style="color: #999988;font-style: italic">#     [3] =&gt; 2</span>
+<span style="color: #999988;font-style: italic">#     [4] =&gt; 3</span>
+<span style="color: #999988;font-style: italic"># )</span>
+</code></pre>
+                    <p>То же самое справедливо и для большего количества аргументов:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$array</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #0086B3">array_merge</span><span style="background-color: #f8f8f8">([</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">],</span> <span style="color: #008080">$array</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">...</span><span style="color: #008080">$arrayOfArrays</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic"># Array</span>
+<span style="color: #999988;font-style: italic"># (</span>
+<span style="color: #999988;font-style: italic">#     [0] =&gt; 3</span>
+<span style="color: #999988;font-style: italic">#     [1] =&gt; 3</span>
+<span style="color: #999988;font-style: italic">#     [2] =&gt; 2</span>
+<span style="color: #999988;font-style: italic">#     [3] =&gt; 1</span>
+<span style="color: #999988;font-style: italic">#     [4] =&gt; 2</span>
+<span style="color: #999988;font-style: italic">#     [5] =&gt; 2</span>
+<span style="color: #999988;font-style: italic">#     [6] =&gt; 3</span>
+<span style="color: #999988;font-style: italic"># )</span>
+</code></pre>
+                    <p>И точно так же должен всегда оказываться последним аргументом.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #0086B3">array_merge</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">...</span><span style="color: #008080">$arrayOfArrays</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">]);</span>
+<span style="color: #999988;font-style: italic">// Fatal error: Cannot use positional argument after argument unpacking</span>
+</code></pre>
+                    <p>В PHP Spread Operator применяется не каждый день, но иногда бывает нужен, если аргументы
+                      оказываются записаны в массив.</p>
+
+
+</body>
+
+</html>

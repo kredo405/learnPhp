@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Изменяемость - PHP: Введение в ООП</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Изменяемость</h1>
+                    <p>Сеттеры (setters) служат для изменения внутреннего состояния объекта. Как и геттеры, они
+                      именуются особым образом. К сеттерам обычно добавляется префикс <em>set</em>, если этот сеттер
+                      что-то устанавливает и <em>add</em> — если добавляет.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$point1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Point</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">10</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">11</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$point2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Point</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">-</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$segment</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Segment</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$point1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$point2</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #008080">$segment</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getStartPoint</span><span style="background-color: #f8f8f8">();</span> <span style="color: #999988;font-style: italic">// (10, 11)</span>
+<span style="color: #008080">$segment</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">setStartPoint</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Point</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">8</span><span style="background-color: #f8f8f8">));</span> <span style="color: #999988;font-style: italic">// Допустимо, потому что new Point(3, 8) — выражение</span>
+<span style="color: #008080">$segment</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getStartPoint</span><span style="background-color: #f8f8f8">();</span> <span style="color: #999988;font-style: italic">// (3, 8)</span>
+</code></pre>
+                    <p>На практике изменения объектов происходят почти всегда с помощью сеттеров, и крайне редко — через
+                      изменение свойства напрямую. Причём объекты (впрочем, как и любая абстракция) иногда хранят внутри
+                      себя свойства, которые нельзя изменять снаружи (например, соединение с базой данных), и для них не
+                      делают сеттеров.</p>
+
+                    <p>Вообще говоря, с сеттерами связано много головной боли. Несмотря на сокрытие данных, встроенное в
+                      объекты, можно легко создать ситуацию, в которой из одного объекта извлекается другой объект и
+                      меняется. Естественно, исходный объект об этих изменениях ничего не знает. Проблема обостряется
+                      тогда, когда один объект используется по всему приложению. В такой ситуации он ведёт себя как
+                      глобальная переменная (в худшем её проявлении). Изменения, сделанные в одном месте, коснутся
+                      всего.</p>
+
+                    <p>Например, ранее мы создали класс для работы с рациональными числами. Если бы методы
+                      <code>add()</code> и <code>sub()</code> изменяли объект, на котором вызываются, то получить
+                      неверные расчёты стало бы крайне просто. Достаточно использовать одно рациональное число в
+                      нескольких местах, и любое его изменение повлияет на всех, кто использует это число. Абсолютно
+                      такая же ситуация и с графическими примитивами на плоскости.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$point1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Point</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">10</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">11</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$point2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Point</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">-</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$segment1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Segment</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$point1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$point2</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$segment2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Segment</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$point2</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$point1</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #999988;font-style: italic">// Функция moveUp перемещает весь отрезок на три значения вверх.</span>
+<span style="color: #999988;font-style: italic">// Она не возвращает новый отрезок, а изменяет сам объект.</span>
+<span style="color: #008080">$segment1</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">moveUp</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$segment1</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; [(10, 14), (-3, 6)]</span>
+</code></pre>
+                    <p>Если внутри <code>moveUp()</code> происходит изменение точек (вместо создания новых), то такое
+                      изменение повлияет и на <code>segment2</code>, хотя мы и не собирались его перемещать.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Такое поведение неожиданно</span>
+<span style="color: #999988;font-style: italic">// Сегмент изменился, хотя напрямую его никто не менял</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$segment2</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; [(-3, 6), (10, 14)]</span>
+</code></pre>
+                    <p>Существует ли способ сделать всё красиво? Нет, фундаментальная проблема &quot;изменяемое
+                      состояние&quot; может быть убрана только отказом от изменения и созданием нового на основе
+                      старого. Последний приём подходит не всегда, но мы уже использовали его на практике, например, в
+                      рациональных числах.</p>
+
+</body>
+
+</html>

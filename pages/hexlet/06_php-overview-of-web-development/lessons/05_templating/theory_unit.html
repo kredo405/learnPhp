@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Шаблонизация - Ключевые аспекты веб-разработки на PHP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <meta content='IE=Edge' http-equiv='X-UA-Compatible'>
+  <meta content='b9d3902d34' name='verify-admitad'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Шаблонизация</h1>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">()</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #d14">'Main Page'</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>В примере выше устанавливается обработчик, который на запрос главной страницы отдаст строчку Main
+                      Page. Такой пример хорошо подходит для демонстрации, но настоящие сайты отдают html. Причём, его
+                      размер может достигать килобайтов. Если мы попробуем создавать его так:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">()</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$title</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'My super site'</span><span style="background-color: #f8f8f8">;</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #d14">"&lt;html&gt;&lt;body&gt;&lt;h1&gt;</span><span style="color: #d14">{</span><span style="color: #008080">$title</span><span style="color: #d14">}</span><span style="color: #d14">&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;"</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>то такой код очень быстро превратится в неподдерживаемое месиво. Для работы с html во фреймворках
+                      используют специальные библиотеки, называемые <strong>шаблонизаторами</strong>. Принцип работы
+                      заключается в том, что в отдельном файле описывается шаблон, обычно представляемый как html с
+                      вкраплениями кода на целевом языке или псевдоязыке (примеры не из php):</p>
+                    <pre class="hljs"><code class=jinja><span style="color: #999999;font-weight: bold">{%</span> <span style="color: #000000;font-weight: bold">extends</span> <span style="color: #d14">"email-html_base.tmpl"</span> <span style="color: #999999;font-weight: bold">%}</span>
+
+<span style="color: #999999;font-weight: bold">{%</span> <span style="color: #000000;font-weight: bold">block</span> <span style="color: #008080">content</span> <span style="color: #999999;font-weight: bold">%}</span>
+    <span style="color: #000080">&lt;p&gt;</span>
+        <span style="color: #999999;font-weight: bold">{{</span> <span style="color: #008080">msg</span> <span style="color: #999999;font-weight: bold">}}</span>
+    <span style="color: #000080">&lt;/p&gt;</span>
+    <span style="color: #000080">&lt;p&gt;</span>
+      <span style="color: #000080">&lt;b&gt;</span>AFFECTED INSTANCES:<span style="color: #000080">&lt;/b&gt;</span>
+    <span style="color: #000080">&lt;/p&gt;</span>
+    <span style="color: #000080">&lt;table</span> <span style="color: #008080">class=</span><span style="color: #d14">'noborder'</span><span style="color: #000080">&gt;</span>
+      <span style="color: #000080">&lt;tr&gt;</span>
+    <span style="color: #000080">&lt;th&gt;</span>UUID<span style="color: #000080">&lt;/th&gt;&lt;th&gt;</span>IP Address<span style="color: #000080">&lt;/th&gt;&lt;th&gt;</span>Host<span style="color: #000080">&lt;/th&gt;</span>
+      <span style="color: #000080">&lt;/tr&gt;</span>
+      <span style="color: #999999;font-weight: bold">{%</span> <span style="color: #000000;font-weight: bold">for</span> <span style="color: #008080">instance</span> <span style="color: #000000;font-weight: bold">in</span> <span style="color: #008080">instances</span> <span style="color: #000000;font-weight: bold">-</span><span style="color: #999999;font-weight: bold">%}</span>
+        <span style="color: #000080">&lt;tr&gt;</span>
+          <span style="color: #000080">&lt;td&gt;</span><span style="color: #999999;font-weight: bold">{{</span> <span style="color: #008080">instance.id</span> <span style="color: #999999;font-weight: bold">}}</span><span style="color: #000080">&lt;/td&gt;&lt;td&gt;</span><span style="color: #999999;font-weight: bold">{{</span> <span style="color: #008080">instance.accessIPv4</span> <span style="color: #999999;font-weight: bold">}}</span><span style="color: #000080">&lt;/td&gt;&lt;td&gt;</span><span style="color: #999999;font-weight: bold">{{</span> <span style="color: #008080">instance.name</span> <span style="color: #999999;font-weight: bold">}}</span><span style="color: #000080">&lt;/td&gt;</span>
+        <span style="color: #000080">&lt;/tr&gt;</span>
+      <span style="color: #999999;font-weight: bold">{%</span> <span style="color: #000000;font-weight: bold">endfor</span> <span style="color: #999999;font-weight: bold">%}</span>
+    <span style="color: #000080">&lt;/table&gt;</span>
+<span style="color: #999999;font-weight: bold">{%</span> <span style="color: #000000;font-weight: bold">endblock</span> <span style="color: #999999;font-weight: bold">%}</span>
+
+</code></pre>
+                    <p>Некоторые виды шаблона не очень похожи на html и крайне популярны в других языках:</p>
+                    <pre class="hljs"><code class=slim><span style="color: #555555">doctype</span><span style="color: #bbbbbb"> </span>html
+<span style="color: #000080">html</span>
+  <span style="color: #000080">head</span>
+    <span style="color: #000080">title</span><span style="color: #bbbbbb"> </span>Slim<span style="color: #bbbbbb"> </span>Examples
+    <span style="color: #000080">meta</span><span style="color: #bbbbbb"> </span><span style="color: #008080">name</span><span style="background-color: #f8f8f8">=</span><span style="color: #d14">"keywords"</span><span style="color: #bbbbbb"> </span><span style="color: #008080">content</span><span style="background-color: #f8f8f8">=</span><span style="color: #d14">"template language"</span>
+    <span style="color: #000080">meta</span><span style="color: #bbbbbb"> </span><span style="color: #008080">name</span><span style="background-color: #f8f8f8">=</span><span style="color: #d14">"author"</span><span style="color: #bbbbbb"> </span><span style="color: #008080">content</span><span style="background-color: #f8f8f8">=</span><span style="background-color: #f8f8f8">author</span>
+    <span style="color: #000080">link</span><span style="color: #bbbbbb"> </span><span style="color: #008080">rel</span><span style="background-color: #f8f8f8">=</span><span style="color: #d14">"icon"</span><span style="color: #bbbbbb"> </span><span style="color: #008080">type</span><span style="background-color: #f8f8f8">=</span><span style="color: #d14">"image/png"</span><span style="color: #bbbbbb"> </span><span style="color: #008080">href</span><span style="background-color: #f8f8f8">=</span><span style="background-color: #f8f8f8">file_path</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"favicon.png"</span><span style="background-color: #f8f8f8">)</span>
+    <span style="color: #3c5d5d;font-weight: bold">javascript:
+</span>      <span style="background-color: #f8f8f8">alert</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'</span><span style="color: #d14">Slim supports embedded javascript!</span><span style="color: #d14">'</span><span style="background-color: #f8f8f8">)</span>
+
+  <span style="color: #000080">body</span>
+    <span style="color: #000080">h1</span><span style="color: #bbbbbb"> </span>Markup<span style="color: #bbbbbb"> </span>examples
+
+    <span style="color: #990000;font-weight: bold">#content</span>
+      <span style="color: #000080">p</span><span style="color: #bbbbbb"> </span>This<span style="color: #bbbbbb"> </span>example<span style="color: #bbbbbb"> </span>shows<span style="color: #bbbbbb"> </span>you<span style="color: #bbbbbb"> </span>how<span style="color: #bbbbbb"> </span>a<span style="color: #bbbbbb"> </span>basic<span style="color: #bbbbbb"> </span>Slim<span style="color: #bbbbbb"> </span>file<span style="color: #bbbbbb"> </span>looks<span style="color: #445588;font-weight: bold">.</span>
+
+    <span style="background-color: #f8f8f8">==</span> <span style="color: #000000;font-weight: bold">yield</span>
+
+    <span style="background-color: #f8f8f8">-</span> <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">items</span><span style="background-color: #f8f8f8">.</span><span style="color: #990000;font-weight: bold">any?</span>
+      <span style="color: #000080">table</span><span style="color: #990000;font-weight: bold">#items</span>
+        <span style="background-color: #f8f8f8">-</span> <span style="color: #000000;font-weight: bold">for</span> <span style="background-color: #f8f8f8">item</span> <span style="color: #000000;font-weight: bold">in</span> <span style="background-color: #f8f8f8">items</span>
+          <span style="color: #000080">tr</span>
+            <span style="color: #000080">td</span><span style="color: #445588;font-weight: bold">.name</span><span style="color: #bbbbbb"> </span><span style="background-color: #f8f8f8">=</span> <span style="background-color: #f8f8f8">item</span><span style="background-color: #f8f8f8">.</span><span style="color: #990000;font-weight: bold">name</span>
+            <span style="color: #000080">td</span><span style="color: #445588;font-weight: bold">.price</span><span style="color: #bbbbbb"> </span><span style="background-color: #f8f8f8">=</span> <span style="background-color: #f8f8f8">item</span><span style="background-color: #f8f8f8">.</span><span style="color: #990000;font-weight: bold">price</span>
+    <span style="background-color: #f8f8f8">-</span> <span style="color: #000000;font-weight: bold">else</span>
+      <span style="color: #000080">p</span><span style="color: #bbbbbb"> </span>No<span style="color: #bbbbbb"> </span>items<span style="color: #bbbbbb"> </span>found<span style="color: #445588;font-weight: bold">.</span><span style="color: #bbbbbb"> </span>Please<span style="color: #bbbbbb"> </span>add<span style="color: #bbbbbb"> </span>some<span style="color: #bbbbbb"> </span>inventory<span style="color: #445588;font-weight: bold">.</span>
+        <span style="color: #000080">Thank</span><span style="color: #bbbbbb"> </span>you!
+
+    <span style="color: #000080">div</span><span style="color: #bbbbbb"> </span><span style="color: #008080">id</span><span style="background-color: #f8f8f8">=</span><span style="color: #d14">"footer"</span>
+      <span style="background-color: #f8f8f8">==</span> <span style="background-color: #f8f8f8">render</span> <span style="color: #d14">'footer'</span>
+      <span style="background-color: #f8f8f8">|</span> Copyright <span style="color: #800080">&amp;copy;</span> <span style="color: #d14">#{</span><span style="color: #008080">@year</span><span style="color: #d14">}</span> <span style="color: #d14">#{</span><span style="color: #008080">@author</span><span style="color: #d14">}</span>
+</code></pre>
+                    <p>А библиотека, в свою очередь, читает этот файл и подставляет необходимые переменные. Таким
+                      образом один шаблон может использоваться для разных данных. Например, на Хекслете множество
+                      уроков, но шаблон, который формирует html соответствующей страницы - один. Присмотритесь к
+                      шаблонам выше. Внутри них нередко используется свой язык с условными конструкциями, циклами и
+                      другими механизмами.</p>
+
+                    <p>Возможно, вы уже догадались, что <strong>php сам является шаблонизатором</strong>. Ранее я
+                      неоднократно упоминал, что php-код может перемешиваться с html в одном файле. Посмотрите типичный
+                      пример:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$unique</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">uniqid</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #008080">$reference</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">function</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$lang</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">use</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$unique</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$lang</span> <span style="color: #009999">.</span> <span style="color: #008080">$unique</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">};</span>
+
+<span style="color: #999999;font-weight: bold">?&gt;</span>
+
+<span style="color: #000080">&lt;div</span> <span style="color: #008080">class=</span><span style="color: #d14">"code-snippets"</span><span style="color: #000080">&gt;</span>
+    <span style="color: #000080">&lt;ul</span> <span style="color: #008080">class=</span><span style="color: #d14">"nav nav-tabs"</span><span style="color: #000080">&gt;</span>
+        <span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #008080">$first</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">;</span> <span style="color: #000000;font-weight: bold">foreach</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$examples</span> <span style="color: #000000;font-weight: bold">as</span> <span style="color: #008080">$lang</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$code</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">:</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+        <span style="color: #000080">&lt;li</span> <span style="color: #008080">role=</span><span style="color: #d14">"presentation"</span> <span style="color: #008080">class=</span><span style="color: #d14">"</span><span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$reference</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$lang</span><span style="background-color: #f8f8f8">)</span> <span style="color: #009999">.</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$first</span> <span style="color: #000000;font-weight: bold">?</span> <span style="color: #d14">' active'</span> <span style="color: #000000;font-weight: bold">:</span> <span style="color: #d14">''</span><span style="background-color: #f8f8f8">);</span> <span style="color: #008080">$first</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">false</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #d14">"</span><span style="color: #000080">&gt;</span>
+            <span style="color: #000080">&lt;a</span> <span style="color: #008080">href=</span><span style="color: #d14">"#</span><span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$reference</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$lang</span><span style="background-color: #f8f8f8">)</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #d14">"</span> <span style="color: #008080">aria-controls=</span><span style="color: #d14">"</span><span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$reference</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$lang</span><span style="background-color: #f8f8f8">)</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #d14">"</span> <span style="color: #008080">role=</span><span style="color: #d14">"tab"</span> <span style="color: #008080">data-toggle=</span><span style="color: #d14">"tab"</span><span style="color: #000080">&gt;</span>
+                <span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$lang</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+            <span style="color: #000080">&lt;/a&gt;</span>
+        <span style="color: #000080">&lt;/li&gt;</span>
+        <span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">endforeach</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+    <span style="color: #000080">&lt;/ul&gt;</span>
+    <span style="color: #000080">&lt;div</span> <span style="color: #008080">class=</span><span style="color: #d14">"tab-content"</span><span style="color: #000080">&gt;</span>
+        <span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #008080">$first</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">;</span> <span style="color: #000000;font-weight: bold">foreach</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$examples</span> <span style="color: #000000;font-weight: bold">as</span> <span style="color: #008080">$lang</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$code</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">:</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+        <span style="color: #000080">&lt;div</span> <span style="color: #008080">role=</span><span style="color: #d14">"tabpanel"</span> <span style="color: #008080">class=</span><span style="color: #d14">"tab-pane </span><span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">echo</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$first</span> <span style="color: #000000;font-weight: bold">?</span> <span style="color: #d14">'active'</span> <span style="color: #000000;font-weight: bold">:</span> <span style="color: #d14">''</span><span style="background-color: #f8f8f8">);</span> <span style="color: #008080">$first</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">false</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #d14">"</span> <span style="color: #008080">id=</span><span style="color: #d14">"</span><span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$reference</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$lang</span><span style="background-color: #f8f8f8">)</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #d14">"</span><span style="color: #000080">&gt;</span>
+            <span style="color: #000080">&lt;pre&gt;&lt;code&gt;</span><span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$code</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #000080">&lt;/code&gt;&lt;/pre&gt;</span>
+        <span style="color: #000080">&lt;/div&gt;</span>
+        <span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">endforeach</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+    <span style="color: #000080">&lt;/div&gt;</span>
+<span style="color: #000080">&lt;/div&gt;</span>
+</code></pre>
+                    <p>Получается, что сам файл — это html-код, в котором есть вставки php. Обратите внимание на то, что
+                      привычные конструкции имеют немного другой вид. В отличие от обычного кода, в котором мы
+                      используем фигурные скобки, в таком варианте используются <code>:</code>, и ключевые слова. Такой
+                      подход выбран разработчиками языка исключительно для удобства.</p>
+                    <h2 id="bezopasnost">Безопасность</h2>
+                    <p>Об этом редко говорят во время обучения, но безопасность крайне важна при работе с html формами и
+                      шаблонами в целом. Не понимая основ защиты, вы гарантированно сделаете ошибку, которая может
+                      привести к фатальным последствиям для проекта. Например, отсутствие экранирования пользовательских
+                      данных приведёт к тому, что появится возможность провести <a
+                        href="https://ru.wikipedia.org/wiki/Межсайтовый_скриптинг" target="_blank"
+                        rel="nofollow">XSS</a> атаку.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li>
+                        <p>Подключите к вашему проекту, созданному в предыдущем уроке, пакет <a
+                            href="https://github.com/slimphp/PHP-View" target="_blank" rel="nofollow">PHP-View</a> в
+                          соответствии с <a href="https://github.com/slimphp/PHP-View#usage-with-any-psr-7-project"
+                            target="_blank" rel="nofollow">документацией</a>(!). В начале файла
+                          <code>public/index.php</code> определите псевдоним для работы с пакетом:</p>
+                        <pre class="hljs"><code class=php>    <span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+    <span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Slim\Views\PhpRenderer</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                      </li>
+                      <li>
+                        <p>Создайте директорию <code>templates</code> в корне проекта.</p>
+                      </li>
+                      <li>
+                        <p>Добавьте обработчик в файл <code>public/index.php</code>:</p>
+                        <pre class="hljs"><code class=php>    <span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+    <span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/about'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$phpView</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">PhpRenderer</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'../templates'</span><span style="background-color: #f8f8f8">);</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$phpView</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'about.phtml'</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                      </li>
+                      <li>
+                        <p>Создайте файл <code>templates/about.phtml</code>. Добавьте туда любой html-код.</p>
+                      </li>
+                      <li>
+                        <p>Запустите проект по аналогии как в предыдущем уроке, и откройте в браузере страницу
+                          <code>http://localhost:5555/about</code>.</p>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

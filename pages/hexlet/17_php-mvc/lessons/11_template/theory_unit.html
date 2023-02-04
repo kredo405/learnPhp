@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Шаблонизатор - Веб-разработка на PHP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Шаблонизатор</h1>
+                    <p>Формирование HTML во фреймворках — отдельная нетривиальная тема. Конечно, никто не запрещает
+                      создавать HTML напрямую в виде строки, но такой способ просто перестает работать на реальных
+                      сайтах, где HTML одной страницы — это сотни, а то и тысячи строк.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/courses/{name}'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #445588;font-weight: bold">array</span> <span style="color: #008080">$args</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">use</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$courses</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$slug</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$args</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #008080">$course</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$courses</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$slug</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">write</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"&lt;h1&gt;</span><span style="color: #d14">{</span><span style="color: #008080">$course</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">name</span><span style="color: #d14">}</span><span style="color: #d14">&lt;/h1&gt;"</span><span style="background-color: #f8f8f8">)</span>
+      <span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">write</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"&lt;div&gt;</span><span style="color: #d14">{</span><span style="color: #008080">$course</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">body</span><span style="color: #d14">}</span><span style="color: #d14">&lt;/div&gt;"</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>У такого подхода масса недостатков:</p>
+
+                    <ul>
+                      <li>Он небезопасен и может привести к взлому. Подробнее эта тема рассматривается в конце курса.
+                      </li>
+                      <li>С ростом количества HTML поддерживать такой код станет практически невозможно из-за неудобства
+                        анализа и редактирования.</li>
+                      <li>В таком коде будут возникать постоянные проблемы с необходимостью экранировать одинарные или
+                        двойные кавычки.</li>
+                      <li>В таком коде крайне легко допустить ошибку в HTML и крайне сложно её обнаружить.</li>
+                      <li>В типичных сайтах большая часть HTML общая для разных страниц. Выделить её, используя подход
+                        выше, очень сложно.</li>
+                    </ul>
+
+                    <p>Для решения подобных задач придумали шаблонизаторы — специализированные библиотеки, позволяющие
+                      описывать шаблон отдельно от остальной части кода.</p>
+
+                    <p>Для начала необходимо установить пакет <em>slim/php-view</em>. Выполните соответствующую команду
+                      в корне проекта:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>composer require slim/php-view php-di/php-di
+</code></pre>
+                    <p>Измените настройку Slim в начале файла <em>public/index.php</em> так как показано в примере:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Контейнеры в этом курсе не рассматриваются (это тема связанная с самим ООП), но если вам интересно, то посмотрите DI Container</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Slim\Factory\AppFactory</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">DI\Container</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #008080">$container</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Container</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #008080">$container</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">set</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'renderer'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">()</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Параметром передается базовая директория, в которой будут храниться шаблоны</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">Slim\Views\PhpRenderer</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">__DIR__</span> <span style="color: #009999">.</span> <span style="color: #d14">'/../templates'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+<span style="color: #008080">$app</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">AppFactory</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">createFromContainer</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$container</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">addErrorMiddleware</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>В этих строчках происходит подключение шаблонизатора к Слиму, используя <a
+                        href="https://en.wikipedia.org/wiki/Dependency_injection" target="_blank" rel="nofollow">DI
+                        Container</a>. Наши шаблоны будут храниться в директории <em>templates</em> в корне проекта.</p>
+
+                    <p>Далее добавьте еще один обработчик:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/users/{id}'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$args</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$params</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'id'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$args</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'id'</span><span style="background-color: #f8f8f8">],</span> <span style="color: #d14">'nickname'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'user-'</span> <span style="color: #009999">.</span> <span style="color: #008080">$args</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'id'</span><span style="background-color: #f8f8f8">]];</span>
+    <span style="color: #999988;font-style: italic">// Указанный путь считается относительно базовой директории для шаблонов, заданной на этапе конфигурации</span>
+    <span style="color: #999988;font-style: italic">// $this доступен внутри анонимной функции благодаря https://php.net/manual/ru/closure.bindto.php</span>
+    <span style="color: #999988;font-style: italic">// $this в Slim это контейнер зависимостей</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'renderer'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'users/show.phtml'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$params</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>Метод <code>render()</code> выполняет рендеринг указанного шаблона и добавляет результат в ответ.
+                      Сама функция принимает на вход три параметра:</p>
+
+                    <ol>
+                      <li> Объект ответа</li>
+                      <li> Путь до нужного шаблона внутри директории <em>templates</em></li>
+                      <li> Набор параметров, которые будут доступны внутри шаблона. Сюда можно передавать все, что
+                        угодно.</li>
+                    </ol>
+
+                    <p>И последний шаг, добавьте файл <em>templates/users/show.phtml</em> со следующим содержимым:</p>
+                    <pre class="hljs"><code class=php><span style="color: #000080">&lt;h1&gt;</span>Hello, <span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #008080">$id</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #000080">&lt;/h1&gt;</span>
+</code></pre>
+                    <p>Расширение <em>phtml</em> используют тогда, когда хотят показать что внутри файла содержится
+                      шаблон на PHP, в остальном файл рассматривается как обычный файл с кодом на PHP.</p>
+
+                    <p>Теперь откройте браузер и попробуйте загрузить страницу <em><a
+                          href="http://localhost:8080/users/nick"
+                          target="_blank">http://localhost:8080/users/nick</a></em>.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>curl localhost:8080/users/nick
+&lt;h1&gt;Hello, nick&lt;/h1&gt;
+</code></pre>
+                    <p>Вместо кода <code>&lt;?= $id ?&gt;</code> на экране появилось значение переменной
+                      <code>$id</code>. Откуда она взялась в шаблоне? Наш шаблонизатор берет массив
+                      <code>$params</code>, который передается третьим параметром в метод <code>render()</code> и
+                      создает внутри шаблона локальную переменную на каждый ключ этого массива. Причем имя переменной и
+                      ключа совпадают. Этот принцип работает всегда. Если вам нужно вывести данные на странице, то
+                      добавляйте их в массив <code>$params</code> и обращайтесь к ним в шаблоне через переменные.</p>
+
+                    <p>Этой тактики следует придерживаться и для суперглобальных массивов. По понятным причинам их можно
+                      использовать напрямую:</p>
+                    <pre class="hljs"><code class=php><span style="color: #000080">&lt;h1&gt;</span><span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #008080">$_GET</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #000080">&lt;/h1&gt;</span>
+</code></pre>
+                    <p>Но делать так ни в коем случае нельзя. Такой код значительно сложнее в отладке и потенциально
+                      очень опасен (подробнее об этом дальше по курсу).</p>
+                    <h2 id="sobiraya-vse-vmeste">Собирая все вместе</h2>
+                    <p>Теперь, когда мы добавили поддержку шаблонов во фреймворк, появляется способ создавать
+                      нетривиальные сайты. Ниже пример обработчика и шаблона для вывода курсов:</p>
+
+                    <p><strong>Обработчик</strong></p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/courses'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">use</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$courses</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$params</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span>
+        <span style="color: #d14">'courses'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$courses</span>
+    <span style="background-color: #f8f8f8">];</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'renderer'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'courses/index.phtml'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$params</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p><strong>Шаблон</strong></p>
+                    <pre class="hljs"><code class=php><span style="color: #000080">&lt;table&gt;</span>
+  <span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">foreach</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$courses</span> <span style="color: #000000;font-weight: bold">as</span> <span style="color: #008080">$course</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">:</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+    <span style="color: #000080">&lt;tr&gt;</span>
+      <span style="color: #000080">&lt;td&gt;</span>
+          <span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #008080">$course</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'id'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+      <span style="color: #000080">&lt;/td&gt;</span>
+      <span style="color: #000080">&lt;td&gt;</span>
+          <span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #008080">$course</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+      <span style="color: #000080">&lt;/td&gt;</span>
+    <span style="color: #000080">&lt;/tr&gt;</span>
+  <span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">endforeach</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+<span style="color: #000080">&lt;/table&gt;</span>
+<span style="color: #999988;font-style: italic">&lt;!-- END --&gt;</span>
+</code></pre>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Измените настройку Slim в начале файла <em>public/index.php</em> как описано в примере из
+                        теории. И добавьте обработчик для просмотра страницы пользователя (следующий после настройки
+                        пример).</li>
+                      <li> Создайте для него шаблон <em>templates/users/show.phtml</em>. Выведите в нем идентификатор
+                        пользователя и никнейм пользователя.</li>
+                      <li> Выполните запрос к странице <em>/users/5</em>. Попробуйте поменять число.</li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://php.net/manual/ru/control-structures.alternative-syntax.php">Альтернативный
+                          синтаксис конструкций PHP</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="http://www.slimframework.com/docs/v4/objects/routing.html#closure-binding">$this в
+                          Slim</a>
+                      </li>
+                    </ol>
+</body>
+
+</html>

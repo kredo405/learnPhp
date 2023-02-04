@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Производительность - Основы реляционных баз данных</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="FcQstCLaEhtSxnEGLn6olHvOcKp1vmRC6OKWJglPRO7sGYLf0fNPPGAzI-vD1msTZdkR-2qcbvW6sgy5wo4b5g" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../transactions/exercise_unit.html">Основы реляционных баз данных</a>
+                    <h1 class='mt-0 mb-4'>Производительность</h1>
+                    <p>Вопрос производительности базы данных и запросов к ней с течением времени становится всё
+                      актуальнее. Чем больше проект и сложнее связи, чем больше данных в таблицах, тем выше вероятность
+                      столкнуться с медленной работой и нежелательными блокировками. Подобные вопросы редко касаются
+                      новичков, и в проектах всегда есть, кому ими заняться, но общее понимание стоит иметь даже на
+                      начальном этапе, хотя и не стоит уделять этому слишком много внимания. С другой стороны,
+                      собеседующие иногда задают вопросы на оптимизацию базы данных даже совсем зелёным новичкам, и если
+                      они что-то отвечают, то им добавляется большой плюс в карму.</p>
+
+                    <p>Производительность базы данных настолько серьёзная тема, что ей посвящена не одна книга.
+                      Бесполезно пытаться уместить всё в один урок, поэтому я всего лишь опишу основные направления в
+                      этой теме и предоставлю большое число ключевых слов для самостоятельного изучения, если, конечно,
+                      вам это интересно.</p>
+                    <h2 id="explain">EXPLAIN</h2>
+                    <p>Начнем с того, как база данных выбирает данные. SQL — декларативный язык, то есть им мы описываем
+                      <strong>ЧТО</strong> хотим получить, а не <strong>КАК</strong>. Но это не устраивает машину, СУБД
+                      должна знать, каким образом добраться до этих данных. В СУБД реализована подсистема, которая
+                      называется <strong>планировщик</strong> (scheduler). Она строит так называемый <strong>план
+                        запроса</strong>. Этот план описывает, как конкретно будут извлечены данные, которые хранятся
+                      внутри базы данных. При построении плана планировщик учитывает множество факторов: например,
+                      статистику обращений, информацию о количестве данных в таблицах и многое другое. Более того,
+                      планировщик в PostgreSQL применяет <em>генетические алгоритмы</em>, для того, чтобы строить план
+                      быстро и эффективно. Результат работы планировщика можно посмотреть командой <code>EXPLAIN</code>:
+                    </p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">EXPLAIN</span> <span style="color: #000000;font-weight: bold">SELECT</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">users</span>
+  <span style="color: #000000;font-weight: bold">JOIN</span> <span style="background-color: #f8f8f8">topics</span> <span style="color: #000000;font-weight: bold">ON</span> <span style="background-color: #f8f8f8">users</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">id</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">topics</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">user_id</span>
+  <span style="color: #000000;font-weight: bold">WHERE</span> <span style="background-color: #f8f8f8">users</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">created_at</span> <span style="color: #000000;font-weight: bold">&gt;</span> <span style="color: #d14">'10.10.2018'</span><span style="background-color: #f8f8f8">;</span>
+
+                                       <span style="background-color: #f8f8f8">QUERY</span> <span style="background-color: #f8f8f8">PLAN</span>
+<span style="color: #999988;font-style: italic">-----------------------------------------------------------------------------------------</span>
+ <span style="background-color: #f8f8f8">Hash</span> <span style="color: #000000;font-weight: bold">Join</span>  <span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">cost</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #009999">10</span><span style="background-color: #f8f8f8">.</span><span style="color: #009999">66</span><span style="background-color: #f8f8f8">..</span><span style="color: #009999">23</span><span style="background-color: #f8f8f8">.</span><span style="color: #009999">59</span> <span style="color: #000000;font-weight: bold">rows</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #009999">42</span> <span style="background-color: #f8f8f8">width</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #009999">2377</span><span style="background-color: #f8f8f8">)</span>
+   <span style="background-color: #f8f8f8">Hash</span> <span style="background-color: #f8f8f8">Cond</span><span style="background-color: #f8f8f8">:</span> <span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">topics</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">user_id</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">users</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">id</span><span style="background-color: #f8f8f8">)</span>
+   <span style="color: #000000;font-weight: bold">-&gt;</span>  <span style="background-color: #f8f8f8">Seq</span> <span style="background-color: #f8f8f8">Scan</span> <span style="color: #000000;font-weight: bold">on</span> <span style="background-color: #f8f8f8">topics</span>  <span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">cost</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">.</span><span style="color: #009999">00</span><span style="background-color: #f8f8f8">..</span><span style="color: #009999">11</span><span style="background-color: #f8f8f8">.</span><span style="color: #009999">30</span> <span style="color: #000000;font-weight: bold">rows</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #009999">130</span> <span style="background-color: #f8f8f8">width</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #009999">572</span><span style="background-color: #f8f8f8">)</span>
+   <span style="color: #000000;font-weight: bold">-&gt;</span>  <span style="background-color: #f8f8f8">Hash</span>  <span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">cost</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #009999">10</span><span style="background-color: #f8f8f8">.</span><span style="color: #009999">50</span><span style="background-color: #f8f8f8">..</span><span style="color: #009999">10</span><span style="background-color: #f8f8f8">.</span><span style="color: #009999">50</span> <span style="color: #000000;font-weight: bold">rows</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #009999">13</span> <span style="background-color: #f8f8f8">width</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #009999">1805</span><span style="background-color: #f8f8f8">)</span>
+         <span style="color: #000000;font-weight: bold">-&gt;</span>  <span style="background-color: #f8f8f8">Seq</span> <span style="background-color: #f8f8f8">Scan</span> <span style="color: #000000;font-weight: bold">on</span> <span style="background-color: #f8f8f8">users</span>  <span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">cost</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">.</span><span style="color: #009999">00</span><span style="background-color: #f8f8f8">..</span><span style="color: #009999">10</span><span style="background-color: #f8f8f8">.</span><span style="color: #009999">50</span> <span style="color: #000000;font-weight: bold">rows</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #009999">13</span> <span style="background-color: #f8f8f8">width</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #009999">1805</span><span style="background-color: #f8f8f8">)</span>
+               <span style="background-color: #f8f8f8">Filter</span><span style="background-color: #f8f8f8">:</span> <span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">created_at</span> <span style="color: #000000;font-weight: bold">&gt;</span> <span style="color: #d14">'2018-10-10 00:00:00'</span><span style="background-color: #f8f8f8">::</span><span style="color: #0086B3">timestamp</span> <span style="color: #000000;font-weight: bold">without</span> <span style="color: #0086B3">time</span> <span style="color: #000000;font-weight: bold">zone</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">(</span><span style="color: #009999">6</span> <span style="color: #000000;font-weight: bold">rows</span><span style="background-color: #f8f8f8">)</span>
+</code></pre>
+                    <p>Справа в самом низу показаны операции, которые выполняются в первую очередь. Затем данные,
+                      полученные на этих шагах, передаются выше — и так до самого верха. Слева указаны операции, которые
+                      производятся с данными, например <em>Seq Scan</em> означает последовательный перебор таблицы
+                      (самая дорогая операция при условии, что данных много). Подробнее про план читайте в <a
+                        href="https://habr.com/company/oleg-bunin/blog/319018/" target="_blank"
+                        rel="nofollow">соответствующей статье</a>.</p>
+                    <h2 id="indeksy">Индексы</h2>
+                    <p>План запроса можно использовать по-разному: например, переписать (или даже разбить) запрос на
+                      более эффективный. С другой стороны, некоторые запросы уже достаточно оптимизированы, и тогда для
+                      их ускорения используют <strong>индексы</strong>. Индекс — это специальная структура внутри базы
+                      данных, создаваемая для ускорения поиска. Концептуально индекс в базе данных подобен предметному
+                      указателю в любой книге.</p>
+                    <pre class="hljs"><code class=sql><span style="color: #999988;font-style: italic">-- Пример создания индекса по полю birthday таблицы users</span>
+<span style="color: #000000;font-weight: bold">CREATE</span> <span style="color: #000000;font-weight: bold">INDEX</span> <span style="color: #000000;font-weight: bold">ON</span> <span style="background-color: #f8f8f8">users</span><span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">birthday</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Но создание индекса само по себе не гарантирует эффективности, многое зависит от того, правильный
+                      ли индекс создан, сколько уже индексов было в табличке (каждый новый индекс замедляет вставку и
+                      обновление данных), сколько данных в таблице, какие запросы выполняются к этой таблице.</p>
+
+                    <p>В PostgreSQL встроено 6 разных видов индексов, подходящих под разные ситуации. Для работы с ними
+                      нужно понимать несколько вещей:</p>
+
+                    <ol>
+                      <li> Устройство индексов как таковых. Здесь не обойдётся без знания <strong>структур данных и
+                          алгоритмов</strong>. В первую очередь речь идёт про <strong>сбалансированные деревья</strong>
+                        (btree).</li>
+                      <li> Классификацию видов запросов. Например, запрос по диапазону или запрос с применением
+                        <code>LIKE</code> оператора — совершенно разные виды запросов, которые по-разному работают и
+                        оптимизируются.</li>
+                      <li> Влияние различных конструкций SQL на план запроса: например, <code>ORDER BY</code> — дорогая
+                        операция, которая часто приводит к полному перебору таблицы.</li>
+                    </ol>
+                    <h2 id="denormalizatsiya">Денормализация</h2>
+                    <p>Ещё один подход, связанный с оптимизацией, называется денормализацией. Денормализация — это
+                      процесс, обратный нормализации. С точки зрения реляционной теории, такого понятия не существует и
+                      оно само по себе противоречит её идеям, но на практике этот способ активно применяется, так как за
+                      счёт избыточности позволяет упростить запросы (так как данные ближе и их легче извлечь). Цена за
+                      денормализацию — дополнительный объём и (не во всех случаях) необходимость производить
+                      синхронизацию данных самостоятельно: например, мы можем хранить имя пользователя в разных
+                      таблицах, что создаёт сложности при изменении имени. Нужно не забыть поменять его во всех
+                      таблицах, где оно используется. В общем случае, денормализация значительно сокращает число
+                      запросов с соединениями (joins).</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://postgrespro.ru/docs/postgresql/11/indexes-types">Типы индексов
+                          в PostgreSQL</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://ru.wikipedia.org/wiki/B-%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BE">B-дерево</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="http://optimization.guide/">Продуманная оптимизация</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Массивы в памяти компьютера - PHP: Массивы</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Массивы в памяти компьютера</h1>
+                    <p>Работая на таких высокоуровневых языках как PHP, позволительно не знать устройство массивов для
+                      решения повседневных задач. С другой стороны, подобное понимание делает код менее магическим и
+                      даёт возможность заглядывать чуть дальше.</p>
+                    <h2 id="massivy-v-si">Массивы в си</h2>
+                    <p>Реальные массивы лучше всего рассматривать на языке <strong>Cи</strong>, который, с одной
+                      стороны, достаточно простой и понятный, с другой — очень близок к железу и не скрывает от нас
+                      практически ничего. Когда мы говорим про примитивные типы данных, такие как &quot;строка&quot; или
+                      &quot;число&quot;, то на интуитивном уровне все довольно понятно. Под каждое значение выделяется
+                      некоторый размер памяти (в соответствии с типом), в которой и хранится само значение. А как должна
+                      выделиться память под хранение массива? И что такое массив в памяти? На уровне хранения, понятия
+                      массив не существует. Массив представляется цельным куском памяти, размер которого вычисляется по
+                      следующей формуле: количество элементов * количество памяти под каждый элемент. Из этого
+                      утверждения есть два интересных вывода:</p>
+
+                    <ul>
+                      <li>Размер массива - фиксированная величина. Те динамические массивы, с которыми мы имеем дело во
+                        многих языках, реализованы уже внутри языка, а не на уровне железа.</li>
+                      <li>Все элементы массива имеют один тип и занимают одно и то же количество памяти. Благодаря этому
+                        появляется возможность простым умножением (по формуле, описанной выше) получить адрес той
+                        ячейки, в которой лежит нужный нам элемент. Именно это происходит под капотом, при обращении к
+                        элементу массива под определённым индексом.</li>
+                    </ul>
+
+                    <p><img alt="Массив в Си" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImYyYmJmOWVmMTEyYjM1ZWM5MDMxMjAwZDllOTQzOTU3LnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=e3db8af0ffbb90e44d7acd7655092d94df0199846956e351b0650ce7eab11736"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Фактически, индекс в массиве — смещение относительно начала куска памяти, содержащего данные
+                      массива. Адрес, по которому расположен элемент под конкретным индексом, рассчитывается так:
+                      <em>начальный адрес + индекс * количество памяти, занимаемое одним элементом (для данного типа
+                        данных)</em>. Начальный адрес, это адрес ячейки памяти, начиная с которой размещается массив. Он
+                      формируется во время выделения памяти под массив.</p>
+
+                    <p>Пример на Си:</p>
+                    <pre class="hljs"><code class=c><span style="color: #999988;font-style: italic">// Инициализация массива из пяти элементов типа int</span>
+<span style="color: #999988;font-style: italic">// В этом месте резервируется память под него</span>
+<span style="color: #999988;font-style: italic">// Непрерывный кусок памяти размером _количество элементов * количество байт под int_</span>
+<span style="color: #445588;font-weight: bold">int</span> <span style="background-color: #f8f8f8">mark</span><span style="background-color: #f8f8f8">[]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">{</span><span style="color: #009999">19</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">10</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">8</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">17</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">9</span><span style="background-color: #f8f8f8">};</span>
+<span style="color: #999988;font-style: italic">// _Начальный адрес + 3 * количество байт под int_</span>
+<span style="color: #999988;font-style: italic">// Так рассчитывается фактический адрес, по которому располагаются данные</span>
+<span style="background-color: #f8f8f8">mark</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// 17</span>
+</code></pre>
+                    <p>Если предположить, что тип <code>int</code> занимает в памяти 2 байта (зависит от архитектуры),
+                      то адрес элемента, соответствующего индексу <code>3</code>, вычисляется так: <em>начальный адрес +
+                        3 * 2</em>. Для индекса <code>1</code> – <em>начальный адрес + 1 * 2</em>.</p>
+
+                    <p>В такой формуле расчета адреса, есть ровно один способ физически разместить данные в начале
+                      доступной памяти – использовать нулевой индекс: <em>начальный адрес + 0 * размер элемента
+                        конкретного типа = начальный адрес</em>.</p>
+                    <pre class="hljs"><code class=c><span style="color: #999988;font-style: italic">// Первый элемент</span>
+<span style="color: #999988;font-style: italic">// Начальный адрес + 2 * 0 = начальный адрес</span>
+<span style="background-color: #f8f8f8">mark</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// 19</span>
+
+<span style="color: #999988;font-style: italic">// Начальный адрес + 2 * 1 = начальный адрес + 2</span>
+<span style="color: #999988;font-style: italic">// То есть сместились на 2 байта</span>
+<span style="background-color: #f8f8f8">mark</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// 10</span>
+
+<span style="color: #999988;font-style: italic">// Начальный адрес + 2 * 2 = начальный адрес + 4</span>
+<span style="color: #999988;font-style: italic">// То есть сместились на 4 байта</span>
+<span style="background-color: #f8f8f8">mark</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">2</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// 8</span>
+
+<span style="color: #999988;font-style: italic">// Последний элемент</span>
+<span style="color: #999988;font-style: italic">// Начальный адрес + 2 * 4 = начальный адрес + 8</span>
+<span style="color: #999988;font-style: italic">// То есть сместились на 8 байт</span>
+<span style="color: #999988;font-style: italic">// И сам элемент занимает 2 байта. В сумме как раз 10</span>
+<span style="background-color: #f8f8f8">mark</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">4</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// 9</span>
+</code></pre>
+                    <p>Теперь должно быть понятно, почему индексы в массиве начинаются с нуля. 0 — означает отсутствие
+                      <strong>смещения</strong>.</p>
+
+                    <p>Но не все данные имеют одинаковый размер. Как будет храниться массив строк? Строки ведь имеют
+                      разную длину, а значит требуют разное количество памяти для своего хранения. Один из способов
+                      сохранить строки в массиве на языке Си – создать массив массивов (тут нужно понимать, что любая
+                      строка в Си это массив символов). Вложенные массивы обязательно должны быть одного размера,
+                      невозможно обойти физические ограничения массивов. Хитрость в том, что этот размер должен быть
+                      достаточно большой, чтобы туда поместились необходимые строки.</p>
+                    <pre class="hljs"><code class=c><span style="color: #999988;font-style: italic">// Массив из трех элементов, внутри которого массивы по 10 элементов</span>
+<span style="color: #999988;font-style: italic">// Это значит, что здесь можно хранить 3 строки длиной не больше 10 символов</span>
+<span style="color: #445588;font-weight: bold">char</span> <span style="background-color: #f8f8f8">strings</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">][</span><span style="color: #009999">10</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">{</span>
+   <span style="color: #d14">"spike"</span><span style="background-color: #f8f8f8">,</span>
+   <span style="color: #d14">"tom"</span><span style="background-color: #f8f8f8">,</span>
+   <span style="color: #d14">"jerry"</span>
+<span style="background-color: #f8f8f8">};</span>
+
+<span style="background-color: #f8f8f8">strings</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// spike</span>
+</code></pre>
+                    <h2 id="bezopasnost">Безопасность</h2>
+                    <p>В отличие от высокоуровневых языков, в которых код защищён от выхода за границу массива, в таком
+                      языке как <strong>Си</strong>, выход за границу не приводит к ошибкам. Обращение к элементу,
+                      индекс которого находится за пределами массива, вернёт данные, которые лежат в той самой области
+                      памяти, куда его попросили обратиться (в соответствии с формулой выше). Чем они окажутся — никому
+                      не известно (но они будут проинтерпретированы в соответствии с типом массива. Если массив имеет
+                      тип <code>int</code>, то вернётся число). Благодаря отсутствию какой-либо защиты, выход за границу
+                      массива активно эксплуатируется хакерами для взлома программ.</p>
+                    <h2 id="massivy-v-dinamicheskih-yazykah">Массивы в динамических языках</h2>
+                    <p>В динамических языках, таких как PHP или JS, устройство массивов значительно сложнее чем в си.
+                      Так как типы данных вычисляются автоматически во время выполнения кода. Массив в такой среде не
+                      может работать как в си. Неизвестно, данные каких типов окажутся внутри в процессе работы.</p>
+
+                    <p>Массивы в таких языках содержат не сами данные, а ссылки (адреса в памяти) на них. Тогда
+                      становится не важно, что хранить. Любое значение в массиве – адрес, имеющий одинаковый размер
+                      независимо от данных, на которые он указывает. Такой подход делает массивы гибкими, но с другой
+                      стороны, более медленными.</p>
+
+                    <p>Кроме того, массивы в динамических языках тоже динамические. То есть их размер может
+                      увеличиваться или уменьшаться в процессе работы программы. Технически это работает так: если
+                      ссылки (помним, что данные там не хранятся) в массив не помещаются, то интерпретатор внутри себя
+                      создает новый массив большего размера (обычно в два раза) и переносит все ссылки туда.
+                      Динамические массивы очень упрощают процесс разработки, но за это тоже приходится платить
+                      скоростью.</p>
+
+
+</body>
+
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>HTTP 1.0 - Протокол HTTP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>HTTP 1.0</h1>
+                    <p>HTTP – текстовый протокол, с помощью которого взаимодействуют клиент, например, браузер и сервер.
+                      Работает это так. Пользователь шлёт определенный запрос на сервер, запрашивая или передавая нужные
+                      данные, а сервер, в зависимости от запроса, выполняет нужную логику и возвращает результат, обычно
+                      это HTML-страница либо редирект.</p>
+
+                    <p>Здесь нужно оговориться. Для полного понимания происходящего при запросах, недостаточно знать
+                      один лишь HTTP. Интернет устроен сложно и HTTP это всего лишь небольшая часть пазла. Прочитать обо
+                      всем этом можно в книгах по <a href="https://ru.hexlet.io/pages/recommended-books"
+                        target="_blank">операционным системам</a>, а здесь мы затронем лишь самые верха без которых не
+                      обойтись.</p>
+
+                    <p>Для того, чтобы посмотреть, как работает HTTP, мы сделаем запрос к серверу google и разберём, как
+                      он выглядит. Для этого используется специальная утилита, которая называется <em>telnet</em> (<a
+                        href="https://asciinema.org/a/10703" target="_blank" rel="nofollow">пример HTTP-запроса,
+                        выполненного с помощью утилиты telnet</a>).</p>
+                    <pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># Передаем адрес сайта и указываем tcp порт</span>
+<span style="color: #999988;font-style: italic"># После этого происходит подключение к серверу по протоколу tcp</span>
+<span style="color: #008080">$ </span>telnet google.com 80
+</code></pre>
+                    <p>HTTP протокол прикладного уровня. Другими словами, он предназначен для общения между двумя
+                      программами (клиентом и сервером), находящимися на разных компьютерах. Но, сам по себе, HTTP не
+                      может соединять два удаленных компьютера. Для этого используются другие протоколы, среди которых
+                      TCP. Именно TCP позволяет соединить программы на удаленных компьютерах, создав канал для общения
+                      друг с другом. Для этого нужно знать два параметра: ip-адрес компьютера, к которому нужно
+                      подключиться и порт на, котором &quot;висит&quot; нужная программа.</p>
+
+                    <p>Команда telnet выше делает именно это, она выполняет соединение по TCP и только после этого
+                      входит в режим взаимодействия по HTTP. При условии, что указан правильный ip-адрес и порт для
+                      соединения. И на этом моменте возникает два вопроса:</p>
+
+                    <p>Мы передали адрес сайта, откуда берется ip-адрес? Любой адрес сайта это просто имя, за которым
+                      скрывается ip-адрес. Имя задано для удобства, так его проще запомнить. Однако все сетевые
+                      программы, среди которых браузеры и telnet, выполняют преобразование имени сайта в его ip-адрес.
+                      Делается это с помощью системы DNS, еще одного столпа интернета.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># Пример того как можно узнать ip-адрес с помощью утилиты ping</span>
+<span style="color: #999988;font-style: italic"># В вашем случае адрес может быть другим, ip-адреса могут меняться</span>
+<span style="color: #008080">$ </span>ping google.com <span style="color: #999988;font-style: italic"># 74.125.21.139</span>
+<span style="color: #999988;font-style: italic"># Затем можно использовать его для соединения с сервером</span>
+<span style="color: #008080">$ </span>telnet 74.125.21.139 80
+</code></pre>
+                    <p>Почему порт имеет номер 80? Это общепринятое соглашение. Сайты, доступные по HTTP, доступны на
+                      порту 80, а по HTTPS – на порту 443. Именно поэтому в браузерах порты не указываются.</p>
+
+                    <p>Теперь, когда мы установили соединение, то видим, что произошло соединение с веб-сервером,
+                      программой которая обслуживает http-запросы к google.com:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>telnet google.com 80
+Trying 74.125.21.139...
+Connected to google.com.
+Escape character is <span style="color: #d14">'^]'</span><span style="color: #0086B3">.</span>
+</code></pre>
+                    <p>После подключения веб-сервер входит в режим ожидания http-запроса. Осталось его послать.</p>
+                    <h2 id="chto-iz-sebya-predstavlyaet-sam-zapros">Что из себя представляет сам запрос?</h2>
+                    <p><img alt="HTTP запрос" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImM1OGNhMDI5MjQ3MTIwZWFhYzFiYTQ4YWNmMGZjODE4LmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=6ff83e523548e03b56f8057abc882dc987df1e907a3474c7ca51873bcbba6cf5"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Запрос состоит из нескольких частей. Первая часть — <em>request line</em>. Вторая — заголовки.
+                    </p>
+
+                    <p>В <em>request line</em> мы указываем специальное слово, ещё говорят метод. В HTTP описаны разные
+                      методы, но мы сейчас не будем вдаваться в подробности. Просто скажем, что они определяют, как
+                      реагировать на этот запрос. И в данном случае мы будем использовать метод HEAD. Он очень простой,
+                      и просит только отдать данные. Более распространённым является GET. Именно с помощью GET мы
+                      запрашиваем сайт. Отличие HEAD от GET в том, что при HEAD возвращаются только заголовки без тела
+                      ответа (например, содержимого страницы).</p>
+
+                    <p>После метода указывается строка запроса <em>query string</em>. Если мы указываем <code>/</code>,
+                      это обозначает просто корень сайта. Дальше всё, что нужно сделать, это указать название протокола
+                      и его версию. Сейчас активно используется версия 1.1, на подходе версия 2.0, но мы начнём с версии
+                      1.0. Между ними есть принципиальные отличия, которые нужно хорошо знать и понимать. Версия 1.0
+                      продолжает использоваться в различных целях различными утилитами. В принципе этого достаточно, и
+                      для 1.0 больше ничего делать не нужно:</p>
+                    <pre class="hljs"><code class=sh>HEAD / HTTP/1.0
+</code></pre>
+                    <p>Давайте рассмотрим, как выглядят заголовки. Мы указываем имя и через двоеточие какое-то значение:
+                      <code>refer:value</code>. Заголовки часто указывают заглавными буквами, но регистр здесь не важен.
+                      Порядок заголовков также не специфицирован. В каком бы порядке мы не передали заголовки, тело
+                      ответа будет разбираться только всё вместе.</p>
+
+                    <p>Браузерами используется много заголовков, например <code>user-agent</code>. Этот заголовок
+                      используется для аналитики, а также, когда необходимо адаптировать страницы сайта под разные
+                      экраны или браузеры. Но и без него все должно работать:</p>
+                    <pre class="hljs"><code class=sh>HEAD / HTTP/1.0
+User-Agent: google сhrome
+</code></pre>
+                    <p>Есть стандартизированные заголовки, связанные с кодировками, локалями и со многими другими
+                      вещами. Но мы можем писать и собственные.</p>
+
+                    <p>Важно понять, поскольку это протокол, и у него есть определенные правила, то нарушать их нельзя.
+                      HTTP — текстовый протокол. Все правила основаны на простых соглашениях. Например, несколько
+                      заголовков отделяются друг от друга переводом строки (и никак иначе!). Мы не можем записать их в
+                      одну строку, через запятую или как-то ещё. Всё очень строго. А каким образом сервер поймёт, что вы
+                      закончили передавать данные? Это должен быть какой-то маркер, определитель. В HTTP это делается с
+                      помощью двух переводов строки. После этого сервер считает что все данные были отправлены и больше
+                      данных не будет. То есть фактически два перевода строки (перевод после последнего заголовка и
+                      пустая строка) приводят к отправке данных.</p>
+                    <h2 id="chto-iz-sebya-predstavlyaet-otvet">Что из себя представляет ответ?</h2>
+                    <p><img alt="HTTP ответ" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjVjMDc5MWM5OTcxMTNhMGZkMGU2Mzg4YWRlZjNjMmY2LmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=054118085e1dceccdc6940445a7d9795c7a21340cf99b152a2d17c05a3190cf9"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Давайте сделаем запрос и посмотрим, что нам вернётся в ответ. Сделаем HEAD запрос и посмотрим,
+                      что будет возвращено:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>telnet google.com 80
+Trying 64.233.164.100...
+Connected to google.com.
+Escape character is <span style="color: #d14">'^]'</span><span style="color: #0086B3">.</span>
+HEAD / HTTP/1.0
+
+HTTP/1.0 200 OK
+Date: Sat, 18 Jan 2020 09:24:50 GMT
+Expires: <span style="color: #000080">-1</span>
+Cache-Control: private, max-age<span style="color: #000000;font-weight: bold">=</span>0
+Content-Type: text/html<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">charset</span><span style="color: #000000;font-weight: bold">=</span>ISO-8859-1
+P3P: <span style="color: #008080">CP</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #d14">"This is not a P3P policy! See g.co/p3phelp for more info."</span>
+Server: gws
+X-XSS-Protection: 0
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: <span style="color: #008080">1P_JAR</span><span style="color: #000000;font-weight: bold">=</span>2020-01-18-09<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">expires</span><span style="color: #000000;font-weight: bold">=</span>Mon, 17-Feb-2020 09:24:50 GMT<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">path</span><span style="color: #000000;font-weight: bold">=</span>/<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">domain</span><span style="color: #000000;font-weight: bold">=</span>.google.com<span style="background-color: #f8f8f8">;</span> Secure
+Set-Cookie: <span style="color: #008080">NID</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #008080">196</span><span style="color: #000000;font-weight: bold">=</span>wsHLMAMfnAaSyF7zduokI8TJeE5UoIKPHYC58HYH93VMnev9Nc2bAjhRdzoc4UhmuOd7ZVCorDnzGDe51yPefsRMeVyOFnYdHYYgQNqI8A1dYuk4pDK4OJurQgL4lX8kiNGSNi_kkUESFQ-MqLCB_YspxA9JRejhZdkTRtGyHNk<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">expires</span><span style="color: #000000;font-weight: bold">=</span>Sun, 19-Jul-2020 09:24:50 GMT<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">path</span><span style="color: #000000;font-weight: bold">=</span>/<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">domain</span><span style="color: #000000;font-weight: bold">=</span>.google.com<span style="background-color: #f8f8f8">;</span> HttpOnly
+Accept-Ranges: none
+Vary: Accept-Encoding
+
+Connection closed by foreign host.
+</code></pre>
+                    <p>В ответ к нам приходит <em>response</em>. Он состоит из <em>status line</em>
+                      <code>HTTP/1.0 200 OK</code>. Это строка ответа, в которой указан протокол (здесь он совпадает) и
+                      статус ответа <code>200 OK</code>. В HTTP определено множество различных статусов (400, 500 и
+                      т.д.). Они могут информировать, что информация была не найдена, были ошибки на сервере и т.д. Все
+                      статусы имеют мнемоническое название, которое передается так же последним значением. 200 и
+                      <code>OK</code> обозначает, что всё прошло хорошо — <em>success</em>!</p>
+
+                    <p>Далее выводится большое количество различных заголовков. В них нет ничего сложного, и их не нужно
+                      все учить (есть какие-то общие, и они достаточно понятны). Все заголовки состоят из ключа,
+                      двоеточия и значения. Можно заметить, что есть вещи связанные с кодировкой, кешированием.
+                      Некоторые заголовки специфичны для текущего сервера. Например, <code>X-XSS-Protection: 0</code>,
+                      где <code>X</code> указывает на кастомный заголовок. Но никакой веб-сервер, никакой веб-браузер не
+                      будут ломаться при посылке таких дополнительных заголовков.</p>
+
+                    <p>Именно в HTTP 1.0 в конце после получения данных происходит закрытие соединения.</p>
+
+                    <p>В конце мы видим одну интересную деталь: <code>Connection closed by foreign host.</code> Запрос
+                      соединения был закрыт внешним хостом. Так работает практически всё в интернете. Обычно сервера
+                      настроены на 30-секундный интервал и закрывают соединение, если в течении этого интервала ничего
+                      не приходит.</p>
+
+                    <p>Поэтому с telnet новичкам работать чуть тяжелее. Они медленно набирают запрос, и за это время
+                      соединение закрывается, что довольно неприятно. Поэтому я всегда рекомендую вам делать записи в
+                      файле и после этого вставлять их в telnet.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://guides.hexlet.io/dns/">DNS</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

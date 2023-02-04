@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Управление зависимостями - PHP: Настройка окружения</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <meta content='IE=Edge' http-equiv='X-UA-Compatible'>
+  <meta content='b9d3902d34' name='verify-admitad'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Управление зависимостями</h1>
+                    <p>Подавляющее большинство библиотек и проектов существуют не сами по себе. Типовые задачи имеют
+                      какие-то общие решения и вынесены в отдельные пакеты (какими-то разработчиками). Благодаря этим
+                      пакетам, разработчики экономят время, не делая то, что уже сделано до них. Подобных общих решений
+                      сотни тысяч. Вот лишь некоторые примеры:</p>
+
+                    <ul>
+                      <li>Библиотеки для выполнения HTTP-запросов</li>
+                      <li>Библиотеки для парсинга различных форматов, например XML, JSON, YAML.</li>
+                      <li>Библиотеки обработки URL (позволяют извлекать из них части и собирать обратно)</li>
+                      <li>Библиотеки для генерации случайных данных, например адресов или имён (называются фейкерами)
+                      </li>
+                      <li>Тестовые фреймворки. С их помощью код тестируется в автоматическом режиме (они используются во
+                        всех практиках на Хекслете)</li>
+                    </ul>
+
+                    <p>Любые из этих пакетов можно установить к себе в проект используя Composer. Это одно из его
+                      главных предназначений.</p>
+
+                    <p>Предположим, что наш пакет зависит от библиотеки <a href="https://github.com/tightenco/collect"
+                        target="_blank" rel="nofollow">tightenco/collect</a>. Эту библиотеку мы будем активно
+                      использовать в наших курсах позже. Разберём процесс установки:</p>
+
+                    <p>Для начала нужно понять, под каким именем существует наша библиотека в Packagist. Тут вариантов
+                      два: либо мы уже знаем, как в случае <em>tightenco/collect</em>, либо мы нашли библиотеку на
+                      GitHub и хотим выяснить её имя. Часто имя можно извлечь из строки установки, которая есть в файле
+                      README.md:</p>
+
+                    <p><img alt="Установка пакета через Composer. Описание в README.md"
+                        class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjI2ODQ4MDg1YjFkYjcyOWE3MjVhYWRhYjYxM2JhZjAyLnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=f45d3cbb98e8bd404019fa2f99629279a31bc1608d10625d5c7ec3a45fe12e50"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Если её нет, вы всегда можете узнать имя, открыв файл <em>composer.json</em> (прямо на GitHub) и
+                      прочитав значение свойства <em>name</em>.</p>
+                    <pre class="hljs"><code class=json><span style="background-color: #f8f8f8">{</span><span style="color: #bbbbbb">
+    </span><span style="color: #990000;font-weight: bold">"name"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"tightenco/collect"</span><span style="background-color: #f8f8f8">,</span><span style="color: #bbbbbb">
+    </span><span style="color: #990000;font-weight: bold">"description"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"Collect - Illuminate Collections as a separate package."</span><span style="background-color: #f8f8f8">,</span><span style="color: #bbbbbb">
+    </span><span style="color: #990000;font-weight: bold">"keywords"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">"laravel"</span><span style="background-color: #f8f8f8">,</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"collection"</span><span style="background-color: #f8f8f8">]</span><span style="color: #bbbbbb">
+</span><span style="background-color: #f8f8f8">}</span><span style="color: #bbbbbb">
+</span></code></pre>
+                    <p>Когда имя найдено, можно приступать к установке пакета. Для этого нужно перейти в директорию с
+                      нашим проектом и запустить там следующую команду:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># Это локальная установка в конкретный проект</span>
+<span style="color: #008080">$ </span>composer require tightenco/collect
+</code></pre>
+                    <script src="https://asciinema.org/a/5PfI1ZrhqHTMa93eXH3Vdwutu.js"
+                      id="asciicast-5PfI1ZrhqHTMa93eXH3Vdwutu" data-rows="20" async></script>
+
+                    <p>Эта команда не только устанавливает зависимость в текущий проект, но и автоматически добавляет
+                      его в секцию <em>require</em> файла <em>composer.json</em>. Такая установка является локальной (в
+                      команде нет слова <em>global</em>), то есть пакет ставится именно в текущий проект. Секция
+                      <em>require</em> теперь выглядит примерно так:</p>
+                    <pre class="hljs"><code class=json><span style="color: #990000;font-weight: bold">"require"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="background-color: #f8f8f8">{</span><span style="color: #bbbbbb">
+    </span><span style="color: #990000;font-weight: bold">"tightenco/collect"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"^5.7"</span><span style="color: #bbbbbb">
+</span><span style="background-color: #f8f8f8">}</span><span style="color: #bbbbbb">
+</span></code></pre>
+                    <p><em>Кроме того, Composer создаст файл *composer.lock</em> в корне проекта. Этот файл должен
+                      храниться в репозитории, а его значение я объясню в следующем уроке.*</p>
+
+                    <p>Со временем, чем больше пакетов добавляется в текущий проект, тем больше размер секции
+                      <em>require</em>. В больших проектах это могут быть сотни зависимостей. Ниже пример взятый из <a
+                        href="https://github.com/hexlet-boilerplates/php-package" target="_blank"
+                        rel="nofollow">php-package</a>:</p>
+                    <pre class="hljs"><code class=json><span style="color: #990000;font-weight: bold">"require"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="background-color: #f8f8f8">{</span><span style="color: #bbbbbb">
+  </span><span style="color: #990000;font-weight: bold">"tightenco/collect"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"^5.6"</span><span style="background-color: #f8f8f8">,</span><span style="color: #bbbbbb">
+  </span><span style="color: #990000;font-weight: bold">"nesbot/carbon"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"^1.26"</span><span style="background-color: #f8f8f8">,</span><span style="color: #bbbbbb">
+  </span><span style="color: #990000;font-weight: bold">"danielstjules/stringy"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"^3.1"</span><span style="color: #bbbbbb">
+</span><span style="background-color: #f8f8f8">}</span><span style="color: #bbbbbb">
+</span></code></pre>
+                    <p>Возникает вопрос, а куда помещается код этих пакетов? Код пакетов, установленных локально,
+                      сохраняется в директории <em>vendor</em>, которую Composer автоматически создаёт во время
+                      установки пакетов. Эта директория находится в корне проекта:</p>
+                    <pre class="hljs"><code class=sh>php-package<span style="color: #008080">$ </span>tree <span style="color: #000080">-L</span> 1
+<span style="color: #0086B3">.</span>
+├── Makefile
+├── README.md
+├── bin
+├── composer.json
+├── composer.lock
+├── phpunit.xml
+├── psysh.php
+├── src
+├── tests
+└── vendor <span style="color: #999988;font-style: italic"># Вот она</span>
+</code></pre>
+                    <p>Эта директория считается служебной и программист никогда не работает с ней напрямую. Более того,
+                      она должна быть добавлена в <em>.gitignore</em>, так как нет смысла хранить её в репозитории.
+                      Composer создаёт её самостоятельно.</p>
+
+                    <p>Кроме обычных зависимостей, которые нужны для работы пакета, существуют специальные зависимости,
+                      необходимые только во время разработки. Такое разделение понадобилось в целях оптимизации.
+                      Практически любой пакет во время разработки использует тестовый фреймворк, который не нужен для
+                      работы самого пакета, но нужен для тестирования. Поэтому нет смысла тащить его с собой в рабочее
+                      окружение. Это негативно влияет как на размер пакета, так и на скорость его загрузки. Такие
+                      зависимости устанавливаются с помощью дополнительной опции <em>--dev</em>:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>composer require <span style="color: #000080">--dev</span> phpunit/phpunit
+</code></pre>
+                    <script src="https://asciinema.org/a/eYtPzNLWMeBMMfcROnQ21qoMJ.js"
+                      id="asciicast-eYtPzNLWMeBMMfcROnQ21qoMJ" data-rows="20" async></script>
+
+                    <p>В файле <em>composer.json</em> они появляются внутри секции <em>require-dev</em></p>
+                    <pre class="hljs"><code class=json><span style="color: #990000;font-weight: bold">"require-dev"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="background-color: #f8f8f8">{</span><span style="color: #bbbbbb">
+  </span><span style="color: #990000;font-weight: bold">"phpunit/phpunit"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"*"</span><span style="color: #bbbbbb">
+</span><span style="background-color: #f8f8f8">}</span><span style="color: #bbbbbb">
+</span></code></pre>
+                    <p>Теперь самое интересное — как, собственно, использовать установленные зависимости? В первую
+                      очередь нужно смотреть документацию конкретной библиотеки на GitHub. Обычно там есть примеры либо
+                      ссылка на описание. Например в последующих уроках мы будем пользоваться библиотекой <a
+                        href="https://github.com/phpfunct/funct" target="_blank" rel="nofollow">funct</a>. Эта
+                      библиотека содержит десятки полезных функций для работы с разными типами данных. Ниже пример
+                      вызова:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Funct</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Funct\Strings</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #990000;font-weight: bold">Funct\firstValue</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">null</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">null</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'foo_bar'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; 'foo_bar'</span>
+<span style="color: #990000;font-weight: bold">Funct\notEmpty</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'fooBar'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; true</span>
+<span style="color: #990000;font-weight: bold">Strings\camelize</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'data_rate'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">//'dataRate'</span>
+</code></pre>
+                    <h2 id="ustanovka-s-nulya">Установка &quot;с нуля&quot;</h2>
+                    <p>После того как в проект устанавливаются зависимости, изменённые файлы заливаются на GitHub. К ним
+                      относится как <em>composer.json</em>, в который добавились описания зависимостей, так и файлы с
+                      исходным кодом где эти зависимости используются. А вот директория <em>vendor</em> остаётся на
+                      локальной машине.</p>
+
+                    <p>Представьте что с вами работает другой разработчик, который клонирует репозиторий к себе и
+                      пытается запустить проект локально. Что произойдёт? Запуск кода завершится с ошибкой. В проекте
+                      используются внешние библиотеки, но их физически нет. Директория <em>vendor</em> не создана.</p>
+
+                    <p>Чтобы исправить это, сразу после клонирования нужно выполнить установку зависимостей. Для этого в
+                      Composer есть ещё одна команда – <em>install</em>:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>composer <span style="color: #0086B3">install</span>
+<span style="color: #999988;font-style: italic"># ниже примерный вывод</span>
+Loading composer repositories with package information
+Installing dependencies <span style="color: #000000;font-weight: bold">(</span>including require-dev<span style="color: #000000;font-weight: bold">)</span> from lock file
+Warning: The lock file is not up to <span style="color: #0086B3">date </span>with the latest changes <span style="color: #000000;font-weight: bold">in </span>composer.json. You may be getting outdated dependencies. Run update to update them.
+Package operations: 1 <span style="color: #0086B3">install</span>, 19 updates, 18 removals
+  - Removing symfony/yaml <span style="color: #000000;font-weight: bold">(</span>dev-master<span style="color: #000000;font-weight: bold">)</span>
+  - Removing symfony/stopwatch <span style="color: #000000;font-weight: bold">(</span>dev-master<span style="color: #000000;font-weight: bold">)</span>
+  - Removing symfony/polyfill-php73 <span style="color: #000000;font-weight: bold">(</span>dev-master<span style="color: #000000;font-weight: bold">)</span>
+  - Removing symfony/filesystem <span style="color: #000000;font-weight: bold">(</span>dev-master<span style="color: #000000;font-weight: bold">)</span>
+  - Removing symfony/event-dispatcher <span style="color: #000000;font-weight: bold">(</span>dev-master<span style="color: #000000;font-weight: bold">)</span>
+  - Removing symfony/console <span style="color: #000000;font-weight: bold">(</span>dev-master<span style="color: #000000;font-weight: bold">)</span>
+  - Removing symfony/config <span style="color: #000000;font-weight: bold">(</span>dev-master<span style="color: #000000;font-weight: bold">)</span>
+  - Removing satooshi/php-coveralls <span style="color: #000000;font-weight: bold">(</span>v1.1.0<span style="color: #000000;font-weight: bold">)</span>
+  - Removing psy/psysh <span style="color: #000000;font-weight: bold">(</span>dev-master<span style="color: #000000;font-weight: bold">)</span>
+  - Removing padraic/phar-updater <span style="color: #000000;font-weight: bold">(</span>dev-master<span style="color: #000000;font-weight: bold">)</span>
+  - Removing padraic/humbug_get_contents <span style="color: #000000;font-weight: bold">(</span>1.1.2<span style="color: #000000;font-weight: bold">)</span>
+symfony/translation-contracts suggests installing symfony/translation-implementation
+Generating autoload files
+</code></pre>
+                    <p>Установка пакетов — это <a
+                        href="https://ru.wikipedia.org/wiki/%D0%98%D0%B4%D0%B5%D0%BC%D0%BF%D0%BE%D1%82%D0%B5%D0%BD%D1%82%D0%BD%D0%BE%D1%81%D1%82%D1%8C"
+                        target="_blank" rel="nofollow">идемпотентная</a> операция, её можно запускать сколько угодно раз
+                      без риска что-либо поломать.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ul>
+                      <li>
+                        <p>Зарегистрируйтесь на сайте <a href="https://packagist.org/"
+                            target="_blank">https://packagist.org/</a> (аккаунт пригодится для участия в проектах)</p>
+                      </li>
+                      <li>
+                        <p>Установите зависимость:</p>
+                        <pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># Выполнять в корне проекта</span>
+<span style="color: #008080">$ </span>composer require tightenco/collect
+</code></pre>
+                      </li>
+                      <li>
+                        <p>Создайте в корне вашего проекта директорию <em>src</em>, а внутри неё файл
+                          <em>Runner.php</em>. Добавьте следующий код (мы его запустим в одном из следующих уроков):</p>
+                        <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">namespace</span> <span style="color: #555555">Hexlet\Php\Runner</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">run</span><span style="background-color: #f8f8f8">()</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$collection</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">collect</span><span style="background-color: #f8f8f8">([</span><span style="color: #d14">'taylor'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'abigail'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">null</span><span style="background-color: #f8f8f8">])</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">map</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$name</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #0086B3">strtoupper</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$name</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">});</span>
+
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$collection</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                      </li>
+                    </ul>
+
+
+
+</body>
+
+</html>

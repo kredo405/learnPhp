@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Автозагрузка классов - PHP: Введение в ООП</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Автозагрузка классов</h1>
+                    <p>Принято определять ровно один класс на файл. Более того, в этом файле больше не может быть
+                      никаких инструкций, не считая определения пространств имён. Чисто технически, язык не запрещает
+                      нарушать это правило, но лучше следовать <a
+                        href="https://www.php-fig.org/psr/psr-12/#4-classes-properties-and-methods" target="_blank"
+                        rel="nofollow">стандартам кодирования PSR-12</a>.</p>
+
+                    <p>Классы немного по-другому работают с пространствами имён. Если пространство имён содержит только
+                      функции, то его определение обычно оканчивается именем файла (без расширения). Во всех наших
+                      упражнениях именно такая структура.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// file: src/solution.php</span>
+<span style="color: #000000;font-weight: bold">namespace</span> <span style="color: #555555">App\solution</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">...</span>
+</code></pre>
+                    <p>В случае с классами, пространство имён не содержит имени файла. Его роль выполняет само название
+                      класса. Причём файл должен называться в точности как класс и с учётом регистра.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// file: src/Point.php</span>
+<span style="color: #000000;font-weight: bold">namespace</span> <span style="color: #555555">App</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">Point</span>
+<span style="background-color: #f8f8f8">{</span>
+
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Использовать этот класс в другом пространстве имён можно так:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">namespace</span> <span style="color: #555555">AnotherApp</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">App\Point</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #008080">$point</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Point</span><span style="background-color: #f8f8f8">();</span>
+</code></pre>
+                    <p>либо так:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">namespace</span> <span style="color: #555555">AnotherApp</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #008080">$point</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">App\Point</span><span style="background-color: #f8f8f8">();</span>
+</code></pre>
+                    <p>Полное описание требований к тому, как правильно стилистически именовать классы и как соотносить
+                      их с файловой структурой, приведено в стандарте <a href="https://www.php-fig.org/psr/psr-4/"
+                        target="_blank" rel="nofollow">PSR-4</a>. Этот стандарт важно соблюдать по двум причинам. Первая
+                      связана с единым подходом к именованию и формированию структуры, что позволяет легко
+                      ориентироваться в проектах. Но есть и другая, не менее важная причина — автозагрузка классов.</p>
+
+                    <p>Если определённое пространство имён в PHP содержит только функции, то для его загрузки
+                      используется специальная секция <em>autoload/files</em> в файле <em>composer.json</em>.</p>
+                    <pre class="hljs"><code class=json><span style="color: #990000;font-weight: bold">"autoload"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="background-color: #f8f8f8">{</span><span style="color: #bbbbbb">
+  </span><span style="color: #990000;font-weight: bold">"files"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="background-color: #f8f8f8">[</span><span style="color: #bbbbbb">
+    </span><span style="color: #d14">"src/Points.php"</span><span style="background-color: #f8f8f8">,</span><span style="color: #bbbbbb">
+    </span><span style="color: #d14">"src/Segments.php"</span><span style="color: #bbbbbb">
+  </span><span style="background-color: #f8f8f8">]</span><span style="color: #bbbbbb">
+</span><span style="background-color: #f8f8f8">}</span><span style="color: #bbbbbb">
+</span></code></pre>
+                    <p>Эту секцию вы могли видеть практически в каждой практике на Хекслете. Composer требует
+                      перечисления всех таких файлов, и только в этом случае он загрузит их автоматически. Причём
+                      произойдёт это в любом случае, неважно, используются функции этих пространств имён или нет.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Эта строчка приводит к загрузке всех файлов, указанных в секции files</span>
+<span style="color: #000000;font-weight: bold">require</span> <span style="color: #000000;font-weight: bold">__DIR__</span> <span style="color: #009999">.</span> <span style="color: #d14">'/../vendor/autoload.php'</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>С классами ситуация другая. PHP содержит <a
+                        href="https://php.net/manual/ru/function.spl-autoload-register.php" target="_blank"
+                        rel="nofollow">специальный механизм</a> автозагрузки классов. Этот механизм работает так: если
+                      интерпретатор наталкивается на использование класса, то он проверяет, определили ли вы
+                      автозагрузчик классов, и, если определили, то вызывает его (<a
+                        href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md"
+                        target="_blank" rel="nofollow">пример</a>). Composer определяет такой загрузчик автоматически.
+                      Его можно конфигурировать с помощью файла <code>composer.json</code>. Если структура классов в
+                      вашем приложении соответствует PSR-4, то конфигурация минимальна. Стандарт PSR-4 задаёт стиль
+                      именования, позволяющий однозначно определять полное имя класса (включая пространство имён) на
+                      основании пути до файла (относительно корня проекта) и наоборот.</p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Полное имя</th>
+                          <th>Префикс</th>
+                          <th>Базовая директория</th>
+                          <th>Результирующий путь</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>\Acme\Log\Writer\File_Writer</td>
+                          <td>Acme\Log\Writer</td>
+                          <td>./acme-log-writer/lib/</td>
+                          <td>./acme-log-writer/lib/File_Writer.php</td>
+                        </tr>
+                        <tr>
+                          <td>\Zend\Acl</td>
+                          <td>Zend</td>
+                          <td>/usr/includes/Zend/</td>
+                          <td>/usr/includes/Zend/Acl.php</td>
+                        </tr>
+                        <tr>
+                          <td>\Symfony\Core\Request</td>
+                          <td>Symfony\Core</td>
+                          <td>./vendor/Symfony/Core/</td>
+                          <td>./vendor/Symfony/Core/Request.php</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <pre class="hljs"><code class=json><span style="background-color: #f8f8f8">{</span><span style="color: #bbbbbb">
+    </span><span style="color: #990000;font-weight: bold">"autoload"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="background-color: #f8f8f8">{</span><span style="color: #bbbbbb">
+        </span><span style="color: #990000;font-weight: bold">"psr-4"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="background-color: #f8f8f8">{</span><span style="color: #990000;font-weight: bold">"App\\"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"src/"</span><span style="background-color: #f8f8f8">}</span><span style="color: #bbbbbb">
+    </span><span style="background-color: #f8f8f8">}</span><span style="color: #bbbbbb">
+</span><span style="background-color: #f8f8f8">}</span><span style="color: #bbbbbb">
+</span></code></pre>
+                    <p>В данном примере указано, что в директории <em>src</em> относительно расположения файла
+                      <em>composer.json</em> находится пространство имён <code>App</code>, соответствующее стандарту
+                      PSR-4. В этом случае Composer только регистрирует автозагрузчик, который подключает файлы с
+                      классами по необходимости, только во время их использования.</p>
+
+                    <p>Все примеры на Хекслете используют автозагрузку классов. Рекомендую подглядывать в файл
+                      <em>composer.json</em> каждой практики и анализировать содержимое. Кроме того, понимать
+                      автозагрузку лучше всего не через внимательное чтение документации, а через эксперименты.
+                      Попробуйте самостоятельно собрать простой PHP-пакет и создайте внутри него классы. Не забывайте,
+                      что всегда можно подглядывать в <a href="https://github.com/hexlet-boilerplates/php-package"
+                        target="_blank" rel="nofollow">наш шаблон</a>.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://php.net/manual/ru/language.oop5.autoload.php">Официальная
+                          документация</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Конструктор - PHP: Введение в ООП</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Конструктор</h1>
+                    <p>Структура в Си может быть инициализирована значениями прямо при создании.</p>
+                    <pre class="hljs"><code class=c><span style="color: #445588;font-weight: bold">int</span> <span style="color: #990000;font-weight: bold">main</span><span style="background-color: #f8f8f8">()</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Создание переменной p1 типа point.</span>
+    <span style="background-color: #f8f8f8">point</span> <span style="background-color: #f8f8f8">p1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">{</span> <span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">x</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">y</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">1</span> <span style="background-color: #f8f8f8">};</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Объекты в PHP тоже могут быть инициализированы при создании, но для этого придётся внести
+                      изменения в класс — написать функцию-конструктор. Конструктор класса похож на тот конструктор,
+                      который мы реализовывали, знакомясь с абстракциями. Разница только в том, что в случае классов
+                      конструктор находится внутри класса, а не описывается как обычная функция снаружи.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">Point</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #008080">$x</span><span style="background-color: #f8f8f8">;</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #008080">$y</span><span style="background-color: #f8f8f8">;</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">__construct</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$x</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$y</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">x</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$x</span><span style="background-color: #f8f8f8">;</span>
+        <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">y</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$y</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #008080">$point</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Point</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">10</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$point</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">x</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999988;font-style: italic">// 1</span>
+<span style="color: #008080">$point</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">y</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999988;font-style: italic">// 10</span>
+</code></pre>
+                    <p>Конструктор класса — функция с именем <code>__construct</code>. Эту функцию невозможно вызвать
+                      напрямую. Она вызывается автоматически во время создания объекта <code>new Point(5, 3)</code>, а
+                      параметры, переданные в этот вызов, сразу попадают в конструктор. Это значит, что, если в классе
+                      определён конструктор с двумя обязательными параметрами, то создание объекта всегда потребует два
+                      обязательных параметра. Сам по себе конструктор подчиняется тем же правилам, что и обычные
+                      функции, например, при необходимости можно указать значения по умолчанию. PHP в силу динамической
+                      природы допускает создание ровно одного конструктора на класс.</p>
+
+                    <blockquote>
+                      <p>Конструктор не может и не должен ничего возвращать (технически вы можете написать
+                        <code>return</code>, но этот возврат никем не используется).</p>
+                    </blockquote>
+
+                    <p>Самое интересное происходит внутри конструктора. Во-первых, конструктор вызывается тогда, когда
+                      объект уже создан. Этот объект доступен внутри конструктора как переменная <code>$this</code>.
+                      Такое поведение может показаться странным, ведь, глядя на эту конструкцию
+                      <code>$point = new Point(1, 10)</code>, видно, что правая часть выполняется раньше присваивания, а
+                      значит и конструктор вызывается раньше. Ответ кроется в том, какая логика скрывается за оператором
+                      <code>new</code>. Процесс создания объекта внутри PHP выглядит следующим образом:</p>
+
+                    <ol>
+                      <li> Создаётся объект без вызова чего-либо. Технически внутри интерпретатора создаётся та самая
+                        структура из языка Си (PHP написан на Си).</li>
+                      <li> Вызывается конструктор, в который передаётся объект. Синтаксически этой передачи не видно, но
+                        она есть. Можно сказать, что объект попадает внутрь конструктора как нулевой параметр, то есть
+                        внутри PHP для нашего класса, определённого выше, сигнатура конструктора выглядит так:
+                        <code>__construct($this, $x, $y)</code>.</li>
+                      <li> Объект <code>$this</code> наполняется в соответствии с кодом, находящимся в теле функции
+                        <code>__construct</code>. Так как объект всегда передаётся по указателю, то возврат из
+                        конструктора не нужен.</li>
+                      <li> Объект возвращается наружу. В этот момент отрабатывает присваивание.</li>
+                    </ol>
+
+                    <p>Основная задача конструктора — заполнить свойства объекта переданными параметрами. Этот способ
+                      сложнее, чем тот, который мы рассматривали в структурах (где ничего не надо определять, а можно
+                      заполнять при создании), и вот почему:</p>
+
+                    <ol>
+                      <li> Свойства могут быть защищены от прямого изменения или чтения. Этот вопрос рассматривается
+                        позже.</li>
+                      <li> Свойства могут требовать дополнительных расчётов, как, например, в ситуации с точками,
+                        которую мы рассматривали ранее, где происходило преобразование входных координат в другой способ
+                        представления.</li>
+                      <li> В конструкторе можно выполнять различные побочные эффекты, например, читать файлы или
+                        выполнять сетевые вызовы (открыть соединение с базой данных). С этой возможностью нужно быть
+                        очень осторожным. Побочные эффекты резко усложняют код и затрудняют тестирование.</li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://php.net/manual/ru/language.oop5.decon.php">Официальная
+                          документация</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

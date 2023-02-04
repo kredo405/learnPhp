@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Модель - PHP: Eloquent (ORM)</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="r3gVEFFGBtXgosy30CyAPyp3Uh1cfPOqCOvjN3Ka20RXkltudyA0SlyhuZcEH2UUrREZ8BP3g3ZTQ3leWjiveA" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../scopes/exercise_unit.html">PHP: Eloquent (ORM)</a>
+                    <h1 class='mt-0 mb-4'>Модель</h1>
+                    <p>Модель — это воплощение понятия предметной области в коде приложения. В Eloquent каждая модель
+                      представлена классом в коде и таблицей в базе данных:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+<span style="color: #000000;font-weight: bold">namespace</span> <span style="color: #555555">App\Models</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Illuminate\Database\Eloquent\Model</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">User</span> <span style="color: #000000;font-weight: bold">extends</span> <span style="color: #445588;font-weight: bold">Model</span>
+<span style="background-color: #f8f8f8">{</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <ol>
+                      <li> <em>Модель = Класс только в классовых языках. Чисто технически она может быть чем угодно, это
+                          зависит от языка.</em></li>
+                      <li> <em>Связь Модель-Таблица — это особенность паттерна Active Record. В другом подходе,
+                          называемом Data Mapper, всё может быть по другому.</em></li>
+                    </ol>
+
+                    <p>Единственное, что нужно для работы модели – создать таблицу в базе данных. В веб-фреймворках это
+                      делается через миграции, которые создаются автоматически при генерации модели из командной строки:
+                    </p>
+                    <pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># Laravel</span>
+<span style="color: #008080">$ </span>php artisan make:model User
+</code></pre>
+                    <p>В нашем же случае используется файл <em>src/schema.php</em>, в котором есть определение таблицы:
+                    </p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #445588;font-weight: bold">Capsule</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">schema</span><span style="background-color: #f8f8f8">()</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">create</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'users'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$table</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$table</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">id</span><span style="background-color: #f8f8f8">();</span>
+    <span style="color: #008080">$table</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">string</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'email'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">unique</span><span style="background-color: #f8f8f8">();</span> <span style="color: #999988;font-style: italic">// уникальный индекс</span>
+    <span style="color: #008080">$table</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">string</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'first_name'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">nullable</span><span style="background-color: #f8f8f8">();</span> <span style="color: #999988;font-style: italic">// может быть пустым</span>
+    <span style="color: #008080">$table</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">string</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'last_name'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">nullable</span><span style="background-color: #f8f8f8">();</span> <span style="color: #999988;font-style: italic">// может быть пустым</span>
+    <span style="color: #008080">$table</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">string</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'password'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">nullable</span><span style="background-color: #f8f8f8">();</span>
+    <span style="color: #008080">$table</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">timestamps</span><span style="background-color: #f8f8f8">();</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>Этого описания достаточно для начала работы. Теперь можно создавать сущности, сохранять их в базу
+                      и обновлять:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$user</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">App\Models\User</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #999988;font-style: italic">// Кажется, что это свойство, но на самом деле это магический метод __set</span>
+<span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">email</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'user@email.com'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #999988;font-style: italic">// Такое именование не соответствует стандарту PSR12, но таковы стандарты Eloquent</span>
+<span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">first_name</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'Pedro'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">last_name</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'Rodriges'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #999988;font-style: italic">// Пароли нельзя хранить в открытом виде</span>
+<span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">password</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">password_hash</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'rasmuslerdorf'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">PASSWORD_DEFAULT</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">save</span><span style="background-color: #f8f8f8">();</span> <span style="color: #999988;font-style: italic">// INSERT (добавление новой записи)</span>
+
+<span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">email</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'pedro@hotmail.com'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">save</span><span style="background-color: #f8f8f8">();</span> <span style="color: #999988;font-style: italic">// UPDATE (обновление существующей записи)</span>
+
+<span style="color: #999988;font-style: italic">// Выводит содержимое объекта</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">toArray</span><span style="background-color: #f8f8f8">());</span>
+<span style="color: #999988;font-style: italic">// [</span>
+<span style="color: #999988;font-style: italic">//    "email" =&gt; "pedro@hotmail.com",</span>
+<span style="color: #999988;font-style: italic">//    "first_name" =&gt; "Pedro",</span>
+<span style="color: #999988;font-style: italic">//    "last_name" =&gt; "Rodriges",</span>
+<span style="color: #999988;font-style: italic">//    "password" =&gt; "$2y$10$jpJD6FlPp0bQFXF3rxFUTu6p.wxnbuxRE803cTdfeqAsqEtJbikp.",</span>
+<span style="color: #999988;font-style: italic">//    "updated_at" =&gt; "2019-08-23 02:33:50",</span>
+<span style="color: #999988;font-style: italic">//    "created_at" =&gt; "2019-08-23 02:33:34",</span>
+<span style="color: #999988;font-style: italic">//    "id" =&gt; 1,</span>
+<span style="color: #999988;font-style: italic">//  ]</span>
+
+<span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">destroy</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// удаление пользователя, передаём id в метод destroy()</span>
+</code></pre>
+                    <p>Этот код работает благодаря подходу &quot;соглашения вместо конфигурации&quot; (Convention Over
+                      Configuration). Нам не пришлось явно указывать имя таблицы, с которой связана модель. Eloquent
+                      автоматически получила её имя, выполнив приведение имени класса к нижнему регистру и сделав его во
+                      множественном числе.</p>
+
+                    <p>Кроме того, Eloquent проанализировала структуру этой таблицы для определения первичного ключа,
+                      полей и их типов. Эта информация используется внутри модели для сохранения, обновления и загрузки
+                      данных в код. Из примера выше видно, что при создании или обновлении сущности, используется метод
+                      <code>save()</code>, а Eloquent сама распознает что сейчас происходит: создание или обновление.
+                    </p>
+
+                    <p>После того как сущность сохранена в базу, её можно извлечь. Самый простой способ сделать это,
+                      воспользоваться статическим методом <code>find($id)</code>. Он выполняет поиск по первичному
+                      ключу.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Предположим, что запись с таким идентификатором есть в базе данных</span>
+<span style="color: #008080">$user</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">App\Models\User</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">find</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #999988;font-style: italic">// Если записи не существует, то вернётся null</span>
+<span style="color: #445588;font-weight: bold">App\Models\User</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">find</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">100</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Зайдите в REPL набрав <code>make console</code>.</li>
+                      <li> Создайте нескольких пользователей, обновите их.</li>
+                      <li> Переоткройте REPL и извлеките сущности из базы данных.</li>
+                      <li> Удалить часть сущностей.</li>
+                    </ol>
+
+</body>
+
+</html>

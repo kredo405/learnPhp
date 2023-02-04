@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Динамическая диспетчеризация - PHP: Полиморфизм</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="FB70MyjXRhBn_-d7BT7hKI-aAMmUBfILZ4BCa-6TvzC4o3rCyWxfAYzfdpYYv4XCbivNe9sildA0v64dd5sRog" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../dependency-management/exercise_unit.html">PHP: Полиморфизм</a>
+                    <h1 class='mt-0 mb-4'>Динамическая диспетчеризация</h1>
+                    <p>Для лучшего понимания ООП и конкретно полиморфизма, полезно разбираться в том, как оно работает
+                      внутри языка. Для этого нужно познакомиться с понятием <strong>динамическая
+                        диспетчеризация</strong>.</p>
+
+                    <p>Когда в коде встречаются обычные функции, то всегда можно однозначно сказать где они определены.
+                      Для этого достаточно посмотреть импорты.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">Funct\union</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #990000;font-weight: bold">union</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$data1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$data2</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>С методами все сложнее. Глядя на вызов метода, нельзя однозначно сказать, откуда он пришёл. Это
+                      зависит от типа объекта у которого он вызван. Полиморфизм подразумевает подмену объектов, а значит
+                      одна и та же строчка кода может вызывать разные методы (но имеющие одинаковые имена), в
+                      зависимости от пришедшего объекта.</p>
+
+                    <p>Полиморфизм в PHP, как и во многих других языках, реализуется с помощью динамической
+                      диспетчеризации. Это механизм, который занимается выбором необходимой реализации метода.
+                      Рассмотрим его работу на примере. Ниже показана функция, которая ожидает что на вход ей передаётся
+                      объект с методом <code>getName()</code> и печатает его на экран.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">printName</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$obj</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$obj</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getName</span><span style="background-color: #f8f8f8">();</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #990000;font-weight: bold">printName</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">User</span><span style="background-color: #f8f8f8">([</span><span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Mike'</span><span style="background-color: #f8f8f8">]));</span>
+</code></pre>
+                    <ol>
+                      <li> <code>new User([&#39;name&#39; =&gt; &#39;Mike&#39;])</code> – С точки зрения
+                        PHP-программиста, она создает объект, но внутри PHP объектов нет. Это обычная структура данных
+                        на Си. Она хранит в себе данные объекта и некоторую метаинформацию. К ней, например, относится
+                        текущий класс. Именно так PHP определяет, какой объект к какому классу относится. С другой
+                        стороны, в этой структуре нет методов. Они хранятся отдельно.</li>
+                      <li> <code>$obj-&gt;getName()</code> – Вызов метода, запускает механизм диспетчеризации. Первым
+                        делом он выясняет какой класс у данного объекта. Затем проверяет список методов относящихся к
+                        этому классу и ищет среди них <code>getName()</code>. Если метод существует, то он вызывает
+                        именно его.</li>
+                    </ol>
+
+                    <p>Технически этот процесс можно представить так:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Что происходит во время вызова: $obj-&gt;getName() =&gt; callMethod($obj, 'getName')</span>
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">callMethod</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$this</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$methodName</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$args</span><span style="background-color: #f8f8f8">)</span> <span style="color: #999988;font-style: italic">// функция-диспетчер</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$className</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$this</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'className'</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #999988;font-style: italic">// Специальная функция, которая хранит список классов и связанных с ними методов</span>
+    <span style="color: #008080">$methods</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">getClassMethods</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$className</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #999988;font-style: italic">// Берём нужный метод и вызываем его</span>
+    <span style="color: #008080">$method</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$methods</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$methodName</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$method</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+      <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$method</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$this</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">...</span><span style="color: #008080">$args</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">}</span> <span style="color: #000000;font-weight: bold">else</span> <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">isset</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$methods</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'__call'</span><span style="background-color: #f8f8f8">]))</span> <span style="background-color: #f8f8f8">{</span>
+      <span style="color: #999988;font-style: italic">// Если метод не найден, но есть магический метод __call то вызываем его</span>
+      <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$methods</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'__call'</span><span style="background-color: #f8f8f8">](</span><span style="color: #008080">$this</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">...</span><span style="color: #008080">$args</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">throw</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">Exception</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'No method error'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Этот код содержит очень интересные детали. Во-первых, методы это логическое понятие. Внутри языка
+                      это обычные функции. Во-вторых, список классов и методов хранится в обычной структуре данных,
+                      называемой виртуальной таблицей. Именно по ней ведет поиск функция <code>getClassMethods</code>.
+                      В-третьих, <code>$this</code> - это наша исходная структура данных (мы получили ее когда делали
+                      <code>new User()</code>), которая передается первым параметром. Другими словами,
+                      <code>$this</code> это синтаксически скрытый, первый параметр функций, называемых методами.</p>
+
+                    <p>Среди популярных языков, есть как минимум один, который не скрывает этот факт. В Python первый
+                      параметр любого метода называется <code>self</code> (который играет ту же роль, что и
+                      <code>$this</code> в PHP). Создатели языка резонно посчитали, что его не стоит прятать от
+                      программистов, иначе у них возникает ощущение волшебства происходящего.</p>
+                    <pre class="hljs"><code class=python><span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">Shark</span><span style="background-color: #f8f8f8">:</span>
+    <span style="color: #000000;font-weight: bold">def</span> <span style="color: #990000;font-weight: bold">__init__</span><span style="background-color: #f8f8f8">(</span><span style="color: #999999">self</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">name</span><span style="background-color: #f8f8f8">):</span>
+        <span style="color: #999999">self</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">name</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">name</span>
+
+    <span style="color: #000000;font-weight: bold">def</span> <span style="color: #990000;font-weight: bold">swim</span><span style="background-color: #f8f8f8">(</span><span style="color: #999999">self</span><span style="background-color: #f8f8f8">):</span>
+        <span style="color: #999988;font-style: italic"># Reference the name
+</span>        <span style="color: #000000;font-weight: bold">print</span><span style="background-color: #f8f8f8">(</span><span style="color: #999999">self</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">name</span> <span style="color: #000000;font-weight: bold">+</span> <span style="color: #d14">" is swimming."</span><span style="background-color: #f8f8f8">)</span>
+
+    <span style="color: #000000;font-weight: bold">def</span> <span style="color: #990000;font-weight: bold">be_awesome</span><span style="background-color: #f8f8f8">(</span><span style="color: #999999">self</span><span style="background-color: #f8f8f8">):</span>
+        <span style="color: #999988;font-style: italic"># Reference the name
+</span>        <span style="color: #000000;font-weight: bold">print</span><span style="background-color: #f8f8f8">(</span><span style="color: #999999">self</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">name</span> <span style="color: #000000;font-weight: bold">+</span> <span style="color: #d14">" is being awesome."</span><span style="background-color: #f8f8f8">)</span>
+</code></pre>
+                    <p>Подобная диспетчеризация называется одиночной. Так как она опирается ровно на один параметр
+                      структуры – её класс. В других языках, которые тоже имеют поддержку ООП но без классов,
+                      встречается мультидиспетчеризация. В этих языках функцию-диспетчер можно написать самому под
+                      конкретную полиморфную задачу. Такой подход намного более мощный и позволяет получить большее
+                      меньшим количеством кода. К таким языкам, например, относится Clojure.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://clojure.org/reference/multimethods">Мультидиспетчеризация</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Создание таблиц - Основы реляционных баз данных</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="lkMN_Ry6srRy5RMRzEcFlf_d18uE6lCUZhjHXGpFyABvnqOW75Pvk0AQQfwh78YS4cq2mpvIWiM0SF3DoYSXCA" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../transactions/exercise_unit.html">Основы реляционных баз данных</a>
+                    <h1 class='mt-0 mb-4'>Создание таблиц</h1>
+                    <p>В этом и нескольких следующих уроках мы пройдёмся &quot;галопом по европам&quot;. Не сильно
+                      вникая в тонкости различных запросов, создадим таблицу и попробуем поработать с ней, добавляя,
+                      модифицируя и удаляя данные.</p>
+
+                    <p>Если вы ещё не создали базу данных <code>hexlet</code>, то самое время это сделать. Сейчас
+                      попробуем выполнить эту задачу, используя SQL. Подключитесь к СУБД через <code>psql</code> (не
+                      указывая базу данных, тогда произойдет подключение к базе данных по умолчанию) и выполните
+                      следующие запросы:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">DROP</span> <span style="color: #000000;font-weight: bold">DATABASE</span> <span style="background-color: #f8f8f8">hexlet</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">CREATE</span> <span style="color: #000000;font-weight: bold">DATABASE</span> <span style="background-color: #f8f8f8">hexlet</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p><em>Если подключиться к той же базе данных, которую вы хотите удалить или пересоздать, то во
+                        время попытки удаления СУБД будет ругаться на то, что к базе есть активное соединение (ваше).
+                        Именно поэтому важно подключиться к любой другой базе данных.</em></p>
+
+                    <p>В примере выше два SQL запроса: один из них удаляет базу данных с именем <code>hexlet</code>, а
+                      другой создаёт базу данных с таким же именем. Рассмотрим базовые правила построения запросов:</p>
+
+                    <ol>
+                      <li> Каждый запрос должен заканчиваться точкой с запятой. Иначе <code>psql</code> будет думать,
+                        что вы продолжаете вводить команды.</li>
+                      <li> Регистр не важен. Можно было написать <code>drop database hexlet;</code>. По сложившейся
+                        традиции принято использовать верхний регистр для ключевых слов самого SQL. Это позволяет
+                        визуально разделять <strong>структуру запроса</strong> от <strong>данных</strong> внутри него: в
+                        примере выше это имя базы данных, которое может быть произвольным.</li>
+                    </ol>
+
+                    <p>Те самые команды <em>createdb</em> и <em>createuser</em> — не что иное как обёртки, выполняющие
+                      SQL запросы внутри СУБД. Их сделали только ради удобства первоначальной настройки и для
+                      использования в скриптах автоматизации.</p>
+
+                    <p>Кстати, SQL поддерживает <strong>комментарии</strong>. Любая строчка, начинающаяся с двух дефисов
+                      — комментарий. Комментарии игнорируются СУБД при построении запросов.</p>
+                    <pre class="hljs"><code class=sql><span style="background-color: #f8f8f8">hexlet</span><span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #999988;font-style: italic">-- i am comment</span>
+<span style="background-color: #f8f8f8">hexlet</span><span style="color: #000000;font-weight: bold">=&gt;</span>
+</code></pre>
+                    <p>Следующая задача — создать таблицу:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #999988;font-style: italic">-- Это один запрос, хоть и многострочный. Описание запроса заканчивается символом ;</span>
+<span style="color: #000000;font-weight: bold">CREATE</span> <span style="color: #000000;font-weight: bold">TABLE</span> <span style="background-color: #f8f8f8">courses</span> <span style="background-color: #f8f8f8">(</span>
+    <span style="background-color: #f8f8f8">name</span>          <span style="color: #0086B3">varchar</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">255</span><span style="background-color: #f8f8f8">),</span>
+    <span style="background-color: #f8f8f8">slug</span>          <span style="color: #0086B3">varchar</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">255</span><span style="background-color: #f8f8f8">),</span>
+    <span style="background-color: #f8f8f8">lessons_count</span> <span style="color: #0086B3">integer</span><span style="background-color: #f8f8f8">,</span>
+    <span style="background-color: #f8f8f8">body</span>          <span style="color: #0086B3">text</span>
+<span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p><em>Запросы на создание таблиц принято форматировать так, как показано выше. Это облегчает чтение
+                        и анализ, но неудобно для работы в репле.</em></p>
+
+                    <p>Этот запрос уже значительно сложнее предыдущего. Для создания таблицы обязательно указывается её
+                      имя и перечисляется набор полей с указанием их типов данных. В примере выше создаётся таблица
+                      <code>courses</code> с четырьмя полями: <code>name</code>, <code>slug</code>,
+                      <code>lessons_count</code> и <code>body</code>.</p>
+
+                    <p>В отличие от языков программирования, где строка может иметь произвольный размер, в базах данных
+                      чаще всего используется специальный тип <code>varchar</code> (в pg его настоящее имя
+                      <code>character varying</code>, а <code>varchar</code> это псевдоним), который имеет фиксированный
+                      размер. Размер конкретного поля, имеющего такой тип, указывается в скобках после названия типа
+                      <code>varchar(10)</code>. А вот тип <code>text</code> не требует указания размера и может
+                      содержать текст произвольной длины. Возникает резонный вопрос, зачем нужен <code>varchar</code>,
+                      когда можно использовать <code>text</code> и не думать о размерах. К сожалению, так не получится.
+                      Динамический размер типа <code>text</code> не даётся бесплатно. Если все строки делать текстом, то
+                      у приложения очень быстро начнутся проблемы с производительностью. Подробнее вопросы
+                      производительности рассмотрим в конце курса.</p>
+                    <h2 id="tipy-dannyh">Типы данных</h2>
+                    <p>Каждое поле в PostgreSQL имеет определённый тип, который задаётся на этапе создания таблицы. Это
+                      значит, что значением этого поля могут быть только определённые данные. Если поле имеет числовой
+                      тип, то в него невозможно вставить строку, и наоборот. База данных выдаст ошибку при попытке
+                      выполнить подобный запрос. PostgreSQL поддерживает большое количество встроенных типов и позволяет
+                      создавать свои (пользовательские). Вот основные:</p>
+                    <h3 id="chisla">Числа</h3>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Имя</th>
+                          <th>Размер</th>
+                          <th>Описание</th>
+                          <th>Диапазон</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>integer</td>
+                          <td>4 байта</td>
+                          <td>типичный выбор для целых чисел</td>
+                          <td>-2147483648 .. +2147483647</td>
+                        </tr>
+                        <tr>
+                          <td>bigint</td>
+                          <td>8 байт</td>
+                          <td>целое в большом диапазоне</td>
+                          <td>-9223372036854775808 .. 9223372036854775807</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <h3 id="daty">Даты</h3>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Имя</th>
+                          <th>Размер</th>
+                          <th>Описание</th>
+                          <th>Наименьшее значение</th>
+                          <th>Наибольшее значение</th>
+                          <th>Точность</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>timestamp</td>
+                          <td>8 байт</td>
+                          <td>дата и время (без часового пояса)</td>
+                          <td>4713 до н. э.</td>
+                          <td>294276 н. э.</td>
+                          <td>1 микросекунда</td>
+                        </tr>
+                        <tr>
+                          <td>date</td>
+                          <td>4 байта</td>
+                          <td>дата (без времени суток)</td>
+                          <td>4713 до н. э.</td>
+                          <td>5874897 н. э.</td>
+                          <td>1 день</td>
+                        </tr>
+                        <tr>
+                          <td>time</td>
+                          <td>8 байт</td>
+                          <td>время суток (без даты)</td>
+                          <td>00:00:00</td>
+                          <td>24:00:00</td>
+                          <td>1 микросекунда</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p>Значения даты и времени принимаются практически в любом разумном формате, включая ISO 8601,
+                      SQL-совместимый и другие. Вот лишь несколько примеров того, как можно задавать дату:</p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Пример</th>
+                          <th>Описание</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1999-01-08</td>
+                          <td>ISO 8601, 8 января в любом режиме (рекомендуемый формат)</td>
+                        </tr>
+                        <tr>
+                          <td>January 8, 1999</td>
+                          <td>воспринимается однозначно в любом режиме datestyle</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <h3 id="logicheskiy-tip">Логический тип</h3>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Имя</th>
+                          <th>Размер</th>
+                          <th>Описание</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>boolean</td>
+                          <td>1 байт</td>
+                          <td>состояние: истина или ложь</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p>Состояние «true» может задаваться следующими значениями:</p>
+                    <pre class="hljs"><code class=>TRUE
+'t'
+'true'
+'y'
+'yes'
+'on'
+'1'
+</code></pre>
+                    <p>Для состояния «false» можно использовать следующие варианты:</p>
+                    <pre class="hljs"><code class=>FALSE
+'f'
+'false'
+'n'
+'no'
+'off'
+'0'
+</code></pre>
+                    <h3 id="null">NULL</h3>
+                    <p>Как и в языках программирования, в базах данных присутствует специальное значение
+                      <code>NULL</code>, которое используется для пустых значений.</p>
+                    <h3 id="stroki">Строки</h3>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Имя</th>
+                          <th>Описание</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>character varying(n), varchar(n)</td>
+                          <td>строка ограниченной переменной длины</td>
+                        </tr>
+                        <tr>
+                          <td>text</td>
+                          <td>строка неограниченной переменной длины</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <h2 id="analiz-struktury">Анализ структуры</h2>
+                    <p>Для манипуляции структурой базы данных лучше использовать <em>PgAdmin</em>. Он же позволяет
+                      исследовать структуру таблиц в визуальном режиме.</p>
+
+                    <p><img alt="PgAdmin" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjVhYzMxMzhmMzBjNzdkOWI5N2Y4ZjMxNDIxMWRiMGFmLnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=b0237e7b9e4d0d637e31a5d9e872ad4436b144d92744ebbfd45da96e98767321"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>SQL для анализа структуры базы данных не существует, поэтому если вы хотите посмотреть список
+                      таблиц и их структуру в базе данных, то придётся использовать команды самого <code>psql</code>.
+                    </p>
+
+                    <p><strong>Просмотр списка таблиц</strong></p>
+                    <pre class="hljs"><code class=>hexlet=&gt; \d
+         List of relations
+ Schema |  Name   | Type  |  Owner
+--------+---------+-------+---------
+ public | courses | table | vagrant
+</code></pre>
+                    <p><strong>Просмотр структуры таблицы</strong></p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">hexlet</span><span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">\d</span> courses
+               Table <span style="color: #d14">"public.courses"</span>
+    Column     |          Type          | Modifiers
+<span style="color: #000080">---------------</span>+------------------------+-----------
+ name          | character varying<span style="color: #000000;font-weight: bold">(</span>255<span style="color: #000000;font-weight: bold">)</span> |
+ slug          | character varying<span style="color: #000000;font-weight: bold">(</span>255<span style="color: #000000;font-weight: bold">)</span> |
+ lessons_count | integer                |
+ body          | text                   |
+</code></pre>
+                    <p><em>Полезные команды</em></p>
+
+                    <ul>
+                      <li><code>\l</code> - список всех баз данных</li>
+                      <li><code>\dt</code> - список всех таблиц</li>
+                    </ul>
+
+                    <p>Удаление таблицы выполняется запросом <code>DROP</code>:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">DROP</span> <span style="color: #000000;font-weight: bold">TABLE</span> <span style="background-color: #f8f8f8">courses</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p><em>Будьте внимательны. Удаление таблицы приводит к безвозвратной потере данных.</em></p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://www.db-fiddle.com/">Онлайн песочница для выполнения SQL
+                          запросов</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://postgrespro.ru/docs/postgresql/11/datatype">Типы данных</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://www.postgresql.org/docs/current/static/sql-createtable.html">CREATE TABLE</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

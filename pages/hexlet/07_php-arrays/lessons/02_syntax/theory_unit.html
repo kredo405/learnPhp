@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Синтаксис - PHP: Массивы</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <meta content='IE=Edge' http-equiv='X-UA-Compatible'>
+  <meta content='b9d3902d34' name='verify-admitad'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Синтаксис</h1>
+                    <p>Перед тем как изучать синтаксис работы с массивами, стоит понять его суть на логическом уровне.
+                      Для этого достаточно здравого смысла. Массивом в программировании представляют любые списки
+                      (коллекции элементов), будь то курсы на Хекслете либо сайты в поисковой выдаче или друзья в вашей
+                      любимой социальной сети. Задача массива представить такие списки в виде единой структуры, которая
+                      позволяет работать с ними как с единым целым.</p>
+                    <h2 id="opredelenie-massiva">Определение массива</h2>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$animals</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'cats'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'dogs'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'birds'</span><span style="background-color: #f8f8f8">];</span>
+</code></pre>
+                    <p>Массив представляет из себя <em>список элементов</em>, заключённых в квадратные скобки. В примере
+                      выше происходит определение массива <code>[&#39;cats&#39;, &#39;dogs&#39;, &#39;birds&#39;]</code>
+                      и присваивание его переменной <code>$animals</code>. PHP позволяет создавать массив из разнотипных
+                      данных, то есть чисто технически можно создать и такой массив:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$values</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #000000;font-weight: bold">null</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'one'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">4</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'two'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">false</span><span style="background-color: #f8f8f8">];</span>
+</code></pre>
+                    <p>На практике такой подход лучше не использовать. Для разнотипных данных обычно, хорошо подходит
+                      ассоциативный массив, которому посвящён следующий курс.</p>
+
+                    <p>Кроме того, можно создать и пустой массив:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$animals</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[];</span>
+</code></pre>
+                    <p>Как правило, пустой массив используют в ситуации, когда мы работаем с коллекцией, но значения
+                      отсутствуют. Такой подход позволяет избежать условных проверок на то, является ли данное значение
+                      массивом. Либо его используют в алгоритмах, которые постепенно наполняют массив в процессе своей
+                      работы.</p>
+
+                    <p><em>(</em><em>Для любознательных</em><em>: массив в PHP — динамическая структура. Её можно
+                        расширять прямо в процессе работы программы. В языках близких к железу, таких как Си, размер
+                        массива — постоянная величина. При необходимости расширения в подобных языках создают новый
+                        массив).</em></p>
+                    <h2 id="poluchenie-dannyh">Получение данных</h2>
+                    <p>Каждый элемент в массиве имеет порядковый номер, называемый <strong>индексом</strong>. Индексация
+                      массива начинается с нуля. То есть первый элемент массива доступен по индексу <code>0</code>,
+                      второй — по индексу <code>1</code>, и так далее.</p>
+
+                    <p>Для извлечения элемента из массива, необходимо использовать специальный синтаксис. Он заключается
+                      в том, что после переменной, содержащей массив, ставятся квадратные скобки с индексом между ними:
+                    </p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$animals</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'cats'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'dogs'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'birds'</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #008080">$animals</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// cats</span>
+<span style="color: #008080">$animals</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// dogs</span>
+<span style="color: #008080">$animals</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">2</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// birds</span>
+</code></pre>
+                    <p>Обратите внимание: последний индекс в массиве всегда меньше размера массива на единицу. Получить
+                      размер массива можно функцией <code>count</code> (у неё есть псевдоним: <code>sizeof</code>):</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$animals</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'cats'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'dogs'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'birds'</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #0086B3">count</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$animals</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// 3</span>
+</code></pre>
+                    <p>В алгоритмических задачах индекс обычно вычисляется динамически, поэтому обращение к конкретному
+                      элементу происходит с использованием переменных:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #008080">$animals</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'cats'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'dogs'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'birds'</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #008080">$animals</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$i</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// dogs</span>
+</code></pre>
+                    <p>И даже так:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #008080">$j</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #008080">$animals</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'cats'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'dogs'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'birds'</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #008080">$animals</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">+</span> <span style="color: #008080">$j</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// birds</span>
+</code></pre>
+                    <p>Такой вызов возможен по одной простой причине. Внутри скобок ожидается <em>выражение</em>, и, как
+                      мы уже знаем, там, где ожидается выражение, можно подставлять всё, что вычисляется, в том числе
+                      вызовы функций.</p>
+
+                    <p>Довольно часто в задачах с использованием массивов нужно взять последний элемент. Для этого
+                      вычисляется последний индекс массива по формуле <code>размер_массива - 1</code>, по которому и
+                      можно обратиться к последнему элементу:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$animals</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'cats'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'dogs'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'birds'</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #008080">$animals</span><span style="background-color: #f8f8f8">[</span><span style="color: #0086B3">count</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$animals</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">-</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// birds</span>
+</code></pre>
+                    <p>Индекс последнего элемента вычисляется по формуле: <code>размер массива - 1</code>.
+                      Соответственно, в коде она реализуется так: <code>count($animals) - 1</code>. На практике очень
+                      напрягает каждый раз писать такой код, поэтому через некоторое время мы познакомимся со
+                      специальной библиотекой, позволяющей работать с коллекциями намного более эффективно по сравнению
+                      со стандартными средствами.</p>
+                    <h2 id="izmenenie-elementov-massiva">Изменение элементов массива</h2>
+                    <p>Здесь всё просто. Синтаксис такой же, как и при обращении к элементу массива с добавлением
+                      присвоения нового значения:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$animals</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'cats'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'dogs'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'birds'</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #008080">$animals</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'horses'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$animals</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; ['horses', 'dogs', 'birds']</span>
+</code></pre>
+                    <p>Также не забывайте про выход за границу. Изменять нужно только существующие элементы.</p>
+                    <h2 id="dobavlenie-elementa-v-massiv">Добавление элемента в массив</h2>
+                    <p>То же самое, что и изменение, но в качестве индекса ничего не указывается.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$animals</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'cats'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'dogs'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'birds'</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #008080">$animals</span><span style="background-color: #f8f8f8">[]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'horses'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$animals</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; ['cats', 'dogs', 'birds', 'horses']</span>
+</code></pre>
+                    <h2 id="udalenie-elementa-iz-massiva">Удаление элемента из массива</h2>
+                    <p>Для удаления элемента массива в PHP есть специальная языковая конструкция <code>unset</code>.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$animals</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'cats'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'dogs'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'birds'</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #0086B3">unset</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$animals</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">]);</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$animals</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; ['cats', 'birds']</span>
+</code></pre>
+                    <p>Синтаксически её применение выглядит как функция, но если вы попробуете использовать её как
+                      выражение, то PHP выдаст ошибку:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$animals</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'cats'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'dogs'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'birds'</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #008080">$result</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">unset</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$animals</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">]);</span> <span style="color: #999988;font-style: italic">// PHP Parse error:  syntax error, unexpected 'unset' ...</span>
+</code></pre>
+                    <p>В общем случае уменьшение размера массива — нежелательная операция. Подробнее об этом поговорим в
+                      соответствующем уроке.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://php.net/manual/ru/language.types.array.php">Официальная
+                          документация</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

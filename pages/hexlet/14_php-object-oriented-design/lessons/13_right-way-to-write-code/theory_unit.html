@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Пишем код правильно - PHP: Объектно-ориентированный дизайн</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Пишем код правильно</h1>
+                    <p>Вооружившись знаниями, которые мы уже получили по ООП, давайте попробуем ответить на вопрос, как
+                      все же правильно писать и структурировать код в классовых языках.</p>
+
+                    <p>В PHP считается, что набор принципов SOLID — это ответ на вопрос о том как правильно писать код.
+                      Но жизнь показывает, что знание этих принципов слабо помогает хорошей организации кода.</p>
+
+                    <p>Возьмем принцип SRP (принцип единственной ответственности, S из SOLID). Он говорит следующее:</p>
+
+                    <blockquote>
+                      <p>Должна быть ровно одна причина для изменения класса. Роберт Мартин.</p>
+                    </blockquote>
+
+                    <p>Есть и другие формулировки, но это самая лаконичная. Что не так с этим принципом? Он очень общий.
+                      Звучит примерно как: нормально делай – нормально будет. Он не дает никаких формальных критериев,
+                      по которым можно понять, что в классе есть проблема. В статьях, посвященных этому принципу, всегда
+                      всё кажется логичным. Но только потому, что автор уже предложил разделение ответственностей. В
+                      реальной жизни всё было бы по-другому. Когда разных людей спрашиваешь об одних и тех же ситуациях,
+                      они дают совершенно разные, иногда противоположные ответы. По факту, всё сводится к некоторому
+                      внутреннему чутью конкретного программиста.</p>
+
+                    <p>Возьмем для примера библиотеку выполнения HTTP запросов. С чего нужно начать ее проектирование?
+                    </p>
+
+                    <p>Правильно начинать с вариантов использования. Представить себе как-будто библиотека уже написана
+                      и мы пробуем ей воспользоваться (TDD толкает именно к этому, поэтому оно так мощно работает).
+                      Перед тем, как я покажу код, попробуйте ответить на вопрос, так ли нужны классы и ООП для
+                      реализации этой библиотеки?</p>
+
+                    <p>HTTP-сессия — это операция, у которой есть конец и начало. Нужны ли объекты для ее выражения?
+                      Нет, конечно. Для операций достаточно функций. Поэтому наша библиотека в самом простом случае
+                      может выглядеть так:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">HTTP\get</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">HTTP\post</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #008080">$response</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'https://ru.hexlet.io/blog'</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'body'</span><span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #008080">$response</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">post</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'https://ru.hexlet.io/users'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'tolya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'email'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'tolya@example.com'</span><span style="background-color: #f8f8f8">]);</span>
+<span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'statusCode'</span><span style="background-color: #f8f8f8">];</span>
+</code></pre>
+                    <p>Теперь, когда готов интерфейс библиотеки, можно приступать к её реализации. Насколько важно как
+                      она выполнена внутри? Откровенно говоря, не важно. Внутренности останутся внутренностями, и никто
+                      про них не узнает, а их размер никогда не станет слишком большим (это всего лишь http библиотека).
+                      Это значит, что мы в любой момент можем их переписать. И делать это лучше не до, а после, когда
+                      накопится опыт поддержки и опыт использования. Только в этом случае появится настоящее понимание
+                      того, как лучше структурировать библиотеку внутри.</p>
+
+                    <p>Генеральная идея звучит так: грамотная абстракция – ключ к успеху. Обозначьте границы,
+                      рассмотрите варианты использования и реализуйте как-нибудь.</p>
+
+                    <p>Если бы мы работали в JavaScript, то пример выше и стал бы реальной HTTP-библиотекой, вы можете
+                      убедиться сами, что самая популярная http-библиотека <a href="https://github.com/axios/axios"
+                        target="_blank" rel="nofollow">axios</a> — это, действительно, набор функций:</p>
+                    <pre class="hljs"><code class=javascript><span style="color: #000000;font-weight: bold">import</span> <span style="background-color: #f8f8f8">axios</span> <span style="color: #000000;font-weight: bold">from</span> <span style="color: #d14">'</span><span style="color: #d14">axios</span><span style="color: #d14">'</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">await</span> <span style="background-color: #f8f8f8">axios</span><span style="background-color: #f8f8f8">.</span><span style="color: #000000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'</span><span style="color: #d14">https://ru.hexlet.io/users</span><span style="color: #d14">'</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #000000;font-weight: bold">await</span> <span style="background-color: #f8f8f8">axios</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">post</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'</span><span style="color: #d14">https://ru.hexlet.io/users</span><span style="color: #d14">'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">{</span>
+  <span style="color: #008080">firstName</span><span style="background-color: #f8f8f8">:</span> <span style="color: #d14">'</span><span style="color: #d14">Fred</span><span style="color: #d14">'</span><span style="background-color: #f8f8f8">,</span>
+  <span style="color: #008080">lastName</span><span style="background-color: #f8f8f8">:</span> <span style="color: #d14">'</span><span style="color: #d14">Flintstone</span><span style="color: #d14">'</span><span style="background-color: #f8f8f8">,</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>Но в PHP принято создавать классы. Во многом из-за автозагрузки и принятой модели работы. Поэтому
+                      перепишем наш интерфейс выше на объектный.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #008080">HTTP</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #999988;font-style: italic">// http://docs.guzzlephp.org/en/stable/</span>
+<span style="color: #008080">$client</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">HTTP\Client</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #008080">$response</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$client</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'https://ru.hexlet.io/users'</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getBody</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #008080">$response</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$client</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">post</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'https://ru.hexlet.io/users'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span>
+    <span style="color: #d14">'firstName'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Fred'</span><span style="background-color: #f8f8f8">,</span>
+    <span style="color: #d14">'lastName'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Flintstone'</span><span style="background-color: #f8f8f8">,</span>
+<span style="background-color: #f8f8f8">]);</span>
+<span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getStatusCode</span><span style="background-color: #f8f8f8">();</span>
+</code></pre>
+                    <p>Какими принципами нужно руководствоваться, чтобы понять внутреннюю архитектуру и количество
+                      классов? Для старта достаточно здравого смысла. У нас есть сам клиент, который представлен
+                      объектом (но его состояние – это конфигурация, а не запросы и ответы), и есть результат
+                      http-запроса. Результат представлен объектом, который возвращается после выполнения запроса.
+                      Внутри него хранится вся информация по взаимодействию с сервером, например, отправленные и
+                      принятые заголовки, код и тело ответа.</p>
+
+                    <p>Дальнейшее разбиение не нужно. Возможно, это не понадобится никогда. А если и понадобится, то
+                      сначала нужно почувствовать такую необходимость, а затем уже реализовывать ее, когда появится
+                      боль. Причём главное основание для такого разделения, это не абстрактная единая ответственность, а
+                      выделение чистого кода, который не связан с побочными эффектами.</p>
+
+                    <p>Внутри нашей библиотеки есть код, который выполняет сетевые запросы, а есть код, который работает
+                      с данными, приводит их в нормальный вид, чистит и как-то структурирует. В первую очередь, нужно
+                      отслеживать такой код и отделять его на уровне функций или методов. Любая операция, которая может
+                      быть чисто вычислительной, потенциальный кандидат на вынесение.</p>
+
+                    <p>Ещё один пример, где анализ побочных эффектов позволяет понять, как поступить правильно. В
+                      материалах по ООП часто говорят про класс, который отвечает за генерацию отчёта. Предположим, что
+                      он работает так:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Делать ли Reporter абстракцией данных (то есть объектом, описывающим конкретный отчет)</span>
+<span style="color: #999988;font-style: italic">// или нет, это большой вопрос.</span>
+<span style="color: #999988;font-style: italic">// По умолчанию так делать не стоит, иначе весь код превратится</span>
+<span style="color: #999988;font-style: italic">// в бесполезное (new Reporter('path/to/file'))-&gt;generate()</span>
+<span style="color: #008080">$reporter</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Reporter</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #008080">$report</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$reporter</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">generate</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/path/to/report'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>На что стоит обратить внимание в первую очередь? На то, что этот класс одновременно выполняет
+                      грязную работу (с побочными эффектами): читает файл с диска, так и чистую: обрабатывает данные для
+                      формирования отчета. Это не значит, что надо кидаться переписывать код, но это то, на что надо
+                      обращать внимание в первую очередь. Код выше, сложнее в тестировании и отладке, чем код с
+                      разделенными операциями по побочным эффектам. Кроме того, если вынести чтение файла наружу, то
+                      репортер станет значительно более универсальным. Он сможет работать с данными, которые лежат не
+                      только на диске, но и были загружены каким-то другим способом, например, по http через форму.
+                      После несложных манипуляций, получаем такой код:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$reporter</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Reporter</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #008080">$data</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">file_get_contents</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/path/to/report'</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$report</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$reporter</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">generate</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$data</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$report</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$reporter</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">generate</span><span style="background-color: #f8f8f8">(</span><span style="color: #0086B3">file_get_contents</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'https://ru.hexlet.io/reporters/3'</span><span style="background-color: #f8f8f8">));</span>
+</code></pre>
+                    <p>Остальные принципы требуют знаний, которые приобретаются в следующем курсе: полиморфизм в php.
+                      Там они и рассматриваются.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://www.youtube.com/watch?v=R-FfI4i0-uY">Снесите это немедленно
+                          (Андрей Аксенов). Доклад с конференции HighLoad.</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://ru.hexlet.io/blog/posts/arhitektura-i-oop">Архитектура и
+                          ООП</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

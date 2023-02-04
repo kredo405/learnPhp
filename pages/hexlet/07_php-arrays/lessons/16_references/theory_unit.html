@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Ссылки - PHP: Массивы</title>
+
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Ссылки</h1>
+                    <p>Большинство функций, работающих с массивами, после обработки возвращают новый массив. Но
+                      некоторые работают по-другому. В этих функциях, как правило, не используется возврат. Они меняют
+                      исходный массив напрямую за счёт использования ссылок. К таким функциям, например, относится
+                      функция сортировки:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$numbers</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">8</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #0086B3">sort</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$numbers</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$numbers</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// =&gt; Array</span>
+<span style="color: #999988;font-style: italic">// =&gt; (</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [0] =&gt; 1</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [1] =&gt; 3</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [2] =&gt; 8</span>
+<span style="color: #999988;font-style: italic">// =&gt; )</span>
+</code></pre>
+                    <p><a href="https://repl.it/@hexlet/php-arrays-references-sort"
+                        target="_blank">https://repl.it/@hexlet/php-arrays-references-sort</a></p>
+
+                    <p>Обратите внимание на то что мы не пишем <code>$sortedNumbers = sort($numbers)</code>. Функция
+                      <code>sort()</code> не возвращает отсортированный новый массив, вместо этого, она меняет тот
+                      массив, на который ссылается <code>$numbers</code>. В случае, если операция изменения исходного
+                      массива прошла успешно, без ошибок, функция возвращает булево значение <code>true</code>, в
+                      противном случае — <code>false</code>:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$numbers</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">4</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #008080">$result</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">sort</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$numbers</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #0086B3">var_dump</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$result</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; bool(true)</span>
+</code></pre>
+                    <p>Кроме прочего, такие функции не умеют работать со значениями, которые не присвоены переменным,
+                      так как на них нельзя получить ссылки:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #0086B3">sort</span><span style="background-color: #f8f8f8">([</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">4</span><span style="background-color: #f8f8f8">]));</span>
+<span style="color: #999988;font-style: italic">// PHP Fatal error:  Only variables can be passed by reference</span>
+</code></pre>
+                    <p>С точки зрения устройства, такие функции выглядят следующим образом:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">addValueToArray</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">&amp;</span><span style="color: #008080">$array</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$value</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$array</span><span style="background-color: #f8f8f8">[]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$value</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>В сигнатуре функции, перед именем переменной, ставится знак <code>&amp;</code>, а в теле функции
+                      происходит прямое изменение без возврата.</p>
+
+                    <p>Возникает вопрос, как лучше проектировать функции: с передачей по ссылке или по значению? В
+                      подавляющем большинстве случаев предпочтителен второй вариант. Функции, возвращающие значения,
+                      удобнее в работе, а поведение программы становится в целом более предсказуемым, так как
+                      отсутствуют неконтролируемые изменения данных. Первый подход лучше просто никогда не использовать.
+                    </p>
+
+                    <p>Несмотря на то, что подход, меняющий массивы напрямую, сложнее в отладке, его используют в
+                      некоторых языках для увеличения эффективности работы. Если массив достаточно большой, то полное
+                      копирование окажется дорогой операцией. В реальной жизни (веб-разработчика) это почти никогда не
+                      является проблемой, но знать об этом полезно.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="http://optimization.guide/">Продуманная оптимизация</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://php.net/manual/ru/language.references.pass.php">Передача по
+                          ссылке</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://php.net/manual/ru/language.references.return.php">Возврат по
+                          ссылке</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://php.net/manual/ru/function.sort.php">Функция sort</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

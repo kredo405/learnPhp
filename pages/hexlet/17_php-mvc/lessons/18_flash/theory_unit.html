@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Flash - Веб-разработка на PHP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Flash</h1>
+                    <p>Работая на Хекслете вы не раз видели сообщение о результатах выполнения любого действия — будь то
+                      аутентификация, регистрация или вступление в курс.</p>
+
+                    <p><img alt="Flash Message" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6Ijk5MzA1OGNmY2QyN2MzMWYyODk0OTJhMjRkZDk3ZDcyLnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=2d5e2aa31f7235db2aab91fcff530fb29bb0758a27da143e918d34f7900878a6"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>В веб-разработке такое сообщение называют Flash. Оно обычно используется после перенаправления
+                      для индикации успешности или неудачи предыдущего действия. Flash-сообщения используют механизм
+                      сессий, который мы пока не рассматривали. Этот механизм позволяет хранить информацию между разными
+                      запросами одного и того же пользователя. В свою очередь механизм сессий работает благодаря кукам и
+                      встроен в PHP. Подробнее о сессиях мы поговорим в соответствующем уроке, а пока используем его без
+                      погружения.</p>
+
+                    <p>Сначала установим необходимый пакет:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>composer require slim/flash
+</code></pre>
+                    <p>Теперь подключим к проекту:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">DI\Container</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Slim\Factory\AppFactory</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #999988;font-style: italic">// Старт PHP сессии</span>
+<span style="color: #0086B3">session_start</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #008080">$container</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Container</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #008080">$container</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">set</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'renderer'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">()</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">Slim\Views\PhpRenderer</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">__DIR__</span> <span style="color: #009999">.</span> <span style="color: #d14">'/../templates'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+<span style="color: #008080">$container</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">set</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'flash'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">()</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">Slim\Flash\Messages</span><span style="background-color: #f8f8f8">();</span>
+<span style="background-color: #f8f8f8">});</span>
+
+<span style="color: #445588;font-weight: bold">AppFactory</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">setContainer</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$container</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$app</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">AppFactory</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">create</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/foo'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$req</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$res</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Добавление флеш-сообщения. Оно станет доступным на следующий HTTP-запрос.</span>
+    <span style="color: #999988;font-style: italic">// 'success' — тип флеш-сообщения. Используется при выводе для форматирования.</span>
+    <span style="color: #999988;font-style: italic">// Например можно ввести тип success и отражать его зелёным цветом (на Хекслете такого много)</span>
+    <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'flash'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">addMessage</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'success'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'This is a message'</span><span style="background-color: #f8f8f8">);</span>
+
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$res</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">withRedirect</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/bar'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/bar'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$req</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$res</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$args</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Извлечение flash сообщений установленных на предыдущем запросе</span>
+    <span style="color: #008080">$messages</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'flash'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getMessages</span><span style="background-color: #f8f8f8">();</span>
+    <span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$messages</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; ['success' =&gt; ['This is a message']]</span>
+
+    <span style="color: #008080">$params</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'flash'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$messages</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'renderer'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$res</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'bar.phtml'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$params</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">run</span><span style="background-color: #f8f8f8">();</span>
+</code></pre>
+                    <p>В многих фреймворках типы флеш-сообщений стандартизированы. В основном используют следующие:</p>
+
+                    <ul>
+                      <li><em>success</em> – для удачно завершившихся действий</li>
+                      <li><em>warning</em> – для предупреждений</li>
+                      <li><em>error</em> – в тех ситуациях когда произошла ошибка</li>
+                    </ul>
+
+                    <p>Флеш-сообщения передаются в шаблон и там выводятся. После их извлечения хранилище обнуляется. При
+                      следующем запросе <code>getMessages()</code> вернёт пустой массив. Другими словами флеш сообщения
+                      показываются только на один запрос. После обновления страницы или перехода в другое место они
+                      пропадают. Это удобно, так как не нужно следить за их жизненным циклом.</p>
+
+                    <p>Флеш-сообщений можно добавить сразу много, поэтому <code>getMessages()</code> возвращает
+                      вложенный массив такой структуры:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// $this-&gt;get('flash')-&gt;addMessage('success', 'first message');</span>
+<span style="color: #999988;font-style: italic">// $this-&gt;get('flash')-&gt;addMessage('success', 'second message');</span>
+<span style="color: #999988;font-style: italic">// $this-&gt;get('flash')-&gt;addMessage('error', 'first message');</span>
+<span style="color: #999988;font-style: italic">// $this-&gt;get('flash')-&gt;addMessage('error', 'another message');</span>
+
+<span style="background-color: #f8f8f8">[</span>
+    <span style="color: #d14">'success'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="background-color: #f8f8f8">[</span>
+        <span style="color: #d14">'first message'</span><span style="background-color: #f8f8f8">,</span>
+        <span style="color: #d14">'second message'</span><span style="background-color: #f8f8f8">,</span>
+    <span style="background-color: #f8f8f8">],</span>
+    <span style="color: #d14">'error'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="background-color: #f8f8f8">[</span>
+        <span style="color: #d14">'first message'</span><span style="background-color: #f8f8f8">,</span>
+        <span style="color: #d14">'another message'</span>
+    <span style="background-color: #f8f8f8">]</span>
+<span style="background-color: #f8f8f8">]</span>
+</code></pre>
+                    <p>Под капотом у флеш-сообщений используются сессии, которые рассматриваются в курсе чуть позже.
+                      Благодаря этому механизму, сайт запоминает конкретного пользователя и его сообщение.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Установите и подключите пакет для вывода флеш используя примеры из теории.</li>
+                      <li> Добавьте реализацию вывода флеш сообщения при создании пользователя.</li>
+                    </ol>
+
+
+</body>
+
+</html>

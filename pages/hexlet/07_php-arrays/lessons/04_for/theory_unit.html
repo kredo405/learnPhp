@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Цикл for - PHP: Массивы</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <meta content='IE=Edge' http-equiv='X-UA-Compatible'>
+  <meta content='b9d3902d34' name='verify-admitad'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Цикл for</h1>
+                    <p>Работа с массивами практически всегда подразумевает итерацию по его элементам. Самый простой
+                      способ выполнить её — циклы.</p>
+                    <h2 id="obhod">Обход</h2>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$userNames</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'petya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'vasya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'evgeny'</span><span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #000000;font-weight: bold">for</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">;</span> <span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">&lt;</span> <span style="color: #0086B3">count</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$userNames</span><span style="background-color: #f8f8f8">);</span> <span style="color: #008080">$i</span><span style="color: #000000;font-weight: bold">++</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+  <span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"</span><span style="color: #d14">{</span><span style="color: #008080">$userNames</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$i</span><span style="background-color: #f8f8f8">]</span><span style="color: #d14">}</span><span style="color: #d14">\n</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #999988;font-style: italic">// =&gt; petya</span>
+<span style="color: #999988;font-style: italic">// =&gt; vasya</span>
+<span style="color: #999988;font-style: italic">// =&gt; evgeny</span>
+</code></pre>
+                    <p><a href="https://repl.it/@hexlet/php-arrays-traversal-for-print"
+                        target="_blank">https://repl.it/@hexlet/php-arrays-traversal-for-print</a></p>
+
+                    <p>В данном коде создаётся массив из трёх элементов — имён. Далее в цикле происходит обход массива и
+                      вывод на экран всех имён так, что каждое имя оказывается на новой строке.</p>
+
+                    <p>Рассмотрим этот этап подробнее. При обходе массива циклом <code>for</code>, как правило, счётчик
+                      играет роль индекса в массиве. Он инициализируется нулём и увеличивается до
+                      <code>count($userNumbers) - 1</code>, что соответствует индексу последнего элемента.</p>
+
+                    <p>Интересно производится печать на экран. Элемент массива может участвовать в строковой
+                      интерполяции, а значит, мы можем сразу печатать и имя и перевод строки, используя такую
+                      конструкцию <code>&quot;{$userNames[$i]}\n&quot;</code>.</p>
+
+                    <p>А что, если нам нужно вывести значения в обратном порядке? Для этого есть два способа. Один —
+                      идти в прямом порядке, то есть от нулевого индекса до последнего, и каждый раз вычислять нужный
+                      индекс по такой формуле <code>размер массива - 1 - текущее значение счётчика</code>.</p>
+
+                    <p>Но есть и другой способ. Можно просто идти от верхней границы к нижней. В такой ситуации код
+                      меняется на следующий:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$userNames</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'petya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'vasya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'evgeny'</span><span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #000000;font-weight: bold">for</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">count</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$userNames</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">-</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">;</span> <span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">&gt;=</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">;</span> <span style="color: #008080">$i</span><span style="color: #000000;font-weight: bold">--</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"</span><span style="color: #d14">{</span><span style="color: #008080">$userNames</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$i</span><span style="background-color: #f8f8f8">]</span><span style="color: #d14">}</span><span style="color: #d14">\n</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>При таком обходе проверка остановки должна быть именно на <code>&gt;=</code>, иначе пропустится
+                      элемент с индексом <code>0</code>.</p>
+                    <h2 id="izmenenie">Изменение</h2>
+                    <p>Сам цикл при изменении остаётся тем же самым, меняется только его тело. Предположим, что перед
+                      нами стоит задача нормализации списка электронных адресов. Допустим, в нормализацию адресов входит
+                      приведение их к нижнему регистру. Тогда код будет выглядеть так:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$emails</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'VASYA@gmAil.com'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'iGoR@yandex.RU'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'netiD@hot.CoM'</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$emails</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// =&gt; Array</span>
+<span style="color: #999988;font-style: italic">// =&gt; (</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [0] =&gt; VASYA@gmAil.com</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [1] =&gt; iGoR@yandex.RU</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [2] =&gt; netiD@hot.CoM</span>
+<span style="color: #999988;font-style: italic">// =&gt; )</span>
+
+<span style="color: #000000;font-weight: bold">for</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">;</span> <span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">&lt;</span> <span style="color: #0086B3">count</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$emails</span><span style="background-color: #f8f8f8">);</span> <span style="color: #008080">$i</span><span style="color: #000000;font-weight: bold">++</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+  <span style="color: #999988;font-style: italic"># strtolower - стандартная функция php</span>
+  <span style="color: #008080">$emails</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$i</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">strtolower</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$emails</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$i</span><span style="background-color: #f8f8f8">]);</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$emails</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// =&gt; Array</span>
+<span style="color: #999988;font-style: italic">// =&gt; (</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [0] =&gt; vasya@gmail.com</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [1] =&gt; igor@yandex.ru</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [2] =&gt; netid@hot.com</span>
+<span style="color: #999988;font-style: italic">// =&gt; )</span>
+</code></pre>
+                    <p><a href="https://repl.it/@hexlet/php-arrays-traversal-for-update"
+                        target="_blank">https://repl.it/@hexlet/php-arrays-traversal-for-update</a></p>
+
+                    <p>Ключевая строчка: <code>$emails[$i] = strtolower($emails[$i]);</code>. В ней происходит
+                      перезапись элемента под индексом <code>$i</code>. Иногда полезно создать промежуточную переменную
+                      для упрощения анализа кода:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$email</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$emails</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$i</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #008080">$emails</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$i</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">strtolower</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$email</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <h2 id="initsializatsiya-tsikla">Инициализация цикла</h2>
+                    <p>При инициализации цикла <code>for</code> в круглых скобках располагаются три блока выражений,
+                      разделяемые символом <code>;</code>.</p>
+
+                    <p>Содержимое первого блока инициализации выполняется перед началом цикла и только один раз.</p>
+
+                    <p>Второй блок определяет условие выполнения цикла и содержит выражение, которое вычисляется перед
+                      каждой очередной итерацией. Работа цикла продолжается, если это выражение возвращает
+                      <code>true</code>. Если же проверка оказывается ложной, цикл заканчивает свою работу.</p>
+
+                    <p>В третьем блоке содержатся выражения, которые обрабатываются в конце итерации цикла. Обычно здесь
+                      происходит необходимое преобразование счётчика, например, инкремент.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$colors</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'red'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'black'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'white'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'green'</span><span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #000000;font-weight: bold">for</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">;</span> <span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">&lt;</span> <span style="color: #0086B3">count</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$colors</span><span style="background-color: #f8f8f8">);</span> <span style="color: #008080">$i</span><span style="color: #000000;font-weight: bold">++</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"</span><span style="color: #d14">{</span><span style="color: #008080">$colors</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$i</span><span style="background-color: #f8f8f8">]</span><span style="color: #d14">}</span><span style="color: #d14">\n</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>В процессе работы цикла выражение, которое содержится в блоке условий вычисляется заново. Это
+                      значит, что в нашем примере длина массива <code>count($colors)</code> будет вычисляться вновь и
+                      вновь при каждом проходе цикла. Так как сам массив остаётся неизменным, то повторное вычисление
+                      размера оказывается избыточным. Повторения операции можно избежать, если определить переменную за
+                      пределами цикла и присвоить ей необходимое значение.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$colors</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'red'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'black'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'white'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'green'</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #008080">$length</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">count</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$colors</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #000000;font-weight: bold">for</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">;</span> <span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">&lt;</span> <span style="color: #008080">$length</span><span style="background-color: #f8f8f8">;</span> <span style="color: #008080">$i</span><span style="color: #000000;font-weight: bold">++</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"</span><span style="color: #d14">{</span><span style="color: #008080">$colors</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$i</span><span style="background-color: #f8f8f8">]</span><span style="color: #d14">}</span><span style="color: #d14">\n</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Но существует более оптимальное решение: описать несколько выражений в блоке инициализации цикла
+                      <code>for</code> и разделить их запятыми. Это позволит не только избежать лишних вычислений,
+                      единожды определив значение <code>length</code>, но и ограничить переменную локальной областью
+                      видимости функции.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$colors</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'red'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'black'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'white'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'green'</span><span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #000000;font-weight: bold">for</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$length</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">count</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$colors</span><span style="background-color: #f8f8f8">);</span> <span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">&lt;</span> <span style="color: #008080">$length</span><span style="background-color: #f8f8f8">;</span> <span style="color: #000000;font-weight: bold">print</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$i</span><span style="background-color: #f8f8f8">),</span> <span style="color: #008080">$i</span><span style="color: #000000;font-weight: bold">++</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+  <span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"</span><span style="color: #d14">{</span><span style="color: #008080">$colors</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$i</span><span style="background-color: #f8f8f8">]</span><span style="color: #d14">}</span><span style="color: #d14">\n</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #999988;font-style: italic">// =&gt; red</span>
+<span style="color: #999988;font-style: italic">// =&gt; 0black</span>
+<span style="color: #999988;font-style: italic">// =&gt; 1white</span>
+<span style="color: #999988;font-style: italic">// =&gt; 2green</span>
+<span style="color: #999988;font-style: italic">// =&gt; 3 </span>
+</code></pre>
+                    <p><a href="https://repl.it/@hexlet/php-arrays-for-initialize"
+                        target="_blank">https://repl.it/@hexlet/php-arrays-for-initialize</a></p>
+
+                    <p>А вот пример использования нескольких выражений в блоке изменения счётчика:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">for</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">;</span> <span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">&lt;</span> <span style="color: #009999">5</span><span style="background-color: #f8f8f8">;</span> <span style="color: #000000;font-weight: bold">print</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"</span><span style="color: #008080">$i</span><span style="color: #d14">\n</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">),</span> <span style="color: #008080">$i</span><span style="color: #000000;font-weight: bold">++</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+  <span style="color: #999988;font-style: italic">// some code</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #999988;font-style: italic">// =&gt; 0</span>
+<span style="color: #999988;font-style: italic">// =&gt; 1</span>
+<span style="color: #999988;font-style: italic">// =&gt; 2</span>
+<span style="color: #999988;font-style: italic">// =&gt; 3</span>
+<span style="color: #999988;font-style: italic">// =&gt; 4</span>
+</code></pre>
+                    <p><a href="https://repl.it/@hexlet/php-arrays-for-increment"
+                        target="_blank">https://repl.it/@hexlet/php-arrays-for-increment</a></p>
+
+                    <p>Рассмотренные блоки могут быть пустыми, при этом сохраняются разделители <code>;</code>. Но так
+                      делать не рекомендуется. Все блоки должны полным и ясным образом описывать работу цикла.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://php.net/manual/ru/control-structures.for.php">Официальная
+                          документация</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

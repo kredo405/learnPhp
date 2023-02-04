@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Исключения - PHP: Введение в ООП</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Исключения</h1>
+                    <p>Отдельная большая тема в программировании – обработка ошибок. До сих пор нам удавалось избегать
+                      её, но в реальном мире, где приложения содержат тысячи, десятки и сотни тысяч (а то и все
+                      миллионы) строк кода, обработка ошибок влияет на многое: простоту модификации и расширения,
+                      адекватное поведение программы для пользователя в разных ситуациях.</p>
+
+                    <p>В этом уроке мы рассмотрим механизм исключений. Но перед тем, как изучать новые конструкции,
+                      поговорим про ошибки вообще.</p>
+
+                    <p>В PHP есть функция, которая называется <code>strpos($text, $substr)</code>. Она ищет подстроку
+                      <code>$substr</code> внутри текста <code>$text</code> и возвращает индекс начала этой подстроки в
+                      тексте. Что произойдёт, если подстрока не была найдена? Является ли это поведение ошибкой? Нет.
+                      Это штатное поведение функции. От того, что подстрока не была найдена, ничего страшного не
+                      случилось. Представьте себе любой редактор текста и механизм поиска внутри него. Ситуация, когда
+                      ничего не было найдено, возникает постоянно, и это не ломает работу программы.</p>
+
+                    <p><em>Кстати, посмотрите в документацию этой функции, каким образом она говорит о том, что
+                        подстрока не была найдена?</em></p>
+
+                    <p>Другая ситуация. В тех же редакторах есть функция &quot;открыть файл&quot;. Представьте, что во
+                      время открытия файла, что-то пошло не так, например, его удалили. А это ошибка или нет? Да, в этой
+                      ситуации произошла ошибка, но это не ошибка программирования. Подобная ошибка может возникнуть
+                      всегда, независимо от желания программиста. Он не может избежать её появления. Единственное что он
+                      может, правильно реализовать её обработку.</p>
+
+                    <p>Ещё один интересный вопрос, насколько это критичная ошибка? Должно ли оно приводить к остановке
+                      всего приложения или нет? В плохо написанных приложениях, там, где неправильно реализована
+                      обработка ошибок, такая ситуация приведёт к краху всего приложения, и оно завершится. В хорошо
+                      написанном приложении не произойдёт ничего страшного. Пользователь увидит предупреждение о том,
+                      что файл не читается, и сможет выбрать дальнейшие действия, например, попытаться прочитать его
+                      снова или выполнить другое действие.</p>
+
+                    <p>Сказанное выше имеет очень серьёзные следствия. Одна и та же ситуация на разных уровнях может как
+                      являться ошибкой, так и быть вполне штатной ситуацией. Например, если задача функции читать файл,
+                      а она не смогла этого сделать, то с точки зрения этой функции произошла ошибка. Должна ли она
+                      приводить к остановке всего приложения? Как мы выяснили выше – не должна. О том, насколько
+                      критична данная ситуация, может решать приложение, которое использует эту функцию, но не сама
+                      функция.</p>
+                    <h2 id="kody-vozvrata">Коды возврата</h2>
+                    <p>В языках появившихся до 1990 года (примерно), обработка ошибок выполнялась через механизм
+                      возврата функцией специального значения. Например, в Си, если функция не может выполнить свою
+                      задачу, то она должна вернуть специальное значение, либо <code>NULL</code> либо отрицательное
+                      число. Значение этого числа, говорит о том, какая ошибка произошла. Например:</p>
+                    <pre class="hljs"><code class=c><span style="color: #445588;font-weight: bold">int</span> <span style="color: #990000;font-weight: bold">write_log</span><span style="background-color: #f8f8f8">()</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #445588;font-weight: bold">int</span> <span style="background-color: #f8f8f8">ret</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999988;font-style: italic">// return value 0 if success</span>
+    <span style="color: #445588;font-weight: bold">FILE</span> <span style="color: #000000;font-weight: bold">*</span><span style="background-color: #f8f8f8">f</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">fopen</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"logfile.txt"</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">"w+"</span><span style="background-color: #f8f8f8">);</span>
+
+    <span style="color: #999988;font-style: italic">// Проверяем, получилось ли открыть файл</span>
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">!</span><span style="background-color: #f8f8f8">f</span><span style="background-color: #f8f8f8">)</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #000000;font-weight: bold">-</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">;</span>
+
+    <span style="color: #999988;font-style: italic">// Проверяем, что не достигли конца файла</span>
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">fputs</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"hello logfile!"</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">f</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">!=</span> <span style="background-color: #f8f8f8">EOF</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">// continue using the file resource</span>
+    <span style="background-color: #f8f8f8">}</span> <span style="color: #000000;font-weight: bold">else</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">// Файл закончился</span>
+        <span style="background-color: #f8f8f8">ret</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">-</span><span style="color: #009999">2</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #999988;font-style: italic">// Не получилось закрыть файл</span>
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">fclose</span><span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">f</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">==</span> <span style="background-color: #f8f8f8">EOF</span><span style="background-color: #f8f8f8">)</span>
+        <span style="background-color: #f8f8f8">ret</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">-</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">;</span>
+
+    <span style="color: #000000;font-weight: bold">return</span> <span style="background-color: #f8f8f8">ret</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Обратите внимание на условные конструкции и постоянное присваивание переменной <code>ret</code>.
+                      Фактически каждая потенциально опасная операция, должна проверяться на успешность выполнения. Если
+                      что-то пошло не так, то функция возвращает специальный код.</p>
+
+                    <p>И вот тут начинаются проблемы. Как показывает жизнь, в большинстве ситуаций ошибка обрабатывается
+                      не там где она возникла и даже не уровнем выше. Предположим, что есть функция <em>A</em>, которая
+                      вызывает код, потенциально приводящий к ошибке, и она его должна уметь правильно обработать и
+                      сообщить пользователю о проблеме. При этом сама ошибка происходит внутри функции <em>E</em>,
+                      которая вызывается внутри <em>A</em> не напрямую, а через цепочку функций: <em>A =&gt; B =&gt; C
+                        =&gt; D =&gt; E</em>. Подумайте, к чему приводит такая схема? Все функции в этой цепочке, даже
+                      несмотря на то, что они не обрабатывают ошибку, обязаны знать про неё, отлавливать её и так же
+                      возвращать наружу код этой ошибки. В результате, количества кода, который занимается ошибками,
+                      становится так много, что за ним теряется код, выполняющий исходную задачу.</p>
+
+                    <p><em>Стоит сказать, что существуют схемы обработки ошибок, которые не обладают такими
+                        недостатками, но работают по принципу возврата. Например монада Either.</em></p>
+                    <h2 id="isklyucheniya">Исключения</h2>
+                    <p>Именно на этом фоне и возник механизм исключений. Его главная цель, передать ошибку из того
+                      места, где она возникла, в место, где её можно обработать, минуя все промежуточные уровни. Другими
+                      словами, механизм исключений раскручивает стек вызовов самостоятельно.</p>
+
+                    <p>С исключениями нужно запомнить две вещи: код, в котором произошла ошибка, выбрасывает исключение,
+                      а код, в котором ошибка обрабатывается – её ловит.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Функция, которая может выбросить исключение</span>
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">readFile</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$filepath</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">!</span><span style="color: #0086B3">is_readable</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$filepath</span><span style="background-color: #f8f8f8">))</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">throw</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">Exception</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"'</span><span style="color: #d14">{</span><span style="color: #008080">$filepath</span><span style="color: #d14">}</span><span style="color: #d14">' is not readable"</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">}</span>
+    <span style="color: #999988;font-style: italic">// ...</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #999988;font-style: italic">// Где-то в другом месте программы</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">run</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$filepath</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">try</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">// Функция, которая вызывает readFile. Возможно не напрямую, а через другие функции.</span>
+        <span style="color: #999988;font-style: italic">// Для механизма исключений это не важно.</span>
+        <span style="color: #990000;font-weight: bold">openFile</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$filepath</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">}</span> <span style="color: #000000;font-weight: bold">catch</span> <span style="background-color: #f8f8f8">(</span><span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #445588;font-weight: bold">Exception</span> <span style="color: #008080">$e</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">// Этот блок выполняется только в одном случае, если в блоке try было выброшено исключение</span>
+        <span style="color: #990000;font-weight: bold">showErrorToUser</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$e</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">}</span>
+    <span style="color: #999988;font-style: italic">// Если тут будет код, он продолжит выполняться</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Сами исключения – это объекты класса <code>\Exception</code> и его наследников (о наследовании в
+                      одном из следующих курсов). Этот объект содержит внутри себя сообщение, переданное в конструктор,
+                      трассировка стека и другие полезные данные:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #445588;font-weight: bold">Exception</span> <span style="color: #000000;font-weight: bold">implements</span> <span style="color: #445588;font-weight: bold">Throwable</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">protected</span> <span style="color: #445588;font-weight: bold">string</span> <span style="color: #008080">$message</span> <span style="background-color: #f8f8f8">;</span>
+    <span style="color: #000000;font-weight: bold">protected</span> <span style="color: #445588;font-weight: bold">int</span> <span style="color: #008080">$code</span> <span style="background-color: #f8f8f8">;</span>
+    <span style="color: #000000;font-weight: bold">protected</span> <span style="color: #445588;font-weight: bold">string</span> <span style="color: #008080">$file</span> <span style="background-color: #f8f8f8">;</span>
+    <span style="color: #000000;font-weight: bold">protected</span> <span style="color: #445588;font-weight: bold">int</span> <span style="color: #008080">$line</span> <span style="background-color: #f8f8f8">;</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #445588;font-weight: bold">__construct</span> <span style="background-color: #f8f8f8">([</span> <span style="background-color: #f8f8f8">string</span> <span style="color: #008080">$message</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">""</span> <span style="background-color: #f8f8f8">[,</span> <span style="background-color: #f8f8f8">int</span> <span style="color: #008080">$code</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">0</span> <span style="background-color: #f8f8f8">[,</span> <span style="color: #445588;font-weight: bold">Throwable</span> <span style="color: #008080">$previous</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">NULL</span> <span style="background-color: #f8f8f8">]]]</span> <span style="background-color: #f8f8f8">)</span>
+    <span style="color: #000000;font-weight: bold">final</span> <span style="color: #000000;font-weight: bold">public</span> <span style="color: #445588;font-weight: bold">getMessage</span> <span style="background-color: #f8f8f8">(</span> <span style="background-color: #f8f8f8">void</span> <span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">:</span> <span style="background-color: #f8f8f8">string</span>
+    <span style="color: #000000;font-weight: bold">final</span> <span style="color: #000000;font-weight: bold">public</span> <span style="color: #445588;font-weight: bold">getPrevious</span> <span style="background-color: #f8f8f8">(</span> <span style="background-color: #f8f8f8">void</span> <span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">:</span> <span style="color: #445588;font-weight: bold">Throwable</span>
+    <span style="color: #000000;font-weight: bold">final</span> <span style="color: #000000;font-weight: bold">public</span> <span style="color: #445588;font-weight: bold">getCode</span> <span style="background-color: #f8f8f8">(</span> <span style="background-color: #f8f8f8">void</span> <span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">:</span> <span style="background-color: #f8f8f8">mixed</span>
+    <span style="color: #000000;font-weight: bold">final</span> <span style="color: #000000;font-weight: bold">public</span> <span style="color: #445588;font-weight: bold">getFile</span> <span style="background-color: #f8f8f8">(</span> <span style="background-color: #f8f8f8">void</span> <span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">:</span> <span style="background-color: #f8f8f8">string</span>
+    <span style="color: #000000;font-weight: bold">final</span> <span style="color: #000000;font-weight: bold">public</span> <span style="color: #445588;font-weight: bold">getLine</span> <span style="background-color: #f8f8f8">(</span> <span style="background-color: #f8f8f8">void</span> <span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">:</span> <span style="background-color: #f8f8f8">int</span>
+    <span style="color: #000000;font-weight: bold">final</span> <span style="color: #000000;font-weight: bold">public</span> <span style="color: #445588;font-weight: bold">getTrace</span> <span style="background-color: #f8f8f8">(</span> <span style="background-color: #f8f8f8">void</span> <span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">:</span> <span style="color: #000000;font-weight: bold">array</span>
+    <span style="color: #000000;font-weight: bold">final</span> <span style="color: #000000;font-weight: bold">public</span> <span style="color: #445588;font-weight: bold">getTraceAsString</span> <span style="background-color: #f8f8f8">(</span> <span style="background-color: #f8f8f8">void</span> <span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">:</span> <span style="background-color: #f8f8f8">string</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #445588;font-weight: bold">__toString</span> <span style="background-color: #f8f8f8">(</span> <span style="background-color: #f8f8f8">void</span> <span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">:</span> <span style="background-color: #f8f8f8">string</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Выбросить исключение проще простого, достаточно использовать инструкцию <code>throw</code>:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$e</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">Exception</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Тут любой текст'</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #000000;font-weight: bold">throw</span> <span style="color: #008080">$e</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999988;font-style: italic">// Исключение можно создать отдельно, а можно сразу же там, где используется throw</span>
+</code></pre>
+                    <p><code>throw</code> прерывает дальнейшее выполнение кода. В этом смысле оно подобно
+                      <code>return</code>, но в отличие от него, прерывает выполнение не только текущей функции, но и
+                      всего кода, вплоть до ближайшего в стеке вызовов блока <code>catch</code>.</p>
+
+                    <p>Блок <em>try/catch</em> обычно ставится на самом верхнем уровне программы, но это не обязательно.
+                      Вполне вероятно, что есть несколько промежуточных блоков, которые могут отлавливать ошибки и снова
+                      их возбуждать. Эта тема достаточно сложная и требует некоторого опыта работы.</p>
+                    <h2 id="php">PHP</h2>
+                    <p>Когда PHP только появился, то в нём не был реализован механизм исключений. Поэтому многие функции
+                      либо возвращают какие-то значения указывающие на ошибку, либо об ошибке можно узнать с помощью
+                      специальных ухищрений. Эти подходы пришли прямиком из Си, и в современных языках больше нигде не
+                      встречаются. Все ещё ухудшается наличием альтернативного механизма: Notice, Warning, Fatal. К
+                      счастью, в новых версиях PHP эти ошибки заменяют на исключения, но вряд ли когда-нибудь произойдёт
+                      полный переход. Написано слишком много кода, а язык должен сохранять обратную совместимость.</p>
+
+                    <p>Например, обработка ошибок парсинга JSON в PHP реализована крайне странно по современным меркам.
+                      Чтобы узнать об ошибке, нужно вызвать функцию <code>json_last_error()</code> сразу после парсинга.
+                      А текст ошибки получается функцией <code>json_last_error_msg()</code>.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://www.php.net/manual/ru/language.exceptions.php
+">Официальная документация</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://habr.com/ru/post/131212/
+">Коды возврата &amp; исключения
+                        </a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://github.com/thecodingmachine/safe
+">Библиотека safe</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

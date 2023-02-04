@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Выполнение программ - Основы командной строки</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <meta content='IE=Edge' http-equiv='X-UA-Compatible'>
+  <meta content='b9d3902d34' name='verify-admitad'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover" href="quiz_unit.html">Основы
+                      командной строки</a>
+                    <h1 class='mt-0 mb-4'>Выполнение программ</h1>
+                    <p>Запуск программ в командной строке активирует целый механизм по поиску и выполнению этой
+                      программы. Очень важно понимать, как он работает, так как проблемы с запуском вновь установленных
+                      программ возникают регулярно у всех разработчиков.</p>
+
+                    <p>Программа, независимо от того, что она делает, <strong>всего лишь файл или набор файлов на
+                        диске</strong>. Один из этих файлов обязательно должен быть <strong>исполняемым</strong>.
+                      Помните тот самый <code>x</code> из урока про права доступа? Так вот, выполнить программу можно
+                      только если она исполняемая, иначе попытка запустить её приведёт к ошибке.</p>
+
+                    <p>Весь механизм по запуску программ в *nix-системах основан на соглашениях. Когда в командной
+                      строке вводится некоторая команда, например, <code>ls</code>, то шелл начинает поиск исполняемого
+                      файла с именем <code>ls</code> в списке директорий, указанном в переменной окружения
+                      <code>PATH</code>.</p>
+                    <pre class="hljs"><code class=sh>~<span style="color: #008080">$ </span><span style="color: #0086B3">echo</span> <span style="color: #008080">$PATH</span>
+/home/hex/.local/bin:/home/hex/bin/:/home/hex/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+</code></pre>
+                    <script src="https://asciinema.org/a/01M4S4F4DnfFA7GUIscaygEfl.js"
+                      id="asciicast-01M4S4F4DnfFA7GUIscaygEfl" data-cols="120" data-rows="10" data-preload="1"
+                      async></script>
+
+                    <p>Директории друг от друга отделяются двоеточием. В этом списке присутствуют как общесистемные
+                      пути, так и пути, специфичные для конкретного пользователя. В вашем случае <code>PATH</code> будет
+                      другой. Процесс поиска программы выглядит следующим образом. Шелл перебирает директории слева
+                      направо и ищет ту, в которой есть файл <code>ls</code>, доступный для исполнения. Если такого
+                      файла не оказалось, то выводится ошибка:</p>
+                    <pre class="hljs"><code class=sh>~<span style="color: #008080">$ </span>wrongname
+bash: wrongname: <span style="color: #0086B3">command </span>not found
+</code></pre>
+                    <script src="https://asciinema.org/a/mQnMTPx8omF0aByyb1f9HXaDM.js"
+                      id="asciicast-mQnMTPx8omF0aByyb1f9HXaDM" data-cols="120" data-rows="10" data-preload="1"
+                      async></script>
+
+                    <p>Подчеркну, что важен порядок. Если файл с одним и тем же именем находится одновременно в
+                      нескольких директориях, то будет найден тот, который находится в директории, расположенной левее.
+                    </p>
+
+                    <p>Если вам интересно узнать, а где лежит исполняемый файл конкретной программы, то можно
+                      воспользоваться командой <code>type</code> (а ещё <code>which</code> и <code>whereis</code>):</p>
+                    <pre class="hljs"><code class=sh>~<span style="color: #008080">$ </span><span style="color: #0086B3">type cp
+cp </span>is /bin/cp
+~<span style="color: #a61717;background-color: #e3d2d2">$</span>
+~<span style="color: #008080">$ </span>whereis <span style="color: #0086B3">cp
+cp</span>: /bin/cp
+~<span style="color: #a61717;background-color: #e3d2d2">$</span>
+~<span style="color: #008080">$ </span>which <span style="color: #0086B3">cp</span>
+/bin/cp
+~<span style="color: #a61717;background-color: #e3d2d2">$</span>
+~<span style="color: #008080">$ </span><span style="color: #0086B3">ls</span> <span style="color: #000080">-al</span> /bin | <span style="color: #0086B3">grep cp</span>
+<span style="color: #000080">-rwxr-xr-x</span> 1 root root  141528 Jan 18  2018 <span style="color: #0086B3">cp</span>
+</code></pre>
+                    <script src="https://asciinema.org/a/ixtEcoBaPwduH58Icdj9JWXjb.js"
+                      id="asciicast-ixtEcoBaPwduH58Icdj9JWXjb" data-cols="120" data-rows="14" data-preload="1"
+                      async></script>
+
+                    <p>По выводу выше видно, что <code>cp</code> принадлежит суперпользователю, но исполнять его могут
+                      все.</p>
+
+                    <p>Обратите внимание на то, что почти все директории, в которых хранятся исполняемые файлы программ,
+                      оканчиваются на <code>bin</code>. Это общее соглашение, говорят &quot;бинарники&quot; (формально
+                      там не всегда бинарники, но это не принципиально). Пакетные менеджеры знают про эти директории и
+                      во время установки программ переносят их бинарники в одну из директорий, входящих в
+                      <code>PATH</code>. Для вновь устанавливаемых программ обычно это <code>/usr/local/bin</code>.
+                      Иногда возникает необходимость расширить <code>PATH</code>, особенно в случае установки через
+                      пакетные менеджеры языков программирования, но делать это надо осторожно, убедившись в том, что
+                      по-другому нельзя.</p>
+
+                    <p>В некоторых ситуациях программа, которую вы хотите запустить, не лежит по путям поиска
+                      (прописанным в <code>PATH</code>) и не должна там оказаться. Если её исполняемый файл находится
+                      прямо в текущей директории, то логично предположить, что если набрать имя файла и запустить его,
+                      то программа выполнится. На самом деле этого не произойдёт.</p>
+
+                    <p>Такое поведение сделано в целях безопасности. Ведь возможно вы хотели запустить какую-то
+                      стандартную программу, а злоумышленник положил в текущую директорию программу с таким же именем,
+                      но делающую что-то плохое. По этой причине, прямой запуск программ всегда должен быть путём до
+                      файла, например <code>path/to/executable/file</code>. А если файл лежит в текущей директории? Вот
+                      тут-то нам и поможет обращение через точку <code>./</code>:</p>
+                    <pre class="hljs"><code class=sh>~<span style="color: #008080">$ </span><span style="color: #0086B3">pwd</span>
+/home/hex
+~<span style="color: #008080">$ </span><span style="color: #0086B3">cd test</span>/
+~/test<span style="color: #008080">$ </span><span style="color: #0086B3">ls</span> <span style="color: #000080">-al</span>
+total 16
+drwxr-xr-x 2 hex hex 4096 Sep 10 15:24 <span style="color: #0086B3">.</span>
+drwxr-xr-x 1 hex hex 4096 Sep 10 15:24 ..
+<span style="color: #000080">-rwxr-xr-x</span> 1 hex hex   60 Sep 10 15:24 executable
+~/test<span style="color: #008080">$ </span>executable
+bash: executable: <span style="color: #0086B3">command </span>not found
+~/test<span style="color: #008080">$ </span>./executable
+Hello from executable!
+~/test<span style="color: #a61717;background-color: #e3d2d2">$</span>
+</code></pre>
+                    <script src="https://asciinema.org/a/DC4LS6Spp5YFLjg0mhf9MGJnm.js"
+                      id="asciicast-DC4LS6Spp5YFLjg0mhf9MGJnm" data-cols="120" data-rows="15" data-preload="1"
+                      async></script>
+
+                    <ol>
+                      <li> Из домашней директории переходим в каталог <code>test</code>.</li>
+                      <li> В нём лежит исполняемый файл <code>executable</code>, который при запуске выводит сообщение
+                        <code>Hello from executable!</code></li>
+                      <li> Попытка запустить по имени: <code>executable</code> заканчивается ошибкой</li>
+                      <li> Запуск через точку происходит успешно</li>
+                    </ol>
+                    <h2 id="izmenenie-peremennoy-path">Изменение переменной PATH</h2>
+                    <p>В общем случае не рекомендуется делать это самостоятельно. При правильной установке, большинство
+                      программ самостоятельно добавляет свои исполняемые файлы в нужные места. В некоторых случаях, они
+                      показывают подсказки, как это сделать сразу после установки.</p>
+
+                    <p>Для ручного изменения переменной PATH нужно поправить один из конфигурационных файлов Bash. Эти
+                      файлы лежат в домашней директории пользователя:</p>
+
+                    <ul>
+                      <li>.bashrc</li>
+                      <li>.bash_profile</li>
+                      <li>.profile</li>
+                    </ul>
+
+                    <p>В зависимости от настроек терминала, Bash прогружает либо одни файлы, либо другие. Если в вашей
+                      домашней директории есть файл <em>.bashrc</em>, то пробуйте использовать его, если нет, то
+                      остальные файлы в том порядке, в котором они приведены выше. Добавьте в этот файл следующую
+                      строку:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #0086B3">export </span><span style="color: #008080">PATH</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #008080">$PATH</span>:/path/to/directory
+</code></pre>
+                    <p>Где <em>/path/to/directory</em> путь до директории с исполняемыми файлами.</p>
+
+                    <p>После этих манипуляций не забудьте перезапустить терминал.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ul>
+                      <li>Попробуйте узнать, где в вашей системе лежит установленная на одном из прошлых уроков
+                        программа <code>tree</code></li>
+                    </ul>
+
+
+</body>
+
+</html>

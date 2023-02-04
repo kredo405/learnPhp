@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Чтение файлов - Основы командной строки</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="A_dWpiLQ_kPTKSZP7EWt46I_zJaq1cZCY4xtwqTfGTDoAGPsO7jeEtxZHnVoFrxuoyqAArd_jaoDFqseGmW_2g" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <meta content='IE=Edge' http-equiv='X-UA-Compatible'>
+  <meta content='b9d3902d34' name='verify-admitad'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+  <meta content='article' property='og:type'>
+  <meta content='Чтение файлов / Основы командной строки' property='og:title'>
+  <meta content='Чтение файлов / Основы командной строки: Научиться смотреть содержимое файлов'
+    property='og:description'>
+  <meta content='Чтение файлов / Основы командной строки: Научиться смотреть содержимое файлов' name='description'>
+  <meta content='noarchive' name='robots'>
+
+</head>
+
+<body class='h-100'>
+
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../execution/quiz_unit.html">Основы командной строки</a>
+                    <h1 class='mt-0 mb-4'>Чтение файлов</h1>
+                    <p>Теперь, когда мы понимаем общее устройство файловой системы в POSIX-совместимых ОС, пора
+                      приступать к взаимодействию с файлами. В этом уроке рассмотрим различные способы чтения текстовых
+                      файлов.</p>
+
+                    <p>Самый простой способ прочитать файл — команда <code>cat</code>.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>man <span style="color: #0086B3">cat
+
+</span>NAME
+     <span style="color: #0086B3">cat</span> <span style="color: #000080">--</span> concatenate and print files
+
+SYNOPSIS
+     <span style="color: #0086B3">cat</span> <span style="color: #000000;font-weight: bold">[</span><span style="color: #000080">-benstuv</span><span style="color: #000000;font-weight: bold">]</span> <span style="color: #000000;font-weight: bold">[</span>file ...]
+
+...
+</code></pre>
+                    <p><code>cat</code> ожидает аргументы — пути до файлов, которые надо читать. В простейшем случае
+                      достаточно передать один путь, это довольно удобно, когда надо посмотреть содержимое небольшого
+                      файла:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span><span style="color: #0086B3">cat</span> .bash_logout
+<span style="color: #999988;font-style: italic"># ~/.bash_logout: executed by bash(1) when login shell exits.</span>
+
+<span style="color: #999988;font-style: italic"># when leaving the console clear the screen to increase privacy</span>
+
+<span style="color: #000000;font-weight: bold">if</span> <span style="color: #000000;font-weight: bold">[</span> <span style="color: #d14">"</span><span style="color: #008080">$SHLVL</span><span style="color: #d14">"</span> <span style="color: #000000;font-weight: bold">=</span> 1 <span style="color: #000000;font-weight: bold">]</span><span style="background-color: #f8f8f8">;</span> <span style="color: #000000;font-weight: bold">then</span>
+    <span style="color: #000000;font-weight: bold">[</span> <span style="color: #000080">-x</span> /usr/bin/clear_console <span style="color: #000000;font-weight: bold">]</span> <span style="color: #000000;font-weight: bold">&amp;&amp;</span> /usr/bin/clear_console <span style="color: #000080">-q</span>
+<span style="color: #000000;font-weight: bold">fi</span>
+</code></pre>
+                    <script id="asciicast-IbARaXrklWFR6sWgNwaPlMKf2"
+                      src="https://asciinema.org/a/IbARaXrklWFR6sWgNwaPlMKf2.js" data-cols="120" data-rows="13"
+                      data-preload="1" async></script>
+
+                    <p>Иногда, нужно посмотреть только начало файла или его конец, в такой ситуации помогают команды
+                      <code>head</code> и <code>tail</code>. Они тоже принимают на вход путь до файла, только
+                      <code>head</code> показывает первые 10 строк, а <code>tail</code> — последние 10 строк файла. Это
+                      поведение можно менять, задавая желаемое количество строк через опцию <code>-n</code>.
+                    </p>
+
+                    <p><strong>Head</strong></p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span><span style="color: #0086B3">head</span> <span style="color: #000080">-n</span> 2 .bashrc
+<span style="color: #999988;font-style: italic"># ~/.bashrc: executed by bash(1) for non-login shells.</span>
+<span style="color: #999988;font-style: italic"># see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)</span>
+</code></pre>
+                    <p><strong>Tail</strong></p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span><span style="color: #0086B3">tail</span> <span style="color: #000080">-n</span> 2 .bashrc
+  <span style="color: #000000;font-weight: bold">fi
+fi</span>
+</code></pre>
+                    <script id="asciicast-H9CQaHmULiG1OhAFfzm4lKqTX"
+                      src="https://asciinema.org/a/H9CQaHmULiG1OhAFfzm4lKqTX.js" data-cols="120" data-rows="15"
+                      data-preload="1" async></script>
+
+                    <p>Некоторые файлы наполняются очень интенсивно. Например, так называемые &quot;логи&quot;. Логи
+                      (иногда говорят &quot;журналы&quot;) — это текстовые файлы, в которые заносится информация о
+                      происходящих процессах в определённой системе. В Linux логи лежат в каталоге
+                      <code>/var/log</code>. Туда пишет как сам Linux, так и большая часть установленных программ.
+                      Основной файл логов Linux называется <code>syslog</code>. Туда попадает ключевая информация о
+                      происходящих процессах в операционной системе и возникающих ошибках. Если события происходят часто
+                      и есть потребность анализировать их в процессе поступления, то команда <code>cat</code>
+                      оказывается неудобной, потому что <code>syslog</code> большой. Не подходит и простой запуск
+                      команды <code>tail</code>, потому что придётся запускать её каждую секунду и всё равно можно
+                      что-нибудь пропустить (если интенсивность записи событий в лог очень высокая).
+                    </p>
+
+                    <p>В этой ситуации поможет <code>tail</code>, запущенный в особом режиме благодаря флагу
+                      <code>-f</code>. <code>tail -f path/to/file</code> не просто выводит последние строчки файла, но
+                      ждёт появления новых. Как только файл дописывается, <code>tail</code> сразу выводит на экран
+                      добавленные строки. Среди наших примеров это первая команда, которая захватывает управление, то
+                      есть после запуска она не заканчивает выполнение сразу, а продолжает работать, ожидая новые данные
+                      в файле, который выводится. Для остановки её выполнения нажмите <kbd>Ctrl + C</kbd>.
+                    </p>
+                    <pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># Вероятно у вас не хватит прав смотреть файл syslog, чтобы получить к нему доступ,</span>
+<span style="color: #999988;font-style: italic"># наберите sudo перед командой tail как показано ниже, в следующих уроках этот вопрос рассматривается подробнее</span>
+<span style="color: #999988;font-style: italic"># Есть вероятность того, что sudo попросить вас ввести пароль. Сделайте это и нажмите Enter. При наборе пароля</span>
+<span style="color: #999988;font-style: italic"># курсор не будет двигаться, это сделано для безопасности.</span>
+<span style="color: #008080">$ </span><span style="color: #0086B3">sudo tail</span> <span style="color: #000080">-f</span> syslog
+Aug 28 18:00:01 ip-10-0-1-223 systemd-udevd[15400]: Could not generate persistent MAC address <span style="color: #000000;font-weight: bold">for </span>veth5c6ed9c: No such file or directory
+Aug 28 18:00:01 ip-10-0-1-223 kernel: <span style="color: #000000;font-weight: bold">[</span>126412.013499] device veth6969122 entered promiscuous mode
+Aug 28 18:00:01 ip-10-0-1-223 systemd[1]: Starting Update resolvconf <span style="color: #000000;font-weight: bold">for </span>networkd DNS...
+Aug 28 18:00:01 ip-10-0-1-223 systemd-timesyncd[522]: Network configuration changed, trying to establish connection.
+Aug 28 18:00:01 ip-10-0-1-223 systemd-timesyncd[522]: Synchronized to <span style="color: #0086B3">time </span>server 91.173.73.198:123 <span style="color: #000000;font-weight: bold">(</span>ntp.ubuntu.com<span style="color: #000000;font-weight: bold">)</span><span style="color: #0086B3">.</span>
+Aug 28 18:00:01 ip-10-0-1-223 sh[15415]: <span style="color: #0086B3">sed</span>: cant <span style="color: #0086B3">read</span> /run/systemd/netif/leases/<span style="color: #000000;font-weight: bold">*</span>: No such file or directory
+Aug 28 18:00:01 ip-10-0-1-223 kernel: <span style="color: #000000;font-weight: bold">[</span>126412.086162] IPv6: ADDRCONF<span style="color: #000000;font-weight: bold">(</span>NETDEV_UP<span style="color: #000000;font-weight: bold">)</span>: veth6969122: <span style="color: #0086B3">link </span>is not ready
+Aug 28 18:00:01 ip-10-0-1-223 systemd-udevd[15403]: Could not generate persistent MAC address <span style="color: #000000;font-weight: bold">for </span>veth6969122: No such file or directory
+Aug 28 18:00:02 ip-10-0-1-223 systemd-timesyncd[522]: Network configuration changed, trying to establish connection.
+Aug 28 18:00:02 ip-10-0-1-223 systemd-timesyncd[522]: Synchronized to <span style="color: #0086B3">time </span>server 91.173.73.198:123 <span style="color: #000000;font-weight: bold">(</span>ntp.ubuntu.com<span style="color: #000000;font-weight: bold">)</span><span style="color: #0086B3">.</span>
+Aug 28 18:00:02 ip-10-0-1-223 systemd-timesyncd[522]: Network configuration changed, trying to establish connection.
+</code></pre>
+                    <p>Особая категория программ для просмотра содержимого файла — <strong>пейджеры</strong>. Пейджер
+                      похож на текстовый редактор, но открытый только в режиме чтения. Самый распространённый пейджер
+                      называется <code>less</code>. Попробуем открыть с помощью него файл <code>syslog</code>:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># Снова придётся воспользоваться sudo</span>
+<span style="color: #008080">$ </span><span style="color: #0086B3">sudo </span>less syslog
+<span style="color: #999988;font-style: italic"># здесь много вывода</span>
+</code></pre>
+                    <p><code>less</code> открывает файл и остаётся в этом режиме. Он позволяет перемещаться по файлу
+                      вперёд и назад, производить поиск. Одна из отличительных особенностей пейджеров состоит в том, что
+                      они одинаково хорошо и быстро работают с файлами любых размеров. Всё потому, что пейджер не
+                      пытается загрузить в память весь файл до его отображения. Он грузит только ту часть, которая
+                      помещается на экран и при перемещении подгружает остальное.</p>
+
+                    <p><code>less</code> предоставляет несколько десятков команд для перемещения по тексту и его поиску,
+                      про большинство из них можно прочитать в соответствующем мануале. Здесь же затронем основные:</p>
+
+                    <ul>
+                      <li><code>q</code> — выход</li>
+                      <li><code>f</code> — вперёд на страницу</li>
+                      <li><code>b</code> — назад на страницу</li>
+                      <li>если набрать <code>/</code>, затем начать вводить буквы и нажать <kbd>Enter</kbd>, то
+                        выполнится поиск введённого текста. Перемещение по найденным совпадениям выполняется командой
+                        <code>n</code> (переход к следующему совпадению) и командой <code>N</code> (переход к
+                        предыдущему совпадению).
+                      </li>
+                    </ul>
+
+                    <p>Возможно, вы увидели сходство поведения пейджеров с тем, что мы наблюдали в мануалах. Открою
+                      секрет: когда мы запускали <code>man</code>, то перед нами открывался <code>less</code> с
+                      загруженным туда контентом. Как вы увидите позже, пейджеры невероятно популярны и неявно
+                      запускаются другими программами.</p>
+                  </div>
+
+                  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+                    crossorigin="anonymous"></script>
+
+</body>
+
+</html>

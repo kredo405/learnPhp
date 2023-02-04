@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+<head>
+<title>Установка - Основы реляционных баз данных</title>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<meta charset='utf-8'>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body class='h-100'>
+<div class='d-flex flex-column flex-md-row h-100'>
+<div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+<div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson' role='tabpanel'>
+<div class='container-xl my-3 mb-md-4 mb-lg-5'>
+<div class='row justify-content-center'>
+<div class='col-12 col-lg-10'>
+<a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы &gt;</a>
+<div class='collapse' id='tips'>
+<div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+<h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+<p>
+Выделите текст, нажмите
+<kbd class='bg-secondary'>ctrl + enter</kbd>
+и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+</p>
+<h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+<p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+<ul>
+<li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+<li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать его лучше;</li>
+<li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно пользоваться.</li>
+</ul>
+<h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+<ul class='list-unstyled mb-0'>
+<li>
+Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с негативными мыслями</a>»
+</li>
+<li>
+Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки обучения</a>»
+</li>
+<li>
+Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные простые задачи по программированию</a>»
+</li>
+<li>
+Урок «<a target="_blank" href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как эффективно учиться на Хекслете</a>»
+</li>
+<li>
+Вебинар «<a target="_blank" rel="noopener noreferrer nofollow" href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+</li>
+</ul>
+</div>
+</div>
+
+<div class='mt-3 paywall'>
+<div class='p-2 p-md-4 shadow-sm bg-white'>
+<div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+<a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover" href="../transactions/exercise_unit.html">Основы реляционных баз данных</a>
+<h1 class='mt-0 mb-4'>Установка</h1>
+<p>Несмотря на то, что вся практика для данного курса выполняется в нашей среде, это не отрицает необходимости уметь работать с базой локально. Более того, эффективное обучение невозможно без повторения примеров из уроков в своей среде. Поэтому, перед тем, как начать, необходимо установить PostgreSQL локально.</p>
+<h2 id="ustanovka">Установка</h2>
+<p>Основных способа установки два:</p>
+
+<p><strong>Через скачивание установщика с сайта.</strong></p>
+
+<p><a href="https://www.postgresql.org/download/" target="_blank">https://www.postgresql.org/download/</a></p>
+
+<p>В разделе &quot;Binary packages&quot; выберите ссылку, на которой написано имя вашей операционной системы. Перейдите по ней и скачайте установщик. Далее запустите его и выполните указанные инструкции.</p>
+
+<p><em>Если вы счастливый обладатель Windows, то убедитесь что запуск инсталлятора происходит от администратора. К тому же, вам нужно настроить Windows определенным образом, а именно включить подсистему Ubuntu или поставить vagrant. Подробнее здесь <a href="https://guides.hexlet.io/" target="_blank">https://guides.hexlet.io/</a></em></p>
+
+<p><em>Если вы уже включили WSL в Windows, установить PostgreSQL поможет инструкция <a href="https://harshityadav95.medium.com/postgresql-in-windows-subsystem-for-linux-wsl-6dc751ac1ff3" target="_blank" rel="nofollow">PostgreSQL In Windows Subsystem for Linux (WSL)</a></em></p>
+
+<p><strong>Через пакетный менеджер вашей операционной системы (предпочтительно).</strong></p>
+
+<ul>
+<li>macos: <em>brew install postgresql</em></li>
+<li>ubuntu: <em>apt install postgresql</em></li>
+<li>windows: <em>choco install postgresql</em></li>
+</ul>
+
+<p>После установки, в большинстве операционных систем, PostgreSQL автоматически запускается от имени вновь созданного пользователя <em>postgres</em>. Этот пользователь понадобится нам дальше. Также будет создана база данных с именем <em>postgres</em>.</p>
+
+<p>Теперь время убедиться в том, что установка прошла правильно. Посмотрите из командной строки запущен ли PostgreSQL:</p>
+<pre class="hljs"><code class=sh><span style="color: #008080">$ </span>ps aux | <span style="color: #0086B3">grep </span>postgres
+<span style="color: #999988;font-style: italic"># Вывод может быть другим, но главное, что в выводе встречается строчка, содержащая текст bin/postgres.</span>
+postgres  3437  0.0  2.3 295008 24160 ?        S    12:01   0:00 /usr/lib/postgresql/9.5/bin/postgres <span style="color: #000080">-D</span> /var/lib/postgresql/9.5/main <span style="color: #000080">-c</span> <span style="color: #008080">config_file</span><span style="color: #000000;font-weight: bold">=</span>/etc/postgresql/9.5/main/postgresql.conf
+</code></pre>
+<p>В вашем случае вывод может отличаться, но главное увидеть эту строчку, в которой отображается запуск самой базы данных . Если база данных запущена, то дальше нужно попробовать к ней подключиться. PostgreSQL поставляется со специальной программой <em>psql</em>, которая представляет из себя REPL. Через него можно управлять PostgreSQL и взаимодействовать с базами данных внутри неё.</p>
+<h2 id="podklyuchenie">Подключение</h2>
+<p>Подключение к PostgreSQL всегда выполняется от имени конкретного пользователя и к конкретной базе данных. Если не указано другого, то <em>psql</em> попробует подключиться от имени пользователя, запускающего <em>psql</em>, к базе данных с тем же именем.</p>
+
+<p><em>В самой базе данных используется понятие Роль, а не Пользователь.</em></p>
+<pre class="hljs"><code class=sh><span style="color: #008080">$ </span>psql
+psql: FATAL:  role <span style="color: #d14">"vagrant"</span> does not exist
+</code></pre>
+<p>Если PostgreSQL ещё не настраивался, то такой запуск выдаст ошибку, явно указывающую на отсутствие соответствующей роли. Единственная роль, которая есть в PostgreSQL сразу после установки — <em>postgres</em>.</p>
+
+<p><em>Если вы работаете на маке, то подключение уже настроено для вашего текущего пользователя (при установке будет создана одноимённая роль). Но подключение с помощью команды *psql</em> также не сработает.*</p>
+<pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># В MacOS вывод будет другим, так как не существует базы данных</span>
+<span style="color: #999988;font-style: italic"># с именем, которое совпадает с именем пользователя</span>
+<span style="color: #008080">$ </span>psql
+psql: FATAL:  database <span style="color: #d14">"vagrant"</span> does not exist
+</code></pre>
+<p>Небольшое отступление на тему аутентификации. В PostgreSQL существует множество разных способов подключения. Один из самых простых методов называется Peer Authentication: он основан на совпадении имени пользователя, который подключается к PostgreSQL, с именем роли внутри неё. А так как у нас есть пользователь <em>postgres</em> снаружи и роль <em>postgres</em> внутри, то им и воспользуемся.</p>
+<pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># Запуск программы от имени другого пользователя (postgres)</span>
+<span style="color: #008080">$ </span><span style="color: #0086B3">sudo</span> <span style="color: #000080">-u</span> postgres psql
+<span style="color: #008080">postgres</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #999988;font-style: italic">#</span>
+</code></pre>
+<p>При таком запуске программы произойдёт подключение к базе данных <em>postgres</em> с ролью <em>postgres</em>.</p>
+
+<p><em>В случае, если у вас MacOS, достаточно при запуске *psql</em> указать имя базы данных, к которой выполняются подключение.*</p>
+<pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># Запуск программы от имени текущего пользователя к БД postgres</span>
+<span style="color: #008080">$ </span>psql postgres
+<span style="color: #008080">postgres</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #999988;font-style: italic">#</span>
+</code></pre>
+<p>Если ваш вывод совпадает с примером, то поздравляю, подключение к PostgreSQL прошло успешно!</p>
+
+<p>Но войти во внутрь это ещё не всё, нужно суметь выйти. Внутри repl доступны разные <strong>управляющие команды</strong>. Все они построены по одному принципу — перед командой набирается обратный слеш <code>\</code>: например, для выхода надо набрать <code>\q</code>. Полный список команд доступен по команде <code>\?</code>. Её запуск загружает пейджер, по которому можно перемещаться, используя стандартные комбинации текстового редактора Vim:</p>
+<pre class="hljs"><code class=>postgres=# \?
+Informational
+  (options: S = show system objects, + = additional detail)
+  \d[S+]                 list tables, views, and sequences
+  \d[S+]  NAME           describe table, view, sequence, or index
+  \da[S]  [PATTERN]      list aggregates
+  \dA[+]  [PATTERN]      list access methods
+  \db[+]  [PATTERN]      list tablespaces
+  \dc[S+] [PATTERN]      list conversions
+  \dC[+]  [PATTERN]      list casts
+  \dd[S]  [PATTERN]      show object descriptions not displayed elsewhere
+  \dD[S+] [PATTERN]      list domains
+  \ddp    [PATTERN]      list default privileges
+  \dE[S+] [PATTERN]      list foreign tables
+  \det[+] [PATTERN]      list foreign tables
+  \des[+] [PATTERN]      list foreign servers
+  \deu[+] [PATTERN]      list user mappings
+  \dew[+] [PATTERN]      list foreign-data wrappers
+  ...
+</code></pre><h2 id="vozmozhnye-problemy">Возможные проблемы</h2><pre class="hljs"><code class=sh><span style="color: #008080">$ </span>psql
+psql: could not connect to database template1: could not connect to server: No such file or directory
+    Is the server running locally and accepting
+    connections on Unix domain socket <span style="color: #d14">"/tmp/.s.PGSQL.5432"</span>?
+</code></pre>
+<p>Этот вывод говорит о том, что подключение не удалось, и нужно выяснять почему. В некоторых случаях такая ошибка возникает, если не запущен сервис <em>postgresql</em>. Тогда запустите его и выполните подключение повторно.</p>
+
+<p>Ошибка <em>psql: command not found</em>, говорит о том, что PostgreSQL установлен неверно либо не установлен вообще.</p>
+
+<p>Обратите внимание на то, что этот вывод порождается командной строкой на ввод любой несуществующей команды. Возможно даже, что это всего лишь ошибка в имени.</p>
+
+<p>К сожалению, количество возможных проблем, помноженных на разные операционные системы и их версии, настолько велико, что не представляется возможным дать исчерпывающее руководство по их разрешению. Более того, даже опытный разработчик не всегда способен сразу разобраться, глядя на вывод ошибки, и ему требуется время на изучение проблемы (эксперименты и гугление). По этой причине, вопросы по установке лучше задавать сразу в нашем сообществе <a href="https://slack-ru.hexlet.io" target="_blank">https://slack-ru.hexlet.io</a> в канале <em>#databases</em> или <em>#os</em>.</p>
+
+<p><strong>Процесс установки PostgreSQL в Ubuntu</strong></p>
+
+<script id="asciicast-TTp6Q9CyGAgKp5TftrdEOBBdH" src="https://asciinema.org/a/TTp6Q9CyGAgKp5TftrdEOBBdH.js" data-rows="20" async></script>
+
+<p>Самостоятельная работа</p>
+
+<ul>
+<li>Установите PostgreSQL и убедитесь в том, что СУБД запускается и работает. Для этого выполните подключение с помощью <em>psql</em>.</li>
+</ul>
+
+<hr class='my-5'>
+<h4 class='mb-4'>Дополнительные материалы</h4>
+<ol>
+<li class='lead'>
+<a target="_blank" href="https://postgrespro.ru/docs/postgrespro/11/locale">Настройка локали</a>
+</li>
+<li class='lead'>
+<a target="_blank" href="https://postgrespro.ru/docs/postgrespro/11/database-roles">Управление пользователями</a>
+</li>
+</ol>
+
+</body>
+</html>

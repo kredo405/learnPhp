@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Фабрика (Паттерн) - PHP: Полиморфизм</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="6Z9Z_KFN0wVkqX4SUmhM_4AIZYdvPVU0IAMSQvuFP1NFItcNQPbKFI-J7_9P6SgVYbmoNSAaMu9zPP40Yo2RwQ" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../dependency-management/exercise_unit.html">PHP: Полиморфизм</a>
+                    <h1 class='mt-0 mb-4'>Фабрика (Паттерн)</h1>
+                    <p>Применение полиморфизма подтипов не убирает условные конструкции полностью (кроме некоторых
+                      случаев диспетчеризации, например, по ключу или по имени файла). Чаще условная конструкция
+                      остаётся одна, только на уровне выбора подходящей реализации, а вот затем эта реализация
+                      используется внутри полиморфной функции прямым способом без условий. В одном из прошлых уроков мы
+                      рассмотрели пример функции, которая выбирает необходимую реализацию стратегии на основе возраста
+                      пользователя и возвращает её наружу.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">chooseCostInsuranceStrategy</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span>
+    <span style="color: #445588;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getAge</span><span style="background-color: #f8f8f8">()</span> <span style="color: #000000;font-weight: bold">&lt;</span> <span style="color: #009999">18</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">LessThan18</span><span style="background-color: #f8f8f8">();</span>
+    <span style="background-color: #f8f8f8">}</span> <span style="color: #000000;font-weight: bold">else</span> <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #999988;font-style: italic">/* ... */</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">// some code</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Функция, которая: выбирает нужный класс, создаёт объект и возвращает его наружу, называется
+                      фабрикой (более точно фабричным методом). Громкое имя для очень простой штуки. Фабрика может быть
+                      реализована любым способом включая всё, что разбиралось в этом курсе.</p>
+
+                    <p>В общем случае фабрикой называют всё подряд, что создаёт объект или коллекции объектов. Причём не
+                      обязательно разных классов, класс может быть и один, но сам процесс создания включает в себя
+                      какие-то предварительные вычисления. В реальных проектах фабрики могут быть <a
+                        href="https://github.com/zendframework/zend-config/blob/master/src/Factory.php" target="_blank"
+                        rel="nofollow">огромными</a>.</p>
+
+                    <p>Фабрики часто реализуются как классы с одним статическим методом – <code>factory</code>. Сами
+                      фабрики объекты не делают (иногда таки делают), так как это не абстракция данных, а подменять их
+                      смысла нет, иначе получится подмена подменятора.</p>
+                    <h2 id="dispetcherizatsiya-klassa">Диспетчеризация класса</h2>
+                    <p>PHP позволяет создавать объекты, используя имя класса как строку:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$className</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'stdObject'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #008080">$obj</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #008080">$className</span><span style="background-color: #f8f8f8">();</span>
+</code></pre>
+                    <p><em>В большинстве других динамических языков, класс и так объект первого рода, и им можно
+                        пользоваться как обычными данными.</em></p>
+
+                    <p>Такой синтаксис открывает широкий простор для диспетчеризации. Например, в некоторых ситуациях
+                      получится уйти от условных конструкций вообще:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Policy – обычно это имя используют для авторизации, то есть системы проверки прав доступа</span>
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">getUserPolicy</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$mapping</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span>
+      <span style="color: #d14">'manager'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'App\Policies\ManagerPolicy'</span><span style="background-color: #f8f8f8">,</span>
+      <span style="color: #d14">'worker'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'App\Policies\WorkerPolicy'</span>
+    <span style="background-color: #f8f8f8">];</span>
+
+    <span style="color: #008080">$className</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$mapping</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #0086B3">getType</span><span style="background-color: #f8f8f8">()];</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #008080">$className</span><span style="background-color: #f8f8f8">();</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>В этом коде есть одна небольшая проблема. Она связана с тем, что нужно указывать полное имя
+                      класса, включая все пространства имён, иначе этот код не заработает. От неё можно уйти если
+                      использовать специальный синтаксис извлечения полного имени класса:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">App\Policies\ManagerPolicy</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">App\Policies\WorkerPolicy</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #008080">$mapping</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span>
+  <span style="color: #d14">'manager'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #445588;font-weight: bold">ManagerPolicy</span><span style="color: #000000;font-weight: bold">::</span><span style="background-color: #f8f8f8">class</span><span style="background-color: #f8f8f8">,</span> <span style="color: #999988;font-style: italic">// App\Policies\ManagerPolicy</span>
+  <span style="color: #d14">'worker'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #445588;font-weight: bold">WorkerPolicy</span><span style="color: #000000;font-weight: bold">::</span><span style="background-color: #f8f8f8">class</span> <span style="color: #999988;font-style: italic">// App\Policies\WorkerPolicy</span>
+<span style="background-color: #f8f8f8">];</span>
+</code></pre>
+                    <p>То есть достаточно после имени любого класса добавить <code>::class</code> и получится выражение,
+                      которое возвращает полное имя класса в виде строки.</p>
+
+                    <p>Иногда идут ещё дальше и формируют само имя класса динамически. Это можно сделать даже с кодом
+                      выше. По нему видно, что имя класса однозначно выводится из типа пользователя. Ниже пример, в
+                      котором фабрика вообще не содержит конкретных имён классов, она выводит их на основе соглашения об
+                      именовании: <em>type =&gt; typePolicy</em>.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Policy – обычно это имя используют для авторизации, то есть системы проверки прав доступа</span>
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">getUserPolicy</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// При таком подходе придётся самостоятельно добавлять все неймспейсы</span>
+    <span style="color: #999988;font-style: italic">// Но зато код полностью отвязан от имён классов и их количества</span>
+    <span style="color: #008080">$className</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'App\Policies\' . ucfirst($user-&gt;getType()) . '</span><span style="color: #445588;font-weight: bold">Policy</span><span style="color: #a61717;background-color: #e3d2d2">'</span><span style="background-color: #f8f8f8">;</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #008080">$className</span><span style="background-color: #f8f8f8">();</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://github.com/Hexlet/patterns/tree/master/content/factory">Фабрика</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

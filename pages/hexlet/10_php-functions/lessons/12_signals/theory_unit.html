@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Сигналы - PHP: Функции</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Сигналы</h1>
+                    <p>Пример с <code>usort</code> хорошо демонстрирует важность и удобство функций высшего порядка для
+                      решения повседневных задач. Описав алгоритм один раз, мы можем получать различные варианты
+                      поведения, специфицируя их функциями. То же самое относится к рассмотренным функциям
+                      <code>map</code>, <code>filter</code> и <code>reduce</code>. Но есть ещё один важный аспект,
+                      который требует рассмотрения.</p>
+
+                    <p>Типичный код на PHP выглядит так. Делается один цикл, внутри которого выполняются сразу все
+                      операции и в конце получается некоторый интересующий нас результат. Ничего криминального, но такой
+                      код может быть сложен для анализа, потому что требует держать в голове сразу все операции. С
+                      другой стороны, при использовании функций высшего порядка принято разделять задачу на подзадачи и
+                      выполнять их последовательно друг за другом выстраивая в цепочку операций.</p>
+
+                    <p>Предположим, что мы пишем функцию, которая принимает на вход список путей файловой системы,
+                      находит среди них файлы с расширением php без учёта регистра и возвращает имена этих файлов. Для
+                      решения этой задачи нам понадобятся следующие функции:</p>
+
+                    <ul>
+                      <li><code>is_file</code> - проверяет что переданный путь это реально существующий файл</li>
+                      <li><code>pathinfo</code> - позволяет извлекать расширение из имени файла</li>
+                      <li><code>basename</code> - извлекает имя файла из полного пути</li>
+                    </ul>
+
+                    <!-- end list -->
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">getPHPFileNames</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">array</span> <span style="color: #008080">$paths</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$result</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[];</span>
+    <span style="color: #000000;font-weight: bold">foreach</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$paths</span> <span style="color: #000000;font-weight: bold">as</span> <span style="color: #008080">$path</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$extension</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">strtolower</span><span style="background-color: #f8f8f8">(</span><span style="color: #0086B3">pathinfo</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$path</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">PATHINFO_EXTENSION</span><span style="background-color: #f8f8f8">));</span>
+        <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #0086B3">is_file</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$path</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">&amp;&amp;</span> <span style="color: #008080">$extension</span> <span style="color: #000000;font-weight: bold">===</span> <span style="color: #d14">'php'</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+            <span style="color: #008080">$result</span><span style="background-color: #f8f8f8">[]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">basename</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$path</span><span style="background-color: #f8f8f8">);</span>
+        <span style="background-color: #f8f8f8">}</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$result</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #008080">$names</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">getPHPFileNames</span><span style="background-color: #f8f8f8">([</span><span style="color: #d14">'index.php'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'wop.PHP'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'nonexists'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'node_modules'</span><span style="background-color: #f8f8f8">]);</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$names</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// =&gt; Array</span>
+<span style="color: #999988;font-style: italic">// (</span>
+<span style="color: #999988;font-style: italic">//     [0] =&gt; index.php</span>
+<span style="color: #999988;font-style: italic">//     [1] =&gt; wop.PHP</span>
+<span style="color: #999988;font-style: italic">// )</span>
+</code></pre>
+                    <p>В примере выше типовое решение с использованием цикла. Его алгоритм можно описать так:</p>
+
+                    <ol>
+                      <li> Просматриваем каждый путь</li>
+                      <li> Если текущий путь — файл с расширением <code>php</code> (без учёта регистра), то добавляем
+                        его имя в результирующий массив</li>
+                    </ol>
+
+                    <p>Если попытаться то же самое реализовать, используя функцию <code>array_reduce</code>, то на
+                      выходе получится код, идентичный решению на циклах. Но если хорошо подумать, то можно увидеть, что
+                      эта задача распадается на две: фильтрацию и отображение.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">getPHPFileNames</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">array</span> <span style="color: #008080">$paths</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// фильтруем оставляя только подходящие пути</span>
+    <span style="color: #008080">$phpFiles</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_filter</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$paths</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$path</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$extension</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">strtolower</span><span style="background-color: #f8f8f8">(</span><span style="color: #0086B3">pathinfo</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$path</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">PATHINFO_EXTENSION</span><span style="background-color: #f8f8f8">));</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #0086B3">is_file</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$path</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">&amp;&amp;</span> <span style="color: #008080">$extension</span> <span style="color: #000000;font-weight: bold">===</span> <span style="color: #d14">'php'</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">});</span>
+
+    <span style="color: #999988;font-style: italic">// извлекаем из оставшихся путей имена файлов и возвращаем их наружу</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #0086B3">array_map</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">fn</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$path</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #0086B3">basename</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$path</span><span style="background-color: #f8f8f8">),</span> <span style="color: #008080">$phpFiles</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #008080">$names</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">getPHPFileNames</span><span style="background-color: #f8f8f8">([</span><span style="color: #d14">'index.php'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'wop.PHP'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'nonexists'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'node_modules'</span><span style="background-color: #f8f8f8">]);</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$names</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// =&gt; Array</span>
+<span style="color: #999988;font-style: italic">// (</span>
+<span style="color: #999988;font-style: italic">//     [0] =&gt; index.php</span>
+<span style="color: #999988;font-style: italic">//     [1] =&gt; wop.PHP</span>
+<span style="color: #999988;font-style: italic">// )</span>
+</code></pre>
+                    <p>Код получился чуть короче (без учёта комментариев), но и многословнее (это исключительно
+                      особенность PHP), но главное не его размер. С увеличением количества операций и их сложности код,
+                      разбитый таким образом, читается и анализируется значительно проще, так как каждая операция
+                      выполняется независимо для всего набора сразу. В голове приходится держать меньше деталей и можно
+                      сразу увидеть то, как операция влияет на все данные. Однако научиться правильно разбивать задачу
+                      на подзадачи не так просто, как может показаться в начале. Нужна некоторая практика и сноровка
+                      перед тем как ваш код станет удобоварим.</p>
+
+                    <p><img alt="Standard Interfaces" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImY1YWU4ZThkMTUyNmM5ZDNmMDM0MTZlN2ZjZGMzMWQ1LmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=c1dcb161774e58013b8a1ac8525ccd26818b48f3facdd7f970957368dc3fff7c"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Сама возможность такого разбиения основывается на простой идее, которую иногда называют
+                      &quot;стандартные интерфейсы&quot;. Заключается она в том, что на входе и выходе из функций
+                      ожидается один и тот же тип данных, в нашем случае, массив. Это позволяет соединять функции и
+                      строить цепочки, выполняющие большое количество разных задач, без необходимости реализовывать
+                      новые функции. Рассмотренные ранее операции — отображение, фильтрация и агрегация — комбинируясь
+                      друг с другом, позволяют решать подавляющее число задач по обработке коллекций. С чем-то подобным
+                      мы все встречались в своей жизни, когда собирали конструкторы Lego. Небольшое число примитивных
+                      деталей за счёт одинаковых соединений позволяет строить конструкции практически неограниченной
+                      сложности.</p>
+
+                    <p>Кстати, подобные цепочки нередко заканчиваются на агрегации, так как агрегация почти всегда
+                      выполняется в конце и сводит коллекцию к некоторому значению.</p>
+                    <h2 id="proizvoditelnost">Производительность</h2>
+                    <p>За кадром остался вопрос производительности. Возможно, кто-то из вас догадался, что на каждый
+                      вызов функции, обрабатывающей коллекцию, мы получаем проход по всему списку. Чем больше таких
+                      функций, тем больше проходов. Казалось бы, код замедляется, зачем так делать? На практике
+                      дополнительные проходы практически никогда не проблема (см. ссылку &quot;Продуманная
+                      оптимизация&quot;). Задачи, в которых требуется одномоментная обработка десятков и сотен тысяч
+                      элементов, встречаются крайне редко. Большая часть операций происходит со списками до тысяч
+                      элементов. А для такого списка одним проходом больше, одним меньше — разницы, можно сказать,
+                      никакой.</p>
+
+                    <p>Но это не вся правда. На самом деле, существуют специальные коллекции, которые в момент вызова
+                      функций фильтрации, отображения и т.п. не выполняют операции сразу. Они накапливают необходимые
+                      действия, а во время первого использования выполняют сразу все одним проходом. Это так называемые
+                      &quot;ленивые коллекции&quot;.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://ru.wikipedia.org/wiki/Обработка_сигналов">Обработка
+                          сигналов</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="http://optimization.guide/">Продуманная оптимизация</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>MVC - Ключевые аспекты веб-разработки на PHP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <meta content='IE=Edge' http-equiv='X-UA-Compatible'>
+  <meta content='b9d3902d34' name='verify-admitad'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>MVC</h1>
+                    <p>В предыдущем уроке мы дошли до следующей структуры:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/photos'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span><span style="background-color: #f8f8f8">()</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Получаем из базы список всех фотографий</span>
+    <span style="color: #008080">$photos</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">entityManager</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getRepository</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'App\Entity\Photo'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">findAll</span><span style="background-color: #f8f8f8">();</span>
+    <span style="color: #999988;font-style: italic">// Передаём их в шаблон</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'renderer'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">"/photos.phtml"</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'photos'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$photos</span><span style="background-color: #f8f8f8">]);</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <ul>
+                      <li>Модель предметной области (или просто Модель) описана с помощью ORM (хотя это не обязательно,
+                        хранилище — вещь отдельная от модели).</li>
+                      <li>Функция-обработчик обращается к модели для выполнения запрошенных операций и выводит
+                        необходимые данные в шаблон.</li>
+                      <li>Шаблон описывает представление конкретной страницы и строится на основании данных, переданных
+                        из функции-обработчика.</li>
+                    </ul>
+
+                    <p>Описанная структура носит гордое имя <strong>MVC</strong> или
+                      <strong>Model-View-Controller</strong> (обычно добавляют приписку version 2, так как первая версия
+                      MVC используется для толстых клиентов, в которых все работает немного по-другому), где
+                      <strong>M</strong> - модель предметной области, <strong>C</strong> - наша функция обработчик (в
+                      других фреймворках могут быть другие сущности), а <strong>V</strong> - шаблон. MVC разделяет
+                      приложение минимум на три слоя и определяет то, как они могут взаимодействовать друг с другом. Это
+                      важно для создания модульных приложений, то есть таких, которые легко развивать и модифицировать.
+                      При этом никто не запрещает добавлять новые и дробить текущие слои, все это уже зависит от
+                      сложности самого приложения.</p>
+
+                    <p><img alt="MVC" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImMwMTgxMzNiOTk1MGM1NTMwM2MzMGEwZmEwNDQyOTY0LnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=782e1d9b04a59fc38b5ea86c999419693f478ba33200f3e44cd736775d56b783"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <ul>
+                      <li><strong>M</strong> — ядро приложения. В идеале — чистая бизнес-логика. M не знает ничего о
+                        других частях приложения и не может на них влиять.</li>
+                      <li><strong>C</strong> - использует <strong>M</strong> для выполнения запрашиваемых операций и
+                        отвечает за генерацию <strong>V</strong>.</li>
+                      <li><strong>V</strong> - получает данные от <strong>C</strong> и иногда от <strong>M</strong>, но
+                        такое не приветствуется. И уж точно <strong>V</strong> не должен знать ничего о базе данных.
+                        Кстати, этим грешат начинающие разработчики, которые выполняют SQL запросы прямо из шаблонов.
+                      </li>
+                    </ul>
+
+                    <p>MVC является архитектурным шаблоном (или паттерном проектирования). Шаблон проектирования в
+                      разработке — повторяемая архитектурная конструкция, представляющая собой решение проблемы
+                      проектирования в рамках некоторого часто возникающего контекста. В нашем случае контекст —
+                      обработка http-запросов.</p>
+
+                    <p><strong>Паттернов</strong> проектирования очень много на все случаи жизни. Некоторые из них очень
+                      простые и ближе к <strong>идиомам</strong>, то есть каким-то локальным участкам кода, которые
+                      принято писать тем или иным способом в конкретном языке. Некоторые паттерны — всеобъемлющие,
+                      подобные MVC. Они определяют глобальные ограничения, но ничего не говорят о способе реализации. В
+                      любом случае паттерны — не догма и не формальная спецификация, а значит всегда есть место для
+                      самостоятельного выбора.</p>
+
+                    <p>В MVC заложена довольно простая, но важная идея разделения приложения на слои с чёткими
+                      границами. Такой подход позволяет развивать каждый слой независимо от других, при условии, что у
+                      вас правильно выстроены зависимости между ними. Обратите внимание, что в MVC все связи
+                      <strong>однонаправленные</strong>. Другими словами, в MVC нет двух слоёв, которые знают друг о
+                      друге одновременно. Если один слой знает о другом, то второй ничего не знает о первом и наоборот.
+                      Модульность (в общем случае — <strong>абстракция</strong>) — это один из ключевых факторов,
+                      делающих приложения по настоящему качественными с точки зрения разработки. Как вы увидите позже,
+                      все веб-фреймворки построены именно по модели MVC с небольшими модификациями, не влияющими на
+                      ключевую идею.</p>
+
+
+</body>
+
+</html>

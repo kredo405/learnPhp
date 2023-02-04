@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Редактирование файлов - Основы командной строки</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="gEktV31w6Tpqld1FsdNg3ExfyiU_DfvO4Nw_jTfLUTlrvhgdZBjJa2Xl5X81gHFRTUqGsSKnsCaARvlRiXH30w" />
+  <meta name="csp-nonce" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <meta content='article' property='og:type'>
+  <meta content='Редактирование файлов / Основы командной строки' property='og:title'>
+  <meta content='Редактирование файлов / Основы командной строки: Научиться редактировать файлы в Nano и Vim'
+    property='og:description'>
+  <meta content='Редактирование файлов / Основы командной строки: Научиться редактировать файлы в Nano и Vim'
+    name='description'>
+  <meta content='noarchive' name='robots'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../execution/quiz_unit.html">Основы командной строки</a>
+                    <h1 class='mt-0 mb-4'>Редактирование файлов</h1>
+                    <p>Для редактирования файлов в командной строке используют редакторы Nano, Vim и Emacs. Первые два,
+                      обычно, установлены по умолчанию. Эти редакторы запускаются прямо в терминале, хотя Vim и Emacs
+                      имеют режим, в котором они запускаются как отдельные приложения.</p>
+                    <h2 id="nano">Nano</h2>
+                    <p>Nano очень простенький текстовый редактор, похожий на &quot;блокнот&quot; в Windows, хотя по
+                      возможностям он богаче и даже способен подсвечивать содержимое файлов.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>nano .bashrc
+</code></pre>
+                    <p><img alt="Nano" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjI2YjczMTgwN2MwODk3ZTQwMjUxMjM3YmFjZDM0NGJjLnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=b30c67da5f6068079b49183611cef44eb10d13c3adee7b2d6c31d8585807a0c6"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>После запуска редактора внизу открывается панель с подсказками, какие горячие клавиши доступны
+                      для использования. Символ <code>^</code> означает клавишу Ctrl. Например, для выхода из редактора
+                      нужно набрать <kbd>Ctrl + x</kbd>, а затем либо подтвердить сохранение изменений, либо отвергнуть,
+                      нажав <kbd>y</kbd> (yes) или <kbd>n</kbd> (no). В принципе, больше ничего интересного про nano
+                      сказать нельзя. Редактор и редактор. Подходит для несложных изменений в файлах, но совсем неудобен
+                      для работы над многофайловыми проектами, да ещё и с кодом.</p>
+                    <h2 id="vim">Vim</h2>
+                    <p>Совсем другое дело Vim (<strong>Vi</strong> <strong>Im</strong>proved или улучшенный vi) —
+                      свободный текстовый редактор, созданный на основе более старого vi (<strong>vi</strong>sual
+                      editor). Это редактор-комбайн, который, к тому же, имеет абсолютно непохожую ни на что другое
+                      модель работы.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>vim .bashrc
+</code></pre>
+                    <p><img alt="Vim" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjlmMzU2ZmViMjQ5MTJmZDJiZTZmZDNiY2I5NmNkNTYzLnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=f40f3292a53470742d94d1e685eb65b02489f31238b584b06edbe9cfed45a492"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Ключевое отличие (а их много!) вима от остальных редакторов — в наличии режимов. В обычных
+                      редакторах, после того как открылся файл, можно сразу приступать к редактированию. Вим, после
+                      открытия, работает в <strong>режиме команд</strong> (COMMAND): нажатие на любую клавишу
+                      воспринимается как сигнал к какому-то действию. Если вы не знаете команд, то лучше ничего не
+                      трогать, иначе на экране начнётся хаос. Обычное редактирование текста выполняется в <strong>режиме
+                        ввода</strong> (INSERT) и попасть в него можно нажав клавишу <kbd>i</kbd>. Для выхода в режим
+                      команд достаточно нажать <kbd>Esc</kbd> (или комбинацию <kbd>Ctrl + [</kbd>).</p>
+
+                    <p><img alt="Editors Learning Curve" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjAyYmUzNzA1YzMxNzNiNmVjYWVjZmFhMzMzZTI4NjgxLnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=cd9a01f613e809281529bc6cfd412b2ba2a802a5a4057f0bca69f26ddb040cfe"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Выше картинка-шутка, но в ней есть доля правды. Вим по праву считается редактором с самым высоким
+                      порогом входа. С другой стороны, чем дальше вы будете продвигаться по стезе программиста, тем
+                      больше вы начнёте замечать, что опытные и многие известные программисты предпочитают разрабатывать
+                      целиком и полностью в виме. Посмотрев на вим без плагинов, сложно в это поверить, но он становится
+                      очень навороченным благодаря расширениям. Подробнее о том, почему так происходит и что особенного
+                      в виме, написано в <a href="https://guides.hexlet.io/vim" target="_blank">нашем руководстве</a>.
+                      Крайне рекомендую к прочтению.</p>
+
+                    <p><img alt="Vim" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImI1ZDcwYjI4NjYwNTVmNWNiNTNkNjVmMjgyMTM3YzZiLmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=df0e74a3c6e4a2c6278cebd5adb75a87b88d4c920fd39d0685e0f1f2439ed688"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Говорят, что самое сложное в виме — это выйти, поэтому подготовимся заранее. Убедитесь, что вы
+                      находитесь в командном режиме, на всякий случай нажмите <kbd>Esc</kbd> (или комбинацию <kbd>Ctrl +
+                        [</kbd>). Затем наберите <code>:</code>, эта команда переведёт вас в режим <strong>командной
+                        строки</strong> (ещё один режим), затем введите <code>q!</code> и нажмите <kbd>Enter</kbd>. Так
+                      вы выйдите из вима без сохранения изменений. Если набрать <code>:wq</code>, то перед выходом
+                      сохранятся все изменения. Если вы хотите просто сохраниться без выхода, то наберите
+                      <code>:w</code>.</p>
+
+                    <p>В Vim есть четыре основных режима работы:</p>
+
+                    <ul>
+                      <li>Командный режим (обычный режим) — это режим по умолчанию. Перемещение по файлу, быстрое (при
+                        помощи команд, комбинаций клавиш) редактирование, удаление, поиск текста.</li>
+                      <li>Режим вставки (режим ввод) — ввод текста с клавиатуры. То, как вы привыкли это делать в
+                        обычных редакторах.</li>
+                      <li>Визуальный режим — выделение произвольных участков текста.</li>
+                      <li>Режим командной строки — собственная командная строка для редактора текста, из которой можно
+                        выполнять великое множество разнообразных команд.</li>
+                    </ul>
+
+                    <p>Кстати, большая часть Хекслета, как платформы, и почти весь текстовый контент (курсы) сделаны
+                      именно в виме. Включая эту строчку ;)</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://guides.hexlet.io/vim">Vim</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://ru.wikipedia.org/wiki/Sed">Sed (Stream Editor)</a>
+                      </li>
+                    </ol>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+
+</html>

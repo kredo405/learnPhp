@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Статические свойства - PHP: Введение в ООП</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Статические свойства</h1>
+                    <p>В классовых языках, таких как PHP, часто встречается понятие &quot;статика&quot;. Статикой
+                      называют статические свойства либо статические методы. Что это и зачем нужно — далее в уроке.</p>
+
+                    <p><em>Хочу сразу расставить точки над i. Статические свойства и методы не являются фундаментальной
+                        фичей объектно-ориентированного программирования, скорее наоборот — они появляются вследствие
+                        ограничений, накладываемых классами. При этом они довольно часто используются и поэтому включены
+                        в базовый курс по ООП.</em></p>
+
+                    <p>Статическое свойство, в отличие от обычного свойства, принадлежит классу, а не экземпляру. С
+                      точки зрения синтаксиса отличие только лишь в дополнительном ключевом слове <code>static</code>.
+                    </p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">namespace</span> <span style="color: #555555">App</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">User</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">static</span> <span style="color: #008080">$table</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'users'</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Если попробовать обратиться к нему через объект, используя <code>-&gt;</code>, то возникнет
+                      ошибка.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$user</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">User</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">table</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999988;font-style: italic">// PHP Notice: Accessing static property App\User::$table as non static</span>
+</code></pre>
+                    <p>Статическое свойство не принадлежит объекту. Основной способ обращения к статическому свойству
+                      похож на то, как мы обращались к константам. Статические свойства, подобно обычным свойствам,
+                      имеют область видимости. Их всегда можно сделать приватными.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">User</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #008080">$table</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; users</span>
+</code></pre>
+                    <p>В отличие от констант, свойства требуют наличия знака <code>$</code>. Только не перепутайте:
+                      <code>$table</code> — это не имя переменной, а имя статического свойства.</p>
+
+                    <p>К свойствам всё же можно обращаться, используя объекты, но это лишь <em>синтаксический
+                        сахар</em>. Объект в таком вызове используется только как способ понять, что это за тип.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$user</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">User</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #008080">$table</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999988;font-style: italic">// В реальности вместо $user подставляется класс</span>
+</code></pre>
+                    <p>Такая возможность открывает доступ к <em>полиморфизму</em>, о котором мы ещё будем разговаривать.
+                    </p>
+
+                    <p>К статическим свойствам можно обращаться не только снаружи, но и внутри объектов этого же типа.
+                      Как и в случае констант, есть два способа. Первый показан выше, когда мы указываем полное имя
+                      класса, второй способ использует уже знакомый нам <code>self</code>:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">User</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">static</span> <span style="color: #008080">$table</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'users'</span><span style="background-color: #f8f8f8">;</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">getTable</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #000000;font-weight: bold">self</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #008080">$table</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #008080">$user</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">User</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getTable</span><span style="background-color: #f8f8f8">();</span> <span style="color: #999988;font-style: italic">// users</span>
+</code></pre>
+                    <h2 id="zachem">Зачем?</h2>
+                    <p>Основная цель статических свойств — хранить информацию о типе в целом, безотносительно его
+                      экземпляров. Таким приёмом часто пользуются для связи сущностей предметной области с базой данных.
+                      Например, в статическом свойстве удобно (но не всегда правильно) хранить имя соответствующей
+                      таблицы в базе данных. В случае с <code>User</code> выше, таблица называется <code>users</code>.
+                      Подобная возможность активно используется в <strong>ORM</strong> (фреймворк для отображения
+                      сущностей предметной области из базы в код и обратно).</p>
+
+                    <p>В идеале статические свойства класса должны инициализироваться при старте программы и никогда не
+                      меняться. Ведь статическое свойство по своим характеристикам является глобальной переменной. Если
+                      сохранять туда временные данные и менять их, то очень просто создать трудноподдерживаемый код с
+                      большим числом ошибок.</p>
+
+                    <p>По этой причине статические свойства часто делают приватными, а доступ снаружи оставляют через
+                      <em>статические методы</em>, о которых мы поговорим в следующем уроке.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://php.net/manual/ru/language.oop5.static.php">Официальная
+                          документация</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Агрегация (reduce) - PHP: Функции</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Агрегация (reduce)</h1>
+                    <p>Последняя функция из нашей тройки — <a href="https://php.net/manual/ru/function.array-reduce.php"
+                        target="_blank" rel="nofollow">array_reduce</a> используется для <strong>агрегации</strong>
+                      (название в других языках <code>accumulate</code>, <code>fold</code> или, по-русски,
+                      &quot;свёртка&quot;). Она устроена немного сложнее, чем <code>map</code> и <code>filter</code>,
+                      но, в целом, сохраняет общий подход с передачей функции.</p>
+
+                    <p>Как обычно, начнём с примера на циклах. Реализуем код, находящий самого взрослого пользователя.
+                    </p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+<span style="color: #008080">$users</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Igor'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'age'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">19</span><span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Danil'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'age'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">4</span><span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Vovan'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'age'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">4</span><span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Matvey'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'age'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">16</span><span style="background-color: #f8f8f8">],</span>
+<span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #008080">$oldest</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$users</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #000000;font-weight: bold">foreach</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$users</span> <span style="color: #000000;font-weight: bold">as</span> <span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'age'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">&gt;</span> <span style="color: #008080">$oldest</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'age'</span><span style="background-color: #f8f8f8">])</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$oldest</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$user</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$oldest</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; ['name' =&gt; 'Igor', 'age' =&gt; 19]</span>
+</code></pre>
+                    <p>Основное отличие агрегации от отображения и фильтрации в том, что результатом агрегации может
+                      быть любой тип данных — как примитивный, так и составной, например, массив. Кроме того, агрегация
+                      нередко подразумевает инициализацию начальным значением. В примере выше она выполняется на строчке
+                      <code>$oldest = $users[0];</code>.</p>
+
+                    <p>Посмотрим ещё один пример агрегации — группировку имён пользователей по возрасту:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+<span style="color: #008080">$users</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Petr'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'age'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">4</span><span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Igor'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'age'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">19</span><span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Vovan'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'age'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">4</span><span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Matvey'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'age'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">16</span><span style="background-color: #f8f8f8">],</span>
+<span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #008080">$usersByAge</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[];</span>
+<span style="color: #000000;font-weight: bold">foreach</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$users</span> <span style="color: #000000;font-weight: bold">as</span> <span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$usersByAge</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'age'</span><span style="background-color: #f8f8f8">]][]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$user</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">];</span>
+<span style="background-color: #f8f8f8">}</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$usersByAge</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic"># =&gt; Array</span>
+<span style="color: #999988;font-style: italic"># (</span>
+<span style="color: #999988;font-style: italic">#     [4] =&gt; Array</span>
+<span style="color: #999988;font-style: italic">#         (</span>
+<span style="color: #999988;font-style: italic">#             [0] =&gt; Petr</span>
+<span style="color: #999988;font-style: italic">#             [1] =&gt; Vovan</span>
+<span style="color: #999988;font-style: italic">#         )</span>
+<span style="color: #999988;font-style: italic">#</span>
+<span style="color: #999988;font-style: italic">#     [19] =&gt; Array</span>
+<span style="color: #999988;font-style: italic">#         (</span>
+<span style="color: #999988;font-style: italic">#             [0] =&gt; Igor</span>
+<span style="color: #999988;font-style: italic">#         )</span>
+<span style="color: #999988;font-style: italic">#</span>
+<span style="color: #999988;font-style: italic">#     [16] =&gt; Array</span>
+<span style="color: #999988;font-style: italic">#         (</span>
+<span style="color: #999988;font-style: italic">#             [0] =&gt; Matvey</span>
+<span style="color: #999988;font-style: italic">#         )</span>
+<span style="color: #999988;font-style: italic">#</span>
+<span style="color: #999988;font-style: italic"># )</span>
+</code></pre>
+                    <p>В этом примере результатом агрегации становится массив массивов, который в самом начале
+                      инициируется пустым массивом. Значение, которое накапливает результат агрегации, принято называть
+                      словом &quot;аккумулятор&quot;. В примерах выше это <code>$oldest</code> и
+                      <code>$usersByAge</code>.</p>
+
+                    <p>Реализуем первый пример, используя <code>array_reduce</code>.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$oldest</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_reduce</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$users</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$acc</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$user</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'age'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">&gt;</span> <span style="color: #008080">$acc</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'age'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">?</span> <span style="color: #008080">$user</span> <span style="color: #000000;font-weight: bold">:</span> <span style="color: #008080">$acc</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">},</span> <span style="color: #008080">$users</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">]);</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$oldest</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; ['name' =&gt; 'Igor', 'age' =&gt; 19]</span>
+</code></pre>
+                    <p>Функция <code>array_reduce</code> принимает на вход три параметра. Два из них уже традиционны —
+                      это коллекция и функция-обработчик, а вот третьим выступает начальное значение аккумулятора. Поиск
+                      самого взрослого пользователя аналогичен поиску максимального (или минимального) числа в массиве.
+                      Соответственно, аккумулятор должен быть инициализирован первым пользователем. Этот же аккумулятор
+                      возвращается наружу.</p>
+
+                    <p>Callback-функция, передаваемая в <code>array_reduce</code> — самая важная часть и ключ к
+                      пониманию работы всего механизма агрегации. Она принимает на вход два значения. Первый — текущее
+                      значение аккумулятора, второй — текущий обрабатываемый элемент. Задача функции — вернуть новое
+                      значение аккумулятора. <code>array_reduce</code> никак не анализирует содержимое аккумулятора.
+                      Всё, что она делает, передаёт его в каждый новый вызов до тех пор, пока не будет обработана вся
+                      коллекция, и в конце концов вернёт его наружу. Подчеркну, что возвращать аккумулятор надо всегда,
+                      даже если он не изменился.</p>
+
+                    <p>Второй пример с использованием <code>array_reduce</code> выглядит так:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$usersByAge</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_reduce</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$users</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$acc</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$acc</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'age'</span><span style="background-color: #f8f8f8">]][]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$user</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$acc</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">},</span> <span style="background-color: #f8f8f8">[]);</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$usersByAge</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Код практически не изменился, за исключением того, что ушёл цикл и появился возврат аккумулятора
+                      из анонимной функции.</p>
+                    <h2 id="realizatsiya">Реализация</h2>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">myReduce</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">,</span> <span style="color: #445588;font-weight: bold">callable</span> <span style="color: #008080">$callback</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$init</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">null</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$acc</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$init</span><span style="background-color: #f8f8f8">;</span>
+    <span style="color: #000000;font-weight: bold">foreach</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$coll</span> <span style="color: #000000;font-weight: bold">as</span> <span style="color: #008080">$item</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$acc</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$callback</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$acc</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$item</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// Заменяем старый аккумулятор новым</span>
+    <span style="background-color: #f8f8f8">}</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$acc</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p><code>array_reduce</code> — очень мощная функция. Формально, можно работать, используя одну лишь
+                      её, так как она может заменить и <strong>отображение</strong> и <strong>фильтрацию</strong>. Но
+                      делать так не стоит. Агрегация управляет состоянием (аккумулятором) явно. Такой код всегда сложнее
+                      и требует больше действий. Поэтому, если задачу возможно решить отображением или фильтрацией, то
+                      так и нужно делать.</p>
+
+</body>
+
+</html>

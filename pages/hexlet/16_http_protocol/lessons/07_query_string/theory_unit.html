@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Передача данных query string - Протокол HTTP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Передача данных query string</h1>
+                    <p>Помимо того, что данные на сервер можно передавать через <em>body</em>, которое используется при
+                      <em>POST</em> запросах и отправке форм, мы также можем передать так называемую строку запроса
+                      <em>query string</em>. Это параметры <em>ключ=значение</em> которые располагаются в <em>request
+                        line</em> после указания метода <em>POST</em> или <em>GET</em>.</p>
+                    <pre class="hljs"><code class=sh>POST /login?key<span style="color: #000000;font-weight: bold">=</span>value HTTP/1.1
+</code></pre>
+                    <p>Стоит сказать, что указатель на конкретную страницу может отсутствовать и параметры можно
+                      передавать на основную страницу домена.</p>
+                    <pre class="hljs"><code class=sh>GET /?key<span style="color: #000000;font-weight: bold">=</span>value HTTP/1.1
+</code></pre>
+                    <p><em>query string</em> имеет такой же формат как и строка в <em>body</em> при <em>POST</em>
+                      запросе, только в начале ставится знак <code>?</code>. После него мы можем передавать параметры
+                      <code>key=value&amp;key2=value2</code> и так далее.</p>
+
+                    <p><img alt="Структура query string" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjIyN2RjNjg1NDY0NzRlMTA4ZmMxYmQ0MDI1MDljYWFkLmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=d34d10031a9ab81a071603343e1df70b80e4917cf1c7f1da87456f6b50c54f8d"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Параметры <em>query string</em> не имеют никакого отношения к <em>GET</em>-запросам, хотя многие
+                      разработчики называют их <em>GET</em>-параметрами. На собеседованиях иногда задают вопрос:
+                      &quot;Можно ли одновременно отправить <em>POST</em> и <em>GET</em> параметры?&quot;. Правильный
+                      ответ — конечно можно, так как никакой связи между ними нет. Более того, в некоторых языках
+                      существуют способы получения этих данных отдельно друг от друга. Например, в PHP есть глобальный
+                      массив <code>$_REQUEST</code>, в который попадают как параметры, переданные через <em>query
+                        string</em>, так и переданные в <em>POST</em>.</p>
+
+                    <p>Но как понять когда и для чего использовать <em>query string</em>? Для этого нужно определить,
+                      что на самом деле значат методы HTTP. Семантика HTTP-методов выражается не только в том, какой вам
+                      будет возвращён ответ, а еще и в том, как можно с ним работать. Метод <em>GET</em> считается
+                      идемпотентным. Это означает, что его повторное выполнение всегда возвращает один и тот же
+                      результат, т.е. это обычный запрос. Мы спрашиваем систему о чём-то, она возвращает нам данные и
+                      при этом не изменяет своего внутреннего состояния. Таким образом любой повторный запрос отработает
+                      точно так же — детерминировано. В качестве аналогии можно привести чистую функцию. В реальности
+                      состояние системы конечно же может поменяться и мы не можем это контролировать, поэтому
+                      кэширование не является тривиальной задачей.</p>
+
+                    <p><em>POST</em>-запрос, напротив, не является идемпотентным и предназначен для изменения данных.
+                      Таким образом повторный запрос может приводить к другим результатам. Если первым
+                      <em>POST</em>-запросом мы удаляем данные, то вторым получим ошибку <em>404</em>. Такие запросы
+                      никогда не кешируются.</p>
+
+                    <p>Поисковые роботы ходят по сайтам только по <em>GET</em>-ссылкам, так как они учитывают семантику
+                      и знают, что <em>GET</em>-запросы можно делать безболезненно и с сайтом ничего страшного не
+                      произойдет.</p>
+
+                    <p>Параметры <em>query string</em> в <em>GET</em>-запросах используются при работе с формами,
+                      которые бывают как минимум двух типов: на изменение, создание или добавление данных и на их
+                      выборку. Именно при разработке второго типа форм и используется <em>query string</em>. Это может
+                      быть какая-то фильтрация или поисковая форма. Если мы в поисковике наберём запрос, например,
+                      какое-то слово и нажмем кнопку <em>Поиск</em>, то увидим, что нас отправит на страницу, в URI
+                      которой будет отправлен <em>query string</em>. Это очень важный момент, так как именно благодаря
+                      этому мы не производим никаких изменений и можем дать ссылку на этот запрос. Очень важно
+                      придерживаться семантики методов. Например, в некоторых старых банковских системах запросы
+                      почему-то реализовывались через <em>POST</em>. При таком подходе нельзя не только дать ссылку на
+                      запрос, но даже простое обновление страницы с помощью <kbd>F5</kbd> приводит к повторной отправке
+                      данных.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://en.wikipedia.org/wiki/Query_string">Query String /
+                          Wikipedia</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://tools.ietf.org/html/rfc3986">RFC 3986 (соответствующий
+                          стандарт)</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

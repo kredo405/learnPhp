@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Построение запросов (Query Builder) - PHP: Eloquent (ORM)</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="e6W3aaTwChiFW2PUwKXRgq4RFX9fOTLDFyWiLbdUQJiDT_kXgpY4hzlYFvQUljSpKXdekhCyQh9MjThEn_Y0pA" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../scopes/exercise_unit.html">PHP: Eloquent (ORM)</a>
+                    <h1 class='mt-0 mb-4'>Построение запросов (Query Builder)</h1>
+                    <p>Одна из задач, которую берут на себя ORM – это построение произвольных SQL-запросов в базу
+                      данных. Вот как это делается с помощью Eloquent:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// SELECT * FROM users WHERE name = "John" ORDER BY name DESC LIMIT 10</span>
+<span style="color: #008080">$users</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">User</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">where</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'John'</span><span style="background-color: #f8f8f8">)</span> <span style="color: #999988;font-style: italic">// WHERE</span>
+    <span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">orderBy</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'desc'</span><span style="background-color: #f8f8f8">)</span> <span style="color: #999988;font-style: italic">// ORDER BY</span>
+    <span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">take</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">10</span><span style="background-color: #f8f8f8">)</span> <span style="color: #999988;font-style: italic">// LIMIT</span>
+    <span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #000000;font-weight: bold">foreach</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$users</span> <span style="color: #000000;font-weight: bold">as</span> <span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">first_name</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Такая цепочка вызовов поэтапно конструирует необходимый запрос. Метод <code>get()</code>
+                      указывает на окончание запроса и выполняет его в базе данных. Eloquent автоматически конвертирует
+                      вернувшиеся данные в объекты модели и возвращает их наружу. Если нужно вернуть только одну запись,
+                      то вместо <code>get()</code> можно использовать <code>first()</code>:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// SELECT * FROM users WHERE name = "John" LIMIT 1</span>
+<span style="color: #008080">$user</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">User</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">where</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'John'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">first</span><span style="background-color: #f8f8f8">();</span>
+</code></pre>
+                    <p>Порядок вызовов функций не важен. Сначала можно сортировать, а потом фильтровать:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$users</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">User</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">orderBy</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'desc'</span><span style="background-color: #f8f8f8">)</span>
+    <span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">where</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'John'</span><span style="background-color: #f8f8f8">)</span>
+    <span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #999988;font-style: italic">// SELECT * FROM users WHERE name = "John" ORDER BY name DESC</span>
+</code></pre>
+                    <p>Eloquent самостоятельно расставит все части в правильном порядке. Несмотря на такую заботу, всё
+                      же рекомендуется там, где это возможно соблюдать ожидаемый порядок вызовов. Это упростит чтение
+                      кода.</p>
+
+                    <p>Многие вызовы могут накапливаться. Цепочка из <code>where</code> породит в SQL-запросе одну часть
+                      <em>WHERE</em>, где все условия объединены с помощью оператора <em>AND</em>.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #445588;font-weight: bold">User</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">where</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'John'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">where</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'age'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'='</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">34</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">where</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'city'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'Moscow'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #999988;font-style: italic">// WHERE name = "John" AND age = 34 AND city = "Moscow"</span>
+</code></pre>
+                    <p>Обратите внимание на то, что первый вызов всегда идёт через статический метод самой модели. Все
+                      дальнейшие вызовы выполнятся из объекта, который возвращает первый вызов. Это касается любого
+                      метода и не зависит от порядка вызовов:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Статический метод orderBy</span>
+<span style="color: #445588;font-weight: bold">User</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">orderBy</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'desc'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">where</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'John'</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #999988;font-style: italic">// Статический метод where</span>
+<span style="color: #445588;font-weight: bold">User</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">where</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'John'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">orderBy</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'desc'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Будьте осторожны: в Eloquent каждый вызов в цепочке изменяет объект запроса. Это значит, что
+                      каждый отдельный запрос нужно строить заново, либо использовать клонирование.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+<span style="color: #008080">$scope</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">User</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">orderBy</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'desc'</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$scope</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">where</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'John'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// этот вызов изменяет $scope</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$scope</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">toSQL</span><span style="background-color: #f8f8f8">());</span>
+<span style="color: #999988;font-style: italic">// SELECT * FROM users WHERE name = "John" ORDER BY name DESC</span>
+
+<span style="color: #008080">$scope</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">where</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'age'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'18'</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$scope</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">toSQL</span><span style="background-color: #f8f8f8">());</span>
+<span style="color: #999988;font-style: italic">// SELECT * FROM users WHERE name = "John" AND age = 18 ORDER BY name DESC</span>
+</code></pre>
+                    <p>В языке запросов Eloquent есть по методу на каждую часть SQL. Некоторые из них в таблице ниже:
+                    </p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>метод</th>
+                          <th>sql</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>where</td>
+                          <td>WHERE</td>
+                        </tr>
+                        <tr>
+                          <td>orderBy</td>
+                          <td>ORDER</td>
+                        </tr>
+                        <tr>
+                          <td>take</td>
+                          <td>LIMIT</td>
+                        </tr>
+                        <tr>
+                          <td>select</td>
+                          <td>SELECT</td>
+                        </tr>
+                        <tr>
+                          <td>skip</td>
+                          <td>OFFSET</td>
+                        </tr>
+                        <tr>
+                          <td>groupBy</td>
+                          <td>GROUP</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p>Мы рассмотрим только некоторые из них. Все остальное достаточно легко понять из документации если
+                      вы знаете SQL. Если вы его не знаете, то самое время пройти курс <a
+                        href="https://ru.hexlet.io/courses/rdb-basics" target="_blank">основы баз данных</a>.</p>
+
+                    <p>Where – наиболее часто используемая часть при построении запросов. Ниже примеры кода и описание:
+                    </p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// WHERE votes = 100</span>
+<span style="color: #999988;font-style: italic">// Равносильно User::where('votes', 100);</span>
+<span style="color: #445588;font-weight: bold">User</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">where</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'votes'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'='</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">100</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #999988;font-style: italic">// WHERE votes &gt;= 100</span>
+<span style="color: #999988;font-style: italic">// Кроме &gt;= можно использовать все что поддерживается базой данных.</span>
+<span style="color: #445588;font-weight: bold">User</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">where</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'votes'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'&gt;='</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">100</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>У метода Where много специализированных версий:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// orWhere – соединяется с другими вызовами "where" через оператор OR</span>
+<span style="color: #008080">$users</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">User</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">where</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'votes'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'&gt;'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">100</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">orWhere</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'John'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #999988;font-style: italic">// WHERE id IN (1, 2, 3)</span>
+<span style="color: #008080">$users</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">User</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">whereIn</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'id'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">])</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #999988;font-style: italic">// Проверка по дате</span>
+<span style="color: #008080">$users</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">User</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">whereDate</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'created_at'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'2016-12-31'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">();</span>
+</code></pre>
+                    <h2 id="zachem">Зачем?</h2>
+                    <p>Для чего нужен такой язык, почему недостаточно SQL? На это есть несколько разных причин:</p>
+
+                    <ul>
+                      <li>Универсальность. Eloquent способна генерировать SQL, подходящий под конкретную базу данных.
+                        Построение запросов же не привязано к базе данных. Хотя это не отменяет ситуаций, в которых
+                        приходится выполнять &quot;сырые&quot; запросы в базу данных.</li>
+                      <li>Безопасность. Такой способ построения запросов автоматически экранирует все подставляемые
+                        значения.</li>
+                      <li>Автоматическая конвертация. Если делать запросы руками, то придётся руками же описывать как
+                        выбранные данные должны лечь на свойства конкретной модели. Это довольно серьёзная работа,
+                        которую лучше поручить ORM (во многом она для этого и создавалась).</li>
+                      <li>Динамические запросы. SQL очень плохо подходит для динамических запросов, когда они
+                        конструируются по условиям. Такое часто встречается в фильтрах.</li>
+                    </ul>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Откройте REPL. Попробуйте повыбирать пользователей по разным условиям.</li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://laravel.com/docs/8.x/queries">Язык запросов</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>ORM - PHP: Laravel</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="NnyPbLPidJyudb3T0Om3ahhzxKrGMnGA-10DwC9qus7PNf1ZRiZt4Le1OPCfeSTwZtuP4Qy71BjwfSSh8hPIwQ" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../resource/exercise_unit.html">PHP: Laravel</a>
+                    <h1 class='mt-0 mb-4'>ORM</h1>
+                    <p>Любое веб-приложение оперирует внутри себя понятиями предметной области: пользователь, статья,
+                      курс, урок и другими. Эти понятия связаны между собой и включены в различные процессы, например,
+                      регистрацию пользователя или публикацию статьи.</p>
+
+                    <p>За эту часть приложения (основную!) в Laravel отвечает ORM (название группы фреймворков или
+                      библиотек, которые помогают моделировать предметную область и связывать её с базой данных). ORM в
+                      Laravel называется <a href="https://laravel.com/docs/8.x/eloquent" target="_blank"
+                        rel="nofollow">Eloquent</a>. Это фреймворк внутри фреймворка, который определяет то, как
+                      создаются сущности, как они связываются друг с другом и каким образом все это отображается на базу
+                      данных.</p>
+
+                    <p><em>Подробнее работа с ORM рассматривается в отдельном курсе, здесь же даётся необходимый
+                        минимум.</em></p>
+
+                    <p>Любая сущность, создаваемая внутри приложения, называется моделью. Модели в Laravel лежат в
+                      директории <em>app</em>. Конкретный набор моделей зависит от приложения и может измениться со
+                      временем. На Хекслете таких моделей сотни, вот лишь некоторые, с которыми наши пользователи
+                      сталкиваются каждый день:</p>
+
+                    <ul>
+                      <li>Пользователь</li>
+                      <li>Курс</li>
+                      <li>Урок</li>
+                      <li>Профессия</li>
+                      <li>Упражнение</li>
+                      <li>Подписка</li>
+                      <li>Участник курса (Мембер)</li>
+                      <li>Статья в блоге</li>
+                      <li>Топик</li>
+                      <li>Комментарий к топику</li>
+                      <li>Проект</li>
+                    </ul>
+
+                    <p><em>Важно не путать понятие модель во фреймворке, с понятием модель в MVC. Последнее это не
+                        класс, не файл, не функция, и не структура данных, а это слой приложения, отвечающий за модель
+                        предметной области. И это не про базу данных.</em></p>
+
+                    <p>Модели, как и большинство других частей приложения, создаются через утилиту <em>artisan</em>.
+                      Этот вызов создаст два файла:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>php artisan make:model Article <span style="color: #000080">--migration</span>
+Model created successfully.
+Created Migration: 2020_03_21_220908_create_articles_table
+</code></pre>
+                    <h2 id="migratsiya">Миграция</h2>
+                    <p>Первый файл – миграция в директории <em>database/migrations</em>.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Illuminate\Support\Facades\Schema</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Illuminate\Database\Schema\Blueprint</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Illuminate\Database\Migrations\Migration</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">CreateArticlesTable</span> <span style="color: #000000;font-weight: bold">extends</span> <span style="color: #445588;font-weight: bold">Migration</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">/**
+     * Run the migrations.
+     *
+     * @return void
+     */</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">up</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #445588;font-weight: bold">Schema</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">create</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">Blueprint</span> <span style="color: #008080">$table</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+            <span style="color: #008080">$table</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">id</span><span style="background-color: #f8f8f8">();</span>
+            <span style="color: #008080">$table</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">timestamps</span><span style="background-color: #f8f8f8">();</span>
+        <span style="background-color: #f8f8f8">});</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #999988;font-style: italic">/**
+     * Reverse the migrations.
+     *
+     * @return void
+     */</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">down</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #445588;font-weight: bold">Schema</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">dropIfExists</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles'</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Миграция – SQL-запрос, который выполняется в базе при любом её изменении. В данном случае запрос
+                      создаёт таблицу <em>articles</em>. Это соглашение пришло в Laravel из Rails: для каждой модели
+                      создаётся таблица, где имя модели берётся в нижнем регистре и множественном числе. Например
+                      <em>Article</em> – <em>articles</em> или <em>Person</em> – <em>people</em>.</p>
+
+                    <p>Сама миграция не выглядит как SQL. Внутри неё используется библиотека, которая позволяет
+                      описывать изменения в базе в виде кода, который затем превращается в SQL. Структура этого кода
+                      достаточно проста, если знать PHP. В нём описывается таблица, все её колонки и их типы.</p>
+
+                    <p>По умолчанию Laravel добавляют в миграцию два вызова:</p>
+
+                    <ul>
+                      <li><code>$table-&gt;id();</code> – колонка, которая будет первичным ключом.</li>
+                      <li><code>$table-&gt;timestamps()</code> – два поля: <em>updated_at</em> (время последнего
+                        обновления) и <em>created_at</em> (время добавления). Это стандартная практика для многих
+                        фреймворков, эти колонки добавляются во все таблицы для удобства отслеживания дат.</li>
+                    </ul>
+
+                    <p>Остальные колонки нужно добавлять самостоятельно. Для статей полная миграция выглядит так:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #445588;font-weight: bold">Schema</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">create</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">Blueprint</span> <span style="color: #008080">$table</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$table</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">id</span><span style="background-color: #f8f8f8">();</span>
+    <span style="color: #008080">$table</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">string</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// название статьи</span>
+    <span style="color: #008080">$table</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">text</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'body'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// тело статьи</span>
+    <span style="color: #008080">$table</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">timestamps</span><span style="background-color: #f8f8f8">();</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>Миграции не выполняются автоматически. Их нужно &quot;применять&quot; или, как говорят
+                      &quot;накатывать&quot; на базу данных. Команда <code>php artisan migrate</code> находит все
+                      миграции, которые ещё не были применены и выполняет их все в том порядке, в котором они
+                      расположены в файловой системе.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>php artisan migrate
+Migrating: 2020_03_21_000000_create_articles_table
+Migrated:  2020_03_21_000000_create_articles_table
+</code></pre>
+                    <p>Если все прошло успешно, то в базе данных появилась таблица <em>articles</em>.</p>
+
+                    <p>Миграции можно не только накатывать, но и откатывать. Для этого нужно набрать
+                      <code>php artisan migrate:rollback</code>. Эта команда попробует отменить последнюю миграцию.
+                      Повторный вызов откатит ещё одну миграцию, которая была перед последней. И так далее до самого
+                      конца.</p>
+
+                    <p>Теперь можно переходить к модели.</p>
+                    <h2 id="model">Модель</h2>
+                    <p>Второй файл – класс (модель) с именем <em>Article</em> в директории <em>app</em></p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">namespace</span> <span style="color: #555555">App\Models</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Illuminate\Database\Eloquent\Factories\HasFactory</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Illuminate\Database\Eloquent\Model</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">Article</span> <span style="color: #000000;font-weight: bold">extends</span> <span style="color: #445588;font-weight: bold">Model</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">//</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Модель в Laravel – это класс который наследуется от <em>Model</em>. В самом простом случае, этот
+                      класс не содержит ни строчки кода. Большую часть работы по его функционированию берет на себя
+                      Eloquent. Эта ORM связывает класс с таблицей в базе данных и предоставляет множество необходимых
+                      методов, которых достаточно для большинства задач.</p>
+
+                    <p>Подробнее о том как работает модель – в следующем уроке.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Создайте модель <em>Article</em></li>
+                      <li> Выполните миграции</li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://laravel.com/docs/8.x/eloquent">Eloquent</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://laravel.com/docs/8.x/migrations">Migration</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

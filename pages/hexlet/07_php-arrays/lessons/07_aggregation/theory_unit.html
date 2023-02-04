@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Агрегация - PHP: Массивы</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Агрегация</h1>
+                    <p>Ещё один распространённый вариант использования циклов на массивах — <strong>агрегация</strong>.
+                      Агрегацией являются любые вычисления, которые строятся на основе всего набора данных, например,
+                      поиск максимального, среднего, суммы и так далее. Агрегирующие функции особенно популярны у тех
+                      кто работает с цифрами, например про них хорошо знают все кто пользуются таблицами (Google Table,
+                      Microsoft Excel).</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">calculateMax</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Если коллекция пустая, то у нее не может быть максимального значения</span>
+    <span style="color: #999988;font-style: italic">// В подобных ситуациях принято возвращать null</span>
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #0086B3">empty</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">))</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #000000;font-weight: bold">null</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #999988;font-style: italic">// Сравнение элементов нужно начать с какого-то первого элемента</span>
+    <span style="color: #008080">$max</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// Принимаем за максимальное первый элемент</span>
+    <span style="color: #999988;font-style: italic">// Обход начинаем со второго элемента</span>
+    <span style="color: #000000;font-weight: bold">for</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">;</span> <span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">&lt;</span> <span style="color: #0086B3">sizeof</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">);</span> <span style="color: #008080">$i</span><span style="color: #000000;font-weight: bold">++</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">// Если текущий элемент больше максимального,</span>
+        <span style="color: #999988;font-style: italic">// то он становится максимальным</span>
+        <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$i</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">&gt;</span> <span style="color: #008080">$max</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+            <span style="color: #008080">$max</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$i</span><span style="background-color: #f8f8f8">];</span>
+        <span style="background-color: #f8f8f8">}</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #999988;font-style: italic">// Не забываем вернуть максимальное число</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$max</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">calculateMax</span><span style="background-color: #f8f8f8">([]));</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">calculateMax</span><span style="background-color: #f8f8f8">([</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">-</span><span style="color: #009999">10</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">38</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">]));</span>
+
+<span style="color: #999988;font-style: italic">// =&gt; 38</span>
+</code></pre>
+                    <p><a href="https://repl.it/@hexlet/php-arrays-aggregation-max"
+                        target="_blank">https://repl.it/@hexlet/php-arrays-aggregation-max</a></p>
+
+                    <p>Алгоритм поиска максимального числа в массиве выглядит так:</p>
+
+                    <ol>
+                      <li> Если массив пустой, то возвращаем <code>null</code>. Это классический пример использования
+                        идиомы <a href="https://ru.wikipedia.org/wiki/Охрана_(программирование)" target="_blank"
+                          rel="nofollow">guard expression (охраняющее выражение)</a>. Её идея в том, что в начале
+                        функции проверяются самые простые условия, для которых нужен минимум вычислений. При таком
+                        подходе основной код находится на верхнем уровне, а не размещён внутри условной конструкции.
+                        Такой код легче читать и у него меньше вложенность.</li>
+                      <li> В ином случае берём за точку отсчёта первый элемент массива и считаем его максимальным.</li>
+                      <li> Обходим массив, начиная со второго элемента и сравниваем каждое значение с максимальным. Если
+                        текущий рассматриваемый элемент больше максимального, то он становится максимальным.</li>
+                      <li> После обхода возвращаем результат.</li>
+                    </ol>
+
+                    <p>Главное, что нужно увидеть в этом коде — место определения переменной <code>$max</code>. Новички
+                      часто забывают про то, что переменную нужно определить до её использования. Объявленные же внутри
+                      цикла переменные не должны использоваться снаружи за пределами цикла, поэтому переменная и
+                      определяется до его начала. В большинстве языков переменные, определённые внутри блока кода (тело
+                      цикла в нашем случае) видны только внутри этого блока, то есть их область видимости ограничивается
+                      блоком кода. Соответственно, получить доступ к этим переменным вне блока невозможно.</p>
+
+                    <p>Обратите внимание, что начальным значением <code>$max</code> взят первый элемент, а не, скажем,
+                      <code>0</code>. Ведь может оказаться так, что все числа в массиве меньше <code>0</code>, и тогда
+                      мы получим неверный ответ.</p>
+
+                    <p>Второй важный момент: возврат делается только после обхода всего массива. Если бы
+                      <code>return</code> был внутри цикла, то массив не был бы рассмотрен целиком. Такая ошибка часто
+                      встречается у новичков.</p>
+                    <h2 id="neytralnyy-element">Нейтральный элемент</h2>
+                    <p>Рассмотрим поиск суммы:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">calculateSum</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Начальное значение суммы</span>
+    <span style="color: #008080">$sum</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">;</span>
+    <span style="color: #000000;font-weight: bold">foreach</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$coll</span> <span style="color: #000000;font-weight: bold">as</span> <span style="color: #008080">$num</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">// Поочередно складываем все элементы</span>
+        <span style="color: #008080">$sum</span> <span style="color: #000000;font-weight: bold">+=</span> <span style="color: #008080">$num</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$sum</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #999988;font-style: italic">// Сумма элементов всегда возвращает какое-то число</span>
+<span style="color: #999988;font-style: italic">// Если массив пустой, то сумма его элементов 0</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">calculateSum</span><span style="background-color: #f8f8f8">([]));</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"</span><span style="color: #d14">\n</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">calculateSum</span><span style="background-color: #f8f8f8">([</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">-</span><span style="color: #009999">10</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">38</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">]));</span>
+<span style="color: #999988;font-style: italic">// =&gt; 0</span>
+<span style="color: #999988;font-style: italic">// =&gt; 33</span>
+</code></pre>
+                    <p><a href="https://repl.it/@hexlet/php-arrays-aggregation-sum"
+                        target="_blank">https://repl.it/@hexlet/php-arrays-aggregation-sum</a></p>
+
+                    <p>Алгоритм поиска суммы значительно проще, но обладает парой важных нюансов.</p>
+
+                    <p>Чему равна сумма элементов пустого массива? С точки зрения математики такая сумма равна
+                      <code>0</code>. Что в принципе совпадает со здравым смыслом. Если у нас нет яблок, значит у нас
+                      есть <code>0</code> яблок (количество яблок равно нулю). Функции в программировании работают по
+                      этой логике.</p>
+
+                    <p>Второй момент связан с начальным элементом суммы. В коде используется <code>0</code> или так
+                      называемый нейтральный элемент операции сложения на множестве вещественных чисел. <a
+                        href="https://ru.wikipedia.org/wiki/Нейтральный_элемент" target="_blank"
+                        rel="nofollow">Нейтральный элемент бинарной операции</a> — элемент, который ничего не меняет в
+                      результате его использования. По-простому, сложение любого числа с нулём всегда даёт это же число.
+                      Тогда любую сумму, например <code>3 + 2 + 8</code>, можно вычислить как
+                      <code>0 + 3 + 2 + 8</code>, чем мы и пользуемся в нашем коде. Нейтральный элемент – важная часть
+                      любой агрегирующей операции. Именно с него начинается сам процесс агрегации. В случае сложения –
+                      это 0, в случае умножения – 1.</p>
+
+                    <p>Агрегация далеко не всегда означает, что коллекция элементов сводится к некоторому простому
+                      значению. Результатом агрегации может быть сколь угодно сложная структура, например, массив.
+                      Подобные примеры часто встречаются в реальной жизни. Самый простой пример – это список уникальных
+                      слов в тексте.</p>
+
+</body>
+
+</html>

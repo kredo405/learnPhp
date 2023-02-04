@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Трейты - PHP: Погружаясь в классы</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="4KLgxd4-9vkIjGWcjzrCuuMt-vw-oBfOdY1keOwzUclMeQ5wV9ia2i9H0fdWCFD90A4OAZV1FNvKfqedZGPzEg" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover" href="exercise_unit.html">PHP:
+                      Погружаясь в классы</a>
+                    <h1 class='mt-0 mb-4'>Трейты</h1>
+                    <p>Трейты — альтернативный механизм переиспользования общего кода в разных классах. Он устраняет
+                      ограничения, которыми обладает наследование и заменяет его.</p>
+
+                    <p>Трейты похожи на абстрактные классы. Они реализуют какую-то общую функциональность и с ними
+                      нельзя работать напрямую. Единственный способ использовать их – включение в другие классы.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Magic.php</span>
+
+<span style="color: #000000;font-weight: bold">trait</span> <span style="color: #445588;font-weight: bold">Magic</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Доступно только внутри трейта</span>
+    <span style="color: #000000;font-weight: bold">private</span> <span style="color: #008080">$properties</span><span style="background-color: #f8f8f8">;</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">__get</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$key</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">properties</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$key</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">??</span> <span style="color: #000000;font-weight: bold">null</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">__set</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$key</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$value</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">properties</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$key</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$value</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Трейт по большей части выглядит как (абстрактный) класс и устроен как класс. Он подчиняется тем
+                      же правилам именования и расположения в иерархии пространств имён (а следовательно и файловой
+                      структуре) что и классы. Отличия начинаются в момент использования:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Config.php</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">Config</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Включение трейта в класс</span>
+    <span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Magic</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #008080">$config</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Config</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #008080">$config</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">key</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'value'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$config</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">key</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>Трейт включается в другой класс с помощью инструкции <code>use</code>. С этого момента в классе
+                      становится доступна вся функциональность, определённая в трейте. По поведению трейты похожи на
+                      наследование, например, приватные части трейта доступны только внутри методов самого трейта. Но
+                      при этом трейт не встраивается в цепочку наследования, это легко проверить:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$config</span> <span style="color: #000000;font-weight: bold">instanceof</span> <span style="color: #445588;font-weight: bold">Magic</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999988;font-style: italic">// false</span>
+</code></pre>
+                    <p>Из этого есть пара важных следствий:</p>
+
+                    <ul>
+                      <li>Внутри класса к методам трейта нельзя обратиться через <code>parent</code>, только через
+                        <code>$this</code>. При условии, что эти методы не приватные.</li>
+                      <li>Трейт не может реализовывать интерфейс. Это могут делать только классы.</li>
+                    </ul>
+                    <h2 id="zachem">Зачем?</h2>
+                    <p>Трейты в отличие от наследования, не фиксируют структуру классов. Любой класс может включать в
+                      себя любое количество трейтов:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">MySuperClass</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">FirstTrait</span><span style="background-color: #f8f8f8">;</span>
+    <span style="color: #999988;font-style: italic">// При включении возможны конфликты имён. Подробнее про их разрешение:</span>
+    <span style="color: #999988;font-style: italic">// https://www.php.net/manual/ru/language.oop5.traits.php#language.oop5.traits.conflict</span>
+    <span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">SecondTrait</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Эта структура располагает к выделению общих признаков из совершенно разнообразных классов. Пример
+                      с <em>Magic</em> как раз хорошо демонстрирует такой подход. Многие классы одинаково реализуют
+                      магические методы и нет смысла дублировать их код. И точно не стоит использовать наследование, так
+                      как оно свяжет совершенно несвязанные классы в общую (и жёсткую) иерархию.</p>
+
+                    <p>Трейты позволяют реализовать многие интерфейсы PHP универсальным образом, например, <a
+                        href="https://www.php.net/manual/ru/class.arrayaccess.php" target="_blank"
+                        rel="nofollow">ArrayAccess</a> или <a href="https://www.php.net/manual/ru/class.iterator.php"
+                        target="_blank" rel="nofollow">Iterator</a></p>
+                    <h2 id="primer-iterator">Пример: Итератор</h2>
+                    <p>Рассмотрим готовый пример трейта-итератора. Он реализует общую логику обхода коллекций внутри
+                      объектов. С его помощью можно сделать объекты, которые можно использовать в <code>forEach</code>:
+                    </p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Реализует итератор</span>
+<span style="color: #008080">$course</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Course</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #000000;font-weight: bold">foreach</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$course</span> <span style="color: #000000;font-weight: bold">as</span> <span style="color: #008080">$lesson</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$lesson</span> <span style="color: #009999">.</span> <span style="color: #d14">"</span><span style="color: #d14">\n</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Трейт:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">trait</span> <span style="color: #445588;font-weight: bold">IteratorTrait</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">protected</span> <span style="color: #008080">$offset</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">;</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">current</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getCollection</span><span style="background-color: #f8f8f8">()[</span><span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">offset</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">??</span> <span style="color: #000000;font-weight: bold">null</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">next</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">offset</span><span style="color: #000000;font-weight: bold">++</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">key</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">offset</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">valid</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #0086B3">array_key_exists</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">offset</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getCollection</span><span style="background-color: #f8f8f8">());</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">rewind</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">offset</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">abstract</span> <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">getCollection</span><span style="background-color: #f8f8f8">();</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Обратите внимание на важную деталь — трейт получает саму коллекцию. Трейт требует от класса,
+                      который его включает реализации метода <code>getCollection()</code> (помните, что трейт похож на
+                      абстрактный класс, он может определять абстрактные методы). Этот метод используется внутри трейта
+                      для доступа к элементам коллекции, по которой он итерирует.</p>
+
+                    <p>Это очень важная концепция. Трейту нужны данные от класса, в который его включают. И трейт строит
+                      связь с этими классами через интерфейсный метод, а не через обращение к свойству с конкретным
+                      именем. А вот класс от трейта ничего не требует. Благодаря тому, что связь строится в одну сторону
+                      (трейт зависит от метода класса, но класс не зависит от методов и свойств трейта), код остаётся
+                      модульным. Если бы и трейт требовал что-то от класса и класс от трейта, то почти наверняка в коде
+                      проблемы с архитектурой.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Обязательно расширять интерфейс Iterator, только тогда PHP поймёт, что это итератор</span>
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">Course</span> <span style="color: #000000;font-weight: bold">implements</span> <span style="color: #445588;font-weight: bold">Iterator</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Для простоты свойство наполнено строками</span>
+    <span style="color: #000000;font-weight: bold">private</span> <span style="color: #008080">$lessons</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'one'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'two'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'three'</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">IteratorTrait</span><span style="background-color: #f8f8f8">;</span>
+
+    <span style="color: #000000;font-weight: bold">protected</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">getCollection</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">lessons</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #999988;font-style: italic">// Использование</span>
+<span style="color: #008080">$course</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Course</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #000000;font-weight: bold">foreach</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$course</span> <span style="color: #000000;font-weight: bold">as</span> <span style="color: #008080">$lesson</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$lesson</span> <span style="color: #009999">.</span> <span style="color: #d14">"</span><span style="color: #d14">\n</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+<span style="color: #999988;font-style: italic">// 'one'</span>
+<span style="color: #999988;font-style: italic">// 'two'</span>
+<span style="color: #999988;font-style: italic">// 'three'</span>
+</code></pre>
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://ru.wikipedia.org/wiki/%D0%A2%D0%B8%D0%BF%D0%B0%D0%B6_(%D0%B0%D0%B1%D1%81%D1%82%D1%80%D0%B0%D0%BA%D1%82%D0%BD%D1%8B%D0%B9_%D1%82%D0%B8%D0%BF)">Трейты</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

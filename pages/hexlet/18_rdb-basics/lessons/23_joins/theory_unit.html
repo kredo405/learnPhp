@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Соединения (JOINS) - Основы реляционных баз данных</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="S3oynziCtw-l0pz6_BX-PaTr8QDYeIfDu2vKnkh2vPayp5z0y6vqKJcnzhcRvT26uvyQUcdajXTpO1ABg7fj_g" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../transactions/exercise_unit.html">Основы реляционных баз данных</a>
+                    <h1 class='mt-0 mb-4'>Соединения (JOINS)</h1>
+                    <p>Как мы уже знаем, реляционная модель подразумевает связь между данными разных отношений
+                      посредством внешних ключей. С практической точки зрения это значит, что, <em>зная первичный ключ
+                        одной сущности, мы можем извлечь связанные с ней данные из другой сущности</em>.</p>
+                    <pre class="hljs"><code class=sql><span style="color: #999988;font-style: italic">-- Извлекаем все топики пользователя с id = 3</span>
+<span style="color: #000000;font-weight: bold">SELECT</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">topics</span> <span style="color: #000000;font-weight: bold">WHERE</span> <span style="background-color: #f8f8f8">user_id</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>В простых ситуациях данные извлекаются так, как показано выше. Но есть множество ситуаций, где
+                      простой выборкой не обойтись. Предположим, что мы хотим найти всех пользователей Хекслета, которые
+                      ни разу не создавали топики. На текущий момент мы знаем ровно один способ выполнить эту задачу:
+                    </p>
+
+                    <ol>
+                      <li>
+                        <p>Извлекаем из базы всех пользователей, которые создали хотя бы один топик:</p>
+                        <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">SELECT</span> <span style="color: #000000;font-weight: bold">DISTINCT</span> <span style="background-color: #f8f8f8">user_id</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">topics</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                      </li>
+                      <li>
+                        <p>Затем ищем всех пользователей, у которых идентификаторы не совпадают со списком
+                          <em>user_id</em>, полученном на предыдущем этапе:</p>
+                        <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">SELECT</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">users</span>
+  <span style="color: #000000;font-weight: bold">WHERE</span> <span style="background-color: #f8f8f8">id</span> <span style="color: #000000;font-weight: bold">NOT</span> <span style="color: #000000;font-weight: bold">IN</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">&lt;</span><span style="color: #a61717;background-color: #e3d2d2">список</span> <span style="color: #a61717;background-color: #e3d2d2">идентификаторов</span><span style="background-color: #f8f8f8">,</span> <span style="color: #a61717;background-color: #e3d2d2">полученный</span> <span style="color: #a61717;background-color: #e3d2d2">предыдущим</span> <span style="color: #a61717;background-color: #e3d2d2">запросом</span><span style="color: #000000;font-weight: bold">&gt;</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                      </li>
+                    </ol>
+
+                    <p>В итоге задача будет решена, но есть одна маленькая (или большая) проблема. Количество
+                      идентификаторов может быть огромным, и гонять их из базы в код и обратно — не самая разумная идея.
+                    </p>
+                    <h2 id="inner-join">INNER JOIN</h2>
+                    <p>Задача: Найти записи в одной таблице (пользователей), для которых нет записей в другой таблице
+                      (топиков). Реляционная алгебра позволяет выполнить эту операцию с помощью соединения
+                      <code>JOIN</code>, используя ровно один запрос. Начнём знакомство с <code>JOIN</code> на примере:
+                    </p>
+                    <pre class="hljs"><code class=sql><span style="color: #999988;font-style: italic">-- В выборке участвуют не все поля только для того, чтобы уместить</span>
+<span style="color: #999988;font-style: italic">-- её на экран, а вообще здесь можно использовать `*`</span>
+<span style="color: #000000;font-weight: bold">SELECT</span> <span style="background-color: #f8f8f8">first_name</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">title</span>
+  <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">users</span> <span style="color: #000000;font-weight: bold">JOIN</span> <span style="background-color: #f8f8f8">topics</span> <span style="color: #000000;font-weight: bold">ON</span> <span style="background-color: #f8f8f8">users</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">id</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">topics</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">user_id</span> <span style="color: #000000;font-weight: bold">LIMIT</span> <span style="color: #009999">5</span><span style="background-color: #f8f8f8">;</span>
+
+ <span style="background-color: #f8f8f8">first_name</span> <span style="color: #000000;font-weight: bold">|</span>            <span style="background-color: #f8f8f8">title</span>
+<span style="color: #999988;font-style: italic">------------+------------------------------</span>
+ <span style="background-color: #f8f8f8">Sean</span>       <span style="color: #000000;font-weight: bold">|</span> <span style="background-color: #f8f8f8">beatae</span> <span style="background-color: #f8f8f8">voluptatem</span> <span style="background-color: #f8f8f8">commodi</span>
+ <span style="background-color: #f8f8f8">Wyatt</span>      <span style="color: #000000;font-weight: bold">|</span> <span style="background-color: #f8f8f8">tempora</span> <span style="background-color: #f8f8f8">accusamus</span> <span style="background-color: #f8f8f8">nostrum</span>
+ <span style="background-color: #f8f8f8">Oleta</span>      <span style="color: #000000;font-weight: bold">|</span> <span style="background-color: #f8f8f8">eaque</span> <span style="background-color: #f8f8f8">fugiat</span> <span style="background-color: #f8f8f8">consequatur</span>
+ <span style="background-color: #f8f8f8">Brandon</span>    <span style="color: #000000;font-weight: bold">|</span> <span style="background-color: #f8f8f8">aut</span> <span style="background-color: #f8f8f8">exercitationem</span> <span style="background-color: #f8f8f8">expedita</span>
+ <span style="background-color: #f8f8f8">Domenica</span>   <span style="color: #000000;font-weight: bold">|</span> <span style="background-color: #f8f8f8">voluptatem</span> <span style="background-color: #f8f8f8">soluta</span> <span style="background-color: #f8f8f8">similique</span>
+</code></pre>
+                    <p>Результатом данного запроса станет выборка, в которую попали поля обеих таблиц. Здесь соединяются
+                      две таблицы: <em>users</em> и <em>topics</em> по условию <code>users.id = topics.user_id</code>.
+                      Это важное условие для правильной работы. В нашем примере отношения связаны внешним ключом:
+                      соответственно, при джойне этих таблиц нужно явно указать, как мы их соединяем. Общий синтаксис
+                      выглядит так:
+                      <code>SELECT * FROM table1 JOIN table2 ON table1.id_field_name = table2.id_field_name</code> (на
+                      самом деле общая форма сложнее, так как джойнить можно произвольное число таблиц и условий
+                      соединения тоже может быть много).</p>
+
+                    <p><code>JOIN</code> — это сокращенная версия соединения <code>INNER JOIN</code>, то есть
+                      внутреннего соединения.</p>
+
+                    <p>В эту выборку попадают только те записи, для которых есть соответствие в другой таблице. Причём,
+                      если у одного пользователя пять топиков, то в выборке окажутся все пять строк. Такой запрос имеет
+                      смысл делать на странице вывода топиков, что позволит к каждому топику сразу же вывести нужную
+                      информацию и о самом пользователе.</p>
+
+                    <p>Запросы с соединениями порождают одну небольшую проблему. В примере выше часть
+                      <code>SELECT</code> содержит только те поля, имена которых уникальны среди всех полей обеих
+                      таблиц. Соответственно, при выборке не возникает неоднозначностей. Если выполнить этот же запрос
+                      со звёздочкой, то в выборку попадут поля, у которых одинаковые названия, что создаст сложности при
+                      анализе данных уже в коде приложения. А при выполнении запроса с указанием дублирующихся полей
+                      вообще возникнет ошибка:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">SELECT</span> <span style="background-color: #f8f8f8">id</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">users</span> <span style="color: #000000;font-weight: bold">JOIN</span> <span style="background-color: #f8f8f8">topics</span> <span style="color: #000000;font-weight: bold">ON</span> <span style="background-color: #f8f8f8">users</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">id</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">topics</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">user_id</span> <span style="color: #000000;font-weight: bold">LIMIT</span> <span style="color: #009999">5</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">ERROR</span><span style="background-color: #f8f8f8">:</span>  <span style="color: #000000;font-weight: bold">column</span> <span style="background-color: #f8f8f8">reference</span> <span style="color: #008080">"id"</span> <span style="color: #000000;font-weight: bold">is</span> <span style="background-color: #f8f8f8">ambiguous</span>
+<span style="background-color: #f8f8f8">LINE</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">:</span> <span style="color: #000000;font-weight: bold">SELECT</span> <span style="background-color: #f8f8f8">id</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">users</span> <span style="color: #000000;font-weight: bold">JOIN</span> <span style="background-color: #f8f8f8">topics</span> <span style="color: #000000;font-weight: bold">ON</span> <span style="background-color: #f8f8f8">users</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">id</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">topics</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">user_i</span><span style="background-color: #f8f8f8">...</span>
+</code></pre>
+                    <p>В таких случаях спасают псевдонимы и возможность указывать таблицу для каждого поля:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">SELECT</span> <span style="background-color: #f8f8f8">users</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">id</span> <span style="color: #000000;font-weight: bold">AS</span> <span style="background-color: #f8f8f8">user_id</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">topics</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">id</span> <span style="color: #000000;font-weight: bold">AS</span> <span style="background-color: #f8f8f8">topic_id</span>
+  <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">users</span> <span style="color: #000000;font-weight: bold">JOIN</span> <span style="background-color: #f8f8f8">topics</span> <span style="color: #000000;font-weight: bold">ON</span> <span style="background-color: #f8f8f8">users</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">id</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">topics</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">user_id</span> <span style="color: #000000;font-weight: bold">LIMIT</span> <span style="color: #009999">5</span><span style="background-color: #f8f8f8">;</span>
+
+ <span style="background-color: #f8f8f8">user_id</span> <span style="color: #000000;font-weight: bold">|</span> <span style="background-color: #f8f8f8">topic_id</span>
+<span style="color: #999988;font-style: italic">---------+----------</span>
+       <span style="color: #009999">9</span> <span style="color: #000000;font-weight: bold">|</span>        <span style="color: #009999">1</span>
+      <span style="color: #009999">33</span> <span style="color: #000000;font-weight: bold">|</span>        <span style="color: #009999">2</span>
+      <span style="color: #009999">43</span> <span style="color: #000000;font-weight: bold">|</span>        <span style="color: #009999">3</span>
+      <span style="color: #009999">49</span> <span style="color: #000000;font-weight: bold">|</span>        <span style="color: #009999">4</span>
+      <span style="color: #009999">10</span> <span style="color: #000000;font-weight: bold">|</span>        <span style="color: #009999">5</span>
+<span style="background-color: #f8f8f8">(</span><span style="color: #009999">5</span> <span style="color: #000000;font-weight: bold">rows</span><span style="background-color: #f8f8f8">)</span>
+</code></pre>
+                    <h2 id="left-join">LEFT JOIN</h2>
+                    <p>Но этот запрос не поможет решить нашу исходную задачу. Для её решения понадобится операция левого
+                      соединения <code>LEFT JOIN</code>.</p>
+
+                    <p><img alt="Left Join" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImU5N2JkZDIyOGYyMWY0Y2Y5MWNhZWMyMmE3N2NlYzMyLnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=52554e0f5726e11c34b248f0fe00b4c581ce2a97182723344bd5a089fd6c1137"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p><code>LEFT JOIN</code> берёт все данные из одной таблицы и присоединяет к ним данные из другой,
+                      если они присутствуют. Если нет, то заполняет их <code>NULL</code>. Чисто технически этот запрос
+                      отличается только тем, что добавляется слово <code>LEFT</code>:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">SELECT</span> <span style="background-color: #f8f8f8">first_name</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">title</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">users</span>
+  <span style="color: #000000;font-weight: bold">LEFT</span> <span style="color: #000000;font-weight: bold">JOIN</span> <span style="background-color: #f8f8f8">topics</span> <span style="color: #000000;font-weight: bold">ON</span> <span style="background-color: #f8f8f8">users</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">id</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">topics</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">user_id</span> <span style="color: #000000;font-weight: bold">LIMIT</span> <span style="color: #009999">5</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="background-color: #f8f8f8">first_name</span> <span style="color: #000000;font-weight: bold">|</span>            <span style="background-color: #f8f8f8">title</span>
+<span style="color: #999988;font-style: italic">------------+------------------------------</span>
+ <span style="background-color: #f8f8f8">Sean</span>       <span style="color: #000000;font-weight: bold">|</span> <span style="background-color: #f8f8f8">beatae</span> <span style="background-color: #f8f8f8">voluptatem</span> <span style="background-color: #f8f8f8">commodi</span>
+ <span style="background-color: #f8f8f8">Wyatt</span>      <span style="color: #000000;font-weight: bold">|</span> <span style="background-color: #f8f8f8">tempora</span> <span style="background-color: #f8f8f8">accusamus</span> <span style="background-color: #f8f8f8">nostrum</span>
+ <span style="background-color: #f8f8f8">Mia</span>        <span style="color: #000000;font-weight: bold">|</span>
+ <span style="background-color: #f8f8f8">Royal</span>      <span style="color: #000000;font-weight: bold">|</span>
+ <span style="background-color: #f8f8f8">Enos</span>       <span style="color: #000000;font-weight: bold">|</span> <span style="background-color: #f8f8f8">et</span> <span style="background-color: #f8f8f8">eos</span> <span style="background-color: #f8f8f8">dicta</span>
+</code></pre>
+                    <p><code>LEFT JOIN</code> полезен в тех ситуациях, когда нам нужно работать со всеми данными
+                      (возможно, по условию <code>WHERE</code>) одной таблицы и связанными с ними данными, если они
+                      есть. Если их нет, то ничего страшного, мы всё равно хотим получить данные из первой таблицы.</p>
+
+                    <p>Этот запрос всё ещё не возвращает нам то, что мы хотели изначально. Но теперь, глядя на эту
+                      выборку, как на новое отношение, вы и сами можете сказать, что осталось сделать, чтобы получить
+                      пользователей, которые не оставили ни одного топика на Хекслете. Правильно, нужно добавить в
+                      выборку условие <code>WHERE</code>:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">SELECT</span> <span style="color: #000000;font-weight: bold">COUNT</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">*</span><span style="background-color: #f8f8f8">)</span>
+  <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">users</span>
+  <span style="color: #000000;font-weight: bold">LEFT</span> <span style="color: #000000;font-weight: bold">JOIN</span> <span style="background-color: #f8f8f8">topics</span> <span style="color: #000000;font-weight: bold">ON</span> <span style="background-color: #f8f8f8">users</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">id</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">topics</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">user_id</span>
+  <span style="color: #000000;font-weight: bold">WHERE</span> <span style="background-color: #f8f8f8">title</span> <span style="color: #000000;font-weight: bold">IS</span> <span style="color: #000000;font-weight: bold">NULL</span><span style="background-color: #f8f8f8">;</span>
+
+ <span style="color: #000000;font-weight: bold">count</span>
+<span style="color: #999988;font-style: italic">-------</span>
+    <span style="color: #009999">59</span>
+<span style="background-color: #f8f8f8">(</span><span style="color: #009999">1</span> <span style="color: #000000;font-weight: bold">row</span><span style="background-color: #f8f8f8">)</span>
+</code></pre>
+                    <p>Запросы на соединение могут быть как очень простыми, так и очень сложными (на несколько экранов
+                      текста), включающими в себя сразу множество таблиц. В этом уроке мы лишь немного затронули эту
+                      тему и познакомились с самой концепцией, остальное познается во время экспериментов и в рабочих
+                      (тестовых) проектах.</p>
+
+                    <p>Соединения — не единственный способ делать выборки сразу по нескольким таблицам. Альтернативный
+                      подход — это вложенные запросы. Он проще для восприятия, но не всегда возможно его эффективное
+                      выполнение.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://postgrespro.ru/docs/postgresql/11/tutorial-join">Официальная
+                          документация</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://sql-joins.leopard.in.ua/">Визуализация соединений</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

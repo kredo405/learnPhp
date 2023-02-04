@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Деструктуризация - PHP: Массивы</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Деструктуризация</h1>
+                    <p>Деструктуризация (destructuring) – синтаксическая возможность &quot;раскладывать&quot; элементы
+                      массива в отдельные переменные. Деструктуризация относится к необязательным, но очень приятным
+                      возможностям языка. Рассмотрим ее на примерах.</p>
+
+                    <p>Представьте, что у нас есть массив из двух элементов, которыми мы хотим оперировать в нашей
+                      программе. Самый простой вариант использования его элементов — постоянное обращение по индексу
+                      <code>$point[0]</code> и <code>$point[1]</code>.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$point</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">5</span><span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"</span><span style="color: #d14">{</span><span style="color: #008080">$point</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">]</span><span style="color: #d14">}</span><span style="color: #d14">:</span><span style="color: #d14">{</span><span style="color: #008080">$point</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">]</span><span style="color: #d14">}</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; 3:5</span>
+</code></pre>
+                    <p>Индексы ничего не говорят о содержимом, и для понимания этого кода придется прикладывать
+                      дополнительные усилия. Гораздо лучше сначала присвоить эти значения переменным с хорошими именами.
+                      Тогда код станет читаемым:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$x</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$point</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #008080">$y</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$point</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"</span><span style="color: #d14">{</span><span style="color: #008080">$x</span><span style="color: #d14">}</span><span style="color: #d14">:</span><span style="color: #d14">{</span><span style="color: #008080">$y</span><span style="color: #d14">}</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; 3:5</span>
+</code></pre>
+                    <p>Код стал значительно понятнее, хотя и длиннее. С помощью деструктуризации то же самое можно
+                      сделать короче:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="background-color: #f8f8f8">[</span><span style="color: #008080">$x</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$y</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$point</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #999988;font-style: italic">// Слева массив повторяет структуру правого массива</span>
+<span style="color: #999988;font-style: italic">// но вместо значений используются идентификаторы</span>
+<span style="color: #999988;font-style: italic">// они заполняются значениями, стоящими на тех же позициях в правом массиве</span>
+<span style="color: #999988;font-style: italic">// [$x, $y] = [3, 5]</span>
+<span style="color: #999988;font-style: italic">// $x = 3, $y = 5</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"</span><span style="color: #d14">{</span><span style="color: #008080">$x</span><span style="color: #d14">}</span><span style="color: #d14">:</span><span style="color: #d14">{</span><span style="color: #008080">$y</span><span style="color: #d14">}</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; 3:5</span>
+</code></pre>
+                    <p>Получилось и короче, и понятнее (особенно если привыкнуть к этому способу записи).
+                      Деструктуризация позволяет извлечь из массива практически любые части, используя очень короткий и
+                      интуитивно понятный синтаксис. Она работает даже в том случае, когда нас интересует только часть
+                      массива. Причем как начало, так и его конец:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+<span style="color: #999988;font-style: italic">// Извлекаем первый элемент</span>
+<span style="color: #999988;font-style: italic">// Остальные игнорируются</span>
+<span style="background-color: #f8f8f8">[</span><span style="color: #008080">$x</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$point</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #999988;font-style: italic">// Извлекаем второй элемент</span>
+<span style="color: #999988;font-style: italic">// Для этого просто не указываем первый</span>
+<span style="background-color: #f8f8f8">[,</span> <span style="color: #008080">$y</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$point</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #999988;font-style: italic">// и даже так</span>
+<span style="background-color: #f8f8f8">[,</span> <span style="color: #008080">$secondElement</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$fourthElement</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$fifthElement</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">4</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">5</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">6</span><span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$secondElement</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; 2</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$fourthElement</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; 4</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$fifthElement</span><span style="background-color: #f8f8f8">);</span>  <span style="color: #999988;font-style: italic">// =&gt; 5</span>
+</code></pre>
+                    <p><a href="https://repl.it/@hexlet/php-arrays-destructuring-positional"
+                        target="_blank">https://repl.it/@hexlet/php-arrays-destructuring-positional</a></p>
+
+                    <p>Мы извлекли из массива <code>[1, 2, 3, 4, 5, 6]</code> значения второго, четвёртого и пятого
+                      элементов, сохранив их, соответственно, в переменных <code>$secondElement</code>,
+                      <code>$fourthElement</code> и <code>$fifthElement</code>. При этом на месте первого (нулевой
+                      индекс) и третьего (второй индекс) элементов мы сделали пропуски, не указав никаких переменных,
+                      потому что значения этих элементов в данном случае нам были не нужны.</p>
+
+                    <p>Деструктуризация работает на любом уровне вложенности. Например с ее помощью можно извлекать
+                      данные из массивов внутри массивов:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="background-color: #f8f8f8">[</span><span style="color: #008080">$one</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #008080">$two</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$three</span><span style="background-color: #f8f8f8">]]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #009999">2</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">]];</span>
+</code></pre>
+                    <p>Количество возможных комбинаций и вариантов использования деструктуризации – бесконечное
+                      множество. Чем больше вы будете экспериментировать с ней, тем больше найдете вариантов
+                      использования.</p>
+                    <h2 id="destrukturizatsiya-v-tsiklah">Деструктуризация в циклах</h2>
+                    <p>Разложение массива можно использовать не только как отдельную инструкцию в коде, но и, например,
+                      в циклах:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$points</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #009999">4</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">-</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">]</span>
+<span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #000000;font-weight: bold">foreach</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$points</span> <span style="color: #000000;font-weight: bold">as</span> <span style="background-color: #f8f8f8">[</span><span style="color: #008080">$x</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$y</span><span style="background-color: #f8f8f8">])</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">([</span><span style="color: #008080">$x</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$y</span><span style="background-color: #f8f8f8">]);</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #999988;font-style: italic">// =&gt; Array</span>
+<span style="color: #999988;font-style: italic">// =&gt; (</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [0] =&gt; 4</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [1] =&gt; 3</span>
+<span style="color: #999988;font-style: italic">// =&gt; )</span>
+<span style="color: #999988;font-style: italic">// =&gt; Array</span>
+<span style="color: #999988;font-style: italic">// =&gt; (</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [0] =&gt; 0</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [1] =&gt; -3</span>
+<span style="color: #999988;font-style: italic">// =&gt; )</span>
+</code></pre>
+                    <p><a href="https://repl.it/@hexlet/php-arrays-destructuring-foreach"
+                        target="_blank">https://repl.it/@hexlet/php-arrays-destructuring-foreach</a></p>
+
+                    <p>Деструктуризацию для ассоциативных массивов будем отдельно разбирать в курсе <a
+                        href="https://ru.hexlet.io/courses/php-associative-arrays" target="_blank">PHP: Ассоциативные
+                        массивы</a>.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://php.net/manual/ru/migration71.new-features.php#migration71.new-features.symmetric-array-destructuring">Официальная
+                          документация</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

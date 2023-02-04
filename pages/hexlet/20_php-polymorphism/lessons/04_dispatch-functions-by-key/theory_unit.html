@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Диспетчеризация по ключу (функции) - PHP: Полиморфизм</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="7YaSjmsveXKdAxjc5kUeQlQ3pTidiUuLAguZJ3dBNphBOxx_ipRgY3YjiTH7xHqotYZoitKuLFBRNHVR7kmYCg" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../dependency-management/exercise_unit.html">PHP: Полиморфизм</a>
+                    <h1 class='mt-0 mb-4'>Диспетчеризация по ключу (функции)</h1>
+                    <p>Диспетчеризация по ключу ассоциативного массива мощнее чем кажется на первый взгляд. Далеко не
+                      всегда достаточно выбирать разные данные, иногда приходится выполнять другой код.</p>
+
+                    <p>Предположим что нам надо сформировать массив с фамилиями наших пользователей. Главное условие –
+                      для девушек берётся девичья фамилия.</p>
+
+                    <p>Реализуем эту задачу, используя старый добрый <code>if</code>:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$lastNames</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_map</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">gender</span> <span style="color: #000000;font-weight: bold">===</span> <span style="color: #d14">'female'</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">maidenName</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">lastName</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">},</span> <span style="color: #008080">$users</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Теперь решим эту задачу с помощью диспетчеризации по ключам объекта, но в отличие от предыдущего
+                      урока, в значениях у нас будут функции:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Определяем key-value, где ключ это пол, а значение это функция, возвращающая нужное значение для пола</span>
+<span style="color: #008080">$mapping</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span>
+    <span style="color: #d14">'female'</span> <span style="color: #000000;font-weight: bold">=&gt;</span>
+        <span style="color: #000000;font-weight: bold">fn</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">maidenName</span><span style="background-color: #f8f8f8">,</span>
+    <span style="color: #d14">'male'</span> <span style="color: #000000;font-weight: bold">=&gt;</span>
+        <span style="color: #000000;font-weight: bold">fn</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">lastName</span><span style="background-color: #f8f8f8">,</span>
+<span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #999988;font-style: italic">// Выбираем нужную функцию по названию пола и вызываем её</span>
+<span style="color: #999988;font-style: italic">// Внутрь функции передается пользователь</span>
+<span style="color: #008080">$lastNames</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_map</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">fn</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$mapping</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">gender</span><span style="background-color: #f8f8f8">](</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">),</span> <span style="color: #008080">$users</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p><em>Кода стало немного больше, но хочу подчеркнуть, что во многом &quot;виноват&quot; сам PHP. У
+                        него очень многословный синтаксис определения анонимных функций. Тот же код в JavaScript, будет
+                        практически идентичен по размерам первоначальному варианту.</em></p>
+
+                    <p>В некоторых ситуациях такой вариант решения задачи лучше. В нём явно прослеживаются зависимости,
+                      особенно если их становится много. Кроме того, конфигурация данными позволяет вынести их в другое
+                      место и расширять поведение без переписывания кода, который использует эти данные.</p>
+
+                    <p>Ещё один пример – парсинг данных в зависимости от их типа:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Symfony\Component\Yaml\Yaml</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">parse</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$type</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$data</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$mapping</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span>
+        <span style="color: #d14">'yml'</span> <span style="color: #000000;font-weight: bold">=&gt;</span>
+            <span style="color: #000000;font-weight: bold">fn</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$rawData</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #445588;font-weight: bold">Yaml</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">parse</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$rawData</span><span style="background-color: #f8f8f8">),</span>
+        <span style="color: #d14">'json'</span> <span style="color: #000000;font-weight: bold">=&gt;</span>
+            <span style="color: #000000;font-weight: bold">fn</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$rawData</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #0086B3">json_decode</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$rawData</span><span style="background-color: #f8f8f8">),</span>
+    <span style="background-color: #f8f8f8">];</span>
+
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$mapping</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$type</span><span style="background-color: #f8f8f8">](</span><span style="color: #008080">$data</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://github.com/Hexlet/hexlet-exercise-kit/blob/master/import-documentation/src/index.js#L15">Пример
+                          использования диспетчеризации по ключу в проектах Хекслета</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

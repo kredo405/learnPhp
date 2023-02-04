@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Обмен значений - PHP: Массивы</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <meta content='IE=Edge' http-equiv='X-UA-Compatible'>
+  <meta content='b9d3902d34' name='verify-admitad'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Обмен значений</h1>
+                    <p>Для изменения массива в алгоритмических задачках часто используется приём с введением третьей
+                      переменной. Такое бывает нужно, когда значения в массиве меняются местами.</p>
+
+                    <p>Реализуем функцию <code>reverse</code>, которая располагает значения в обратном порядке без
+                      создания нового массива. Хотя вариант с созданием нового массива предпочтительнее с точки зрения
+                      простоты и поддерживаемости кода, вариант без создания нового массива полезен для более полного
+                      понимания работы алгоритмов.</p>
+
+                    <p>Алгоритм работы следующий: достаточно менять местами элементы, стоящие зеркально относительно
+                      центра. А вот и код:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">reverseArray</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">)</span> 
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$size</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">count</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #008080">$maxIndex</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">floor</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$size</span> <span style="color: #000000;font-weight: bold">/</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #000000;font-weight: bold">for</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">;</span> <span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">&lt;</span> <span style="color: #008080">$maxIndex</span><span style="background-color: #f8f8f8">;</span> <span style="color: #008080">$i</span><span style="color: #000000;font-weight: bold">++</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$mirrorIndex</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$size</span> <span style="color: #000000;font-weight: bold">-</span> <span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">-</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">;</span>
+        <span style="color: #008080">$temp</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$i</span><span style="background-color: #f8f8f8">];</span>
+        <span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$i</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$mirrorIndex</span><span style="background-color: #f8f8f8">];</span>
+        <span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$mirrorIndex</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$temp</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">reverseArray</span><span style="background-color: #f8f8f8">([</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">]));</span>
+<span style="color: #999988;font-style: italic">// =&gt; Array</span>
+<span style="color: #999988;font-style: italic">// =&gt; (</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [0] =&gt; 2</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [1] =&gt; 3</span>
+<span style="color: #999988;font-style: italic">// =&gt; )</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">reverseArray</span><span style="background-color: #f8f8f8">([</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">56</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">]));</span>
+<span style="color: #999988;font-style: italic">// =&gt; Array</span>
+<span style="color: #999988;font-style: italic">// =&gt; (</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [0] =&gt; 2</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [1] =&gt; 56</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [2] =&gt; 3</span>
+<span style="color: #999988;font-style: italic">// =&gt; )</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">reverseArray</span><span style="background-color: #f8f8f8">([</span><span style="color: #d14">'one'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'two'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'three'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'four'</span><span style="background-color: #f8f8f8">]));</span>
+<span style="color: #999988;font-style: italic">// =&gt; Array</span>
+<span style="color: #999988;font-style: italic">// =&gt; (</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [0] =&gt; four</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [1] =&gt; three</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [2] =&gt; two</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [3] =&gt; one</span>
+<span style="color: #999988;font-style: italic">// =&gt; )</span>
+</code></pre>
+                    <p><a href="https://repl.it/@hexlet/php-arrays-exchange"
+                        target="_blank">https://repl.it/@hexlet/php-arrays-exchange</a></p>
+
+                    <p>Первое, с чем нужно разобраться в данном алгоритме — до какого индекса двигаться, производя
+                      обмен. Достаточно очевидно, что это середина массива, но что делать, если в массиве нечётное
+                      количество элементов? В такой ситуации после реверса центральный элемент останется на своём месте,
+                      а значит, что при нечётном числе элементов можно округлять результат деления до нижней границы. То
+                      есть, если в массиве 5 элементов, то нужно 5 поделить на 2 и округлить до ближайшего числа снизу,
+                      то есть до 2. В PHP для округления вниз есть встроенная функция <code>floor</code>. Соответственно
+                      само вычисление выглядит так <code>floor(count($coll) / 2);</code>. Этот код работает универсально
+                      для массивов с чётным и нечётным числом элементов.</p>
+
+                    <p>Внутри тела цикла происходит самое интересное. Нам нужно поменять два значения местами. Если
+                      попытаться сразу одному значению присвоить другое, то мы потеряем исходное значение. Поэтому,
+                      предварительно нужно сохранить значение во временную переменную <code>$temp = $coll[$i];</code>.
+                      Затем происходит вычисление индекса, находящегося на зеркальной позиции, и последующий обмен
+                      значениями.</p>
+
+                    <p>Введение временной переменной для промежуточного хранения результата — распространённый приём в
+                      алгоритмических задачах, который помогает выполнять обмен значениями.</p>
+
+</body>
+
+</html>

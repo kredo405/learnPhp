@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>CRUD - Веб-разработка на PHP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>CRUD</h1>
+                    <p>Несмотря на огромное число разнообразных сайтов, практически всю веб разработку можно свести к <a
+                        href="https://ru.wikipedia.org/wiki/CRUD" target="_blank" rel="nofollow">CRUD</a> операциям.
+                      CRUD широко распространенный термин, означающий 4 стандартные операции над любой сущностью
+                      (ресурсом): создание, чтение, обновление и удаление. Например, в случае с пользователем можно
+                      составить такое соответствие:</p>
+
+                    <p><strong>Create</strong></p>
+
+                    <ul>
+                      <li>Регистрация</li>
+                    </ul>
+
+                    <p><strong>Read</strong></p>
+
+                    <ul>
+                      <li>Просмотр профиля пользователями сайта</li>
+                      <li>Просмотр пользователя в административном интерфейсе</li>
+                    </ul>
+
+                    <p><strong>Update</strong></p>
+
+                    <ul>
+                      <li>Обновление личных данных</li>
+                      <li>Смена емейла</li>
+                      <li>Смена пароля</li>
+                    </ul>
+
+                    <p><strong>Delete</strong></p>
+
+                    <ul>
+                      <li>Удаление</li>
+                    </ul>
+
+                    <p>Точно так же можно расписать действия над любыми другими ресурсами, фотографиями пользователя,
+                      его друзьями, сообщениями и т.п.</p>
+
+                    <p><em>Хозяйке на заметку. Иногда в качестве шутки веб-разработчиков называют крудошлепами, а
+                        фронтенд-разработчиков формошлепами :D</em></p>
+
+                    <p>Создание полного круда включает в себя следующие действия:</p>
+
+                    <ul>
+                      <li>Создание сущности в коде (как правило, класса)</li>
+                      <li>Добавление таблицы в базу</li>
+                      <li>Написание тестов на обработчики</li>
+                      <li>Добавление обработчиков</li>
+                      <li>Добавление шаблонов</li>
+                    </ul>
+
+                    <p>Новички тратят на создание такого круда не один день. У опытного разработчика, в прокачанном
+                      фреймворке, этот процесс занимает максимум часы. Slim, как и другие микрофреймворки, не
+                      предоставляет никаких средств автоматизации, поэтому придется многое делать руками. В целях
+                      обучения это оправданно, но в промышленной разработке, то что может быть автоматизировано, должно
+                      быть автоматизировано.</p>
+
+                    <p>Ниже мы пройдемся по всему процессу создания круда пользователя за исключением работы с базой
+                      данных и тестов. Начнем с роутинга. Полный круд пользователя включает минимум 7 маршрутов. Их
+                      может быть больше, так как любое из действий может повторяться не один раз.</p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Метод</th>
+                          <th>Маршрут</th>
+                          <th>Шаблон</th>
+                          <th>Описание</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>GET</td>
+                          <td>/users</td>
+                          <td>users/index.phtml</td>
+                          <td>Список пользователей</td>
+                        </tr>
+                        <tr>
+                          <td>GET</td>
+                          <td>/users/{id}</td>
+                          <td>users/show.phtml</td>
+                          <td>Профиль пользователя</td>
+                        </tr>
+                        <tr>
+                          <td>GET</td>
+                          <td>/users/new</td>
+                          <td>users/new.phtml</td>
+                          <td>Форма создания нового пользователя</td>
+                        </tr>
+                        <tr>
+                          <td>POST</td>
+                          <td>/users</td>
+                          <td></td>
+                          <td>Создание нового пользователя</td>
+                        </tr>
+                        <tr>
+                          <td>GET</td>
+                          <td>/users/{id}/edit</td>
+                          <td>users/edit.phtml</td>
+                          <td>Форма редактирования пользователя</td>
+                        </tr>
+                        <tr>
+                          <td>PATCH/PUT</td>
+                          <td>/users/{id}</td>
+                          <td></td>
+                          <td>Обновление пользователя</td>
+                        </tr>
+                        <tr>
+                          <td>DELETE</td>
+                          <td>/users/{id}</td>
+                          <td></td>
+                          <td>Удаление пользователя</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p><em>Такое соглашение изначально появилось в Rails и затем было адаптировано во многих фреймворках
+                        на языках отличных от Ruby.</em></p>
+
+                    <p>В этом уроке мы разберем первые два маршрута (просмотр списка и конкретного ресурса), а остальные
+                      в следующих уроках.</p>
+                    <h2 id="spisok-index">Список (index)</h2>
+                    <p>Вывод списка чего-нибудь мы уже делали не раз. Повторим для закрепления. Общий алгоритм действий
+                      такого обработчика всегда проходит по одному сценарию и не зависит от языка программирования:</p>
+
+                    <ol>
+                      <li> Извлекаем список из хранилища (базы данных). Обычно с учетом пейджинга.</li>
+                      <li> Передаем данные в шаблон</li>
+                      <li> Выводим данные в шаблоне используя цикл</li>
+                    </ol>
+
+                    <p><img alt="CRUD Список" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjgyYzQ2YWU4NDI5ZmQzMTI3ODdkMGU5NjY3MGZiNTVlLnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=228b498a03981ca8f4cf088e1dcfa734c0f9b40b4ef0bcb35aeb4ae7b4ac6746"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Обычно в этот список добавляют различные действия, которые можно выполнять над сущностями,
+                      например, редактирование, удаление или просмотр.</p>
+
+                    <p><strong>Обработчик</strong></p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/schools'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$repository</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">App\SchoolRepository</span><span style="background-color: #f8f8f8">();</span>
+    <span style="color: #008080">$schools</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$repository</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">all</span><span style="background-color: #f8f8f8">();</span>
+    <span style="color: #008080">$params</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'schools'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$schools</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'renderer'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">"schools/index.phtml"</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$params</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">})</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">setName</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'schools'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p><strong>Шаблон</strong></p>
+                    <pre class="hljs"><code class=php><span style="color: #000080">&lt;table&gt;</span>
+  <span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">foreach</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$schools</span> <span style="color: #000000;font-weight: bold">as</span> <span style="color: #008080">$school</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">:</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+    <span style="color: #000080">&lt;tr&gt;</span>
+      <span style="color: #000080">&lt;td&gt;</span>
+          <span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #008080">$school</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'id'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+      <span style="color: #000080">&lt;/td&gt;</span>
+      <span style="color: #000080">&lt;td&gt;</span>
+          <span style="color: #000080">&lt;a</span> <span style="color: #008080">href=</span><span style="color: #d14">"/schools/</span><span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #008080">$school</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'id'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #d14">"</span><span style="color: #000080">&gt;</span><span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #008080">$school</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #000080">&lt;/a&gt;</span>
+      <span style="color: #000080">&lt;/td&gt;</span>
+    <span style="color: #000080">&lt;/tr&gt;</span>
+  <span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">endforeach</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+<span style="color: #000080">&lt;/table&gt;</span>
+</code></pre>
+                    <h2 id="otobrazhenie-show">Отображение (show)</h2>
+                    <p>Страница конкретной сущности. Например на Хекслете к таким страницам относятся: профиль
+                      пользователя, страница курса, страница профессии, страница урока и многие другие. Как и в случае
+                      со списком, порядок действий для отображения всегда один и тот же:</p>
+
+                    <ol>
+                      <li> Из адреса извлекается идентификатор сущности</li>
+                      <li> Выполняется поиск сущности в хранилище</li>
+                      <li> Она передается в шаблон</li>
+                      <li> В шаблоне рисуется красивый вывод</li>
+                    </ol>
+
+                    <p><strong>Обработчик</strong></p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/schools/{id}'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #445588;font-weight: bold">array</span> <span style="color: #008080">$args</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$id</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$args</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'id'</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #008080">$repository</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">App\SchoolRepository</span><span style="background-color: #f8f8f8">();</span>
+    <span style="color: #008080">$school</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$repository</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">find</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$id</span><span style="background-color: #f8f8f8">);</span>
+
+    <span style="color: #008080">$params</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span>
+        <span style="color: #d14">'school'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$school</span>
+    <span style="background-color: #f8f8f8">];</span>
+
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'renderer'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'school/show.phtml'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$params</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">})</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">setName</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'school'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p><strong>Шаблон</strong></p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">foreach</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$school</span> <span style="color: #000000;font-weight: bold">as</span> <span style="color: #008080">$key</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$value</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">:</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+  <span style="color: #000080">&lt;div&gt;</span>
+      <span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #008080">$key</span> <span style="color: #999999;font-weight: bold">?&gt;</span>: <span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #008080">$value</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+  <span style="color: #000080">&lt;/div&gt;</span>
+<span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">endforeach</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+</code></pre>
+                    <p>А если сущность была удалена или ее вообще не существовало, как тогда должен вести себя сайт? С
+                      точки зрения HTTP такой адрес должен вернуть HTTP код 404. Сделать это можно явно, вернув
+                      соответствующий ответ.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/schools/{id}'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #445588;font-weight: bold">array</span> <span style="color: #008080">$args</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">use</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$repo</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$id</span> <span style="color: #000000;font-weight: bold">=</span>  <span style="color: #008080">$args</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'id'</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #008080">$school</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$repo</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">find</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$id</span><span style="background-color: #f8f8f8">);</span>
+
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">!</span><span style="color: #008080">$school</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">write</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Page not found'</span><span style="background-color: #f8f8f8">)</span>
+            <span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">withStatus</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">404</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">})</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">setName</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'school'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Но обычно механизм обработки таких ошибок построен через исключения. С ними мы познакомимся в
+                      следующих курсах.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Приведите маршруты и их имена в соответствии с указанной выше схемой.</li>
+                      <li> Переделайте получение пользователей так, чтобы данные о пользователях брались из файла. Не
+                        забудьте предотвратить XSS.</li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="http://rusrails.ru/rails-routing#resursnyy-routing">RESTFull
+                          Routing</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://en.wikipedia.org/wiki/Scaffold_(programming)">Scaffolding</a>
+                      </li>
+                    </ol>
+</body>
+
+</html>

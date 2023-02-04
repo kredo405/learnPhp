@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Константы классов - PHP: Введение в ООП</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Константы классов</h1>
+                    <p>Напомню, что в PHP возможно определять константы. Они используются для хранения каких-то
+                      постоянных данных, которые, как правило, глобальные. Например, константа <code>PHP_VERSION</code>
+                      содержит версию PHP, в которой был запущен код (а его можно запустить на разных версиях
+                      интерпретатора). Эта константа относится к предопределённым (предоставляется интерпретатором). PHP
+                      позволяет создавать свои собственные константы, используя конструкцию
+                      <code>const SEC_PER_DAY = 86400;</code>. Эти константы принадлежат пространству имён и могут быть
+                      импортированы из него, используя конструкцию <code>use const App\Times\SEC_PER_DAY;</code>.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Класс встроен в язык https://php.net/manual/ru/class.datetime.php</span>
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">DateTime</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Константы могут быть как публичными так и приватными</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">const</span> <span style="color: #008080">RSS</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'D, d M Y H:i:s O'</span><span style="background-color: #f8f8f8">;</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">const</span> <span style="color: #008080">RFC822</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'D, d M y H:i:s O'</span><span style="background-color: #f8f8f8">;</span>
+    <span style="color: #000000;font-weight: bold">private</span> <span style="color: #000000;font-weight: bold">const</span> <span style="color: #008080">SOMETHING_FOR_INTERNAL_USING</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'value'</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Внутри классов константы определяются точно таким же способом, как и снаружи. Основное отличие
+                      проявляется в способе доступа.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">DateTime</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #008080">RSS</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; D, d M Y H:i:s O</span>
+</code></pre>
+                    <p>Синтаксически обращение происходит с использованием двух двоеточий после имени класса, за
+                      которыми, в свою очередь, идёт имя константы. Обратите внимание на отсутствие знака
+                      <code>$</code>. Для констант классов нет особого синтаксиса импорта. Он не нужен по очень простой
+                      причине — импортируется в другие пространства имён всегда класс, а константа извлекается уже из
+                      него.</p>
+
+                    <p>Внутри класса к константе можно обратиться ровно таким же образом, но есть и другой способ:</p>
+                    <pre class="hljs"><code class=php>
+<span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">DateTime</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// ...</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">getRssFormat</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #000000;font-weight: bold">self</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #008080">RSS</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>В этом способе вместо имени класса слева стоит ключевое слово <code>self</code>. Его удобство
+                      заключается в отсутствии дублирования имени класса. Эта проблема особенно актуальна при активном
+                      использовании констант внутри самого класса.</p>
+                    <h2 id="predopredelyonnye-konstanty">Предопределённые константы</h2>
+                    <p>Внутри класса определено несколько магических констант:</p>
+
+                    <ul>
+                      <li><code>__CLASS__</code> — текущее имя класса</li>
+                      <li><code>__METHOD__</code> — текущее имя метода</li>
+                    </ul>
+
+                    <p>В отличие от обычных констант, магические не требуют префикса <code>self::</code> и доступны
+                      только внутри класса.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">Example</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">printMethodName</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">__METHOD__</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Кроме магических, в классах есть одна специальная константа <code>class</code>. Она возвращает
+                      полное имя класса и может вызываться только через класс.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">namespace</span> <span style="color: #555555">App</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">User</span>
+<span style="background-color: #f8f8f8">{</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #445588;font-weight: bold">User</span><span style="color: #000000;font-weight: bold">::</span><span style="background-color: #f8f8f8">class</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999988;font-style: italic">// App\User</span>
+</code></pre>
+                    <p>Эта константа возвращает полное имя класса относительно пространства имён, в котором происходит
+                      её вызов.</p>
+                    <h2 id="itogo">Итого</h2>
+                    <p>Даже в такой простой штуке, как константы, зарыто много разных возможностей (и не факт, что это
+                      хорошо). Не пытайтесь их запомнить. В реальности всё это используется не так часто, и когда вам
+                      понадобятся константы, то вы легко найдёте всю необходимую информацию в официальной документации.
+                      Основная цель урока — показать, как бывает.</p>
+
+                    <p>В каких случаях нужно использовать константы? В ситуациях, когда с данным типом (классом) связана
+                      некоторая важная и статическая информация (то есть не меняющаяся). Для класса
+                      <code>DateTime</code> такими константами являются различные форматы даты, закреплённые разными
+                      стандартами. В целом константы не влияют на архитектуру приложения и вообще не относятся к ООП.
+                      Это просто удобное (в рамках ООП-модели PHP) добавление, полезное в некоторых ситуациях.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://php.net/manual/ru/language.oop5.constants.php">Официальная
+                          документация</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

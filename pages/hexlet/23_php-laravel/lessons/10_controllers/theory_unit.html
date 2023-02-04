@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Контроллер - PHP: Laravel</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="EY6tPV1DOByVVpsnCJriFJr2PU4nxTQRFQTs9_agha7ox98IqIchYIyWHgRHCnGO5F52Be1MkYkeJMuWK9n3oQ" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../resource/exercise_unit.html">PHP: Laravel</a>
+                    <h1 class='mt-0 mb-4'>Контроллер</h1>
+                    <p>Реализация CRUD – самый быстрый способ познакомиться с любым веб-фреймворком. Он затрагивает все
+                      основные его части и позволяет понять насколько в этом фреймворке удобно работать.</p>
+
+                    <p>Создать CRUD в Laravel можно несколькими способами. Самый простой – добавить в файл маршрутизации
+                      нужные маршруты вместе с обработчиками. Внутри обработчиков реализовать логику вывода списка,
+                      создания, обновления и удаления статьи. Этот способ очень муторный, он требует много движений от
+                      программиста. И он быстро захламляет файл с маршрутами. Когда таких &quot;крудов&quot; станет хотя
+                      бы несколько штук, то ориентироваться в нем станет проблематично. А если добавить сотню другую как
+                      в реальных проектах, так вообще станет невозможно.</p>
+
+                    <p>Проблема одного файла решается с помощью &quot;контроллера&quot;. В Laravel контроллером называют
+                      класс, который расположен в директории <em>app/HTTP/Controllers</em>. Методы этого класса
+                      связываются с конкретными маршрутами и отвечают за их обработку:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+<span style="color: #999988;font-style: italic">// routes/web.php</span>
+
+<span style="color: #999988;font-style: italic">// Вторым параметром передаётся массив: '[controllerClass, methodName]'</span>
+<span style="color: #445588;font-weight: bold">Route</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'about'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #445588;font-weight: bold">PageController</span><span style="color: #000000;font-weight: bold">::</span><span style="background-color: #f8f8f8">class</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'about'</span><span style="background-color: #f8f8f8">]);</span>
+<span style="color: #445588;font-weight: bold">Route</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'team'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #445588;font-weight: bold">PageController</span><span style="color: #000000;font-weight: bold">::</span><span style="background-color: #f8f8f8">class</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'team'</span><span style="background-color: #f8f8f8">]);</span>
+
+<span style="color: #999988;font-style: italic">// app/HTTP/Controllers/PageController.php</span>
+
+<span style="color: #000000;font-weight: bold">namespace</span> <span style="color: #555555">App\Http\Controllers</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #999988;font-style: italic">// Должен наследоваться от Controller</span>
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">PageController</span> <span style="color: #000000;font-weight: bold">extends</span> <span style="color: #445588;font-weight: bold">Controller</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">about</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">// Точка используется вместо /.</span>
+        <span style="color: #999988;font-style: italic">// То есть шаблон находится по пути resources/views/page/about.blade.php</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #990000;font-weight: bold">view</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'page.about'</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">team</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #990000;font-weight: bold">view</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'page.team'</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Методы в контроллерах принято группировать по смысловой связи. Например, всё, что относится к
+                      обычным страницам на сайте можно поместить в контроллер <em>PageController</em>, а CRUD для статей
+                      — в контроллер <em>ArticleController</em>. Ниже пример структуры контроллеров из нашего открытого
+                      проекта <a href="https://github.com/Hexlet/hexlet-sicp" target="_blank"
+                        rel="nofollow">hexlet-sicp</a>:</p>
+                    <pre class="hljs"><code class=sh>app/Http/Controllers/
+├── Auth
+│   ├── ForgotPasswordController.php
+│   ├── LoginController.php
+│   ├── RegisterController.php
+│   ├── ResetPasswordController.php
+│   ├── Social
+│   │   └── GithubController.php
+│   └── VerificationController.php
+├── Controller.php
+├── HomeController.php
+├── MyController.php
+├── RatingController.php
+├── UserChapterController.php
+└── UserController.php
+</code></pre>
+                    <p>Ещё одно соглашение — расположение шаблонов. Шаблоны одного контроллера лучше группировать
+                      вместе, в одной директории. В примере выше, все шаблоны страниц расположены по пути
+                      <em>resources/views/page</em>. Это позволяет удобнее ориентироваться в шаблонах и избегать
+                      коллизий имён.</p>
+
+                    <p>Контроллеры, также как и модели не нужно создавать руками. Их можно генерировать через
+                      <em>artisan</em>:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>php artisan make:controller PageController
+Controller created successfully.
+</code></pre>
+                    <p>А вот шаблоны и методы контроллера придётся добавлять самостоятельно.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Перенесите обработчик <em>about</em> в контроллер <em>PageController</em>. Убедитесь, что
+                        страница открывается.</li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://laravel.com/docs/8.x/controllers">Controller</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Стратегия (Паттерн) - PHP: Полиморфизм</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="32GuOZYCxXcji7-3Kam4TV-1NepDaSrx5kgfKWbtvbRz3CDId7ncZsirLlo0KNynvgT4WAxOTSq1d_Nf_-UTJg" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../dependency-management/exercise_unit.html">PHP: Полиморфизм</a>
+                    <h1 class='mt-0 mb-4'>Стратегия (Паттерн)</h1>
+                    <p>Закрепим пройденную теорию на одном практическом примере, показывающем типичное применение
+                      полиморфизма подтипов.</p>
+
+                    <p>Представьте себе задачу расчёта стоимости туристической страховки. Это страховка, которую
+                      желательно купить при выезде за границу, на случай внезапных болезней или травм.</p>
+
+                    <p>Сумма страховки зависит от большого числа факторов. Некоторые из факторов могут влиять на сам
+                      процесс подсчёта стоимости, то есть они изменяют не значения в формуле подсчёта, а саму формулу.
+                    </p>
+
+                    <p><em>Конкретно в случае страховок, скорее всего есть одна большая формула, куда подставляются
+                        значения и вычисление происходит за один заход. Для нас сейчас главное сама концепция, а не
+                        точное знание внутренностей страхового бизнеса.</em></p>
+
+                    <p>Если решать эту задачу в лоб, то она будет выглядеть как большое месиво вычислений со множеством
+                      условных конструкций. Со временем такой код становится крайне тяжёлым для восприятия из-за
+                      большого числа состояний, которые надо удерживать в голове.</p>
+                    <pre class="hljs"><code class=php>
+<span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Примеры с потолка</span>
+<span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$age</span> <span style="color: #000000;font-weight: bold">&lt;</span> <span style="color: #009999">18</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+  <span style="color: #008080">$cost</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$salary</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #008080">$age</span><span style="background-color: #f8f8f8">;</span>
+
+  <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$country</span> <span style="color: #000000;font-weight: bold">===</span> <span style="color: #d14">'uganda'</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span> 
+    <span style="color: #008080">$cost</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$cost</span> <span style="color: #000000;font-weight: bold">/</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">;</span>
+  <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span> <span style="color: #000000;font-weight: bold">else</span> <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$age</span> <span style="color: #000000;font-weight: bold">&gt;=</span> <span style="color: #009999">18</span> <span style="color: #000000;font-weight: bold">&amp;&amp;</span> <span style="color: #008080">$age</span> <span style="color: #000000;font-weight: bold">&lt;</span> <span style="color: #009999">24</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// ...</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Можно ли как-то сделать код понятнее и проще для восприятия? Иногда да. Из всех факторов
+                      участвующих в расчёте, нужно попытаться найти те, которые влияют на вычисление глобально. Они
+                      проявляются как глобальный <code>if</code> на верхнем уровне. Предположим, что в случае страховки
+                      это возраст. То есть считаем, что возраст определяет формулу расчёта стоимости страховки.
+                      Следующим шагом смотрим на ветки в этой условной конструкции и то, какие диапазоны там указаны.
+                      Допустим такую картину:</p>
+
+                    <ul>
+                      <li>До 18</li>
+                      <li>От 18 до 24</li>
+                      <li>От 24 до 65</li>
+                      <li>Старше 65</li>
+                    </ul>
+
+                    <p>Обратите внимание на важную деталь. Выше мы договорились, что каждая возрастная группа,
+                      определяет алгоритм расчёта стоимости страховки. То есть они между собой независимы, хотя и сам
+                      процесс вычисления местами может быть схож (и будет скорее всего).</p>
+
+                    <p>Теперь делаем переход от логической структуры к коду. Каждая возрастная группа - класс,
+                      отвечающий за вычисления стоимости для этой группы:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">interface</span> <span style="color: #445588;font-weight: bold">CostInsuranceCalculation</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">calculate</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$params</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">LessThan18</span> <span style="color: #000000;font-weight: bold">implements</span> <span style="color: #445588;font-weight: bold">CostInsuranceCalculation</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Параметры, это те самые факторы, по которым строится вычисление</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">calculate</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$params</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">// тут считаем и возвращаем результат</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #999988;font-style: italic">// Имя конечно так себе, в реальном коде стоит придумать что-нибудь говорящее</span>
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">MoreThan18AndLessThan24</span> <span style="color: #000000;font-weight: bold">implements</span> <span style="color: #445588;font-weight: bold">CostInsuranceCalculation</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Структура параметров должна 100% совпадать с остальными классами,</span>
+    <span style="color: #999988;font-style: italic">// так как только в этом случае возможен полиморфизм</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">calculate</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$params</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">// тут считаем и возвращаем результат</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #999988;font-style: italic">// Остальные классы</span>
+</code></pre>
+                    <p>Главное, что мы получили - разделили процесс вычисления на независимые блоки кода, которые проще
+                      для восприятия. Каждый такой класс называется стратегией (вычисления). Очень важно то, что
+                      стратегия не является абстракцией, объектом с состоянием и временем жизни. Поэтому данные
+                      передаются не в конструктор, а в сам метод (вспомните курс объектно-ориентированный дизайн). По
+                      сути, это обычная функция (вычисление), которая упакована в класс только с одной целью — получить
+                      полиморфизм подтипов. Всё то же самое можно сделать (и код будет проще), используя диспетчеризацию
+                      функций по ключам.</p>
+
+                    <p>Дальше возникает вопрос, а каким образом и где выбрать правильную реализацию, с которой нужно
+                      работать? Вариантов здесь несколько. Выбор реализации может быть делегирован внешнему коду, то
+                      есть если мы применяем инверсию зависимостей, то работаем уже с готовой стратегией:</p>
+                    <pre class="hljs"><code class=php>
+<span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">calculateCost</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$strategy</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$params</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$strategy</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">calculate</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$params</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Пока мы только ушли от проблемы, но не решили её. В любом случае, где-то будет код, который
+                      содержит либо условную конструкцию, либо реализует один из способов диспетчеризации, которые мы
+                      разобрали в предыдущих уроках. В самом простом случае этот код будет выглядеть так:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">chooseCostInsuranceStrategy</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getAge</span><span style="background-color: #f8f8f8">()</span> <span style="color: #000000;font-weight: bold">&lt;</span> <span style="color: #009999">18</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">LessThan18</span><span style="background-color: #f8f8f8">();</span>
+    <span style="background-color: #f8f8f8">}</span> <span style="color: #000000;font-weight: bold">else</span> <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #999988;font-style: italic">/* ... */</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">// some code</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #008080">$strategy</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">chooseCostInsuranceStrategy</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$strategy</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">calculate</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$params</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Как видно по примерам выше, кода с использованием стратегии будет больше (но не так много если
+                      используется диспетчеризация функций по ключам в ассоциативном массиве). Это касается фактически
+                      всех ситуаций, в которых задействован полиморфизм подтипов в PHP. Это цена, которую придётся
+                      заплатить за разделение, упрощающее расширение кода и уменьшающее его сложность. С другой стороны,
+                      очень легко попасть в ловушку и, наоборот, сделать сложность кода выше, чем оно было до внедрения
+                      полиморфизма подтипов. Этот полиморфизм делает код многословным и излишне абстрактным, если
+                      применять его налево и направо. А расширение нужно не так часто, как об этом говорят. Более того,
+                      инвертировать зависимости можно по ходу действия, когда в этом появляется необходимость.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://ru.hexlet.io/blog/posts/expression-problem">Что такое
+                          expression problem</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://ru.hexlet.io/blog/posts/expression-problem">Expression Problem
+                          (англ.)</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Базовая аутентификация - Протокол HTTP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Базовая аутентификация</h1>
+                    <p>HTTP обладает фичей, которая называется базовая аутентификация. Работает она следующим образом.
+                    </p>
+
+                    <p><img alt="Схема работы базовой аутентификации" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImI4Y2Q2NjExOWE3ZWZiYjM2ZmJhODVlZjFhNmYxYTg1LmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=8ef32a8c56ffcf2895f86651204f1fe9626b0f23557385d241cfa507a409e7b4"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>При заходе на конкретную страницу или сайт, которые требуют аутентификации, вы увидите окно
+                      авторизации. Окно рисуется браузером и требует ввода имени и пароля. Я не видел способов повлиять
+                      на дизайн или поля этого окна.</p>
+
+                    <p>Обычно, если ввести неправильные данные, то браузер запросит их повторно. А если нажать на
+                      <em>Сancel</em>, то мы получим ошибку с кодом 401. Т.е. при любой попытке зайти на страницу,
+                      которая требует базовой авторизации, будет получен ответ 401. При этом нет разницы между отправкой
+                      формы с некорректными данными и кликом на кнопку <em>Сancel</em>.</p>
+
+                    <p>В итоге браузер рисует эту форму, когда встречает ошибку 401. Работает она очень просто: либо вы
+                      отсылаете правильный заголовок (правильные данные) либо получаете ошибку 401. Никакой магии,
+                      никаких вариантов действий.</p>
+
+                    <p>Давайте посмотрим, какие данные требуются при таком взаимодействии:</p>
+                    <pre class="hljs"><code class=sh>HTTP/1.1 401 Access Denied
+WWW-Authenticate: Basic <span style="color: #008080">realm</span><span style="color: #000000;font-weight: bold">=</span><span style="color: #d14">"My Server"</span>
+Content-Length: 0
+</code></pre>
+                    <p>Вы не можете зайти и получаете <code>Access Denied</code> и заголовок от сервера
+                      <code>WWW-Authenticate: Basic realm=&quot;My Server&quot;</code>. В этом заголовке есть ключ,
+                      значение которого выводится в диалоговом окне. Больше оно нигде не используется.</p>
+
+                    <p>После ввода логина и пароля происходит отправка следующих заголовков:</p>
+                    <pre class="hljs"><code class=sh>GET /securefiles/ HTTP/1.1
+Host: www.httpwatch.com
+Authorization: Basic <span style="color: #008080">aHR0cHdhdGNoDmY</span><span style="color: #000000;font-weight: bold">=</span>
+</code></pre>
+                    <p>Во-первых, это стандартные заголовки для HTTP 1.1. Во-вторых (и это самое главное), заголовок
+                      <em>Authorization</em>, в котором есть обязательное слово <code>Basic</code> и после пробела
+                      закодированая фраза. Эта фраза состоит из имени пользователя и пароля —
+                      <code>&lt;username&gt;:&lt;password&gt;</code>, закодированных в <em>base64</em>.</p>
+
+                    <p>Этого достаточно. После отправки корректных данных происходит аутентификация, и вы получаете
+                      доступ на сайт или страницу, к которому обратились.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://en.wikipedia.org/wiki/Basic_access_authentication">Basic access
+                          authentication</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

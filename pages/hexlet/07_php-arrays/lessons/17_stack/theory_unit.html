@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Стек - PHP: Массивы</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Стек</h1>
+                    <p>Алгоритмы — это хорошо, но структуры данных — ещё лучше.</p>
+
+                    <p><strong>Структура данных — это конкретный способ хранения и организации данных</strong>. В
+                      зависимости от решаемых задач, удобным оказывается либо один способ организации данных, либо
+                      другой. Как минимум, одну структуру данных вы уже знаете достаточно хорошо — это массив. С точки
+                      зрения организации, массив представляет собой совокупность элементов, к которым имеется
+                      индексированный доступ (доступ по индексу), а вот с точки зрения хранения — все сложнее. Массивы
+                      бывают разные и внутри языка реализуются тоже <a
+                        href="https://ru.wikipedia.org/wiki/Массив_(тип_данных)" target="_blank"
+                        rel="nofollow">по-разному</a>.</p>
+
+                    <p>Каноническая организация хранения массива — непрерывный блок памяти. А индекс в таком случае
+                      играет роль смещения по ней. Именно поэтому индексация в массивах начинается с нуля, так как
+                      указывает на начало этого блока, а индекс под номером 1 уже является смещением. Но на практике всё
+                      сложнее. В PHP нет настоящих массивов. Об этом вы узнаете в следующем курсе.</p>
+
+                    <p>Кроме массивов существует множество других структур данных, таких как списки, хеш-таблицы,
+                      деревья, графы, стек, очередь и другие. Использование структуры данных, подходящей под решаемую
+                      задачу, позволяет кардинально упростить код, устраняя запутанную логику.</p>
+
+                    <p>Некоторые из перечисленных структур данных мы рассмотрим в процессе прохождения курсов и
+                      проектов, другие вам нужно будет подтянуть самостоятельно из книг (книги лучше, чем статьи). В
+                      любом случае алгоритмы и структуры данных (без фанатизма) составляют базу, на которую нанизывается
+                      все остальное в разработке.</p>
+
+                    <p>Стоит разделять три понятия:</p>
+
+                    <ul>
+                      <li>Структура данных</li>
+                      <li>Конкретный тип данных (или просто &quot;тип данных&quot;)</li>
+                      <li>Абстрактный тип данных (АТД)</li>
+                    </ul>
+
+                    <p>Со структурой данных всё понятно, выше было определение. С типом данных тоже все просто.
+                      Например, <em>массив в PHP — это тип данных</em>. Понятие «тип данных» всегда привязано к
+                      конкретному языку и может быть абсолютно чем угодно в зависимости от предпочтений разработчиков
+                      языка. Другими словами, если бы разработчики PHP решили, что числа надо назвать типом данных
+                      Array, то никто бы им этого не запретил, несмотря на абсурдность такого имени для чисел. Кроме
+                      встроенных типов данных, бывают и пользовательские. Так, PHP позволяет создавать интерфейсы и
+                      классы, но об этом мы поговорим чуть позже.</p>
+
+                    <p>А вот абстрактные типы данных — теоретическое понятие. АТД целиком и полностью определяется
+                      набором операций, которые можно выполнять над ним. АТД абстрактный потому, что он ничего не
+                      говорит о способе хранения и существует лишь на бумаге и в головах. А вот уже в конкретных языках
+                      существуют конкретные типы, реализующие АТД.</p>
+
+                    <p>АТД нередко путают с понятием «структура данных», более того, часто, структуры данных и АТД имеют
+                      одно и тоже название.</p>
+                    <h2 id="stek">Стек</h2>
+                    <p>Стек — упорядоченная коллекция элементов, в которой добавление новых и удаление старых элементов
+                      всегда происходит с одного конца коллекции. Обычно его называют вершиной стека.</p>
+
+                    <p><img alt="Стек" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjdiZWI0NDNhMzVmMTYzNDRiZjZkZWI5ZjQ3OGZkN2M3LmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=59464d12326e658a89900892bc6a516663e43c26de13c680dc0f85b687bf6820"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>У стека есть аналоги из реальной жизни. Слово stack с английского переводится как «стопка». По
+                      сути, любая стопка может рассматриваться как стек. Если не применять грубую физическую силу, то со
+                      стопками мы работаем двумя способами. Либо кладём новый элемент (например, книгу) на верхушку
+                      стопки, либо снимаем элемент с верхушки. Ещё более показательный пример — магазин в огнестрельном
+                      оружии. Первый заложенный патрон выйдет из магазина последним. Поэтому стек ещё называют
+                      &quot;Last In First Out&quot; (LIFO), то есть &quot;последний зашёл, первый вышел&quot;.</p>
+
+                    <p><img alt="Магазин" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImU5NWU4OTY5NGY3NWM1MGMzNGE3NjY5NjgzNjY5MDhlLmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=fc2dfa0629f1ead6c47ddfcc19591dfea30f4110552949aac49130f17fd8a625"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Возможно, на этом этапе у вас возник вопрос: ну да, есть стек, но зачем нам всё это?</p>
+
+                    <p>Перед тем, как разбирать конкретную задачу, я покажу вам, что стек играет огромную роль в
+                      программировании. Вспомните, как исполняется любая программа. Одни функции вызывают другие,
+                      которые, в свою очередь, вызывают третьи, и так далее. После того, как выполнение заходит в самую
+                      глубокую функцию, та возвращает значение, и начинается обратный процесс. Сначала идёт выход из
+                      наиболее глубоких функций, затем из тех, что уровнем выше, и так далее до тех пор, пока не дойдёт
+                      до самой внешней функции. Вызов функций — не что иное, как добавление элемента в стек, а возврат —
+                      снятие со стека. Именно так всё устроено на аппаратном уровне. К тому же, если в процессе
+                      выполнения программы происходит ошибка, то её вывод часто называют Stack Trace (трассировка
+                      стека).</p>
+
+                    <p>Другой пример, связанный с программированием — кнопка «назад» в браузере. История посещений
+                      представляет собой стек, каждый новый переход по ссылке добавляет её в историю, а кнопка «назад»
+                      извлекает из стека последний элемент.</p>
+
+                    <p>Стек — абстрактный тип данных со следующим набором операций:</p>
+
+                    <ul>
+                      <li>Добавить в стек (push)</li>
+                      <li>Взять из стека (pop)</li>
+                      <li>Вернуть элемент с вершины стека без удаления (peek)</li>
+                      <li>Проверить на пустоту (isEmpty)</li>
+                      <li>Вернуть размер (size)</li>
+                    </ul>
+
+                    <p>В PHP стек можно создать на основе массивов. Для этого используется следующий набор функций:
+                      <code>array_push</code>, <code>array_pop</code>, <code>empty</code>, <code>count</code>.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$stack</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[];</span>
+<span style="color: #0086B3">array_push</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$stack</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$stack</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// =&gt; Array</span>
+<span style="color: #999988;font-style: italic">// =&gt; (</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [0] =&gt; 3</span>
+<span style="color: #999988;font-style: italic">// =&gt; )</span>
+
+<span style="color: #0086B3">array_push</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$stack</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'Winterfall'</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$stack</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// =&gt; Array</span>
+<span style="color: #999988;font-style: italic">// =&gt; (</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [0] =&gt; 3</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [1] =&gt; Winterfall</span>
+<span style="color: #999988;font-style: italic">// =&gt; )</span>
+
+<span style="color: #0086B3">array_push</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$stack</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$stack</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// =&gt; Array</span>
+<span style="color: #999988;font-style: italic">// =&gt; (</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [0] =&gt; 3</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [1] =&gt; Winterfall</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [2] =&gt; 1</span>
+<span style="color: #999988;font-style: italic">// =&gt; )</span>
+
+<span style="color: #008080">$element1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_pop</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$stack</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"</span><span style="color: #d14">\n</span><span style="color: #d14">{</span><span style="color: #008080">$element1</span><span style="color: #d14">}</span><span style="color: #d14">\n</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// =&gt; 1</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$stack</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// =&gt; Array</span>
+<span style="color: #999988;font-style: italic">// =&gt; (</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [0] =&gt; 3</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [1] =&gt; Winterfall</span>
+<span style="color: #999988;font-style: italic">// =&gt; )</span>
+
+<span style="color: #008080">$element2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_pop</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$stack</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"</span><span style="color: #d14">\n</span><span style="color: #d14">{</span><span style="color: #008080">$element2</span><span style="color: #d14">}</span><span style="color: #d14">\n</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// =&gt; Winterfall</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$stack</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// =&gt; Array</span>
+<span style="color: #999988;font-style: italic">// =&gt; (</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [0] =&gt; 3</span>
+<span style="color: #999988;font-style: italic">// =&gt; )</span>
+</code></pre>
+                    <p><a href="https://repl.it/@hexlet/php-arrays-stack"
+                        target="_blank">https://repl.it/@hexlet/php-arrays-stack</a></p>
+
+                    <p>Обратите внимание, что <code>array_pop</code> и <code>array_push</code> изменяют исходный массив.
+                      <code>array_pop</code> не только изменяет его, но и возвращает элемент, снятый со стека.</p>
+
+                    <p><em>(</em><em>Для любознательных</em><em>: В PHP <a href="https://php.net/manual/ru/book.ds.php"
+                          target="_blank" rel="nofollow">встроена</a> реализация большинства популярных структур данных.
+                        Работа с ними требует знания механизмов ООП в PHP.)</em></p>
+
+                    <p>Рассмотрим задачку, решение которой тривиально при использовании стека. Кстати, её нередко задают
+                      на собеседованиях, как раз чтобы убедиться, хорошо ли вы знаете базовые структуры данных.</p>
+
+                    <p>Задача:</p>
+
+                    <p>Необходимо реализовать функцию, которая проверяет, что парные символы сбалансированы. То есть
+                      каждый открывающий символ имеет закрывающий, и они не перекрываются, например так
+                      <code>[{]}</code>. К таким символам в нашем случае относятся <code>&lt;&gt;, {}, () []</code>.
+                      Входом в функцию может быть <code>()&lt;&gt;{}</code>. Такой пример проходит проверку, а вот этот
+                      уже нет: <code>[({)}]</code>. Здесь происходит перекрытие фигурных и круглых скобок.</p>
+
+                    <p>Решение со стеком выглядит так:</p>
+
+                    <ol>
+                      <li> Если перед нами открывающий элемент, то заносим его в стек</li>
+                      <li> Если закрывающий, то достаём из стека элемент (очевидно, последний добавленный) и смотрим,
+                        что он открывающий для данного закрывающего. Если проверка провалилась, значит выражение не
+                        соответствует требуемому формату.</li>
+                      <li> Если мы дошли до конца строки и стек пустой, то всё хорошо. Если в стеке остались элементы,
+                        то проверка не прошла. Такое может быть, если в начале строки были открывающие элементы, но в
+                        конце не было закрывающих.</li>
+                    </ol>
+
+                    <!-- end list -->
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">checkIfBalanced</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$expression</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$stack</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[];</span>
+    <span style="color: #008080">$startSymbols</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'{'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'('</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'&lt;'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'['</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #008080">$pairs</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'{}'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'()'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'&lt;&gt;'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'[]'</span><span style="background-color: #f8f8f8">];</span>
+
+    <span style="color: #000000;font-weight: bold">for</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$len</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">strlen</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$expression</span><span style="background-color: #f8f8f8">);</span> <span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">&lt;</span> <span style="color: #008080">$len</span><span style="background-color: #f8f8f8">;</span> <span style="color: #008080">$i</span><span style="color: #000000;font-weight: bold">++</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$curr</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$expression</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$i</span><span style="background-color: #f8f8f8">];</span> 
+        <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #0086B3">in_array</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$curr</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$startSymbols</span><span style="background-color: #f8f8f8">))</span> <span style="background-color: #f8f8f8">{</span>
+            <span style="color: #0086B3">array_push</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$stack</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$curr</span><span style="background-color: #f8f8f8">);</span>
+        <span style="background-color: #f8f8f8">}</span> <span style="color: #000000;font-weight: bold">else</span> <span style="background-color: #f8f8f8">{</span>
+            <span style="color: #008080">$prev</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_pop</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$stack</span><span style="background-color: #f8f8f8">);</span> 
+            <span style="color: #008080">$pair</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">"</span><span style="color: #d14">{</span><span style="color: #008080">$prev</span><span style="color: #d14">}{</span><span style="color: #008080">$curr</span><span style="color: #d14">}</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">;</span>
+            <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">!</span><span style="color: #0086B3">in_array</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$pair</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$pairs</span><span style="background-color: #f8f8f8">))</span> <span style="background-color: #f8f8f8">{</span>
+                <span style="color: #000000;font-weight: bold">return</span> <span style="color: #000000;font-weight: bold">false</span><span style="background-color: #f8f8f8">;</span>
+            <span style="background-color: #f8f8f8">}</span>
+        <span style="background-color: #f8f8f8">}</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #0086B3">count</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$stack</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">===</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #0086B3">var_dump</span><span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">checkIfBalanced</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'['</span><span style="background-color: #f8f8f8">));</span> <span style="color: #999988;font-style: italic">// =&gt; bool(false)</span>
+<span style="color: #0086B3">var_dump</span><span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">checkIfBalanced</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'}{'</span><span style="background-color: #f8f8f8">));</span> <span style="color: #999988;font-style: italic">// =&gt; bool(false)</span>
+<span style="color: #0086B3">var_dump</span><span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">checkIfBalanced</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'(([&lt;&gt;]){})'</span><span style="background-color: #f8f8f8">));</span> <span style="color: #999988;font-style: italic">// =&gt; bool(true)</span>
+<span style="color: #0086B3">var_dump</span><span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">checkIfBalanced</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'([{]})'</span><span style="background-color: #f8f8f8">));</span> <span style="color: #999988;font-style: italic">// =&gt; bool(false)</span>
+</code></pre>
+                    <p><a href="https://repl.it/@hexlet/php-arrays-stack-balancing"
+                        target="_blank">https://repl.it/@hexlet/php-arrays-stack-balancing</a></p>
+
+                    <p>Разберём его построчно:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">checkIfBalanced</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">string</span> <span style="color: #008080">$expression</span><span style="background-color: #f8f8f8">):</span> <span style="color: #445588;font-weight: bold">boolean</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Инициализируем стек</span>
+    <span style="color: #008080">$stack</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[];</span>
+    <span style="color: #999988;font-style: italic">// Инициализируем список открывающих элементов</span>
+    <span style="color: #008080">$startSymbols</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'{'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'('</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'&lt;'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'['</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #999988;font-style: italic">// Инициализируем список пар.</span>
+    <span style="color: #008080">$pairs</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'{}'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'()'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'&lt;&gt;'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'[]'</span><span style="background-color: #f8f8f8">];</span>
+
+    <span style="color: #999988;font-style: italic">// Проходимся по строке от первого до последнего символа</span>
+    <span style="color: #000000;font-weight: bold">for</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">;</span> <span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">&lt;</span> <span style="color: #0086B3">strlen</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$expression</span><span style="background-color: #f8f8f8">);</span> <span style="color: #008080">$i</span><span style="color: #000000;font-weight: bold">++</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$curr</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$expression</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$i</span><span style="background-color: #f8f8f8">];</span>
+        <span style="color: #999988;font-style: italic">// Если текущий символ находится в списке открывающих символов, то заносим его в стек</span>
+        <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #0086B3">in_array</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$curr</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$startSymbols</span><span style="background-color: #f8f8f8">))</span> <span style="background-color: #f8f8f8">{</span>
+            <span style="color: #0086B3">array_push</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$stack</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$curr</span><span style="background-color: #f8f8f8">);</span>
+        <span style="background-color: #f8f8f8">}</span> <span style="color: #000000;font-weight: bold">else</span> <span style="background-color: #f8f8f8">{</span> <span style="color: #999988;font-style: italic">// Если элемент не входит в список открывающих, значит считаем что это закрывающий символ</span>
+            <span style="color: #008080">$prev</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_pop</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$stack</span><span style="background-color: #f8f8f8">);</span>
+            <span style="color: #999988;font-style: italic">// Составляем из этих символов пару</span>
+            <span style="color: #008080">$pair</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">"</span><span style="color: #d14">{</span><span style="color: #008080">$prev</span><span style="color: #d14">}{</span><span style="color: #008080">$curr</span><span style="color: #d14">}</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">;</span>
+            <span style="color: #999988;font-style: italic">// Проверяем, что она входит в список $pairs. Если входит, то все правильно, двигаемся дальше; если нет,</span>
+            <span style="color: #999988;font-style: italic">// то это автоматически означает, что символы не сбалансированы</span>
+            <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">!</span><span style="color: #0086B3">in_array</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$pair</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$pairs</span><span style="background-color: #f8f8f8">))</span> <span style="background-color: #f8f8f8">{</span>
+                <span style="color: #000000;font-weight: bold">return</span> <span style="color: #000000;font-weight: bold">false</span><span style="background-color: #f8f8f8">;</span>
+            <span style="background-color: #f8f8f8">}</span>
+        <span style="background-color: #f8f8f8">}</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #999988;font-style: italic">// Если стек оказался пустой после обхода строки, то значит все хорошо</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #0086B3">count</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$stack</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">===</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Предположим, что на вход функции попала следующая строка: <code>[{]</code>. Ниже описание
+                      ключевых шагов при выполнении функции проверки:</p>
+
+                    <ol>
+                      <li> Первый символ <code>[</code> заносится в стек, так как он входит в список открывающих</li>
+                      <li> Символ <code>{</code> также заносится в стек по той же самой причине</li>
+                      <li> Символ <code>]</code> относится к закрывающим, поэтому со стека забирается последний символ
+                        <code>{</code>. Из них составляется пара <code>{]</code>, которая не проходит проверку.</li>
+                    </ol>
+                    <h2 id="semantika">Семантика</h2>
+                    <p>Может возникнуть соблазн использовать эти функции в повседневной практике. Например, чтобы
+                      извлечь из массива последний элемент. Несмотря на то, что <code>array_pop</code> действительно
+                      позволяет это сделать, такой вариант использования крайне нежелателен по нескольким причинам:</p>
+
+                    <ol>
+                      <li> Побочный эффект данной операции — изменение исходного массива. Даже если далее массив не
+                        используется, такой код вносит потенциальные проблемы и заставляет его переписывать в будущем.
+                      </li>
+                      <li> Нарушается семантика. Инструменты нужно использовать по назначению, иначе рождается код,
+                        который декларирует одно, но в реальности делает другое. Любой опытный программист, который
+                        видит <code>array_pop</code> или <code>array_push</code> сразу считает, что массив в данной
+                        части программы используется как стек, но на самом деле он этого не делает. Подобный код
+                        заставляет напрягаться и анализировать его лишний раз для понимания сути.</li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://php.net/manual/ru/function.array-push.php">array_push</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://php.net/manual/ru/function.array-pop.php">array_pop</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Отправка форм - Протокол HTTP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Отправка форм</h1>
+                    <p>В этом уроке мы рассмотрим особенности отправки форм в HTTP. Работать будем с локально поднятым
+                      сервером, так как со сторонними серверами при тестировании на них наших уроках возникают
+                      сложности. В принципе, вы можете поэкспериментировать на любом доступном сервере. Только
+                      убедитесь, что он работает по HTTP, а не по HTTPS, так как там взаимодействие происходит немного
+                      по-другому и одного telnet будет недостаточно.</p>
+
+                    <p>При отправке формы мы отправляем какие-то данные и, так как в HTTP не предусмотрены специальные
+                      места для отправки данных из форм, они отправляются в теле запроса. При этом в зависимости от
+                      того, какой заголовок <em>Content-Type</em> установлен, интерпретируется то, как будут
+                      закодированы данные при отправке. Обычно используется следующий формат <em>Content-Type:
+                        application/x-www-form-urlencoded</em>. Это простой формат — ключ равно значение и амперсанд
+                      между ними.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">login</span><span style="color: #000000;font-weight: bold">=</span>user&amp;password<span style="color: #000000;font-weight: bold">=</span>12345678
+</code></pre>
+                    <p>Таким нехитрым способом, мы можем продолжать строку, передавая столько данных, сколько захотим.
+                      Теперь попробуем сделать запрос к нашему локальному серверу.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>telnet localhost 8080
+POST /login HTTP/1.1
+Host: hexlettesthost.com
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 28
+
+<span style="color: #008080">login</span><span style="color: #000000;font-weight: bold">=</span>user&amp;password<span style="color: #000000;font-weight: bold">=</span>12345678 <span style="color: #999988;font-style: italic"># отправляем данные</span>
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Connection: close
+Content-Type: text/html<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">charset</span><span style="color: #000000;font-weight: bold">=</span>utf-8
+Content-Length: 7
+ETag: W/<span style="color: #d14">"c-r0WEeVxJ7IpMIG20rN7HX9ndB4c"</span>
+Date: Thu, 09 Jul 2020 03:32:54 GMT
+
+Done!
+Connection closed by foreign host.
+</code></pre>
+                    <p>После отправки сервер, получив те 28 символов, которые мы указали в <em>Content-Length</em>,
+                      сразу отправляет нам ответ <em>HTTP/1.1 200 OK</em>, в <em>body</em> которого одно слово
+                      <code>Done!</code>. Как видим, в ответе также присутствует <em>Content-Length</em> равный
+                      <code>7</code>.</p>
+
+                    <p>Есть еще несколько особенностей, которые нужно знать, когда мы работаем с формами в HTTP. Первая
+                      из них связана с кодированием. Поскольку это текстовый формат, то в нём очень легко допустить
+                      различные неоднозначности. Предположим в пароле используется знак <code>=</code>.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">login</span><span style="color: #000000;font-weight: bold">=</span>user&amp;password<span style="color: #000000;font-weight: bold">=</span><span style="color: #008080">1234</span><span style="color: #000000;font-weight: bold">=</span>5678
+</code></pre>
+                    <p>Каким образом правильно распарсить этот результат? Не исключено, что сервер поймёт то, что мы
+                      отправляем, так как парсинг происходит слева направо, но это ничем не гарантировано. Более того, в
+                      названии поля также могут быть специальные символы. Поэтому все, что отправляется на сервер,
+                      должно быть закодировано. Обычно кодированием занимаются браузеры. Но в целом, если вы пишете
+                      какие-то скрипты и используемые библиотеки об этом не заботятся, это должны сделать вы.
+                      Закодированный символ <code>=</code> выглядит так — <code>%3D</code> и не важно, какой это запрос:
+                      <em>POST</em> или <em>GET</em>. Такие закодированные последовательности символов вы можете часто
+                      видеть в адресной строке браузера. <em>body</em> с закодированным <code>=</code> приводится в
+                      примере ниже:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">login</span><span style="color: #000000;font-weight: bold">=</span>user&amp;password<span style="color: #000000;font-weight: bold">=</span>1234%3D5678
+</code></pre>
+                    <p>Еще одна особенность связана с тем, что иногда нам нужно отправить данные вложенные друг в друга.
+                      Например, массив опций. В таком случае тело может выглядеть так:</p>
+
+                    <p><img alt="Кодирование данных формы" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjlhMWVjM2ExYjZiZDIyZmUwOTE0NjVlMjk1MTQwMTdkLmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=79ad295109e0909922cfb8becafc58a35e3312bc443494afabdd8c0e2db7f246"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+                    <pre class="hljs"><code class=sh>user[login]<span style="color: #000000;font-weight: bold">=</span>user&amp;user[password]<span style="color: #000000;font-weight: bold">=</span>12345678
+</code></pre>
+                    <p>Нюанс в том, что HTTP не умеет работать с такими данными. Их обработкой занимаются мидлвары
+                      (англ. middlewares — промежуточное программное обеспечение). Но если вы, например, пишете свою
+                      собственную реализацию сервера, вам придется парсить такие данные самостоятельно.</p>
+                    <h2 id="drugie-sposoby-kodirovaniya">Другие способы кодирования</h2>
+                    <p>Помимо обычного кодирования <em>ключ=значение</em> существуют и другие форматы, но самым
+                      популярным на сегодняшний день является формат JSON. У него достаточно много преимуществ, в числе
+                      которых:</p>
+
+                    <ul>
+                      <li>JSON представляет из себя строку, что и необходимо при передаче данных по сети</li>
+                      <li>Не зависит от языка</li>
+                      <li>С его помощью можно описывать сложные иерархические структуры</li>
+                      <li>Легко читается человеком</li>
+                    </ul>
+
+                    <p>В данный момент он считается стандартом для обмена информацией между сервисами в интернете.
+                      Строка JSON выглядит следующим образом:</p>
+                    <pre class="hljs"><code class=json><span style="background-color: #f8f8f8">{</span><span style="color: #bbbbbb">
+    </span><span style="color: #990000;font-weight: bold">"firstName"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"John"</span><span style="background-color: #f8f8f8">,</span><span style="color: #bbbbbb">
+    </span><span style="color: #990000;font-weight: bold">"lastName"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"Smith"</span><span style="background-color: #f8f8f8">,</span><span style="color: #bbbbbb">
+    </span><span style="color: #990000;font-weight: bold">"children"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="background-color: #f8f8f8">[</span><span style="color: #bbbbbb">
+        </span><span style="background-color: #f8f8f8">{</span><span style="color: #bbbbbb">
+            </span><span style="color: #990000;font-weight: bold">"firstName"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"Max"</span><span style="background-color: #f8f8f8">,</span><span style="color: #bbbbbb">
+            </span><span style="color: #990000;font-weight: bold">"lastName"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"Smith"</span><span style="background-color: #f8f8f8">,</span><span style="color: #bbbbbb">
+        </span><span style="background-color: #f8f8f8">},</span><span style="color: #bbbbbb">
+        </span><span style="background-color: #f8f8f8">{</span><span style="color: #bbbbbb">
+            </span><span style="color: #990000;font-weight: bold">"firstName"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"Annie"</span><span style="background-color: #f8f8f8">,</span><span style="color: #bbbbbb">
+            </span><span style="color: #990000;font-weight: bold">"lastName"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"Smith"</span><span style="background-color: #f8f8f8">,</span><span style="color: #bbbbbb">
+        </span><span style="background-color: #f8f8f8">}</span><span style="color: #bbbbbb">
+    </span><span style="background-color: #f8f8f8">]</span><span style="color: #bbbbbb">
+</span><span style="background-color: #f8f8f8">}</span><span style="color: #bbbbbb">
+</span></code></pre>
+                    <p>Для отправки данных в этом формате используется заголовок <em>Content-Type:
+                        application/json</em>.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://ru.code-basics.com/languages/html/lessons/form-basics">Формы в
+                          HTML</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://developer.mozilla.org/ru/docs/Learn/HTML/Forms">Отправка данных
+                          по HTTP</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://ru.wikipedia.org/wiki/JSON">JSON</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

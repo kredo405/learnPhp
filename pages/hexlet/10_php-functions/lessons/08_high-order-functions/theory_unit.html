@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Функции высшего порядка - PHP: Функции</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Функции высшего порядка</h1>
+                    <p>Пока мы рассмотрели только одну возможность объектов первого рода применительно к функциям —
+                      присвоение переменной. Самое интересное начинается, когда мы передаём одни функции в другие
+                      функции.</p>
+
+                    <p>За примерами далеко ходить не придётся. Вспомним сортировку. В PHP есть функция
+                      <code>sort</code>, которая принимает на вход массив и сортирует его. Казалось бы, все отлично, и
+                      не о чем больше мечтать, но давайте вообразим себе ситуацию: на вход в программу приходит список
+                      пользователей, который нужно отсортировать по возрасту и вывести на экран.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$users</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Igor'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'age'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">19</span><span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Danil'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'age'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Vovan'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'age'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">4</span><span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Matvey'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'age'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">16</span><span style="background-color: #f8f8f8">],</span>
+<span style="background-color: #f8f8f8">];</span>
+</code></pre>
+                    <p>При таких условиях функция <code>sort</code> становится абсолютно бесполезной, потому что она
+                      может сортировать только списки примитивных типов данных. Но выше я описал только лишь одну из
+                      тысяч возможных ситуаций. Мы можем захотеть сортировать по любому параметру (или даже по набору
+                      параметров) и в любом порядке. Сортировки нужны часто, и многие из них довольно сложны. Худшее,
+                      что можно начать делать — реализовывать функцию <code>sort</code> под каждую ситуацию. Так что же
+                      делать? Если покопаться в документации PHP, то можно обнаружить функцию <a
+                        href="https://php.net/manual/ru/function.usort.php" target="_blank" rel="nofollow">usort</a>. Её
+                      определение звучит так:</p>
+
+                    <blockquote>
+                      <p>Сортирует массив по значениям, используя пользовательскую функцию для сравнения элементов</p>
+                    </blockquote>
+                    <pre class="hljs"><code class=>bool usort ( array &amp;$array , callable $value_compare_func )
+</code></pre>
+                    <p>Эта функция сортирует элементы массива, используя для сравнения значений callback-функцию,
+                      предоставленную пользователем. Используйте эту функцию, если вам нужно отсортировать массив по
+                      какому-нибудь необычному признаку. Слово callback означает то, что наша задача — передать функцию
+                      (но не вызывать!), а вызывать её будет функция <code>usort</code>.</p>
+
+                    <p>Общая идея состоит в том, что нам не нужно реализовывать алгоритм сортировки каждый раз для
+                      каждой ситуации, ведь он не меняется. Все, что меняется — элементы, которые сравниваются между
+                      собой в процессе сортировки. И функция <code>usort</code> делегирует взаимодействие с этими
+                      элементами вызывающему коду.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$cmp</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$a</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$b</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+  <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$a</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'age'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">===</span> <span style="color: #008080">$b</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'age'</span><span style="background-color: #f8f8f8">])</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">;</span>
+  <span style="background-color: #f8f8f8">}</span>
+  <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$a</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'age'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">&gt;</span> <span style="color: #008080">$b</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'age'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">?</span> <span style="color: #009999">1</span> <span style="color: #000000;font-weight: bold">:</span> <span style="color: #000000;font-weight: bold">-</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">};</span>
+
+<span style="color: #0086B3">usort</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$users</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$cmp</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$users</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// =&gt; [</span>
+<span style="color: #999988;font-style: italic">//      ['name' =&gt; 'Danil', 'age' =&gt; 1],</span>
+<span style="color: #999988;font-style: italic">//      ['name' =&gt; 'Vovan', 'age' =&gt; 4],</span>
+<span style="color: #999988;font-style: italic">//      ['name' =&gt; 'Matvey', 'age' =&gt; 16],</span>
+<span style="color: #999988;font-style: italic">//      ['name' =&gt; 'Igor', 'age' =&gt; 19],</span>
+<span style="color: #999988;font-style: italic">//    ];</span>
+</code></pre>
+                    <p><a href="https://repl.it/@hexlet/php-functions-high-order-functions-usort"
+                        target="_blank">https://repl.it/@hexlet/php-functions-high-order-functions-usort</a></p>
+
+                    <p>Функция <code>usort</code> выполняет всю работу по непосредственному перемещению элементов в
+                      массиве, но то, какой элемент больше или меньше, — зависит от вас. Достигается подобная схема за
+                      счёт той самой пользовательской функции, передающейся вторым параметром. Эта функция принимает на
+                      вход два параметра — <code>usort</code> отдаёт в неё два элемента, которые она сравнивает в данный
+                      момент. В нашем случае элементы — пользователи. Ваша задача — внутри этой функции посчитать, что
+                      больше или меньше, и сделать следующее. Если элементы равны, то вы должны вернуть <code>0</code>,
+                      если первый элемент больше второго, то считается, что они отсортированы неправильно, и вы должны
+                      вернуть <code>1</code>, иначе возвращается <code>-1</code>, а <code>usort</code> производит их
+                      сортировку.</p>
+
+                    <p>Из кода выше видно, что внутри функции сравнение идёт по свойству <code>age</code> переданных
+                      пользователей. Нетрудно догадаться, что эта функция вызывается внутри <code>usort</code> множество
+                      раз (а именно на каждое сравнение). Как только она начнёт возвращать <code>-1</code> для каждой
+                      пары элементов — сортировка завершена.</p>
+
+                    <p>Код выше можно упростить воспользовавшись специальным оператором <code>&lt;=&gt;</code>
+                      (spaceship). Он возвращает <code>1</code>, <code>-1</code> или <code>0</code> в зависимости от
+                      того, как соотносятся его операнды, и работает так, как того ожидает сортировка:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #009999">3</span> <span style="color: #000000;font-weight: bold">&lt;=&gt;</span> <span style="color: #009999">5</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999988;font-style: italic">// -1 (выражение слева от оператора "&lt;=&gt;" меньше выражения справа)</span>
+<span style="color: #009999">5</span> <span style="color: #000000;font-weight: bold">&lt;=&gt;</span> <span style="color: #009999">5</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999988;font-style: italic">// 0 (выражения слева и справа равны)</span>
+<span style="color: #009999">5</span> <span style="color: #000000;font-weight: bold">&lt;=&gt;</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999988;font-style: italic">// 1 (выражение слева больше выражения справа)</span>
+</code></pre>
+                    <p>Тогда код сокращается до такого:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$cmp</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">fn</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$a</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$b</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$a</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'age'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">&lt;=&gt;</span> <span style="color: #008080">$b</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'age'</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #0086B3">usort</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$users</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$cmp</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Функция <code>usort</code> относится к так называемым функциям высшего порядка (high order
+                      functions). Функции высшего порядка — это функции, которые либо принимают, либо возвращают другие
+                      функции, либо делают все сразу. Такие функции, как правило, реализуют некий обобщённый алгоритм
+                      (например, сортировку), а ключевую часть логики делегируют вам через callback-функцию. Главный
+                      плюс от применения таких функций — серьёзное повышение коэффициента повторного использования кода.
+                    </p>
+
+                    <p>В примере выше не обязательно создавать переменную для функции. Говоря откровенно, их вообще
+                      редко записывают в переменные. Типичное использование выглядит как прямая передача функции в
+                      функцию:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #0086B3">usort</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$users</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">fn</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$a</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$b</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$a</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'age'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">&lt;=&gt;</span> <span style="color: #008080">$b</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'age'</span><span style="background-color: #f8f8f8">]);</span>
+</code></pre>
+                    <p>Потратьте немного времени, чтобы понять, где заканчивается одна функция и начинается другая.
+                      Подобный код мы начнём использовать уже со следующего урока.</p>
+
+                    <p>Осталось рассмотреть то, как происходит вызов внутри. С точки зрения синтаксиса ничего нового не
+                      будет.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">say</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">callable</span> <span style="color: #008080">$fn</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$fn</span><span style="background-color: #f8f8f8">();</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #990000;font-weight: bold">say</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">fn</span><span style="background-color: #f8f8f8">()</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'hi!'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; hi!</span>
+</code></pre>
+                    <p>Функция <code>say</code> делает вызов функции, находящейся внутри переменной <code>$fn</code>. В
+                      нашем примере функция возвращает строку, которая тут же выводится на экран.</p>
+
+                    <p>Функции высшего порядка настолько удобны в большинстве языков, что практически целиком могут
+                      заменить использование тех же циклов. В следующих уроках мы рассмотрим три самые главные функции
+                      высшего порядка, которыми можно решать практически любые задачи.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://www.phptherightway.com/pages/Functional-Programming.html">PHP
+                          The Right Way</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

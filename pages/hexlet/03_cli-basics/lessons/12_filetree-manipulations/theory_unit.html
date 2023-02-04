@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Манипулирование файловой структурой - Основы командной строки</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="aUgIk6KKoweU-5jtS5Pmaev4oHoOr0Jhok7bWwyzgDeCvz3Zu-KDVpuLoNfPwPfk6u3s7hMFCYnC1B2Hsgkm3Q" />
+  <meta name="csp-nonce" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <meta content='IE=Edge' http-equiv='X-UA-Compatible'>
+  <meta content='b9d3902d34' name='verify-admitad'>
+  <meta content='article' property='og:type'>
+  <meta content='Манипулирование файловой структурой / Основы командной строки' property='og:title'>
+  <meta
+    content='Манипулирование файловой структурой / Основы командной строки: Научиться создавать и модифицировать файлы и директории'
+    property='og:description'>
+  <meta
+    content='Манипулирование файловой структурой / Основы командной строки: Научиться создавать и модифицировать файлы и директории'
+    name='description'>
+  <meta content='noarchive' name='robots'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Манипулирование файловой структурой</h1>
+                    <p>Файловую структуру можно не только просматривать, но и всячески модифицировать. В прошлом уроке
+                      мы научились создавать файлы через перенаправление потоков, но всё это можно делать и напрямую.
+                    </p>
+
+                    <p><em>Учтите, что возможность модифицировать файловую структуру завязана на права пользователя.
+                        Если у вас нет соответствующих прав, вы получите ошибку доступа. Место, где вы гарантированно
+                        можете экспериментировать — ваша домашняя директория. Внутри неё всё доступно на запись.</em>
+                    </p>
+
+                    <p>Для примеров этого урока мы создали каталог <code>test</code> в домашней директории. То есть все
+                      демонстрируемые команды выполняются в директории по адресу: <code>~/test</code>.</p>
+
+                    <p>Для создания файлов принято использовать утилиту <code>touch</code>.</p>
+
+                    <p><em>Основная задача утилиты — поменять время последнего доступа к файлу, но она обладает побочным
+                        эффектом. Если файла не существует, то он будет создан — именно поэтому её используют для
+                        создания файлов, хотя это не основное предназначение.</em></p>
+                    <pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># В текущей директории создаётся пустой файл</span>
+<span style="color: #0086B3">touch </span>empty-file
+</code></pre>
+                    <script src="https://asciinema.org/a/EK9l2zlzVa8CsHYA9SzTJTrKZ.js"
+                      id="asciicast-EK9l2zlzVa8CsHYA9SzTJTrKZ" data-cols="120" data-rows="14" data-preload="1"
+                      async></script>
+
+                    <p>Удаляется файл командой <code>rm</code> (remove files):</p>
+                    <pre class="hljs"><code class=sh><span style="color: #0086B3">rm </span>empty-file
+</code></pre>
+                    <script src="https://asciinema.org/a/z9BTi5w3UOy0Fp1misw630u38.js"
+                      id="asciicast-z9BTi5w3UOy0Fp1misw630u38" data-cols="120" data-rows="14" data-preload="1"
+                      async></script>
+
+                    <p>В *nix-системах не существует понятия &quot;переименовать файл&quot;. Переименование всегда
+                      равносильно перемещению, которое выполняется командой <code>mv</code> (move)</p>
+                    <pre class="hljs"><code class=sh><span style="color: #0086B3">touch </span>file
+<span style="color: #0086B3">mv </span>file renamed-file
+</code></pre>
+                    <script src="https://asciinema.org/a/nHCJLgmnw0HoOKp4Sh0Yp9m6k.js"
+                      id="asciicast-nHCJLgmnw0HoOKp4Sh0Yp9m6k" data-cols="120" data-rows="19" data-preload="1"
+                      async></script>
+
+                    <p>Для копирования файлов и директорий используется утилита <code>cp</code> (copy). Её первый
+                      аргумент — имя источника (откуда), второй — имя приёмника (куда).</p>
+                    <pre class="hljs"><code class=sh><span style="color: #0086B3">cp </span>renamed-file renamed-file-copy
+</code></pre>
+                    <script src="https://asciinema.org/a/Pag7yOALRusxRXNYL9n7Ef1I0.js"
+                      id="asciicast-Pag7yOALRusxRXNYL9n7Ef1I0" data-cols="120" data-rows="15" data-preload="1"
+                      async></script>
+
+                    <p>Для копирования директории нужно добавить флаг <code>-r</code> (recursive).</p>
+
+                    <p>Все эти и последующие утилиты работают с файлами и директориями, расположенными в любом месте
+                      файловой системы. Поэтому вы всегда можете передать любой путь: <code>touch /tmp/tempfile</code>.
+                    </p>
+
+                    <p>Утилиты для работы с директориями частично отличаются. Создание директории выполняется командой
+                      <code>mkdir</code> (make directory).</p>
+                    <pre class="hljs"><code class=sh><span style="color: #0086B3">mkdir </span>my-dir
+</code></pre>
+                    <script src="https://asciinema.org/a/o9hWi8qsQiLddJKGDP4WXHy84.js"
+                      id="asciicast-o9hWi8qsQiLddJKGDP4WXHy84" data-cols="120" data-rows="17" data-preload="1"
+                      async></script>
+
+                    <p>По умолчанию эта команда не создаёт вложенных директорий:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #0086B3">mkdir </span>one/two/three
+<span style="color: #0086B3">mkdir</span>: cannot create directory ‘one/two/three’: No such file or directory
+</code></pre>
+                    <script src="https://asciinema.org/a/TvPdYV7ZBKp3TLzbDXjWJrkig.js"
+                      id="asciicast-TvPdYV7ZBKp3TLzbDXjWJrkig" data-cols="120" data-rows="13" data-preload="1"
+                      async></script>
+
+                    <p>В такой ситуации придётся либо создавать каждую директорию отдельно, либо воспользоваться флагом
+                      <code>-p</code>, который создаёт директории рекурсивно.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #0086B3">mkdir</span> <span style="color: #000080">-p</span> one/two/three
+</code></pre>
+                    <script src="https://asciinema.org/a/795AjrJ5Mo52KbzIxdZa0npzB.js"
+                      id="asciicast-795AjrJ5Mo52KbzIxdZa0npzB" data-cols="120" data-rows="24" data-preload="1"
+                      async></script>
+
+                    <p>Удаление директорий выполняется той же командой, что и удаление файлов, но без флагов оно выдаёт
+                      предупреждение:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #0086B3">rm </span>my-dir/
+<span style="color: #0086B3">rm</span>: cannot remove <span style="color: #d14">'my-dir/'</span>: Is a directory
+</code></pre>
+                    <script src="https://asciinema.org/a/qYUXYAB52YDBVQAV8V1EGdARg.js"
+                      id="asciicast-qYUXYAB52YDBVQAV8V1EGdARg" data-cols="120" data-rows="14" data-preload="1"
+                      async></script>
+
+                    <p>Чтобы не было ошибки, нужно добавить флаг <code>-r</code>. Он включает режим рекурсивного (r —
+                      recursion) удаления содержимого директорий, то есть идёт просмотр всего, что внутри во всех
+                      вложенных директориях и поддиректориях (до самого конца).</p>
+                    <pre class="hljs"><code class=sh><span style="color: #0086B3">rm</span> <span style="color: #000080">-r</span> my-dir
+</code></pre>
+                    <script src="https://asciinema.org/a/Jz48g4nO2bQttoiSVXfV31vuP.js"
+                      id="asciicast-Jz48g4nO2bQttoiSVXfV31vuP" data-cols="120" data-rows="19" data-preload="1"
+                      async></script>
+
+                    <p>Если внутри директории содержатся файлы или директории с ограниченными правами доступа, например,
+                      доступные только для чтения, то команда <code>rm</code> начнёт задавать вопрос по каждому из них,
+                      нужно ли его удалять. Если вы точно уверены, что удалить нужно всё, добавьте флаг <code>-f</code>.
+                      В таком случае <code>rm</code> удалит всю директорию без вопросов.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #0086B3">rm</span> <span style="color: #000080">-rf</span> one
+</code></pre>
+                    <script src="https://asciinema.org/a/C8ioOzvimAT9NHHtj49LROikL.js"
+                      id="asciicast-C8ioOzvimAT9NHHtj49LROikL" data-cols="120" data-rows="17" data-preload="1"
+                      async></script>
+
+</body>
+
+</html>

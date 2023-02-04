@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Динамическая диспетчеризация - PHP: Погружаясь в классы</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="St4Q48ku8q2cP9HkoIs3BEhrwwxxPOFoa4v5PR0avnzmBf5WQMiejrv0ZY95uaVDe0g38drp4n3UeDrYlUocpw" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../traits/exercise_unit.html">PHP: Погружаясь в классы</a>
+                    <h1 class='mt-0 mb-4'>Динамическая диспетчеризация</h1>
+                    <p>В курсе &quot;PHP: Полиморфизм&quot; мы разбирали как работает полиморфизм изнутри. Но тогда мы
+                      ещё не знали про наследование достаточно, чтобы раскрыть этот вопрос полностью. Сейчас пришло
+                      время узнать об этом.</p>
+
+                    <p>Перед тем как начать, нужно вспомнить, что для полиморфизма наследование не нужно. С другой
+                      стороны, наследование участвует в процессе выбора метода и об этом тоже нужно знать. Посмотрите на
+                      код, который был в курсе, посвящённому полиморфизму:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Что происходит во время вызова: $obj-&gt;getName() =&gt; callMethod($obj, 'getName')</span>
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">callMethod</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$data</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$methodName</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$args</span><span style="background-color: #f8f8f8">)</span> <span style="color: #999988;font-style: italic">// функция-диспетчер</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$className</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$data</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'className'</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #999988;font-style: italic">// Специальная функция, которая хранит список классов и связанных с ними методов</span>
+    <span style="color: #008080">$methods</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">getClassMethods</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$className</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #999988;font-style: italic">// Берём нужный метод и вызываем его</span>
+    <span style="color: #008080">$method</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$methods</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$methodName</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$method</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+      <span style="color: #008080">$method</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$data</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">...</span><span style="color: #008080">$args</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">}</span> <span style="color: #000000;font-weight: bold">else</span> <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">!</span><span style="color: #008080">$method</span> <span style="color: #000000;font-weight: bold">&amp;&amp;</span> <span style="color: #000000;font-weight: bold">isset</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$methods</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'__call'</span><span style="background-color: #f8f8f8">]))</span> <span style="background-color: #f8f8f8">{</span>
+      <span style="color: #999988;font-style: italic">// Если метод $method не найден, но определён метод __call, то вызываем его</span>
+      <span style="color: #008080">$methods</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'__call'</span><span style="background-color: #f8f8f8">](</span><span style="color: #008080">$data</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">...</span><span style="color: #008080">$args</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">throw</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">Exception</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'No method error'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>В этом коде проверка останавливается, если ничего не было найдено. Так было бы без наследования,
+                      но с наследованием поиск продолжается. Сначала выбирается базовый класс для текущего и метод
+                      ищется там. Если он не найден, то снова проверяется наличие <code>__call()</code>. Затем процесс
+                      повторяется для родительского класса родителя текущего класса и далее до конца цепочки
+                      наследования.</p>
+
+                    <p>Из этого, кстати, следует интересный вывод. Метод <code>__call</code> это &quot;тяжелый&quot;
+                      вызов. Он требует больше вычислений для поиска. И чем ближе к началу иерархии расположен
+                      <code>__call()</code> тем хуже с точки зрения производительности.</p>
+                    <h2 id="pozdnee-svyazyvanie-v-sravnenii-s-dinamicheskoy-dispetcherizatsiey">Позднее связывание в
+                      сравнении с динамической диспетчеризацией</h2>
+                    <p>Программисты часто путают позднее связывание и динамическую диспетчеризацию. Ситуация
+                      усугубляется тем, что в некоторых языках (например, Java) принято на уровне документации и
+                      сообщества подменять одно понятие другим.</p>
+
+                    <p>Связывание, говорит нам о том, чем является идентификатор, какой у него тип. Если связывание
+                      раннее, то мы это знаем сразу, в случае позднего, только в момент вызова кода. Во многих языках
+                      можно определить функцию после того, как где-то она используется. Это тоже пример связывания
+                      (позднего). В случае <code>$this</code> в PHP, мы знаем что это объект текущей иерархии, но не
+                      знаем точно какой класс до момента срабатывания этого кода.</p>
+
+                    <p>Диспетчеризация же, это процесс поиска и вызова необходимой функции (или метода, в зависимости от
+                      языка) для уже известного типа данных.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://softwareengineering.stackexchange.com/questions/200115/what-is-early-and-late-binding">What
+                          is early and late binding?</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

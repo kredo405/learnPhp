@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Ограничения - Основы реляционных баз данных</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="GgHs-Mw-tjHCo9dVYaNCa_PHEC4WgXIK2WkDA1R9O1vj3EKTPxfrFvBWhbiMC4Hs7dBxfwmjeL2LOZmcn7xkUw" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../transactions/exercise_unit.html">Основы реляционных баз данных</a>
+                    <h1 class='mt-0 mb-4'>Ограничения</h1>
+                    <p>Первичные и внешние ключи в базах данных относятся к понятию <strong>Constraints</strong>
+                      (&quot;ограничения&quot;). Оно включает в себя различные модификаторы колонок в базе данных,
+                      добавляющие ограничения на их содержимое. В этом уроке мы вспомним, что уже проходили, а заодно
+                      рассмотрим новые и крайне полезные ограничения.</p>
+                    <h2 id="pervichnyy-klyuch">Первичный ключ</h2>
+                    <p>Первичный ключ однозначно идентифицирует каждую запись внутри таблицы. Задаётся с помощью фразы
+                      <code>PRIMARY KEY</code>, которая добавляется после указания типа при создании таблицы. Первичный
+                      ключ в таблице может быть только один и, как правило, для него используется суррогатный ключ —
+                      идентификатор, который не имеет никакого физического смысла.</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">CREATE</span> <span style="color: #000000;font-weight: bold">TABLE</span> <span style="background-color: #f8f8f8">products</span> <span style="background-color: #f8f8f8">(</span>
+    <span style="background-color: #f8f8f8">id</span> <span style="color: #0086B3">integer</span> <span style="color: #000000;font-weight: bold">PRIMARY</span> <span style="color: #000000;font-weight: bold">KEY</span><span style="background-color: #f8f8f8">,</span>
+    <span style="background-color: #f8f8f8">name</span> <span style="color: #0086B3">text</span><span style="background-color: #f8f8f8">,</span>
+    <span style="background-color: #f8f8f8">price</span> <span style="color: #0086B3">numeric</span>
+<span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <h2 id="vneshniy-klyuch">Внешний ключ</h2>
+                    <p>Это ограничение, которое связывает указанную колонку с данными из другой таблицы. Такое
+                      ограничение гарантирует <strong>целостность</strong> данных. То есть попытка удалить данные, у
+                      которых есть зависимые данные, приведёт к ошибке.</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">CREATE</span> <span style="color: #000000;font-weight: bold">TABLE</span> <span style="background-color: #f8f8f8">orders</span> <span style="background-color: #f8f8f8">(</span>
+    <span style="background-color: #f8f8f8">id</span> <span style="color: #0086B3">integer</span> <span style="color: #000000;font-weight: bold">PRIMARY</span> <span style="color: #000000;font-weight: bold">KEY</span><span style="background-color: #f8f8f8">,</span>
+    <span style="background-color: #f8f8f8">product_id</span> <span style="color: #0086B3">integer</span> <span style="color: #000000;font-weight: bold">REFERENCES</span> <span style="background-color: #f8f8f8">products</span> <span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">id</span><span style="background-color: #f8f8f8">),</span>
+    <span style="background-color: #f8f8f8">quantity</span> <span style="color: #0086B3">integer</span>
+<span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>В данной таблице атрибут <code>product_id</code> связан с атрибутом <code>id</code> таблицы
+                      <code>products</code>. Как это проявляется:</p>
+
+                    <ul>
+                      <li>Если попробовать вставить в <code>orders</code> запись со значением <code>product_id</code>,
+                        которого нет в таблице <code>products</code>, то возникнет ошибка.</li>
+                      <li>Если попытаться удалить запись из <code>products</code>, на которую есть ссылки из таблицы
+                        <code>orders</code>, то возникнет ошибка.</li>
+                    </ul>
+
+                    <p>Количество внешних ключей не ограничено, все связи нужно обязательно отмечать (объявлять с
+                      помощью ключевых слов), иначе возможно нарушение целостности.</p>
+                    <h2 id="not-null">Not Null</h2>
+                    <p>Это ограничение указывает на то, что колонка не может содержать <code>null</code> значения. Его
+                      можно комбинировать с другими ограничениями, например, внешними ключами. Первичный ключ является
+                      <code>NOT NULL</code> по умолчанию.</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">CREATE</span> <span style="color: #000000;font-weight: bold">TABLE</span> <span style="background-color: #f8f8f8">products</span> <span style="background-color: #f8f8f8">(</span>
+    <span style="background-color: #f8f8f8">id</span> <span style="color: #0086B3">integer</span> <span style="color: #000000;font-weight: bold">PRIMARY</span> <span style="color: #000000;font-weight: bold">KEY</span><span style="background-color: #f8f8f8">,</span>
+    <span style="background-color: #f8f8f8">name</span> <span style="color: #0086B3">text</span> <span style="color: #000000;font-weight: bold">NOT</span> <span style="color: #000000;font-weight: bold">NULL</span><span style="background-color: #f8f8f8">,</span>
+    <span style="background-color: #f8f8f8">price</span> <span style="color: #0086B3">numeric</span>
+<span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">CREATE</span> <span style="color: #000000;font-weight: bold">TABLE</span> <span style="background-color: #f8f8f8">orders</span> <span style="background-color: #f8f8f8">(</span>
+    <span style="background-color: #f8f8f8">id</span> <span style="color: #0086B3">integer</span> <span style="color: #000000;font-weight: bold">PRIMARY</span> <span style="color: #000000;font-weight: bold">KEY</span><span style="background-color: #f8f8f8">,</span>
+    <span style="background-color: #f8f8f8">product_id</span> <span style="color: #0086B3">integer</span> <span style="color: #000000;font-weight: bold">REFERENCES</span> <span style="background-color: #f8f8f8">products</span> <span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">id</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">NOT</span> <span style="color: #000000;font-weight: bold">NULL</span><span style="background-color: #f8f8f8">,</span>
+    <span style="background-color: #f8f8f8">quantity</span> <span style="color: #0086B3">integer</span>
+<span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <h2 id="unikalnost">Уникальность</h2>
+                    <p><img alt="Ограничение уникальности" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImJkZjEyYmQxZGJiMjRiMjgwNGQ1ZmUyMzQ4OTcxYTQ0LmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=f4450b8e51f5ec526e295d64f544c27929a635e3123f2fda3f376e421a524e9a"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Для гарантии уникальности значений одного поля используется ключевое слово <code>UNIQUE</code>.
+                      Обычно его используют в описании конкретного поля при создании таблицы:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">CREATE</span> <span style="color: #000000;font-weight: bold">TABLE</span> <span style="background-color: #f8f8f8">products</span> <span style="background-color: #f8f8f8">(</span>
+    <span style="background-color: #f8f8f8">id</span> <span style="color: #0086B3">integer</span> <span style="color: #000000;font-weight: bold">PRIMARY</span> <span style="color: #000000;font-weight: bold">KEY</span><span style="background-color: #f8f8f8">,</span>
+    <span style="background-color: #f8f8f8">name</span> <span style="color: #0086B3">text</span> <span style="color: #000000;font-weight: bold">UNIQUE</span><span style="background-color: #f8f8f8">,</span>
+    <span style="background-color: #f8f8f8">price</span> <span style="color: #0086B3">numeric</span>
+<span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p><code>UNIQUE</code> никогда не используется совместно с первичным ключом, так как он уникален по
+                      определению.</p>
+
+                    <p>Иногда бывает нужно реализовать уникальность по двум или более атрибутам. Для этого нужно описать
+                      <code>UNIQUE</code> отдельно от конкретного поля:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">CREATE</span> <span style="color: #000000;font-weight: bold">TABLE</span> <span style="background-color: #f8f8f8">products</span> <span style="background-color: #f8f8f8">(</span>
+    <span style="background-color: #f8f8f8">id</span> <span style="color: #0086B3">integer</span> <span style="color: #000000;font-weight: bold">PRIMARY</span> <span style="color: #000000;font-weight: bold">KEY</span><span style="background-color: #f8f8f8">,</span>
+    <span style="background-color: #f8f8f8">name</span> <span style="color: #0086B3">text</span><span style="background-color: #f8f8f8">,</span>
+    <span style="background-color: #f8f8f8">locale</span> <span style="color: #0086B3">varchar</span><span style="background-color: #f8f8f8">,</span>
+    <span style="background-color: #f8f8f8">price</span> <span style="color: #0086B3">numeric</span><span style="background-color: #f8f8f8">,</span>
+    <span style="color: #000000;font-weight: bold">UNIQUE</span><span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">name</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">locale</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Существует ситуация, в которой ограничение уникальности не срабатывает. Такое происходит, если
+                      хотя бы в одном из столбцов, включенных в ограничение, встречается <code>NULL</code>. По
+                      стандарту, <code>NULL</code> никогда не равен сам себе.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://postgrespro.ru/docs/postgresql/11/ddl-constraints">Официальная
+                          документация</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

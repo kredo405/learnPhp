@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Обновление (CRUD) - PHP: Laravel</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="tHtEqRsZ4YPLGHmZvaUgLvy0dXsk5SNry1EPeV7j9XlNMjac7t34_9LY_LryNbO0ghw-MO5shvPAcSgYg5qHdg" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../resource/exercise_unit.html">PHP: Laravel</a>
+                    <h1 class='mt-0 mb-4'>Обновление (CRUD)</h1>
+                    <p>Обновление очень похоже на создание, с той лишь разницей, что мы не создаём сущность с нуля, а
+                      извлекаем её из базы. Остальное практически без изменений.</p>
+
+                    <p><em>За скобками остаётся важный вопрос: права на изменение. Изменять что-то на сайте, обычно,
+                        может только автор, тот кто создал сущность. Механизм, который отвечает за выдачу и проверку
+                        прав, называется авторизацией (не путать с аутентификацией). В Laravel авторизация встроена. Она
+                        не рассматривается в курсе, но про неё можно прочитать самостоятельно в документации.</em></p>
+                    <h2 id="forma">Форма</h2>
+                    <h3 id="marshrut">Маршрут</h3>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #445588;font-weight: bold">Route</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles/{id}/edit'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #445588;font-weight: bold">ArticleController</span><span style="color: #000000;font-weight: bold">::</span><span style="background-color: #f8f8f8">class</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'edit'</span><span style="background-color: #f8f8f8">])</span>
+  <span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">name</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles.edit'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <h3 id="obrabotchik">Обработчик</h3>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">App\Models\Article</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">edit</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$id</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$article</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">Article</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">findOrFail</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$id</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #990000;font-weight: bold">view</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'article.edit'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #0086B3">compact</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'article'</span><span style="background-color: #f8f8f8">));</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <h3 id="shablon">Шаблон</h3>
+                    <p>Шаблон редактирования практически один в один повторяет шаблон создания. Разными у них бывают
+                      только отдельные элементы, например, текст кнопки отправки формы. Для таких случаев используют
+                      директиву <code>@include($pathToTemplate)</code>, которая позволяет извлекать общие куски шаблонов
+                      в отдельные шаблоны и включать их там где нужно.</p>
+
+                    <p>Создайте в директории <em>resources/views/article</em> шаблон <em>form.blade.php</em>.</p>
+                    <pre class="hljs"><code class=blade>@if ($errors-&gt;any())
+    &lt;div&gt;
+        &lt;ul&gt;
+            @foreach ($errors-&gt;all() as $error)
+                &lt;li&gt;{{ $error }}&lt;/li&gt;
+            @endforeach
+        &lt;/ul&gt;
+    &lt;/div&gt;
+@endif
+
+{{ Form::label('name', 'Название') }}
+{{ Form::text('name') }}&lt;br&gt;
+{{ Form::label('body', 'Содержание') }}
+{{ Form::textarea('body') }}&lt;br&gt;
+</code></pre>
+                    <p>Теперь включите его в <em>create.blade.php</em>:</p>
+                    <pre class="hljs"><code class=blade>{{ Form::model($article, ['url' =&gt; route('articles.store')]) }}
+    @include('article.form')
+    {{ Form::submit('Сохранить') }}
+{{ Form::close() }}
+</code></pre>
+                    <p>И практически то же самое надо добавить в <em>edit.blade.php</em>. Создайте этот файл и вставьте
+                      в него код:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="background-color: #f8f8f8">{{</span> <span style="color: #445588;font-weight: bold">Form</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">model</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$article</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'url'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #990000;font-weight: bold">route</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles.update'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$article</span><span style="background-color: #f8f8f8">),</span> <span style="color: #d14">'method'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'PATCH'</span><span style="background-color: #f8f8f8">])</span> <span style="background-color: #f8f8f8">}}</span>
+    <span style="color: #000000;font-weight: bold">@</span><span style="color: #000000;font-weight: bold">include</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'article.form'</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{{</span> <span style="color: #445588;font-weight: bold">Form</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">submit</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Обновить'</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">}}</span>
+<span style="background-color: #f8f8f8">{{</span> <span style="color: #445588;font-weight: bold">Form</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">close</span><span style="background-color: #f8f8f8">()</span> <span style="background-color: #f8f8f8">}}</span>
+</code></pre>
+                    <p>Основных изменений здесь три:</p>
+
+                    <ul>
+                      <li>Другое имя кнопки</li>
+                      <li>Метод отправки PATCH, так как происходит обновление</li>
+                      <li>Адрес формы указывает на конкретную статью</li>
+                    </ul>
+                    <h2 id="obrabotchik-formy">Обработчик формы</h2>
+                    <h3 id="marshrut-1">Маршрут</h3>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Метод PATCH</span>
+<span style="color: #445588;font-weight: bold">Route</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">patch</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles/{id}'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #445588;font-weight: bold">ArticleController</span><span style="color: #000000;font-weight: bold">::</span><span style="background-color: #f8f8f8">class</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'update'</span><span style="background-color: #f8f8f8">])</span>
+  <span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">name</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles.update'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <h3 id="obrabotchik-1">Обработчик</h3>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Illuminate\Http\Request</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">App\Models\Article</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">update</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">Request</span> <span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$id</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$article</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">Article</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">findOrFail</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$id</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #008080">$data</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">validate</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span>
+        <span style="color: #999988;font-style: italic">// У обновления немного изменённая валидация. В проверку уникальности добавляется название поля и id текущего объекта</span>
+        <span style="color: #999988;font-style: italic">// Если этого не сделать, Laravel будет ругаться на то что имя уже существует</span>
+        <span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'required|unique:articles,name,'</span> <span style="color: #009999">.</span> <span style="color: #008080">$article</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">id</span><span style="background-color: #f8f8f8">,</span>
+        <span style="color: #d14">'body'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'required|min:100'</span><span style="background-color: #f8f8f8">,</span>
+    <span style="background-color: #f8f8f8">]);</span>
+
+    <span style="color: #008080">$article</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">fill</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$data</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #008080">$article</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">save</span><span style="background-color: #f8f8f8">();</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #990000;font-weight: bold">redirect</span><span style="background-color: #f8f8f8">()</span>
+        <span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">route</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles.index'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Обработчик, обновляющий сущность практически идентичен созданию сущности. Разница кроется в
+                      нескольких деталях. Во-первых, мы работаем с существующей статьёй, поэтому её нужно извлечь из
+                      базы данных. Во-вторых, валидация на уникальность должна учитывать текущую статью при проверке.
+                      Иначе валидатор будет ругаться, что такое имя уже есть в базе данных.</p>
+
+                    <p>Можно заметить, что валидации повторяются практически один в один. Так происходит в подавляющем
+                      большинстве случаев. Те правила, которые применяются к сущности при создании, должны применяться к
+                      ней и во время редактирования. При текущем подходе возникает дублирование, которого хотелось бы
+                      избежать. Это можно сделать с помощью <a
+                        href="https://laravel.com/docs/8.x/validation#form-request-validation" target="_blank"
+                        rel="nofollow">Form Request</a>.</p>
+
+                    <p>В остальном все то же самое: объект заполняется значениями из формы, далее сохранение и редирект
+                      на список статей.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Выполните все шаги из теории.</li>
+                      <li> Добавьте в список статей ссылку на редактирование каждой статьи.</li>
+                      <li> Обновите через интерфейс несколько статей. Проверьте работу валидации.</li>
+                      <li> Попробуйте самостоятельно добавить вывод флеш-сообщений.</li>
+                      <li> Попробуйте самостоятельно добавить Form Request.</li>
+                    </ol>
+
+</body>
+
+</html>

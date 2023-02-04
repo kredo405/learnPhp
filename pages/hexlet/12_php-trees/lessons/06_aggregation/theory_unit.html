@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Агрегация - PHP: Деревья</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Агрегация</h1>
+                    <p>Агрегация данных — наиболее важная операция при работе с деревьями. Подсчитать общее число файлов
+                      в директории, общий размер всех файлов, получить список всех файлов, найти все файлы по шаблону,
+                      всё это примеры агрегирования данных.</p>
+
+                    <p>Ключевым моментом в агрегирующих операциях является накопление результата. Для данной задачи
+                      хорошо подходит обход дерева в глубину с использованием рекурсивного процесса, который подробно
+                      рассматривается в предыдущем уроке. С его помощью мы обходим все узлы дерева и собираем результат,
+                      начиная с самого нижнего уровня.</p>
+
+                    <p>Рассмотрим агрегацию с использованием рекурсивного процесса на примере подсчёта общего количества
+                      узлов в дереве. То есть мы хотим узнать сколько всего файлов и директорий содержится в нашем
+                      файловом дереве.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$tree</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span>
+  <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'etc'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span>
+    <span style="color: #990000;font-weight: bold">mkfile</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'bashrc'</span><span style="background-color: #f8f8f8">),</span>
+    <span style="color: #990000;font-weight: bold">mkfile</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'consul.cfg'</span><span style="background-color: #f8f8f8">),</span>
+  <span style="background-color: #f8f8f8">]),</span>
+  <span style="color: #990000;font-weight: bold">mkfile</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'hexletrc'</span><span style="background-color: #f8f8f8">),</span>
+  <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'bin'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span>
+    <span style="color: #990000;font-weight: bold">mkfile</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'ls'</span><span style="background-color: #f8f8f8">),</span>
+    <span style="color: #990000;font-weight: bold">mkfile</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'cat'</span><span style="background-color: #f8f8f8">),</span>
+  <span style="background-color: #f8f8f8">]),</span>
+<span style="background-color: #f8f8f8">]);</span>
+
+<span style="color: #999988;font-style: italic">// В реализации используем рекурсивный процесс,</span>
+<span style="color: #999988;font-style: italic">// чтобы добраться до самого дна дерева.</span>
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">getNodesCount</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+  <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">isFile</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">))</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Возвращаем 1, для учета текущего файла</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">;</span>
+  <span style="background-color: #f8f8f8">}</span>
+
+  <span style="color: #999988;font-style: italic">// Если узел — директория, получаем его детей</span>
+  <span style="color: #008080">$children</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">getChildren</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">);</span>
+  <span style="color: #999988;font-style: italic">// Самая сложная часть</span>
+  <span style="color: #999988;font-style: italic">// Считаем количество потомков, для каждого из детей,</span>
+  <span style="color: #999988;font-style: italic">// вызывая рекурсивно нашу функцию getNodesCount</span>
+  <span style="color: #008080">$descendantsCount</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_map</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">fn</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$child</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #990000;font-weight: bold">getNodesCount</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$child</span><span style="background-color: #f8f8f8">),</span> <span style="color: #008080">$children</span><span style="background-color: #f8f8f8">);</span>
+  <span style="color: #999988;font-style: italic">// Возвращаем 1 (текущая директория) + общее количество потомков</span>
+  <span style="color: #000000;font-weight: bold">return</span> <span style="color: #009999">1</span> <span style="color: #000000;font-weight: bold">+</span> <span style="color: #0086B3">array_sum</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$descendantsCount</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #990000;font-weight: bold">getNodesCount</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// 8</span>
+</code></pre>
+                    <p><a href="https://repl.it/@hexlet/php-trees-aggregation-getNodesCount"
+                        target="_blank">https://repl.it/@hexlet/php-trees-aggregation-getNodesCount</a></p>
+
+                    <p>Кода здесь немного, но он довольно хитрый. Есть несколько ключевых моментов:</p>
+
+                    <ol>
+                      <li> Функция проверяет тип узла. Если узел — это файл, тогда из функции возвращается единица.</li>
+                      <li> В случае, если узел — директория, тогда получаем детей и для каждого ребёнка вновь вызываем
+                        нашу функцию. Затем повторяем алгоритм заново.</li>
+                      <li> Вызов функции на каждом ребёнке возвращает свой собственный результат (количество его
+                        потомков). Эти результаты образуют массив с числами, которые нужно объединить.</li>
+                      <li> В конце считается общее количество всех потомков узла + единица (текущий узел сам по себе).
+                      </li>
+                    </ol>
+
+                    <p>Перед тем как двигаться дальше, с этим кодом нужно &quot;поиграть&quot;. Это единственный способ
+                      разобраться с ним.</p>
+
+</body>
+
+</html>

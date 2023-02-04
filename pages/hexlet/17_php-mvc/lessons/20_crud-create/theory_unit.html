@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>CRUD: Создание - Веб-разработка на PHP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>CRUD: Создание</h1>
+                    <p>Создание сущности, включает в себя два действия: отображение формы и обработка данных формы. За
+                      каждое из этих действий отвечает свой собственный маршрут. Вот несколько примеров:</p>
+
+                    <p><strong>Пользователь</strong></p>
+
+                    <ul>
+                      <li>GET <code>/users/new</code></li>
+                      <li>POST <code>/users</code></li>
+                    </ul>
+
+                    <p><strong>Курс</strong></p>
+
+                    <ul>
+                      <li>GET <code>/courses/new</code></li>
+                      <li>POST <code>/courses</code></li>
+                    </ul>
+
+                    <p><strong>Сотрудник компании (пример вложенного маршрута)</strong></p>
+
+                    <ul>
+                      <li>GET <code>/companies/3/users/new</code></li>
+                      <li>POST <code>/companies/3/users</code></li>
+                    </ul>
+
+                    <p><img alt="CRUD Создание" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjM2NGZhZjM4YzEyY2JmNzQ3MGQwZjQxODVlNTM2NGViLnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=d8fe771b65f70405068eee3d28b05e6f08ee3dda00460bcb5be728e7e22d0dba"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+                    <h3 id="otobrazhenie-formy">Отображение формы</h3>
+                    <p><strong>Обработчик</strong></p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/schools/new'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$params</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span>
+        <span style="color: #d14">'schoolData'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="background-color: #f8f8f8">[],</span>
+        <span style="color: #d14">'errors'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="background-color: #f8f8f8">[]</span>
+    <span style="background-color: #f8f8f8">];</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'renderer'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'schools/new.phtml'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$params</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">})</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">setName</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'newSchool'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p><strong>Шаблон</strong></p>
+                    <pre class="hljs"><code class=php><span style="color: #000080">&lt;form</span> <span style="color: #008080">action=</span><span style="color: #d14">"/schools"</span> <span style="color: #008080">method=</span><span style="color: #d14">"post"</span><span style="color: #000080">&gt;</span>
+    <span style="color: #000080">&lt;div&gt;</span>
+        <span style="color: #000080">&lt;label&gt;</span>
+            Название *
+            <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"text"</span> <span style="color: #008080">name=</span><span style="color: #d14">"school[name]"</span> <span style="color: #008080">value=</span><span style="color: #d14">"</span><span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #0086B3">htmlspecialchars</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$schoolData</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">??</span> <span style="color: #d14">''</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #d14">"</span><span style="color: #000080">&gt;</span>
+        <span style="color: #000080">&lt;/label&gt;</span>
+        <span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">isset</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$errors</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">]))</span><span style="color: #000000;font-weight: bold">:</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+            <span style="color: #000080">&lt;div&gt;</span><span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #008080">$errors</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #000080">&lt;/div&gt;</span>
+        <span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">endif</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+    <span style="color: #000080">&lt;/div&gt;</span>
+    <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"submit"</span> <span style="color: #008080">value=</span><span style="color: #d14">"Create"</span><span style="color: #000080">&gt;</span>
+<span style="color: #000080">&lt;/form&gt;</span>
+</code></pre>
+                    <p>Содержимое обработчика очень сильно зависит от того, какой используется инструментарий. В тех
+                      местах, где есть билдеры форм, в этом обработчике создаётся форма (как некоторый объект) и
+                      отправляется в шаблон. Билдер берет на себя огромное количество задач, он сам обрабатывает вывод
+                      ошибок, занимается валидацией и подготовкой данных. Особо умные билдеры знают про ту сущность, с
+                      которой они работают, и могут строить формы в полностью автоматическом режиме.</p>
+
+                    <p>В нашем примере ничего такого нет, поэтому все действия делаются руками. Кроме непосредственно
+                      данных, в шаблон передаётся массив <code>errors</code>. Это нужно по той причине, что форма
+                      используется обоими обработчиками: одним только для отображения новой формы, другим для
+                      отображения формы в случае наличия ошибок.</p>
+                    <h2 id="obrabotka-dannyh-formy">Обработка данных формы</h2>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$router</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getRouteCollector</span><span style="background-color: #f8f8f8">()</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getRouteParser</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">post</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/schools'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">use</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$router</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$repo</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">App\SchoolRepository</span><span style="background-color: #f8f8f8">();</span>
+    <span style="color: #999988;font-style: italic">// Извлекаем данные формы</span>
+    <span style="color: #008080">$schoolData</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$request</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getParsedBodyParam</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'school'</span><span style="background-color: #f8f8f8">);</span>
+
+    <span style="color: #008080">$validator</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Validator</span><span style="background-color: #f8f8f8">();</span>
+    <span style="color: #999988;font-style: italic">// Проверяем корректность данных</span>
+    <span style="color: #008080">$errors</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$validator</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">validate</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$schoolData</span><span style="background-color: #f8f8f8">);</span>
+
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #0086B3">count</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$errors</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">===</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">// Если данные корректны, то сохраняем, добавляем флеш и выполняем редирект</span>
+        <span style="color: #008080">$repo</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">save</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$schoolData</span><span style="background-color: #f8f8f8">);</span>
+        <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'flash'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">addMessage</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'success'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'School has been created'</span><span style="background-color: #f8f8f8">);</span>
+        <span style="color: #999988;font-style: italic">// Обратите внимание на использование именованного роутинга</span>
+        <span style="color: #008080">$url</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$router</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">urlFor</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'schools'</span><span style="background-color: #f8f8f8">);</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">withRedirect</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$url</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #008080">$params</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span>
+        <span style="color: #d14">'schoolData'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$schoolData</span><span style="background-color: #f8f8f8">,</span>
+        <span style="color: #d14">'errors'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$errors</span>
+    <span style="background-color: #f8f8f8">];</span>
+
+    <span style="color: #999988;font-style: italic">// Если возникли ошибки, то устанавливаем код ответа в 422 и рендерим форму с указанием ошибок</span>
+    <span style="color: #008080">$response</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">withStatus</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">422</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'renderer'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'schools/new.phtml'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$params</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>Своего шаблона у таких обработчиков не делают. Если данные оказались не валидны, то этот
+                      обработчик рисует форму обработчика <code>new</code> и отправляет её вместе с кодом ответа 422
+                      (Unprocessable Entity). Если данные корректны, то выполняется основная логика обработчика –
+                      происходит сохранение школы в базу данных <code>$repo-&gt;save($schoolData)</code> и затем
+                      редирект на список школ с оповещением через флеш об успешном добавлении.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Сделайте все поля формы создания пользователя обязательными.</li>
+                      <li> Реализуйте обработку введённых данных и рендеринг формы с выводом ошибок.</li>
+                    </ol>
+
+
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Удаление (CRUD) - PHP: Laravel</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="Y10pdCu90qDJrLXd4YUYkvpvZFjstzYxkFs46YHwK1CaFFtB3nnL3NBsMP6uFYsIhMcvEyY-k6mbex-IXIlZXw" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../resource/exercise_unit.html">PHP: Laravel</a>
+                    <h1 class='mt-0 mb-4'>Удаление (CRUD)</h1>
+                    <p>Удаление – самое простое действие в обычном CRUD. Ему не нужен шаблон, все удаление состоит из
+                      простого обработчика, в котором даже нет условных конструкций.</p>
+
+                    <p>Маршрут:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #445588;font-weight: bold">Route</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #0086B3">delete</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles/{id}'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #445588;font-weight: bold">ArticleController</span><span style="color: #000000;font-weight: bold">::</span><span style="background-color: #f8f8f8">class</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'destroy'</span><span style="background-color: #f8f8f8">])</span>
+  <span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">name</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles.destroy'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Обработчик:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Не забывайте про авторизацию (здесь не рассматривается)</span>
+<span style="color: #999988;font-style: italic">// Удаление должно быть доступно только тем, кто может его выполнять</span>
+<span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">destroy</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$id</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// DELETE — идемпотентный метод, поэтому результат операции всегда один и тот же</span>
+    <span style="color: #008080">$article</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">Article</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">find</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$id</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$article</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+      <span style="color: #008080">$article</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #0086B3">delete</span><span style="background-color: #f8f8f8">();</span>
+    <span style="background-color: #f8f8f8">}</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #990000;font-weight: bold">redirect</span><span style="background-color: #f8f8f8">()</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">route</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles.index'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Самое интересное в удаление – это ссылка или кнопка удаления. Она не может быть обычной ссылкой.
+                      Почему? Потому что, с точки зрения HTTP, удаление это DELETE-запрос. Эту семантику важно
+                      соблюдать, так как на неё ориентируются разные инструменты и поисковики при анализе страниц. Если
+                      сделать удаление обычной ссылкой, то любой автоматический инструмент может попробовать перейти по
+                      ней (например предзагрузка страниц в chrome). Это будет крайне неприятный сюрприз.</p>
+
+                    <p>Как минимум для разрешения подобных ситуаций нужно использовать аттрибут <em>rel</em>:</p>
+                    <pre class="hljs"><code class=php><span style="color: #000080">&lt;a</span> <span style="color: #008080">href=</span><span style="color: #d14">"..."</span> <span style="color: #008080">rel=</span><span style="color: #d14">"nofollow"</span><span style="color: #000080">&gt;</span>Удалить<span style="color: #000080">&lt;/a&gt;</span>
+</code></pre>
+                    <p>Но этого недостаточно для отправки DELETE-запроса. Правильно реализовать эту ссылку формой,
+                      которая не отправляет никаких данных, но шлёт верный запрос. В принципе так и можно поступить, но
+                      возникает странная ситуация. Само удаление содержит меньше кода чем кнопка по удалению. Да и
+                      шаблоны становятся очень грязными.</p>
+
+                    <p>Избежать ручного создания такой формы можно с помощью библиотеки <a
+                        href="https://github.com/rails/jquery-ujs/wiki/Unobtrusive-scripting-support-for-jQuery"
+                        target="_blank" rel="nofollow">jquery-ujs</a>, которая изначально была написана для Rails, но не
+                      ограничена этим фреймворком. Эта библиотека написана на JS и подключается во фронтенд-части. Она
+                      опирается на data-атрибуты и сама превращает в форму все что её попросят. Для её установки,
+                      наберите в директории проекта:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># Убедитесь в том, что у вас установлена Node.js</span>
+<span style="color: #008080">$ </span>node <span style="color: #000080">-v</span>
+v13.7.0 <span style="color: #999988;font-style: italic"># Ваша версия может отличаться</span>
+
+<span style="color: #999988;font-style: italic"># Установите зависимости</span>
+<span style="color: #008080">$ </span>npm <span style="color: #0086B3">install</span> @rails/ujs
+<span style="color: #999988;font-style: italic"># Для установки остальных пакетов</span>
+<span style="color: #008080">$ </span>npm <span style="color: #0086B3">install</span>
+</code></pre>
+                    <p>Затем добавьте в конец файла <em>resources/js/app.js</em> строчки:</p>
+                    <pre class="hljs"><code class=javascript><span style="color: #000000;font-weight: bold">const</span> <span style="background-color: #f8f8f8">ujs</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">require</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'</span><span style="color: #d14">@rails/ujs</span><span style="color: #d14">'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">ujs</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">start</span><span style="background-color: #f8f8f8">();</span>
+</code></pre>
+                    <p>И запустите сборку фронтенда:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>npm run watch
+</code></pre>
+                    <p>Теперь попробуем использовать эту библиотеку:</p>
+                    <pre class="hljs"><code class=php><span style="color: #000080">&lt;a</span> <span style="color: #008080">href=</span><span style="color: #d14">"..."</span> <span style="color: #008080">data-method=</span><span style="color: #d14">"delete"</span> <span style="color: #008080">rel=</span><span style="color: #d14">"nofollow"</span><span style="color: #000080">&gt;</span>Удалить<span style="color: #000080">&lt;/a&gt;</span>
+</code></pre>
+                    <p>Библиотека подключённая к странице, проанализирует все ссылки с нужными data-атрибутами и
+                      превратит их в формы отправляющие указанные запросы. Эти запросы могут быть любыми, хоть DELETE,
+                      хоть PATCH.</p>
+
+                    <p>Кроме того, с её помощью можно блокировать кнопки и вызывать подтверждение:</p>
+                    <pre class="hljs"><code class=php><span style="color: #000080">&lt;a</span> <span style="color: #008080">href=</span><span style="color: #d14">"..."</span> <span style="color: #008080">data-confirm=</span><span style="color: #d14">"Вы уверены?"</span> <span style="color: #008080">data-method=</span><span style="color: #d14">"delete"</span> <span style="color: #008080">rel=</span><span style="color: #d14">"nofollow"</span><span style="color: #000080">&gt;</span>Удалить<span style="color: #000080">&lt;/a&gt;</span>
+
+<span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"submit"</span> <span style="color: #008080">value=</span><span style="color: #d14">"Сохранить"</span> <span style="color: #008080">data-disable-with=</span><span style="color: #d14">"Сохраняем"</span><span style="color: #000080">&gt;</span>
+</code></pre>
+                    <h2 id="zavisimosti">Зависимости</h2>
+                    <p>В реальной жизни удаление не такая простая операция. Обычно сущности не существуют сами по себе,
+                      у них есть зависимости. Например, у статьи есть комментарии, а у курса — уроки. Как должна вести
+                      себя система при удалении родительской сущности? Что делать с зависимостями?</p>
+
+                    <p>Ответ будет разный для разных проектов и разных сущностей. Иногда нужно всё удалить, иногда
+                      разорвать связи. В более сложных ситуациях удалять нельзя вообще и тогда используется &quot;мягкое
+                      удаление&quot;. При таком подходе сущность просто помечается как удалённая и не выводится на
+                      сайте, но всегда есть возможность её восстановить.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Реализуйте удаление</li>
+                      <li> Добавьте в список статей ссылку на удаление каждой статьи.</li>
+                      <li> Попробуйте самостоятельно добавить вывод флеш-сообщений.</li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://laravel.com/docs/8.x/mix">Работа с фронтендом в Laravel</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://laravel.com/docs/8.x/eloquent#soft-deleting">Мягкое
+                          удаление</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

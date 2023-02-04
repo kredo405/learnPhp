@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Манипуляции с виртуальной файловой системой - PHP: Деревья</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Манипуляции с виртуальной файловой системой</h1>
+                    <p>Библиотека, которая используется для построения деревьев, рассчитана только на неизменяемые
+                      файловые структуры. То есть уже после создания ее поменять нельзя. Но можно на основе старой
+                      структуры сделать новую, в которой какие-то части будут изменены.</p>
+
+                    <p>Неизменяемая структура выбрана для этого курса не случайно. Такую структуру легче отлаживать и
+                      меньше шансов допустить ошибки. И она позволяет максимально погрузиться в использование функций
+                      высшего порядка.</p>
+                    <h2 id="bazovye-operatsii-s-uzlami">Базовые операции с узлами</h2>
+                    <p>Пакет <em>php-immutable-fs-trees</em> позволяет не только создавать, но и извлекать данные из уже
+                      созданных файлов и директорий. Функции этой библиотеки позволяют не лезть во внутреннюю структуру
+                      самого дерева:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">Php\Immutable\Fs\Trees\trees\mkdir</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">Php\Immutable\Fs\Trees\trees\mkfile</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">Php\Immutable\Fs\Trees\trees\getChildren</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">Php\Immutable\Fs\Trees\trees\getName</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">Php\Immutable\Fs\Trees\trees\getMeta</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #008080">$tree</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #990000;font-weight: bold">mkfile</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'hexlet.log'</span><span style="background-color: #f8f8f8">)],</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'hidden'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">]);</span>
+<span style="color: #990000;font-weight: bold">getName</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// '/'</span>
+<span style="color: #990000;font-weight: bold">getMeta</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">)[</span><span style="color: #d14">'hidden'</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// true</span>
+
+<span style="background-color: #f8f8f8">[</span><span style="color: #008080">$file</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">getChildren</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #990000;font-weight: bold">getName</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$file</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// 'hexlet.log'</span>
+<span style="color: #000000;font-weight: bold">isset</span><span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">getMeta</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$file</span><span style="background-color: #f8f8f8">)[</span><span style="color: #d14">'unknown'</span><span style="background-color: #f8f8f8">]);</span> <span style="color: #999988;font-style: italic">// false</span>
+
+<span style="color: #999988;font-style: italic">// А вот так делать не надо</span>
+<span style="color: #999988;font-style: italic">// У файлов нет детей</span>
+<span style="color: #990000;font-weight: bold">getChildren</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$file</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Дополнительно в пакете есть две функции для проверки типа. С их помощью можно выборочно работать
+                      с файлами и директориями:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">Php\Immutable\Fs\Trees\trees\mkdir</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">Php\Immutable\Fs\Trees\trees\mkfile</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">Php\Immutable\Fs\Trees\trees\getChildren</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">Php\Immutable\Fs\Trees\trees\getName</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">Php\Immutable\Fs\Trees\trees\getMeta</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">Php\Immutable\Fs\Trees\trees\isDirectory</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">Php\Immutable\Fs\Trees\trees\isFile</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #008080">$tree</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #990000;font-weight: bold">mkfile</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'hexlet.log'</span><span style="background-color: #f8f8f8">)],</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'hidden'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">]);</span>
+<span style="color: #990000;font-weight: bold">isDirectory</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// true</span>
+<span style="color: #990000;font-weight: bold">isFile</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// false</span>
+
+<span style="background-color: #f8f8f8">[</span><span style="color: #008080">$file</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">getChildren</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #990000;font-weight: bold">isFile</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$file</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// true</span>
+<span style="color: #990000;font-weight: bold">isDirectory</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$file</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// false</span>
+</code></pre>
+                    <p>Рассмотренных операций хватит для выполнения любых преобразований над файлами и директориями.
+                      Начнем с самых простых, которые не требуют рекурсивного обхода.</p>
+                    <h2 id="obrabotka">Обработка</h2>
+                    <p>Любая обработка в неизменяемом стиле сводится к формированию новых данных на основе старых. Ниже
+                      мы реализуем некоторые варианты преобразования, раскрывающие эту идею.</p>
+                    <h3 id="izmenenie-imeni-fayla">Изменение имени файла</h3>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$file</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">mkfile</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'one'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'size'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">35</span><span style="background-color: #f8f8f8">]);</span>
+<span style="color: #008080">$newFile</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">mkfile</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'new name'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #990000;font-weight: bold">getMeta</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$file</span><span style="background-color: #f8f8f8">));</span>
+</code></pre>
+                    <p>Фактически здесь создается новый файл с метаданными старого.</p>
+                    <h3 id="sortirovka-soderzhimogo-direktorii">Сортировка содержимого директории</h3>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Сортировка в обратном порядке</span>
+<span style="color: #008080">$tree</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span>
+    <span style="color: #990000;font-weight: bold">mkfile</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'one'</span><span style="background-color: #f8f8f8">),</span>
+    <span style="color: #990000;font-weight: bold">mkfile</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'two'</span><span style="background-color: #f8f8f8">),</span>
+    <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'three'</span><span style="background-color: #f8f8f8">),</span>
+<span style="background-color: #f8f8f8">]);</span>
+
+<span style="color: #008080">$children</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">getChildren</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$newChildren</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_reverse</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$children</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$tree2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">getName</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">),</span> <span style="color: #008080">$newChildren</span><span style="background-color: #f8f8f8">,</span> <span style="color: #990000;font-weight: bold">getMeta</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">));</span>
+<span style="color: #999988;font-style: italic">// [</span>
+<span style="color: #999988;font-style: italic">//     'name' =&gt; '/',</span>
+<span style="color: #999988;font-style: italic">//     'type' =&gt; 'directory',</span>
+<span style="color: #999988;font-style: italic">//     'meta' =&gt; [],</span>
+<span style="color: #999988;font-style: italic">//     'children' =&gt; [</span>
+<span style="color: #999988;font-style: italic">//         ['name' =&gt; 'three', 'type' =&gt; 'directory', 'meta' =&gt; [], 'children' =&gt; []],</span>
+<span style="color: #999988;font-style: italic">//         ['name' =&gt; 'two', 'type' =&gt; 'file', 'meta' =&gt; []],</span>
+<span style="color: #999988;font-style: italic">//         ['name' =&gt; 'one', 'type' =&gt; 'file', 'meta' =&gt; []]</span>
+<span style="color: #999988;font-style: italic">//     ]</span>
+<span style="color: #999988;font-style: italic">// ]</span>
+</code></pre>
+                    <h3 id="obnovlenie-soderzhimogo-direktorii">Обновление содержимого директории</h3>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Приведение к нижнему регистру имен директорий и файлов</span>
+<span style="color: #999988;font-style: italic">// внутри конкретной директории</span>
+
+<span style="color: #008080">$tree</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span>
+    <span style="color: #990000;font-weight: bold">mkfile</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'oNe'</span><span style="background-color: #f8f8f8">),</span>
+    <span style="color: #990000;font-weight: bold">mkfile</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Two'</span><span style="background-color: #f8f8f8">),</span>
+    <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'THREE'</span><span style="background-color: #f8f8f8">),</span>
+<span style="background-color: #f8f8f8">]);</span>
+
+<span style="color: #008080">$children</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">getChildren</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$newChildren</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_map</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$child</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$name</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">getName</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$child</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">isDirectory</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$child</span><span style="background-color: #f8f8f8">))</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #0086B3">strtolower</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$name</span><span style="background-color: #f8f8f8">),</span> <span style="color: #990000;font-weight: bold">getChildren</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$child</span><span style="background-color: #f8f8f8">),</span> <span style="color: #990000;font-weight: bold">getMeta</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$child</span><span style="background-color: #f8f8f8">));</span>
+    <span style="background-color: #f8f8f8">}</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #990000;font-weight: bold">mkfile</span><span style="background-color: #f8f8f8">(</span><span style="color: #0086B3">strtolower</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$name</span><span style="background-color: #f8f8f8">),</span> <span style="color: #990000;font-weight: bold">getMeta</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$child</span><span style="background-color: #f8f8f8">));</span>
+<span style="background-color: #f8f8f8">},</span> <span style="color: #008080">$children</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #008080">$tree2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">getName</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">),</span> <span style="color: #008080">$newChildren</span><span style="background-color: #f8f8f8">,</span> <span style="color: #990000;font-weight: bold">getMeta</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">));</span>
+<span style="color: #999988;font-style: italic">// [</span>
+<span style="color: #999988;font-style: italic">//     'name' =&gt; '/',</span>
+<span style="color: #999988;font-style: italic">//     'type' =&gt; 'directory',</span>
+<span style="color: #999988;font-style: italic">//     'meta' =&gt; [],</span>
+<span style="color: #999988;font-style: italic">//     'children' =&gt; [</span>
+<span style="color: #999988;font-style: italic">//         ['name' =&gt; 'one', 'type' =&gt; 'file', 'meta' =&gt; []],</span>
+<span style="color: #999988;font-style: italic">//         ['name' =&gt; 'two', 'type' =&gt; 'file', 'meta' =&gt; []],</span>
+<span style="color: #999988;font-style: italic">//         ['name' =&gt; 'three', 'type' =&gt; 'directory', 'meta' =&gt; [], 'children' =&gt; []]</span>
+<span style="color: #999988;font-style: italic">//     ]</span>
+<span style="color: #999988;font-style: italic">// ]</span>
+</code></pre>
+                    <h3 id="udalenie-faylov-vnutri-direktorii">Удаление файлов внутри директории</h3>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$tree</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span>
+    <span style="color: #990000;font-weight: bold">mkfile</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'one'</span><span style="background-color: #f8f8f8">),</span>
+    <span style="color: #990000;font-weight: bold">mkfile</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'two'</span><span style="background-color: #f8f8f8">),</span>
+    <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'three'</span><span style="background-color: #f8f8f8">),</span>
+<span style="background-color: #f8f8f8">]);</span>
+
+<span style="color: #008080">$children</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">getChildren</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$newChildren</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_filter</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$children</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">fn</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$child</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #990000;font-weight: bold">isDirectory</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$child</span><span style="background-color: #f8f8f8">));</span>
+<span style="color: #008080">$tree2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">getName</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">),</span> <span style="color: #008080">$newChildren</span><span style="background-color: #f8f8f8">,</span> <span style="color: #990000;font-weight: bold">getMeta</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">));</span>
+<span style="color: #999988;font-style: italic">// [</span>
+<span style="color: #999988;font-style: italic">//     'name' =&gt; '/',</span>
+<span style="color: #999988;font-style: italic">//     'type' =&gt; 'directory',</span>
+<span style="color: #999988;font-style: italic">//     'meta' =&gt; [],</span>
+<span style="color: #999988;font-style: italic">//     'children' =&gt; [</span>
+<span style="color: #999988;font-style: italic">//         ['name' =&gt; 'three', 'type' =&gt; 'directory', 'meta' =&gt; [], 'children' =&gt; []]</span>
+<span style="color: #999988;font-style: italic">//     ]</span>
+<span style="color: #999988;font-style: italic">// ]</span>
+</code></pre>
+
+</body>
+
+</html>

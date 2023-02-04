@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Массив и ассоциативный массив - PHP: Ассоциативные массивы</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Массив и ассоциативный массив</h1>
+                    <p>В PHP есть только один тип данных для массивов — Array. Его уникальность состоит в том, что с
+                      одной стороны он работает как обычный массив, а с другой — как ассоциативный. Зависит от того, как
+                      его используют.</p>
+
+                    <p>Поначалу такой подход может подкупить своей кажущейся простотой, особенно тех, кто не имел дела с
+                      другими языками. Но чем дальше в код, тем больше проблем он приносит.</p>
+
+                    <p>Самый простой пример — JSON. В JSON массив и ассоциативный массив — разные сущности:</p>
+
+                    <p><strong>Ассоциативный массив</strong></p>
+                    <pre class="hljs"><code class=json><span style="background-color: #f8f8f8">{</span><span style="color: #bbbbbb">
+    </span><span style="color: #990000;font-weight: bold">"key"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"value"</span><span style="background-color: #f8f8f8">,</span><span style="color: #bbbbbb">
+    </span><span style="color: #990000;font-weight: bold">"key2"</span><span style="background-color: #f8f8f8">:</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"value2"</span><span style="color: #bbbbbb">
+</span><span style="background-color: #f8f8f8">}</span><span style="color: #bbbbbb">
+</span></code></pre>
+                    <p><strong>Массив</strong></p>
+                    <pre class="hljs"><code class=json><span style="background-color: #f8f8f8">[</span><span style="color: #d14">"value"</span><span style="background-color: #f8f8f8">,</span><span style="color: #bbbbbb"> </span><span style="color: #d14">"value2"</span><span style="background-color: #f8f8f8">]</span><span style="color: #bbbbbb">
+</span></code></pre>
+                    <p>Если преобразовать JSON в структуру на PHP, то эта информация теряется:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Это JSON, в котором есть и массив, и ассоциативный массив</span>
+<span style="color: #008080">$json</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'{ "key": "value", "key2": [1, 2] }'</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #0086B3">json_decode</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$json</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// Внутри PHP разницы нет, так как все массивы ассоциативные</span>
+<span style="color: #999988;font-style: italic">// Array</span>
+<span style="color: #999988;font-style: italic">// (</span>
+<span style="color: #999988;font-style: italic">//     [key] =&gt; value</span>
+<span style="color: #999988;font-style: italic">//     [key2] =&gt; Array</span>
+<span style="color: #999988;font-style: italic">//         (</span>
+<span style="color: #999988;font-style: italic">//             [0] =&gt; 1</span>
+<span style="color: #999988;font-style: italic">//             [1] =&gt; 2</span>
+<span style="color: #999988;font-style: italic">//         )</span>
+<span style="color: #999988;font-style: italic">// )</span>
+</code></pre>
+                    <p>Если мы не знаем структуру JSON, то у нас нет простого способа понять, что перед нами — массив
+                      или ассоциативный массив. В интернете с подобным сталкиваются постоянно и предлагают такой способ,
+                      как анализ ключей. Если они все числовые, то считаем, что массив, иначе — ассоциативный массив.
+                    </p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">isAssoc</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">array</span> <span style="color: #008080">$items</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$items</span> <span style="color: #000000;font-weight: bold">===</span> <span style="background-color: #f8f8f8">[])</span> <span style="color: #000000;font-weight: bold">return</span> <span style="color: #000000;font-weight: bold">false</span><span style="background-color: #f8f8f8">;</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #0086B3">array_keys</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$items</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">!==</span> <span style="color: #0086B3">range</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">,</span> <span style="color: #0086B3">count</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$items</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">-</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #990000;font-weight: bold">isAssoc</span><span style="background-color: #f8f8f8">([</span><span style="color: #d14">'a'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'b'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'c'</span><span style="background-color: #f8f8f8">]);</span> <span style="color: #999988;font-style: italic">// false</span>
+<span style="color: #990000;font-weight: bold">isAssoc</span><span style="background-color: #f8f8f8">([</span><span style="color: #d14">'1'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'a'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'0'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'b'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'2'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'c'</span><span style="background-color: #f8f8f8">]);</span> <span style="color: #999988;font-style: italic">// true</span>
+</code></pre>
+                    <p>Конвертация из массива в JSON сопряжена с такими же проблемами. Как понять, во что конвертировать
+                      переданный массив?</p>
+
+                    <p>Другая проблема заключается в том, что достаточно легко ошибиться с типом массива и начать его
+                      использовать не по назначению:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$data</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[];</span>
+<span style="color: #008080">$data</span><span style="background-color: #f8f8f8">[]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">10</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #008080">$data</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'key'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'value'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #008080">$data</span><span style="background-color: #f8f8f8">[]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'hi!'</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>Первое удивление — код работает! Теперь попробуйте догадаться, что находится внутри
+                      <code>$data</code>.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$data</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// =&gt; Array</span>
+<span style="color: #999988;font-style: italic">// (</span>
+<span style="color: #999988;font-style: italic">//     [0] =&gt; 10</span>
+<span style="color: #999988;font-style: italic">//     [key] =&gt; value</span>
+<span style="color: #999988;font-style: italic">//     [1] =&gt; hi!</span>
+<span style="color: #999988;font-style: italic">// )</span>
+</code></pre>
+                    <p>Из этого вывода должно быть понятно, что индексированных массивов в PHP нет. Есть упорядоченные
+                      ассоциативные массивы, с операцией <code>[] =</code>: добавить элемент с автоматическим
+                      присвоением ключа.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$data</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'key'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'value'</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #008080">$data</span><span style="background-color: #f8f8f8">[]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'console'</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #999988;font-style: italic">// Array</span>
+<span style="color: #999988;font-style: italic">// (</span>
+<span style="color: #999988;font-style: italic">//     [key] =&gt; value</span>
+<span style="color: #999988;font-style: italic">//     [0] =&gt; console</span>
+<span style="color: #999988;font-style: italic">// )</span>
+</code></pre>
+                    <p>Но самое неудобное — функции которые могут сохранять, а могут не сохранять ключи. Обычно в таких
+                      функциях есть дополнительный параметр флаг <code>preserve_keys</code>, который меняет описанное
+                      поведение.</p>
+
+                    <ul>
+                      <li>
+                        <p><a href="https://php.net/manual/ru/function.array-reverse.php" target="_blank"
+                            rel="nofollow">array_reverse</a></p>
+
+                        <p><strong>array array_reverse ( array $array [, bool $preserve_keys = FALSE ] )</strong></p>
+
+                        <p>preserve_keys Если установлено в TRUE, то числовые ключи будут сохранены. Нечисловые ключи не
+                          подвержены этой опции и всегда сохраняются.</p>
+                      </li>
+                      <li>
+                        <p><a href="https://php.net/manual/ru/function.array-unique.php" target="_blank"
+                            rel="nofollow">array_unique</a></p>
+
+                        <p><strong>array_unique ( array $array [, int $sort_flags = SORT_STRING ] )</strong></p>
+
+                        <p>Обратите внимание, что ключи сохранятся. Если в соответствии с заданными sort_flags несколько
+                          элементов определяются как идентичные, то будут сохранены ключ и значение первого такого
+                          элемента.</p>
+                      </li>
+                    </ul>
+
+                    <p>По сути, в описании каждой функции, которая принимает на вход массив (или массивы) и возвращает
+                      массив, есть секция с пояснением, сохраняет ли ключи функция или нет, и как это поведение можно
+                      изменить.</p>
+
+</body>
+
+</html>

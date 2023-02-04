@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Уровневое проектирование - PHP: Абстракция с помощью данных</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Уровневое проектирование</h1>
+                    <p>Рассмотрим ещё одну простую систему — рациональные числа и операции над ними. Напомню, что
+                      рациональным называют число, которое может быть представлено в виде дроби <code>a/b</code>, где
+                      <code>a</code> — это числитель дроби, <code>b</code> — знаменатель дроби. Причём <code>b</code> не
+                      должно быть нулём, поскольку деление на ноль не допускается.</p>
+
+                    <p>Рациональные числа в PHP не поддерживаются, поэтому абстракцию для них создадим самостоятельно.
+                      Как обычно, нам понадобятся конструктор и селекторы:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$num</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">makeRational</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// создали рациональное число "одна вторая"</span>
+<span style="color: #008080">$numer</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">getNumer</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$num</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// 1</span>
+<span style="color: #008080">$denom</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">getDenom</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$num</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// 2</span>
+</code></pre>
+                    <p>С помощью трёх функций мы определили рациональное число. Одна функция (конструктор) собирает его
+                      из частей, другие (селекторы) позволяют каждую часть извлечь. Чем при этом, с точки зрения языка,
+                      является <code>$num</code> — абсолютно не важно. Хоть функцией (и такое возможно), хоть массивом
+                      (индексированным или ассоциативным). Во внутренней реализации можно даже использовать строки:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">makeRational</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$numer</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$denom</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #d14">"</span><span style="color: #d14">{</span><span style="color: #008080">$numer</span><span style="color: #d14">}</span><span style="color: #d14">/</span><span style="color: #d14">{</span><span style="color: #008080">$denom</span><span style="color: #d14">}</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">getNumer</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$rational</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #0086B3">explode</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$rational</span><span style="background-color: #f8f8f8">)[</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">];</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">getDenom</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$rational</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #0086B3">explode</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$rational</span><span style="background-color: #f8f8f8">)[</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">];</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">makeRational</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">10</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">));</span> <span style="color: #999988;font-style: italic">// =&gt; 10/3</span>
+</code></pre>
+                    <p>Несмотря на то, что мы научились представлять рациональные числа, эта абстракция сама по себе
+                      малоприменима. Абстракция становится полезна тогда, когда появляется возможность оперировать ей.
+                      Для рациональных чисел базовыми операциями можно считать арифметические, например, сложение,
+                      вычитание или умножение. Умножение рациональных чисел — самая простая операция. Для её выполнения
+                      нужно перемножить числители и знаменатели:</p>
+                    <pre class="hljs"><code class=>3/4 * 4/5 = (3 * 4)/(4 * 5) = 12/20
+</code></pre>
+                    <p>Самое интересное начинается в процессе реализации. Если предположить, что реальная структура
+                      рационального числа выглядит так: <code>[&#39;numer&#39; =&gt; 2, &#39;denom&#39; =&gt; 3]</code>,
+                      то, чисто технически, решение может быть таким:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">mul</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$rational1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$rational2</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="background-color: #f8f8f8">[</span>
+        <span style="color: #d14">'numer'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$rational1</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'numer'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #008080">$rational2</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'numer'</span><span style="background-color: #f8f8f8">],</span>
+        <span style="color: #d14">'denom'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$rational1</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'denom'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #008080">$rational2</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'denom'</span><span style="background-color: #f8f8f8">]</span>
+    <span style="background-color: #f8f8f8">];</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>С точки зрения вызывающего кода всё нормально, абстракция сохранена. На вход в <code>mul</code>
+                      подаются рациональные числа, на выходе — рациональное число. А вот внутри никакой абстракции нет,
+                      обращение с рациональными числами строится на основе знания их устройства. Любое изменение
+                      внутренней реализации рациональных чисел потребует переписывания всех операций, работающих с
+                      рациональными числами напрямую — то есть без селекторов или конструктора. Данный код нарушает
+                      принцип одного уровня абстракции (single layer abstraction).</p>
+
+                    <p>При разработке сложных систем используется подход — <em>уровневое проектирование</em>. Он
+                      заключается в том, что системе придаётся структура при помощи последовательных уровней. Каждый из
+                      уровней строится путём комбинации частей, которые на данном уровне рассматриваются как
+                      элементарные. Части, которые строятся на каждом уровне, работают как элементарные на следующем
+                      уровне.</p>
+
+                    <blockquote>
+                      <p>Уровневое проектирование пронизывает всю технику построения сложных систем. Например, при
+                        проектировании компьютеров резисторы и транзисторы сочетаются (и описываются при помощи языка
+                        аналоговых схем), и из них строятся и-, или- элементы и им подобные, служащие основой языка
+                        цифровых схем. Из этих элементов строятся процессоры, шины и системы памяти, которые в свою
+                        очередь служат элементами в построении компьютеров при помощи языков, подходящих для описания
+                        компьютерной архитектуры. Компьютеры, сочетаясь, дают распределённые системы, которые
+                        описываются при помощи языков описания сетевых взаимодействий, и так далее. (c) SICP</p>
+                    </blockquote>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">mul</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$rational1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$rational2</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #990000;font-weight: bold">makeRational</span><span style="background-color: #f8f8f8">(</span>
+        <span style="color: #990000;font-weight: bold">getNumer</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$rational1</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #990000;font-weight: bold">getNumer</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$rational2</span><span style="background-color: #f8f8f8">),</span>
+        <span style="color: #990000;font-weight: bold">getDenom</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$rational1</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #990000;font-weight: bold">getDenom</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$rational2</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>В нашем примере базовым уровнем являются типы, встроенные в сам язык: числа и массивы. На их
+                      основе сформирован уровень для представления рациональных чисел: <code>makeRational</code>,
+                      <code>getDenom</code>, <code>getNumer</code>. Затем — уровень, на котором реализованы
+                      арифметические операции над рациональными числами: сложение, вычитание, умножение и так далее.</p>
+
+                    <p>Подчеркну, что речь идёт про реализацию самих уровней. Например, операция сложения полностью
+                      опирается на конструктор и селекторы, но ничего не знает и не может знать про внутреннее
+                      устройство самих рациональных чисел. С другой стороны, это не значит, что в одном месте не могут
+                      появиться функции из разных уровней. Могут, и это нормально во многих случаях. Например:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">printSum</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$rational1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$rational2</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$rational3</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">sum</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$rational1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$rational2</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #008080">$denom</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">getDenom</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$rational3</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #008080">$numer</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">getNumer</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$rational3</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #d14">"Denom: </span><span style="color: #d14">{</span><span style="color: #008080">$denom</span><span style="color: #d14">}</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">;</span>
+    <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #d14">"Numer: </span><span style="color: #d14">{</span><span style="color: #008080">$numer</span><span style="color: #d14">}</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Архитектура Веба - Веб-разработка на PHP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Архитектура Веба</h1>
+                    <p>Современные сайты разрабатываются на множестве языков, используя совершенно разные технологии, но
+                      принципы их устройства одинаковые. То, почему сайты внутри устроены похожим образом, определяется
+                      архитектурой веба. В его основе лежит протокол HTTP, с которым вы уже знакомы по одноимённому
+                      курсу.</p>
+
+                    <p><em>Современный веб несколько сложнее благодаря WebSocket, что существенно влияет на принципы
+                        разработки сайтов, которые активно его используют. Однако веб-сокеты не замена обычному способу
+                        взаимодействия, а дополнение, необходимое для некоторых ситуаций. К таким задачам относится
+                        любое взаимодействие в реальном времени (real-time), например, чаты или многопользовательские
+                        игры</em></p>
+
+                    <p><img alt="http session" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjgyYTI2ZDQwYzVlN2UxNTUzM2IyNTVhMjg3NjI4NzE2LnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=62e6affda8473e4c857721bcfa6605519292e4cb79ffb0a52ac302c1fded2c0b"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Принцип взаимодействия с любым сайтом сводится к следующим шагам (сам процесс сложнее, но нас
+                      интересует только взаимодействие с приложением):</p>
+
+                    <ol>
+                      <li> Пользователь запрашивает страницу сайта</li>
+                      <li> Браузер выполняет HTTP-запрос к веб-серверу</li>
+                      <li> Веб-сервер возвращает содержимое страницы в HTTP-ответе</li>
+                      <li> Браузер отрисовывает страницу сайта</li>
+                      <li> Пользователь кликает по ссылке на сайте и весь процесс повторяется снова.</li>
+                    </ol>
+
+                    <p>Каждый такой цикл включает в себя HTTP-сессию: HTTP-запрос и HTTP-ответ. Проще всего увидеть
+                      HTTP-сессию, используя утилиту <code>curl</code>:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>curl <span style="color: #000080">-v</span> <span style="color: #000080">--head</span> http://code-basics.ru
+<span style="color: #000000;font-weight: bold">*</span> Rebuilt URL to: http://code-basics.ru/
+<span style="color: #000000;font-weight: bold">*</span>   Trying 100.102.175.148...
+<span style="color: #000000;font-weight: bold">*</span> TCP_NODELAY <span style="color: #0086B3">set</span>
+<span style="color: #000000;font-weight: bold">*</span> Connected to code-basics.ru <span style="color: #000000;font-weight: bold">(</span>100.102.175.148<span style="color: #000000;font-weight: bold">)</span> port 80 <span style="color: #000000;font-weight: bold">(</span><span style="color: #999988;font-style: italic">#0)</span>
+<span style="color: #999988;font-style: italic"># Ниже приведён запрос</span>
+<span style="color: #000000;font-weight: bold">&gt;</span> HEAD / HTTP/1.1
+<span style="color: #000000;font-weight: bold">&gt;</span> Host: code-basics.ru
+<span style="color: #000000;font-weight: bold">&gt;</span> User-Agent: curl/7.54.0
+<span style="color: #000000;font-weight: bold">&gt;</span> Accept: <span style="color: #000000;font-weight: bold">*</span>/<span style="color: #000000;font-weight: bold">*</span>
+<span style="color: #000000;font-weight: bold">&gt;</span>
+<span style="color: #999988;font-style: italic"># А это ответ</span>
+&lt; HTTP/1.1 200 OK
+&lt; Date: Wed, 04 Jul 2018 08:38:22 GMT
+&lt; Content-Type: text/html<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">charset</span><span style="color: #000000;font-weight: bold">=</span>utf-8
+&lt; Content-Length: 7902
+&lt; Connection: keep-alive
+&lt; Server: nginx/1.15.1
+
+&lt;
+<span style="color: #000000;font-weight: bold">*</span> Connection <span style="color: #999988;font-style: italic">#0 to host code-basics.ru left intact</span>
+</code></pre>
+                    <p>Как видно, принцип взаимодействия не зависит от того, на чём написан сайт. С точки зрения сайта,
+                      всегда есть запрос, который нужно обработать и вернуть ответ в виде, например, HTML. То, каким
+                      будет HTML для конкретного запроса, определяется самим запросом, то есть запрошенной страницей и
+                      различными параметрами HTTP (к примеру, заголовки). В конечном итоге, код сайта представляет из
+                      себя набор обработчиков разных страниц, которые принимают входящие запросы, формируют ответ и
+                      возвращают его. Ниже вы увидите примеры на разных языках. Даже не зная синтаксиса достаточно легко
+                      уловить общую структуру всех примеров кода: функция-обработчик, привязанная к конкретной странице.
+                    </p>
+
+                    <p><strong>PHP</strong></p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Slim\Factory\AppFactory</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #008080">$app</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">AppFactory</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">create</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">write</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Welcome to Slim!'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/about'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">write</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'About My Site'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">run</span><span style="background-color: #f8f8f8">();</span>
+</code></pre>
+                    <p><strong>Ruby</strong></p>
+                    <pre class="hljs"><code class=ruby><span style="color: #0086B3">require</span> <span style="color: #d14">'sinatra'</span>
+<span style="background-color: #f8f8f8">get</span> <span style="color: #d14">'/frank-says'</span> <span style="color: #000000;font-weight: bold">do</span>
+  <span style="color: #d14">'Put this in your pipe &amp; smoke it!'</span>
+<span style="color: #000000;font-weight: bold">end</span>
+</code></pre>
+                    <p><strong>Python</strong></p>
+                    <pre class="hljs"><code class=python><span style="color: #000000;font-weight: bold">from</span> <span style="color: #555555">flask</span> <span style="color: #000000;font-weight: bold">import</span> <span style="background-color: #f8f8f8">Flask</span>
+<span style="background-color: #f8f8f8">app</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">Flask</span><span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">__name__</span><span style="background-color: #f8f8f8">)</span>
+
+<span style="color: #000000;font-weight: bold">@</span><span style="background-color: #f8f8f8">app</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">route</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"/"</span><span style="background-color: #f8f8f8">)</span>
+<span style="color: #000000;font-weight: bold">def</span> <span style="color: #990000;font-weight: bold">hello</span><span style="background-color: #f8f8f8">():</span>
+  <span style="color: #000000;font-weight: bold">return</span> <span style="color: #d14">"Hello World!"</span>
+</code></pre>
+                    <p><strong>Java</strong></p>
+                    <pre class="hljs"><code class=java><span style="color: #000000;font-weight: bold">import</span> <span style="color: #555555">static</span> <span style="background-color: #f8f8f8">spark</span><span style="color: #000000;font-weight: bold">.</span><span style="color: #008080">Spark</span><span style="color: #000000;font-weight: bold">.*;</span>
+
+<span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">HelloWorld</span> <span style="color: #000000;font-weight: bold">{</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">static</span> <span style="color: #445588;font-weight: bold">void</span> <span style="color: #990000;font-weight: bold">main</span><span style="color: #000000;font-weight: bold">(</span><span style="color: #445588;font-weight: bold">String</span><span style="color: #000000;font-weight: bold">[]</span> <span style="background-color: #f8f8f8">args</span><span style="color: #000000;font-weight: bold">)</span> <span style="color: #000000;font-weight: bold">{</span>
+        <span style="background-color: #f8f8f8">get</span><span style="color: #000000;font-weight: bold">(</span><span style="color: #d14">"/hello"</span><span style="color: #000000;font-weight: bold">,</span> <span style="color: #000000;font-weight: bold">(</span><span style="background-color: #f8f8f8">req</span><span style="color: #000000;font-weight: bold">,</span> <span style="background-color: #f8f8f8">res</span><span style="color: #000000;font-weight: bold">)</span> <span style="color: #000000;font-weight: bold">-&gt;</span> <span style="color: #d14">"Hello World"</span><span style="color: #000000;font-weight: bold">);</span>
+    <span style="color: #000000;font-weight: bold">}</span>
+<span style="color: #000000;font-weight: bold">}</span>
+</code></pre>
+                    <p><strong>JavaScript</strong></p>
+                    <pre class="hljs"><code class=javascript><span style="color: #000000;font-weight: bold">import</span> <span style="background-color: #f8f8f8">Express</span> <span style="color: #000000;font-weight: bold">from</span> <span style="color: #d14">'</span><span style="color: #d14">express</span><span style="color: #d14">'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">const</span> <span style="background-color: #f8f8f8">app</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="background-color: #f8f8f8">Express</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="background-color: #f8f8f8">app</span><span style="background-color: #f8f8f8">.</span><span style="color: #000000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'</span><span style="color: #d14">/</span><span style="color: #d14">'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">req</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">res</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="background-color: #f8f8f8">{</span>
+  <span style="background-color: #f8f8f8">res</span><span style="background-color: #f8f8f8">.</span><span style="background-color: #f8f8f8">send</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'</span><span style="color: #d14">Hello World!</span><span style="color: #d14">'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>Конечно, реальные сайты устроены значительно сложнее, но в основе лежит та связка запрос-ответ,
+                      которая была описана в этом уроке. Именно она определяет общую структуру любого сайта, написанного
+                      на любом языке.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Выполните запрос <code>curl --head https://hexlet.io</code>. Изучите отправляемые и
+                        возвращаемые заголовки</li>
+                      <li> Откройте в браузере консоль разработчика, перейдите в ней на вкладку Network (Сеть) и
+                        загрузите <code>https://ru.hexlet.io</code> в этой вкладке. Изучите, какие запросы делает сайт
+                        (и с какими заголовками), а также то, что приходит в ответ.</li>
+                    </ol>
+
+</body>
+
+</html>

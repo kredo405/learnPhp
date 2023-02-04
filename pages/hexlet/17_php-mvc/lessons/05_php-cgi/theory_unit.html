@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>PHP CGI - Веб-разработка на PHP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../session/exercise_unit.html">Веб-разработка на PHP</a>
+                    <h1 class='mt-0 mb-4'>PHP CGI</h1>
+                    <p>В предыдущем уроке мы создали сайт буквально из одного PHP-файла, печатающего на экран (в STDOUT)
+                      текущий год. Так работает только PHP, потому что это единственный в мире язык, который в своём
+                      ядре работает как CGI-скрипт. Именно это стало причиной его популярности. Ниже вы увидите основные
+                      возможности, которые есть в языке для работы с вебом &quot;из коробки&quot;.</p>
+
+                    <p>После выполнения скрипта <em>index.php</em>, все необходимые HTTP-заголовки ответа PHP отправил
+                      автоматически, а телом ответа стали данные, которые были отправлены в STDOUT.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>curl <span style="color: #000080">-v</span> localhost:8080
+<span style="color: #000000;font-weight: bold">*</span>   Trying ::1:8080...
+<span style="color: #000000;font-weight: bold">*</span> Connected to localhost <span style="color: #000000;font-weight: bold">(</span>::1<span style="color: #000000;font-weight: bold">)</span> port 8080 <span style="color: #000000;font-weight: bold">(</span><span style="color: #999988;font-style: italic">#0)</span>
+<span style="color: #000000;font-weight: bold">&gt;</span> GET / HTTP/1.1
+<span style="color: #000000;font-weight: bold">&gt;</span> Host: localhost:8080
+<span style="color: #000000;font-weight: bold">&gt;</span> User-Agent: curl/7.68.0
+<span style="color: #000000;font-weight: bold">&gt;</span> Accept: <span style="color: #000000;font-weight: bold">*</span>/<span style="color: #000000;font-weight: bold">*</span>
+<span style="color: #000000;font-weight: bold">&gt;</span>
+&lt; HTTP/1.1 200 OK
+&lt; Host: localhost:8080
+&lt; Date: Wed, 27 May 2020 12:13:25 GMT
+&lt; Connection: close
+&lt; X-Powered-By: PHP/7.4.3
+&lt; Content-type: text/html<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">charset</span><span style="color: #000000;font-weight: bold">=</span>UTF-8
+&lt;
+<span style="color: #000000;font-weight: bold">*</span> Closing connection 0
+</code></pre>
+                    <p>PHP об этом говорит прямо: <code>X-Powered-By: PHP/7.4.3</code>. Заголовки можно менять и
+                      добавлять, используя функцию <a href="https://php.net/manual/ru/function.header.php"
+                        target="_blank" rel="nofollow">header()</a>. Эта функция принимает на вход строку с одним
+                      заголовком, точно так же как это делается в HTTP-ответе.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// file: index.php</span>
+
+<span style="color: #999988;font-style: italic">// Подробнее о работе функции можно прочитать в документации</span>
+<span style="color: #0086B3">header</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Cache-control: private, max-age=0'</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #000000;font-weight: bold">echo</span> <span style="color: #0086B3">date</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Y'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Теперь запрос</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>curl <span style="color: #000080">--head</span> localhost:8080
+HTTP/1.1 200 OK
+Host: localhost:8080
+Date: Wed, 27 May 2020 12:17:57 GMT
+Connection: close
+X-Powered-By: PHP/7.4.3
+Cache-control: private, max-age<span style="color: #000000;font-weight: bold">=</span>0
+Content-type: text/html<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">charset</span><span style="color: #000000;font-weight: bold">=</span>UTF-8
+</code></pre>
+                    <p>Заголовок, установленный с помощью функции <code>header()</code> появился в ответе. Помните, что
+                      функцию <code>header()</code> можно вызывать только если клиенту ещё не передавались данные. То
+                      есть она должна идти в коде первой до любого вывода. Это требование вытекает из устройства HTTP.
+                      Сначала идут заголовки и только потом тело.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">echo</span> <span style="color: #d14">'hello'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #999988;font-style: italic">/* Этот пример приведёт к ошибке. Обратите внимание
+ * на тег вверху, который будет выведен до вызова header()
+ */</span>
+<span style="color: #0086B3">header</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Location: http://www.example.com/'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Все что мы обсудили выше, касается HTTP-ответа, но не менее важно уметь работать с данными
+                      HTTP-запроса: посмотреть текущие заголовки, адрес, параметры запроса и его тело. Для этого в PHP
+                      реализованы суперглобальные переменные (массивы), которые доступны из абсолютно любого места
+                      программы. К ним относятся:</p>
+
+                    <ul>
+                      <li><code>$GLOBALS</code></li>
+                      <li><code>$_SERVER</code></li>
+                      <li><code>$_GET</code></li>
+                      <li><code>$_POST</code></li>
+                      <li><code>$_FILES</code></li>
+                      <li><code>$_COOKIE</code></li>
+                      <li><code>$_SESSION</code></li>
+                      <li><code>$_REQUEST</code></li>
+                      <li><code>$_ENV</code></li>
+                    </ul>
+
+                    <p>И хотя чисто технически это обычные массивы которые можно изменять, большинство из них, все же,
+                      предназначены только для чтения. Например, массив <code>$_SERVER</code> содержит в себе все
+                      заголовки запроса:</p>
+                    <pre class="hljs"><code class=sh>Array
+<span style="color: #000000;font-weight: bold">(</span>
+    <span style="color: #000000;font-weight: bold">[</span>DOCUMENT_ROOT] <span style="color: #000000;font-weight: bold">=&gt;</span> /private/tmp
+    <span style="color: #000000;font-weight: bold">[</span>REMOTE_ADDR] <span style="color: #000000;font-weight: bold">=&gt;</span> ::1
+    <span style="color: #000000;font-weight: bold">[</span>REMOTE_PORT] <span style="color: #000000;font-weight: bold">=&gt;</span> 58667
+    <span style="color: #000000;font-weight: bold">[</span>SERVER_SOFTWARE] <span style="color: #000000;font-weight: bold">=&gt;</span> PHP 7.4.3 Development Server
+    <span style="color: #000000;font-weight: bold">[</span>SERVER_PROTOCOL] <span style="color: #000000;font-weight: bold">=&gt;</span> HTTP/1.1
+    <span style="color: #000000;font-weight: bold">[</span>SERVER_NAME] <span style="color: #000000;font-weight: bold">=&gt;</span> localhost
+    <span style="color: #000000;font-weight: bold">[</span>SERVER_PORT] <span style="color: #000000;font-weight: bold">=&gt;</span> 8080
+    <span style="color: #000000;font-weight: bold">[</span>REQUEST_URI] <span style="color: #000000;font-weight: bold">=&gt;</span> /
+    <span style="color: #000000;font-weight: bold">[</span>REQUEST_METHOD] <span style="color: #000000;font-weight: bold">=&gt;</span> GET
+    <span style="color: #000000;font-weight: bold">[</span>SCRIPT_NAME] <span style="color: #000000;font-weight: bold">=&gt;</span> /index.php
+    <span style="color: #000000;font-weight: bold">[</span>SCRIPT_FILENAME] <span style="color: #000000;font-weight: bold">=&gt;</span> /private/tmp/index.php
+    <span style="color: #000000;font-weight: bold">[</span>PHP_SELF] <span style="color: #000000;font-weight: bold">=&gt;</span> /index.php
+    <span style="color: #000000;font-weight: bold">[</span>HTTP_HOST] <span style="color: #000000;font-weight: bold">=&gt;</span> localhost:8080
+    <span style="color: #000000;font-weight: bold">[</span>HTTP_USER_AGENT] <span style="color: #000000;font-weight: bold">=&gt;</span> curl/7.68.0
+    <span style="color: #000000;font-weight: bold">[</span>HTTP_ACCEPT] <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #000000;font-weight: bold">*</span>/<span style="color: #000000;font-weight: bold">*</span>
+    <span style="color: #000000;font-weight: bold">[</span>REQUEST_TIME_FLOAT] <span style="color: #000000;font-weight: bold">=&gt;</span> 1530772973.7628
+    <span style="color: #000000;font-weight: bold">[</span>REQUEST_TIME] <span style="color: #000000;font-weight: bold">=&gt;</span> 1530772973
+<span style="color: #000000;font-weight: bold">)</span>
+</code></pre>
+                    <p>Обратите внимание на формат ключей. PHP автоматически переводит все имена заголовков в верхний
+                      регистр. Кроме заголовков этот массив содержит некоторые дополнительные параметры, например имя
+                      запущенного скрипта и версию PHP. Практически главный ключ в этом массиве
+                      <code>REQUEST_URI</code>. Он содержит адрес запрошенной страницы и на основе него выбирается
+                      подходящее действие.</p>
+
+                    <p><code>$_POST</code> содержит данные, отправленные методом <code>POST</code>. А вот
+                      <code>$_GET</code> вопреки своему названию, содержит параметры запроса, которые, если вы помните,
+                      можно отправить с любым методом. Кстати, не все PHP-программисты это знают и думают, что
+                      существует понятие &quot;гет-параметры&quot;. Массив <code>$_REQUEST</code> содержит объединённые
+                      данные массивов <code>$_POST</code> и <code>$_GET</code>.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Добавьте в <em>index.php</em> вывод <code>$_SERVER</code> на экран. Обновите страницу в
+                        браузере и изучите вывод.</li>
+                      <li> Добавьте в <em>index.php</em> вывод <code>$_GET</code> на экран. Введите адрес
+                        <em>localhost:8080/?key=value&amp;key2=value2</em> и посмотрите на вывод.</li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://repl.it/languages/php7">PHP на Repl.it с запущенным
+                          веб-сервером</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

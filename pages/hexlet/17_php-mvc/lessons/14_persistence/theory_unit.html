@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Персистентность - Веб-разработка на PHP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Персистентность</h1>
+                    <p>Среди сайтов выделяют такую категорию, как &quot;статические&quot;. Их особенность в том, что
+                      такие сайты по сути представляют собой готовый набор HTML-страничек. Например, так сделаны наши
+                      руководства на <a href="https://guides.hexlet.io/" target="_blank">https://guides.hexlet.io/</a>.
+                      Удобно, быстро, дёшево. Статическим сайтам не нужно куда-то сохранять информацию, его данные
+                      хранятся прямо в HTML.</p>
+
+                    <p><em>Для создания статических сайтов используют специальные генераторы сайтов, например, <a
+                          href="https://jekyllrb.com/" target="_blank">https://jekyllrb.com/</a></em></p>
+
+                    <p>Остальным сайтам повезло меньше. Все что создаётся пользователем, нужно куда-то сохранять. Самый
+                      простой способ сохранять — использовать файлы. Насколько он простой, настолько же нерабочий.
+                      Блокировки файловой системы не позволят работать с файлом в конкурентной среде, какой является
+                      веб, когда с сайтом могут одновременно работать сотни тысяч пользователей.</p>
+
+                    <p><em>Здесь мы снова приходим к необходимости понимать устройство операционных систем. <a
+                          href="https://ru.hexlet.io/pages/recommended-books"
+                          target="_blank">https://ru.hexlet.io/pages/recommended-books</a></em></p>
+
+                    <blockquote>
+                      <p>персистентность — возможность долговременного хранения состояния</p>
+                    </blockquote>
+
+                    <p>Для постоянного (персистентного) хранения данных принято использовать специализированные
+                      программы — базы данных. Взаимодействие с ними строят двумя способами. Либо работая напрямую через
+                      <a href="https://php.net/manual/ru/book.pdo.php" target="_blank" rel="nofollow">библиотеку</a>,
+                      предназначенную для данной базы данных. Либо через <a
+                        href="https://www.doctrine-project.org/projects/doctrine-orm/en/latest/tutorials/getting-started.html#getting-started-with-doctrine"
+                        target="_blank" rel="nofollow">ORM</a>, которая в большинстве случаев прячет базу данных за
+                      горой абстракций.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Doctrine ORM</span>
+
+<span style="color: #008080">$user</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">User</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #008080">$user</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">setName</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$newUsername</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #008080">$entityManager</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">persist</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$entityManager</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #0086B3">flush</span><span style="background-color: #f8f8f8">();</span>
+</code></pre>
+                    <p>Тема хранения данных очень глубока и требует определённой подготовки. Это сделано намеренно.
+                      Профессия построена так, чтобы мы как можно быстрее добрались до веба и научились с ним работать.
+                      Работа с базой данных рассматривается в следующих курсах. По этой причине в следующих уроках
+                      данные пользователя будут сохраняться в сессии (механизм работающий поверх Cookie), через
+                      предоставленную абстракцию.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic"># Хранилище объектов</span>
+<span style="color: #008080">$repo</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">App\UserRepository</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #999988;font-style: italic">// Сохранение</span>
+<span style="color: #008080">$repo</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">save</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// Ещё одно сохранение</span>
+<span style="color: #008080">$repo</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">save</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user2</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #999988;font-style: italic">// Извлечение по идентификатору</span>
+<span style="color: #008080">$repo</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">find</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$entity</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'id'</span><span style="background-color: #f8f8f8">]);</span> <span style="color: #999988;font-style: italic">// $entity</span>
+
+<span style="color: #999988;font-style: italic">// Извлечение всех сущностей</span>
+<span style="color: #008080">$repo</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">all</span><span style="background-color: #f8f8f8">();</span> <span style="color: #999988;font-style: italic">// [$entity, $entity2]</span>
+</code></pre>
+                    <p>Репозиторий отвечает за хранение конкретной сущности. Для каждой свой: пользователи —
+                      <code>UserRepository</code>, машины — <code>CarRepository</code> и так далее.</p>
+
+                    <p>Все репозитории далее по курсу, созданы специально для этого курса. Они не являются частью
+                      фреймворка Slim или какой-то ORM. Исходные файлы любого репозитория доступны прямо в практике.</p>
+
+
+</body>
+
+</html>

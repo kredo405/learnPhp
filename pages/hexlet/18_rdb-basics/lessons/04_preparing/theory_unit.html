@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Подготовка к работе - Основы реляционных баз данных</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="v-tOLhNrE3XD7XehcsbPEux3wE53wU2-O7tFZGMbPqVGNuBF4EJOUvEYJUyfbgyV8mChH2jjRwlp69_7qNphrQ" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../transactions/exercise_unit.html">Основы реляционных баз данных</a>
+                    <h1 class='mt-0 mb-4'>Подготовка к работе</h1>
+                    <p>Вспомним, как работает <em>psql</em>. Если эту программу запустить без аргументов, то она
+                      пытается подключиться к локальной базе данных (находящейся на той же машине) с именем, совпадающим
+                      с именем текущего пользователя, и делает это, используя роль с этим же именем. Если PostgreSQL
+                      установлен верно, то запуск этой программы в Linux (например, Ubuntu) ругается на отсутствие
+                      соответствующей роли:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>psql
+psql: FATAL:  role <span style="color: #d14">"tirion"</span> does not exist
+</code></pre>
+                    <p>Мы уже научились решать эту проблему, используя <em>sudo -u postgres psql</em>. Но это не лучшее
+                      решение, как минимум, по двум причинам:</p>
+
+                    <ol>
+                      <li> Пользователь <em>postgres</em> имеет максимальные права в СУБД. Тот, кто завладеет им, может
+                        уничтожить всё. Поэтому конкретные клиенты (приложения или пользователи) никогда не создают базы
+                        данных от имени <em>postgres</em> и никогда не работают из под этого пользователя.</li>
+                      <li> Придётся постоянно использовать эту конструкцию <em>sudo -u postgres</em> для любых команд,
+                        связанных с СУБД.</li>
+                    </ol>
+
+                    <p><em>Маководам не нужно использовать часть sudo -u postgres, так как после установки PostgreSQL
+                        автоматически конфигурируется для работы с вашим пользователем</em></p>
+
+                    <p>Для упрощения работы по ходу курса создадим роль, которая имеет такое же имя, как и пользователь,
+                      из под которого вы работаете. Выполните следующие действия:</p>
+
+                    <ol>
+                      <li>
+                        <p>Посмотрите имя вашего текущего пользователя: <em>whoami</em></p>
+                        <pre class="hljs"><code class=sh><span style="color: #008080">$ </span><span style="color: #0086B3">whoami
+</span>tirion
+</code></pre>
+                      </li>
+                      <li>
+                        <p>Создайте роль с таким же именем внутри PostgreSQL, используя команду <em>createuser</em>.
+                          Обратите внимание на то, что команду нужно запускать от пользователя <em>postgres</em>, иначе
+                          она попробует соединиться с СУБД от имени текущего пользователя, которого там нет:</p>
+                        <pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># Флаг --createdb добавляет нашей роли возможность создавать базы данных. По умолчанию этой возможности нет.</span>
+<span style="color: #008080">$ </span><span style="color: #0086B3">sudo</span> <span style="color: #000080">-u</span> postgres createuser <span style="color: #000080">--createdb</span> tirion
+
+<span style="color: #999988;font-style: italic"># Для удаления пользователя можно воспользоваться командой:</span>
+<span style="color: #008080">$ </span>dropuser tirion
+</code></pre>
+                      </li>
+                    </ol>
+
+                    <p>Теперь у нас есть роль в СУБД. Попробуем соединиться с PostgreSQL, используя её:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>psql
+psql: FATAL:  database <span style="color: #d14">"tirion"</span> does not exist
+</code></pre>
+                    <p>Снова ошибка, но уже другая. Теперь <em>psql</em> ругается на то, что не выбрана база данных.
+                      Надо сказать что невозможно соединиться с СУБД просто так: соединение всегда происходит с
+                      конкретной базой данных. Эту базу данных можно указать самостоятельно, просто передав один
+                      аргумент в <em>psql</em>. Мы уже знаем, что внутри PostgreSQL создана база <em>postgres</em>.
+                      Попробуем подключиться к ней:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>psql postgres
+<span style="color: #008080">postgres</span><span style="color: #000000;font-weight: bold">=&gt;</span>
+</code></pre>
+                    <p>Соединение удалось. Теперь посмотрим список ролей. Для этого подходит команда <em>\du</em>
+                      (Describe Users), которую надо выполнить внутри REPL.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">postgres</span><span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">\d</span>u
+                                   List of roles
+ Role name |                         Attributes                         | Member of
+<span style="color: #000080">-----------</span>+------------------------------------------------------------+-----------
+ postgres  | Superuser, Create role, Create DB, Replication, Bypass RLS | <span style="color: #000000;font-weight: bold">{}</span>
+ tirion    | Create DB                                                  | <span style="color: #000000;font-weight: bold">{}</span>
+</code></pre>
+                    <p>Как видно, в СУБД создано две роли. Одна <em>postgres</em>, другая — та, которую мы
+                      самостоятельно добавили ранее.</p>
+
+                    <p>Для экспериментов нам понадобится база данных и, возможно, даже не одна. Создадим базу данных с
+                      именем <em>hexlet</em>. Сделать это можно из командной строки (не репла psql!) командой
+                      <em>createdb</em>.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># Если запустить эту команду без аргументов,</span>
+<span style="color: #999988;font-style: italic"># то она попытается создать базу данных,</span>
+<span style="color: #999988;font-style: italic"># совпадающую с именем вашего пользователя в системе.</span>
+<span style="color: #008080">$ </span>createdb hexlet
+</code></pre>
+                    <p>Имя для базы данных выбирается произвольно и обычно совпадает с названием проекта, для которого
+                      она создается. Имена баз уникальны в рамках одной СУБД. Это значит, что повторный вызов
+                      <em>createdb</em> с тем же именем приведёт к ошибке.</p>
+
+                    <p>После установки, PostgreSQL сразу создаёт несколько служебных баз данных (например, postgres),
+                      которые нужны для работы самой СУБД.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># Посмотреть список баз данных</span>
+<span style="color: #008080">$ </span>psql <span style="color: #000080">-l</span>
+
+<span style="color: #999988;font-style: italic"># Не полный вывод</span>
+                          List of databases
+   Name    |  Owner   | Encoding |   Collate   |    Ctype    |
+<span style="color: #000080">-----------</span>+----------+----------+-------------+-------------+
+ pgadmin   | pgadmin  | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+ tirion    | tirion   | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+ postgres  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+ template0 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+ template1 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+</code></pre>
+                    <p>Теперь у нас есть роль и база данных для экспериментов. Подключение к этой БД выполняется так:
+                    </p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>psql hexlet
+<span style="color: #008080">hexlet</span><span style="color: #000000;font-weight: bold">=&gt;</span>
+</code></pre>
+                    <p>Созданную базу данных можно удалить командой <em>dropdb</em>:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>dropdb hexlet
+</code></pre>
+                    <p>Не забудьте её снова создать, так как она понадобится нам в дальнейшем.</p>
+
+                    <p><em>Запускать такую команду нужно с большой осторожностью. Удаление базы данных — необратимый
+                        процесс. Нет ничего страшнее, чем потерять данные, которые, в отличие от кода, невозможно
+                        восстановить без резервных копий. Во избежание недоразумений, команда dropdb не работает без
+                        аргументов — ей всегда нужно передавать имя базы.</em></p>
+
+                    <p>Удаление базы данных возможно только в том случае, если к ней никто не подключен (за исключением
+                      того, кто удаляет). Если есть другие клиенты, например psql или pgadmin4, то СУБД предупредит о
+                      невозможности выполнить команду.</p>
+
+                    <p><strong>Процесс создания пользователя и базы данных</strong></p>
+
+                    <script id="asciicast-dhzsAGTI5esYnuRUi12GJleg8"
+                      src="https://asciinema.org/a/dhzsAGTI5esYnuRUi12GJleg8.js" data-rows="20" async></script>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ul>
+                      <li>Создайте роль с именем <em>hexletbot</em></li>
+                      <li>Создайте базу данных с именем <em>hexletbot</em></li>
+                      <li>Удалите созданную базу данных</li>
+                    </ul>
+
+                    <p>Для дальнейших уроков нам понадобится база данных из репозитория <a
+                        href="https://github.com/hexlet-components/pg-dump-example" target="_blank"
+                        rel="nofollow">pg-dump-example</a>. Всё, что от вас требуется сейчас — загрузить её в базу
+                      данных под именем <em>hexlet</em>. Инструкция по загрузке есть в описании репозитория.</p>
+
+
+</body>
+
+</html>

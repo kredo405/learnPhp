@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Автоинкремент - Основы реляционных баз данных</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WK88TH" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+
+  <script type='application/ld+json'>
+{&quot;@context&quot;:&quot;https://schema.org&quot;,&quot;@type&quot;:&quot;TechArticle&quot;,&quot;isAccessibleForFree&quot;:false,&quot;headline&quot;:&quot;Автоинкремент&quot;,&quot;datePublished&quot;:&quot;2018-11-30T18:05:40.599Z&quot;,&quot;dateModified&quot;:&quot;2020-05-25T07:04:56.416Z&quot;,&quot;image&quot;:&quot;https://cdn2.hexlet.io/assets/hexlet_logo-e99fc2b3b7c1eec88899f3af1435a39aaac6fd29d011dfe2342499c0884b7a96.png&quot;,&quot;author&quot;:{&quot;@type&quot;:&quot;Person&quot;,&quot;name&quot;:&quot;Кирилл Мокевнин&quot;,&quot;description&quot;:&quot;Сооснователь и CEO образовательного проекта Хекслет. Программирую с 2007 года. За это время прошёл путь от разработчика до технического директора и управляющего отдельным подразделением (филиалом). Управлял командами, в которых больше 50 разработчиков. \r\n\r\n- Программирую на языках: Elixir, Clojure, JavaScript, PHP, Ruby. \r\n- Соорганизатор конференции Nastachku.ru. \r\n- Вимер. \r\n- Топлю за DevOps и автоматизированные тесты.\r\n&quot;},&quot;publisher&quot;:{&quot;@context&quot;:&quot;https://schema.org&quot;,&quot;@type&quot;:&quot;Organization&quot;,&quot;name&quot;:&quot;Hexlet&quot;,&quot;url&quot;:&quot;https://hexlet.io&quot;,&quot;sameAs&quot;:[&quot;https://www.facebook.com/Hexlet&quot;,&quot;https://www.youtube.com/user/HexletUniversity&quot;,&quot;https://twitter.com/HexletHQ&quot;,&quot;https://soundcloud.com/hexlet&quot;],&quot;legalName&quot;:&quot;Hexlet Ltd.&quot;,&quot;address&quot;:&quot;UMA Esplanadi, Pohjoisesplanadi 39, 00100 Helsinki, Finland&quot;,&quot;vatID&quot;:&quot;VAT ID: FI26641607&quot;,&quot;telephone&quot;:&quot;+7 (495) 147-73-79&quot;,&quot;logo&quot;:{&quot;@type&quot;:&quot;ImageObject&quot;,&quot;url&quot;:&quot;https://cdn2.hexlet.io/assets/hexlet_logo-e99fc2b3b7c1eec88899f3af1435a39aaac6fd29d011dfe2342499c0884b7a96.png&quot;}},&quot;hasPart&quot;:{&quot;@type&quot;:&quot;WebPageElement&quot;,&quot;isAccessibleForFree&quot;:false,&quot;cssSelector&quot;:&quot;.paywall&quot;}}
+
+
+</script>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../transactions/exercise_unit.html">Основы реляционных баз данных</a>
+                    <h1 class='mt-0 mb-4'>Автоинкремент</h1>
+                    <p>На протяжении последних уроков мы создавали значения первичных ключей самостоятельно. Так можно
+                      делать в учебных целях, но в промышленной разработке эту задачу берут на себя базы данных. Общий
+                      принцип механизма <strong>автогенерации</strong> такой: внутри базы к каждой таблице создаётся и
+                      привязывается отдельный счётчик, который увеличивается на единицу при вставке новой строки, а
+                      получившееся значение записывается в то поле, которое помечено как автогенерируемое.</p>
+
+                    <p>До определённого момента механизм автоинкремента в каждой СУБД был реализован по-своему, иногда
+                      значительно отличающимися способами. Это создавало проблемы при переходе от одной СУБД к другой и
+                      усложняло реализацию программного слоя доступа к базе данных. Причём эта функциональность
+                      добавлена в стандарт SQL:2003, то есть очень давно. И только в 2018 году PostgreSQL (начиная с
+                      версии 10) стал его поддерживать. Такой автоинкремент известен под именем <strong>GENERATED AS
+                        IDENTITY</strong>:</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">CREATE</span> <span style="color: #000000;font-weight: bold">TABLE</span> <span style="background-color: #f8f8f8">colors</span> <span style="background-color: #f8f8f8">(</span>
+  <span style="color: #999988;font-style: italic">-- Одновременное использование и первичного ключа и автогенерации</span>
+  <span style="background-color: #f8f8f8">id</span> <span style="color: #0086B3">bigint</span> <span style="color: #000000;font-weight: bold">PRIMARY</span> <span style="color: #000000;font-weight: bold">KEY</span> <span style="color: #000000;font-weight: bold">GENERATED</span> <span style="background-color: #f8f8f8">ALWAYS</span> <span style="color: #000000;font-weight: bold">AS</span> <span style="color: #000000;font-weight: bold">IDENTITY</span><span style="background-color: #f8f8f8">,</span>
+  <span style="background-color: #f8f8f8">name</span> <span style="color: #0086B3">varchar</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">255</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #000000;font-weight: bold">INSERT</span> <span style="color: #000000;font-weight: bold">INTO</span> <span style="background-color: #f8f8f8">colors</span> <span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">name</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">VALUES</span> <span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Red'</span><span style="background-color: #f8f8f8">),</span> <span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Blue'</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #000000;font-weight: bold">SELECT</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">colors</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>Этот запрос вернёт:</p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>id</th>
+                          <th>name</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>Red</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>Blue</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p>Интересно поведение автогенератора при удалении записей. Если удалить запись с <code>id</code>
+                      равным двум и вставить ещё одну запись, то значением поля <code>id</code> будет <code>3</code>.
+                      Автогенерация никак не связана с данными в таблице. Это отдельный счётчик, который <strong>всегда
+                        увеличивается</strong>. Таким образом избегаются вероятные коллизии и ошибки, когда один и тот
+                      же идентификатор принадлежит сначала одной записи, а потом другой.</p>
+
+                    <p>Вот его структура из документации:</p>
+                    <pre class="hljs"><code class=>column_name type GENERATED { ALWAYS | BY DEFAULT } AS IDENTITY[ ( sequence_option ) ]
+</code></pre>
+                    <ul>
+                      <li>Тип данных может быть <em>SMALLINT</em>, <em>INT</em> или <em>BIGINT</em></li>
+                      <li><code>GENERATED ALWAYS</code> — не позволит добавлять значение самостоятельно, используя
+                        <code>UPDATE</code> или <code>INSERT</code></li>
+                      <li><code>GENERATED BY DEFAULT</code> — в отличие от предыдущего варианта, этот вариант позволяет
+                        добавлять значения самостоятельно</li>
+                    </ul>
+
+                    <p>PostgreSQL позволяет иметь более одного автогенерируемого поля на таблицу.</p>
+
+
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Абстрактные классы - PHP: Погружаясь в классы</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="L3lOjDb2qLl3rqiL9x7q5PZNNidXS0uD4-FOLPXOZDyDoqA5vxDEmlBlHOAuLHijxW7C2vyeSJZcEo3JfZ7G5w" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../traits/exercise_unit.html">PHP: Погружаясь в классы</a>
+                    <h1 class='mt-0 mb-4'>Абстрактные классы</h1>
+                    <p>Может ли нам понадобиться когда-нибудь создавать объекты класса <em>HTMLElement</em>? Наверняка
+                      нет. Вся работа строится на базе конкретных элементов, а значит, на практике, всегда используются
+                      его наследники.</p>
+
+                    <p>В PHP классы, объекты которых не имеют смысла, принято помечать специальным ключевым словом
+                      <code>abstract</code>. Тогда никто не сможет создать объект этого класса напрямую. Только через
+                      наследников. В остальном, абстрактный класс такой же класс, со своими методами и свойствами.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">abstract</span> <span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">HTMLElement</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #008080">$attributes</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[];</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">__construct</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$attributes</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[])</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">attributes</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$attributes</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">getAttribute</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">string</span> <span style="color: #008080">$key</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">attributes</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$key</span><span style="background-color: #f8f8f8">];</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Абстрактные классы имеют смысл только в связке с наследованием. В большинстве случаев не нужно
+                      создавать объект от базового класса, поэтому его логично пометить как абстрактный.</p>
+
+                    <p>Ещё одна особенность абстрактных классов связана с использованием интерфейсов. Абстрактный класс,
+                      в отличие от конкретного, не должен реализовывать интерфейсы полностью. Всё, что не реализовывает
+                      абстрактный класс, должны реализовать его наследники. Рассмотрим конкретный пример. Каждый объект,
+                      описывающий конкретный DOM-элемент, имеет текстовое представление в виде HTML-тега. Это значит,
+                      что каждый класс, наследующий <code>HTMLElement</code>, должен реализовывать определённый метод,
+                      возвращающий кусок HTML. В такой ситуации можно ввести специальный интерфейс <em>Showable</em>
+                      (обычно так называют интерфейсы, которые отвечают за строковое представление), содержащий один
+                      метод <code>__toString()</code>.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">interface</span> <span style="color: #445588;font-weight: bold">Showable</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">__toString</span><span style="background-color: #f8f8f8">();</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>И использование:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">abstract</span> <span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">HTMLElement</span> <span style="color: #000000;font-weight: bold">implements</span> <span style="color: #445588;font-weight: bold">Showable</span> <span style="color: #999988;font-style: italic">// __toString</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// здесь нет реализации __toString</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>С одной стороны здесь написано что абстрактный класс реализует интерфейс, с другой, так как класс
+                      абстрактный, мы можем не реализовывать Showable напрямую. Но это обязательно придётся сделать в
+                      наследниках, что нам и нужно.</p>
+
+                    <p>Абстрактные классы могут иметь абстрактные методы, фактически это сигнатуры методов, а не сами
+                      методы. В этом смысле они становятся похожи на интерфейсы.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">abstract</span> <span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">HTMLElement</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">abstract</span> <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">__toString</span><span style="background-color: #f8f8f8">();</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>С появлением абстрактных классов возникает множество новых вопросов: когда они нужны а когда нет,
+                      можно ли использовать абстрактные классы вместо интерфейсов, как совмещать их с интерфейсами и так
+                      далее?</p>
+
+                    <p>Абстрактные классы не фундаментальная концепция и не обязательная часть ООП. Более того, в
+                      большинстве ООП языков абстрактных классов нет. Однако нельзя сказать что код на них пишется хуже,
+                      скорее наоборот. Например в Ruby, JavaScript и Python абстрактных классов нет, но есть
+                      наследование и есть классы, которые можно было отметить как абстрактные, однако создатели этих
+                      языков не стали вводить это понятие в язык. Никогда нельзя забывать, что любые новые сущности,
+                      упрощая в одном месте, увеличивают общую сложность из-за возрастающего числа комбинаций этих
+                      сущностей друг с другом.</p>
+
+                    <p>Общая рекомендация, не придавайте слишком много значения абстрактным классам. Используйте их
+                      тогда, когда класс имеет смысл пометить абстрактным, но не более того. Как вы увидите позже,
+                      абстрактные классы, вместе с наследованием, успешно заменяются трейтами. Причём последние гораздо
+                      более гибкий инструмент.</p>
+
+
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Полезные функции для работы с коллекциями - PHP: Функции</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  ttps://cdn2.hexlet.io/derivations/image/fill/600/400/eyJpZCI6Ijk3ZTdlYzAzMDk1YmEwZjdiN2E5YWIxOTM3MDBiZWNhLnBuZyIsInN0b3JhZ2UiOiJzdG9yZSJ9?signature=0e496c959ac356bc7025fa11e81473e012730b0025f3d337415c47130a1e06e7'
+  rel='image_src'>
+
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Полезные функции для работы с коллекциями</h1>
+                    <p>Стандартная библиотека в PHP небогата функциями для работы с коллекциями, строками или датами.
+                      Этот недостаток можно восполнить, подключив стороннюю библиотеку. Например, в мире JS, есть
+                      стандарт де-факто, без которого не обходится практически ни один проект - <a
+                        href="https://lodash.com" target="_blank" rel="nofollow">lodash</a>. В PHP нет единого
+                      устоявшегося решения, но есть пачка небольших, которые используются в разных проектах. Часть из
+                      них основана на объектном синтаксисе, и мы рассмотрим их в более поздних уроках, а часть
+                      представляет из себя набор обычных функций. Кроме того, часть функций относится к функциям высшего
+                      порядка, которые мы ещё не проходили, но разберём уже в следующем уроке.</p>
+
+                    <p>Объектные:</p>
+
+                    <ul>
+                      <li><a href="https://github.com/tightenco/collect" target="_blank" rel="nofollow">Collect</a></li>
+                      <li><a href="https://github.com/danielstjules/Stringy" target="_blank" rel="nofollow">Stringy</a>
+                      </li>
+                      <li><a href="https://github.com/briannesbitt/Carbon" target="_blank" rel="nofollow">Carbon</a>
+                      </li>
+                    </ul>
+
+                    <p>Использующие только функции:</p>
+
+                    <ul>
+                      <li><a href="https://github.com/phpfunct/funct" target="_blank" rel="nofollow">Funct</a></li>
+                      <li><a href="https://github.com/maciejczyzewski/bottomline" target="_blank"
+                          rel="nofollow">Bottomline</a></li>
+                    </ul>
+
+                    <p>Скажу сразу, что необходимость использования такой библиотеки в реальной работе возникает
+                      практически сразу. Те, кто не знает про них, постоянно пишут велосипеды. Ещё не так давно
+                      программисты в PHP создавали файлики с полезными функциями и таскали их из одного проекта в
+                      другой. Хорошо, что эти времена уже прошли и можно не тратить время на то, что уже делалось тысячу
+                      раз до нас. Однако, мы не сможем разобрать все возможные функции в рамках наших курсов. Кое-что
+                      рассмотрим, но в дальнейшем не забывайте периодически просматривать их на наличие чего-либо
+                      полезного.</p>
+
+                    <p>Обратите внимание на документацию указанных библиотек. Зачастую они повторяют те функции, которые
+                      уже встроены в сам язык. Делается это по разным причинам. Вот некоторые из них:</p>
+
+                    <ol>
+                      <li> Консистентность (согласованность). Функции делают для того, чтобы библиотека была полной.
+                      </li>
+                      <li> Исправление ошибок PHP. Некоторые функции в PHP по историческим причинам иногда ведут себя
+                        неверно.</li>
+                      <li> Улучшение. Другой порядок аргументов, расширенные возможности, убранные ограничения или
+                        просто понятное имя.</li>
+                    </ol>
+
+                    <p>Итак, поехали. Библиотека Funct.</p>
+                    <h2 id="collections">Collections</h2>
+                    <h3 id="last">last</h3>
+                    <p>Такая простая и нужная функция почему-то отсутствует в самом PHP.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">Funct\Collection\last</span><span style="background-color: #f8f8f8">([</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">]);</span> <span style="color: #999988;font-style: italic">// 3</span>
+</code></pre>
+                    <h3 id="rest">rest</h3>
+                    <p>Принимает на вход массив и возвращает новый массив, в котором отсутствует первый элемент
+                      исходного.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">Funct\Collection\rest</span><span style="background-color: #f8f8f8">([</span><span style="color: #009999">5</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">4</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">]);</span> <span style="color: #999988;font-style: italic">// [4, 3, 2, 1]</span>
+</code></pre>
+                    <h2 id="without">without</h2>
+                    <p>Возвращает копию массива, из которого удалены все значения, переданные в функцию вторым и
+                      последующими параметрами.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">Funct\Collection\without</span><span style="background-color: #f8f8f8">([</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">4</span><span style="background-color: #f8f8f8">],</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// [2, 3, 4]</span>
+</code></pre>
+                    <h2 id="flattenall">flattenAll</h2>
+                    <p>&quot;Выпрямляет&quot; вложенный массив, делая его плоским.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">Funct\Collection\flattenAll</span><span style="background-color: #f8f8f8">([</span><span style="color: #d14">'a'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'b'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'c'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'d'</span><span style="background-color: #f8f8f8">]]]]);</span> <span style="color: #999988;font-style: italic">// ['a', 'b', 'c', 'd']</span>
+</code></pre>
+                    <h2 id="union">union</h2>
+                    <p>Находит объединение множеств.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">Funct\Collection\union</span><span style="background-color: #f8f8f8">([</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">],</span> <span style="background-color: #f8f8f8">[</span><span style="color: #009999">101</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">10</span><span style="background-color: #f8f8f8">],</span> <span style="background-color: #f8f8f8">[</span><span style="color: #009999">2</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">]);</span> <span style="color: #999988;font-style: italic">// [1, 2, 3, 101, 10]</span>
+</code></pre>
+                    <h3 id="findwhere-collection-value">findWhere($collection, $value)</h3>
+                    <p>Просматривает массив и возвращает первое значение, совпадающее по всем парам «ключ-значение»,
+                      переданным вторым параметром.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">Funct\Collection\findWhere</span><span style="background-color: #f8f8f8">(</span>
+    <span style="background-color: #f8f8f8">[</span>
+        <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'title'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Book of Fooos'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'author'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'FooBar'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'year'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">1111</span><span style="background-color: #f8f8f8">],</span>
+        <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'title'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Cymbeline'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'author'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Shakespeare'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'year'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">1611</span><span style="background-color: #f8f8f8">],</span>
+        <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'title'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'The Tempest'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'author'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Shakespeare'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'year'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">1611</span><span style="background-color: #f8f8f8">],</span>
+        <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'title'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Book of Foos Barrrs'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'author'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'FooBar'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'year'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">2222</span><span style="background-color: #f8f8f8">],</span>
+        <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'title'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Still foooing'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'author'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'FooBar'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'year'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">3333</span><span style="background-color: #f8f8f8">],</span>
+        <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'title'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Happy Foo'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'author'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'FooBar'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'year'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">4444</span><span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'author'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Shakespeare'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'year'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">1611</span><span style="background-color: #f8f8f8">]</span>
+<span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// ['title' =&gt; 'Cymbeline', 'author' =&gt; 'Shakespeare', 'year' =&gt; 1611]</span>
+</code></pre>
+                    <h2 id="strings">Strings</h2>
+                    <h3 id="camelize">camelize</h3>
+                    <p>Принимает на вход строку и возвращает её версию, записанную в нотации <a
+                        href="https://ru.wikipedia.org/wiki/Camel_case" target="_blank"
+                        rel="nofollow">lowerCamelCase</a>.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+<span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">Funct\Strings\camelize</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'data_rate'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// 'dataRate'</span>
+<span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">Funct\Strings\camelize</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'background-color'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// 'backgroundColor'</span>
+<span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">Funct\Strings\camelize</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'-moz-something'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// 'MozSomething'</span>
+<span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">Funct\Strings\camelize</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'_car_speed_'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// 'CarSpeed'</span>
+<span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">Funct\Strings\camelize</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'yes_we_can'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// 'yesWeCan</span>
+</code></pre>
+                    <h3 id="contains">contains</h3>
+                    <p>Проверяет, включает ли строчка подстроку.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+<span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">Funct\Strings\contains</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'PHP is one of the best languages!'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'one'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// true</span>
+</code></pre>
+                    <h3 id="endswith">endsWith</h3>
+                    <p>Проверяет, оканчивается ли строчка на подстроку.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">Funct\Strings\endsWith</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"hello jon"</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'jon'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// true</span>
+</code></pre>
+                    <p>В этом уроке перечислена лишь небольшая часть из всего того многообразия, которое вы можете найти
+                      на гитхабе, в документации соответствующих библиотек. Изучить все функции в рамках курсов
+                      невозможно да и не нужно. Достаточно периодически проходиться по документации популярных библиотек
+                      и просматривать то, как они используются. Так, постепенно, вы научитесь писать более понятный и
+                      лаконичный код.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://php.net/manual/ru/ref.array.php">Функции стандартной
+                          библиотеки</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

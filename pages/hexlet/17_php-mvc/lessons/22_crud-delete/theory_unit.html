@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>CRUD: Удаление - Веб-разработка на PHP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>CRUD: Удаление</h1>
+                    <p>Удаление устроено даже проще чем вывод, но включает в себя много нюансов. Вместо привычных
+                      <em>GET</em> и <em>POST</em> удаление делается запросом <em>DELETE</em>. По спецификации HTTP этот
+                      глагол идемпотентный. Это означает, что поведение, в случае наличия или отсутствия сущности,
+                      должно быть одинаковое, другими словами HTTP-ответ этого обработчика не зависит от того удалена
+                      уже сущность или ещё нет.</p>
+
+                    <p><img alt="CRUD Удаление" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImMwNDgzZTAwNmRiMGE4YjM3NjcxZjk0NjMxZTUxZWY5LnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=077388c0bc76ae5cd727f8e23d425391bac6f3dbff1632b8cfed83c47c940a18"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$router</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getRouteCollector</span><span style="background-color: #f8f8f8">()</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getRouteParser</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #0086B3">delete</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/schools/{id}'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #445588;font-weight: bold">array</span> <span style="color: #008080">$args</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$repo</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">App\SchoolRepository</span><span style="background-color: #f8f8f8">();</span>
+    <span style="color: #008080">$id</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$args</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'id'</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #008080">$repo</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">destroy</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$id</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'flash'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">addMessage</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'success'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'School has been deleted'</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">withRedirect</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$router</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">urlFor</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'schools'</span><span style="background-color: #f8f8f8">));</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>В процессе удаления есть и чисто интерфейсный момент, который начинающие разработчики упускают из
+                      виду. Кнопка удаления ни в коем случае не должна сразу удалять. Человеку свойственно ошибаться (а
+                      ещё он любопытен) и вероятность, что он нажмёт на эту кнопку по ошибке, крайне высока. Правильный
+                      подход состоит в том, чтобы спросить у пользователя, уверен ли он в том, что хочет удалить. Если
+                      да, то только в этом случае удалять.</p>
+
+                    <p>А что насчёт безопасности? Удаление пользователя крайне опасная операция, которую нельзя
+                      выполнять всем подряд. Даже те, кто могут это делать, должны проходить через процедуру
+                      подтверждения, чтобы случайно не удалить пользователя. Имеет ли пользователь доступ к конкретным
+                      действиям определяется авторизацией.</p>
+
+                    <blockquote>
+                      <p>Авториза́ция — предоставление определённому лицу или группе лиц прав на выполнение определённых
+                        действий; а также процесс проверки (подтверждения) данных прав при попытке выполнения этих
+                        действий. Авторизацию не следует путать с аутентификацией — процедурой проверки легальности
+                        пользователя или данных, например, проверки соответствия введённого пользователем пароля к
+                        учётной записи паролю Wiki.</p>
+                    </blockquote>
+
+                    <p>То есть перед выполнением действия необходимо проверить авторизован ли пользователь на выполнение
+                      данного действия или нет. Авторизация, отдельная большая тема со своей теоретической базой. Как
+                      правило вопрос авторизации решается в каждом конкретном фреймворке <a
+                        href="https://laravel.com/docs/master/authorization" target="_blank"
+                        rel="nofollow">самостоятельно</a>, хотя на GitHub можно найти обобщённые библиотеки.</p>
+
+                    <p>И последний вопрос который осталось рассмотреть — отправка запроса на удаление. Как вы помните,
+                      HTML-формы не поддерживают отправку методами, отличными от <em>GET</em> и <em>POST</em>.
+                      Фреймворки выкручиваются из этой ситуации следующим образом. Если в форме задать скрытое поле с
+                      именем <code>_METHOD</code> и значением того метода который нам нужен, то внутри фреймворка, до
+                      входа в обработчик, глагол будет заменён на тот, что был указан. Таким нехитрым способом
+                      фреймворки позволяют посылать любые запросы.</p>
+                    <pre class="hljs"><code class=php><span style="color: #000080">&lt;form</span> <span style="color: #008080">action=</span><span style="color: #d14">"/users/</span><span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #008080">$user</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'id'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #d14">"</span> <span style="color: #008080">method=</span><span style="color: #d14">"post"</span><span style="color: #000080">&gt;</span>
+  <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"hidden"</span> <span style="color: #008080">name=</span><span style="color: #d14">"_METHOD"</span> <span style="color: #008080">value=</span><span style="color: #d14">"DELETE"</span><span style="color: #000080">&gt;</span>
+  <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"submit"</span> <span style="color: #008080">value=</span><span style="color: #d14">"Remove"</span><span style="color: #000080">&gt;</span>
+<span style="color: #000080">&lt;/form&gt;</span>
+</code></pre>
+                    <p>Для включения этой возможности, нужно добавить немного конфигурации в Slim:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Slim\Middleware\MethodOverrideMiddleware</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #008080">$app</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">AppFactory</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">create</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">add</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">MethodOverrideMiddleware</span><span style="color: #000000;font-weight: bold">::</span><span style="background-color: #f8f8f8">class</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Отдельно стоит сказать, что крайне важно соблюдать семантику HTTP. Ни в коем случае нельзя
+                      создавать HTML, в котором удаление происходит GET-запросом, например, по ссылке. Браузеры, их
+                      плагины и поисковые системы действуют в соответствии с семантикой HTTP. Если они видят обычную
+                      ссылку, то подразумевается что она не может выполнить деструктивных действий, а значит её можно
+                      посетить. Даже если мы работаем в закрытой от поисковиков части сайта, в браузерах встроен
+                      механизм предзагрузки страниц, который с удовольствием вызовет все ссылки до которых сможет
+                      дотянуться на открытой странице. А плагины могут делать вообще всё, что угодно.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Реализуйте удаление пользователей.</li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://github.com/rails/jquery-ujs">Библиотека для автоматизации
+                          фронтенд части (подстановка правильных глаголов, подтверждение)</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

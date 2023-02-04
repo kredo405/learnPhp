@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Работа с формами - PHP: Laravel</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="D3riCkNGYCubD8Eglc0YgqtwUsufNbtUcPyZscTEOe_2M5A_toJ5V4LPRAPaXYsY1dgZgFW8Hsx73L7QGb1L4A" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../resource/exercise_unit.html">PHP: Laravel</a>
+                    <h1 class='mt-0 mb-4'>Работа с формами</h1>
+                    <p>Для реализации создания и обновления сущности в CRUD, нужно научиться правильно работать с
+                      формами. Создавать формы самостоятельно, очень утомительное занятие. Сотни строк одинакового кода,
+                      обработка ошибок, защита от атак, все это придётся делать снова и снова.</p>
+
+                    <p>Обычно фреймворки имеют встроенную поддержку генерации форм, которая состоит из набора функций,
+                      автоматизирующих рутину. В Laravel так было изначально, но затем формы выделили в отдельный
+                      компонент <a href="https://github.com/LaravelCollective/docs/blob/master/html.md" target="_blank"
+                        rel="nofollow">laravelcollective/html</a>. В самом Laravel осталось буквально <a
+                        href="https://laravel.com/docs/8.x/blade#forms" target="_blank" rel="nofollow">несколько
+                        элементов</a>: защита от <a
+                        href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D0%B6%D1%81%D0%B0%D0%B9%D1%82%D0%BE%D0%B2%D0%B0%D1%8F_%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D0%BB%D0%BA%D0%B0_%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D0%B0"
+                        target="_blank" rel="nofollow">CSRF</a> и поддержка дополнительных методов HTTP в HTML-формах.
+                    </p>
+                    <h2 id="laravelcollective-html">LaravelCollective/HTML</h2>
+                    <p>Для установки этого компонента выполните эту команду:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>composer require <span style="color: #d14">"laravelcollective/html"</span>
+</code></pre>
+                    <h3 id="bibliotechnye-funktsii">Библиотечные функции</h3>
+                    <p>Эта библиотека включает в себя несколько десятков статических методов, формирующих различные
+                      элементы. Вот несколько примеров:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Не забудьте открыть Tinker и попробовать поэкспериментировать с этими функциями</span>
+
+<span style="color: #000000;font-weight: bold">echo</span> <span style="color: #445588;font-weight: bold">Form</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">submit</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Click Me!'</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// &lt;input type="submit" value="Click Me!"&gt;</span>
+
+<span style="color: #000000;font-weight: bold">echo</span> <span style="color: #445588;font-weight: bold">Form</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">radio</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'category_id'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// &lt;input name="category_id" type="radio" value="1"&gt;</span>
+
+<span style="color: #000000;font-weight: bold">echo</span> <span style="color: #445588;font-weight: bold">Form</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">select</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'size'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'L'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Large'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'S'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Small'</span><span style="background-color: #f8f8f8">]);</span>
+<span style="color: #999988;font-style: italic">// &lt;select name="size"&gt;</span>
+<span style="color: #999988;font-style: italic">//     &lt;option value="L"&gt;Large&lt;/option&gt;</span>
+<span style="color: #999988;font-style: italic">//     &lt;option value="S"&gt;Small&lt;/option&gt;</span>
+<span style="color: #999988;font-style: italic">// &lt;/select&gt;</span>
+
+<span style="color: #999988;font-style: italic">// Остальные элементы можно подсмотреть в официальной документации</span>
+</code></pre>
+                    <p>Особняком стоит генерация самого тега формы. Из-за того, что этот тег оборачивает все остальные
+                      элементы формы, он состоит из двух методов: один открывает форму, другой – закрывает:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// По умолчанию форме проставляется метод _POST_, но его можно изменить на любой другой:</span>
+<span style="color: #999988;font-style: italic">// В поисковых формах нужен GET</span>
+<span style="background-color: #f8f8f8">{{</span><span style="color: #445588;font-weight: bold">Form</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">open</span><span style="background-color: #f8f8f8">([</span><span style="color: #d14">'url'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #990000;font-weight: bold">route</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'articles.index'</span><span style="background-color: #f8f8f8">),</span> <span style="color: #d14">'method'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'GET'</span><span style="background-color: #f8f8f8">])}}</span>
+    <span style="background-color: #f8f8f8">{{</span><span style="color: #445588;font-weight: bold">Form</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">text</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'username'</span><span style="background-color: #f8f8f8">)}}</span>
+    <span style="background-color: #f8f8f8">{{</span><span style="color: #445588;font-weight: bold">Form</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">submit</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Click Me!'</span><span style="background-color: #f8f8f8">)}}</span>
+<span style="background-color: #f8f8f8">{{</span><span style="color: #445588;font-weight: bold">Form</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">close</span><span style="background-color: #f8f8f8">()}}</span>
+
+<span style="color: #999988;font-style: italic"># &lt;form method="GET" action="http://localhost/articles" accept-charset="UTF-8"&gt;</span>
+<span style="color: #999988;font-style: italic"># &lt;input name="username" type="text"&gt;</span>
+<span style="color: #999988;font-style: italic"># &lt;input type="submit" value="Click Me!"&gt;</span>
+<span style="color: #999988;font-style: italic"># &lt;/form&gt;</span>
+</code></pre>
+                    <p>Наиболее интересная возможность в этом пакете – интеграция с ORM. В таком случае форма берёт на
+                      себя часть задач по обработке формы. Для этого вместо метода <code>open</code> используется метод
+                      <code>model</code>. Первым параметром в него передаётся тот объект, форма которого строится.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="background-color: #f8f8f8">{{</span> <span style="color: #445588;font-weight: bold">Form</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">model</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'url'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #990000;font-weight: bold">route</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'users.store'</span><span style="background-color: #f8f8f8">)])</span> <span style="background-color: #f8f8f8">}}</span>
+    <span style="background-color: #f8f8f8">{{</span> <span style="color: #445588;font-weight: bold">Form</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">label</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'Имя'</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">}}</span>
+    <span style="background-color: #f8f8f8">{{</span> <span style="color: #445588;font-weight: bold">Form</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">text</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">}}</span>
+    <span style="background-color: #f8f8f8">{{</span> <span style="color: #445588;font-weight: bold">Form</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">label</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'email'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'Email'</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">}}</span>
+    <span style="background-color: #f8f8f8">{{</span> <span style="color: #445588;font-weight: bold">Form</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">email</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'email'</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">}}</span>
+    <span style="background-color: #f8f8f8">{{</span> <span style="color: #445588;font-weight: bold">Form</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">submit</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Создать'</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">}}</span>
+<span style="background-color: #f8f8f8">{{</span> <span style="color: #445588;font-weight: bold">Form</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">close</span><span style="background-color: #f8f8f8">()</span> <span style="background-color: #f8f8f8">}}</span>
+</code></pre>
+                    <p>Разница в том, что эта форма самостоятельно извлекает из объекта значения свойств и подставляет
+                      их в форму. Это полезно при редактировании или при выводе ошибок, когда не удалось выполнить
+                      нужное действие. В следующем уроке мы воспользуемся именно таким подходом, он значительно экономит
+                      время.</p>
+                    <h2 id="dannye-formy">Данные формы</h2>
+                    <p>Любую информацию о HTTP-запросе, включая данные формы, можно получить из объекта
+                      <code>$request</code>. Laravel передаёт его в те экшены, которые явно указывают его в параметрах:
+                    </p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">namespace</span> <span style="color: #555555">App\Http\Controllers</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #999988;font-style: italic">// Нужно импортировать класс и указывать его в экшене</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Illuminate\Http\Request</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">ArticleController</span> <span style="color: #000000;font-weight: bold">extends</span> <span style="color: #445588;font-weight: bold">Controller</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">index</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">Request</span> <span style="color: #008080">$request</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">// Возвращает весь пользовательский ввод как из тела запроса (отправка форм),</span>
+        <span style="color: #999988;font-style: italic">// так и из параметров запроса (query string)</span>
+        <span style="color: #008080">$input</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$request</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">input</span><span style="background-color: #f8f8f8">();</span>
+        <span style="color: #008080">$value</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$request</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">input</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'key'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// Получает значение по указанному ключу</span>
+        <span style="color: #008080">$value2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$request</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">input</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'key2'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'default value'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// Принимает значение по умолчанию</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>При реализации поисковых форм, данные формы должны оставаться внутри формы после запроса. Мы это
+                      наблюдаем повсеместно, особенно в поисковых системах. Для реализации такого поведения нужно
+                      выполнить два условия. Первое — передать данные в шаблон, второе — подставить их в нужные места.
+                      Для этого элементы библиотеки генерации формы принимают дополнительный параметр:</p>
+                    <pre class="hljs"><code class=blade>&lt;?php
+
+{{Form::open(['url' =&gt; route('articles.index'), 'method' =&gt; 'GET'])}}
+    {{-- Имя пользователя передано из экшена --}}
+    {{Form::text('username', $username)}}
+    {{Form::submit('Click Me!')}}
+{{Form::close()}}
+</code></pre>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Установите и настройте пакет</li>
+                      <li> Убедитесь через Tinker что пакет работает</li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://laravelcollective.com/docs/6.x/html">Документация</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

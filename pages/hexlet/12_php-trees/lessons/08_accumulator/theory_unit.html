@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Аккумулятор - PHP: Деревья</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Аккумулятор</h1>
+                    <p>В некоторых ситуациях, во время обхода дерева, нужна дополнительная информация, которая зависит
+                      от расположения узла. Ее невозможно получить из описания самого узла, так как узел ее не содержит.
+                      Эту информацию нужно собирать прямо во время обхода.</p>
+
+                    <p>К такой информации, например, относится полный путь до файла или глубина текущего узла.
+                      Конкретный узел не знает о том, где он находится. Расположение файла в файловой структуре
+                      определяется узлами, которые ведут к конкретному файлу.</p>
+
+                    <p>В этом уроке мы познакомимся с понятием <strong>аккумулятор</strong>, специальным параметром,
+                      который собирает нужные данные во время обхода дерева. Его введение усложняет код, но без него
+                      подобные задачи выполнить невозможно.</p>
+
+                    <p>Возьмем для примера такую задачу: найдем все пустые директории в нашей файловой системе. Сначала
+                      реализуем простую версию, затем усложним ее и внедрим аккумулятор. Пример файловой системы ниже:
+                    </p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">Php\Immutable\Fs\Trees\trees\mkdir</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">Php\Immutable\Fs\Trees\trees\mkfile</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #008080">$tree</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span>
+  <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'etc'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span>
+    <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'apache'</span><span style="background-color: #f8f8f8">),</span>
+    <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'nginx'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span>
+      <span style="color: #990000;font-weight: bold">mkfile</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'nginx.conf'</span><span style="background-color: #f8f8f8">),</span>
+    <span style="background-color: #f8f8f8">]),</span>
+    <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'consul'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span>
+      <span style="color: #990000;font-weight: bold">mkfile</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'config.json'</span><span style="background-color: #f8f8f8">),</span>
+      <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'data'</span><span style="background-color: #f8f8f8">),</span>
+    <span style="background-color: #f8f8f8">]),</span>
+  <span style="background-color: #f8f8f8">]),</span>
+  <span style="color: #0086B3">mkdir</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'logs'</span><span style="background-color: #f8f8f8">),</span>
+  <span style="color: #990000;font-weight: bold">mkfile</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'hosts'</span><span style="background-color: #f8f8f8">),</span>
+<span style="background-color: #f8f8f8">]);</span>
+</code></pre>
+                    <p>В этой структуре три пустых директории: <em>/logs</em>, <em>/etc/apache</em> и
+                      <em>/etc/consul/data</em>. Код, решающий эту задачу, выглядит так:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">findEmptyDirPaths</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$name</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">getName</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #008080">$children</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">getChildren</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">);</span>
+
+    <span style="color: #999988;font-style: italic">// Если детей нет, то добавляем директорию</span>
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #0086B3">count</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$children</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">===</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="background-color: #f8f8f8">[</span><span style="color: #008080">$name</span><span style="background-color: #f8f8f8">];</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #999988;font-style: italic">// Фильтруем файлы, они нас не интересуют </span>
+    <span style="color: #008080">$dirNames</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_filter</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$children</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">fn</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$child</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #000000;font-weight: bold">!</span><span style="color: #990000;font-weight: bold">isFile</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$child</span><span style="background-color: #f8f8f8">));</span>
+    <span style="color: #999988;font-style: italic">// Ищем пустые директории внутри текущей</span>
+    <span style="color: #008080">$emptyDirNames</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_map</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">fn</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$dir</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #990000;font-weight: bold">findEmptyDirPaths</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$dir</span><span style="background-color: #f8f8f8">),</span> <span style="color: #008080">$dirNames</span><span style="background-color: #f8f8f8">);</span>
+
+    <span style="color: #999988;font-style: italic">// array_flatten выправляет массив, так что он остается плоским</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #990000;font-weight: bold">array_flatten</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$emptyDirNames</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #999988;font-style: italic">// В выводе указана только конечная директория</span>
+<span style="color: #999988;font-style: italic">// Подумайте, как надо изменить функцию, чтобы видеть полный путь</span>
+<span style="color: #990000;font-weight: bold">findEmptyDirPaths</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// ['apache', 'data', 'logs']</span>
+</code></pre>
+                    <p><a href="https://repl.it/@hexlet/php-trees-accumulator-findEmptyDirPaths"
+                        target="_blank">https://repl.it/@hexlet/php-trees-accumulator-findEmptyDirPaths</a></p>
+
+                    <p>Самое необычное в этой реализации — функция из нашей библиотеки <code>array_flatten</code>. Зачем
+                      она нужна? Если оставить только <code>array_map</code>, то результат может удивить:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #990000;font-weight: bold">findEmptyDirPaths</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #999988;font-style: italic">// [ [ [ 'apache' ], [], [ [Array] ] ], [ 'logs' ] ]</span>
+</code></pre>
+                    <p>Такое происходит из-за возврата массива на каждом уровне вложенности. На выходе получается массив
+                      массивов, напоминающий по структуре исходное файловое дерево. Чтобы этого не происходило, нужно
+                      выправлять код с помощью <code>array_flatten</code>.</p>
+
+                    <p>Попробуем усложнить задачу. Найдём все пустые директории, но с максимальной глубиной поиска 2
+                      уровня. То есть директории <em>/logs</em> и <em>/etc/apache</em> подходят под это условие, а вот
+                      <em>/etc/consul/data</em> — нет.</p>
+
+                    <p>Для начала нужно понять откуда брать глубину. В деревьях глубина считается как количество ребер
+                      от корня до нужного узла. Визуально её посчитать легко, а что насчет кода? Глубину конкретного
+                      узла можно представить как глубину предыдущего узла плюс единица.</p>
+
+                    <p>Следующий шаг – добавить переменную, которая передается при каждом рекурсивном вызове
+                      (проваливающeмся в директорию). Эта переменная, в случае нашей задачи, содержит внутри себя
+                      текущую глубину. То есть на каждом уровне (внутри каждой директории) к ней добавляется единица.
+                      Такую переменную называют <em>аккумулятором</em>, так как она <em>аккумулирует</em>, то есть
+                      накапливает данные.</p>
+
+                    <p>Единственная проблема заключается в том, что у исходной функции <code>findEmptyDirPaths</code>
+                      ровно один параметр – узел. С его помощью невозможно передавать глубину всем вложенным директориям
+                      и файлам. Поэтому придётся ввести внутреннюю функцию, которая сможет &quot;пробрасывать&quot;
+                      аккумулятор дальше по дереву:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Функция iter используется внутри основной и может передавать аккумулятор</span>
+<span style="color: #999988;font-style: italic">// В качестве аккумулятора выступает переменная $depth, содержащая текущую глубину</span>
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">iter</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$node</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$depth</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$name</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">getName</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$node</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #008080">$children</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #990000;font-weight: bold">getChildren</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$node</span><span style="background-color: #f8f8f8">);</span>
+
+    <span style="color: #999988;font-style: italic">// Если детей нет, то добавляем директорию</span>
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #0086B3">count</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$children</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">===</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$name</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+    <span style="color: #999988;font-style: italic">// Если это второй уровень вложенности, и директория не пустая,</span>
+    <span style="color: #999988;font-style: italic">// то не имеет смысла смотреть дальше</span>
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$depth</span> <span style="color: #000000;font-weight: bold">===</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">// Почему возвращается именно пустой массив?</span>
+        <span style="color: #999988;font-style: italic">// Потому что снаружи выполняется array_flatten</span>
+        <span style="color: #999988;font-style: italic">// Он раскрывает пустые массивы</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="background-color: #f8f8f8">[];</span>
+    <span style="background-color: #f8f8f8">}</span>
+    <span style="color: #999988;font-style: italic">// Оставляем только директории</span>
+    <span style="color: #008080">$emptyDirPaths</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_filter</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$children</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'Php\Immutable\Fs\Trees\trees\isDirectory'</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #999988;font-style: italic">// Не забываем увеличивать глубину</span>
+    <span style="color: #008080">$output</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_map</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$child</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">use</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$depth</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #990000;font-weight: bold">iter</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$child</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$depth</span> <span style="color: #000000;font-weight: bold">+</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">},</span> <span style="color: #008080">$emptyDirPaths</span><span style="background-color: #f8f8f8">);</span>
+
+    <span style="color: #999988;font-style: italic">// Перед возвратом "выпрямляем" массив</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #990000;font-weight: bold">array_flatten</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$output</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">findEmptyPaths</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Начинаем с глубины 0</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #990000;font-weight: bold">iter</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #990000;font-weight: bold">findEmptyPaths</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// ['apache', 'logs']</span>
+</code></pre>
+                    <p><a href="https://repl.it/@hexlet/php-trees-accumulator-findEmptyDirsWithDepth"
+                        target="_blank">https://repl.it/@hexlet/php-trees-accumulator-findEmptyDirsWithDepth</a></p>
+
+                    <p>Можно пойти еще дальше и позволить указывать максимальную глубину снаружи:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">findEmptyDirPaths</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$depth</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+  <span style="color: #999988;font-style: italic">// ...</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Но возникает вопрос, а как сделать так, чтобы по умолчанию просматривалось все дерево? Например
+                      можно взять заведомо большое число и сделать его значением по умолчанию. Такой подход сработает,
+                      но это хак. Правильный способ сделать это – использовать в качестве значения по умолчанию
+                      бесконечность <em>INF</em>.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">findEmptyDirPaths</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$tree</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$depth</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">INF</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+  <span style="color: #999988;font-style: italic">// ...</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+</body>
+
+</html>

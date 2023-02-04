@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Интерфейсы - PHP: Абстракция с помощью данных</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Интерфейсы</h1>
+                    <p>В IT широко распространён термин &quot;Интерфейс&quot;, который по смыслу похож на то, как мы
+                      используем это слово в повседневной жизни. Например, пользовательский интерфейс представляет собой
+                      совокупность элементов управления сайтом, банкоматом, телефоном и так далее. Интерфейсом пульта
+                      управления от телевизора являются кнопки. Интерфейсом автомобиля можно назвать все рычаги
+                      управления и кнопки. Резюмируя, можно сказать, что интерфейс определяет способ взаимодействия с
+                      системой.</p>
+
+                    <p>Создание грамотных интерфейсов не так уж просто, как может показаться на первый взгляд. Я бы даже
+                      сказал, что это крайне сложно. Каждый день мы встречаемся с неудобными интерфейсами, начиная от
+                      способов открывания дверей и заканчивая работой лифтов. Чем сложнее система (то есть, чем больше
+                      возможных состояний), тем сложнее сделать интерфейс. Даже в примитивном примере с кнопкой
+                      включения телевизора (два состояния — вкл/выкл), можно реализовать либо две кнопки, либо одну,
+                      которая ведёт себя по разному в зависимости от текущего состояния.</p>
+
+                    <p>В программировании всё устроено похожим образом. Интерфейсом называют набор функций (имена и их
+                      сигнатуры, то есть количество и типы входящих параметров, а также возвращаемое значение), не
+                      зависящих от конкретной реализации. Такое определение один в один совпадает с понятием <a
+                        href="https://ru.wikipedia.org/wiki/Абстрактный_тип_данных" target="_blank"
+                        rel="nofollow">абстрактного типа данных</a>. Например, для точек интерфейсными являются все
+                      функции, которые мы реализовывали в практике, и которые описывались в теории.</p>
+
+                    <p>Как соотносятся между собой понятия абстракция и интерфейс? Абстракция — это слово, описывающее в
+                      первую очередь те данные, с которыми мы работаем. Например, почти каждое веб-приложение включает в
+                      себя абстракцию &quot;пользователь&quot;. На Хекслете есть абстракция &quot;курс&quot;,
+                      &quot;проект&quot; и многое другое. Интерфейсом же называется набор функций, с помощью которых
+                      можно взаимодействовать с данными.</p>
+
+                    <p>Но функции бывают не только интерфейсные, но и вспомогательные, которые не предназначены для
+                      вызывающего кода и используются исключительно внутри абстракции:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Функции makeUser, getAge, isAdult — интерфейс абстракции User.</span>
+<span style="color: #999988;font-style: italic">// Они используются внешним (пользовательским, вызывающим) кодом.</span>
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">makeUser</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$name</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$birthday</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="background-color: #f8f8f8">[</span>
+        <span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$name</span><span style="background-color: #f8f8f8">,</span>
+        <span style="color: #d14">'birthday'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$birthday</span>
+    <span style="background-color: #f8f8f8">];</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">getAge</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #990000;font-weight: bold">calculateAge</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'birthday'</span><span style="background-color: #f8f8f8">]);</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">isAdult</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #990000;font-weight: bold">getAge</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$user</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">&gt;=</span> <span style="color: #009999">18</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #999988;font-style: italic">// Эта функция не является частью интерфейса абстракции User.</span>
+<span style="color: #999988;font-style: italic">// Она является "внутренней".</span>
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">calculateAge</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$birthday</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$secondsInYear</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">31556926</span><span style="background-color: #f8f8f8">;</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #0086B3">floor</span><span style="background-color: #f8f8f8">((</span><span style="color: #0086B3">time</span><span style="background-color: #f8f8f8">()</span> <span style="color: #000000;font-weight: bold">-</span> <span style="color: #0086B3">strtotime</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$birthday</span><span style="background-color: #f8f8f8">))</span> <span style="color: #000000;font-weight: bold">/</span> <span style="color: #008080">$secondsInYear</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>В сложных абстракциях (которые могут быть представлены внешними библиотеками), количество
+                      неинтерфейсных функций значительно больше, чем интерфейсных. Вплоть до того, что интерфейсом
+                      библиотеки могут являться одна или две функции, но в самой библиотеке их сотни. То, насколько
+                      хороша ваша абстракция, определяется в том числе тем, насколько удобен её интерфейс.</p>
+
+                    <p>Как увидите позже, в PHP существует конструкция, имеющая имя <code>Interface</code>. Она
+                      используется для явного описания интерфейсов, а также выполняет ряд дополнительных функций.
+                      Подробнее о ней поговорим позже, когда дойдём до классов.</p>
+
+</body>
+
+</html>

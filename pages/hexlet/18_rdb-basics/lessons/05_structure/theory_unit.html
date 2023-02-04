@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Структура реляционной базы данных - Основы реляционных баз данных</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="iTM3WB930CK4wC456mULpjDjH52pGIIVA5uSvsV3Q1Rw7pkz7F6NBYo1fNQHzcghLvR-zLY6iKJRywghDrYcXA" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../transactions/exercise_unit.html">Основы реляционных баз данных</a>
+                    <h1 class='mt-0 mb-4'>Структура реляционной базы данных</h1>
+                    <p>PostgreSQL — СУБД, созданная для работы с реляционными базами данных. Понятие
+                      &quot;реляционная&quot; мы рассмотрим в уроке, посвященном реляционной модели, а сейчас
+                      сосредоточимся на её прикладных аспектах. В этом уроке обзорно рассказывается о том, как устроены
+                      базы данных, а уже начиная со следующего, мы начнём создавать базу собственными руками.</p>
+
+                    <p>Данные в реляционных базах данных представлены в табличном виде и хранятся в таблицах. Такая
+                      структура очень напоминает Microsoft Excel. Каждая строка в такой таблице — это связанный набор
+                      данных, относящийся к одному предмету.</p>
+
+                    <p><img alt="Microsoft Excel" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImJhY2M3YWQwMjk1MmE2ODc3MmFmZDFhNjMwNGYxNDEyLnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=96c1cf70dd9d00c717ac67337dac34737f400174139e2f9bf7de3cbf1c5f4b8d"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Разные таблицы предназначены для хранения информации о различных предметах: например,
+                      пользователи, статьи или заказы в интернет-магазине. В типичных веб-приложениях таблиц десятки и
+                      сотни. В больших — тысячи. На Хекслете их несколько сотен.</p>
+
+                    <p>У <strong>таблиц</strong> в базе данных есть определённая структура, которая включает в себя
+                      фиксированный набор <strong>столбцов</strong> (говорят: &quot;полей&quot;). <strong>Поля</strong>
+                      расположены в строго определённом порядке, и каждое поле имеет своё уникальное имя в рамках одной
+                      таблицы. Кроме того, у таблицы есть имя, которое, как правило, уникально в рамках одной базы
+                      данных. Имя таблицы и её структура задаются при создании, но могут быть изменены впоследствии.</p>
+
+                    <p>Каждому столбцу сопоставлен <strong>тип данных</strong>. Тип данных ограничивает набор допустимых
+                      значений, которые можно присвоить столбцу, и определяет смысловое значение данных для вычислений.
+                      Например, в столбец числового типа нельзя записать обычные текстовые строки, но зато его данные
+                      можно использовать в математических вычислениях. И наоборот, если столбец имеет тип текстовой
+                      строки, для него допустимы практически любые данные, но он непригоден для математических действий
+                      (хотя другие операции, например, конкатенация строк, возможны).</p>
+
+                    <p>Число <strong>строк</strong> в таблице переменно — оно отражает текущее количество находящихся в
+                      ней данных. В отличие от таблиц в Exсel, в таблицах реляционных баз данных нет никаких гарантий
+                      относительно порядка строк в таблице. Он может быть любым. При необходимости этот порядок можно
+                      задать с помощью языка SQL, который рассматривается далее по курсу.</p>
+
+                    <p>Количество данных в разных таблицах варьируется очень сильно. Многие справочные таблицы, которые
+                      содержат некоторые фиксированные списки (например, список стран) очень небольшие, количество
+                      записей в них варьируется от нескольких штук до нескольких сотен. Другие таблицы, напротив, могут
+                      иметь значительные размеры. От сотен тысяч до десятков миллионов записей. Ну и совсем большие
+                      содержат сотни миллионов и даже миллиарды записей.</p>
+
+                    <p>Пример описания таблицы с именем <code>users</code> (на псевдоязыке):</p>
+
+                    <p><strong>Структура</strong></p>
+                    <pre class="hljs"><code class=>users
+
+first_name string
+last_name  string
+email      string
+created_at datetime
+</code></pre>
+                    <p><strong>Содержание</strong></p>
+                    <pre class="hljs"><code class=>| first_name | last_name |       email       | created_at |
+|------------|-----------|-------------------|------------|
+| Сергей     | Петров    | serj@gmail.com    | 11.10.2005 |
+| Иван       | Сидоров   | sidorov@yahoo.com | 03.08.2000 |
+| Виктор     | Курганов  | vkurg@indbox.com  | 23.12.2011 |
+</code></pre>
+                    <p>В дальнейшем эту структуру можно модифицировать, удалять и добавлять поля, менять типы данных и,
+                      наконец, удалить всю таблицу целиком. Типичные таблицы содержат десятки полей, но бывают и
+                      большие, в которых полей за сотню.</p>
+
+                    <p>Именование таблиц и полей в базе (и других сущностей) не фиксировано и зависит от программиста. В
+                      проектах, активно использующих ORM, имена определяются соглашениями конкретной экосистемы. В этом
+                      курсе я использую именование, принятое во фреймворке <strong>Rails</strong> и его ORM
+                      (ActiveRecord). Оно состоит из нескольких правил:</p>
+
+                    <ol>
+                      <li> Все имена в нижнем регистре</li>
+                      <li> Для имён, состоящих из нескольких слов, используется <em>snake_case</em></li>
+                      <li> Имя таблицы во множественном числе</li>
+                    </ol>
+
+                    <hr>
+
+                    <p>В отличие от Excel, где ввод данных и отображение происходит визуально, в обычных СУБД данные не
+                      имеют никакого представления. Вводятся они с помощью команд и выбираются тоже, а вот дальше, всё
+                      зависит от программистов, которые выводят эти данные в своих программах. Но существуют специальные
+                      клиенты, предназначенные для удобного визуального управления базами данных. Можно сказать, что это
+                      &quot;psql на стероидах&quot;.</p>
+
+                    <p><img alt="PgAdmin" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjRiOGM0MmYxZjRiZGY0NDlhZjcxY2I5ZWQwODE2N2ViLnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=b671e8cd852b5105d1d86e5c4d6a1c5e1777f2ba20994505258613805c4825ae"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Эти решения бывают как платные, так и бесплатные. Из бесплатных, в мире PostgreSQL, наиболее
+                      популярен <a href="https://www.pgadmin.org/" target="_blank" rel="nofollow">PgAdmin</a>.
+                      Рекомендую поставить его и поэкспериментировать внутри.</p>
+                    <h2 id="sql">SQL</h2>
+                    <p>Управление структурой базы данных и данными внутри таблиц — две разных задачи, выполняющиеся
+                      одним инструментом — языком <strong>SQL</strong>. SQL (Structured Query Language) —
+                      специализированный язык, разработанный для управления данными в реляционных СУБД.</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">SELECT</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">users</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <p>Он разрабатывается независимо от баз данных и имеет собственный стандарт, который с тем или иным
+                      успехом реализуют конкретные базы данных. Эта новость должна вас обрадовать, так как на базовом
+                      уровне все реляционные базы работают примерно одинаково. Научившись работать с одной базой, не
+                      сложно переключиться на другую. Как и в случае браузеров, которые пытаются поддерживать стандарты
+                      и имеют собственные расширения, базы данных также поддерживают основной SQL и местами дополняют
+                      его своими возможностями. На протяжении курса я буду стараться использовать только стандартные
+                      возможности SQL.</p>
+
+                    <p>С его помощью выполняются практически все задачи внутри СУБД: начиная с управления ролями и
+                      правами для них, заканчивая обновлением данных в таблицах конкретных баз данных. Даже создание
+                      базы данных выполняется с помощью SQL. SQL-запрос может быть как простым, так и очень сложным.
+                      Вряд ли существуют люди, которые знают его на 100%, но некоторый базис должны понимать все
+                      прикладные программисты.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ul>
+                      <li>Установите PgAdmin и подключитесь к СУБД, которую вы установили ранее. Для этого вам придется
+                        потратить некоторое время на изучение интерфейса программы. <a
+                          href="https://www.postgresqltutorial.com/connect-to-postgresql-database/" target="_blank"
+                          rel="nofollow">Подробный гайд с картинками</a></li>
+                      <li>Изучите интерфейс программы и существующие базы данных</li>
+                    </ul>
+
+
+</body>
+
+</html>

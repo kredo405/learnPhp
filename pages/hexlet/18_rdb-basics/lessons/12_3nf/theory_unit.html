@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Третья нормальная форма - Основы реляционных баз данных</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="LnDWXFk9cXhcxRGzRYjRs2YbbuqyKGpvlNnk7JBz00HXrXg3qhQsX24wQ16oIBI0eAwPu60KYNjGiX5zW7KMSQ" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../transactions/exercise_unit.html">Основы реляционных баз данных</a>
+                    <h1 class='mt-0 mb-4'>Третья нормальная форма</h1>
+                    <p>Текущая структура:</p>
+
+                    <p><strong>users</strong></p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>id</th>
+                          <th>first_name</th>
+                          <th>last_name</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>2</td>
+                          <td>Сергей</td>
+                          <td>Иванов</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>Иван</td>
+                          <td>Петров</td>
+                        </tr>
+                        <tr>
+                          <td>5</td>
+                          <td>Виктор</td>
+                          <td>Сидоров</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p><strong>goods</strong></p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>id</th>
+                          <th>name</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>50</td>
+                          <td>утюг</td>
+                        </tr>
+                        <tr>
+                          <td>30</td>
+                          <td>кофеварка</td>
+                        </tr>
+                        <tr>
+                          <td>20</td>
+                          <td>телевизор</td>
+                        </tr>
+                        <tr>
+                          <td>33</td>
+                          <td>ноутбук</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p><strong>order_items</strong></p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>id</th>
+                          <th>user_id</th>
+                          <th>address</th>
+                          <th>good_id</th>
+                          <th>price</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>8</td>
+                          <td>2</td>
+                          <td>Москва, ул. Промышленная</td>
+                          <td>50</td>
+                          <td>1000.00</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>3</td>
+                          <td>Самара, ул. Энгельса</td>
+                          <td>30</td>
+                          <td>5000.00</td>
+                        </tr>
+                        <tr>
+                          <td>7</td>
+                          <td>5</td>
+                          <td>Омск, ул. Дворцовая</td>
+                          <td>50</td>
+                          <td>1000.00</td>
+                        </tr>
+                        <tr>
+                          <td>4</td>
+                          <td>5</td>
+                          <td>Омск, ул. Дворцовая</td>
+                          <td>20</td>
+                          <td>6500.00</td>
+                        </tr>
+                        <tr>
+                          <td>9</td>
+                          <td>2</td>
+                          <td>Москва, ул. Матросова</td>
+                          <td>33</td>
+                          <td>20000.00</td>
+                        </tr>
+                        <tr>
+                          <td>6</td>
+                          <td>2</td>
+                          <td>Москва, ул. Матросова</td>
+                          <td>33</td>
+                          <td>20000.00</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p>Третья нормальная форма, так же как и вторая, включает в себя два пункта:</p>
+
+                    <ul>
+                      <li>Таблица должна быть во второй нормальной форме</li>
+                      <li>Все колонки в таблице зависят от первичного ключа и не зависят друг от друга</li>
+                    </ul>
+
+                    <p>Стоимость заказа зависит от цены товара, но в то же время, цена товара, как это ни странно,
+                      зависит от самого товара, то есть от <em>good_id</em>. Для приведения таблицы к третьей форме, нам
+                      нужно вынести цену в товар:</p>
+
+                    <p><strong>goods</strong></p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>id</th>
+                          <th>name</th>
+                          <th>price</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>50</td>
+                          <td>утюг</td>
+                          <td>1000.00</td>
+                        </tr>
+                        <tr>
+                          <td>30</td>
+                          <td>кофеварка</td>
+                          <td>5000.00</td>
+                        </tr>
+                        <tr>
+                          <td>20</td>
+                          <td>телевизор</td>
+                          <td>6500.00</td>
+                        </tr>
+                        <tr>
+                          <td>33</td>
+                          <td>ноутбук</td>
+                          <td>20000.00</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p>И наша таблица приобретает такой вид:</p>
+
+                    <p><strong>order_items</strong></p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>id</th>
+                          <th>user_id</th>
+                          <th>address</th>
+                          <th>good_id</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>8</td>
+                          <td>2</td>
+                          <td>Москва, ул. Промышленная</td>
+                          <td>50</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>3</td>
+                          <td>Самара, ул. Энгельса</td>
+                          <td>30</td>
+                        </tr>
+                        <tr>
+                          <td>7</td>
+                          <td>5</td>
+                          <td>Омск, ул. Дворцовая</td>
+                          <td>50</td>
+                        </tr>
+                        <tr>
+                          <td>4</td>
+                          <td>5</td>
+                          <td>Омск, ул. Дворцовая</td>
+                          <td>20</td>
+                        </tr>
+                        <tr>
+                          <td>9</td>
+                          <td>2</td>
+                          <td>Москва, ул. Матросова</td>
+                          <td>33</td>
+                        </tr>
+                        <tr>
+                          <td>6</td>
+                          <td>2</td>
+                          <td>Москва, ул. Матросова</td>
+                          <td>33</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p>С одной стороны, мы выполнили большую часть необходимой нормализации, с другой, новая структура
+                      имеет фатальный недостаток. Цена товара, вещь изменяемая, а вот стоимость покупки которую мы
+                      совершили в прошлом – нет. Но если нормализация выполнена целиком, то при изменении цены товара,
+                      изменится стоимость абсолютно всех совершенных покупок, в которые входил данный товар. С точки
+                      зрения бухгалтерии и истории покупок это недопустимо.</p>
+
+                    <p>Это значит, что цена товара должна копироваться в таблицу <em>order_items</em>. Но и в таблице
+                      <em>goods</em> она тоже нужна. В первую очередь для вывода на сайте на витрине.</p>
+
+                    <p>А что насчет адреса? Адрес тоже зависит от пользователя, но более сложным образом. Один
+                      пользователь может иметь несколько адресов (от нуля до бесконечности). Учитывая все что мы
+                      говорили про нормальные формы, перенести адреса в таблицу пользователей нельзя. Мы не можем
+                      хранить несколько значений в одной колонке и не можем дублировать записи, так как нарушится
+                      уникальность первичного ключа.</p>
+
+                    <p>Правильное решение – завести под адреса свою собственную таблицу. В этой таблице адрес будет
+                      связан с пользователем, а вместо поля <em>address</em> в таблице заказов появится поле
+                      <em>user_address_id</em>.</p>
+
+                    <p>Так, по крайней мере, мы бы поступили в теории. На практике же, неизвестно нужно ли выносить
+                      адрес или нет, все зависит от конкретной бизнес-логики конкретного приложения.</p>
+
+
+</body>
+
+</html>

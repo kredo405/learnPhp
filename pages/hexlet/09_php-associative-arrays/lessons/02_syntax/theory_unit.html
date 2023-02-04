@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Синтаксис - PHP: Ассоциативные массивы</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../array/exercise_unit.html">PHP: Ассоциативные массивы</a>
+                    <h1 class='mt-0 mb-4'>Синтаксис</h1>
+                    <p>Синтаксически работа с ассоциативными массивами очень похожа на то, как мы работали с обычными
+                      массивами. Различия кроются в деталях.</p>
+
+                    <p>Создание:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$user</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Vasya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'married'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'age'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">25</span><span style="background-color: #f8f8f8">];</span>
+</code></pre>
+                    <p>Общий принцип такой: внутри квадратных скобок через запятую перечисляются пары ключ-значения в
+                      формате <code>key =&gt; value</code>. Тип значения может быть любым, ключ — обычно, строка.</p>
+
+                    <p>Если ключей много, то определение можно растянуть на несколько строк:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$user</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span>
+    <span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Vasya'</span><span style="background-color: #f8f8f8">,</span>
+    <span style="color: #d14">'married'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">,</span>
+    <span style="color: #d14">'age'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">25</span>
+<span style="background-color: #f8f8f8">];</span>
+</code></pre>
+                    <p>Так же, как и с обычным массивом, ассоциативный массив можно создать пустым:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$user</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[];</span>
+</code></pre>
+                    <p>Синтаксически эта запись совпадает со способом создания обычного (пустого) массива. Возникает
+                      вопрос: как интерпретатор различает типы массивов? Хитрость в том, что в PHP индексированных
+                      массивов нет, все массивы — ассоциативные. Но если работать с ними так, как мы делали в предыдущем
+                      курсе, то он ведёт себя как индексированный массив (почти, различия всё же есть). Подробнее этот
+                      вопрос разбирается позже, в одном из уроков.</p>
+
+                    <p>Извлекаются элементы из ассоциативного массива так:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$user</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// Vasya</span>
+<span style="color: #008080">$user</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'age'</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// 25</span>
+</code></pre>
+                    <p>Обращение к несуществующему ключу порождает <code>PHP Notice</code>, что сродни ошибке.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://php.net/manual/ru/language.types.array.php">Официальная
+                          документация</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

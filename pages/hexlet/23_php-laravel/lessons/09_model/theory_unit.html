@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Модель - PHP: Laravel</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="imv5CT_Tv1kI3T0NiR1w-nr9S9tvc1dR0ihaMQq20CFzIos8yhemJREduC7GjeNgBFUAkKX68snZCH1Q18-iLg" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <a class="small" data-toggle="collapse" href="theory_unit.html#tips">Ошибки, сложный материал, вопросы
+                &gt;</a>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../resource/exercise_unit.html">PHP: Laravel</a>
+                    <h1 class='mt-0 mb-4'>Модель</h1>
+                    <p>Модель в MVC v2 – это слой приложения, отвечающий за связь с предметной областью. В нём находится
+                      вся бизнес-логика приложения. Для простоты реализации, сюда часто включают механизмы для работы с
+                      базой данных.</p>
+
+                    <p>Очень важно понимать, что модель, как слой, существует независимо от фреймворка, HTTP и веба в
+                      целом. Вся остальная система может обращаться к моделям, но модели не могут знать и не знают
+                      ничего про среду, в которой они выполняются.</p>
+
+                    <p>В том числе это значит, что мы можем работать с моделями вне фреймворка. В этом нам поможет
+                      Tinker. Одна из самых полезных возможностей Tinker – загрузить приложение и &quot;поиграться&quot;
+                      с моделями, поисследовать базу данных.</p>
+
+                    <p><em>Текущая версия Tinker не умеет подтягивать изменения файлов в репл. Поэтому если вы что-то
+                        меняете в коде, с которым работаете в репле, придётся его перезапускать.</em></p>
+
+                    <p>Выполним полный пример, создадим новую статью, наполним её данными и сохраним в базе:</p>
+                    <pre class="hljs"><code class=sh>php artisan tinker
+Psy Shell v0.10.0 <span style="color: #000000;font-weight: bold">(</span>PHP 7.3.11 — cli<span style="color: #000000;font-weight: bold">)</span> by Justin Hileman
+<span style="color: #999988;font-style: italic">#</span>
+<span style="color: #000000;font-weight: bold">&gt;&gt;&gt;</span> <span style="color: #008080">$a</span> <span style="color: #000000;font-weight: bold">=</span> new App<span style="color: #d14">\M</span>odels<span style="color: #d14">\A</span>rticle<span style="color: #000000;font-weight: bold">()</span>
+<span style="color: #000000;font-weight: bold">=&gt;</span> App<span style="color: #d14">\M</span>odels<span style="color: #d14">\A</span>rticle <span style="color: #000000;font-weight: bold">{</span><span style="color: #999988;font-style: italic">#2970}</span>
+<span style="color: #999988;font-style: italic"># После того как объект модели создан, его можно наполнять данными через обычные свойства (на самом деле внутри используется `__set` и `__get`). Имена этих свойств, соответствуют именам в таблице.</span>
+<span style="color: #000000;font-weight: bold">&gt;&gt;&gt;</span> <span style="color: #008080">$a</span>-&gt;name <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'my super article'</span>
+<span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">"my super article"</span>
+<span style="color: #000000;font-weight: bold">&gt;&gt;&gt;</span> <span style="color: #008080">$a</span>-&gt;body <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'my content'</span>
+<span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">"my content"</span>
+<span style="color: #000000;font-weight: bold">&gt;&gt;&gt;</span> <span style="color: #008080">$a</span>
+<span style="color: #000000;font-weight: bold">=&gt;</span> App<span style="color: #d14">\M</span>odels<span style="color: #d14">\A</span>rticle <span style="color: #000000;font-weight: bold">{</span><span style="color: #999988;font-style: italic">#2970</span>
+     name: <span style="color: #d14">"my super article"</span>,
+     body: <span style="color: #d14">"my content"</span>,
+   <span style="color: #000000;font-weight: bold">}</span>
+</code></pre>
+                    <p>Когда объект готов, его можно сохранить в базу данных. Для этого надо вызвать метод
+                      <code>save()</code>:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #000000;font-weight: bold">&gt;&gt;&gt;</span> <span style="color: #008080">$a</span>-&gt;save<span style="color: #000000;font-weight: bold">()</span>
+<span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #0086B3">true</span>
+<span style="color: #000000;font-weight: bold">&gt;&gt;&gt;</span> <span style="color: #008080">$a</span>
+<span style="color: #000000;font-weight: bold">=&gt;</span> App<span style="color: #d14">\M</span>odels<span style="color: #d14">\A</span>rticle <span style="color: #000000;font-weight: bold">{</span><span style="color: #999988;font-style: italic">#2970</span>
+     name: <span style="color: #d14">"my super article"</span>,
+     body: <span style="color: #d14">"my content"</span>,
+     updated_at: <span style="color: #d14">"2020-03-21 19:17:08"</span>,
+     created_at: <span style="color: #d14">"2020-03-21 19:17:08"</span>,
+     <span style="color: #0086B3">id</span>: 1,
+   <span style="color: #000000;font-weight: bold">}</span>
+</code></pre>
+                    <p>Этот метод делает запрос <em>INSERT</em> в базу данных. Затем он обновляет сам объект:</p>
+
+                    <ul>
+                      <li>Внутрь записывается идентификатор статьи взятый из базы данных.</li>
+                      <li>Заполняются поля <em>created_at</em> и <em>updated_at</em>. Если это новая запись, то значения
+                        этих полей совпадают.</li>
+                    </ul>
+
+                    <p>Созданный объект можно тут же поменять:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #000000;font-weight: bold">&gt;&gt;&gt;</span> <span style="color: #008080">$a</span>-&gt;name <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'another title'</span>
+<span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">"another title"</span>
+<span style="color: #000000;font-weight: bold">&gt;&gt;&gt;</span> <span style="color: #008080">$a</span>
+<span style="color: #000000;font-weight: bold">=&gt;</span> App<span style="color: #d14">\M</span>odels<span style="color: #d14">\A</span>rticle <span style="color: #000000;font-weight: bold">{</span><span style="color: #999988;font-style: italic">#2972</span>
+     <span style="color: #0086B3">id</span>: <span style="color: #d14">"1"</span>,
+     name: <span style="color: #d14">"another title"</span>,
+     body: <span style="color: #d14">"my content"</span>,
+     created_at: <span style="color: #d14">"2020-03-21 19:17:08"</span>,
+     updated_at: <span style="color: #d14">"2020-03-21 19:17:08"</span>,
+   <span style="color: #000000;font-weight: bold">}</span>
+</code></pre>
+                    <p>Изменение свойств никак не затрагивает базу данных. Все это происходит только на уровне самого
+                      объекта. Если в этот момент закрыть консоль, то все изменения потеряются. Для сохранения нужно
+                      опять вызвать <code>save()</code>. Этот метод универсальный, он подходит как для создания новой
+                      сущности, так и для её обновления.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #000000;font-weight: bold">&gt;&gt;&gt;</span> <span style="color: #008080">$a</span>-&gt;save<span style="color: #000000;font-weight: bold">()</span>
+<span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #0086B3">true</span>
+<span style="color: #000000;font-weight: bold">&gt;&gt;&gt;</span> <span style="color: #008080">$a</span>
+<span style="color: #000000;font-weight: bold">=&gt;</span> App<span style="color: #d14">\M</span>odels<span style="color: #d14">\A</span>rticle <span style="color: #000000;font-weight: bold">{</span><span style="color: #999988;font-style: italic">#2972</span>
+     <span style="color: #0086B3">id</span>: <span style="color: #d14">"1"</span>,
+     name: <span style="color: #d14">"another title"</span>,
+     body: <span style="color: #d14">"my content"</span>,
+     created_at: <span style="color: #d14">"2020-03-21 19:17:08"</span>,
+     updated_at: <span style="color: #d14">"2020-03-21 19:31:56"</span>,
+   <span style="color: #000000;font-weight: bold">}</span>
+</code></pre>
+                    <p>Метод <code>save()</code> выполняет запрос в базу только тогда, когда что-то поменялось. В этом
+                      случае обязательно меняется значение поля <em>updated_at</em>. Оно становится равным текущему
+                      времени.</p>
+
+                    <p>Теперь предположим, что у нас нет переменной с текущей статьёй. Например, мы перезапустили
+                      консоль. Каким образом получить нужный объект? Делается это с помощью статических методов, которые
+                      появляются у каждой модели. Самый простой способ достать запись, сделать поиск по её
+                      идентификатору:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #000000;font-weight: bold">&gt;&gt;&gt;</span> <span style="color: #008080">$a</span> <span style="color: #000000;font-weight: bold">=</span> App<span style="color: #d14">\M</span>odels<span style="color: #d14">\A</span>rticle::find<span style="color: #000000;font-weight: bold">(</span>1<span style="color: #000000;font-weight: bold">)</span>
+<span style="color: #000000;font-weight: bold">=&gt;</span> App<span style="color: #d14">\M</span>odels<span style="color: #d14">\A</span>rticle <span style="color: #000000;font-weight: bold">{</span><span style="color: #999988;font-style: italic">#2980</span>
+     <span style="color: #0086B3">id</span>: <span style="color: #d14">"1"</span>,
+     name: <span style="color: #d14">"another title"</span>,
+     body: <span style="color: #d14">"my content"</span>,
+     created_at: <span style="color: #d14">"2020-03-21 19:17:08"</span>,
+     updated_at: <span style="color: #d14">"2020-03-21 19:31:56"</span>,
+   <span style="color: #000000;font-weight: bold">}</span>
+</code></pre>
+                    <p><em>find</em> ищет по первичному ключу и возвращает запись или <em>null</em>. Если ему передать
+                      массив ключей, то он вернет коллекцию, состоящую из записей по этим ключам. А если нужен поиск по
+                      полям, который вернёт коллекцию, для этого подходит метод <em>where</em>:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #999988;font-style: italic"># У этого метода много интересных возможностей. Подробнее о них говорится в соответствующем курсе.</span>
+<span style="color: #999988;font-style: italic"># Такой запрос извлечёт все статьи, у которых имя равно _another title_.</span>
+<span style="color: #000000;font-weight: bold">&gt;&gt;&gt;</span> <span style="color: #008080">$articles</span> <span style="color: #000000;font-weight: bold">=</span> App<span style="color: #d14">\M</span>odels<span style="color: #d14">\A</span>rticle::where<span style="color: #000000;font-weight: bold">(</span><span style="color: #d14">'name'</span>, <span style="color: #d14">'another title'</span><span style="color: #000000;font-weight: bold">)</span>-&gt;get<span style="color: #000000;font-weight: bold">()</span>
+<span style="color: #000000;font-weight: bold">=&gt;</span> Illuminate<span style="color: #d14">\D</span>atabase<span style="color: #d14">\E</span>loquent<span style="color: #d14">\C</span>ollection <span style="color: #000000;font-weight: bold">{</span><span style="color: #999988;font-style: italic">#2973</span>
+     all: <span style="color: #000000;font-weight: bold">[</span>
+       App<span style="color: #d14">\M</span>odels<span style="color: #d14">\A</span>rticle <span style="color: #000000;font-weight: bold">{</span><span style="color: #999988;font-style: italic">#2967</span>
+         <span style="color: #0086B3">id</span>: <span style="color: #d14">"1"</span>,
+         name: <span style="color: #d14">"another title"</span>,
+         body: <span style="color: #d14">"my content"</span>,
+         created_at: <span style="color: #d14">"2020-03-21 19:17:08"</span>,
+         updated_at: <span style="color: #d14">"2020-03-21 19:31:56"</span>,
+       <span style="color: #000000;font-weight: bold">}</span>,
+     <span style="color: #000000;font-weight: bold">]</span>,
+   <span style="color: #000000;font-weight: bold">}</span>
+</code></pre>
+                    <p>Кроме <em>where</em>, нам понадобятся два похожих метода:</p>
+
+                    <ul>
+                      <li><code>Model::all()</code> извлекает все записи из таблицы. Такой метод подходит только в
+                        некоторых ситуациях, в основном при работе со справочниками где немного данных. В остальных
+                        случаях он может выбрать в память слишком много записей, что породит ненужную нагрузку на
+                        сервер.</li>
+                      <li><code>Model::paginate($page)</code> – извлекает записи постранично. Основной метод, который
+                        используется в списках.</li>
+                    </ul>
+
+                    <p>И последнее, что можно сделать с сущностью, это удалить её:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #000000;font-weight: bold">&gt;&gt;&gt;</span> <span style="color: #008080">$a</span>-&gt;delete<span style="color: #000000;font-weight: bold">()</span>
+<span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #0086B3">true</span>
+<span style="color: #000000;font-weight: bold">&gt;&gt;&gt;</span> Article::find<span style="color: #000000;font-weight: bold">(</span>1<span style="color: #000000;font-weight: bold">)</span>
+<span style="color: #000000;font-weight: bold">=&gt;</span> null
+</code></pre>
+                    <h2 id="sostav-modeli">Состав модели</h2>
+                    <p>В реальных проектах от десятков до тысяч (или десятков тысяч!) сущностей. При таких количествах,
+                      помнить из чего состоят модели – невозможно. Более того, в проект могут и будут приходить новые
+                      люди, которые не знают структуры моделей.</p>
+
+                    <p>Узнать какие поля есть у модели можно несколькими способами. Ими придётся пользоваться регулярно:
+                    </p>
+
+                    <ol>
+                      <li>
+                        <p>База данных. Всегда можно подключиться напрямую и посмотреть структуру таблицы. В разных
+                          базах данных это делается по разному.</p>
+                      </li>
+                      <li>
+                        <p>Laravel имеет встроенный механизм извлечения структуры таблицы. Он сам им пользуется для
+                          работы модели.</p>
+                        <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">DB</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">getSchemaBuilder</span><span style="background-color: #f8f8f8">()</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getColumnListing</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'имя таблицы'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                      </li>
+                      <li>
+                        <p>Пожалуй самый простой и распространённый способ — зайти в REPL, извлечь первую сущность
+                          нужной модели и распечатать её.</p>
+                        <pre class="hljs"><code class=sh><span style="color: #000000;font-weight: bold">&gt;&gt;&gt;</span> <span style="color: #008080">$u</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">\A</span>pp<span style="color: #d14">\M</span>odels<span style="color: #d14">\U</span>ser::first<span style="color: #000000;font-weight: bold">()</span>
+<span style="color: #000000;font-weight: bold">&gt;&gt;&gt;</span> <span style="color: #008080">$u</span>-&gt;toArray<span style="color: #000000;font-weight: bold">()</span>
+
+string<span style="color: #000000;font-weight: bold">(</span>29<span style="color: #000000;font-weight: bold">)</span> <span style="color: #d14">"select * from "</span><span style="color: #0086B3">users</span><span style="color: #d14">" limit 1"</span>
+<span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #000000;font-weight: bold">[</span>
+     <span style="color: #d14">"id"</span> <span style="color: #000000;font-weight: bold">=&gt;</span> 1,
+     <span style="color: #d14">"email"</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">"streich.viva@example.net"</span>,
+     <span style="color: #d14">"first_name"</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">"Tatum"</span>,
+     <span style="color: #d14">"last_name"</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">"Hudson"</span>,
+     <span style="color: #d14">"password"</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">"</span><span style="color: #008080">$2y$10$92IXUNpkjO0rOQ5byMi</span><span style="color: #d14">.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi"</span>,
+     <span style="color: #d14">"created_at"</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">"2020-03-21 19:31:38"</span>,
+     <span style="color: #d14">"updated_at"</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">"2020-03-21 19:31:38"</span>,
+   <span style="color: #000000;font-weight: bold">]</span>
+</code></pre>
+                      </li>
+                    </ol>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Создайте 5 статей через репл. Они понадобятся при построении CRUD.</li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://yandex.ru/blog/company/77455">Что такое протокол HTTPS, и как
+                          он защищает вас в интернете</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://habr.com/post/137587/">Как работает DNS</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

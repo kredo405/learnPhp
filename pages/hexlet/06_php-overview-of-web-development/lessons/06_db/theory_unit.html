@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>СУБД - Ключевые аспекты веб-разработки на PHP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <meta content='IE=Edge' http-equiv='X-UA-Compatible'>
+  <meta content='b9d3902d34' name='verify-admitad'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>СУБД</h1>
+                    <p>Предположим, что мы решили реализовать сайт с объявлениями и хотим дать возможность создавать их
+                      нашим пользователям. К текущему моменту мы уже знаем как вывести страницу с формой для добавления
+                      объявления. Но что делать после того, как данные формы придут на сервер? Где их хранить?</p>
+
+                    <p>Самый простой вариант, который можно придумать - файлы. Всё, что приходит, можно записывать в
+                      файл, а при выводе читать из него. Такой подход обладает бесконечным числом недостатков и
+                      абсолютно неудобен в работе. Правильный способ работы с данными - база данных. База данных, в
+                      конечном итоге, тоже хранится в файлах, но этим процессом на 100% управляет <strong>СУБД</strong>,
+                      так называемая система управления базами данных. Именно её необходимо установить перед началом
+                      работы. В вебе наиболее распространены две системы: PostgreSQL и MySQL. Настройка и установка баз
+                      данных — не такой тривиальный процесс, как установка интерпретатора php, поэтому здесь мы его
+                      рассматривать не будем. В сети вы можете найти множество готовых рецептов по установке СУБД на
+                      вашу операционную систему. Гуглить лучше так: <em>postgresql install ubuntu</em></p>
+
+                    <p>СУБД стартует как отдельная программа и живёт своей собственной жизнью. Эти системы устроены
+                      таким образом, что они могут обслуживать множество разных баз данных. Обычно один сайт использует
+                      одну базу данных, но все базы данных разных сайтов могут храниться в одной СУБД (но не
+                      обязательно). Взаимодействовать с конкретной базой данных можно двумя способами:</p>
+
+                    <ul>
+                      <li>
+                        <p>Запустив REPL базы, который позволяет в интерактивном режиме поработать с командами, записать
+                          и прочитать данные, добавить пользователя в систему и так далее. При подключении (или уже
+                          после) обязательно выбрать базу данных, с которой вы хотите взаимодействовать:</p>
+
+                        <p><img alt="db repl" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                            data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6Ijg1OTcyZGZiMTQ4NjMyODY5OGRhMTg2N2YzMGRjYmQ5LnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=bb64806afc728e343f78ea74bd3a5e3eba8e0af7d34275fb630cf2b4feeba511"
+                            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+                      </li>
+                      <li>
+                        <p>Подключиться к СУБД из своей программы, используя <strong>драйвер</strong>. Драйвер -
+                          библиотека, которая общается с базой данных. Она выставляет наружу относительно простой
+                          интерфейс для выполнения запросов и получения результатов. Чуть ниже мы посмотрим, как такой
+                          подход работает на практике.</p>
+                      </li>
+                    </ul>
+                    <h2 id="otnosheniya">Отношения</h2>
+                    <p>PostgreSQL и MySQL относятся к классу реляционных баз данных, так как работа этих баз данных
+                      основана на реляционной алгебре. Мы не будем погружаться в теоретические дебри. Скажу лишь, что
+                      данные в реляционных базах хранятся в виде таблиц. Наверняка вы работали с табличными данными в
+                      Microsoft Office или Google Spreadsheets.</p>
+
+                    <p>Каждая таблица в такой базе данных имеет своё имя и набор именованных колонок. Колонки в базе
+                      данных обычно называют <strong>полями</strong>. Например, таблица с объявлениями может называться
+                      <em>ads</em> и содержать следующие данные:</p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>id</th>
+                          <th style="text-align: center">telephone</th>
+                          <th style="text-align: right">title</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td style="text-align: center">132453</td>
+                          <td style="text-align: right">Продам машину</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td style="text-align: center">342341</td>
+                          <td style="text-align: right">Куплю яхту</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td style="text-align: center">908324</td>
+                          <td style="text-align: right">Сдам в аренду палатку</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p>Каждая строчка в таблице независима от других и представляет из себя законченный набор данных, в
+                      нашем случае — одно объявление. Строчки принято называть <strong>записями</strong>.</p>
+
+                    <p>Обратите внимание на поле <em>id</em>. Его вводят искусственно, для идентификации конкретной
+                      строчки. СУБД содержат механизмы, позволяющие генерировать идентификатор автоматически при вставке
+                      данных в базу. Как правило, идентификаторы используют в адресах страниц. Например, такой адрес
+                      <code>http://myavito.ru/ads/53</code> выведет объявление с <em>id</em>, равным <em>53</em>.</p>
+                    <h2 id="sql">SQL</h2>
+                    <p>Любые манипуляции c таблицами в реляционных базах данных выполняются с помощью языка запросов
+                      <strong>SQL</strong> (structured query language). Открыв REPL базы данных, можно попробовать
+                      выполнить следующие запросы (предполагаем, что таблица <em>ads</em> уже создана):</p>
+                    <pre class="hljs"><code class=sql><span style="color: #000000;font-weight: bold">SELECT</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">ads</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999988;font-style: italic">-- выбрать все записи</span>
+<span style="color: #000000;font-weight: bold">SELECT</span> <span style="background-color: #f8f8f8">title</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">ads</span> <span style="color: #000000;font-weight: bold">WHERE</span> <span style="background-color: #f8f8f8">id</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">4</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999988;font-style: italic">-- выбрать title для записи с id равным 4</span>
+<span style="color: #000000;font-weight: bold">SELECT</span> <span style="background-color: #f8f8f8">telephone</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">ads</span> <span style="color: #000000;font-weight: bold">ORDER</span> <span style="color: #000000;font-weight: bold">BY</span> <span style="background-color: #f8f8f8">id</span> <span style="color: #000000;font-weight: bold">DESC</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999988;font-style: italic">-- выбрать все телефоны отсортировав их по полю id в обратном порядке</span>
+
+<span style="color: #000000;font-weight: bold">INSERT</span> <span style="color: #000000;font-weight: bold">INTO</span> <span style="background-color: #f8f8f8">ads</span> <span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">telephone</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">title</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">VALUES</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">"392503"</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">"Куплю слона"</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">-- вставить в таблицу ads новую запись</span>
+
+<span style="color: #000000;font-weight: bold">DELETE</span> <span style="color: #000000;font-weight: bold">FROM</span> <span style="background-color: #f8f8f8">ads</span> <span style="color: #000000;font-weight: bold">WHERE</span> <span style="background-color: #f8f8f8">id</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">5</span><span style="background-color: #f8f8f8">;</span> <span style="color: #999988;font-style: italic">-- удалить запись с id равным 5</span>
+</code></pre>
+                    <p>Как видите, SQL — это простой текст, причём довольно понятный и без лишних пояснений. Конечно, в
+                      случае сложных SQL-запросов, придётся сильно попотеть, чтобы их понять, но в большинстве случаев
+                      SQL получается достаточно простой.</p>
+                    <h2 id="drayver">Драйвер</h2>
+                    <p>Но если внутри REPL базы мы можем выполнять SQL напрямую, то из кода этого не сделать. Необходим
+                      драйвер, который передаст наш SQL базе данных и вернёт ответ. Но перед тем, как послать запрос,
+                      нужно подключиться к самой базе, введя правильное имя пользователя и пароль. СУБД —
+                      многопользовательская система с навороченной системой прав. Безопасность при работе с базой —
+                      ключевой аспект, так как данные — самое ценное, что есть в приложении. Если потеряются данные, то
+                      бизнес, скорее всего, прекратит своё существование.</p>
+
+                    <p>В стандартную поставку PHP входит библиотека PDO, которая как раз является набором драйверов к
+                      разным базам данных. Ниже пример использования:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// PDO Connection to MySQL</span>
+<span style="color: #008080">$conn</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">PDO</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'mysql:host=localhost;dbname=yourdbname'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'username'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'password'</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #999988;font-style: italic">// PDO Connection to PostgreSQL</span>
+<span style="color: #008080">$conn</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">PDO</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'pgsql:host=localhost;dbname=yourdbname'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'username'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'password'</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #999988;font-style: italic">// A quick Select Query with For Loop</span>
+<span style="color: #008080">$result</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$conn</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">query</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"SELECT * FROM profile"</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #000000;font-weight: bold">foreach</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$result</span> <span style="color: #000000;font-weight: bold">as</span> <span style="color: #008080">$row</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$row</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'id'</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$row</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'title'</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$row</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'telephone'</span><span style="background-color: #f8f8f8">];</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <h2 id="chto-nuzhno-vyuchit">Что нужно выучить</h2>
+                    <p>Напомню, что не нужно расстраиваться, если вы не поняли большинство описанных здесь вещей.
+                      Достаточно, что теперь вы осознаете, насколько непросто с наскоку прыгнуть в реальную разработку и
+                      нужна предварительная подготовка. Перечислю некоторые новые темы, которые нужно изучить, чтобы без
+                      проблем писать код, представленный выше:</p>
+
+                    <ul>
+                      <li>Базы данных. Необходимо уметь устанавливать и настраивать их. Настройка включает в себя
+                        оперирование сокетами (в том числе сетевыми), управление пользователями и многими другими вещами
+                        (опять знание операционных систем).</li>
+                      <li>Необходимо знать SQL, что включает в себя и основы теории множеств.</li>
+                      <li>Понятия нормализации и денормализации. Нормальные формы. Ключи и индексы.</li>
+                      <li>Сериализация и десериализация.</li>
+                      <li>Идемпотентность.</li>
+                      <li>Fluent Interface.</li>
+                      <li>Итератор.</li>
+                      <li>Безопасность: Экранирование, SQL Injection.</li>
+                    </ul>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <p>С этого урока самостоятельно работать не получится, появляется слишком много нюансов по настройке
+                      и подключению к базе данных из кода. Вы, конечно, можете попробовать (и даже хорошо бы), но
+                      обладая только базовыми знаниями php, вам понадобится приложить сверхусилия для настройки и
+                      запуска всей системы в целом.</p>
+
+                    <p>В любом случае полезно установить саму базу и поиграться с ней.</p>
+
+</body>
+
+</html>

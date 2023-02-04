@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Вложенные массивы - PHP: Ассоциативные массивы</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../array/exercise_unit.html">PHP: Ассоциативные массивы</a>
+                    <h1 class='mt-0 mb-4'>Вложенные массивы</h1>
+                    <p>Значением ключа ассоциативного массива может быть все, что угодно, включая, опять же, массив.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$user</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Vasya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'married'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'age'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">25</span><span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #999988;font-style: italic">// Добавим ключ friends со списком друзей</span>
+<span style="color: #008080">$user</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'friends'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'Kolya'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'Petya'</span><span style="background-color: #f8f8f8">];</span>
+
+<span style="color: #999988;font-style: italic">// Добавим ключ children со списком детей,</span>
+<span style="color: #999988;font-style: italic">// каждый ребёнок представлен отдельным ассоциативным массивом</span>
+<span style="color: #008080">$user</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'children'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Mila'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'age'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'Petr'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'age'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">10</span><span style="background-color: #f8f8f8">]</span>
+<span style="background-color: #f8f8f8">];</span>
+</code></pre>
+                    <p>В этом случае обращение к вложенным элементам происходит так:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$user</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'friends'</span><span style="background-color: #f8f8f8">][</span><span style="color: #009999">1</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// Petya</span>
+<span style="color: #008080">$user</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'children'</span><span style="background-color: #f8f8f8">][</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">][</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// Mila</span>
+</code></pre>
+                    <p>То есть после извлечения элемента к нему можно сразу же обращаться как к массиву без
+                      необходимости создавать промежуточные переменные. Иногда переменные всё же необходимы, и в этом
+                      случае код будет таким:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$friends</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$user</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'friends'</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #008080">$friends</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// Kolya</span>
+</code></pre>
+                    <p>К элементам ассоциативных массивов можно обращаться точно так же, как и к элементам обычных
+                      массивов, используя переменные:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$key</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'friends'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #008080">$friends</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$user</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$key</span><span style="background-color: #f8f8f8">];</span>
+<span style="color: #008080">$friends</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// Kolya</span>
+</code></pre>
+            
+
+</body>
+
+</html>

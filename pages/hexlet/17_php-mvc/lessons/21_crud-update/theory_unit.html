@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>CRUD: Обновление - Веб-разработка на PHP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>CRUD: Обновление</h1>
+                    <p>Обновление самое сложное действие из всех по объёму действий. С точки зрения кода новое здесь
+                      только одно — заполнение сущности данными формы:
+                      <code>$school[&#39;name&#39;] = $data[&#39;name&#39;];</code>. Этот процесс сильно изменится при
+                      использовании ORM, а пока мы будем проставлять каждое значение руками.</p>
+
+                    <p><strong>Обработчик формы</strong></p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/schools/{id}/edit'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #445588;font-weight: bold">array</span> <span style="color: #008080">$args</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$repo</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">App\SchoolRepository</span><span style="background-color: #f8f8f8">();</span>
+    <span style="color: #008080">$id</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$args</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'id'</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #008080">$school</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$repo</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">find</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$id</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #008080">$params</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span>
+        <span style="color: #d14">'school'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$school</span><span style="background-color: #f8f8f8">,</span>
+        <span style="color: #d14">'errors'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="background-color: #f8f8f8">[]</span>
+    <span style="background-color: #f8f8f8">];</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'renderer'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'schools/edit.phtml'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$params</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">})</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">setName</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'editSchool'</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p><strong>Шаблон</strong></p>
+                    <pre class="hljs"><code class=php><span style="color: #000080">&lt;form</span> <span style="color: #008080">action=</span><span style="color: #d14">"/schools/</span><span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #0086B3">htmlspecialchars</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$school</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'id'</span><span style="background-color: #f8f8f8">])</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #d14">"</span> <span style="color: #008080">method=</span><span style="color: #d14">"post"</span><span style="color: #000080">&gt;</span>
+    <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"hidden"</span> <span style="color: #008080">name=</span><span style="color: #d14">"_METHOD"</span> <span style="color: #008080">value=</span><span style="color: #d14">"PATCH"</span><span style="color: #000080">&gt;</span>
+    <span style="color: #000080">&lt;div&gt;</span>
+      <span style="color: #000080">&lt;label&gt;</span>
+          Название *
+          <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"text"</span> <span style="color: #008080">name=</span><span style="color: #d14">"school[name]"</span> <span style="color: #008080">value=</span><span style="color: #d14">"</span><span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #0086B3">htmlspecialchars</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$school</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">??</span> <span style="color: #d14">''</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #d14">"</span><span style="color: #000080">&gt;</span>
+      <span style="color: #000080">&lt;/label&gt;</span>
+      <span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">isset</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$errors</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">]))</span><span style="color: #000000;font-weight: bold">:</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+          <span style="color: #000080">&lt;div&gt;</span><span style="color: #999999;font-weight: bold">&lt;?=</span> <span style="color: #008080">$errors</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #999999;font-weight: bold">?&gt;</span><span style="color: #000080">&lt;/div&gt;</span>
+      <span style="color: #999999;font-weight: bold">&lt;?php</span> <span style="color: #000000;font-weight: bold">endif</span> <span style="color: #999999;font-weight: bold">?&gt;</span>
+    <span style="color: #000080">&lt;/div&gt;</span>
+    <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"submit"</span> <span style="color: #008080">value=</span><span style="color: #d14">"Update"</span><span style="color: #000080">&gt;</span>
+<span style="color: #000080">&lt;/form&gt;</span>
+</code></pre>
+                    <p><strong>Обработчик действия</strong></p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$router</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getRouteCollector</span><span style="background-color: #f8f8f8">()</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getRouteParser</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">patch</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/schools/{id}'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #445588;font-weight: bold">array</span> <span style="color: #008080">$args</span><span style="background-color: #f8f8f8">)</span>  <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$repo</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">App\SchoolRepository</span><span style="background-color: #f8f8f8">();</span>
+    <span style="color: #008080">$id</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$args</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'id'</span><span style="background-color: #f8f8f8">];</span>
+    <span style="color: #008080">$school</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$repo</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">find</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$id</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #008080">$data</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$request</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getParsedBodyParam</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'school'</span><span style="background-color: #f8f8f8">);</span>
+
+    <span style="color: #008080">$validator</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Validator</span><span style="background-color: #f8f8f8">();</span>
+    <span style="color: #008080">$errors</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$validator</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">validate</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$data</span><span style="background-color: #f8f8f8">);</span>
+
+    <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #0086B3">count</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$errors</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">===</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">// Ручное копирование данных из формы в нашу сущность</span>
+        <span style="color: #008080">$school</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$data</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'name'</span><span style="background-color: #f8f8f8">];</span>
+
+        <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'flash'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">addMessage</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'success'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'School has been updated'</span><span style="background-color: #f8f8f8">);</span>
+        <span style="color: #008080">$repo</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">save</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$school</span><span style="background-color: #f8f8f8">);</span>
+        <span style="color: #008080">$url</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$router</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">urlFor</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'editSchool'</span><span style="background-color: #f8f8f8">,</span> <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'id'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$school</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'id'</span><span style="background-color: #f8f8f8">]]);</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">withRedirect</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$url</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #008080">$params</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[</span>
+        <span style="color: #d14">'schoolData'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$data</span><span style="background-color: #f8f8f8">,</span>
+        <span style="color: #d14">'school'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$school</span><span style="background-color: #f8f8f8">,</span>
+        <span style="color: #d14">'errors'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$errors</span>
+    <span style="background-color: #f8f8f8">];</span>
+
+    <span style="color: #008080">$response</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">withStatus</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">422</span><span style="background-color: #f8f8f8">);</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'renderer'</span><span style="background-color: #f8f8f8">)</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">render</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'schools/edit.phtml'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$params</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>Теоретически можно сделать и так <code>$school = array_merge($user, $data)</code>, но у этого
+                      подхода есть один фатальный недостаток. Такой способ абсолютно не безопасен, так как пользователь
+                      может послать данные в обход формы, например количество денег на счету и
+                      <code>array_merge()</code> изменит их значение. Эту проблему решают те же пакеты, которые
+                      предоставляют Form Builder и, обычно, они сразу встроены во фреймворки.</p>
+                    <h2 id="metody">Методы</h2>
+                    <p>Как вы уже знаете, HTML позволяет указывать только два метода внутри атрибута <code>method</code>
+                      тега <code>&lt;form&gt;</code>. С точки зрения семантики HTTP, это не совсем верно. <em>POST</em>
+                      предназначен для создания нового. Для изменения правильно использовать <em>PATCH</em> или
+                      <em>PUT</em>, в зависимости от того как происходит обновление, а для удаления — <em>DELETE</em>.
+                      Если посмотреть на определение обработчика выше, то там мы увидим использование <em>PATCH</em>. Но
+                      как это работает? Браузер все равно пошлёт <em>POST</em>.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">patch</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/schools/{id}'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">,</span> <span style="color: #445588;font-weight: bold">array</span> <span style="color: #008080">$args</span><span style="background-color: #f8f8f8">)</span>  <span style="background-color: #f8f8f8">{</span>
+</code></pre>
+                    <p>Большинство фреймворков использует один и тот же механизм для обхода этого ограничения. Он
+                      простой до безобразия. Если форма не поисковая, то данные в любом случае нужно отправлять
+                      <em>POST</em> запросом, но в форму добавляется специальное скрытое поле с именем
+                      <code>_METHOD</code>, которое и говорит фреймворку, какой метод мы бы хотели использовать:</p>
+                    <pre class="hljs"><code class=php><span style="color: #000080">&lt;form</span> <span style="color: #008080">action=</span><span style="color: #d14">"/schools"</span> <span style="color: #008080">method=</span><span style="color: #d14">"post"</span><span style="color: #000080">&gt;</span>
+    <span style="color: #000080">&lt;input</span> <span style="color: #008080">type=</span><span style="color: #d14">"hidden"</span> <span style="color: #008080">name=</span><span style="color: #d14">"_METHOD"</span> <span style="color: #008080">value=</span><span style="color: #d14">"PATCH"</span><span style="color: #000080">&gt;</span>
+    ...
+<span style="color: #000080">&lt;/form&gt;</span>
+</code></pre>
+                    <p>Кроме этого, нужно включить поддержку переопределения метода в самом Slim:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Slim\Factory\AppFactory</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">use</span> <span style="color: #445588;font-weight: bold">Slim\Middleware\MethodOverrideMiddleware</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #008080">$app</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">AppFactory</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">create</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">add</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">MethodOverrideMiddleware</span><span style="color: #000000;font-weight: bold">::</span><span style="background-color: #f8f8f8">class</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Реализуйте обновление пользователей.</li>
+                    </ol>
+
+
+</body>
+
+</html>

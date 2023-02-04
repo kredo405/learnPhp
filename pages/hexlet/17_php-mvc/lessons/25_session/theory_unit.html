@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Сессия - Веб-разработка на PHP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Сессия</h1>
+                    <p>Сессия, это абстракция, созданная для удобной работы с индивидуальными пользователями. Она
+                      используется для идентификации пользователей и позволяет отличать их друг от друга. Например,
+                      аутентификация на сайтах построена поверх механизма сессии.</p>
+
+                    <p>Сессии реализуются на уровне конкретных фреймворков и только в PHP сессии встроены в язык. Общий
+                      принцип работы сессии сводится к трём операциям:</p>
+
+                    <ul>
+                      <li>Старт сессии. Так мы говорим системе, что хотим начать следить за пользователем. Во многих
+                        фреймворках эта операция выполняется неявно, при попытке чтения или записи в сессию.</li>
+                      <li>Запись данных в сессию.</li>
+                      <li>Чтение данных из сессии.</li>
+                    </ul>
+
+                    <!-- end list -->
+                    <pre class="hljs"><code class=>Set-Cookie: _hexlet_session=CM5DvfXch6M3uPJHyfLDpv52wBe4iu3og domain=.hexlet.io; path=/; expires=Sun, 12 Aug 2018 12:56:51 -0000; secure; HttpOnly
+</code></pre>
+                    <p>Старт сессии на техническом уровне означает установку специальной куки в браузер. Обычно эта кука
+                      содержит идентификатор сессии, который уникален для каждого пользователя. Данные сессии могут
+                      храниться где угодно, это зависит от конкретной реализации. В этом одно из ключевых отличий работы
+                      с пользователями напрямую через куки или через сессию. Сессия более высокоуровневая абстракция.
+                      Например, в PHP по умолчанию данные сессии хранятся в файлах. Из этого следует сразу два вывода.
+                      Во-первых, сессия ограничена только физическим пространством дисков, во-вторых, данные хранятся на
+                      сервере, что безопаснее. Если этого недостаточно, например серверов больше чем один, то буквально
+                      парой строк кода в конфигурации, можно изменить тип хранилища с файлов на базу данных.</p>
+
+                    <p>Другое преимущество заключается в том, что работая с сессией не надо думать про имена кук, про
+                      сериализацию и десериализацию составных данных. Всё это происходит автоматически.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Операция идемпотентна. Не важно была ли инициализирована сессия раньше, старт сессии выполняется всегда</span>
+<span style="color: #0086B3">session_start</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">!</span><span style="color: #000000;font-weight: bold">isset</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$_SESSION</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'count'</span><span style="background-color: #f8f8f8">]))</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$_SESSION</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'count'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span> <span style="color: #000000;font-weight: bold">else</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$_SESSION</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'count'</span><span style="background-color: #f8f8f8">]</span><span style="color: #000000;font-weight: bold">++</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$_SESSION</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'count'</span><span style="background-color: #f8f8f8">]);</span>
+</code></pre>
+                    <p>Этот простой скрипт демонстрирует работу сессий в PHP. В отличие от всех остальных
+                      суперглобальных массивов для работы с HTTP, массив <code>$_SESSION</code> изменяемый. Всё, что
+                      добавится в него, автоматически попадает в сессию и сохраняется между запросами до тех пор, пока
+                      кука не будет удалена (или изменена). Даже из этого простого примера видно, что сессия упрощает
+                      работу с пользователем. Кроме того, значением массива <code>$_SESSION</code> может быть любая
+                      составная структура, массив или объект. Механизм сессий автоматически беспокоится о сериализации и
+                      десереализации.</p>
+
+                    <p>Внутри Slim нет никакого особенного механизма для работы с сессиями, так как они не являются
+                      частью стандарта PSR-7. Работа с сессией происходит напрямую. Перепишем наш пример добавления
+                      товаров в корзину, используя сессию.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #0086B3">session_start</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">post</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/cart-items'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Информация о добавляемом товаре</span>
+    <span style="color: #008080">$item</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$request</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getParsedBodyParam</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'item'</span><span style="background-color: #f8f8f8">);</span>
+
+    <span style="color: #999988;font-style: italic">// Добавление нового товара</span>
+    <span style="color: #008080">$_SESSION</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'cart'</span><span style="background-color: #f8f8f8">][]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$item</span><span style="background-color: #f8f8f8">;</span>
+
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">withRedirect</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>По сравнению с версией на куках, ушла значительная часть кода. Кодирование и декодирование в
+                      JSON, извлечение куки и перезапись куки.</p>
+
+                    <p>Иногда возникает задача уничтожать сессию, например при выполнении выхода из системы. Полное
+                      уничтожение сессии включает в себя три шага:</p>
+
+                    <ul>
+                      <li>Обновление куки с установкой даты в прошлое</li>
+                      <li>Обнуление массива <code>$_SESSION</code> — <code>$_SESSION = []</code></li>
+                      <li>Обнуление хранилища сессий — <code>session_destroy()</code></li>
+                    </ul>
+
+                    <p>Только в этом случае сессия уничтожится полностью. Первый шаг можно не делать, но второй и третий
+                      желательно.</p>
+
+                    <p>В целом, у сессий в PHP очень много тонкостей и механизмов для управления ими. Если вам интересно
+                      разобраться глубоко в том как устроена её работа, добро пожаловать в официальную документацию.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Реализуйте аутентификацию. Она состоит из формы входа (достаточно знать емейл) и кнопки
+                        выхода, которая появляется после аутентификации.</li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://php.net/manual/ru/book.session.php">Официальная
+                          документация</a>
+                      </li>
+                    </ol>
+</body>
+
+</html>

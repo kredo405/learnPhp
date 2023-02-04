@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>О курсе - Веб-разработка на PHP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>О курсе</h1>
+                    <p>Переход от написания скриптов (то, что мы делали ранее) к созданию полноценных сайтов
+                      сопровождается необходимостью знакомиться с большим числом понятий и инструментов, выходящих
+                      далеко за рамки языка. Взаимодействие с внешним миром вовлекает в себя знание операционных систем,
+                      в частности сетей, работу с регистраторами, хостингом, деплоем сайта. На собеседованиях
+                      веб-программистов часто задают вопрос &quot;Что происходит после того как в адресной строке
+                      браузера набирается сайт <a href="http://www.google.com" target="_blank"
+                        rel="nofollow">www.google.com</a> и нажимается enter?&quot;. Очень подробный ответ на этот
+                      вопрос доступен <a href="https://github.com/alex/what-happens-when" target="_blank"
+                        rel="nofollow">здесь</a>. Спрашивающий в этот момент хочет услышать от вас ключевые понятия,
+                      связанные с веб-разработкой.</p>
+
+                    <ol>
+                      <li> Выполнение DNS-запроса для получения IP-адреса домена.</li>
+                      <li> Соединение с веб-сервером, находящемся по этому адресу на порту 443 (или 80) по TCP.</li>
+                      <li> Выполнение HTTP-запроса для получения содержимого сайта по указанному домену.</li>
+                      <li> Получение ответа и рендеринг содержимого во вкладке браузера.</li>
+                    </ol>
+
+                    <p>Каждый из этих пунктов неявно подразумевает знание следующих тем:</p>
+
+                    <ul>
+                      <li>Протокол HTTP. Понятие виртуальных хостов. Желательно понимание принципов работы HTTPS.</li>
+                      <li>Принципы работы DNS.</li>
+                      <li>Знание TCP/IP. Понятия: порт, маска, подсети. Модель OSI. Сетевые сокеты.</li>
+                      <li>Веб-сервер. Что это такое, как работает и зачем нужен.</li>
+                    </ul>
+
+                    <p>На Хекслете есть ответы на некоторые из этих вопросов, но большую часть материала придётся
+                      почерпнуть из сторонних источников (со временем мы будем добавлять его к себе например на <a
+                        href="https://guides.hexlet.io" target="_blank">https://guides.hexlet.io</a>). Подавляющее
+                      большинство ответов на указанные темы можно (и нужно!) получить в книгах по операционным системам.
+                      В наших <a href="https://ru.hexlet.io/pages/recommended-books" target="_blank">рекомендованных
+                        книгах</a> есть все необходимое. Знание HTTP можно почерпнуть из соответствующего курса. Общее
+                      понимание DNS, хостинга, деплоя из курса <a
+                        href="https://ru.hexlet.io/courses/intro_to_web_development" target="_blank">Введение в
+                        веб-разработку</a>. Остальное есть в дополнительных ссылках.</p>
+
+                    <p>Очень рекомендую посмотреть наше <a
+                        href="https://www.youtube.com/watch?v=JERUf-xKU1o&index=6&list=PLo6puixMwuSOa_0EH6X4OXzFAmyQGS3a3"
+                        target="_blank" rel="nofollow">публичное собеседование</a>, где как раз поднимались эти вопросы.
+                    </p>
+
+                    <p>Если говорить про саму разработку, то здесь также открывается целый пласт неизведанного.
+                      Фреймворки, микрофреймворки, роутинг, куки, сессии, безопасность, шаблонизация, взаимодействие с
+                      базой данных и многое другое. И даже когда вы научитесь готовить сайт, это ещё не конец. Сайт
+                      доступен пользователям только находясь на удалённом сервере, а значит в разработку включается
+                      понятие &quot;деплой&quot;, то есть процесс разворачивания сайта на хостинге. Причём чтобы сайт
+                      развернуть, для начала нужно настроить удалённую машину (или машины) используя инструмент
+                      наподобие Ansible. Кстати сам хостинг бывает очень разный: IaaS (AWS), PaaS (Heroku), Shared
+                      Hosting (виртуальный хостинг), VPS/VDS.</p>
+
+                    <p>Данный курс посвящён в первую очередь разработке сайтов с использованием микрофреймворков и темы,
+                      указанные выше, включает в себя лишь поверхностно (и то не все). Поэтому крайне рекомендуется
+                      выполнять задачи не только в среде Хекслета, но и локально, параллельно выкатывая код на сервис
+                      подобный <a href="https://www.heroku.com/" target="_blank">https://www.heroku.com/</a></p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://guides.hexlet.io/https-yandex-guide/">Что такое протокол HTTPS,
+                          и как он защищает вас в интернете</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://guides.hexlet.io/dns/">Как работает DNS</a>
+                      </li>
+                    </ol>
+
+
+</body>
+
+</html>

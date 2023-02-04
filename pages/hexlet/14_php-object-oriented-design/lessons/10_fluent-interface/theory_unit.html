@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Fluent Interface - PHP: Объектно-ориентированный дизайн</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Fluent Interface</h1>
+                    <p><a href="https://ru.wikipedia.org/wiki/Fluent_interface" target="_blank" rel="nofollow">Текучий
+                        интерфейс (Fluent Interface)</a> удобен для создания DSL. Domain Specific Language
+                      (Предметно-ориентированный язык) — язык, специализированный под конкретную область применения.
+                      Структура такого языка отражает специфику решаемых с его помощью задач. Яркий пример подобного
+                      языка — библиотека <a href="https://jquery.com/" target="_blank" rel="nofollow">jQuery</a>, с
+                      которой знакомо большинство программистов (или хотя бы слышали о ней).</p>
+                    <pre class="hljs"><code class=javascript><span style="color: #999988;font-style: italic">// Вызов методов через точку в одной строчке</span>
+<span style="background-color: #f8f8f8">$</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'</span><span style="color: #d14">#test</span><span style="color: #d14">'</span><span style="background-color: #f8f8f8">).</span><span style="background-color: #f8f8f8">css</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'</span><span style="color: #d14">color</span><span style="color: #d14">'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'</span><span style="color: #d14">#333</span><span style="color: #d14">'</span><span style="background-color: #f8f8f8">).</span><span style="background-color: #f8f8f8">height</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">200</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>На техническом уровне есть ровно два способа создать такой интерфейс.</p>
+                    <h2 id="this">This</h2>
+                    <p>Первый способ основан на возврате <code>$this</code> из методов, которые участвуют в построении
+                      цепочек. <code>$this</code> — ссылка на тот объект, в контексте которого вызывается метод, а,
+                      следовательно, его можно возвращать как обычное значение.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">Collection</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">private</span> <span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">;</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">__construct</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">array</span> <span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">coll</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">map</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">callable</span> <span style="color: #008080">$fn</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">coll</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_map</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$fn</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">coll</span><span style="background-color: #f8f8f8">);</span>
+
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">filter</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">callable</span> <span style="color: #008080">$fn</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">coll</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_filter</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">coll</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$fn</span><span style="background-color: #f8f8f8">);</span>
+
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #999988;font-style: italic">// Возвращает саму коллекцию, а не this.</span>
+    <span style="color: #999988;font-style: italic">// Этот метод всегда последний в цепочке вызовов Collection.</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">all</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">coll</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #008080">$cars</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Collection</span><span style="background-color: #f8f8f8">([</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'model'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'rapid'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'year'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">2016</span><span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'model'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'rio'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'year'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">2013</span><span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'model'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'mondeo'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'year'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">2011</span><span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'model'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'octavia'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'year'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">2014</span><span style="background-color: #f8f8f8">]</span>
+<span style="background-color: #f8f8f8">]);</span>
+
+<span style="color: #008080">$cars</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">filter</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">fn</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$car</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$car</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'year'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">&gt;</span> <span style="color: #009999">2013</span><span style="background-color: #f8f8f8">)</span>
+     <span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">map</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">fn</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$car</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$car</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'model'</span><span style="background-color: #f8f8f8">]);</span>
+<span style="color: #008080">$cars</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">all</span><span style="background-color: #f8f8f8">();</span> <span style="color: #999988;font-style: italic">// [rapid, octavia]</span>
+</code></pre>
+                    <p>У этого способа есть один серьёзный недостаток — объект изменяется. Это значит, что нельзя взять
+                      и просто так переиспользовать объект-коллекцию для разных выборок, потому что они начнут
+                      накладываться друг на друга.</p>
+
+                    <p>На практике часто используется другой подход, с которым мы уже познакомились в прошлом курсе.
+                      Все, что нужно сделать — добавить немного функциональности в ооп, то есть возвращать не
+                      <code>$this</code>, а создавать новый объект того же типа с обновлённой коллекцией.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">Collection</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">private</span> <span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">;</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">__construct</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">array</span> <span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">coll</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">map</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">callable</span> <span style="color: #008080">$fn</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$coll</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_map</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$fn</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">coll</span><span style="background-color: #f8f8f8">);</span>
+
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Collection</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">filter</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">callable</span> <span style="color: #008080">$fn</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$coll</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_filter</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">coll</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$fn</span><span style="background-color: #f8f8f8">);</span>
+
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Collection</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #999988;font-style: italic">// Возвращает саму коллекцию, а не this. Этот метод всегда последний в цепочке вызовов Collection.</span>
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">all</span><span style="background-color: #f8f8f8">()</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">coll</span><span style="background-color: #f8f8f8">;</span>
+    <span style="background-color: #f8f8f8">}</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #008080">$cars</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">Collection</span><span style="background-color: #f8f8f8">([</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'model'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'rapid'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'year'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">2016</span><span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'model'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'rio'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'year'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">2013</span><span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'model'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'mondeo'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'year'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">2011</span><span style="background-color: #f8f8f8">],</span>
+    <span style="background-color: #f8f8f8">[</span><span style="color: #d14">'model'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #d14">'octavia'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'year'</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #009999">2014</span><span style="background-color: #f8f8f8">]</span>
+<span style="background-color: #f8f8f8">]);</span>
+
+<span style="color: #008080">$filteredCars</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$cars</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">filter</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">fn</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$car</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$car</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'year'</span><span style="background-color: #f8f8f8">]</span> <span style="color: #000000;font-weight: bold">&gt;</span> <span style="color: #009999">2013</span><span style="background-color: #f8f8f8">);</span>
+<span style="color: #008080">$mappedCars</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$filteredCars</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">map</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">fn</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$car</span><span style="background-color: #f8f8f8">)</span> <span style="color: #000000;font-weight: bold">=&gt;</span> <span style="color: #008080">$car</span><span style="background-color: #f8f8f8">[</span><span style="color: #d14">'model'</span><span style="background-color: #f8f8f8">]);</span>
+<span style="color: #008080">$mappedCars</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">all</span><span style="background-color: #f8f8f8">();</span> <span style="color: #999988;font-style: italic">// [rapid, octavia]</span>
+<span style="color: #008080">$cars</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">all</span><span style="background-color: #f8f8f8">();</span>
+<span style="color: #999988;font-style: italic">// [</span>
+<span style="color: #999988;font-style: italic">//   ['model' =&gt; 'rapid', 'year' =&gt; 2016],</span>
+<span style="color: #999988;font-style: italic">//   ['model' =&gt; 'rio', 'year' =&gt; 2013],</span>
+<span style="color: #999988;font-style: italic">//   ['model' =&gt; 'mondeo', 'year' =&gt; 2011],</span>
+<span style="color: #999988;font-style: italic">//   ['model' =&gt; 'octavia', 'year' =&gt; 2014]</span>
+<span style="color: #999988;font-style: italic">// ]</span>
+</code></pre>
+                    <p>Теперь каждый вызов возвращает новый объект. Такой код значительно безопаснее в использовании и
+                      позволяет без проблем переиспользовать новые коллекции. Изменение одной не приведёт к
+                      автоматическому изменению всех остальных.</p>
+                    <h2 id="self">self</h2>
+                    <p>В каждом методе, который участвует в создании текучего интерфейса, последняя строчка всегда
+                      содержит один и тот же вызов: <code>new Collection($coll)</code>. Её можно записать проще, не
+                      дублируя названия класса. Помните, как в предыдущем курсе использовался <code>self</code> для
+                      работы со статическими членами класса? Так вот <code>self</code> работает и с обычными методами,
+                      вызов <code>new self($coll)</code> идентичен вызову <code>new Collection($coll)</code>, другими
+                      словами вместо <code>self</code> подставляется текущий класс. У такого вызова есть ещё одно
+                      преимущество, о котором мы поговорим в следующем ООП курсе, в теме наследования. В двух словах
+                      <code>self</code> реализуется посредством позднего связывания и при наследовании раскрывается в
+                      тот класс, с которым прямо сейчас идёт работа.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">class</span> <span style="color: #445588;font-weight: bold">Collection</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// ...</span>
+
+    <span style="color: #000000;font-weight: bold">public</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">map</span><span style="background-color: #f8f8f8">(</span><span style="color: #445588;font-weight: bold">callable</span> <span style="color: #008080">$fn</span><span style="background-color: #f8f8f8">)</span>
+    <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #008080">$coll</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">array_map</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$fn</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$this</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="background-color: #f8f8f8">coll</span><span style="background-color: #f8f8f8">);</span>
+
+        <span style="color: #000000;font-weight: bold">return</span> <span style="color: #000000;font-weight: bold">new</span> <span style="color: #445588;font-weight: bold">self</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">);</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #999988;font-style: italic">// ...</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://ru.wikipedia.org/wiki/Fluent_interface">Текучий интерфейс</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

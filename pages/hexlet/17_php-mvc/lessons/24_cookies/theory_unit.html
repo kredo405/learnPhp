@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Cookies - Веб-разработка на PHP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Cookies</h1>
+                    <p>Cookies (куки) — это механизм протокола HTTP, используемый для хранения данных браузером. Они
+                      позволяют отслеживать или идентифицировать возвращающихся посетителей. По сути, единственный
+                      надёжный способ понять что перед нами тот же самый пользователь (хотя если угнать чужие куки, то
+                      можно подделать запрос от другого пользователя). Куки использует не только сам сайт, но и
+                      всевозможные виджеты, которые встраиваются на разные странички. Именно благодаря кукам, гугл
+                      узнает вас и преследует рекламой того, что вы недавно искали, на сайтах, которые вроде бы не
+                      должны знать о ваших предпочтениях.</p>
+
+                    <p>PHP прозрачно поддерживает работу с куками. Куки, приходящие в HTTP-запросе, становятся доступны
+                      через суперглобальный массив <code>$_COOKIES</code>. Этот массив используется только для чтения,
+                      писать в него бесполезно. Установка кук осуществляется функцией <code>setcookie()</code>. Так как
+                      куки отправляются вместе с заголовками, то вызов этой функции должен происходить до любой отправки
+                      данных в браузер.</p>
+
+                    <p>В PSR-7 определены только два метода работающих с куками, и оба этих метода извлекают куки.</p>
+
+                    <ul>
+                      <li><code>getCookieParams()</code> — возвращает все куки</li>
+                      <li><code>getCookieParam($name, $default = null)</code> — возвращает указанную куку</li>
+                    </ul>
+
+                    <p>Для установки кук придётся воспользоваться более низкоуровневым методом
+                      <code>withHeader($name, $value)</code>, добавляющим любые заголовки в ответ:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">post</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/example'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">withHeader</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Set-Cookie'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">"foo=bar"</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>Типичный вариант использования кук — корзина в интернет-магазине. Во время добавления товара, код
+                      магазина формирует куку, в которую начинает заносить данные о заказе.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">post</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/cart-items'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Информация о добавляемом товаре</span>
+    <span style="color: #008080">$item</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$request</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getParsedBodyParam</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'item'</span><span style="background-color: #f8f8f8">);</span>
+
+    <span style="color: #999988;font-style: italic">// Данные корзины</span>
+    <span style="color: #008080">$cart</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">json_decode</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">getCookieParam</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'cart'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #0086B3">json_encode</span><span style="background-color: #f8f8f8">([])));</span>
+
+    <span style="color: #999988;font-style: italic">// Добавление нового товара</span>
+    <span style="color: #008080">$cart</span><span style="background-color: #f8f8f8">[]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$item</span><span style="background-color: #f8f8f8">;</span>
+
+    <span style="color: #999988;font-style: italic">// Кодирование корзины</span>
+    <span style="color: #008080">$encodedCart</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #0086B3">json_encode</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$cart</span><span style="background-color: #f8f8f8">);</span>
+
+    <span style="color: #999988;font-style: italic">// Установка новой корзины в куку</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">withHeader</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Set-Cookie'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">"cart=</span><span style="color: #d14">{</span><span style="color: #008080">$encodedCart</span><span style="color: #d14">}</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">)</span>
+        <span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">withRedirect</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>Обратите внимание на необходимость кодирования данных корзины. Кука с точки зрения HTTP содержит
+                      значение в виде строки, а значит для хранения составных структур нужно проводить ручное
+                      кодирование в строку и декодирование при извлечении. Иногда простого кодирования недостаточно,
+                      особенно если данные имеют повышенную важность и их желательно защитить. В таких случаях
+                      дополнительно применяют шифрование на стороне сервера.</p>
+
+                    <p>У кук существует ограничение на количество данных которые в них можно хранить, оно равно 4 кб.
+                      Для корзины интернет-магазина этого хватит с головой, но в других ситуациях может понадобиться
+                      больше места, и тогда придётся воспользоваться сессией.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li> Переделайте способ хранения пользователей на cookie.</li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://php.net/manual/ru/features.cookies.php">Официальная
+                          документация</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

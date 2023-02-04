@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Transfer-Encoding - Протокол HTTP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Transfer-Encoding</h1>
+                    <p>Иногда данные, которые передаются серверу могут быть достаточно большими. И более того, мы можем
+                      не знать их конечный размер. Например, если нужно скачать архив или во время видео-трансляции.</p>
+
+                    <p>Для решения этой проблемы можно загрузить данные полностью в оперативную память на сервере,
+                      вычислить <em>Content-Length</em> и осуществить передачу. После того, как контент будет целиком
+                      принят браузером, тот его моментально отобразит.</p>
+
+                    <p><img alt="Передача данных чанками" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjU4M2ViZTJhMzBkNjg0ZTk3NjNjOTk2NjI4MjFmMzM5LmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=de0ac297ee79cf97f991ed07deff765f54b6da987925cfb5f0af6242333dfc39"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Существует еще одно решение, которое позволяет надежно передавать данные, когда мы не знаем их
+                      конечный размер. По <a href="https://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx"
+                        target="_blank" rel="nofollow">ссылке</a> находится пример изображения, которое отрисовывается
+                      постепенно по мере того, как происходит передача данных. Для этого используется механизм передачи
+                      небольшими частями, чанками (англ. chunks), и специальный заголовок <em>Transfer-Encoding</em> со
+                      значением <em>chunked</em>.</p>
+
+                    <p>В стандартном ответе мы получаем всё <em>body</em> целиком и после этого его обрабатываем. Мы не
+                      можем обрабатывать его частями потому, что тогда будем вводить какие-то свои уникальные правила
+                      внутри протокола. Но при передаче чанками мы можем обрабатывать ответ до полного получения
+                      <em>body</em>.</p>
+
+                    <p>Сделаем запрос к сайту <em>httpwatch.com</em>:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>telnet httpwatch.com 80
+GET https://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx HTTP/1.1
+Host: httpwatch.com
+Connection: close
+
+HTTP/1.1 200 OK
+Cache-Control: no-cache, no-store
+Pragma: no-cache
+Trailer: X-HttpWatch-Sample
+<span style="color: #999988;font-style: italic"># вместо Content-Length здесь заголовок Transfer-Encoding</span>
+Transfer-Encoding: chunked 
+Content-Type: image/jpeg<span style="background-color: #f8f8f8">;</span> <span style="color: #008080">charset</span><span style="color: #000000;font-weight: bold">=</span>utf-8
+Expires: <span style="color: #000080">-1</span>
+Server: Microsoft-IIS/10.0
+X-AspNet-Version: 4.0.30319
+X-Powered-By: ASP.NET
+Arr-Disable-Session-Affinity: True
+Date: Fri, 10 Jul 2020 09:18:05 GMT
+
+400 <span style="color: #999988;font-style: italic"># длина чанка</span>
+Какие-то данные первого чанка
+400
+Данные второго чанка
+400
+и так далее
+0 <span style="color: #999988;font-style: italic"># последний чанк нулевой длины</span>
+
+</code></pre>
+                    <p>Обратите внимание, что заголовки как всегда отделяются от тела запроса переводом строки. В начале
+                      каждого чанка указывается его размер. За ним располагаются данные и в конце чанка делается перевод
+                      строки, затем идёт следующий чанк и так далее. Таким образом можно передавать сколько угодно
+                      чанков, время ограничено только таймаутами внутри сервера.</p>
+
+                    <p>Чтобы завершить передачу, нужно передать последний чанк, который должен быть нулевой длины. После
+                      него делается два перевода строки и запрос считается полностью переданным.</p>
+                    <h2 id="format-soobscheniy">Формат сообщений</h2>
+                    <p>Для отделения записей размеров блоков (частей) от их содержания используется разделитель CRLF
+                      (как строка: «\r\n»; как байты в формате HEX: 0x0D, 0x0A). Длина блока — это размер содержания
+                      блока, разделители CRLF не учитываются.</p>
+
+                    <p>Схематическое представление:
+                      <code>&lt;длина блока в HEX&gt;&lt;CRLF&gt;&lt;содержание блока&gt;&lt;CRLF&gt;</code></p>
+
+                    <p>Последний блок строится по той же схеме, потому имеет следующий вид по причине отсутствия
+                      содержания: <code>0&lt;CRLF&gt;&lt;CRLF&gt;</code></p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx">Ссылка
+                          на изображение, передаваемое с помощью chunks (пример из видео)</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank" href="https://ru.wikipedia.org/wiki/Chunked_transfer_encoding">Chunked
+                          transfer encoding / Википедия</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Обработчики запросов - Веб-разработка на PHP</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Обработчики запросов</h1>
+                    <p>Главная содержательная часть в файле <em>index.php</em> — обработчик запроса:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$app</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">AppFactory</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">create</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #999988;font-style: italic">// Обработчик</span>
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">write</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Welcome to Slim!'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                    <p>Общий принцип работы любого веб-фреймворка отражает архитектуру HTTP. На каждый адрес задаётся
+                      обработчик (функция, handler), который выполняет необходимые действия и возвращает ответ. В Slim,
+                      все приложение (сайт) представлено объектом класса <code>Slim\App</code>. Этот объект содержит
+                      методы на каждый глагол HTTP: <code>get</code>, <code>post</code>, <code>put</code> и так далее.
+                      Эти методы принимают на вход два параметра, первый — адрес (говорят «маршрут»), для которого
+                      вызовется обработчик и второй, собственно сам обработчик. Лямбда-функция с двумя параметрами
+                      <code>$request</code> и <code>$response</code>.</p>
+
+                    <p>Во фреймворках принято (и это соответствует идеям <a href="https://ru.wikipedia.org/wiki/REST"
+                        target="_blank" rel="nofollow">REST</a>) определять маршрут, как комбинацию метода HTTP и
+                      адреса. То есть <em>GET /users</em> и <em>POST /users</em> с точки зрения большинства фреймворков
+                      — разные маршруты со своими обработчиками. В этом достаточно просто убедиться, если определить
+                      соответствующие маршруты и выполнить к ним запросы с помощью curl.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$app</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">AppFactory</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">create</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/users'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">write</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'GET /users'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">post</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/users'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">write</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'POST /users'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">run</span><span style="background-color: #f8f8f8">();</span>
+</code></pre>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>curl localhost:8080/users
+GET /users
+</code></pre>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>curl <span style="color: #000080">-XPOST</span> localhost:8080/users
+POST /users
+</code></pre>
+                    <p><em>Перед тем как двигаться дальше, обязательно попробуйте повторить примеры выше в вашей
+                        локальной среде, это очень важно для понимания последующего контента</em>.</p>
+
+                    <p>Первое, что бросается в глаза, у нас всего лишь один входной файл для всех адресов. Пользователь
+                      может запрашивать сколь угодно сложный адрес <em>/companies/3/photos5</em>, всё сведётся к запуску
+                      файла <em>index.php</em>, а сам адрес становится лишь значением
+                      <code>$_SERVER[&#39;REQUEST_URI&#39;]</code>.</p>
+                    <pre class="hljs"><code class=>.
+├── site
+│   └── public
+│       └── index.php
+</code></pre>
+                    <p>Такой подход имеет название <em>FrontController</em> в противовес подходу, когда каждый адрес (на
+                      самом деле маршрут, но об этом чуть позже) фактически отображался на конкретный файл файловой
+                      системы. Такой подход называется <em>PageController</em>. В интернете до сих пор встречаются сайты
+                      построенные по этой модели, но она давным давно вышла из употребления. Заметить её легко, если вы
+                      видите адреса наподобие <code>/users.php</code>, то почти наверняка в корне сайта лежит файл
+                      <em>users.php</em>, отвечающий за обработку этой страницы.</p>
+                    <pre class="hljs"><code class=>.
+├── site
+│   └── public
+│       └── home.php
+│       └── users.php
+│       └── companies.php
+</code></pre>
+                    <p>Во <em>FrontController</em> процесс поиска нужного обработчика называется диспетчеризацией, по
+                      аналогии с тем как это слово используется в оффлайн жизни. Пошагово он выглядит так:</p>
+
+                    <p>До входа во фреймворк:</p>
+
+                    <ol>
+                      <li> Клиент выполняет запрос к веб-серверу расположенному на сервере. Кстати, клиент — это не
+                        обязательно браузер, в примере выше клиентом выступает программа <em>curl</em>.</li>
+                      <li> Веб-сервер перенаправляет запрос на <em>index.php</em> и устанавливает правильные параметры
+                        запроса.</li>
+                    </ol>
+
+                    <p>После входа в сам PHP (именно это и есть диспетчеризация):</p>
+
+                    <ol>
+                      <li> Фреймворк анализирует параметры запроса и пытается сопоставить маршруты добавленные в объект
+                        <code>$app</code> (как в примерах в начале урока) с тем что пришло. Он сравнивает комбинацию
+                        метода запроса и сам адрес. Этот процесс называется роутингом (или маршрутизацией). А место, где
+                        внутри хранятся все добавленные маршруты, обычно называют роутером.</li>
+                      <li> Если в процессе роутинга был найден соответствующий маршрут, то вызывается его обработчик.
+                      </li>
+                      <li> Ответ, сформированный обработчиком, отправляется обратно клиенту</li>
+                    </ol>
+
+                    <p>Рассмотрим конкретный пример. Возьмём за основу следующий код:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$app</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #445588;font-weight: bold">AppFactory</span><span style="color: #000000;font-weight: bold">::</span><span style="color: #990000;font-weight: bold">create</span><span style="background-color: #f8f8f8">();</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">write</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'GET /'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/companies'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">write</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'GET /companies'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">post</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/companies'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">write</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'POST /companies'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">run</span><span style="background-color: #f8f8f8">();</span>
+</code></pre>
+                    <p>После запуска этого кода, формируется роутер, который содержит в себе три маршрута:</p>
+                    <pre class="hljs"><code class=>GET /
+GET /companies
+POST /companies
+</code></pre>
+                    <p>Теперь предположим, что клиент выполнил такой запрос:</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>curl <span style="color: #000080">-XPOST</span> localhost:8080/companies
+</code></pre>
+                    <p>Веб-сервер запустил <em>index.php</em>, который проинициализировал объект <code>$app</code>
+                      (помните, что на каждый запрос этот процесс повторяется с нуля?), затем фреймворк сопоставил
+                      маршруты и нашёл, что за этот запрос отвечает <em>POST /companies</em>. Далее фреймворк вызвал
+                      обработчик, который вернул клиенту ответ: <em>POST /companies</em>.</p>
+
+                    <p>Интересный вопрос заключается в том, что произойдёт, если фреймворк не обнаружит соответствия?
+                      Например, клиент запросит страницу <em>/comments</em>? В такой ситуации, фреймворк берёт
+                      управление на себя (по умолчанию) и автоматически отдаёт браузеру ответ <em>404</em>, то есть
+                      говорит о том что страница не найдена. Всегда внимательно смотрите, какие делаются запросы и есть
+                      ли подходящие под них ответы, чтобы не мучиться вопросом &quot;почему браузер ничего не
+                      показывает&quot;. Проще всего увидеть ответ от сервера через консоль разработчика вашего браузера:
+                    </p>
+
+                    <p><img alt="DevTool Network" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImNlOWE4YzM4NjBlZGU0ZDc5OWJmMjY4MWVmNTJlZWM3LnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=8f002b9116a6cdd350ca1d8816f26e189b41206fd0941206a0e254f9e997d4d1"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Она есть в каждом браузере. Попробуйте открыть её и понаблюдать за процессом загрузки.</p>
+                    <h2 id="samostoyatelnaya-rabota">Самостоятельная работа</h2>
+                    <ol>
+                      <li>
+                        <p>Добавьте обработчик в файл <em>index.php</em>, который мы создали в самостоятельной работе
+                          предыдущего урока:</p>
+                        <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$app</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'/users'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$request</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$response</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$response</span><span style="color: #000000;font-weight: bold">-&gt;</span><span style="color: #990000;font-weight: bold">write</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'GET /users'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">});</span>
+</code></pre>
+                      </li>
+                      <li>
+                        <p>Откройте в браузере эту страницу. Убедитесь что на экран вывелся текст переданный в метод
+                          <code>write()</code>.</p>
+                      </li>
+                    </ol>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank" href="https://en.wikipedia.org/wiki/Front_controller">Front Controller</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

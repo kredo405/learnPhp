@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Удаление элементов массива - PHP: Массивы</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Удаление элементов массива</h1>
+                    <p>Несмотря на то, что из массива можно удалить элемент, лучше так никогда не делать. Особенно плохо
+                      изменять массив во время обхода. Как удалять, так и добавлять элементы. Поведение в этом случае
+                      может оказаться совершенно непредсказуемым. Что будет, если мы модифицируем массив в том месте, до
+                      которого не дошёл цикл? Нужно ли итерировать по тому элементу, который был удалён или добавлен?
+                      Правильный выход из ситуации — создание нового массива. Такой код проще и для понимания и для
+                      отладки.</p>
+
+                    <p>В стандартную библиотеку большинства языков программирования входит функция <code>compact</code>,
+                      которая удаляет все значения <code>null</code> из массива. Вот её реализация:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">mycompact</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$coll</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$result</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">[];</span>
+    <span style="color: #000000;font-weight: bold">foreach</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$coll</span> <span style="color: #000000;font-weight: bold">as</span> <span style="color: #008080">$item</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+        <span style="color: #999988;font-style: italic">// is_null функция (предикат) стандартной библиотеки</span>
+        <span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">!</span><span style="color: #0086B3">is_null</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$item</span><span style="background-color: #f8f8f8">))</span> <span style="background-color: #f8f8f8">{</span>
+            <span style="color: #008080">$result</span><span style="background-color: #f8f8f8">[]</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$item</span><span style="background-color: #f8f8f8">;</span>
+        <span style="background-color: #f8f8f8">}</span>
+    <span style="background-color: #f8f8f8">}</span>
+
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$result</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #990000;font-weight: bold">mycompact</span><span style="background-color: #f8f8f8">([</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">false</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">null</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">,</span> <span style="color: #d14">'wow'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #000000;font-weight: bold">null</span><span style="background-color: #f8f8f8">]));</span>
+<span style="color: #999988;font-style: italic">// =&gt; Array</span>
+<span style="color: #999988;font-style: italic">// =&gt; (</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [0] =&gt; 0</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [1] =&gt; 1</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [2] =&gt; </span>
+<span style="color: #999988;font-style: italic">// =&gt;     [3] =&gt; 1</span>
+<span style="color: #999988;font-style: italic">// =&gt;     [4] =&gt; wow</span>
+<span style="color: #999988;font-style: italic">// =&gt; )</span>
+</code></pre>
+                    <p><a href="https://repl.it/@hexlet/php-arrays-removing-compact"
+                        target="_blank">https://repl.it/@hexlet/php-arrays-removing-compact</a></p>
+
+                    <p>Главное, на что нужно обратить внимание, — не происходит никаких удалений и модификаций исходного
+                      массива. Вместо этого создаётся новый массив, который наполняется только подходящими под условие
+                      значениями. Именно так нужно воспринимать фразу &quot;удалить из массива что-то&quot;. Код,
+                      использующий новый массив, меньше подвержен ошибкам, проще в отладке и оставляет больше
+                      возможностей для анализа. Вы всегда можете посмотреть исходный массив, если что-то пошло не так.
+                      Вы всегда можете наблюдать за процессом наполнения результирующего массива, что позволит чётко
+                      отследить правильность поставленных условий.</p>
+
+                    <p>По сути, код выше — пример агрегации. Только в отличие от предыдущих примеров, в которых
+                      результатом был примитивный тип, здесь результат — массив. Это совершенно нормально. Как вы
+                      увидите в дальнейшем, результат может быть и более сложной структурой. Сама операция прореживания
+                      массива обычно называется <strong>фильтрацией</strong>.</p>
+
+</body>
+
+</html>

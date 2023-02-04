@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Чистые функции - PHP: Функции</title>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Чистые функции</h1>
+                    <p>Функции в программировании обладают рядом важных характеристик, зная и понимая которые, вы
+                      сможете лучше строить работу с ними и, главное, научитесь правильно их выделять из кода.</p>
+                    <h2 id="determinirovannost">Детерминированность</h2>
+                    <p>Стандартная функция <code>rand</code>, вызванная без аргументов, возвращает некоторое случайное
+                      число.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #0086B3">rand</span><span style="background-color: #f8f8f8">();</span> <span style="color: #999988;font-style: italic">// 151273074</span>
+<span style="color: #0086B3">rand</span><span style="background-color: #f8f8f8">();</span> <span style="color: #999988;font-style: italic">// 1129177627</span>
+</code></pre>
+                    <p>Функция нужная и полезная, но неудобная в отладке и тестировании. Связано это с тем, что для
+                      одних и тех же входных аргументов (отсутствие аргументов также попадает под это понятие), она
+                      может возвращать разные значения. Функции с таким поведением называются недетерминированными. К
+                      ним, в том числе, относятся функции, оперирующие системным временем.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// возвращает текущий год</span>
+<span style="color: #0086B3">date</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'Y'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// 2019</span>
+</code></pre>
+                    <p>Хотя прямо сейчас повторный запуск вернёт точно такое же значение, через год оно уже будет другим
+                      (2020). То есть недетерминированной функция считается в том случае, когда она ведёт себя так хотя
+                      бы единожды.</p>
+
+                    <p>Детерминированные функции, напротив, ведут себя предсказуемо. Для одних и тех же входных данных
+                      они всегда выдают один и тот же результат. Именно такими являются функции в математике. Для одного
+                      и того же <code>x</code> результат работы функции <code>y = f(x)</code> будет один и тот же.
+                      Интересно то, что, например, функция <code>print_r</code> детерминированная. Дело в том, что она
+                      всегда возвращает одно и то же значение для любых входных данных. Это значение <code>true</code>,
+                      а не то, что печатается на экран, как можно было бы подумать. Печать на экран - побочный эффект, о
+                      нем мы поговорим чуть позже.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #0086B3">var_dump</span><span style="background-color: #f8f8f8">(</span><span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'lala'</span><span style="background-color: #f8f8f8">));</span>
+<span style="color: #990000;font-weight: bold">bool</span><span style="background-color: #f8f8f8">(</span><span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">)</span>
+</code></pre>
+                    <p>Понятие &quot;Детерминированность&quot; не ограничивается программированием или математикой.
+                      Сквозь него можно рассматривать практически любой процесс. Например, подбрасывание монетки —
+                      недетерминированный процесс, его результат всегда случаен.</p>
+
+                    <p>Почему это понятие так важно? Детерминированность даёт нам предсказуемость, а это, прямым
+                      образом, влияет на количество состояний, которые надо обрабатывать и предусматривать. В конечном
+                      итоге, код становится проще, а логика прямолинейнее. Пример: создание чего-либо на сайтах в
+                      интернете, обычно, недетерминированный процесс. То есть, если быстро нажать два раза кнопку
+                      отправки формы, то во многих ситуациях можно получить два раза оставленный комментарий, два раза
+                      отправленные деньги. Разработчикам сайтов приходится защищаться, ставить защиту от двойных нажатий
+                      или производить проверку на дубликаты уже внутри приложения.</p>
+
+                    <p>Другой пример - создание директории. В командной строке эта операция выполняется с помощью
+                      программы <code>mkdir</code>.</p>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span><span style="color: #0086B3">mkdir test</span>
+<span style="color: #008080">$ </span><span style="color: #0086B3">mkdir test
+mkdir</span>: <span style="color: #0086B3">test</span>: File exists
+</code></pre>
+                    <p>Как видно из вывода выше, повторный запуск создания директории выдаёт ошибку, так как она уже
+                      создана. Получается, нам нужно учитывать два состояния:</p>
+
+                    <ol>
+                      <li> Директории не существовало</li>
+                      <li> Директория существует</li>
+                    </ol>
+
+                    <p>В случае детерминированной версии <code>mkdir</code> об этом можно было бы не думать.</p>
+
+                    <p><em>Понятие детерминированности играет огромную роль в администрировании, в задачах связанных с
+                        программной настройкой серверов (configuration management), выкладкой ПО и обновлениями.
+                        Ключевые слова: docker, immutable infrastructure, ansible.</em></p>
+
+                    <p>Функция становится недетерминированной и в том случае, если она обращается не только к своим
+                      аргументам, но и некоторым внешним данным, например глобальным переменным, переменным окружения и
+                      так далее. Так происходит потому, что внешние данные могут измениться, и функция начнёт выдавать
+                      другой результат даже если в неё передаются одни и те же аргументы.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">getCurrentShell</span><span style="background-color: #f8f8f8">()</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #999988;font-style: italic">// Функция getenv обращается к указанной переменной окружения</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #0086B3">getenv</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'SHELL'</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// /bin/bash</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>В общем случае нельзя сказать, что отсутствие детерминированности — абсолютное зло. Более того,
+                      многих полезных программ попросту бы не существовало без возможности писать недетерминированный
+                      код. Общая рекомендация при работе с детерминированностью звучит следующим образом. Если есть
+                      возможность написать функцию так, что она будет детерминированной, то так и делайте. Не
+                      используйте глобальных переменных, создавайте функции зависящие только от своих собственных
+                      аргументов.</p>
+                    <h2 id="pobochnye-effekty-side-effects">Побочные эффекты (side effects)</h2>
+                    <p>Вторая ключевая характеристика функций - наличие побочных эффектов. Побочным эффектом называют
+                      любые действия изменяющие среду выполнения. К ним относятся любые файловые операции, такие как
+                      запись в файл, отправка или приём данных по сети, даже вывод в консоль или чтение файла. Кроме
+                      того, побочными эффектами считаются обращения к глобальным переменным (как на чтение, так и
+                      запись) и изменение входных аргументов в случае, когда они передаются по ссылке. Вызов функции с
+                      побочными эффектами также считается побочным эффектом.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">sayHiTo</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$name</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"Hi, </span><span style="color: #d14">{</span><span style="color: #008080">$name</span><span style="color: #d14">}</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>С другой стороны, любые вычислительные операции не являются побочными эффектами. Например,
+                      функция, суммирующая два переданных аргументами числа.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">sum</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$num1</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$num2</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$num1</span> <span style="color: #000000;font-weight: bold">+</span> <span style="color: #008080">$num2</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Без побочных эффектов невозможно написать ни одной полезной программы. Какие бы важные вычисления
+                      она ни делала, их результат должен быть как-то продемонстрирован. В самом простом случае его нужно
+                      вывести на экран, что автоматически приводит нас к побочным эффектам.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">2</span> <span style="color: #000000;font-weight: bold">**</span> <span style="color: #009999">5</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Побочные эффекты составляют одну из самых больших сложностей при разработке. Их наличие
+                      значительно затрудняет тестирование и отладку. Приводит к возникновению огромного числа ошибок
+                      (только при работе с файлами количество возможных ошибок измеряется сотней, начиная с того, что
+                      закончилось место на диске, заканчивая попыткой читать данные из несуществующего файла). Для их
+                      предотвращения код обрастает большим числом проверок и защитных механизмов.</p>
+
+                    <p>Не существует способа избавиться от побочных эффектов совсем, но их влияние на программу можно
+                      минимизировать. Как правило, в типичной программе побочных эффектов не так много по отношению к
+                      остальному коду, и происходят они лишь в самом начале и в конце.</p>
+
+                    <p>Например, программа, которая конвертирует файл из текстового формата в PDF, в идеале выполняет
+                      ровно два побочных эффекта:</p>
+
+                    <ol>
+                      <li> Читает файл в самом начале работы программы.</li>
+                      <li> Записывает результат работы программы в новый файл.</li>
+                    </ol>
+
+                    <p>Между этими двумя пунктами и происходит основная работа, которая содержит чистую алгоритмическую
+                      часть. Следовательно, побочные эффекты будут находиться только в верхнем слое приложения, а ядро,
+                      выполняющее основную работу, останется чистым от них.</p>
+
+                    <p><em>Инкремент и декремент — единственные базовые арифметические операции в PHP, которые обладают
+                        побочными эффектами (изменяют само значение в переменной). Именно поэтому с ними сложно работать
+                        в составных выражениях. Они могут приводить к таким сложноотлавливаемым ошибкам, что во многих
+                        языках вообще отказались от их введения (в Ruby и Python их нет), а в JS стандарты кодирования
+                        предписывают их не использовать.</em></p>
+                    <h2 id="chistye-funktsii">Чистые функции</h2>
+                    <p><img alt="Pure Functions" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjNlMTE2MGYyMjdlYWYyNzc2NTBmYzQyZGFjMzM4ZjY2LmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=37d772949eb5029e7e4a55baac0526c5c435a18f7b6ab962d5779473eef5d2fc"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>Идеальная функция с точки зрения удобства работы с ней называется чистой (pure). Чистая функция —
+                      это детерминированная функция, которая не производит побочных эффектов. Такая функция зависит
+                      только от своих входных аргументов и всегда ведёт себя предсказуемо. Такие функции на 100%
+                      соответствуют своим математическим аналогам и могут рассматриваться как математические функции.
+                    </p>
+
+                    <p>Чистые функции обладают рядом ключевых достоинств:</p>
+
+                    <ul>
+                      <li>Их крайне просто тестировать. Достаточно передать на вход функции нужные параметры и
+                        посмотреть ожидаемый выход.</li>
+                      <li>Их безопасно запускать повторно, что особенно актуально в асинхронном коде или в случае
+                        многопоточного кода.</li>
+                      <li>Их легко комбинировать, получая новое поведение без необходимости переписывать программу
+                        (подробнее далее по курсу).</li>
+                    </ul>
+
+                    <p>В хорошо спроектированных программах побочные эффекты стараются изолировать в небольшой части
+                      приложения так, чтобы большая часть кода была чистой.</p>
+
+                    <p>Прямо сейчас сказанное выше может звучать довольно абстрактно, что понятно. Осознание этой темы
+                      требует не только общего понимания прочитанного, но и набитых шишек, связанных со сложностью
+                      работы в мешанине побочных эффектов. Тему чистоты мы будем поднимать регулярно. Особенно сильно
+                      она прорабатывается в проектах, на живом коде.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D0%B1%D0%BE%D1%87%D0%BD%D1%8B%D0%B9_%D1%8D%D1%84%D1%84%D0%B5%D0%BA%D1%82_(%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)">Побочные
+                          эффекты</a>
+                      </li>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://ru.wikipedia.org/wiki/%D0%A7%D0%B8%D1%81%D1%82%D0%BE%D1%82%D0%B0_%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8#%D0%94%D0%B5%D1%82%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D1%8C_%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8">Детерминированная
+                          функция</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>
