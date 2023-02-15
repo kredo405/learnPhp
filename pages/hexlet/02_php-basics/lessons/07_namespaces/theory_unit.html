@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Пространство имен - PHP: Основы</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="QkZpGgRSBboURfTtNDIKj9061_GoX-ayiGcvDDB8Rd-1PjrlmWeYGHyKiEVLI_trfAD1bAuvUij7VZ4U5GlLuA" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='collapse' id='tips'>
+                <div class='py-3 px-4 x-line-height-15 bg-hexlet-gray mt-3'>
+                  <h6 class='font-weight-bold'>Нашли опечатку или неточность?</h6>
+                  <p>
+                    Выделите текст, нажмите
+                    <kbd class='bg-secondary'>ctrl + enter</kbd>
+                    и отправьте его нам. В течение нескольких дней мы исправим ошибку или улучшим формулировку.
+                  </p>
+                  <h6 class='font-weight-bold'>Что-то не получается или материал кажется сложным?</h6>
+                  <p class='mb-1'>Загляните в раздел «Обсуждение»:</p>
+                  <ul>
+                    <li>задайте вопрос. Вы быстрее справитесь с трудностями и прокачаете навык постановки правильных
+                      вопросов, что пригодится и в учёбе, и в работе программистом;</li>
+                    <li>расскажите о своих впечатлениях. Если курс слишком сложный, подробный отзыв поможет нам сделать
+                      его лучше;</li>
+                    <li>изучите вопросы других учеников и ответы на них. Это база знаний, которой можно и нужно
+                      пользоваться.</li>
+                  </ul>
+                  <h6 class='font-weight-bold'>Об обучении на Хекслете</h6>
+                  <ul class='list-unstyled mb-0'>
+                    <li>
+                      Статья «<a target="_blank" href="https://guides.hexlet.io/learning">Как учиться и справляться с
+                        негативными мыслями</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank" href="https://ru.hexlet.io/blog/posts/traps-learning">Ловушки
+                        обучения</a>»
+                    </li>
+                    <li>
+                      Статья «<a target="_blank"
+                        href="https://ru.hexlet.io/blog/posts/slozhnye-prostye-zadachi-po-programmirovaniyu">Сложные
+                        простые задачи по программированию</a>»
+                    </li>
+                    <li>
+                      Урок «<a target="_blank"
+                        href="https://ru.hexlet.io/courses/introduction_to_programming/lessons/hexlet-flow/theory_unit">Как
+                        эффективно учиться на Хекслете</a>»
+                    </li>
+                    <li>
+                      Вебинар «<a target="_blank" rel="noopener noreferrer nofollow"
+                        href="https://www.youtube.com/watch?v=dCYZppVgGww">Как самостоятельно учиться</a>»
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <a class="h6 mb-0 font-weight-normal text-muted x-link-only-hover"
+                      href="../references/exercise_unit.html">PHP: Основы</a>
+                    <h1 class='mt-0 mb-4'>Пространство имен</h1>
+                    <p>Если мы попытаемся определить две разные функции, но с одинаковыми именами, то PHP выдаст ошибку
+                      во время запуска кода:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// file: index.php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">foo</span><span style="background-color: #f8f8f8">()</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'one'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">foo</span><span style="background-color: #f8f8f8">()</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'two'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <pre class="hljs"><code class=sh><span style="color: #008080">$ </span>php index.php
+<span style="color: #999988;font-style: italic"># Невозможно переопределить существующую функцию</span>
+<span style="color: #999988;font-style: italic"># Ошибка падает на втором определении</span>
+PHP Fatal error:  Cannot redeclare foo<span style="color: #000000;font-weight: bold">()</span> <span style="color: #000000;font-weight: bold">(</span>previously declared <span style="color: #000000;font-weight: bold">in</span> /private/var/tmp/index.php:3<span style="color: #000000;font-weight: bold">)</span>
+</code></pre>
+                    <p>А если разнести определения этих функций по разным файлам и включить один в другой? Чуда не
+                      произойдет - как только интерпретатор встретит новое определение с таким же именем, как и старое,
+                      он завершит работу с ошибкой <em>Cannot redeclare</em> (невозможно переопределить существующую
+                      функцию).</p>
+
+                    <p>Давайте порассуждаем над тем, почему это - проблема. Реальные приложения на PHP состоят из многих
+                      тысяч строк кода. Значительная часть этого кода приходит из библиотек, написанных другими людьми,
+                      и почти наверняка мы не знаем, как они там внутри устроены. Чем больше библиотек вы используете,
+                      чем больше разработчиков в проекте и, собственно, кода проекта, тем выше вероятность того, что
+                      возникнут дублирующиеся названия. Более того, может оказаться так, что две разные библиотеки,
+                      которые вам так нужны в проекте, имеют одинаковые имена функций, а, следовательно, вы физически не
+                      сможете их использовать вместе. А включение каждой новой библиотеки в код проекта почти наверняка
+                      заставит переименовывать функции самого проекта из-за конфликта имен. Когда-то эта проблема была
+                      настолько серьезной, что функции в PHP именовались с префиксами, например,
+                      <code>mylibnameSendEmail()</code> или <code>mylibnameAddNewUser()</code>. Таким образом пытались
+                      избежать коллизий (пересечений по именам).</p>
+
+                    <p>Начиная с PHP версии 5.3 в языке появился механизм пространств имен, в задачу которого входит
+                      изоляция кода разных файлов друг от друга. Несмотря на то, что это - новый для нас механизм, сама
+                      концепция встречается в нашей жизни повсеместно. В файловой системе роль пространств имён
+                      выполняют директории, в телефонах - код страны, в адресах - страны, города и улицы. Последний
+                      пример демонстрирует вложенные пространства имён. Недостаточно знать только номер дома, чтобы
+                      понять, в какой квартире живет человек. Кроме этого, надо знать улицу, город и страну.</p>
+
+                    <p><img alt="Files Tree" class="lazyload px-2 px-md-3 px-lg-4 px-xl-5"
+                        data-src="https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6IjhkYmY4MGI4MTQ0MDc0NWRkYjRjYzVmOGM0ZjZhZDAzLnBuZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=b8f9966e0f9830b36929ebcc31cba4a416ca0ae04a9ba4cfd8c3354de6f2690b"
+                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+
+                    <p>В подавляющем большинстве языков есть встроенные механизмы, аналогичные пространствам имён,
+                      причем в этих языках они существовали с самого начала, а не были добавлены потом. Часто они имеют
+                      другие имена, например, модули или пакеты. В каждом языке подобный механизм работает чуть-чуть
+                      по-своему, но все они предназначены для решения одной задачи – разрешения коллизий при именовании.
+                    </p>
+
+                    <p><em>К сожалению, в силу исторических причин, пространства имён в PHP появились не с самого начала
+                        существования языка, как это принято при разработке языков. Из-за этого получилось, по сути, два
+                        независимых механизма, один - включение файлов как таковых, другой - пространства имён.</em></p>
+
+                    <p>Пора переходить к примерам:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// math.php</span>
+
+<span style="color: #000000;font-weight: bold">namespace</span> <span style="color: #555555">math</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">sum</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$a</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$b</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$a</span> <span style="color: #000000;font-weight: bold">+</span> <span style="color: #008080">$b</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Пространство имён задается с помощью ключевого слова <code>namespace</code>, за которым следует
+                      имя пространства имён. Теперь посмотрим на то, как использовать функции, определенные в
+                      пространстве имён:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// index.php</span>
+
+<span style="color: #000000;font-weight: bold">require_once</span> <span style="color: #d14">'math.php'</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #999988;font-style: italic">// Обратиться напрямую к функции sum не получится:</span>
+<span style="color: #999988;font-style: italic">// PHP Fatal error:  Uncaught Error: Call to undefined function sum()</span>
+<span style="color: #990000;font-weight: bold">sum</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">);</span>
+
+<span style="color: #999988;font-style: italic">// А если указать пространство имён, то все работает:</span>
+<span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">math\sum</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">5</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">8</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// 13</span>
+</code></pre>
+                    <p>Попытка обратиться к функции по имени приведет к ошибке, так как она скрыта за пространством
+                      имён. Правильный вызов выглядит так:
+                      <code>\&lt;имя пространства имён&gt;\&lt;имя функции&gt;</code>. Рассмотрим еще один пример, когда
+                      функция с одним и тем же именем определена в разных пространствах имён.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// index.php</span>
+
+<span style="color: #000000;font-weight: bold">require_once</span> <span style="color: #d14">'text.php'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">require_once</span> <span style="color: #d14">'number.php'</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #999988;font-style: italic">// Эта функция повторяет строчку, переданную первым параметром столько раз, сколько указано во втором параметре:</span>
+<span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">text\multiply</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'hi'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// hihihi</span>
+<span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">number\multiply</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// 6</span>
+</code></pre>
+                    <p>Два пространства имён имеют одинаковые функции, но, как видно из кода, это не создает неудобств.
+                      Каждая функция вызывается с указанием собственного пространства имен. Более того, мы можем
+                      определить функцию <code>multiply()</code> прямо в том месте, куда производится включение других
+                      пространств имён:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// main.php</span>
+
+<span style="color: #000000;font-weight: bold">require_once</span> <span style="color: #d14">'text.php'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">require_once</span> <span style="color: #d14">'number.php'</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">namespace</span> <span style="color: #555555">main</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">multiply</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$a</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$b</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'it works!'</span><span style="background-color: #f8f8f8">);</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">all</span><span style="background-color: #f8f8f8">()</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">text\multiply</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'ho'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// hoho</span>
+    <span style="color: #a61717;background-color: #e3d2d2">\</span><span style="color: #990000;font-weight: bold">number\multiply</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">3</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">2</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// 6</span>
+
+    <span style="color: #999988;font-style: italic">// Такой вызов неявно подставляет текущее пространство \main\</span>
+    <span style="color: #990000;font-weight: bold">multiply</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">2</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// it works!</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <p>Обратите внимание на последний вызов. Функции находящиеся внутри одного пространства имен могут
+                      вызывать друг друга напрямую.</p>
+
+                    <hr class='my-5'>
+                    <h4 class='mb-4'>Дополнительные материалы</h4>
+                    <ol>
+                      <li class='lead'>
+                        <a target="_blank"
+                          href="https://php.net/manual/ru/language.namespaces.rationale.php">Официальная
+                          документация</a>
+                      </li>
+                    </ol>
+
+</body>
+
+</html>

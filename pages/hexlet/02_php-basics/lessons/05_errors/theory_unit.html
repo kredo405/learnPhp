@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Ошибки - PHP: Основы</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="k8tkwdoPWajOGCEg7xV1rYfvTCNLexXyXmvtO0hBeOBkszc-RzrECqbXXYiQBIRJJtVuvuiLoWgtWVwjnFR2hw" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+</head>
+
+<body class='h-100'>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WK88TH" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+
+  <script type='application/ld+json'>
+{&quot;@context&quot;:&quot;https://schema.org&quot;,&quot;@type&quot;:&quot;TechArticle&quot;,&quot;isAccessibleForFree&quot;:true,&quot;headline&quot;:&quot;Ошибки&quot;,&quot;datePublished&quot;:&quot;2018-10-02T15:20:03.124Z&quot;,&quot;dateModified&quot;:&quot;2020-10-16T12:56:29.000Z&quot;,&quot;image&quot;:&quot;https://cdn2.hexlet.io/assets/hexlet_logo-e99fc2b3b7c1eec88899f3af1435a39aaac6fd29d011dfe2342499c0884b7a96.png&quot;,&quot;author&quot;:{&quot;@type&quot;:&quot;Person&quot;,&quot;name&quot;:&quot;Кирилл Мокевнин&quot;,&quot;description&quot;:&quot;Сооснователь и CEO образовательного проекта Хекслет. Программирую с 2007 года. За это время прошёл путь от разработчика до технического директора и управляющего отдельным подразделением (филиалом). Управлял командами, в которых больше 50 разработчиков. \r\n\r\n- Программирую на языках: Elixir, Clojure, JavaScript, PHP, Ruby. \r\n- Соорганизатор конференции Nastachku.ru. \r\n- Вимер. \r\n- Топлю за DevOps и автоматизированные тесты.\r\n&quot;},&quot;publisher&quot;:{&quot;@context&quot;:&quot;https://schema.org&quot;,&quot;@type&quot;:&quot;Organization&quot;,&quot;name&quot;:&quot;Hexlet&quot;,&quot;url&quot;:&quot;https://hexlet.io&quot;,&quot;sameAs&quot;:[&quot;https://www.facebook.com/Hexlet&quot;,&quot;https://www.youtube.com/user/HexletUniversity&quot;,&quot;https://twitter.com/HexletHQ&quot;,&quot;https://soundcloud.com/hexlet&quot;],&quot;legalName&quot;:&quot;Hexlet Ltd.&quot;,&quot;address&quot;:&quot;UMA Esplanadi, Pohjoisesplanadi 39, 00100 Helsinki, Finland&quot;,&quot;vatID&quot;:&quot;VAT ID: FI26641607&quot;,&quot;telephone&quot;:&quot;+7 (495) 147-73-79&quot;,&quot;logo&quot;:{&quot;@type&quot;:&quot;ImageObject&quot;,&quot;url&quot;:&quot;https://cdn2.hexlet.io/assets/hexlet_logo-e99fc2b3b7c1eec88899f3af1435a39aaac6fd29d011dfe2342499c0884b7a96.png&quot;}},&quot;hasPart&quot;:{&quot;@type&quot;:&quot;WebPageElement&quot;,&quot;isAccessibleForFree&quot;:true,&quot;cssSelector&quot;:&quot;.paywall&quot;}}
+
+
+</script>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Ошибки</h1>
+                    <p>PHP, в силу исторических причин, имеет необычную, откровенно говоря, странную и все усложняющую
+                      систему ошибок. Если в других аналогичных языках, технически, ошибки делятся на два типа — ошибки
+                      парсинга и исключения, то в PHP к ним еще добавляются Notice, Warning и Fatal Error.</p>
+
+                    <p>Если программа написана синтаксически некорректно, то она не может быть запущена на выполнение.
+                      Тут все просто: такие ошибки невозможно обработать и мы их видим сразу. Все остальные ошибки в
+                      других языках реализованы с помощью механизма исключений, который мы рассмотрим позже. Главное то,
+                      что это именно ошибки, но их всегда можно перехватить и обработать (пользователь программы даже не
+                      узнает о том, что они возникли). В PHP многие ошибки являются исключениями (что хорошо), но далеко
+                      не все (что плохо). Например, попытка использовать несуществующую переменную в PHP не приводит к
+                      возникновению исключения (то есть ошибки), программа продолжает работать, как и работает, но в
+                      выводе работы программы можно заметить следующие строки:</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">+=</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #999988;font-style: italic">// PHP Notice:  Undefined variable: i in php shell code on line 1</span>
+</code></pre>
+                    <p>PHP Notice — это даже не ошибка, а просто предупреждение о том, что код написан не очень хорошо,
+                      но останавливать его выполнение никто не будет. В любом другом языке попытка использовать
+                      несуществующую переменную приводит к ошибке, и программисту придется ее исправить, но только не в
+                      PHP. PHP таким поведением поощряет разработчиков писать плохой код, который не заработал бы ни в
+                      одном другом языке программирования. Какое при этом будет поведение у системы — большой вопрос. То
+                      же самое касается и PHP Warning. Это тоже предупреждения, но, исходя из названия, более серьезные.
+                      Ну, и наконец, Fatal Error — это уже настоящие ошибки, но они, в отличие от исключений, не могут
+                      быть обработаны и просто завершают выполнение программы.</p>
+
+                    <p>Что еще интереснее (и печальнее), так это то, что PHP <a
+                        href="https://php.net/manual/ru/function.error-reporting.php" target="_blank"
+                        rel="nofollow">позволяет</a> подавить вывод этих предупреждений и сделать вид, что все хорошо.
+                    </p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #0086B3">error_reporting</span><span style="background-color: #f8f8f8">(</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+                    <p>Еще один механизм подавления — оператор <code>@</code>, который можно поставить перед любым
+                      вызовом функции, что выключает Notice и Warning, происходящие внутри этой функции.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">foo</span><span style="background-color: #f8f8f8">()</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">+=</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #990000;font-weight: bold">foo</span><span style="background-color: #f8f8f8">();</span> <span style="color: #999988;font-style: italic">// Notice: Undefined variable: i</span>
+
+<span style="color: #000000;font-weight: bold">@</span><span style="color: #990000;font-weight: bold">foo</span><span style="background-color: #f8f8f8">();</span> <span style="color: #999988;font-style: italic">// Ничего не выводится, как будто все хорошо</span>
+</code></pre>
+                    <p>Как вы понимаете, такой подход в разработке не сулит ничего хорошего. Любые Notice или Warning
+                      нужно рассматривать как серьезные ошибки, требующие исправления. На Хекслете эта проблема решена
+                      так: все оповещения типа Notice и Warning автоматически превращаются в исключения, а значит
+                      рассматриваются как настоящие ошибки. Такого поведения можно добиться используя <a
+                        href="https://xdebug.org/" target="_blank" rel="nofollow">xdebug</a>.</p>
+
+
+</body>
+
+</html>

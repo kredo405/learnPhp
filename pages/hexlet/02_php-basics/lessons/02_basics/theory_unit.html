@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html class='h-100' lang='ru' prefix='og: https://ogp.me/ns#'>
+
+<head>
+  <title>Основные конструкции языка - PHP: Основы</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="JytH6IQwnvEg2YFZuBMLSFnfcXfKrNfROjB2CUzGfAbQUxQXGQUDU0gW_fHHAvqs-OVT6mlcY0tJAscRmNNyYQ" />
+  <meta name="csp-nonce" />
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cdn2.hexlet.io/assets/favicon-8fa102c058afb01de5016a155d7db433283dc7e08ddc3c4d1aef527c1b8502b6.ico" />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+</head>
+
+<body class='h-100'>
+  <div class='d-flex flex-column flex-md-row h-100'>
+    <div class='x-border-md-right flex-fill tab-content overflow-hidden h-100'>
+      <div aria-labelledby='lesson-tab' class='tab-pane fade show active overflow-auto h-100' id='lesson'
+        role='tabpanel'>
+        <div class='container-xl my-3 mb-md-4 mb-lg-5'>
+          <div class='row justify-content-center'>
+            <div class='col-12 col-lg-10'>
+              <div class='mt-3 paywall'>
+                <div class='p-2 p-md-4 shadow-sm bg-white'>
+                  <div class='hexlet-markdown-body overflow-hidden p-2 p-md-4'>
+                    <h1 class='mt-0 mb-4'>Основные конструкции языка</h1>
+                    <p>Перед тем, как погружаться в новые возможности языка PHP, вспомним все те вещи, которые изучались
+                      на <a href="https://ru.code-basics.com/languages/php" target="_blank">Code Basics</a>. Весь
+                      последующий материал строится на том, что вы поняли, как они работают.</p>
+                    <h4 id="chtenie-dokumentatsii">Чтение документации</h4>
+                    <p>Вы знаете, где ее искать и как читать. Понимаете, как читать сигнатуры функций.</p>
+
+                    <ul>
+                      <li><a href="https://php.net/manual/ru/index.php"
+                          target="_blank">https://php.net/manual/ru/index.php</a></li>
+                    </ul>
+                    <h4 id="tipy-dannyh-i-peremennye">Типы данных и переменные</h4>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic"># Числа</span>
+
+<span style="color: #008080">$one</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #008080">$number</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">-</span><span style="color: #009999">100</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #999988;font-style: italic"># Строки</span>
+
+<span style="color: #008080">$str1</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'i am a string'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #008080">$str2</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">"i am a string too"</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #999988;font-style: italic"># Логические значения</span>
+
+<span style="color: #008080">$yes</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">true</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #008080">$no</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #000000;font-weight: bold">false</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <h4 id="preobrazovanie-tipov">Преобразование типов</h4>
+                    <p>Вы знаете про слабую типизацию и представляете, как происходит преобразование типов (явное и
+                      неявное)</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic"># Числа</span>
+
+<span style="color: #008080">$one</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">int</span><span style="background-color: #f8f8f8">)</span> <span style="color: #d14">'234'</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #008080">$two</span> <span style="color: #000000;font-weight: bold">=</span> <span style="background-color: #f8f8f8">(</span><span style="background-color: #f8f8f8">string</span><span style="background-color: #f8f8f8">)</span> <span style="color: #009999">34</span><span style="background-color: #f8f8f8">;</span>
+</code></pre>
+                    <h4 id="operatsii">Операции</h4>
+                    <p>Вы знаете и умеете применять основные операции, связанные с примитивными типами данных.</p>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Арифметические операции</span>
+<span style="color: #009999">1</span> <span style="color: #000000;font-weight: bold">+</span> <span style="color: #009999">5</span> <span style="color: #000000;font-weight: bold">-</span> <span style="color: #009999">8</span> <span style="color: #000000;font-weight: bold">*</span> <span style="color: #009999">6</span> <span style="color: #000000;font-weight: bold">/</span> <span style="color: #009999">2</span> <span style="color: #000000;font-weight: bold">**</span> <span style="color: #009999">3</span> <span style="color: #000000;font-weight: bold">%</span> <span style="color: #009999">4</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #999988;font-style: italic">// Логические операции</span>
+<span style="color: #000000;font-weight: bold">true</span> <span style="color: #000000;font-weight: bold">||</span> <span style="color: #000000;font-weight: bold">false</span> <span style="color: #000000;font-weight: bold">&amp;&amp;</span> <span style="color: #000000;font-weight: bold">!</span><span style="color: #000000;font-weight: bold">true</span>
+
+<span style="color: #999988;font-style: italic">// Создание переменных</span>
+<span style="color: #008080">$str</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #d14">'i am a string'</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #999988;font-style: italic">// Обращение к символам строки</span>
+<span style="color: #008080">$str</span><span style="background-color: #f8f8f8">[</span><span style="color: #009999">0</span><span style="background-color: #f8f8f8">];</span> <span style="color: #999988;font-style: italic">// i</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">"</span><span style="color: #d14">{</span><span style="color: #008080">$str</span><span style="color: #d14">}</span><span style="color: #d14">"</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; i am a string</span>
+<span style="color: #0086B3">print_r</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$str</span><span style="background-color: #f8f8f8">);</span> <span style="color: #999988;font-style: italic">// =&gt; i am a string</span>
+</code></pre>
+                    <h4 id="uslovnye-konstruktsii">Условные конструкции</h4>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #000000;font-weight: bold">if</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$a</span> <span style="color: #000000;font-weight: bold">&gt;</span> <span style="color: #008080">$b</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #d14">'a больше, чем b'</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span> <span style="color: #000000;font-weight: bold">elseif</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$a</span> <span style="color: #000000;font-weight: bold">===</span> <span style="color: #008080">$b</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #d14">'a равен b'</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span> <span style="color: #000000;font-weight: bold">else</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #d14">'a меньше, чем b'</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #008080">$result</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #008080">$a</span> <span style="color: #000000;font-weight: bold">&gt;</span> <span style="color: #008080">$b</span> <span style="color: #000000;font-weight: bold">?</span> <span style="color: #d14">'yes'</span> <span style="color: #000000;font-weight: bold">:</span> <span style="color: #d14">'no'</span><span style="background-color: #f8f8f8">;</span>
+
+<span style="color: #000000;font-weight: bold">switch</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$i</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">case</span> <span style="color: #009999">0</span><span style="color: #000000;font-weight: bold">:</span>
+        <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #d14">"i равно 0"</span><span style="background-color: #f8f8f8">;</span>
+        <span style="color: #000000;font-weight: bold">break</span><span style="background-color: #f8f8f8">;</span>
+    <span style="color: #000000;font-weight: bold">case</span> <span style="color: #009999">1</span><span style="color: #000000;font-weight: bold">:</span>
+        <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #d14">"i равно 1"</span><span style="background-color: #f8f8f8">;</span>
+        <span style="color: #000000;font-weight: bold">break</span><span style="background-color: #f8f8f8">;</span>
+    <span style="color: #000000;font-weight: bold">case</span> <span style="color: #009999">2</span><span style="color: #000000;font-weight: bold">:</span>
+        <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #d14">"i равно 2"</span><span style="background-color: #f8f8f8">;</span>
+        <span style="color: #000000;font-weight: bold">break</span><span style="background-color: #f8f8f8">;</span>
+    <span style="color: #000000;font-weight: bold">default</span><span style="color: #000000;font-weight: bold">:</span>
+       <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #d14">"i не равно 0, 1 или 2"</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+</code></pre>
+                    <h4 id="tsikly">Циклы</h4>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">;</span>
+<span style="color: #000000;font-weight: bold">while</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">&lt;=</span> <span style="color: #009999">10</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$i</span><span style="color: #000000;font-weight: bold">++</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #000000;font-weight: bold">for</span> <span style="background-color: #f8f8f8">(</span><span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">1</span><span style="background-color: #f8f8f8">;</span> <span style="color: #008080">$i</span> <span style="color: #000000;font-weight: bold">&lt;=</span> <span style="color: #009999">10</span><span style="background-color: #f8f8f8">;</span> <span style="color: #008080">$i</span><span style="color: #000000;font-weight: bold">++</span><span style="background-color: #f8f8f8">)</span> <span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">echo</span> <span style="color: #008080">$i</span><span style="background-color: #f8f8f8">;</span>
+<span style="background-color: #f8f8f8">}</span>
+
+
+</code></pre>
+                    <h4 id="funktsii">Функции</h4>
+                    <pre class="hljs"><code class=php><span style="color: #999999;font-weight: bold">&lt;?php</span>
+
+<span style="color: #999988;font-style: italic">// Определение</span>
+<span style="color: #000000;font-weight: bold">function</span> <span style="background-color: #f8f8f8">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #008080">$string</span><span style="background-color: #f8f8f8">,</span> <span style="color: #008080">$index</span> <span style="color: #000000;font-weight: bold">=</span> <span style="color: #009999">0</span><span style="background-color: #f8f8f8">)</span>
+<span style="background-color: #f8f8f8">{</span>
+    <span style="color: #000000;font-weight: bold">return</span> <span style="color: #008080">$string</span><span style="background-color: #f8f8f8">[</span><span style="color: #008080">$index</span><span style="background-color: #f8f8f8">];</span>
+<span style="background-color: #f8f8f8">}</span>
+
+<span style="color: #999988;font-style: italic">// Вызов</span>
+<span style="color: #990000;font-weight: bold">get</span><span style="background-color: #f8f8f8">(</span><span style="color: #d14">'lala'</span><span style="background-color: #f8f8f8">,</span> <span style="color: #009999">3</span><span style="background-color: #f8f8f8">);</span>
+</code></pre>
+</body>
+
+</html>
