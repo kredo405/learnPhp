@@ -1,0 +1,1048 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ru-RU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>ch006.xhtml</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body epub:type="bodymatter">
+<section id="подведение-итогов" class="level1" data-number="6">
+<h1 data-number="6">6. Подведение итогов</h1>
+<div class="text-container text-container--module">
+<p>Финальный раздел</p>
+</div>
+<section id="typescript-и-трудовые-будни" class="level2" data-number="6.1">
+<h2 data-number="6.1">6.1. TypeScript и трудовые будни</h2>
+<div class="text-container text-container--module">
+<p>В этом курсе мы познакомились с важной стороной TypeScript — статическим анализов программы, который возможен благодаря системам типов. Наличие стадии компиляции и ваше внимательное отношение к предупреждениям анализатора позволяют избавиться от ошибок, связанных с неверным ожиданием значений от переменных со стороны разработчика. При этом TypeScript даёт разработчику множество других возможностей.</p>
+<p>Опыт показывает, что вам придётся подойти внимательнее к процессу моделирования системы типов и разработке структуры данных. Зато использование анализатора и компилятора позволит сократить затраты времени и сил на сопровождение приложения. А как известно, разработчики большую часть времени читают существующий код, чем пишут новый. В этом деле TypeScript оказывает хорошую поддержку.</p>
+<p>Использование TypeScript имеет определённые отличия для разных сценариев работы:</p>
+<ul>
+<li>При разработке прикладного проекта вы опираетесь на существующие знания и используете npm-пакеты и популярные фреймворки. TypeScript поддерживает вас на протяжении всей работы.</li>
+<li>При переносе проекта из чистого JavaScript в TypeScript придётся внимательно работать над постепенным созданием и внедрением системы типов.</li>
+<li>При написании библиотек или npm-пакетов нужно уделить особое внимание вопросам правильного использования infer.</li>
+</ul>
+<p>Какой сценарий будет разворачиваться перед вами и какие навыки вам потребуются — покажет время. Но понимание отношений между типами и манипуляции над ними вам пригодятся в любом из них.</p>
+</div>
+</section>
+<section id="популярные-библиотеки-и-фреймворки" class="level2" data-number="6.2">
+<h2 data-number="6.2">6.2. Популярные библиотеки и фреймворки</h2>
+<div class="text-container text-container--module">
+<p>TypeScript стал популярным среди разработчиков. Лучшее доказательство этому — все популярные эко-системы готовы и работают с ним.</p>
+<ul>
+<li>Angular — прекратил поддержку проектов на JavaScript. Когда вы работаете в звёздной системе Angular, то зависите от <span class="citation" data-cites="angular-cli">@angular-cli</span>, который создаёт «заглушки» на TypeScript. Отказ от TypeScript лишь усложнит работу.</li>
+<li>Deno — поддерживает разработку и запуск программ на TypeScript.</li>
+<li>Next — вы можете использовать TypeScript для новых проектов и включить его поддержку для существующих. Во втором случае Next сам сконфигурирует проект, как только вы предоставите ему пустой файл <code>tsconfig.json</code>.</li>
+<li>Node — можно создавать пакеты и приложение и компилировать их в JavaScript или запускать через ts-node.</li>
+<li>React — предоставляет шаблон для создания CRA (create-react-app –template typescript). Можно добавить поддержку TypeScript в существующее приложение.</li>
+<li>Vue — декларации типов находятся прямо в официальном пакете npm. Чтобы начать использовать связку Vue + TypeScript, нужно лишь <strong>начать использовать</strong> TypeScript.</li>
+</ul>
+<p>Этот список актуален на начало 2022 года — мы уверены, что со временем он будет расширяться. Прогресс движется вперёд, но мы остановимся на мгновение здесь и покажем на нескольких примерах шаг за шагом запуск свежих приложений.</p>
+</div>
+</section>
+<section id="запуск-минимального-приложения-angular-typescript" class="level2" data-number="6.3">
+<h2 data-number="6.3">6.3. Запуск минимального приложения Angular TypeScript</h2>
+<div class="text-container text-container--module">
+<section id="шаг-1-20" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1">Шаг №1</h3>
+<p>Angular общается с разработчиком на TypeScript. При этом документация утверждает, что знание TypeScript будет лишь преимуществом. Вы можете составить своё представление, установив и исследовав стартовую версию «Здравствуй, мир!» на Angular.</p>
+<section id="начальные-требования" class="level4" data-number="6.3.1.1">
+<h4 data-number="6.3.1.1">Начальные требования</h4>
+<p>Перед началом работы убедитесь, что ваш node поддерживаемой версии. Возможно, стоит обновить его до последнего релиза в LTS — в чётных номерах.</p>
+<p><strong>Важно:</strong> Angular хочет сам создавать директорию для своего окружения. Запустить команду <code>ng new .</code> можно, но результата не будет.</p>
+</section>
+<section id="установка-инструментов" class="level4" data-number="6.3.1.2">
+<h4 data-number="6.3.1.2">Установка инструментов</h4>
+<p>У Angular свой набор сервисов и утилит командной строки. Вы можете поставить:</p>
+<pre><code>npm install -g @angular/cli</code></pre>
+<p>И дополнительно поставить плагин для VS-Code:</p>
+<pre><code>https://marketplace.visualstudio.com/items?itemName=Angular.ng-template</code></pre>
+</section>
+</section>
+<section id="шаг-2-20" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2">Шаг №2</h3>
+<p>После завершения работы инструментов в вашей целевой директории появится множество различных файлов. Обратите внимание на файл <code>src\main.ts</code>.Во время старта приложения он производит инициализацию связей между модулями, составляющими его части. Бизнес-логика находится в <code>src\app\app.module.ts</code>.</p>
+</section>
+<section id="шаг-3-20" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3">Шаг №3</h3>
+<p>Angular — фреймворк, он берёт на себя большой круг «забот» ещё <em>до старта</em> приложения.</p>
+<section id="окружение-и-стартовый-модуль" class="level4" data-number="6.3.3.1">
+<h4 data-number="6.3.3.1">Окружение и стартовый модуль</h4>
+<p>Обращаем внимание на декораторы, которые не вошли в этот курс.</p>
+<pre><code>@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }</code></pre>
+<p>Символ <code>@NgModule</code> — декоратор класса. На начало 2022 года декораторы не являются стандартом JavaScript, и их поведение, хотя и маловероятно, может поменяться.</p>
+<p>Если вы войдёте в команду разработчиков на Angular, вам потребуется понимание работы этих механизмов. Можете ознакомиться с некоторыми возможностями декораторов <a href="https://habr.com/ru/post/494668/">на Хабре</a>.</p>
+</section>
+</section>
+<section id="шаг-4-18" class="level3" data-number="6.3.4">
+<h3 data-number="6.3.4">Шаг №4</h3>
+<p>Запускаем приложение Angular в режиме разработки:</p>
+<pre><code>npm run start</code></pre>
+<p>После непродолжительной подготовки вы увидите:</p>
+<pre><code>PS D:\sources\html-academy\courses\levelup-typescript&gt; npm  run start
+
+&gt; levelup-typescript-angular@0.0.0 start
+&gt; ng serve
+
+✔ Browser application bundle generation complete.
+
+Initial Chunk Files   | Names         |  Raw Size
+vendor.js             | vendor        |   1.69 MB |
+polyfills.js          | polyfills     | 299.99 kB |
+styles.css, styles.js | styles        | 173.72 kB |
+main.js               | main          |  51.49 kB |
+runtime.js            | runtime       |   6.55 kB |
+
+                      | Initial Total |   2.21 MB
+
+Build at: 2022-02-09T11:47:28.999Z - Hash: 43967de193384f7c - Time: 5385ms
+
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+
+
+√ Compiled successfully.</code></pre>
+<p>Можете отправить свой браузер по адресу <a href="http://localhost:4200/">http://localhost:4200/</a> и увидите картинку, похожую на:</p>
+<p><img src="../media/file15.png" /></p>
+</section>
+</div>
+</section>
+<section id="запуск-минимального-приложения-react-typescript" class="level2" data-number="6.4">
+<h2 data-number="6.4">6.4. Запуск минимального приложения React TypeScript</h2>
+<div class="text-container text-container--module">
+<section id="шаг-1-21" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1">Шаг №1</h3>
+<p>React предлагает набор команд для создания заготовки приложения с нужными характеристиками, причём этот набор можно произвольно расширить.</p>
+<p>Давайте сделаем заготовку приложения от Академии.</p>
+<pre><code>npx create-react-app demo-06-04 --template @htmlacademy/cra-template-typescript</code></pre>
+<p>Слово <strong>demo-06-04</strong> — это имя директории, которую инструмент создаст и инициализирует. Вы можете использовать любое имя, главное, чтобы не было пересечения с существующими директориями.</p>
+<p>После окончания работы инструмента откройте директорию в вашем редакторе.</p>
+<p>Обратите внимание, что для вас уже инициализирован файл <code>tsconfig.json</code>.</p>
+</section>
+<section id="шаг-2-21" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2">Шаг №2</h3>
+<p>В директории приложения найдите файл <code>src\index.tsx</code>. Обратите внимание, что у него расширение не.ts, а <strong>.tsx</strong>. Это точка входа, с этого модуля начинается исполнение React-приложения.</p>
+<pre><code>ReactDOM.render(
+  &lt;React.StrictMode&gt;
+    &lt;App /&gt;
+  &lt;/React.StrictMode&gt;,
+  document.getElementById(&#39;root&#39;));</code></pre>
+<p>React часто используется в связке TypeScript + JSX, где JSX — диалект XML.</p>
+<p>Приведённый выше отрывок сообщает инфраструктуре React, какой компонент (App) в каком месте страницы (document.getElementById (‘root’)) необходимо размечать. Бизнес-логика приложения описана в файле <code>src\components\app\app.tsx</code> и связанных с ним модулях.</p>
+</section>
+<section id="шаг-3-21" class="level3" data-number="6.4.3">
+<h3 data-number="6.4.3">Шаг №3</h3>
+<p>Запускаем приложение:</p>
+<pre><code>npm run stat</code></pre>
+<p>После окончания виртуальной сборки вы увидите:</p>
+<pre><code>You can now view levelup-typescript-react in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://192.168.40.101:3000
+
+Note that the development build is not optimized.        
+To create a production build, use npm run build.
+
+asset static/js/bundle.js 1.43 MiB [emitted] (name: main) 1 related asset
+asset index.html 470 bytes [emitted]
+asset asset-manifest.json 190 bytes [emitted]
+runtime modules 28.2 KiB 13 modules
+modules by path ./node_modules/ 1.33 MiB
+  modules by path ./node_modules/core-js-pure/ 24.8 KiB 53 modules
+  modules by path ./node_modules/webpack-dev-server/client/ 62.1 KiB 12 modules
+  modules by path ./node_modules/webpack/hot/*.js 4.4 KiB 4 modules
+  modules by path ./node_modules/react/ 119 KiB 4 modules
+  modules by path ./node_modules/html-entities/lib/*.js 115 KiB 4 modules
+Compiled successfully!</code></pre>
+<p>Если вы введёте в браузере адрес <a href="http://localhost:3000">http://localhost:3000</a>, то увидите страницу. Не выключайте приложение.</p>
+</section>
+<section id="шаг-4-19" class="level3" data-number="6.4.4">
+<h3 data-number="6.4.4">Шаг №4</h3>
+<p>Попробуйте изменить файл <code>src\components\app\app.tsx</code>:</p>
+<pre><code>function App(): JSX.Element {
+  return &lt;p&gt;Измените разметку и посмотрите результат в браузере&lt;/p&gt;;
+}
+
+export default App;
+</code></pre>
+<p>React позиционируется как библиотека, а не фреймворк. Приложение React можно встроить и в существующий сайт, и сделать отдельное приложение. Существуют механизмы для подготовки сайтов на серверной стороне, которые используют механику JSX.</p>
+</section>
+</div>
+</section>
+<section id="запуск-минимального-приложения-vue-typescript" class="level2" data-number="6.5">
+<h2 data-number="6.5">6.5. Запуск минимального приложения Vue TypeScript</h2>
+<div class="text-container text-container--module">
+<section id="шаг-1-22" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1">Шаг №1</h3>
+<p>Пакет Vue приходит к вам в виде инструментов, которые можно установить:</p>
+<pre><code>npm install --global @vue/cli</code></pre>
+<p>С помощью этих инструментов вы можете инициализировать новый проект и потребовать от Vue использования TypeScript. Используйте Manual Select Features.</p>
+<pre><code>vue create levelup-typescript-vue</code></pre>
+<p><img src="../media/file16.png" /></p>
+<p>В первом вопросе добавьте пункт TypeScript, а ответы на остальные вопросы можете оставить по умолчанию.</p>
+<p><img src="../media/file17.png" /></p>
+<p>В результате у вас появится директория levelup-typescript-vue.</p>
+</section>
+<section id="шаг-2-22" class="level3" data-number="6.5.2">
+<h3 data-number="6.5.2">Шаг №2</h3>
+<p>Заготовка приложения Vue содержит ряд знакомых файлов, таких как <code>tsconfig.json</code>, а также компоненты <code>.vue</code>.</p>
+<p>А где же TypeScript?</p>
+<p>Изучим файл <code>src\components\HelloWorld.vue</code>.</p>
+<p><img src="../media/file18.png" /></p>
+<p>На 34 строке вы видите тег <code>&lt;script&gt;</code> с атрибутом я <code>lang="ts"</code> — это модуль TypeScript.</p>
+<p>В документации вы можете более подробно ознакомиться с особенностями использования TypeScript, возможностями определения типов и другими нюансами.</p>
+<p>Если вы работаете в VS-Code, для удобства установите расширение: <a href="https://marketplace.visualstudio.com/items?itemName=octref.vetur">https://marketplace.visualstudio.com/items?itemName=octref.vetur</a>.</p>
+</section>
+<section id="шаг-3-22" class="level3" data-number="6.5.3">
+<h3 data-number="6.5.3">Шаг №3</h3>
+<p>Как это часто бывает в Open Source-сообществе, всегда есть варианты. Для запуска приложения Vue вы используете не <code>npm run start</code>, а:</p>
+<pre><code>npm run serve</code></pre>
+<p>По умолчанию вы получите:</p>
+<pre><code>  App running at:
+  - Local:   http://localhost:8080/
+  - Network: http://192.168.40.101:8080/
+
+  Note that the development build is not optimized.
+  To create a production build, run npm run build.
+
+Issues checking in progress...
+No issues found.</code></pre>
+<p>И вы можете направить свой браузер на адрес <a href="http://localhost:8080/">http://localhost:8080/</a>.</p>
+</section>
+<section id="шаг-4-20" class="level3" data-number="6.5.4">
+<h3 data-number="6.5.4">Шаг №4</h3>
+<p>Измените TypeScript в файле <code>src\components\HelloWorld.vue</code>:</p>
+<pre><code>import { defineComponent } from &#39;vue&#39;;
+
+export default defineComponent({
+  name: &#39;HelloWorld&#39;,
+  props: {
+    msg: String,
+    details: String,
+  },
+});
+</code></pre>
+<p>Добавьте разметку в файл <code>src\components\HelloWorld.vue</code>:</p>
+<pre><code>&lt;section&gt;{{details}}&lt;/section&gt;</code></pre>
+<p>Добавьте атрибут в файл <code>src\App.vue</code>:</p>
+<pre><code>&lt;template&gt;
+  &lt;img alt=&quot;Vue logo&quot; src=&quot;./assets/logo.png&quot;&gt;
+  &lt;HelloWorld 
+  msg=&quot;Welcome to Your Vue.js + TypeScript App&quot;
+  details=&quot;Больше информации о Vue&quot;
+  /&gt;
+&lt;/template&gt;</code></pre>
+<p>Убедитесь, что вы видите в браузере внесённые изменения:</p>
+<p><img src="../media/file19.png" /></p>
+</section>
+</div>
+</section>
+<section id="борьба-за-качество-по-typescript-и-не-только" class="level2" data-number="6.6">
+<h2 data-number="6.6">6.6. Борьба за качество ПО: TypeScript и не только</h2>
+<div class="text-container text-container--module">
+<p>TypeScript позволяет опытным разработчикам создавать качественные продукты быстрее, надёжнее и эффективнее. Статический анализатор TypeScript и другие сервисы находят «узкие места» в коде и позволяют разработчику принимать решение.</p>
+<p>Посмотрите, как разработчик поступил при обнаружении попытки деления на ноль.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> inverse <span class="op">=</span> (value<span class="op">:</span> <span class="dt">number</span>) <span class="kw">=&gt;</span>{</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(value<span class="op">===</span><span class="dv">0</span>){</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">RangeError</span>()<span class="op">;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span><span class="op">/</span>value<span class="op">;</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> inverseAlternative <span class="op">=</span> (value<span class="op">:</span> <span class="dt">number</span>)<span class="kw">=&gt;</span>{</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(value <span class="op">===</span> <span class="dv">0</span>){</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">Number</span><span class="op">.</span><span class="at">NaN</span><span class="op">;</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span><span class="op">/</span>value<span class="op">;</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> yetAnotherInverse <span class="op">=</span> (value<span class="op">:</span> <span class="dt">number</span>)<span class="kw">=&gt;</span> <span class="dv">1</span><span class="op">/</span>value<span class="op">;</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> report <span class="op">=</span> (value<span class="op">:</span><span class="dt">unknown</span>)<span class="kw">=&gt;</span><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(value)<span class="op">;</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> safeExec <span class="op">=</span> (action<span class="op">:</span>()<span class="kw">=&gt;</span><span class="dt">void</span>)<span class="kw">=&gt;</span>{</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span>{</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">action</span>()<span class="op">;</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">catch</span>(err){</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>      <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(err)<span class="op">;</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="fu">safeExec</span>(()<span class="kw">=&gt;</span><span class="fu">report</span>(<span class="fu">inverse</span>(<span class="dv">0</span>)))<span class="op">;</span></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a><span class="fu">safeExec</span>(()<span class="kw">=&gt;</span><span class="fu">report</span>(<span class="fu">inverseAlternative</span>(<span class="dv">0</span>)))<span class="op">;</span></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="fu">safeExec</span>(()<span class="kw">=&gt;</span><span class="fu">report</span>(<span class="fu">yetAnotherInverse</span>(<span class="dv">0</span>)))<span class="op">;</span></span></code></pre></div>
+<p><a href="https://www.typescriptlang.org/play?#code/MYewdgzgLgBAlmAbgUwE4WTAvDAFIgQwBsBXZALhjBIFsAjNASmwD4BvAKBm-gDN9iZLMIAMjTj0kwoAC1QgA7lWRKASgTABzZAFFU81LkYBuLjwC+Z7qmRQSqMDACMAekKlkpyx1CRYCFHRkAEEiKDQwAig4FGw8dzJKanomLHYrPgEPbGEYMQkpa1t7RwA5WgZUADpSglLTSUtJGzsHZzdBTw5vX2gYAE9bYLAQWTQASSQ0DDisxKoK1JZ2hK6fcD6bAAcQVFgcOYoSMABrEYUwRjTekCJkKqIQTUOTDnW-GAgCXl0AD2RgLMCMBouByEY0ogQHAACZXdLcKCofoFSTA0FgIwNGBNGDAKLAGS4NCocQZbg3O4PJ7E-SvbiWcymDhfH46f7AXAQljbXZQXABabIXBiRivVl-AFc+G8vYCqZBULhBxRGLC0Xi76Sznc2X8wZQYajGQTBUYEVi15AA">Посмотреть в песочнице</a>.</p>
+<p>Во всех случаях <code>inverse</code>, <code>inverseAlternative</code>, <code>yetAnotherInverse</code> готовы к работе и синтаксически корректны. Предположим, что разработчик принял решение использовать один из этих вариантов в проекте. TypeScript проконтролирует типы значений, и всё будет хорошо.</p>
+<p>Представим ситуацию. Во время реализации новых требований со стороны заказчика выяснилось, что поведение функции инвертирования стоит изменить. Вместо Number.NaN нужно возвращать Number.NEGATIVE_INFINITY или Number.INFINITY, чтобы не терять знак значения. Со стороны TypeScript ничего не поменяется.</p>
+<p>Как думаете, в чём риск такого изменения?</p>
+<section id="о-качестве-разработки" class="level3" data-number="6.6.1">
+<h3 data-number="6.6.1">О качестве разработки</h3>
+<p>TypeScript не гарантирует спокойствия. Чтобы усилить наши позиции и улучшить качество разработки, нужны дополнительные инструменты. Поговорим о трёх из них:</p>
+<ul>
+<li>модульное тестирование,</li>
+<li>адекватная архитектура,</li>
+<li>автоматизация развёртывания.</li>
+</ul>
+</section>
+<section id="модульное-тестирование" class="level3" data-number="6.6.2">
+<h3 data-number="6.6.2">Модульное тестирование</h3>
+<p>Существует несколько мнений о том, как лучше использовать модульное тестирование. Следует ли начинать разработку с создания тестов/спецификаций? Или тестировать, когда всё сломается? По нашему мнению, модульное тестирование должно исследовать только код автора, а не используемых библиотек, а также фиксировать поведение алгоритма и принятые разработчиком решения.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(<span class="st">&#39;инвертирование числа&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">it</span>(<span class="st">&#39;возвращает NaN при инвертировании нуля&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">expect</span>(<span class="bu">Number</span><span class="op">.</span><span class="fu">isNaN</span>(<span class="fu">inverseAlternative</span>(<span class="dv">0</span>)))<span class="op">.</span><span class="fu">eq</span>(<span class="kw">true</span>)<span class="op">;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="архитектура-по" class="level3" data-number="6.6.3">
+<h3 data-number="6.6.3">Архитектура ПО</h3>
+<p>Хорошая архитектура ПО проста и понятна, её легко развивать — важно иметь представление о ней. Существует множество формальных описаний шаблонов проектирования, и они могут быть полезны. Обязательно изучайте литературу по этому вопросу — эти сведения обогатят ваш арсенал как разработчика.</p>
+<p>Советуем прочитать книги:</p>
+<ul>
+<li>«Чистый код. Создание анализ и рефакторинг» Роберта Мартина.</li>
+<li>«Чистая архитектура. Искусство разработки программного обеспечения» Роберта Мартина.</li>
+<li>«Design Patterns. Elements of Reusable Object-Oriented Software». Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides.</li>
+</ul>
+</section>
+<section id="автоматическое-развёртывание" class="level3" data-number="6.6.4">
+<h3 data-number="6.6.4">Автоматическое развёртывание</h3>
+<p>На тему CI/CD говорят много и заслуженно. Главный риск при развёртывании и обновлении приложения — это люди. Человеческий фактор может остановить на полдня ЦОД Амазона или удалить ИНН всех клиентов в базе данных вкладчиков банка. Делайте всё зависящее от вас, чтобы развёртывание производилось роботами. Они железные и без эмоций.</p>
+</section>
+</div>
+</section>
+<section id="typescript.-теория-типов" class="level2" data-number="6.7">
+<h2 data-number="6.7">6.7. Typescript. Теория типов</h2>
+<div class="text-container text-container--module">
+<ol type="1">
+<li><strong>Какие из перечисленных типов являются примитивными в TypeScript?</strong></li>
+</ol>
+<ul>
+<li>bigint.</li>
+<li>boolean.</li>
+<li>null.</li>
+<li>number.</li>
+<li>string.</li>
+<li>symbol.</li>
+<li>undefined.</li>
+<li>Date.</li>
+<li>Map.</li>
+<li>Set.</li>
+<li>never.</li>
+<li>unknown.</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Как объявить переменную, значением которой может быть массив, содержащий элементы строковых или числовых значений?</strong></li>
+</ol>
+<ul>
+<li>Добавить аннотацию типа let fruits: string[].</li>
+<li>Использовать обобщённый тип. let fruits: Array&lt;string&gt;.</li>
+<li>Использовать способность компилятора догадываться о разрешённых типах по контексту: let arr = [1, 3, ‘Apple’, ‘Orange’, ‘Banana’, true, false].</li>
+<li>Добавить переменной аннотацию — массив объединения типа: let values: (string | number)[].</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>В каких случаях не требуется аннотация типа при объявлении переменной ‘buffer’?</strong></li>
+</ol>
+<ul>
+<li>let buffer = 3.</li>
+<li>let buffer = [0, 1, null].</li>
+<li>window.onmousedown = function (buffer) {} /*в отношении аргумента mouseEvent*/.</li>
+<li>const buffer = ():Item[] =&gt;[new Home(),new About(), new Profile()] /*Home, About, Profile все они наследуют от Item*/.</li>
+<li>Для каждой из приведённых деклараций TypeScript в состоянии вывести тип переменной ‘buffer’.</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>Какие ошибки обнаружит компилятор при сборке приведённой программы при компиляции с флагом strict?</strong></li>
+</ol>
+<div class="sourceCode" id="cb20"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">// компилировать tsc --strict</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Action <span class="op">=</span> ()<span class="kw">=&gt;</span><span class="dt">void</span><span class="op">;</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> getItem<span class="op">:</span>Action <span class="op">=</span> () <span class="kw">=&gt;</span>{</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> item <span class="op">=</span> <span class="fu">getItem</span>()<span class="op">;</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(item)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Не обнаружит никаких ошибок.</li>
+<li>Type ‘number’ is not assignable to type ‘void’.</li>
+</ul>
+<ol start="5" type="1">
+<li><strong>Какие значения программа отобразит в консоли?</strong></li>
+</ol>
+<div class="sourceCode" id="cb21"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Action <span class="op">=</span> ()<span class="kw">=&gt;</span><span class="dt">void</span><span class="op">;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> getItem<span class="op">:</span>Action <span class="op">=</span> () <span class="kw">=&gt;</span>{</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> item <span class="op">=</span> <span class="fu">getItem</span>()<span class="op">;</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(item)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Не отобразит никаких символов.</li>
+<li>42.</li>
+</ul>
+<ol start="6" type="1">
+<li><strong>Допускает ли TypeScript следующую программу?</strong></li>
+</ol>
+<div class="sourceCode" id="cb22"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">//  сборка с флагом useUnknownInCatchVariables</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> TextProvider <span class="op">=</span> ()<span class="kw">=&gt;</span><span class="dt">string</span><span class="op">;</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> THRESHOLD <span class="op">=</span> <span class="fl">0.5</span><span class="op">;</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> getText<span class="op">:</span>TextProvider <span class="op">=</span>()<span class="kw">=&gt;</span>{</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span>{</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>()<span class="op">&lt;</span>THRESHOLD){</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="st">&#39;success&#39;</span><span class="op">;</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">&#39;failure&#39;</span>)<span class="op">;</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">catch</span>(err){</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> err<span class="op">.</span><span class="at">message</span><span class="op">;</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>Компилятор соберёт программу и создаст JS-файл без каких-либо предупреждений.</li>
+<li>Компилятор выдаст предупреждение об отсутствии аннотации типа переменной err.</li>
+<li>В присутствии флага useUnknownInCatchVariables компилятор выдаст предупреждение.</li>
+</ul>
+<ol start="7" type="1">
+<li><strong>Какие флаги компилятора создадут условия для безошибочной компиляции программы?</strong></li>
+</ol>
+<div class="sourceCode" id="cb23"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> THRESHOLD <span class="op">=</span> <span class="fl">0.5</span><span class="op">;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> TextProvider <span class="op">=</span> ()<span class="kw">=&gt;</span><span class="dt">string</span><span class="op">;</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> getText<span class="op">:</span>TextProvider <span class="op">=</span>()<span class="kw">=&gt;</span>{</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span>{</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>()<span class="op">&lt;</span>THRESHOLD){</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="st">&#39;success&#39;</span><span class="op">;</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">throw</span> <span class="st">&#39;failure&#39;</span><span class="op">;</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">catch</span>(err){</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> err<span class="op">.</span><span class="at">message</span><span class="op">;</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>Программа синтаксически неверна, она не будет компилироваться без ошибок.</li>
+<li>useUnknownInCatchVariables=false.</li>
+</ul>
+<ol start="8" type="1">
+<li><strong>Сколько ошибок обнаружит компилятор?</strong></li>
+</ol>
+<div class="sourceCode" id="cb24"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> optimist <span class="op">=</span> ()<span class="kw">=&gt;true</span><span class="op">;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> typeofValue<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>typeofValue <span class="op">=</span> <span class="kw">typeof</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>typeofValue <span class="op">=</span> <span class="kw">typeof</span> ()<span class="kw">=&gt;true</span><span class="op">;</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>typeofValue <span class="op">=</span> <span class="kw">typeof</span> (()<span class="kw">=&gt;true</span>)<span class="op">;</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>typeofValue <span class="op">=</span> <span class="kw">typeof</span> optimist<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>0.</li>
+<li>1.</li>
+<li>2.</li>
+</ul>
+<ol start="9" type="1">
+<li><strong>Какие варианты для настройки компилятора возможны при работе c TypeScript?</strong></li>
+</ol>
+<ul>
+<li>Создание tsconfig.json в корневой директории проекта.</li>
+<li>Запуск tsc с набором параметров в командной строке.</li>
+<li>Настройки в проекте msbuild, например, .csproj.</li>
+</ul>
+<ol start="10" type="1">
+<li><strong>Сколько реализаций придётся создать для трёх вариантов перегруженных функций?</strong></li>
+</ol>
+<div class="sourceCode" id="cb25"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">date</span>(ticks<span class="op">:</span><span class="dt">number</span>)<span class="op">:</span><span class="bu">Date</span><span class="op">;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">date</span>(year<span class="op">:</span><span class="dt">number</span><span class="op">,</span> month<span class="op">:</span> <span class="dt">number</span><span class="op">,</span> day<span class="op">:</span><span class="dt">number</span>)<span class="op">:</span><span class="bu">Date</span><span class="op">;</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">date</span>(isoString<span class="op">:</span><span class="dt">string</span>)<span class="op">:</span><span class="bu">Date</span><span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Три различные реализации.</li>
+<li>Реализация набора таких функций невозможна.</li>
+<li>Требуется одна реализация.</li>
+</ul>
+<ol start="11" type="1">
+<li><strong>Какую нагрузку несут интерфейсы в TypeScript?</strong></li>
+</ol>
+<ul>
+<li>Определяют контракт между компонентами программы.</li>
+<li>Предоставляют возможности для реализации полиморфизма.</li>
+<li>Ограничивают возможности множественного наследования.</li>
+<li>Определяют имя для нового типа данных.</li>
+<li>Добавляют свойство в объект import.meta.</li>
+</ul>
+<ol start="12" type="1">
+<li><strong>Приведённая программа компилируется без ошибок. Будет ли компилятор считать программу ошибочной, если заменить Pick&lt;ServiceBase,“queryData”&gt; на ServiceBase?</strong></li>
+</ol>
+<div class="sourceCode" id="cb26"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ServiceBase{</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">private</span> endpoint<span class="op">:</span><span class="dt">string</span> <span class="op">=</span> <span class="st">&#39;&#39;</span><span class="op">;</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">protected</span> <span class="fu">getQueryUrl</span>(endpoint<span class="op">:</span><span class="dt">string</span>)<span class="op">:</span><span class="dt">string</span>{<span class="cf">return</span> endpoint}<span class="op">;</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">public</span> <span class="kw">async</span> <span class="fu">queryData</span>()<span class="op">:</span><span class="bu">Promise</span><span class="op">&lt;</span><span class="dt">unknown</span><span class="op">&gt;</span>{</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(<span class="kw">this</span><span class="op">.</span><span class="fu">getQueryUrl</span>(<span class="kw">this</span><span class="op">.</span><span class="at">endpoint</span>))<span class="op">;</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(response<span class="op">.</span><span class="at">ok</span>){</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>()<span class="op">;</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> mockService<span class="op">:</span><span class="bu">Pick</span><span class="op">&lt;</span>ServiceBase<span class="op">,</span><span class="st">&quot;queryData&quot;</span><span class="op">&gt;</span> <span class="op">=</span> {</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>  queryData<span class="op">:</span>()<span class="kw">=&gt;</span><span class="bu">Promise</span><span class="op">.</span><span class="fu">resolve</span>({})</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>Разработчик может использовать имя класса на месте, где ожидается имя типа, поэтому программа будет компилироваться без ошибок.</li>
+<li>Разработчик не сможет использовать описание типа значений экземпляров класса ServiceBase для создания моковых значений.</li>
+</ul>
+<ol start="13" type="1">
+<li><strong>На примере приведённой программы объясните, что означает объединение типов в TypeScript?</strong></li>
+</ol>
+<div class="sourceCode" id="cb27"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> KeyFieldType <span class="op">=</span> <span class="dt">number</span> <span class="op">|</span><span class="dt">string</span><span class="op">;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> keyToFind<span class="op">:</span>KeyFieldType <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> findKey <span class="op">=</span> (keyToFind<span class="op">:</span>KeyFieldType)<span class="op">:</span>KeyFieldType <span class="kw">=&gt;</span> keyToFind<span class="op">;</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> keyFound<span class="op">:</span> <span class="dt">number</span> <span class="op">=</span> <span class="fu">findKey</span>()<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Переменной объединённого типа можно присвоить значение любого из объединяемых типов.</li>
+<li>Переменной любого из объединяемых типов можно присвоить значение объединённого типа.</li>
+</ul>
+<ol start="14" type="1">
+<li><strong>На примере приведённой программы объясните, что означает пересечение типов в TypeScript.</strong></li>
+</ol>
+<div class="sourceCode" id="cb28"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>example <span class="op">=</span> (keyToFind<span class="op">:</span> TLeft <span class="op">&amp;</span> TRight<span class="op">,</span> prefix<span class="op">:</span> TLeft) <span class="kw">=&gt;</span> {</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">type</span> KeyFieldType <span class="op">=</span> TLeft<span class="op">&amp;</span>TRight<span class="op">;</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    keyFound <span class="op">=</span> prefix<span class="op">;</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> findKey <span class="op">=</span> (keyToFind<span class="op">:</span> KeyFieldType)<span class="op">:</span> KeyFieldType <span class="kw">=&gt;</span> keyToFind<span class="op">;</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> keyFound<span class="op">:</span> TLeft <span class="op">=</span> <span class="fu">findKey</span>(keyToFind)<span class="op">;</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> keyFound<span class="op">;</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>Переменной пересечённого типа можно присвоить значения любого из пересекаемых типов.</li>
+<li>Переменной любого из пересекаемых типов можно присвоить значение пересечённого типа.</li>
+</ul>
+<ol start="15" type="1">
+<li><strong>В контексте определения кортежа из трёх элементов определите, сколько ошибок обнаружит компилятор для программы.</strong></li>
+</ol>
+<div class="sourceCode" id="cb29"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>ShoppingCartLine <span class="op">=</span> [label<span class="op">:</span> <span class="dt">string</span><span class="op">,</span> price<span class="op">:</span> <span class="dt">number</span><span class="op">,</span> discont<span class="op">:</span> <span class="dt">number</span>]<span class="op">;</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> prepareLine <span class="op">=</span> (</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    label<span class="op">:</span> <span class="dt">string</span><span class="op">,</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    price<span class="op">:</span> <span class="dt">number</span><span class="op">,</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    discont<span class="op">?:</span> <span class="dt">number</span><span class="op">,</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>)<span class="op">:</span> ShoppingCartLine <span class="kw">=&gt;</span> discont <span class="op">?</span> [label<span class="op">,</span> price<span class="op">,</span> discont] <span class="op">:</span> [label<span class="op">,</span> price]<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>0.</li>
+<li>1.</li>
+<li>2.</li>
+</ul>
+<ol start="16" type="1">
+<li><strong>В контексте определения кортежа из трёх элементов определите, сколько ошибок обнаружит компилятор для программы.</strong></li>
+</ol>
+<div class="sourceCode" id="cb30"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> ShoppingCartLine <span class="op">=</span> [label<span class="op">:</span> <span class="dt">string</span><span class="op">,</span> price<span class="op">?:</span> <span class="dt">number</span><span class="op">,</span> discont<span class="op">:</span> <span class="dt">number</span>]<span class="op">;</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> prepareLine <span class="op">=</span> (</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  label<span class="op">:</span> <span class="dt">string</span><span class="op">,</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  price<span class="op">:</span> <span class="dt">number</span><span class="op">,</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  discont<span class="op">?:</span> <span class="dt">number</span><span class="op">,</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>)<span class="op">:</span> ShoppingCartLine <span class="kw">=&gt;</span> discont <span class="op">?</span> [label<span class="op">,</span> price<span class="op">,</span> discont] <span class="op">:</span> [label<span class="op">,</span> price]<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>0.</li>
+<li>1.</li>
+<li>2.</li>
+</ul>
+<ol start="17" type="1">
+<li><strong>В контексте определения кортежа из трёх элементов определите, сколько ошибок обнаружит компилятор для программы.</strong></li>
+</ol>
+<div class="sourceCode" id="cb31"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> buffer<span class="op">:</span> <span class="dt">unknown</span> <span class="op">=</span> <span class="st">&#39;TypeScript&#39;</span> <span class="im">as</span> <span class="dt">unknown</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> len<span class="op">:</span> <span class="dt">number</span> <span class="op">=</span> (buffer <span class="im">as</span> <span class="dt">string</span>)<span class="op">.</span><span class="at">length</span><span class="op">;</span></span></code></pre></div>
+<ul>
+<li>0.</li>
+<li>1.</li>
+<li>2.</li>
+</ul>
+<ol start="18" type="1">
+<li><strong>На примере приведённой программы выясните, создаёт ли дополнительную нагрузку на сборщик мусора использование утверждения типа (as).</strong></li>
+</ol>
+<div class="sourceCode" id="cb32"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> buffer<span class="op">:</span> <span class="dt">unknown</span> <span class="op">=</span> <span class="st">&#39;TypeScript&#39;</span> <span class="im">as</span> <span class="dt">unknown</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> len<span class="op">:</span> <span class="dt">number</span> <span class="op">=</span> (buffer <span class="im">as</span> <span class="dt">string</span>)<span class="op">.</span><span class="at">length</span><span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Нет, утверждение типа не создаст дополнительной нагрузки на сборщик мусора.</li>
+<li>Да, утверждение типа создаст временное значение, которое придётся утилизировать сборщику мусора.</li>
+</ul>
+<ol start="19" type="1">
+<li><strong>Что делает флаг компилятора strictNullChecks?</strong></li>
+</ol>
+<ul>
+<li>Запрещает использование ключевого слова null.</li>
+<li>Добавляет специальный тип undefined в набор примитивных типов.</li>
+<li>Предотвращает доступ к несуществующим свойствам объекта.</li>
+<li>Контролирует использование типа any в программе.</li>
+</ul>
+<ol start="20" type="1">
+<li><strong>Что делает флаг компилятора noImplicitAny?</strong></li>
+</ol>
+<ul>
+<li>Запрещает использование ключевого слова any для обозначения типа.</li>
+<li>Требует, чтобы компилятор сообщил о значениях, тип которых он не может определить по контексту.</li>
+</ul>
+<ol start="21" type="1">
+<li><strong>Какой результат выполнения программы вы ожидаете?</strong></li>
+</ol>
+<div class="sourceCode" id="cb33"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>item <span class="op">=</span> <span class="st">&#39;TypeScript&#39;</span><span class="op">;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> result <span class="op">=</span> <span class="vs">`expression </span><span class="sc">${</span>item<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> item <span class="op">=</span> <span class="st">&#39;TypeScript&#39;</span><span class="op">;</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> result <span class="op">=</span> <span class="vs">`expression </span><span class="sc">${</span>item<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> expression<span class="op">:</span>result <span class="op">=</span> result<span class="op">;</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(expression)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Программа не компилируется. Её нельзя запустить.</li>
+<li>Typescript сообщит об ошибке, но создаст программу. Эта программа завершится с ошибкой.</li>
+<li>TypeScript сообщит об ошибке, но создаст программу. Эта программа при запуске выведет на экран сообщение.</li>
+</ul>
+<ol start="22" type="1">
+<li><strong>Какой тип ожидается у переменной buffer?</strong></li>
+</ol>
+<div class="sourceCode" id="cb34"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>SpellOutNumber <span class="op">=</span> T <span class="kw">extends</span> number<span class="op">?</span> string<span class="op">:</span> T<span class="op">;</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">spell</span><span class="op">&lt;</span>T<span class="op">&gt;</span>(value<span class="op">:</span>T)<span class="op">:</span>SpellOutNumber<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">;</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> buffer <span class="op">=</span> <span class="fu">spell</span>(<span class="bu">Date</span>())<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Date.</li>
+<li>number.</li>
+<li>string.</li>
+</ul>
+<ol start="23" type="1">
+<li><strong>Определение типа StrictType эквивалентно какому предоставленному типу?</strong></li>
+</ol>
+<div class="sourceCode" id="cb35"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> StrictType<span class="op">&lt;</span>T<span class="op">&gt;=</span>{</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  [K <span class="kw">in</span> <span class="kw">keyof</span> T]<span class="op">-?:</span>T[K]<span class="op">|</span><span class="dt">undefined</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> PersonalData{</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  name<span class="op">:</span><span class="dt">string</span><span class="op">;</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  passport<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  driversLicense<span class="op">?:</span> <span class="dt">string</span> <span class="op">|</span> <span class="dt">undefined</span><span class="op">;</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">getPersonalData</span>()<span class="op">:</span>PersonalData<span class="op">;</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> data<span class="op">:</span>StrictType<span class="op">&lt;</span>PersonalData<span class="op">&gt;</span> <span class="op">=</span> <span class="fu">getPersonalData</span>()<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Omit.</li>
+<li>Partial.</li>
+<li>Pick.</li>
+<li>Readonly.</li>
+<li>Required.</li>
+</ul>
+</div>
+</section>
+<section id="typescript.-теория-типов-ответы" class="level2" data-number="6.8">
+<h2 data-number="6.8">6.7. Typescript. Теория типов (Ответы)</h2>
+<div class="text-container text-container--module">
+<ol type="1">
+<li><strong>Какие из перечисленных типов являются примитивными в TypeScript?</strong></li>
+</ol>
+<ul>
+<li>bigint.</li>
+<li>boolean.</li>
+<li>null.</li>
+<li>number.</li>
+<li>string.</li>
+<li>symbol.</li>
+<li>undefined.</li>
+<li>never.</li>
+<li>unknown.</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Как объявить переменную, значением которой может быть массив, содержащий элементы строковых или числовых значений?</strong></li>
+</ol>
+<ul>
+<li>Добавить переменной аннотацию — массив объединения типа: let values: (string | number)[].</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>В каких случаях не требуется аннотация типа при объявлении переменной ‘buffer’?</strong></li>
+</ol>
+<ul>
+<li>let buffer = 3.</li>
+<li>let buffer = [0, 1, null].</li>
+<li>window.onmousedown = function (buffer) {} /*в отношении аргумента mouseEvent*/.</li>
+<li>const buffer = ():Item[] =&gt;[new Home(),new About(), new Profile()] /*Home, About, Profile все они наследуют от Item*/.</li>
+<li>Для каждой из приведённых деклараций TypeScript в состоянии вывести тип переменной ‘buffer’.</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>Какие ошибки обнаружит компилятор при сборке приведённой программы при компиляции с флагом strict?</strong></li>
+</ol>
+<div class="sourceCode" id="cb36"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">// компилировать tsc --strict</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Action <span class="op">=</span> ()<span class="kw">=&gt;</span><span class="dt">void</span><span class="op">;</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> getItem<span class="op">:</span>Action <span class="op">=</span> () <span class="kw">=&gt;</span>{</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> item <span class="op">=</span> <span class="fu">getItem</span>()<span class="op">;</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(item)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Не обнаружит никаких ошибок.</li>
+</ul>
+<ol start="5" type="1">
+<li><strong>Какие значения программа отобразит в консоли?</strong></li>
+</ol>
+<div class="sourceCode" id="cb37"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Action <span class="op">=</span> ()<span class="kw">=&gt;</span><span class="dt">void</span><span class="op">;</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> getItem<span class="op">:</span>Action <span class="op">=</span> () <span class="kw">=&gt;</span>{</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> item <span class="op">=</span> <span class="fu">getItem</span>()<span class="op">;</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(item)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>42.</li>
+</ul>
+<ol start="6" type="1">
+<li><strong>Допускает ли TypeScript следующую программу?</strong></li>
+</ol>
+<div class="sourceCode" id="cb38"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">//  сборка с флагом useUnknownInCatchVariables</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> TextProvider <span class="op">=</span> ()<span class="kw">=&gt;</span><span class="dt">string</span><span class="op">;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> THRESHOLD <span class="op">=</span> <span class="fl">0.5</span><span class="op">;</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> getText<span class="op">:</span>TextProvider <span class="op">=</span>()<span class="kw">=&gt;</span>{</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span>{</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>()<span class="op">&lt;</span>THRESHOLD){</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="st">&#39;success&#39;</span><span class="op">;</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">&#39;failure&#39;</span>)<span class="op">;</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">catch</span>(err){</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> err<span class="op">.</span><span class="at">message</span><span class="op">;</span></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>В присутствии флага useUnknownInCatchVariables компилятор выдаст предупреждение.</li>
+</ul>
+<ol start="7" type="1">
+<li><strong>Какие флаги компилятора создадут условия для безошибочной компиляции программы?</strong></li>
+</ol>
+<div class="sourceCode" id="cb39"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> THRESHOLD <span class="op">=</span> <span class="fl">0.5</span><span class="op">;</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> TextProvider <span class="op">=</span> ()<span class="kw">=&gt;</span><span class="dt">string</span><span class="op">;</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> getText<span class="op">:</span>TextProvider <span class="op">=</span>()<span class="kw">=&gt;</span>{</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span>{</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>()<span class="op">&lt;</span>THRESHOLD){</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="st">&#39;success&#39;</span><span class="op">;</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">throw</span> <span class="st">&#39;failure&#39;</span><span class="op">;</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">catch</span>(err){</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> err<span class="op">.</span><span class="at">message</span><span class="op">;</span></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>useUnknownInCatchVariables=false.</li>
+</ul>
+<ol start="8" type="1">
+<li><strong>Сколько ошибок обнаружит компилятор?</strong></li>
+</ol>
+<div class="sourceCode" id="cb40"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> optimist <span class="op">=</span> ()<span class="kw">=&gt;true</span><span class="op">;</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> typeofValue<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>typeofValue <span class="op">=</span> <span class="kw">typeof</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>typeofValue <span class="op">=</span> <span class="kw">typeof</span> ()<span class="kw">=&gt;true</span><span class="op">;</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>typeofValue <span class="op">=</span> <span class="kw">typeof</span> (()<span class="kw">=&gt;true</span>)<span class="op">;</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>typeofValue <span class="op">=</span> <span class="kw">typeof</span> optimist<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>2.</li>
+</ul>
+<ol start="9" type="1">
+<li><strong>Какие варианты для настройки компилятора возможны при работе c TypeScript?</strong></li>
+</ol>
+<ul>
+<li>Создание tsconfig.json в корневой директории проекта.</li>
+<li>Запуск tsc с набором параметров в командной строке.</li>
+<li>Настройки в проекте msbuild, например, .csproj.</li>
+</ul>
+<ol start="10" type="1">
+<li><strong>Сколько реализаций придётся создать для трёх вариантов перегруженных функций?</strong></li>
+</ol>
+<div class="sourceCode" id="cb41"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">date</span>(ticks<span class="op">:</span><span class="dt">number</span>)<span class="op">:</span><span class="bu">Date</span><span class="op">;</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">date</span>(year<span class="op">:</span><span class="dt">number</span><span class="op">,</span> month<span class="op">:</span> <span class="dt">number</span><span class="op">,</span> day<span class="op">:</span><span class="dt">number</span>)<span class="op">:</span><span class="bu">Date</span><span class="op">;</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">date</span>(isoString<span class="op">:</span><span class="dt">string</span>)<span class="op">:</span><span class="bu">Date</span><span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Требуется одна реализация.</li>
+</ul>
+<ol start="11" type="1">
+<li><strong>Какую нагрузку несут интерфейсы в TypeScript?</strong></li>
+</ol>
+<ul>
+<li>Определяют контракт между компонентами программы.</li>
+<li>Предоставляют возможности для реализации полиморфизма.</li>
+<li>Определяют имя для нового типа данных.</li>
+</ul>
+<ol start="12" type="1">
+<li><strong>Приведённая программа компилируется без ошибок. Будет ли компилятор считать программу ошибочной, если заменить Pick&lt;ServiceBase,“queryData”&gt; на ServiceBase?</strong></li>
+</ol>
+<div class="sourceCode" id="cb42"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ServiceBase{</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">private</span> endpoint<span class="op">:</span><span class="dt">string</span> <span class="op">=</span> <span class="st">&#39;&#39;</span><span class="op">;</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">protected</span> <span class="fu">getQueryUrl</span>(endpoint<span class="op">:</span><span class="dt">string</span>)<span class="op">:</span><span class="dt">string</span>{<span class="cf">return</span> endpoint}<span class="op">;</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">public</span> <span class="kw">async</span> <span class="fu">queryData</span>()<span class="op">:</span><span class="bu">Promise</span><span class="op">&lt;</span><span class="dt">unknown</span><span class="op">&gt;</span>{</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(<span class="kw">this</span><span class="op">.</span><span class="fu">getQueryUrl</span>(<span class="kw">this</span><span class="op">.</span><span class="at">endpoint</span>))<span class="op">;</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(response<span class="op">.</span><span class="at">ok</span>){</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>()<span class="op">;</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> mockService<span class="op">:</span><span class="bu">Pick</span><span class="op">&lt;</span>ServiceBase<span class="op">,</span><span class="st">&quot;queryData&quot;</span><span class="op">&gt;</span> <span class="op">=</span> {</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>  queryData<span class="op">:</span>()<span class="kw">=&gt;</span><span class="bu">Promise</span><span class="op">.</span><span class="fu">resolve</span>({})</span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>Разработчик не сможет использовать описание типа значений экземпляров класса ServiceBase для создания моковых значений.</li>
+</ul>
+<ol start="13" type="1">
+<li><strong>На примере приведённой программы объясните, что означает объединение типов в TypeScript?</strong></li>
+</ol>
+<div class="sourceCode" id="cb43"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> KeyFieldType <span class="op">=</span> <span class="dt">number</span> <span class="op">|</span><span class="dt">string</span><span class="op">;</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> keyToFind<span class="op">:</span>KeyFieldType <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> findKey <span class="op">=</span> (keyToFind<span class="op">:</span>KeyFieldType)<span class="op">:</span>KeyFieldType <span class="kw">=&gt;</span> keyToFind<span class="op">;</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> keyFound<span class="op">:</span> <span class="dt">number</span> <span class="op">=</span> <span class="fu">findKey</span>()<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Переменной объединённого типа можно присвоить значение любого из объединяемых типов.</li>
+</ul>
+<ol start="14" type="1">
+<li><strong>На примере приведённой программы объясните, что означает пересечение типов в TypeScript.</strong></li>
+</ol>
+<div class="sourceCode" id="cb44"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>example <span class="op">=</span> (keyToFind<span class="op">:</span> TLeft <span class="op">&amp;</span> TRight<span class="op">,</span> prefix<span class="op">:</span> TLeft) <span class="kw">=&gt;</span> {</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">type</span> KeyFieldType <span class="op">=</span> TLeft<span class="op">&amp;</span>TRight<span class="op">;</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    keyFound <span class="op">=</span> prefix<span class="op">;</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> findKey <span class="op">=</span> (keyToFind<span class="op">:</span> KeyFieldType)<span class="op">:</span> KeyFieldType <span class="kw">=&gt;</span> keyToFind<span class="op">;</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> keyFound<span class="op">:</span> TLeft <span class="op">=</span> <span class="fu">findKey</span>(keyToFind)<span class="op">;</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> keyFound<span class="op">;</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>Переменной любого из пересекаемых типов можно присвоить значение пересечённого типа.</li>
+</ul>
+<ol start="15" type="1">
+<li><strong>В контексте определения кортежа из трёх элементов определите, сколько ошибок обнаружит компилятор для программы.</strong></li>
+</ol>
+<div class="sourceCode" id="cb45"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>ShoppingCartLine <span class="op">=</span> [label<span class="op">:</span> <span class="dt">string</span><span class="op">,</span> price<span class="op">:</span> <span class="dt">number</span><span class="op">,</span> discont<span class="op">:</span> <span class="dt">number</span>]<span class="op">;</span> </span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> prepareLine <span class="op">=</span> (</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    label<span class="op">:</span> <span class="dt">string</span><span class="op">,</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    price<span class="op">:</span> <span class="dt">number</span><span class="op">,</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>    discont<span class="op">?:</span> <span class="dt">number</span><span class="op">,</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>)<span class="op">:</span> ShoppingCartLine <span class="kw">=&gt;</span> discont <span class="op">?</span> [label<span class="op">,</span> price<span class="op">,</span> discont] <span class="op">:</span> [label<span class="op">,</span> price]<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>1.</li>
+</ul>
+<ol start="16" type="1">
+<li><strong>В контексте определения кортежа из трёх элементов определите, сколько ошибок обнаружит компилятор для программы.</strong></li>
+</ol>
+<div class="sourceCode" id="cb46"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> ShoppingCartLine <span class="op">=</span> [label<span class="op">:</span> <span class="dt">string</span><span class="op">,</span> price<span class="op">?:</span> <span class="dt">number</span><span class="op">,</span> discont<span class="op">:</span> <span class="dt">number</span>]<span class="op">;</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> prepareLine <span class="op">=</span> (</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  label<span class="op">:</span> <span class="dt">string</span><span class="op">,</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  price<span class="op">:</span> <span class="dt">number</span><span class="op">,</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  discont<span class="op">?:</span> <span class="dt">number</span><span class="op">,</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>)<span class="op">:</span> ShoppingCartLine <span class="kw">=&gt;</span> discont <span class="op">?</span> [label<span class="op">,</span> price<span class="op">,</span> discont] <span class="op">:</span> [label<span class="op">,</span> price]<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>0.</li>
+</ul>
+<ol start="17" type="1">
+<li><strong>В контексте определения кортежа из трёх элементов определите, сколько ошибок обнаружит компилятор для программы.</strong></li>
+</ol>
+<div class="sourceCode" id="cb47"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> buffer<span class="op">:</span> <span class="dt">unknown</span> <span class="op">=</span> <span class="st">&#39;TypeScript&#39;</span> <span class="im">as</span> <span class="dt">unknown</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> len<span class="op">:</span> <span class="dt">number</span> <span class="op">=</span> (buffer <span class="im">as</span> <span class="dt">string</span>)<span class="op">.</span><span class="at">length</span><span class="op">;</span></span></code></pre></div>
+<ul>
+<li>2.</li>
+</ul>
+<ol start="18" type="1">
+<li><strong>На примере приведённой программы выясните, создаёт ли дополнительную нагрузку на сборщик мусора использование утверждения типа (as).</strong></li>
+</ol>
+<div class="sourceCode" id="cb48"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> buffer<span class="op">:</span> <span class="dt">unknown</span> <span class="op">=</span> <span class="st">&#39;TypeScript&#39;</span> <span class="im">as</span> <span class="dt">unknown</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> len<span class="op">:</span> <span class="dt">number</span> <span class="op">=</span> (buffer <span class="im">as</span> <span class="dt">string</span>)<span class="op">.</span><span class="at">length</span><span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Нет, утверждение типа не создаст дополнительной нагрузки на сборщик мусора.</li>
+</ul>
+<ol start="19" type="1">
+<li><strong>Что делает флаг компилятора strictNullChecks?</strong></li>
+</ol>
+<ul>
+<li>Добавляет специальный тип undefined в набор примитивных типов.</li>
+<li>Предотвращает доступ к несуществующим свойствам объекта.</li>
+</ul>
+<ol start="20" type="1">
+<li><strong>Что делает флаг компилятора noImplicitAny?</strong></li>
+</ol>
+<ul>
+<li>Требует, чтобы компилятор сообщил о значениях, тип которых он не может определить по контексту.</li>
+</ul>
+<ol start="21" type="1">
+<li><strong>Какой результат выполнения программы вы ожидаете?</strong></li>
+</ol>
+<div class="sourceCode" id="cb49"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>item <span class="op">=</span> <span class="st">&#39;TypeScript&#39;</span><span class="op">;</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> result <span class="op">=</span> <span class="vs">`expression </span><span class="sc">${</span>item<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> item <span class="op">=</span> <span class="st">&#39;TypeScript&#39;</span><span class="op">;</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> result <span class="op">=</span> <span class="vs">`expression </span><span class="sc">${</span>item<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> expression<span class="op">:</span>result <span class="op">=</span> result<span class="op">;</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(expression)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>TypeScript сообщит об ошибке, но создаст программу. Эта программа при запуске выведет на экран сообщение.</li>
+</ul>
+<ol start="22" type="1">
+<li><strong>Какой тип ожидается у переменной buffer?</strong></li>
+</ol>
+<div class="sourceCode" id="cb50"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>SpellOutNumber <span class="op">=</span> T <span class="kw">extends</span> number<span class="op">?</span> string<span class="op">:</span> T<span class="op">;</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">spell</span><span class="op">&lt;</span>T<span class="op">&gt;</span>(value<span class="op">:</span>T)<span class="op">:</span>SpellOutNumber<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">;</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> buffer <span class="op">=</span> <span class="fu">spell</span>(<span class="bu">Date</span>())<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>string.</li>
+</ul>
+<ol start="23" type="1">
+<li><strong>Определение типа StrictType эквивалентно какому предоставленному типу?</strong></li>
+</ol>
+<div class="sourceCode" id="cb51"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> StrictType<span class="op">&lt;</span>T<span class="op">&gt;=</span>{</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  [K <span class="kw">in</span> <span class="kw">keyof</span> T]<span class="op">-?:</span>T[K]<span class="op">|</span><span class="dt">undefined</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> PersonalData{</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>  name<span class="op">:</span><span class="dt">string</span><span class="op">;</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>  passport<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>  driversLicense<span class="op">?:</span> <span class="dt">string</span> <span class="op">|</span> <span class="dt">undefined</span><span class="op">;</span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">getPersonalData</span>()<span class="op">:</span>PersonalData<span class="op">;</span></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> data<span class="op">:</span>StrictType<span class="op">&lt;</span>PersonalData<span class="op">&gt;</span> <span class="op">=</span> <span class="fu">getPersonalData</span>()<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Required.</li>
+</ul>
+</div>
+</section>
+</section>
+</body>
+</html>

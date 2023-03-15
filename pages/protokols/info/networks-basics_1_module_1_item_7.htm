@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="" lang="ru"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="utf-8">
+
+
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/octicons-3.css">
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/core.css">
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/text.css"><link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/extended-ui-kit.css"><link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/up.css"><meta name="theme-color" content="#2d2d44"><link rel="mask-icon" href="https://up.htmlacademy.ru/meta/favicon.svg" color="#2e368e">
+
+
+</head><body>
+
+              <div class="page-content "><div class="page-content__inner"><div class="up-interface up-interface--up "><section class="up-interface__left-col"><nav class="breadcrumbs"><ul class="breadcrumbs__list"><li class="breadcrumbs__item"><a href="../index.htm">Главная</a></li><li class="breadcrumbs__item"><a href="networks-basics_1_module_1.htm">1. Архитектура, атаки и составляющие безопасности</a></li></ul></nav><article class="up-text"><div class="up-text__head"><h1 class="up-text__title"><svg aria-hidden="true" width="24" height="24"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg>
+          1.7.&nbsp;Открытие TCP-соединения
+        </h1></div><div class="text-container text-container--module"><p>Как
+ мы&nbsp;уже узнали, для нового ресурса открывается новое соединение 
+и&nbsp;на&nbsp;это тратится время. Ускорение производительности 
+достигается открытием TCP-соединения заранее&nbsp;— то&nbsp;есть 
+предзагрузкой контента. Давайте посмотрим, как это можно сделать.</p><p>Ускорить производительность довольно просто. Есть значения атрибута <code>rel</code> для тега <code>link</code>, которые отдают команды на&nbsp;предварительные действия:</p><pre class="html language-html"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"preload"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"preconnect"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"prerender"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"prefetch"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"dns-prefetch"</span> /&gt;</span>
+</code></pre><p>Разберём, за&nbsp;что отвечает каждый из&nbsp;них.</p><h2>Preload</h2><p><code>&lt;link rel= "preload"&gt;</code>
+ используется, если вам понадобится ресурс в&nbsp;течение нескольких 
+секунд. Отдаёт команду браузеру, что нужно этот ресурс загрузить 
+и&nbsp;кешировать, но&nbsp;пока ничего не&nbsp;делает с&nbsp;этим 
+ресурсом. Предоставляет его только тогда, когда его запрашивают.</p><p>Синтаксис:</p><pre><code class="hljs routeros">&lt;link <span class="hljs-attribute">rel</span>=<span class="hljs-string">"preload"</span> <span class="hljs-attribute">href</span>=<span class="hljs-string">"fonts/cicle_fina-webfont.woff2"</span> <span class="hljs-attribute">as</span>=<span class="hljs-string">"font"</span> <span class="hljs-attribute">type</span>=<span class="hljs-string">"font/woff2"</span> crossorigin&gt;
+</code></pre><p>Атрибут <code>href</code> указывает на&nbsp;путь к&nbsp;ресурсу. Атрибут <code>as</code>&nbsp;— на&nbsp;тип контента, его важно обозначить. Может быть:</p><ul><li><code>style</code> (CSS);</li><li><code>font</code> (шрифты);</li><li><code>image</code> (изображения);</li><li><code>script</code> (JavaScript);</li><li><code>video</code> (видеофайлы);</li><li><code>track</code> (субтитры для <code>&lt;video&gt;</code>);</li><li><code>audio</code> (аудиофайлы);</li><li><code>document</code> (HTML-документы для <code>&lt;iframe&gt;</code>);</li><li><code>fetch</code> (JSON-файлы).</li></ul><p>Примеры использования:</p><pre class="html language-html"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"preload"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"style.css"</span> <span class="hljs-attr">as</span>=<span class="hljs-string">"style"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"preload"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"main.js"</span> <span class="hljs-attr">as</span>=<span class="hljs-string">"script"</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"style.css"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"main.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+</code></pre><p>Что стоит предзагружать: нестандартные шрифты, фоновое 
+изображение на&nbsp;первом экрана, изображения на&nbsp;первом-втором 
+экранах. Не&nbsp;злоупотребляйте предзагрузкой, так как вместо ускорения
+ сайта может произойти обратная ситуация. Лучше предзагружать 
+не&nbsp;более 4–5 ресурсов.</p><h2>Prefetch</h2><p><code>&lt;link rel= "prefetch"&gt;</code>
+ загружает ресурсы с&nbsp;минимальным приоритетом, то&nbsp;есть после 
+загрузки всего остального. Его стоит использовать для загрузки ресурсов,
+ которые понадобятся на&nbsp;следующей странице. Для этого нужно знать 
+пользовательское поведение.</p><p>Например, на&nbsp;главной странице 
+интернет-магазина на&nbsp;первом экране находятся товары по&nbsp;акции. 
+По&nbsp;Яндекс Метрике увидели, что на&nbsp;страницы этих товаров 
+переходят 30% пользователей. Поэтому можно предзагрузить изображения 
+этих товаров и&nbsp;скрипты.</p><p>Синтаксис:</p><pre class="html language-html"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"prefetch"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"image-product-122.png"</span> <span class="hljs-attr">as</span>=<span class="hljs-string">"image"</span>&gt;</span>
+</code></pre><p>Браузер с&nbsp;ресурсом ничего 
+не&nbsp;делает:&nbsp;скрипты не&nbsp;исполняются, стили 
+не&nbsp;применяются, просто кешируются для момента, когда понадобятся.</p><p>Ограничений
+ по&nbsp;количеству подгружаемых ресурсов нет, так как загружаются после
+ всего остального контента, но&nbsp;при этом используется трафик 
+пользователя. Также браузер может проигнорировать <code>prefetch</code> при медленном соединении.</p><h2>Prerender</h2><p><code>&lt;link rel= "prerender"&gt;</code>
+ просит предзагрузить URL-адрес. При этом загружается вся страница 
+и&nbsp;её&nbsp;ресурсы, но&nbsp;не&nbsp;загружается 
+и&nbsp;не&nbsp;исполняется JavaScript. Стоит использовать для самой 
+популярной страницы, на&nbsp;которую переходит более половины 
+пользователей. Например, страницы цен.</p><p>Синтаксис:</p><pre class="html language-html"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"prerender"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://example.com/prices"</span> /&gt;</span>
+</code></pre><p>Используйте не&nbsp;более чем для одной страницы.</p><p>Это необязательный тег, то&nbsp;есть браузер может проигнорировать эту инструкцию.</p><h2>Dns-Prefetch и&nbsp;Preconnect</h2><p><code>&lt;link rel="dns-prefetch"&gt;</code> заранее просят подключиться к&nbsp;DNS внешних сайтов:</p><pre class="html language-html"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"dns-prefetch"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"//ajax.jivosite.com"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"dns-prefetch"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"//google-analytics.com"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"dns-prefetch"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"//mc.yandex.ru"</span>&gt;</span>
+</code></pre><p>Может пригодиться для приложений, которые запрашивают 
+информацию со&nbsp;сторонних сервисов, например, для турагентств. Либо 
+приложения библиотеки терминов, которая предоставляет ссылки 
+на&nbsp;внешние сайты.</p><p><code>&lt;link rel="preconnect"&gt;</code> тоже получает DNS, но&nbsp;идёт дальше и&nbsp;устанавливает соединение с&nbsp;ресурсом:</p><pre class="html language-html"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"preconnect"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"//ajax.jivosite.com"</span> <span class="hljs-attr">crossorigin</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"preconnect"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"//google-analytics.com"</span> <span class="hljs-attr">crossorigin</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"preconnect"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"//mc.yandex.ru"</span> <span class="hljs-attr">crossorigin</span>&gt;</span> 
+</code></pre><p>Атрибут <code>crossorigin</code> ускоряет подключение и&nbsp;загружает ресурс только один раз.</p><h2>Итог</h2><p><code>preload</code>&nbsp;— когда ресурс нужен в&nbsp;течение нескольких секунд.</p><p><code>prefetch</code>&nbsp;— когда ресурс нужен для следующей страницы.</p><p><code>prerender</code>&nbsp;—
+ когда вы&nbsp;уверены, что большинство пользователей перейдёт 
+на&nbsp;определённую страницу, и&nbsp;планируете ускорить 
+её&nbsp;загрузку.</p><p><code>preconnect</code>&nbsp;— когда знаете, что
+ вам скоро понадобится ресурс, но&nbsp;пока не&nbsp;знаете его полный 
+адрес. Для старых браузеров&nbsp;— <code>dns-prefetch</code>.</p><p>Теперь перейдём от&nbsp;теории к&nbsp;практике.</p></div>
+
+
+</div></div></div>
+
+
+
+</body></html>

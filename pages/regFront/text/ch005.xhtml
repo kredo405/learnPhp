@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ru-RU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>ch005.xhtml</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body epub:type="bodymatter">
+<section id="квантификаторы.-ограничения-длины.-жадность" class="level1" data-number="5">
+<h1 data-number="5">5. Квантификаторы. Ограничения длины. Жадность</h1>
+<div class="text-container text-container--module">
+<p>В этом разделе мы познакомимся с численными ограничениями, научимся решать задачи с неизвестным и неограниченным числом совпадений.</p>
+</div>
+<section id="что-если-не" class="level2" data-number="5.1">
+<h2 data-number="5.1">5.1. Что если не?</h2>
+<div class="text-container text-container--module">
+<p>Мы уже познакомились с численными квантификаторами и можем ограничить длину выражения. Но что делать, если заранее не знаем, есть ли в тексте заданная конструкция или нет? Если что-то может появляться и пропадать, но при этом совпадения от этого не страдают? На этот случай есть специальный квантификатор <code>?</code>, который применяется как к отдельным селекторам, так и группам селекторов, заключенным в квадратные <code>[]?</code> или круглые <code>()?</code> скобки.</p>
+<p>У квантификатора <code>?</code> есть эквивалент в виде фигурных скобок <code>{0,1}</code>, то есть совпадение <strong>может быть, а может не быть</strong>. Аналог условия <code>if</code> без альтернативного <code>else</code>.</p>
+<p>Например, когда вы просите записать кого-то номер мобильного, то диктуете, начиная с <code>7</code> или <code>8</code>. А кто-то перед этим проговаривает <code>+</code> или, наоборот, начинает со второй цифры. Но в целом мы всегда понимаем, о чём речь, и номер от этого не становится менее правильным.</p>
+<p>Давайте запишем это в виде паттерна:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;text&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;phone&quot;</span> <span class="er">placeholder</span><span class="ot">=</span><span class="st">&quot;мобильный&quot;</span> <span class="er">pattern</span><span class="ot">=</span><span class="st">&quot;^\+?[78]?\d{10}&quot;</span><span class="kw">&gt;</span></span></code></pre></div>
+<p>Именно подбор правильных селекторов в сочетании с вероятным отсутствием совпадения даёт возможность создавать удивительно сложные условия. Совпадать там, где логика трудно читается.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ss">/март</span><span class="sc">(?</span><span class="ss">:</span><span class="sc">[аеу]|</span><span class="ss">ом</span><span class="sc">|</span><span class="ss">овский</span><span class="sc">)?$</span><span class="ss">/i</span><span class="op">.</span><span class="fu">test</span>(<span class="st">&#39;мартовский&#39;</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ss">/март</span><span class="sc">(?</span><span class="ss">:</span><span class="sc">[аеу]|</span><span class="ss">ом</span><span class="sc">|</span><span class="ss">овский</span><span class="sc">)?$</span><span class="ss">/i</span><span class="op">.</span><span class="fu">test</span>(<span class="st">&#39;март&#39;</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ss">/март</span><span class="sc">(?</span><span class="ss">:</span><span class="sc">[аеу]|</span><span class="ss">ом</span><span class="sc">|</span><span class="ss">овский</span><span class="sc">)?$</span><span class="ss">/i</span><span class="op">.</span><span class="fu">test</span>(<span class="st">&#39;мартен&#39;</span>)<span class="op">;</span> <span class="co">// false</span></span></code></pre></div>
+<p>В примере выше мы перебрали различные варианты окончаний, чтобы проверить вхождение слова <code>март</code> в контекст, но при этом не исключили вариант использования слова без окончания.</p>
+<hr />
+<p>Неуверенность в совпадении теперь тоже не проблема. Главное, чтобы вы уверенно знали, что так тоже можно.</p>
+</div>
+</section>
+<section id="один-или-много" class="level2" data-number="5.2">
+<h2 data-number="5.2">5.2. Один или много +</h2>
+<div class="text-container text-container--module">
+<p>Уже знакомый нам по примерам в предыдущих разделах символ <code>+</code> является квантификатором, который обозначает <strong>одно или бесконечно много совпадений</strong>. Фигурными скобками мы можем записать это как <code>{1,}</code>.</p>
+<p>Этот квантификатор является «жадным». То есть он будет пытаться захватить максимальное количество символов, двигаясь в правую сторону, пока не упрётся в несовпадение или конец строки.</p>
+<p>Применяется как к отдельным литералам или селекторам, так и группам селекторов, заключенным в квадратные <code>[]+</code> или круглые <code>()+</code> скобки.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;number&quot;</span> <span class="er">pattern</span><span class="ot">=</span><span class="st">&quot;\d+&quot;</span><span class="kw">&gt;</span></span></code></pre></div>
+<p>Данный паттерн совпадет с любым целым числом или, другими словами, с любым количеством цифр.</p>
+<p>Универсальное во всех смыслах регулярное выражение <code>.+</code> совпадет вообще с чем угодно, кроме перевода строки <code>\n</code>.</p>
+<p><strong>Решим реальную задачу</strong></p>
+<p>Нужно написать аналог метода <code>.trim()</code>, который будет удалять не пробельные символы в начале и в конце строки, а те, которые будут переданы параметром.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> trimChars <span class="op">=</span> (str<span class="op">,</span> chars) <span class="kw">=&gt;</span> {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>str <span class="op">||</span> <span class="op">!</span>chars) {</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> str<span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> regex <span class="op">=</span> <span class="kw">new</span> <span class="bu">RegExp</span>(<span class="vs">`^[</span><span class="sc">${</span>chars<span class="sc">}</span><span class="vs">]*([</span><span class="sc">\\</span><span class="vs">s</span><span class="sc">\\</span><span class="vs">S]+?)[</span><span class="sc">${</span>chars<span class="sc">}</span><span class="vs">]*$`</span>)<span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> str<span class="op">.</span><span class="fu">replace</span>(regex<span class="op">,</span> <span class="st">&#39;$1&#39;</span>)<span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">trimChars</span>(<span class="vs">`*-text</span><span class="sc">\n</span><span class="vs">text*-*-*`</span><span class="op">,</span> <span class="vs">`*-`</span>)<span class="op">;</span></span></code></pre></div>
+<blockquote>
+<p>Обращаем внимание, хоть пример вызова функции и написан одной строкой, он содержит перевод строки <code>\n</code> и является многострочным.</p>
+</blockquote>
+<p>В решении интересна конструкция <code>[\s\S]+</code>, которую можно описать так: все пробельные и непробельные символы. Она захватит в силу «жадности» всё между символами, переданными в параметре <code>chars</code>.</p>
+<p>Для решения мы применяем конструктор, так как нам нужно добавлять значения символов внутрь регулярного выражения из переменной.</p>
+<hr />
+<p>Быть «жадным» не так уж и плохо. Главное, не увлекаться и понимать, как это можно использовать.</p>
+</div>
+</section>
+<section id="ни-одного-или-много" class="level2" data-number="5.3">
+<h2 data-number="5.3">5.3. Ни одного или много *</h2>
+<div class="text-container text-container--module">
+<p>Ещё один жадный квантификатор, сочетающий в себе мощь двух первых — символ звёздочка <code>*</code>. Эквивалент фигурных скобок <code>{0,}</code>, он означает <strong>ни одного или бесконечное множество совпадений</strong>.</p>
+<p>Применяется как к отдельным литералам или селекторам, так и группам селекторов, заключенным в квадратные <code>[]*</code> или круглые <code>()*</code> скобки.</p>
+<p>Так же как и <code>?</code>, даёт возможность не включать части совпадений и, с другой стороны, если совпадение состоялось — захватывать всё. Поэтому <code>.*</code> эквивалентна <code>.+</code> и захватит всю строку, кроме символа перевода строки <code>\n</code>.</p>
+<p>Очень часто звездочку используют вместе с селектором пробельных символов <code>\s</code>, потому что заранее никогда не известно, какие пробельные символы используются в тексте и есть ли они вообще.</p>
+<p><strong>Решим реальную задачу</strong></p>
+<p>Привяжем все знаки <code>№</code> в тексте к последующим цифрам неразрывным пробелом.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> str <span class="op">=</span> <span class="vs">`Постановления Правительства от 30.12.2019 №1717, №  1718`</span><span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>str<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/№</span><span class="sc">\s*(\d+)</span><span class="ss">/g</span><span class="op">,</span> <span class="st">&#39;№&amp;nbsp;$1&#39;</span>)<span class="op">;</span> <span class="co">// Постановления Правительства от 30.12.2019 №&amp;nbsp;1717, №&amp;nbsp;1718</span></span></code></pre></div>
+<p><strong>Разберем прошлый пример</strong></p>
+<p>Мы писали шаблон проверки паспорта гражданина РФ:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;text&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;passport&quot;</span> <span class="er">placeholder</span><span class="ot">=</span><span class="st">&quot;00 00 №000000&quot;</span> <span class="er">pattern</span><span class="ot">=</span><span class="st">&quot;\d{2}\s*\d{2}\s*№?\d{6}&quot;</span><span class="kw">&gt;</span></span></code></pre></div>
+<p>Давайте проговорим его по шагам:</p>
+<ul>
+<li>сначала мы находим число, состоящее из двух знаков <code>\d{2}</code>;</li>
+<li>следом за ним может быть, а может и не быть, пробельный символ <code>\s*</code>;</li>
+<li>затем снова число, состоящее из двух знаков <code>\d{2}</code>;</li>
+<li>следом за ним может быть, а может и не быть, пробельный символ <code>\s*</code>;</li>
+<li>за возможным пробелом может последовать <code>№?</code>, но не обязательно;</li>
+<li>и затем шесть цифр номера паспорта <code>\d{6}</code>.</li>
+</ul>
+<p>Теперь, когда мы уже владеем достаточным количеством инструментов, можем упростить шаблон:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;text&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;passport&quot;</span> <span class="er">placeholder</span><span class="ot">=</span><span class="st">&quot;00 00 №000000&quot;</span> <span class="er">pattern</span><span class="ot">=</span><span class="st">&quot;(\d{2}\s*){2}№?\d{6}&quot;</span><span class="kw">&gt;</span></span></code></pre></div>
+<p>Попробуйте по аналогии проговорить его самостоятельно.</p>
+<hr />
+<p>Мы изучили разнообразие квантификаторов и ограничение длины совпадений.</p>
+</div>
+</section>
+<section id="жадность" class="level2" data-number="5.4">
+<h2 data-number="5.4">5.4. Жадность</h2>
+<div class="text-container text-container--module">
+<p>Чтобы понять «жадность», давайте решим одну из самых распространенных задач — попробуем убрать все теги из строки. Порассуждаем, как бы мы могли двигаться в решении задачи, не добавляя всё в DOM-дерево, а работая только со строкой.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> str <span class="op">=</span> <span class="vs">`&lt;html lang=&quot;ru&quot;&gt;&lt;head&gt;&lt;title&gt;Title&lt;/title&gt;&lt;/head&gt;&lt;body&gt;Hello World!&lt;/body&gt;&lt;/html&gt;`</span><span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Для начала нам бы потребовалось правило для открывающих тегов, где сразу после угловой скобки <code>&lt;</code> стоит название тега в виде латинских букв. Например, <code>&lt;[a-z]+&gt;</code>. Уже что-то, но правило не учитывает атрибуты и закрывающие теги.</li>
+<li>Добавим вероятность появления слэша для закрывающих тегов <code>&lt;\/?[a-z]+&gt;</code>. Уже лучше, но стилей, классов и прочих атрибутов всё ещё нет.</li>
+<li>Дальше мы могли бы перечислять всевозможные атрибуты, но тогда правило стало бы слишком громоздким. Ну и содержимое ссылок, подписей и прочих <code>data-</code> атрибутов было бы крайне сложно отловить.</li>
+<li>Идея заменить всё, что после названия тега, на <code>&lt;\/?[a-z]+.*&gt;</code> не очень хорошая, так как точка <code>.</code> совпадёт со всеми атрибутами внутри тега, с закрывающей угловой скобкой и последующим текстом от <code>&lt;html lang="ru"&gt;</code> до последней угловой скобки закрывающего тега <code>&lt;/html&gt;</code>. Это и есть жадность!</li>
+</ul>
+<p>Резюмируя, <strong>жадность</strong> — это максимально возможное совпадение.</p>
+<hr />
+<p>Как в хорошем детективе мы дошли до главы, где раскрыта суть главного «злодея» регулярных выражений, но самое интересное будет впереди.</p>
+</div>
+</section>
+<section id="ограничение-жадности" class="level2" data-number="5.5">
+<h2 data-number="5.5">5.5. Ограничение жадности</h2>
+<div class="text-container text-container--module">
+<p>Мы узнали, что «звёздочка» и «плюс» — жадные квантификаторы. Но ведь должен быть способ ограничить эту жадность? Он есть!</p>
+<p>Для ограничения жадности нет специального символа, эту функцию выполняет <code>?</code>.</p>
+<p>Если написать регулярное выражение <code>/.+?/</code>, то оно совпадёт только с любым первым символом, а <code>/.*?/</code> не совпадёт ни с чем. Потому что ограниченному правилу <code>.*</code> вовсе не обязательно совпадать.</p>
+<blockquote>
+<p>Ограниченно «жадные» квантификаторы в регулярных выражениях называют <strong>ленивыми</strong>.</p>
+</blockquote>
+<p>Ограничение жадности можно сравнить с условием необходимости и достаточности в математике:</p>
+<ul>
+<li><code>.+?</code> — необходимо взять максимальное количество любых символов, но достаточно одного;</li>
+<li><code>.*?</code> — необходимо взять максимальное количество любых символов, но достаточно ни одного;</li>
+</ul>
+<p>Совсем по-другому будет вести себя выражение, если в нем появится <strong>якорный</strong> символ следом за ограничением жадности <code>?</code>.</p>
+<p>Так, например, в правиле <code>.+?&gt;</code> «ленивому» селектору <code>.+?</code> достаточно захватить только один символ. Но он не перестаёт быть «жадным» и будет пытаться максимально совпадать до достижения якоря <code>&gt;</code>. То есть «жадность» будет работать в ограниченном диапазоне.</p>
+<blockquote>
+<p>Подумайте, что выберет регулярное выражение <code>.+?$</code></p>
+</blockquote>
+<p>Продолжим задачу про теги. Теперь мы можем ограничить жадность и получить правило для удаления тегов из строки — <code>&lt;\/?[a-z]+.*?&gt;</code>, где якорем будет первая закрывающая угловая скобка.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> str <span class="op">=</span> <span class="vs">`&lt;html lang=&quot;ru&quot;&gt;&lt;head&gt;&lt;title&gt;Title&lt;/title&gt;&lt;/head&gt;&lt;body&gt;Hello World!&lt;/body&gt;&lt;/html&gt;`</span><span class="op">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> removeTags <span class="op">=</span> (str) <span class="kw">=&gt;</span> {</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> str <span class="op">?</span> str<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/&lt;</span><span class="sc">\/?[a-z]+</span><span class="ss">.</span><span class="sc">*?</span><span class="ss">&gt;/g</span><span class="op">,</span> <span class="st">&#39; &#39;</span>)<span class="op">.</span><span class="fu">trim</span>()<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\s+</span><span class="ss">/g</span><span class="op">,</span> <span class="st">&#39; &#39;</span>) <span class="op">:</span> str<span class="op">;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">removeTags</span>(str)<span class="op">;</span></span></code></pre></div>
+<p>Внимательный студент заметит, что в методе <code>.replace()</code> мы используем пробел, а не пустую строку для удаления тегов. Это нужно для того, чтобы текст, написанный в блочных тегах, не слипался в единую строку без пробелов.</p>
+<p><strong>Решим реальную задачу</strong></p>
+<p>Напишем функцию, возвращающую значение, которое будет совпадать со строкой справа от якоря, заданного регулярным выражением.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> rightMatch <span class="op">=</span> (str<span class="op">,</span> anchor) <span class="kw">=&gt;</span> {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>str <span class="op">||</span> <span class="op">!</span>anchor) {</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> str<span class="op">;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> regex <span class="op">=</span> <span class="kw">new</span> <span class="bu">RegExp</span>(<span class="vs">`^.*?</span><span class="sc">${</span>anchor<span class="sc">}</span><span class="vs">(.*?)$`</span>)<span class="op">;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> str<span class="op">.</span><span class="fu">replace</span>(regex<span class="op">,</span> (source<span class="op">,</span> $1) <span class="kw">=&gt;</span> $1 <span class="op">?</span> $1 <span class="op">:</span> source)<span class="op">;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rightMatch</span>(<span class="vs">`12:01, 14:05, 18:00, 21:20 Спортивные новости`</span><span class="op">,</span> <span class="vs">`</span><span class="sc">\\</span><span class="vs">d{2}:</span><span class="sc">\\</span><span class="vs">d{2}</span><span class="sc">\\</span><span class="vs">s`</span>)<span class="op">;</span> <span class="co">// Спортивные новости</span></span></code></pre></div>
+<p><strong>Важно</strong>: при использовании функции необходимо экранировать обратные слэши в описании якоря по правилам JavaScript.</p>
+<hr />
+<p>Мы изучили разнообразие квантификаторов и ограничение длины совпадений, понятия «жадный/ленивый» квантификатор и ограничение «жадности».</p>
+</div>
+</section>
+<section id="опишем-уровень-игры" class="level2" data-number="5.6">
+<h2 data-number="5.6">5.6. Опишем уровень игры</h2>
+<div class="text-container text-container--module">
+<p>Мы решили запрограммировать маленькую игру и нарисовать карту уровня в виде спрайтов. Чтобы карта загружалась и отрисовывалась корректно, мы связали буквы латинского алфавита со спрайтами. Например, <code>A</code> — это стены, <code>b</code> — трава, <code>D</code> — дверь, <code>X</code> — сундук с кладом.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> level <span class="op">=</span> [</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="vs">`AAAAAAAAAA`</span><span class="op">,</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="vs">`AbbbbbbbbA`</span><span class="op">,</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="vs">`DbbbbXbbbA`</span><span class="op">,</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="vs">`AbbbbbbbbA`</span><span class="op">,</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="vs">`AAAAAAAAAA`</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>]<span class="op">;</span></span></code></pre></div>
+<p>Но в таком виде карты получаются большими, и мы решили немного сократить место, применив простой алгоритм сжатия.</p>
+<p>Для этого нам нужно записать первую латинскую букву и рядом цифру, соответствующую количеству повторений.</p>
+<p>В итоге у нас должен получиться такой массив:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> level <span class="op">=</span> [</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="vs">`A10`</span><span class="op">,</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="vs">`A1b8A1`</span><span class="op">,</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="vs">`D1b4X1b3A1`</span><span class="op">,</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="vs">`A1b8A1`</span><span class="op">,</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="vs">`A10`</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>]<span class="op">;</span></span></code></pre></div>
+<p>Чтобы зашифровать его, нам нужна функция, которая на вход примет исходную строку <code>AAAAAbbbbbbDbbb</code>, а на выходе вернёт сжатую <code>A5b6D1b3</code>:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> compress <span class="op">=</span> (str) <span class="kw">=&gt;</span> {</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// ваше решение с помощью регулярных выражений</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+</div>
+</section>
+<section id="опишем-уровень-игры-решение" class="level2" data-number="5.7">
+<h2 data-number="5.7">5.7. Опишем уровень игры (решение)</h2>
+<div class="text-container text-container--module">
+<div class="sourceCode" id="cb14"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> compress <span class="op">=</span> (str) <span class="kw">=&gt;</span> {</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>str) {</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="vs">``</span><span class="op">;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> parts <span class="op">=</span> str<span class="op">.</span><span class="fu">match</span>(<span class="ss">/</span><span class="sc">([a-zA-Z])(\1)*</span><span class="ss">/g</span>)<span class="op">;</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> result <span class="op">=</span> <span class="st">&#39;&#39;</span><span class="op">;</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  parts<span class="op">.</span><span class="fu">forEach</span>((item) <span class="kw">=&gt;</span> {</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    result <span class="op">+=</span> item[<span class="dv">0</span>] <span class="op">+</span> item<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> result<span class="op">;</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+</div>
+</section>
+<section id="тест-по-разделу-квантификаторы" class="level2" data-number="5.8">
+<h2 data-number="5.8">5.8. Тест по разделу квантификаторы</h2>
+<div class="text-container text-container--module">
+<p>Повторим основные моменты, которые были рассмотрены в разделе.</p>
+<ol type="1">
+<li><strong>Какой квантификатор можно по-другому записать как {0,1}?</strong></li>
+</ol>
+<ul>
+<li>Звездочка *</li>
+<li>Плюс +</li>
+<li>Вопрос ?</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Результатом какого выражения будет массив [‘r’]?</strong></li>
+</ol>
+<ul>
+<li><p>Вариант 1</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> parts <span class="op">=</span> <span class="st">&#39;regular expression&#39;</span><span class="op">.</span><span class="fu">match</span>(<span class="ss">/</span><span class="sc">[a-z]*?</span><span class="ss">/</span>)<span class="op">;</span></span></code></pre></div></li>
+<li><p>Вариант 2</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> parts <span class="op">=</span> <span class="st">&#39;regular expression&#39;</span><span class="op">.</span><span class="fu">match</span>(<span class="ss">/</span><span class="sc">[a-z]+?</span><span class="ss">/</span>)<span class="op">;</span></span></code></pre></div></li>
+</ul>
+<ol start="3" type="1">
+<li><strong>С чем совпадет .+?$ в выражении?</strong></li>
+</ol>
+<div class="sourceCode" id="cb17"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> parts <span class="op">=</span> <span class="st">&#39;regular expression&#39;</span><span class="op">.</span><span class="fu">match</span>(<span class="ss">/.</span><span class="sc">+?$</span><span class="ss">/</span>)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>С последней буквой `n`.</li>
+<li>С последним словом `expression`.</li>
+<li>Со всей фразой `regular expression`.</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>С чем совпадет (.+?)* в слове `regular`?</strong></li>
+</ol>
+<ul>
+<li>Ни с чем.</li>
+<li>Со всем словом.</li>
+<li>С первой буквой.</li>
+</ul>
+</div>
+</section>
+<section id="тест-по-разделу-квантификаторы-ответы" class="level2" data-number="5.9">
+<h2 data-number="5.9">5.8. Тест по разделу квантификаторы (ответы)</h2>
+<div class="text-container text-container--module">
+<ol type="1">
+<li><strong>Какой квантификатор можно по-другому записать как {0,1}?</strong></li>
+</ol>
+<ul>
+<li>Вопрос ?</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Результатом какого выражения будет массив [‘r’]?</strong></li>
+</ol>
+<ul>
+<li><p>Вариант 2</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> parts <span class="op">=</span> <span class="st">&#39;regular expression&#39;</span><span class="op">.</span><span class="fu">match</span>(<span class="ss">/</span><span class="sc">[a-z]+?</span><span class="ss">/</span>)<span class="op">;</span></span></code></pre></div></li>
+</ul>
+<ol start="3" type="1">
+<li><strong>С чем совпадет .+?$ в выражении?</strong></li>
+</ol>
+<div class="sourceCode" id="cb19"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> parts <span class="op">=</span> <span class="st">&#39;regular expression&#39;</span><span class="op">.</span><span class="fu">match</span>(<span class="ss">/.</span><span class="sc">+?$</span><span class="ss">/</span>)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Со всей фразой <code>regular expression</code>.</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>С чем совпадет (.+?)* в слове <code>regular</code>?</strong></li>
+</ol>
+<ul>
+<li>Со всем словом.</li>
+</ul>
+</div>
+</section>
+</section>
+</body>
+</html>

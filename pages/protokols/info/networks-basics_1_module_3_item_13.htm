@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html class="" lang="ru"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="utf-8">
+
+
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/octicons-3.css">
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/core.css">
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/text.css"><link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/extended-ui-kit.css"><link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/up.css"><meta name="theme-color" content="#2d2d44">
+
+</head><body>
+
+              <div class="page-content "><div class="page-content__inner"><div class="up-interface up-interface--up "><section class="up-interface__left-col"><nav class="breadcrumbs"><ul class="breadcrumbs__list"><li class="breadcrumbs__item"><a href="../index.htm">Главная</a></li><li class="breadcrumbs__item"><a href="networks-basics_1_module_3.htm">3. HTTP, HTTP/2, HTTP/3</a></li></ul></nav><article class="up-text"><div class="up-text__head"><h1 class="up-text__title"><svg aria-hidden="true" width="24" height="24"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg>
+
+
+
+          3.13.&nbsp;Эталонное решение: оптимизация проекта под протокол HTTP/2
+        </h1></div><div class="text-container text-container--module"><p>Наши предложения по&nbsp;оптимизации проекта под протокол HTTP/2.</p><p><strong>CSS</strong></p><p>Разделим на&nbsp;файлы:</p><ul><li><code>common.min.css</code>&nbsp;— для повторяющихся стилей: стилей шапки и&nbsp;футера, подключения шрифтов, других универсальных стилей;</li><li><code>index.min.css</code>&nbsp;— для стилей главной страницы;</li><li><code>catalog.min.css</code>&nbsp;— для стилей страницы каталога;</li><li><code>product.min.css</code>&nbsp;— для стилей страницы товара;</li><li><code>modal.min.css</code>&nbsp;— для стилей модального окна.</li></ul><p>Подключим на&nbsp;страницы только те&nbsp;стили, которые на&nbsp;них нужны. Посмотрим:</p><p><code>index.html</code>:</p><pre class="HTML language-HTML"><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"css/common.min.css"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"css/index.min.css"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"css/modal.min.css"</span>&gt;</span>
+</code></pre><p><code>catalog.html</code>:</p><pre class="HTML language-HTML"><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"css/common.min.css"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"css/catalog.min.css"</span>&gt;</span>
+</code></pre><p><code>product.html</code>:</p><pre class="HTML language-HTML"><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"css/common.min.css"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"css/product.min.css"</span>&gt;</span>
+</code></pre><p><strong>JavaScript</strong></p><p>Разделим на&nbsp;файлы:</p><ul><li><code>common.min.js</code>&nbsp;— для повторяющихся скриптов, например, открытия и&nbsp;закрытия меню в&nbsp;мобильной версии;</li><li><code>add-to-cart.min.js</code>&nbsp;— скрипт добавления товара в&nbsp;корзину;</li><li><code>add-to-favourite.min.js</code>&nbsp;— скрипт добавления товара в&nbsp;избранное;</li><li><code>product-carousel.min.js</code>&nbsp;— скрипт для карусели фотографий товара на&nbsp;странице товара;</li><li><code>filter.min.js</code>&nbsp;— скрипт для фильтрации на&nbsp;странице каталога;</li><li><code>modal.min.js</code>&nbsp;— скрипт открытия модального окна.</li></ul><p>Подключим на&nbsp;страницы только те&nbsp;скрипты, которые нужны на&nbsp;них нужны. Например:</p><p><code>index.html</code>:</p><pre class="HTML language-HTML"><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"js/common.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"js/modal.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre><p><code>catalog.html</code>:</p><pre class="HTML language-HTML"><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"js/common.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"js/add-to-cart.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"js/add-to-favourite.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"js/filter.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre><p><code>product.html</code>:</p><pre class="HTML language-HTML"><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"js/common.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"js/add-to-cart.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"js/add-to-favourite.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"js/product-carousel.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre><p><strong>Графика</strong></p><p>Разбираем спрайт на&nbsp;иконки и&nbsp;подключаем иконки.</p><p>Было:</p><pre class="HTML language-HTML"><code class="hljs"><span class="hljs-comment">&lt;!-- Подключение иконки через спрайт --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"route__address"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"route__icon"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"14"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"22"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">"sprite.svg#icon-contacts-location"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">use</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+  ул. Большая Конюшенная, 19/8
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre><p>Стало:</p><pre class="HTML language-HTML"><code class="hljs"><span class="hljs-comment">&lt;!-- Подключение иконки без спрайта --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"route__address"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"route__icon"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"14"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"22"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">"icon-contacts-location.svg"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">use</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+  ул. Большая Конюшенная, 19/8
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre><p>Можно оставить спрайт иконок, используемых на&nbsp;всех 
+страницах: иконок соцсетей, открытия и&nbsp;закрытия мобильного меню. 
+Также можно оставить спрайт иконок, используемых на&nbsp;определённой 
+странице, например, спрайт всех иконок страницы товаров. Главное&nbsp;— 
+не&nbsp;загружать на&nbsp;страницах неиспользуемые иконки.</p></div>
+
+
+</div></div></div>
+
+
+
+</body></html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class="" lang="ru"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="utf-8">
+
+
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/octicons-3.css">
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/core.css">
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/text.css"><link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/extended-ui-kit.css"><link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/up.css"><meta name="theme-color" content="#2d2d44">
+
+</head><body>
+
+              <div class="page-content "><div class="page-content__inner"><div class="up-interface up-interface--up "><section class="up-interface__left-col"><nav class="breadcrumbs"><ul class="breadcrumbs__list"><li class="breadcrumbs__item"><a href="../index.htm">Главная</a></li><li class="breadcrumbs__item"><a href="networks-basics_1_module_3.htm">3. HTTP, HTTP/2, HTTP/3</a></li></ul></nav><article class="up-text"><div class="up-text__head"><h1 class="up-text__title"><svg aria-hidden="true" width="24" height="24"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg>
+          3.1.&nbsp;Введение
+        </h1></div><div class="text-container text-container--module"><p>Давайте
+ глубже посмотрим, что происходит при загрузке страницы с&nbsp;точки 
+зрения протокола HTTP и&nbsp;какие данные можно получить.</p><p>Каждый 
+раз, когда пользователь посещает страницу в&nbsp;интернете, компьютер 
+использует протокол передачи гипертекста (HTTP) для загрузки этой 
+страницы с&nbsp;другого компьютера.</p><p>В&nbsp;HTTP две роли: клиент 
+и&nbsp;сервер. Клиент отправляет запрос. Сервер обрабатывает его, 
+а&nbsp;потом отвечает на&nbsp;запрос и&nbsp;прерывает соединение. Дальше
+ запросы выполняются при новом соединении, словно предыдущего 
+не&nbsp;существовало.</p><p>Сообщения между клиентом и&nbsp;сервером 
+передаются в&nbsp;формате текста, хотя в&nbsp;теле сообщения могут быть 
+фото, аудио, видео или другие форматы. Далее посмотрим упрощённый путь.</p><h2>Шаг&nbsp;1. Адреса</h2><p>Разные
+ типы устройств (ноутбуки, настольные компьютеры, смартфоны) используют 
+приложение браузера. Пользователь вводит в&nbsp;браузере URL&nbsp;— 
+Uniform Resource Locator или «Унифицированный Указатель Ресурса»:</p><p><img src="networks-basics_1_module_3_item_1_files/http-intro-1.jpeg" alt="URL-адрес"></p><p>Обратите внимание на&nbsp;этот URL: он&nbsp;начинается с&nbsp;<code>http</code>. Это сигнал браузеру, что ему необходимо использовать протокол HTTP.</p><h2>Шаг&nbsp;2. Браузер ищет IP</h2><p>Домен&nbsp;—
+ это тот&nbsp;же IP-адрес, только написанный в&nbsp;понятном человеку 
+формате. Браузер обращается к&nbsp;DNS и&nbsp;получает IP-адрес:</p><p><img src="networks-basics_1_module_3_item_1_files/http-intro-2.jpeg" alt="Преобразователь DNS"></p><h2>Шаг&nbsp;3. Браузер отправляет HTTP-запрос</h2><p>Как только браузер определил IP-адрес, он&nbsp;отправляет HTTP-запрос:</p><p><img src="networks-basics_1_module_3_item_1_files/http-intro-3.jpeg" alt="HTTP-запрос"></p><p>Заголовки
+ HTTP&nbsp;— основная часть протокола HTTP. Они позволяют клиентам 
+и&nbsp;серверам передавать дополнительную информацию вместе 
+с&nbsp;данными второй стороне. Благодаря этому клиенты и&nbsp;серверы 
+могут правильно получать и&nbsp;обрабатывать данные. Например, заголовки
+ HTTP могут включать информацию о&nbsp;размере <code>(Content-Length)</code> и&nbsp;типе <code>(Content-Type)</code>
+ данных в&nbsp;теле HTTP-сообщения. Заголовки HTTP содержат текстовую 
+информацию в&nbsp;форме ключ-значение и&nbsp;включаются в&nbsp;каждый 
+HTTP-запрос и&nbsp;ответ.</p><p>Посмотрим на&nbsp;простой HTTP-запрос:</p><pre class="html language-html"><code class="hljs xml">GET /courses HTTP/1.1
+Host: www.htmlacademy.ru
+</code></pre><p>HTTP-запрос&nbsp;— это действие, которое должно быть 
+выполнено над данным ресурсом. Первая строка сообщения HTTP-запроса 
+начинается с&nbsp;имени метода&nbsp;— в&nbsp;данном случае&nbsp;GET. 
+Далее указывается путь: <code>/courses</code>. Сервер хранит содержимое 
+всего веб-приложения, поэтому браузеру необходимо указать, какую 
+страницу загружать. И&nbsp;затем следует версия протокола: <code>HTTP/1.1</code>.</p><p>HTTP
+ определяет различные методы запроса, и&nbsp;каждому назначается 
+конкретная цель. Каждый метод запроса определяет отдельное действие, 
+выполняемое над ресурсом: GET&nbsp;— получение ресурса, 
+а&nbsp;POST&nbsp;— отправка.</p><p>Во&nbsp;второй строке указывается 
+домен запрошенного&nbsp;URL. Это важно, когда на&nbsp;главном сервере 
+хранится контент для нескольких веб-приложений.</p><h2>Шаг&nbsp;4. Хост отправляет ответ HTTP</h2><p>Как только хост-компьютер получает HTTP-запрос, он&nbsp;отправляет ответ с&nbsp;содержанием и&nbsp;данными о&nbsp;нём.</p><p><img src="networks-basics_1_module_3_item_1_files/http-intro-4.jpeg" alt="HTTP-ответ"></p><p>HTTP-ответ&nbsp;—
+ это то, что клиент получает от&nbsp;сервера в&nbsp;ответ на&nbsp;свой 
+HTTP-запрос. Цель HTTP-ответа&nbsp;— предоставить клиенту запрошенный 
+ресурс или сообщить, что запрошенное действие было успешно выполнено, 
+либо сообщить об&nbsp;ошибке.</p><p>Первая строка ответа HTTP начинается
+ с&nbsp;версии протокола, выбранной сервером на&nbsp;основе запроса 
+клиента. Далее идёт код состояния и&nbsp;краткое описание.</p><p>Код 
+состояния HTTP представляет собой трёхзначное число, указывающее 
+на&nbsp;состояние HTTP-запроса. Например, 200 означает, что операция 
+была завершена успешно. Подробнее о&nbsp;статусах мы&nbsp;поговорим 
+в&nbsp;одной из&nbsp;следующих частей курса.</p><p>Ответы HTTP могут 
+иметь необязательное тело, которое может включать запрошенный ресурс 
+(например, запрошенную веб-страницу) и&nbsp;заголовки HTTP, которые 
+содержат важную информацию о&nbsp;данных (например, их&nbsp;размер 
+и&nbsp;тип).</p><pre class="html language-html"><code class="hljs xml">HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+Content-Length: 208
+</code></pre><p>Чтобы отобразить эту страницу, браузер сначала отправил запрос на&nbsp;<a href="http://htmlacademy.ru/">htmlacademy.ru</a>, чтобы получить HTML-документ, а&nbsp;затем ряд запросов на&nbsp;изображения, файлы JavaScript и&nbsp;файлы CSS.</p><p>Если
+ серверу не&nbsp;удалось получить документ, коды состояния предоставляют
+ дополнительную информацию. Такое бывает, если сбой произошёл из-за 
+ошибки пользователя или ошибки сервера. Наиболее известный код 
+состояния&nbsp;— 404 («Файл не&nbsp;найден»). Мы&nbsp;сталкиваемся 
+с&nbsp;ним каждый раз, когда клиент запрашивает путь, которого нет 
+на&nbsp;сервере.</p><p>Теперь поговорим о&nbsp;заголовках. Они предоставляют браузеру дополнительные сведения и&nbsp;помогают ему отображать контент.</p><p>Указанные ниже заголовки&nbsp;— общие для большинства запросов:</p><pre class="html language-html"><code class="hljs xml">Content-Type: text/html; charset=UTF-8
+Content-Length: 208
+</code></pre><p>Первый заголовок, <code>Content-Type</code>, сообщает браузеру, какой тип документа он&nbsp;отправляет обратно. Распространённым типом в&nbsp;интернете является <code>text/html</code>, поскольку все веб-страницы представляют собой текстовые файлы HTML. Также могут встречаться изображения <code>image/png</code>, видео <code>video/mpeg</code>, скрипт <code>script/javascript</code> и&nbsp;другие.</p><p>Заголовок <code>Content-length</code> информирует о&nbsp;длине документа в&nbsp;байтах, что помогает браузеру рассчитать время загрузки файла.</p><p>Наконец, HTTP-ответ записывает фактический запрошенный документ. К&nbsp;примеру, страница представляет собой простой HTML-файл:</p><pre class="html language-html"><code class="hljs xml"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Курсы HTML Academy<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>HTML Academy<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>интерактивные онлайн-курсы<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre><h2>Шаг&nbsp;5. Браузер отображает ответ</h2><p>Теперь у&nbsp;браузера есть вся информация, необходимая для отображения запрошенного документа:</p><p><img src="networks-basics_1_module_3_item_1_files/http-intro-5.jpeg" alt="Браузер отображает ответ"></p><h2>Посмотрим в&nbsp;браузере</h2><p>Многие
+ браузеры включают инструменты отладки, которые позволяют просматривать 
+HTTP-запросы и&nbsp;их&nbsp;ответы. Посмотрим на&nbsp;примере Google 
+Chrome.</p><p>Откройте инструменты разработчика. Выберите вкладку <code>Network</code>:</p><p><img src="networks-basics_1_module_3_item_1_files/dev-tools-network.png" alt="Инструменты разработчика Сеть"></p><p>Затем введите URL-адрес в&nbsp;строке браузера: <a href="http://www.htmlacademy.ru/courses">http://www.htmlacademy.ru/courses</a>. HTTP-запрос отображается в&nbsp;консоли, и&nbsp;браузер отображает страницу.</p><p>Покликайте по&nbsp;разным запросам. Появится интерфейс с&nbsp;вкладками. По&nbsp;умолчанию используется вкладка <code>Headers</code>:</p><p><img src="networks-basics_1_module_3_item_1_files/http-headers.gif" alt="HTTP заголовки"></p><p><code>Headers</code> включает в&nbsp;себя различные заголовки, такие как <code>Content-Type</code> и&nbsp;<code>Content-Length</code>, а&nbsp;также множество других.</p><p>Фактическое HTML-содержимое ответа&nbsp;— это другая вкладка, <code>Response</code>.</p><p><img src="networks-basics_1_module_3_item_1_files/http-respond.gif" alt="HTTP ответ"></p><p>Итак,
+ мы&nbsp;посмотрели содержимое HTTP-запроса и&nbsp;ответа. 
+В&nbsp;следующей статье рассмотрим возможности и&nbsp;недостатки 
+протокола, чтобы понять появление HTTPS, HTTP/2 и&nbsp;HTTP/3.</p></div>
+
+</div></div></div>
+
+
+
+</body></html>

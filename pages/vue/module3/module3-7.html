@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)../index.html/item/7 -->
+<html lang="ru" class="">
+<style>
+ytp-player-minimized {
+    overflow: hidden;
+    outline: none;
+}
+</style>
+<script type="text/javascript" async="" src="./3.7. Директивы- виды и использование_files/omq12oer"></script><script type="text/javascript" async="" src="./3.7. Директивы- виды и использование_files/linkid.js.Без названия"></script><script type="text/javascript" integrity="sha384-d/yhnowERvm+7eCU79T/bYjOiMmq4F11ElWYLmt0ktvYEVgqLDazh4+gW9CKMpYW" crossorigin="anonymous" async="" src="./3.7. Директивы- виды и использование_files/amplitude-5.2.2-min.gz.js.Без названия"></script><script async="" src="./3.7. Директивы- виды и использование_files/tag.js.Без названия"></script><script type="text/javascript" async="" src="./3.7. Директивы- виды и использование_files/analytics.js.Без названия"></script><script async="" src="./3.7. Директивы- виды и использование_files/gtm.js.Без названия"></script><script src="chrome-extension://ldkihpcibakajmpnggbjnehoifnnpebn/content.js"></script>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Углублённое понимание Vue.js&nbsp;— Vue.js для опытных разработчиков #1 / HTML Academy</title>
+<script>document.documentElement.classList.remove('no-js');</script><script src="./3.7. Директивы- виды и использование_files/sentry.js.Без названия" data-sentry="a64ad1fd170847efa544b305c67696aa" data-project="10" data-version="2" data-sample-rate="0.25"></script>
+<link rel="stylesheet" href="./3.7. Директивы- виды и использование_files/octicons-3.3.0.min.css">
+<link rel="stylesheet" href="./3.7. Директивы- виды и использование_files/core.css">
+<link rel="stylesheet" href="./3.7. Директивы- виды и использование_files/text.css">
+<link rel="stylesheet" href="./3.7. Директивы- виды и использование_files/extended-ui-kit.css">
+<link rel="stylesheet" href="./3.7. Директивы- виды и использование_files/up.css">
+<meta name="theme-color" content="#18213F">
+<link rel="mask-icon" href="https://up.htmlacademy.ru/meta/favicon.svg" color="#18213F">
+<meta name="application-name" content="Vue.js для опытных разработчиков #1">
+<meta name="apple-mobile-web-app-title" content="Vue.js для опытных разработчиков #1">
+<link rel="apple-touch-icon" href="https://up.htmlacademy.ru/meta/javascript-touch-icon.png">
+<link rel="shortcut icon" type="image/x-icon" href="https://up.htmlacademy.ru/meta/javascript-favicon.ico">
+<link rel="manifest" href="https://up.htmlacademy.ru/meta/javascript.webmanifest">
+<link rel="preload" href="https://assets.htmlacademy.ru/fonts/tt-norms-pro-400-normal.woff2?cs=9368bed5a8f0c297d5938ffb45f6a27bdb56b166" type="font/woff2" as="font" crossorigin="anonymous">
+<link rel="preload" href="https://assets.htmlacademy.ru/fonts/tt-norms-pro-500-normal.woff2?cs=1eb51247bf7c0f96b4ac3c19b05d6df1083d683b" type="font/woff2" as="font" crossorigin="anonymous">
+<link rel="preload" href="https://assets.htmlacademy.ru/fonts/tt-norms-pro-700-normal.woff2?cs=fa6abeb686814ab5fd0cbcfd2a0c8b02508b1451" type="font/woff2" as="font" crossorigin="anonymous">
+<link rel="preload" href="https://assets.htmlacademy.ru/fonts/ubuntu-mono.woff2?cs=7882c41280d8256972fd2b8ee74e2d7d28a857b6" type="font/woff2" as="font" crossorigin="anonymous">
+<link rel="preload" as="script" href="./3.7. Директивы- виды и использование_files/general.js.Без названия">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W3ZS73J');</script><script charset="utf-8" src="./3.7. Директивы- виды и использование_files/3591ce.js.Без названия"></script><script charset="utf-8" src="./3.7. Директивы- виды и использование_files/0971a8.js.Без названия"></script>
+<style></style>
+<script src="./3.7. Директивы- виды и использование_files/22f6f6120c25710dec.js.Без названия"></script>
+<style>
+.hljs {
+    display: block;
+    color: black;
+}
+.hljs-keyword, .hljs-builtin-name, .hljs-selector-id {
+    color: blue;
+}
+.hljs-subst, .hljs-attr {
+    color: black;
+}
+.hljs-title, .hljs-type {
+    color: #0000A2;
+}
+.hljs-literal {
+    color: rgb(88,92,246);
+}
+.hljs-number {
+    color: rgb(0,0,205);
+}
+.hljs-regexp, .hljs-string, .hljs-doctag, .hljs-selector-pseudo, .hljs-code {
+    color: rgb(3,106,7);
+}
+.hljs-selector-class, .hljs-variable {
+    color: rgb(49,132,149);
+}
+.hljs-selector-tag, .hljs-selector-attr, .hljs-link {
+    color: rgb(197,6,11);
+}
+.hljs-attribute {
+    color: rgb(109,121,222);
+}
+.hljs-comment, .hljs-quote {
+    color: rgb(188,20,175);
+}
+.hljs-meta {
+    color: rgb(104,104,91);
+}
+.hljs-tag {
+    color: rgb(0,22,142);
+}
+.hljs-addition {
+    background-color: rgba(155, 185, 85, 0.2);
+}
+.hljs-deletion {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+.hljs-params, .hljs-built_in {
+    color: rgb(49, 132, 149);
+}
+</style>
+<script charset="utf-8" src="./3.7. Директивы- виды и использование_files/796544.js.Без названия"></script><script charset="utf-8" src="./3.7. Директивы- виды и использование_files/85ca94.js.Без названия"></script><script charset="utf-8" src="./3.7. Директивы- виды и использование_files/0fd8b0.js.Без названия"></script><script charset="utf-8" src="./3.7. Директивы- виды и использование_files/66c7c8.js.Без названия"></script><script charset="utf-8" src="./3.7. Директивы- виды и использование_files/e2b43a.js.Без названия"></script><script charset="utf-8" src="./3.7. Директивы- виды и использование_files/38e38f.js.Без названия"></script><script charset="utf-8" src="./3.7. Директивы- виды и использование_files/c44bf0.js.Без названия"></script><script charset="utf-8" src="./3.7. Директивы- виды и использование_files/791b31.js.Без названия"></script><script charset="utf-8" src="./3.7. Директивы- виды и использование_files/79cf05.js.Без названия"></script><script charset="utf-8" src="./3.7. Директивы- виды и использование_files/e65860.js.Без названия"></script>
+</head>
+<body>
+<noscript>
+<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W3ZS73J"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<header class="up-header up-header--vue">
+  <div class="up-header__inner">
+    <div class="up-header__text">
+      <h1 class="up-header__title"><a href="index.html">Vue.js для опытных разработчиков</a></h1>
+      <span class="up-header__date"></span></div>
+    <ul class="up-header__social">
+      <li><a href="https://up.htmlacademy.ru/vue/1/feed" title="Лента уведомлений"><span class="sr-only">Лента уведомлений</span><span class="feed-counter hidden" data-newsfeed="https://newsfeed.htmlacademy.ru" data-newsfeed-token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjM1MDYzLCJpbnRlbnNpdmVJZCI6MjIzLCJyb2xlIjoic3R1ZGVudCJ9.7dAVgIMq-LFi-F7RsLBBIQDPE4gFMy3Z5nA5rSQFA7w">0</span>
+        <svg aria-hidden="true" width="32" height="32">
+          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#bell-24"></use>
+        </svg>
+        </a></li>
+      <li><a href="https://join.slack.com/t/htmlacademy-vue/shared_invite/zt-rqoxfz8j-h7rhSjglhICSzbPjl8gZGA" title="Канал в Slack"><span class="sr-only">Канал в Slack</span>
+        <svg aria-hidden="true" width="32" height="32">
+          <use xlink:href="/img/sprites/general.svg?cs=915d3446796b7b9fb94be6b8ae7ffc43d042c5d3#new_slack"></use>
+        </svg>
+        </a></li>
+    </ul>
+  </div>
+  <div class="up-header__nav">
+    <nav class="tabs tabs--up">
+      <button class="tabs__button" type="button"><span class="sr-only">Меню курса</span><span class="tabs__icon">
+      <svg aria-hidden="true">
+        <use xlink:href="/img/sprites/up.svg?cs=fb70597153879c70ce140224310b7444b664990a#icon-arrow-right"></use>
+      </svg>
+      </span></button>
+      <ul class="tabs__list">
+        <li class="tabs__item tabs__item--active"><a class="tabs__item-link" href="index.html">Программа</a></li>
+        <li class="tabs__item "><a class="tabs__item-link" href="../book/index.html"> Учебник </a></li>
+        <li class="tabs__item "><a class="tabs__item-link" href="../criteries.html"> Критерии </a></li>
+        <li class="tabs__item "><a class="tabs__item-link" href="../project.html"> Проекты </a></li>
+        <li class="tabs__item  tabs__item--dropdown "><a class="tabs__item-link" href="../examination.html"> Защита </a>
+          <ul class="tabs__dropdown">
+            <li><a href="../regulations.html"> Регламент </a></li>
+          </ul>
+        </li>
+        <li class="tabs__item  tabs__item--dropdown "><a class="tabs__item-link" href="../help/index.html"> Помощь </a>
+          <ul class="tabs__dropdown">
+            <li><a href="../faq.html"> FAQ </a></li>
+          </ul>
+        </li>
+        <li class="tabs__item "><a class="tabs__item-link" href="../results.html"> Итоги </a></li>
+        <li class="tabs__item tabs__item--mobile"><a class="tabs__item-link" href="../index.html/item/7#">Меню курса</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="page-content ">
+  <div class="page-content__inner">
+    <div class="up-interface up-interface--up ">
+      <section class="up-interface__left-col">
+        <nav class="breadcrumbs">
+          <ul class="breadcrumbs__list">
+           <li class="breadcrumbs__item"><a href="../index.html">Главная</a></li>
+            <li class="breadcrumbs__item"><a href="index.html">3. Углублённое понимание Vue.js</a></li>
+          </ul>
+        </nav>
+        <article class="up-text">
+          <div class="up-text__head">
+            <h1 class="up-text__title">
+              <svg aria-hidden="true" width="24" height="24">
+                <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#book-16"></use>
+              </svg>
+              3.7.&nbsp;Директивы: виды и использование </h1>
+          </div>
+          <div class="text-container text-container--module">
+            <p>Vue.js призван предоставить такие функции, которые упрощают и&nbsp;ускоряют процесс разработки для разработчиков. Это такая многофункциональная среда JavaScript, которая предоставляет множество встроенных функций и&nbsp;директив для быстрого выполнения процесса разработки.</p>
+            <p>Директивы&nbsp;— это инструкции для Vue.js делать что-то определённым образом. Это атрибуты, которые вы&nbsp;можете связать с&nbsp;элементами DOM, используя префикс <code>v-</code>, что даст понять Vue.js, что это особый тип синтаксиса, используемый для выполнения некоторых задач. Директивы обычно используются для прямого управления&nbsp;DOM. Мы&nbsp;уже видели такие директивы, как <code>v-if</code>, <code>v-show</code>, <code>v-else</code>, <code>v-for</code>, <code>v-bind</code>, <code>v-model</code>, <code>v-on</code> и&nbsp;т.&nbsp;д.</p>
+            <p>Иногда бывает, что нам нужны некоторые функции, которые не&nbsp;представлены фреймворком, и&nbsp;есть необходимость создать собственные. Для этих случаев Vue.js позволяет создавать пользовательские директивы (custom directives).</p>
+            <p>Давайте создадим нашу первую пользовательскую директиву (custom directive):</p>
+            <pre class="js language-js"><code class="hljs language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Vue</span> <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span>
+
+<span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">directive</span>(<span class="hljs-string">"red"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">el</span>) {
+ el.<span class="hljs-property">style</span>.<span class="hljs-property">color</span> = <span class="hljs-string">"red"</span>
+})
+</code></pre>
+            <p>После подключения директивы в&nbsp;<strong>main.js</strong>:</p>
+            <pre class="js language-js"><code class="hljs language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">"./my-directive.js"</span>
+</code></pre>
+            <p>Мы&nbsp;можем использовать эту директиву в&nbsp;наших шаблонах (template):</p>
+            <pre class="html language-html"><code class="hljs language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-red</span>&gt;</span>Этот текст красный<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+            <p>Давайте посмотрим на&nbsp;синтаксис для создания пользовательских директив (custom directives).</p>
+            <p>Метод <code>directive</code> принимает два аргумента: идентификатор (id) и&nbsp;параметры (definition).</p>
+            <p>Строка идентификатора пишется без префикса <code>v-</code>. В&nbsp;примере выше мы&nbsp;использовали идентификатор <code>red</code>.</p>
+            <p>Параметры, в&nbsp;свою очередь, могут быть либо объектом, в&nbsp;котором мы&nbsp;определяем один или несколько хуков:</p>
+            <pre class="js language-js"><code class="hljs language-javascript">{
+  <span class="hljs-title function_">bind</span>(<span class="hljs-params"></span>) {},
+  <span class="hljs-title function_">inserted</span>(<span class="hljs-params"></span>) {},
+  <span class="hljs-title function_">update</span>(<span class="hljs-params"></span>) {},
+  <span class="hljs-title function_">componentUpdated</span>(<span class="hljs-params"></span>) {},
+  <span class="hljs-title function_">unbind</span>(<span class="hljs-params"></span>) {},
+}
+</code></pre>
+            <p>либо одним из&nbsp;перечисленных в&nbsp;объекте хуком. Например:</p>
+            <pre class="js language-js"><code class="hljs language-javascript"><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">directive</span>(<span class="hljs-string">"red"</span>,{
+ <span class="hljs-title function_">bind</span>(<span class="hljs-params">el</span>) {
+   el.<span class="hljs-property">style</span>.<span class="hljs-property">color</span> = <span class="hljs-string">"red"</span>
+ }
+})
+</code></pre>
+            <p>или использовать коллбек-функцию:</p>
+            <pre class="js language-js"><code class="hljs language-javascript"><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">directive</span>(<span class="hljs-string">"red"</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">el</span>) {
+ el.<span class="hljs-property">style</span>.<span class="hljs-property">color</span> = <span class="hljs-string">"red"</span>
+})
+</code></pre>
+            <p>Обе директивы равноценны.</p>
+            <p>Рассмотрим все методы по&nbsp;порядку:</p>
+            <ul>
+              <li><code>bind</code>&nbsp;— вызывается при первоначальном связывании директивы с&nbsp;элементом DOM.</li>
+              <li><code>inserted</code>&nbsp;— вызывается, когда связанный элемент вставлен в&nbsp;родительский элемент.</li>
+              <li><code>updated</code>&nbsp;— вызывается, когда элемент обновляется, но&nbsp;ни&nbsp;один из&nbsp;дочерних элементов ещё не&nbsp;обновился.</li>
+              <li><code>componentUpdated</code>&nbsp;— вызывается, когда дочерние элементы также обновились.</li>
+              <li><code>unbind</code>&nbsp;— вызывается при отвязывании компонента.</li>
+            </ul>
+            <p>Каждый из&nbsp;перечисленных методов может принимать следующие параметры:</p>
+            <ul>
+              <li><code>el</code>&nbsp;— элемент, к&nbsp;которому привязана директива.</li>
+              <li><code>binding</code>&nbsp;— объект с&nbsp;дополнительными параметрами (рассмотрим ниже).</li>
+              <li><code>vnode</code>&nbsp;— элемент в&nbsp;Virtual DOM Vue.js, который использует фреймворк для создания реальной HTML DOM, отображаемой на&nbsp;странице.</li>
+              <li><code>oldVnode</code>&nbsp;— предыдущий <code>vnode</code>, но&nbsp;появляется только в&nbsp;хуках <code>updated</code> и&nbsp;<code>componentUpdated</code>.</li>
+            </ul>
+            <p>Объект <code>binding</code> содержит следующие атрибуты:</p>
+            <ul>
+              <li><code>name</code>&nbsp;— имя директивы;</li>
+              <li><code>value</code>&nbsp;— значение, переданное в&nbsp;директиву;</li>
+              <li><code>oldValue</code>&nbsp;— предыдущее значение, которое появляется только в&nbsp;хуках <code>updated</code> и&nbsp;<code>componentUpdated</code>;</li>
+              <li><code>expression</code>&nbsp;— выражение, переданное в&nbsp;директиву. В&nbsp;отличие от&nbsp;<code>value</code> передаёт само выражение, а&nbsp;<code>value</code>&nbsp;— его результат. Например: <code>v-directive="${Привет} ${мир!}"</code>, <code>value</code>&nbsp;— «Привет мир», <code>expression</code>&nbsp;— <code>${Привет} ${мир!}</code>;</li>
+              <li><code>arg</code>&nbsp;— аргументы, переданные в&nbsp;директиву;</li>
+              <li><code>modifiers</code>&nbsp;— модификаторы, переданные в&nbsp;директиву.</li>
+            </ul>
+            <p>Рассмотрим несколько примеров.</p>
+            <p>Пример 1:</p>
+            <pre class="html language-html"><code class="hljs language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-color</span>=<span class="hljs-string">"'green'"</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <pre class="js language-js"><code class="hljs language-javascript"><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">directive</span>(<span class="hljs-string">"color"</span>,{
+ <span class="hljs-title function_">bind</span>(<span class="hljs-params">el, binding</span>) {
+   el.<span class="hljs-property">style</span>.<span class="hljs-property">color</span> = binding.<span class="hljs-property">value</span>
+ }
+})
+</code></pre>
+            <p>Данная директива позволяет установить цвет текста по&nbsp;выбору разработчика. Мы&nbsp;использовали свойство <code>value</code> объекта <code>binding</code>.</p>
+            <p>Пример 2:</p>
+            <pre class="html language-html"><code class="hljs language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-font-size:small</span>&gt;</span>Я маленький текст<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-font-size:medium</span>&gt;</span>Я средний текст<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-font-size:large</span>&gt;</span>Я большой текст<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <pre class="js language-js"><code class="hljs language-javascript"><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">directive</span>(<span class="hljs-string">"font-size"</span>,{
+ <span class="hljs-title function_">bind</span>(<span class="hljs-params">e1, binding</span>) {
+   <span class="hljs-keyword">const</span> sizes = {
+     <span class="hljs-attr">small</span>: <span class="hljs-string">'10px'</span>,
+     <span class="hljs-attr">medium</span>: <span class="hljs-string">'20px'</span>,
+     <span class="hljs-attr">large</span>: <span class="hljs-string">'30px'</span>,
+   }
+   e1.<span class="hljs-property">style</span>.<span class="hljs-property">fontSize</span> = sizes[binding.<span class="hljs-property">arg</span>] || sizes.<span class="hljs-property">medium</span>
+ }
+})
+</code></pre>
+            <p>Данная директива позволяет выбрать размер текста. Мы&nbsp;использовали свойство <code>arg</code> объекта <code>binding</code>. Свойство <code>arg</code> передаётся после двоеточия.</p>
+            <p>Пример 3:</p>
+            <pre class="html language-html"><code class="hljs language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-notification:small.success</span>&gt;</span>Все нормально<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-notification:large.warning</span>&gt;</span>Есть проблемы<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-notification:medium</span>&gt;</span>Ничего особенного<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+            <pre class="js language-js"><code class="hljs language-javascript"><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">directive</span>(<span class="hljs-string">"notification"</span>,{
+ <span class="hljs-title function_">bind</span>(<span class="hljs-params">e1,binding</span>) {
+   <span class="hljs-keyword">const</span> sizes = {
+     <span class="hljs-attr">small</span>: <span class="hljs-string">'10px'</span>,
+     <span class="hljs-attr">medium</span>: <span class="hljs-string">'20px'</span>,
+     <span class="hljs-attr">large</span>: <span class="hljs-string">'30px'</span>,
+   }
+   <span class="hljs-keyword">const</span> warning = binding.<span class="hljs-property">modifiers</span>.<span class="hljs-property">warning</span> ? <span class="hljs-string">'red'</span> : <span class="hljs-string">''</span>
+   <span class="hljs-keyword">const</span> success = binding.<span class="hljs-property">modifiers</span>.<span class="hljs-property">success</span> ? <span class="hljs-string">'green'</span> : <span class="hljs-string">''</span>
+   e1.<span class="hljs-property">style</span>.<span class="hljs-property">fontSize</span> = sizes[binding.<span class="hljs-property">arg</span>] || sizes.<span class="hljs-property">medium</span>
+   e1.<span class="hljs-property">style</span>.<span class="hljs-property">color</span> = warning || success || <span class="hljs-string">'black'</span>
+ }
+})
+</code></pre>
+            <p>В&nbsp;данной директиве мы&nbsp;создали нотификации и&nbsp;совместили <code>arg</code> и&nbsp;<code>modifiers</code>.</p>
+          </div>
+          <div class="grid grid--offset grid--gutters mt-20 mb-40">
+            <div class="grid__cell" data-program-item="">
+              <div data-complete-item="">
+                <h3 style="margin-top:0;">Прочитали главу?</h3>
+                <p class="mb-20">Нажмите кнопку «Готово», чтобы сохранить прогресс.</p>
+                <a class="button button--green button--wide" href="../index.html/item/7/complete">Готово</a>
+                <p class="text-small text-red hidden" data-complete-message=""></p>
+              </div>
+              <a class="button button--wide button--transparent  hidden" href="../index.html/item/8" data-next-item="">Продолжить обучение</a></div>
+            <div class="grid__cell">
+              <div class="card card--rating card--rating-embedded" data-rating="" data-rating-comment="" style="width:100%;">
+                <h3 class="card__header">Поделитесь, как вам&nbsp;глава учебника?</h3>
+                <div class="card__content">
+                  <form class="card-rating " action="../index.html/item/7/value" method="POST">
+                    <div class="card-rating__values">
+                      <input class="sr-only" type="radio" name="value" id="tutorial-3.1.7-rating-5" value="5">
+                      <label for="tutorial-3.1.7-rating-5"><span class="sr-only">Глава —&nbsp;огонь!</span>
+                        <svg aria-hidden="true" width="16" height="16">
+                          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#star-fill-16"></use>
+                        </svg>
+                      </label>
+                      <input class="sr-only" type="radio" name="value" id="tutorial-3.1.7-rating-4" value="4">
+                      <label for="tutorial-3.1.7-rating-4"><span class="sr-only">Это было полезно</span>
+                        <svg aria-hidden="true" width="16" height="16">
+                          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#star-fill-16"></use>
+                        </svg>
+                      </label>
+                      <input class="sr-only" type="radio" name="value" id="tutorial-3.1.7-rating-3" value="3">
+                      <label for="tutorial-3.1.7-rating-3"><span class="sr-only">Неплохо, но можно лучше</span>
+                        <svg aria-hidden="true" width="16" height="16">
+                          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#star-fill-16"></use>
+                        </svg>
+                      </label>
+                      <input class="sr-only" type="radio" name="value" id="tutorial-3.1.7-rating-2" value="2">
+                      <label for="tutorial-3.1.7-rating-2"><span class="sr-only">Ничего полезного не было</span>
+                        <svg aria-hidden="true" width="16" height="16">
+                          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#star-fill-16"></use>
+                        </svg>
+                      </label>
+                      <input class="sr-only" type="radio" name="value" id="tutorial-3.1.7-rating-1" value="1">
+                      <label for="tutorial-3.1.7-rating-1"><span class="sr-only">Я напишу эту главу лучше</span>
+                        <svg aria-hidden="true" width="16" height="16">
+                          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#star-fill-16"></use>
+                        </svg>
+                      </label>
+                    </div>
+                    <p class="card-rating__title "></p>
+                    <div class="card-rating__evaluate hidden "><span class="card-rating__text"></span></div>
+                    <div class="card-rating__comment hidden">
+                      <label class="sr-only" for="tutorial-3.1.7-rating-comment">Комментарий</label>
+                      <div class="form__group">
+                        <textarea class="field field--area field--full-width" rows="2" cols="40" placeholder="Оставьте ваш комментарий." name="comment" id="tutorial-3.1.7-rating-comment"></textarea>
+                        <p class="form__notice form__notice--red hidden">Пожалуйста, оставьте комментарий.</p>
+                      </div>
+                      <button class="button button--small" type="submit">Отправить</button>
+                    </div>
+                  </form>
+                  <p class="alert alert--green alert--full-width text-right hidden" data-rating-finish="" style="margin-top:10px;">Спасибо!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card card--orphus">
+            <div class="card__content">
+              <p>
+                <svg aria-hidden="true" width="16" height="16">
+                  <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#shield-16"></use>
+                </svg>
+                Если вы обнаружили ошибку или неработающую ссылку, выделите ее и нажмите Ctrl + Enter</p>
+            </div>
+          </div>
+        </article>
+        <button class="up-interface__chat-control" type="button" title="Свернуть"><span class="sr-only">Свернуть</span>
+        <svg aria-hidden="true" width="8" height="16">
+          <use xlink:href="/img/sprites/up.svg?cs=fb70597153879c70ce140224310b7444b664990a#icon-arrow-right"></use>
+        </svg>
+        </button>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="modal" data-item="0">
+  <div class="modal__inner">
+    <div class="modal__wrapper js-tutor-info hidden">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="tutor-info"></button>
+      <h3 class="modal__header text-left">Мой наставник</h3>
+      <p>Для полноценного прохождения курса вам нужно выбрать наставника.</p>
+      <p>После выбора вы&nbsp;сможете всегда держать под рукой его контакты (почту и&nbsp;ссылки на&nbsp;профиль в&nbsp;соцсетях, которые
+        он&nbsp;укажет для связи со&nbsp;своими студентами), а&nbsp;также расписание консультаций.</p>
+      <p>Вы&nbsp;в&nbsp;любой момент можете поменять наставника, если вам кажется, что с&nbsp;текущим наладить работу не&nbsp;получается.</p>
+    </div>
+    <div class="modal__wrapper js-projects-info hidden">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="projects-info"></button>
+      <h3 class="modal__header text-left">Мои проекты</h3>
+      <p>Для удобства работы с&nbsp;проектами, мы&nbsp;собрали их&nbsp;в&nbsp;этом блоке.</p>
+      <p>Основной личный проект, который вы&nbsp;будете готовить к&nbsp;финальной защите, находится в&nbsp;начале списка и&nbsp;рядом с&nbsp;ним
+        стоит иконка <span class="up-icon">
+        <svg aria-hidden="true" width="24" height="24">
+          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#heart-24"></use>
+        </svg>
+        </span>. Если на&nbsp;курсе
+        используется учебный проект, то&nbsp;он&nbsp;будет следующим и&nbsp;с&nbsp;иконкой&nbsp;<span class="up-icon">
+        <svg aria-hidden="true" width="24" height="24">
+          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#mortar-board-24"></use>
+        </svg>
+        </span>. Далее будут идти все остальные проекты, если
+        для них были созданы репозитории.</p>
+      <p>Вы&nbsp;можете выбрать, какой именно проект будет основным, в&nbsp;любой момент прохождения курса, но&nbsp;мы&nbsp;советуем
+        определиться с&nbsp;выбором как можно скорее.</p>
+    </div>
+    <div class="modal__wrapper js-tutor-task-value hidden">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="tutor-task-value"></button>
+      <h3 class="modal__header text-left">Оцените наставника</h3>
+      <p>Мы всегда стремимся улучшать качество услуг. И нам важно знать, как идёт ваша работа с наставником.</p>
+      <p>Уделите пару секунд вашего времени и дайте нам знать, как обстоят дела.</p>
+      <p>Также вы всегда можете задать свои вопросы напрямую <a href="https://up.htmlacademy.ru/vue/1/curator">куратору</a>.</p>
+    </div>
+    <div class="modal__wrapper js-first-todo hidden">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="first-todo"></button>
+      <h3 class="modal__header text-left">Ваши первые задачи</h3>
+      <p>В&nbsp;этом списке мы собрали задачи, с&nbsp;которых начинается обучение на&nbsp;курсе.</p>
+      <p>Выполняйте задачи по&nbsp;порядку, а&nbsp;система будет автоматически отмечать галочками ваш прогресс. Когда весь список
+        будет выполнен, этот блок закроется и&nbsp;больше не&nbsp;будет вам надоедать.</p>
+    </div>
+    <div class="modal__wrapper js-whoami hidden">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="whoami"></button>
+      <h3 class="modal__header text-left">Стандартный тариф</h3>
+      <p>Студенты стандартного тарифа работают с&nbsp;наставником в&nbsp;течение первых пяти недель обучения. Оставшееся время консультаций, можно потратить на подготовку проекта к&nbsp;защите.</p>
+    </div>
+    <div class="modal__wrapper js-add-tutor-resource-request hidden modal--application-consultation">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="add-tutor-resource-request"></button>
+      <h4 class="modal__header text-left">Запись на консультацию</h4>
+      <form class="consultation-form form" action="https://up.htmlacademy.ru/vue/1/requests/create" method="post" novalidate="">
+        <div class="form__group radio-button-group">
+          <label class="radio-button">
+            <input class="radio-button__input" type="radio" value="voice" name="consultation-type" data-type="voice" checked="">
+            <span class="radio-button__text">
+            <svg aria-hidden="true" width="16" height="16">
+              <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#megaphone-16"></use>
+            </svg>
+            Голосовая</span></label>
+          <label class="radio-button">
+            <input class="radio-button__input" type="radio" value="text" name="consultation-type" data-type="text">
+            <span class="radio-button__text">
+            <svg aria-hidden="true" width="16" height="16">
+              <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#pencil-16"></use>
+            </svg>
+            Текстовая</span></label>
+          <label class="radio-button">
+            <input class="radio-button__input" type="radio" value="code-review" name="consultation-type" data-type="review">
+            <span class="radio-button__text">
+            <svg aria-hidden="true" width="16" height="16">
+              <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#code-review-16"></use>
+            </svg>
+            Кодревью</span></label>
+        </div>
+        <p class="form__text" data-type-content="voice"><b>Голосовая консультация</b> — это живое общение с&nbsp;наставником, который ответит на&nbsp;интересующие вас вопросы.</p>
+        <p class="form__text hidden" data-type-content="text"><b>Текстовая консультация</b> — это общение с&nbsp;наставником в&nbsp;чате. Чат доступен 1&nbsp;день с&nbsp;момента начала консультации.</p>
+        <p class="form__text hidden" data-type-content="review"><b>Кодревью</b> — это проверка пулреквеста в&nbsp;репозитории вашего проекта. Наставник оставит комментарии к&nbsp;вашему коду.</p>
+        <div class="form__group" data-type-content="voice,text,review">
+          <label class="form__label" for="module_id">Выберите раздел</label>
+          <div class="field-wrapper field-wrapper--select   field-wrapper--full-width">
+            <select class="field field--select   field-wrapper--full-width  consultation-module" name="module_id" id="module_id" required="">
+              <option value="2531">1. Основы синтаксиса и базовых возможностей Vue.js</option>
+              <option value="2533">2. Взаимодействие между компонентами Vue.js</option>
+              <option value="2535" selected="">3. Углублённое понимание Vue.js</option>
+              <option value="2537">4. Подключение и использование Vuex</option>
+              <option value="2539">5. Работа с HTTP</option>
+              <option value="2541">6. Анимации Vue.js</option>
+              <option value="2543">7. Тестирование компонентов Vue.js</option>
+              <option value="2545">8. Продвинутые техники Vue.js</option>
+              <option value="2547">9. Обзор Nuxt.js</option>
+            </select>
+          </div>
+          <p class="form__notice">От выбранного раздела зависит, кто из наставников сможет провести консультацию.</p>
+        </div>
+        <div class="form__group" data-type-content="voice,text,review">
+          <label class="form__label" for="consultation-tutor">Выберите наставника</label>
+          <div class="field-wrapper field-wrapper--select field-wrapper--full-width">
+            <select class="field field--select field--full-width consultation-tutor" id="consultation-tutor" name="tutor_id">
+              <option selected="" value="0">Любой</option>
+              <option value="30818" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Олег Сорокин</option>
+              <option value="43033" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Артем Дегтярев</option>
+              <option value="58484" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Василий Пономаренко</option>
+              <option value="123259" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Дима Паутов</option>
+              <option value="171216" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Ростислав Козленко</option>
+              <option value="191691" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Дарина Сыромятникова</option>
+              <option value="201015" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Андрей Рыжаков</option>
+              <option value="208340" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Сергей Зубов</option>
+              <option value="334643" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Александр Катеринин</option>
+              <option value="614731" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Виталий Мосин</option>
+              <option value="666435" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Алексей Белявский</option>
+              <option value="684595" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Тимур Турсунбаев</option>
+              <option value="773389" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Антон Пермяков</option>
+              <option value="918955" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Александр Калинин</option>
+              <option value="926645" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Сергей Парфенов</option>
+              <option value="939693" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Максим Усиков</option>
+              <option value="1013637" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Дмитрий Гребнев</option>
+              <option value="1164203" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Алексей Середа</option>
+              <option value="1339065" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Анатолий Васильев</option>
+              <option value="1827533" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Александр Дроздов</option>
+              <option value="1844769" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Гиес Аббасханов</option>
+              <option value="1844851" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Кирилл Романов</option>
+            </select>
+          </div>
+          <p class="form__notice">Вы можете отправить заявку на&nbsp;консультацию конкретному наставнику, или её возьмёт первый, освободившийся из живой очереди.</p>
+        </div>
+        <div class="form__group " data-type-content="voice">
+          <label class="form__label" for="voice-comment">Комментарий</label>
+          <div class="form__group-fields">
+            <textarea class="field field--area  field--full-width" rows="4" cols="40" name="voice-comment" id="voice-comment" placeholder="Обсудить как строить сетки на гридах."></textarea>
+          </div>
+        </div>
+        <div class="form__group  hidden" data-type-content="text">
+          <label class="form__label" for="text-comment">Список вопросов наставнику</label>
+          <div class="form__group-fields">
+            <textarea class="field field--area  field--full-width" rows="4" cols="40" name="text-comment" id="text-comment" placeholder="Как строить сетки на гридах? Как правильно доступно скрыть блок?"></textarea>
+          </div>
+        </div>
+        <div class="form__group  hidden" data-type-content="review">
+          <label class="form__label" for="pr_url">Ссылка на пулреквест</label>
+          <div class="form__group-fields">
+            <input class="field field--text  field--full-width" type="url" name="pr_url" value="" id="pr_url" required="" placeholder="https://github.com/htmlacademy-vue/35063.../pull/.." pattern="^https:\/\/github.com\/htmlacademy-vue\/35063.+\/pull\/\d+">
+            <p class="form__notice form__notice--red hidden"></p>
+          </div>
+        </div>
+        <div class="form__group  hidden" data-type-content="review">
+          <label class="form__label" for="code-review-comment">На что обратить внимание</label>
+          <div class="form__group-fields">
+            <textarea class="field field--area  field--full-width" rows="4" cols="40" name="code-review-comment" id="code-review-comment" placeholder="Обратить внимание на строчку 20"></textarea>
+          </div>
+        </div>
+        <button class="button  button--full-width" type="submit"> Записаться </button>
+      </form>
+    </div>
+    <div class="modal__wrapper js-buy-increase hidden">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close"></button>
+      <h4 class="modal__header">Докупить консультации</h4>
+      <p class="modal__description">Вы использовали все консультации, доступные на вашем тарифе. Если вам необходимо больше консультаций, вы можете их докупить.</p>
+      <p class="modal__description">Укажите, сколько консультаций вы хотите докупить.</p>
+      <form action="https://up.htmlacademy.ru/vue/1/requests/increases/create" method="post" class="increase_form">
+        <div class="grid grid--gutters">
+          <div class="grid__cell">
+            <div class="form__group">
+              <label class="form__label" for="amount">Количество</label>
+              <div class="form__group-fields">
+                <input class="field field--text" type="number" name="amount" value="3" id="amount" required="">
+                <p class="form__notice form__notice--red hidden"></p>
+              </div>
+            </div>
+          </div>
+          <div class="grid__cell">
+            <div class="form__group">
+              <div class="form__label">Стоимость</div>
+              <div class="form__group-fields" style="font-size: 24px;"><span id="price" data-price="1000">3000</span>₽ </div>
+            </div>
+          </div>
+        </div>
+        <button class="button  button--full-width" type="submit"> Продолжить </button>
+      </form>
+    </div>
+    <div class="modal__wrapper js-orphus hidden" data-class-mod="modal--orphus">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="orphus"></button>
+      <h4 class="modal__header">Нашли опечатку?</h4>
+      <form class="modal__form form" action="https://up.htmlacademy.ru/api/orphus">
+        <input type="hidden" name="token" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbnRlbnNpdmUiOiIyMjMiLCJ1c2VyIjoiMzUwNjMiLCJ1cmwiOiJodHRwczpcL1wvdXAuaHRtbGFjYWRlbXkucnVcL3Z1ZVwvMVwvbW9kdWxlXC8zXC9pdGVtXC83In0.kuhZulAasDlTEhmQ2X-CAVPsG-8FTXVGhgIpnxEPlwU">
+        <div class="form__group ">
+          <div class="form__group-fields">
+            <textarea class="field field--area  field--full-width" rows="4" cols="40" name="comment" id="comment" placeholder="Необязательно"></textarea>
+          </div>
+        </div>
+        <button class="button  button--full-width modal__button" type="submit"> Отправить </button>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="./3.7. Директивы- виды и использование_files/up.js.Без названия"></script><script async="" src="./3.7. Директивы- виды и использование_files/general.js.Без названия" data-assets="https://assets.htmlacademy.ru" data-require="highlight,toggle,tabs,tab-switcher,modal,ajax,autocomplete,orphus,newsfeed-messages,modal,form,tabs"></script><script async="" src="./3.7. Директивы- виды и использование_files/scripts.13.js.Без названия"></script><a href="https://up.htmlacademy.ru/vue/1/curator" class="curator-chat" style="position:fixed;right:12px;bottom:10px;z-index:100;width:80px;height:80px;background:url(&#39;https://assets.htmlacademy.ru/img/icons/icon_tutor-face.svg?cs=84aaed90c9e719bb3e5d9eeb0c5c7cbe29a464b0&#39;) 0 0 no-repeat;background-size:cover;"></a><script>window.intercomSettings = {app_id:'omq12oer',custom_launcher_selector:'.curator-chat',hide_default_launcher:true,name:'Anakolis',email:'anakolis@mail.ru',type:'Студент',joined_at:1726834210,company:{id:223,name:'Vue.js для опытных разработчиков',type:'vue',number:'1'},tutor:'',tutor_id:'',user_id:'35063',user_hash:'b89d4d27875dae42a7b37e407e850197e1212ba460435c65b50713c892c1ac9c'};</script><script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/omq12oer';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();[].map.call(document.querySelectorAll('[data-intercom-link]'),function(link){link.addEventListener('click',function(evt){evt.preventDefault();Intercom('show')})});
+  </script> <script type="text/javascript" id="">(function(a,e,f,g,b,c,d){a[b]=a[b]||function(){(a[b].a=a[b].a||[]).push(arguments)};a[b].l=1*new Date;c=e.createElement(f);d=e.getElementsByTagName(f)[0];c.async=1;c.src=g;d.parentNode.insertBefore(c,d)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(51609551,"init",{id:51609551,clickmap:!0,trackLinks:!0,accurateTrackBounce:!0,webvisor:!0});</script>
+<noscript>
+<div><img src="https://mc.yandex.ru/watch/51609551" style="position:absolute; left:-9999px;" alt=""></div>
+</noscript>
+<script type="text/javascript" id="">(function(e,a){function f(b,a){b.prototype[a]=function(){this._q.push([a].concat(Array.prototype.slice.call(arguments,0)));return this}}function g(b){function a(a){b[a]=function(){b._q.push([a].concat(Array.prototype.slice.call(arguments,0)))}}for(var c=0;c<h.length;c++)a(h[c])}var c=e.amplitude||{_q:[],_iq:{}},b=a.createElement("script");b.type="text/javascript";b.integrity="sha384-d/yhnowERvm+7eCU79T/bYjOiMmq4F11ElWYLmt0ktvYEVgqLDazh4+gW9CKMpYW";b.crossOrigin="anonymous";b.async=!0;b.src="https://cdn.amplitude.com/libs/amplitude-5.2.2-min.gz.js";
+b.onload=function(){e.amplitude.runQueuedFunctions||console.log("[Amplitude] Error: could not load SDK")};a=a.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a);b=function(){this._q=[];return this};a="add append clearAll prepend set setOnce unset".split(" ");for(var d=0;d<a.length;d++)f(b,a[d]);c.Identify=b;b=function(){this._q=[];return this};a=["setProductId","setQuantity","setPrice","setRevenueType","setEventProperties"];for(d=0;d<a.length;d++)f(b,a[d]);c.Revenue=b;var h="init logEvent logRevenue setUserId setUserProperties setOptOut setVersionName setDomain setDeviceId setGlobalUserProperties identify clearUserProperties setGroup logRevenueV2 regenerateDeviceId groupIdentify onInit logEventWithTimestamp logEventWithGroups setSessionId resetSessionId".split(" ");
+g(c);c.getInstance=function(a){a=(a&&0!==a.length?a:"$default_instance").toLowerCase();c._iq.hasOwnProperty(a)||(c._iq[a]={_q:[]},g(c._iq[a]));return c._iq[a]};e.amplitude=c})(window,document);amplitude.getInstance().init("f602c01f1c06db4f52768e6adaa4eb56",google_tag_manager["GTM-W3ZS73J"].macro(6),{includeUtm:!0,includeGclid:!0,includeReferrer:!0,deviceIdFromUrlParam:!0},function(e){window.amplitudeLoaded=!0});</script><script type="text/javascript" id="">var eventProperties={};eventProperties.origin=google_tag_manager["GTM-W3ZS73J"].macro(7);eventProperties.domain=google_tag_manager["GTM-W3ZS73J"].macro(8);amplitude.getInstance().logEvent("user.visit",eventProperties);</script>
+<div class="autocomplete-suggestions " style="left: 1332px; top: 296px; width: 320px;"></div>
+<iframe id="intercom-frame" style="position: absolute !important; opacity: 0 !important; width: 1px !important; height: 1px !important; top: 0 !important; left: 0 !important; border: none !important; display: block !important; z-index: -1 !important; pointer-events: none;" aria-hidden="true" tabindex="-1" title="Intercom" src="./3.7. Директивы- виды и использование_files/saved_resource.html"></iframe>
+<div class="intercom-lightweight-app" aria-live="polite">
+  <style id="intercom-lightweight-app-style" type="text/css">
+  @keyframes intercom-lightweight-app-launcher {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes intercom-lightweight-app-gradient {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes intercom-lightweight-app-messenger {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .intercom-lightweight-app {
+    position: fixed;
+    z-index: 2147483001;
+    width: 0;
+    height: 0;
+    font-family: intercom-font, "Helvetica Neue", "Apple Color Emoji", Helvetica, Arial, sans-serif;
+  }
+
+  .intercom-lightweight-app-gradient {
+    position: fixed;
+    z-index: 2147483002;
+    width: 500px;
+    height: 500px;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at bottom right,
+      rgba(29, 39, 54, 0.16) 0%,
+      rgba(29, 39, 54, 0) 72%);
+    animation: intercom-lightweight-app-gradient 200ms ease-out;
+  }
+
+  .intercom-lightweight-app-launcher {
+    position: fixed;
+    z-index: 2147483003;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #2D2D44;
+    cursor: pointer;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.06), 0 2px 32px 0 rgba(0, 0, 0, 0.16);
+    animation: intercom-lightweight-app-launcher 250ms ease;
+  }
+
+  .intercom-lightweight-app-launcher:focus {
+    outline: none;
+    
+  }
+
+  .intercom-lightweight-app-launcher-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    transition: transform 100ms linear, opacity 80ms linear;
+  }
+
+  .intercom-lightweight-app-launcher-icon-open {
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-open svg {
+    width: 28px;
+    height: 32px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-open svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve {
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve svg {
+    height: 56px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-launcher-custom-icon-open {
+    max-height: 36px;
+    max-width: 36px;
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize {
+    
+        opacity: 0;
+        transform: rotate(-60deg) scale(0);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize svg {
+    width: 16px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-messenger {
+    position: fixed;
+    z-index: 2147483003;
+    overflow: hidden;
+    background-color: white;
+    animation: intercom-lightweight-app-messenger 250ms ease-out;
+    
+        width: 376px;
+        height: calc(100% - 40px);
+        max-height: 704px;
+        min-height: 250px;
+        right: 20px;
+        bottom: 20px;
+        box-shadow: 0 5px 40px rgba(0,0,0,0.16);
+        border-radius: 8px;
+      
+  }
+
+  .intercom-lightweight-app-messenger-header {
+    height: 75px;
+    background: linear-gradient(
+      135deg,
+      rgb(45, 45, 68) 0%,
+      rgb(4, 4, 7) 100%
+    );
+  }
+
+  @media print {
+    .intercom-lightweight-app {
+      display: none;
+    }
+  }
+</style>
+</div>
+</body>
+<app-content ng-version="11.1.0"></app-content>
+</html>

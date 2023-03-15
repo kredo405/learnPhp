@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="" lang="ru"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="utf-8">
+
+
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/octicons-3.css">
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/core.css">
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/text.css"><link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/extended-ui-kit.css"><link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/up.css"><meta name="theme-color" content="#2d2d44">
+
+</head><body>
+
+
+              <div class="page-content "><div class="page-content__inner"><div class="up-interface up-interface--up "><section class="up-interface__left-col"><nav class="breadcrumbs"><ul class="breadcrumbs__list"><li class="breadcrumbs__item"><a href="../index.htm">Главная</a></li></ul></nav><h2 class="up-title">3. HTTP, HTTP/2, HTTP/3</h2><p>Более
+ подробно разберём протоколы HTTP, HTTP/2, HTTP/3 и сравним их между 
+собой. Научимся использовать WebSockets для создания веб-приложений, 
+потренируемся оптимизировать приложение под новый протокол</p><section class="tree tree--module"><div class="tree__block tree__block--prev "><div class="tree__head ">
+          Предыдущий раздел:
+                      <a href="networks-basics_1_module_2.htm">2. Защита данных</a></div></div><div class="tree__block "><div class="tree__list"><div class="tree__item tree__item--help "><div class="tree__item-wrap"><span class="tree__link"><span class="tree__type"><svg aria-hidden="true" width="40" height="40"><use xlink:href="/img/sprites/octicons.v10.svg#bookmark-16"></use></svg></span><b>Как лучше всего проходить этот модуль?</b></span><div class="text-container text-container--module" data-toggle-area="intro-module-3291" data-toggle-save=""><ol><li><p>В&nbsp;этом
+ разделе мы&nbsp;подготовили для вас статьи и&nbsp;демонстрацию 
+с&nbsp;пошаговым разбором. Изучите материалы последовательно.</p></li><li><p>Закрепите
+ полученные знания на&nbsp;практике, выполнив задание. Эталонное решение
+ станет доступно в&nbsp;программе после нажатия кнопки «Задание готово».</p></li></ol><p>Мы&nbsp;не&nbsp;рекомендуем
+ вам смотреть эталонное решение до&nbsp;того, как вы&nbsp;сами сделаете 
+задание. Практика&nbsp;— это важная часть обучения, вы&nbsp;делаете 
+задание для себя, чтобы наработать навык. Вы&nbsp;всегда можете 
+проверить себя по&nbsp;эталонному решению или задать вопросы авторам 
+курса в&nbsp;чате.</p><ol start="3"><li>Тест в&nbsp;конце раздела поможет ещё раз проверить себя и&nbsp;понять, не&nbsp;осталось&nbsp;ли пробелов в&nbsp;знаниях.</li></ol></div><button class="icon-arrows" type="button" data-toggle="intro-module-3291" aria-label="Свернуть/Развернуть"><svg aria-hidden="true" width="67" height="40"><use xlink:href="/img/sprites/landings.v8.svg#arrows"></use></svg></button></div></div><div class="tree__group ">
+    Протоколы: HTTP, HTTP/2, HTTP/3, Websockets
+      </div><div class="tree__material-block"><div class="tree__item "><div class="tree__item-wrap"><div class="tree__details"><span class="tree__type-text">Прочитайте статьи</span></div><a class="tree__link" href="networks-basics_1_module_3_item_1.htm"><span class="tree__type"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg></span>
+              3.1.&nbsp;Введение</a></div></div><div class="tree__item "><div class="tree__item-wrap"><a class="tree__link" href="networks-basics_1_module_3_item_2.htm"><span class="tree__type"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg></span>
+              3.2.&nbsp;HTTP</a></div></div><div class="tree__item "><div class="tree__item-wrap"><a class="tree__link" href="networks-basics_1_module_3_item_3.htm"><span class="tree__type"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg></span>
+              3.3.&nbsp;Коды статусов HTTP и&nbsp;что с&nbsp;ними делать</a></div></div><div class="tree__item "><div class="tree__item-wrap"><a class="tree__link" href="networks-basics_1_module_3_item_4.htm"><span class="tree__type"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg></span>
+              3.4.&nbsp;HTTPS secure HTTP</a></div></div><div class="tree__item "><div class="tree__item-wrap"><a class="tree__link" href="networks-basics_1_module_3_item_5.htm"><span class="tree__type"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg></span>
+              3.5.&nbsp;HTTP/2</a></div></div><div class="tree__item "><div class="tree__item-wrap"><a class="tree__link" href="networks-basics_1_module_3_item_6.htm"><span class="tree__type"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg></span>
+              3.6.&nbsp;HTTP/3 и&nbsp;QUIC</a></div></div><div class="tree__item "><div class="tree__item-wrap"><a class="tree__link" href="networks-basics_1_module_3_item_7.htm"><span class="tree__type"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg></span>
+              3.7.&nbsp;Сравнение HTTP, HTTP/2, HTTP/3</a></div></div><div class="tree__item "><div class="tree__item-wrap"><a class="tree__link" href="networks-basics_1_module_3_item_8.htm"><span class="tree__type"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg></span>
+              3.8.&nbsp;WebSockets</a></div></div></div><div class="tree__material-block"><div class="tree__item "><div class="tree__item-wrap"><div class="tree__details"><span class="tree__type-text">Посмотрите демонстрацию</span></div><a class="tree__link" href="case-01/index.htm"><span class="tree__type"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/octicons.v10.svg#code-square-16"></use></svg></span>
+              3.9.&nbsp;Демонстрация: настройка WebSockets</a></div></div></div><div class="tree__material-block"><div class="tree__item "><div class="tree__item-wrap"><div class="tree__details"><span class="tree__type-text">Прочитайте статью</span></div><a class="tree__link" href="networks-basics_1_module_3_item_10.htm"><span class="tree__type"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg></span>
+              3.10.&nbsp;Как перевести веб-приложение на&nbsp;HTTP/2</a></div></div></div><div class="tree__group ">
+    Практика
+      </div><div class="tree__material-block"><div class="tree__item "><div class="tree__item-wrap"><div class="tree__details"><span class="tree__type-text">Выполните практическое задание</span></div><a class="tree__link" href="networks-basics_1_module_3_item_11.htm"><span class="tree__type"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/octicons.v10.svg#mortar-board-16"></use></svg></span>
+              3.11.&nbsp;Задание: оптимизация проекта под протокол HTTP/2</a></div></div></div><div class="tree__material-block"><div class="tree__item "><div class="tree__item-wrap"><div class="tree__details"><span class="tree__type-text">Пройдите тест</span></div><a class="tree__link" href="networks-basics_1_module_3_item_12.htm"><span class="tree__type"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/octicons.v10.svg#checklist-16"></use></svg></span>
+              3.12.&nbsp;Выбор способов оптимизации под HTTP/2</a></div></div></div><div class="tree__material-block"><div class="tree__item  tree__item--disabled"><div class="tree__item-wrap"><div class="tree__details"><span class="tree__type-text">Прочитайте статью</span></div><a href="networks-basics_1_module_3_item_13.htm" class="tree__link"><span class="tree__type"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg></span>
+              3.13.&nbsp;Эталонное решение: оптимизация проекта под протокол HTTP/2</a></div></div></div><div class="tree__group ">
+    Тест по разделу
+      </div><div class="tree__material-block"><div class="tree__item "><div class="tree__item-wrap"><div class="tree__details"><span class="tree__type-text">Пройдите тест</span></div><a class="tree__link" href="networks-basics_1_module_3_item_14.htm"><span class="tree__type"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/octicons.v10.svg#checklist-16"></use></svg></span>
+              3.14.&nbsp;Тест по HTTP протоколам</a></div></div></div></div></div><div class="tree__block tree__block--next "><div class="tree__head ">
+          Следующий раздел:
+                      <a href="networks-basics_1_module_4.htm">4. Заключение</a></div></div></section>
+
+
+                                         </div></div></div>
+
+
+
+</body></html>

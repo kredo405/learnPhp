@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html class="" lang="ru"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="utf-8">
+
+
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/octicons-3.css">
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/core.css">
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/text.css"><link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/extended-ui-kit.css"><link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/up.css"><meta name="theme-color" content="#2d2d44">
+
+</head><body>
+
+              <div class="page-content "><div class="page-content__inner"><div class="up-interface up-interface--up "><section class="up-interface__left-col"><nav class="breadcrumbs"><ul class="breadcrumbs__list"><li class="breadcrumbs__item"><a href="../index.htm">Главная</a></li><li class="breadcrumbs__item"><a href="networks-basics_1_module_3.htm">3. HTTP, HTTP/2, HTTP/3</a></li></ul></nav><article class="up-text"><div class="up-text__head"><h1 class="up-text__title"><svg aria-hidden="true" width="24" height="24"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg>
+          3.7.&nbsp;Сравнение HTTP, HTTP/2, HTTP/3
+        </h1></div><div class="text-container text-container--module"><p>Сравним HTTP, HTTP/2 и&nbsp;HTTP/3.</p><p>HTTP
+ и&nbsp;HTTP/2 работают поверх&nbsp;TCP. HTTP/3 работает поверх QUIC, 
+который в&nbsp;свою очередь работает поверх&nbsp;UDP. Это означает, что 
+при ошибке отправки пакетов при HTTP и&nbsp;HTTP/2 будет запрашиваться 
+повторная отправка, а&nbsp;в&nbsp;HTTP/3&nbsp;— нет.</p><p>С&nbsp;точки 
+зрения синтаксиса и&nbsp;семантической структуры HTTP/3 похож 
+на&nbsp;HTTP/2. HTTP/3 участвует в&nbsp;тех&nbsp;же типах обмена 
+сообщениями запроса/ответа с&nbsp;форматом данных, которые содержат 
+методы, заголовки, коды состояния и&nbsp;тело.</p><h2>Сходства между HTTP/2 и&nbsp;HTTP/3</h2><ul><li>Server Push.</li><li>Мультиплексирование, которое осуществляется через одно соединение через потоки.</li><li>Приоритизация ресурсов выполняется на&nbsp;основе потоков.</li><li>Сжатие заголовков как HPACK и&nbsp;QPACK, которые привязаны к&nbsp;порядку пакетов.</li></ul><h2>Различия между HTTP/2 и&nbsp;HTTP/3</h2><p>Основное
+ отличие состоит в&nbsp;том, что HTTP/3 основан на&nbsp;QUIC как 
+транспортном уровне для обработки потоков. HTTP/2 использует TCP для 
+обработки потоков на&nbsp;уровне HTTP:</p><p><img src="networks-basics_1_module_3_item_7_files/comparison-layers.jpeg" alt="Сравнение уровней"></p><p>HTTP/3
+ обеспечивает гораздо более быстрое «рукопожатие» для установления 
+безопасного сеанса по&nbsp;сравнению с&nbsp;HTTP/2, в&nbsp;котором это 
+достигается с&nbsp;помощью TCP и&nbsp;TLS. HTTP/3 может быть реализован 
+только безопасным и&nbsp;зашифрованным способом, тогда как HTTP/2 может 
+быть реализована без HTTPS.</p><h2>Модели доставки</h2><p>HTTP передаёт 
+данные в&nbsp;виде текстовых сообщений, конвейерной обработки 
+и&nbsp;блокировки очереди. HTTP/2 кодирует в&nbsp;двоичный файл 
+и&nbsp;приоритизирует потоки. Двоичный уровень кадрирования кодирует 
+запросы и&nbsp;ответы и&nbsp;разбивает их&nbsp;на&nbsp;более мелкие 
+пакеты информации.</p><h2>Прогнозирование запросов ресурсов</h2><ul><li>HTTP&nbsp;— встраивание в&nbsp;документ HTML.</li><li>HTTP/2&nbsp;— механизм Server Push.</li><li>HTTP/3&nbsp;— механизм Server Push.</li></ul><h2>Переполнение буфера</h2><ul><li>HTTP
+ использует транспортный уровень, чтобы избежать переполнения буфера. 
+Каждое новое TCP-соединение требует отдельного механизма управления 
+потоком.</li><li>HTTP/2 мультиплексирует потоки данных в&nbsp;одном TCP-соединении, поэтому клиент и&nbsp;сервер управляют потоками сами.</li><li>HTTP/3 мультиплексирует потоки данных в&nbsp;одном TCP-соединении, поэтому клиент и&nbsp;сервер управляют потоками сами.</li></ul><h2>Сжатие</h2><ul><li>HTTP gzip, но&nbsp;заголовки не&nbsp;сжимаются.</li><li>HTTP/2 сжатие HPACK, которое уменьшает размер заголовков.</li><li>HTTP/3 сжатие QPACK и&nbsp;HPACK, которое уменьшает размер заголовков.</li></ul><h2>Итоги</h2><p>Во&nbsp;всех
+ протоколах версии HTTP последовательно применяются методы запроса, коды
+ состояния и&nbsp;поля сообщений. Различия заключаются 
+в&nbsp;отображении нижележащих транспортных уровней.</p><p>Для HTTP/1.1 
+и&nbsp;HTTP/2 TCP является транспортным средством в&nbsp;архитектуре. 
+Однако HTTP/3 в&nbsp;качестве сетевого транспортного уровня использует 
+QUIC, который реализует контроль перегрузки пользовательского 
+пространства по&nbsp;UDP.</p></div>
+
+</div></div></div>
+
+
+
+</body></html>

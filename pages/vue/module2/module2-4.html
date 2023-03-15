@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)../index.html/item/4 -->
+<html lang="ru" class="">
+<style>
+ytp-player-minimized {
+    overflow: hidden;
+    outline: none;
+}
+</style>
+<script type="text/javascript" async="" src="./2.4. Передача параметров в дочерний компонент_files/omq12oer"></script><script type="text/javascript" async="" src="./2.4. Передача параметров в дочерний компонент_files/linkid.js.Без названия"></script><script type="text/javascript" integrity="sha384-d/yhnowERvm+7eCU79T/bYjOiMmq4F11ElWYLmt0ktvYEVgqLDazh4+gW9CKMpYW" crossorigin="anonymous" async="" src="./2.4. Передача параметров в дочерний компонент_files/amplitude-5.2.2-min.gz.js.Без названия"></script><script async="" src="./2.4. Передача параметров в дочерний компонент_files/tag.js.Без названия"></script><script type="text/javascript" async="" src="./2.4. Передача параметров в дочерний компонент_files/analytics.js.Без названия"></script><script async="" src="./2.4. Передача параметров в дочерний компонент_files/gtm.js.Без названия"></script><script src="chrome-extension://ldkihpcibakajmpnggbjnehoifnnpebn/content.js"></script>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Взаимодействие между компонентами Vue.js&nbsp;— Vue.js для опытных разработчиков #1 / HTML Academy</title>
+<script>document.documentElement.classList.remove('no-js');</script><script src="./2.4. Передача параметров в дочерний компонент_files/sentry.js.Без названия" data-sentry="a64ad1fd170847efa544b305c67696aa" data-project="10" data-version="2" data-sample-rate="0.25"></script>
+<link rel="stylesheet" href="./2.4. Передача параметров в дочерний компонент_files/octicons-3.3.0.min.css">
+<link rel="stylesheet" href="./2.4. Передача параметров в дочерний компонент_files/core.css">
+<link rel="stylesheet" href="./2.4. Передача параметров в дочерний компонент_files/text.css">
+<link rel="stylesheet" href="./2.4. Передача параметров в дочерний компонент_files/extended-ui-kit.css">
+<link rel="stylesheet" href="./2.4. Передача параметров в дочерний компонент_files/up.css">
+<meta name="theme-color" content="#18213F">
+<link rel="mask-icon" href="https://up.htmlacademy.ru/meta/favicon.svg" color="#18213F">
+<meta name="application-name" content="Vue.js для опытных разработчиков #1">
+<meta name="apple-mobile-web-app-title" content="Vue.js для опытных разработчиков #1">
+<link rel="apple-touch-icon" href="https://up.htmlacademy.ru/meta/javascript-touch-icon.png">
+<link rel="shortcut icon" type="image/x-icon" href="https://up.htmlacademy.ru/meta/javascript-favicon.ico">
+<link rel="manifest" href="https://up.htmlacademy.ru/meta/javascript.webmanifest">
+<link rel="preload" href="https://assets.htmlacademy.ru/fonts/tt-norms-pro-400-normal.woff2?cs=9368bed5a8f0c297d5938ffb45f6a27bdb56b166" type="font/woff2" as="font" crossorigin="anonymous">
+<link rel="preload" href="https://assets.htmlacademy.ru/fonts/tt-norms-pro-500-normal.woff2?cs=1eb51247bf7c0f96b4ac3c19b05d6df1083d683b" type="font/woff2" as="font" crossorigin="anonymous">
+<link rel="preload" href="https://assets.htmlacademy.ru/fonts/tt-norms-pro-700-normal.woff2?cs=fa6abeb686814ab5fd0cbcfd2a0c8b02508b1451" type="font/woff2" as="font" crossorigin="anonymous">
+<link rel="preload" href="https://assets.htmlacademy.ru/fonts/ubuntu-mono.woff2?cs=7882c41280d8256972fd2b8ee74e2d7d28a857b6" type="font/woff2" as="font" crossorigin="anonymous">
+<link rel="preload" as="script" href="./2.4. Передача параметров в дочерний компонент_files/general.js.Без названия">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W3ZS73J');</script><script charset="utf-8" src="./2.4. Передача параметров в дочерний компонент_files/3591ce.js.Без названия"></script><script charset="utf-8" src="./2.4. Передача параметров в дочерний компонент_files/0971a8.js.Без названия"></script>
+<style></style>
+<style>
+.hljs {
+    display: block;
+    color: black;
+}
+.hljs-keyword, .hljs-builtin-name, .hljs-selector-id {
+    color: blue;
+}
+.hljs-subst, .hljs-attr {
+    color: black;
+}
+.hljs-title, .hljs-type {
+    color: #0000A2;
+}
+.hljs-literal {
+    color: rgb(88,92,246);
+}
+.hljs-number {
+    color: rgb(0,0,205);
+}
+.hljs-regexp, .hljs-string, .hljs-doctag, .hljs-selector-pseudo, .hljs-code {
+    color: rgb(3,106,7);
+}
+.hljs-selector-class, .hljs-variable {
+    color: rgb(49,132,149);
+}
+.hljs-selector-tag, .hljs-selector-attr, .hljs-link {
+    color: rgb(197,6,11);
+}
+.hljs-attribute {
+    color: rgb(109,121,222);
+}
+.hljs-comment, .hljs-quote {
+    color: rgb(188,20,175);
+}
+.hljs-meta {
+    color: rgb(104,104,91);
+}
+.hljs-tag {
+    color: rgb(0,22,142);
+}
+.hljs-addition {
+    background-color: rgba(155, 185, 85, 0.2);
+}
+.hljs-deletion {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+.hljs-params, .hljs-built_in {
+    color: rgb(49, 132, 149);
+}
+</style>
+<script charset="utf-8" src="./2.4. Передача параметров в дочерний компонент_files/796544.js.Без названия"></script><script charset="utf-8" src="./2.4. Передача параметров в дочерний компонент_files/85ca94.js.Без названия"></script><script charset="utf-8" src="./2.4. Передача параметров в дочерний компонент_files/0fd8b0.js.Без названия"></script><script charset="utf-8" src="./2.4. Передача параметров в дочерний компонент_files/66c7c8.js.Без названия"></script><script charset="utf-8" src="./2.4. Передача параметров в дочерний компонент_files/e2b43a.js.Без названия"></script><script charset="utf-8" src="./2.4. Передача параметров в дочерний компонент_files/38e38f.js.Без названия"></script><script charset="utf-8" src="./2.4. Передача параметров в дочерний компонент_files/c44bf0.js.Без названия"></script><script charset="utf-8" src="./2.4. Передача параметров в дочерний компонент_files/791b31.js.Без названия"></script><script charset="utf-8" src="./2.4. Передача параметров в дочерний компонент_files/79cf05.js.Без названия"></script><script charset="utf-8" src="./2.4. Передача параметров в дочерний компонент_files/e65860.js.Без названия"></script>
+</head>
+<body>
+<noscript>
+<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W3ZS73J"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<header class="up-header up-header--vue">
+  <div class="up-header__inner">
+    <div class="up-header__text">
+      <h1 class="up-header__title"><a href="index.html">Vue.js для опытных разработчиков</a></h1>
+      <span class="up-header__date"></span></div>
+    <ul class="up-header__social">
+      <li><a href="https://up.htmlacademy.ru/vue/1/feed" title="Лента уведомлений"><span class="sr-only">Лента уведомлений</span><span class="feed-counter hidden" data-newsfeed="https://newsfeed.htmlacademy.ru" data-newsfeed-token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjM1MDYzLCJpbnRlbnNpdmVJZCI6MjIzLCJyb2xlIjoic3R1ZGVudCJ9.7dAVgIMq-LFi-F7RsLBBIQDPE4gFMy3Z5nA5rSQFA7w">0</span>
+        <svg aria-hidden="true" width="32" height="32">
+          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#bell-24"></use>
+        </svg>
+        </a></li>
+      <li><a href="https://join.slack.com/t/htmlacademy-vue/shared_invite/zt-rqoxfz8j-h7rhSjglhICSzbPjl8gZGA" title="Канал в Slack"><span class="sr-only">Канал в Slack</span>
+        <svg aria-hidden="true" width="32" height="32">
+          <use xlink:href="/img/sprites/general.svg?cs=915d3446796b7b9fb94be6b8ae7ffc43d042c5d3#new_slack"></use>
+        </svg>
+        </a></li>
+    </ul>
+  </div>
+  <div class="up-header__nav">
+    <nav class="tabs tabs--up">
+      <button class="tabs__button" type="button"><span class="sr-only">Меню курса</span><span class="tabs__icon">
+      <svg aria-hidden="true">
+        <use xlink:href="/img/sprites/up.svg?cs=fb70597153879c70ce140224310b7444b664990a#icon-arrow-right"></use>
+      </svg>
+      </span></button>
+      <ul class="tabs__list">
+        <li class="tabs__item tabs__item--active"><a class="tabs__item-link" href="index.html">Программа</a></li>
+        <li class="tabs__item "><a class="tabs__item-link" href="../book/index.html"> Учебник </a></li>
+        <li class="tabs__item "><a class="tabs__item-link" href="../criteries.html"> Критерии </a></li>
+        <li class="tabs__item "><a class="tabs__item-link" href="../project.html"> Проекты </a></li>
+        <li class="tabs__item  tabs__item--dropdown "><a class="tabs__item-link" href="../examination.html"> Защита </a>
+          <ul class="tabs__dropdown">
+            <li><a href="../regulations.html"> Регламент </a></li>
+          </ul>
+        </li>
+        <li class="tabs__item  tabs__item--dropdown "><a class="tabs__item-link" href="../help/index.html"> Помощь </a>
+          <ul class="tabs__dropdown">
+            <li><a href="../faq.html"> FAQ </a></li>
+          </ul>
+        </li>
+        <li class="tabs__item "><a class="tabs__item-link" href="../results.html"> Итоги </a></li>
+        <li class="tabs__item tabs__item--mobile"><a class="tabs__item-link" href="../index.html/item/4#">Меню курса</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="page-content ">
+  <div class="page-content__inner">
+    <div class="up-interface up-interface--up ">
+      <section class="up-interface__left-col">
+        <nav class="breadcrumbs">
+          <ul class="breadcrumbs__list">
+             <li class="breadcrumbs__item"><a href="../index.html">Главная</a></li>
+            <li class="breadcrumbs__item"><a href="index.html">2. Взаимодействие между компонентами Vue.js</a></li>
+          </ul>
+        </nav>
+        <article class="up-text">
+          <div class="up-text__head">
+            <h1 class="up-text__title">
+              <svg aria-hidden="true" width="24" height="24">
+                <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#book-16"></use>
+              </svg>
+              2.4.&nbsp;Передача параметров в дочерний компонент </h1>
+          </div>
+          <div class="text-container text-container--module">
+            <p>В&nbsp;предыдущих статьях мы&nbsp;рассмотрели все возможные способы передачи данных между компонентами. Пришло время поработать над проектом.</p>
+            <p>Общая картина иерархии компонентов после рефакторинга должна выглядеть так:</p>
+            <p><em>App</em> -&gt; <em>AppLayout</em> -&gt; <em>Index</em> -&gt; <em>DeckColumns</em> -&gt; <em>TaskCard</em> -&gt; <em>TaskCardTags</em>.</p>
+            <p>Начнём с&nbsp;создания нашего первого общего компонента. Для этого создайте папку components в&nbsp;директории <strong>/common</strong> и&nbsp;добавьте новый файл <strong>AppIcon.vue</strong>:</p>
+            <div class="spoiler">
+              <button class="spoiler__button" data-toggle="AppIcon" data-toggle-class="spoiler__button--opened"><span>Файл AppIcon.vue</span></button>
+              <div class="spoiler__content hidden" data-toggle-area="AppIcon">
+                <pre><code class="hljs language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">"column__button column__update icon"</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>
+    <span class="hljs-attr">v-on</span>=<span class="hljs-string">"$listeners"</span>
+  /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'AppIcon'</span>
+};
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"scss"</span> <span class="hljs-attr">scoped</span>&gt;</span>
+...
+<span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <p>Этот компонент достаточно простой, но&nbsp;у&nbsp;него есть свойство <code>v-on="$listeners"</code>.</p>
+            <p>Данное свойство содержит родительские события, которые добавляются в&nbsp;дочерний компонент, и&nbsp;позволяет принимать родительские события в&nbsp;дочернем компоненте. Например:</p>
+            <pre><code class="hljs language-aspectj">&lt;AppIcon
+  <span class="hljs-meta">@click</span>=<span class="hljs-string">"methodOne"</span>
+  <span class="hljs-meta">@mouseover</span>=<span class="hljs-string">"methodTwo"</span>
+/&gt;
+</code></pre>
+            <p>Похожим свойством является <code>v-bind="$attr"</code>, которое передаёт атрибуты родителя в&nbsp;дочерний компонент.</p>
+            <p>Пришло время сделать рефакторинг файла <strong>views/Input.vue</strong> и&nbsp;вынести функционал, отвечающий за&nbsp;создание колонок в&nbsp;отдельные модули.</p>
+            <p>Начнём с&nbsp;модуля <code>tasks</code>. Добавьте папку <strong>tasks/components</strong> в&nbsp;директорию <strong>modules</strong>. Начнём с&nbsp;создания компонента, отвечающего за&nbsp;отрисовку тэгов задач. Добавьте файл <strong>TaskCardTags.vue</strong> в&nbsp;директорию <strong>modules/tasks/components</strong>.</p>
+            <div class="spoiler">
+              <button class="spoiler__button" data-toggle="TaskCardTags" data-toggle-class="spoiler__button--opened"><span>Файл TaskCardTags.vue</span></button>
+              <div class="spoiler__content hidden" data-toggle-area="TaskCardTags">
+                <pre class="html language-html"><code class="hljs language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"task__tags"</span>&gt;</span>
+    // Отображаем тэги из массива
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>
+      <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(tag, index) in tagsArray"</span>
+      <span class="hljs-attr">:key</span>=<span class="hljs-string">"index"</span>
+    &gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"task__tag"</span>&gt;</span>
+        {{ tag }}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+
+<span class="hljs-keyword">import</span> { getTagsArrayFromString } <span class="hljs-keyword">from</span> <span class="hljs-string">'@/common/helpers'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'TaskCardTags'</span>,
+  <span class="hljs-attr">props</span>: {
+    <span class="hljs-attr">tags</span>: {
+      <span class="hljs-attr">type</span>: <span class="hljs-title class_">String</span>,
+      <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>
+    }
+  },
+  <span class="hljs-attr">computed</span>: {
+    <span class="hljs-comment">// Преображаем строку тэгов в массив, используя хелпер-функцию</span>
+    <span class="hljs-title function_">tagsArray</span>(<span class="hljs-params"></span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-title function_">getTagsArrayFromString</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">tags</span>);
+    }
+  }
+};
+
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"scss"</span> <span class="hljs-attr">scoped</span>&gt;</span>
+...
+<span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <p><code>TaskCardTags</code> компонент принимает тэги в&nbsp;виде строки, преобразует их&nbsp;в&nbsp;массив и&nbsp;отрисовывает.</p>
+            <p>Далее создадим другой компонент, который будет отвечать за&nbsp;отображение задачи. Добавьте компонент <strong>TaskCard.vue</strong> в&nbsp;папку <strong>modules/tasks/components</strong>.</p>
+            <div class="spoiler">
+              <button class="spoiler__button" data-toggle="TaskCard" data-toggle-class="spoiler__button--opened"><span>Файл TaskCard.vue</span></button>
+              <div class="spoiler__content hidden" data-toggle-area="TaskCard">
+                <pre class="html language-html"><code class="hljs language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">AppDrop</span> @<span class="hljs-attr">drop</span>=<span class="hljs-string">"$emit('drop', $event)"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">AppDrag</span> <span class="hljs-attr">:transfer-data</span>=<span class="hljs-string">"task"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>
+        <span class="hljs-attr">class</span>=<span class="hljs-string">"task"</span>
+        @<span class="hljs-attr">click</span>=<span class="hljs-string">"$emit('click', task.id)"</span>
+      &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>
+          <span class="hljs-attr">v-if</span>=<span class="hljs-string">"task.user"</span>
+          <span class="hljs-attr">class</span>=<span class="hljs-string">"task__user"</span>
+        &gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"task__avatar"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+              <span class="hljs-attr">:src</span>=<span class="hljs-string">"task.user.avatar"</span>
+              <span class="hljs-attr">alt</span>=<span class="hljs-string">"Аватар пользователя"</span>
+              <span class="hljs-attr">width</span>=<span class="hljs-string">"20"</span>
+              <span class="hljs-attr">height</span>=<span class="hljs-string">"20"</span>
+            /&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          {{ task.user.name }}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"task__statuses"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
+            <span class="hljs-attr">v-if</span>=<span class="hljs-string">"task.status"</span>
+            <span class="hljs-attr">class</span>=<span class="hljs-string">"task__status"</span>
+            <span class="hljs-attr">:class</span>=<span class="hljs-string">"`task__status--${task.status}`"</span>
+          /&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
+            <span class="hljs-attr">v-if</span>=<span class="hljs-string">"task.timeStatus"</span>
+            <span class="hljs-attr">class</span>=<span class="hljs-string">"task__status"</span>
+            <span class="hljs-attr">:class</span>=<span class="hljs-string">"`task__status--${task.timeStatus}`"</span>
+          /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h5</span>
+          <span class="hljs-attr">class</span>=<span class="hljs-string">"task__title"</span>
+          <span class="hljs-attr">:class</span>=<span class="hljs-string">"{ 'task__title--first': !task.user }"</span>
+        &gt;</span>
+          {{ task.title }}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">h5</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">TaskCardTags</span>
+          <span class="hljs-attr">v-if</span>=<span class="hljs-string">"task.tags &amp;&amp; task.tags.length"</span>
+          <span class="hljs-attr">:tags</span>=<span class="hljs-string">"task.tags"</span>
+        /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">AppDrag</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">AppDrop</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">AppDrag</span> <span class="hljs-keyword">from</span> <span class="hljs-string">'@/common/components/AppDrag'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">AppDrop</span> <span class="hljs-keyword">from</span> <span class="hljs-string">'@/common/components/AppDrop'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">TaskCardTags</span> <span class="hljs-keyword">from</span> <span class="hljs-string">'@/modules/tasks/components/TaskCardTags'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'TaskCard'</span>,
+  <span class="hljs-attr">components</span>: {
+    <span class="hljs-title class_">AppDrag</span>,
+    <span class="hljs-title class_">AppDrop</span>,
+    <span class="hljs-title class_">TaskCardTags</span>
+  },
+
+  <span class="hljs-attr">props</span>: {
+    <span class="hljs-attr">task</span>: {
+      <span class="hljs-attr">type</span>: <span class="hljs-title class_">Object</span>,
+      <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>
+    }
+  }
+};
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"scss"</span> <span class="hljs-attr">scoped</span>&gt;</span>
+...
+<span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+
+</code></pre>
+              </div>
+            </div>
+            <p>Данный компонент принимает задачу в&nbsp;виде объекта и&nbsp;отрисовывает&nbsp;её. Обратите внимание, что в&nbsp;компоненте <code>TaskCard</code> добавлен <code>TaskCardTags</code> компонент, и&nbsp;между ними образована иерархическая связь.</p>
+            <p>На&nbsp;верхней ступени иерархии находятся колонки, которые содержат задачи. Для этого нам нужен новый модуль <strong>columns</strong>, который будет отвечать за&nbsp;колонки в&nbsp;нашем приложении. В&nbsp;директорию <strong>modules/columns/components</strong> добавьте компонент <strong>DeskColumn.vue</strong>.</p>
+            <div class="spoiler">
+              <button class="spoiler__button" data-toggle="DeskColumn" data-toggle-class="spoiler__button--opened"><span>Файл DeskColumn.vue</span></button>
+              <div class="spoiler__content hidden" data-toggle-area="DeskColumn">
+                <pre class="html language-html"><code class="hljs language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column__name"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">"!isInputShowed"</span>&gt;</span>
+        {{ columnTitle }}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+        <span class="hljs-attr">v-else</span>
+        <span class="hljs-attr">ref</span>=<span class="hljs-string">"title"</span>
+        <span class="hljs-attr">v-model</span>=<span class="hljs-string">"columnTitle"</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>
+        <span class="hljs-attr">class</span>=<span class="hljs-string">"column__input"</span>
+        <span class="hljs-attr">name</span>=<span class="hljs-string">"column_title"</span>
+      /&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">AppIcon</span>
+        <span class="hljs-attr">v-if</span>=<span class="hljs-string">"!isInputShowed"</span>
+        <span class="hljs-attr">class</span>=<span class="hljs-string">"icon--edit"</span>
+      /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">AppIcon</span>
+        <span class="hljs-attr">v-if</span>=<span class="hljs-string">"!isInputShowed &amp;&amp; !columnTasks.length"</span>
+        <span class="hljs-attr">class</span>=<span class="hljs-string">"icon--trash"</span>
+      /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column__target-area"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">TaskCard</span>
+        <span class="hljs-attr">v-for</span>=<span class="hljs-string">"task in columnTasks"</span>
+        <span class="hljs-attr">:key</span>=<span class="hljs-string">"task.id"</span>
+        <span class="hljs-attr">:task</span>=<span class="hljs-string">"task"</span>
+        <span class="hljs-attr">class</span>=<span class="hljs-string">"column__task"</span>
+      /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">TaskCard</span> <span class="hljs-keyword">from</span> <span class="hljs-string">'@/modules/tasks/components/TaskCard'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">AppIcon</span> <span class="hljs-keyword">from</span> <span class="hljs-string">'@/common/components/AppIcon'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'DeskColumn'</span>,
+  <span class="hljs-attr">components</span>: {
+    <span class="hljs-title class_">TaskCard</span>,
+    <span class="hljs-title class_">AppIcon</span>
+  },
+  <span class="hljs-attr">props</span>: {
+    <span class="hljs-attr">column</span>: {
+      <span class="hljs-attr">type</span>: <span class="hljs-title class_">Object</span>,
+      <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>
+    },
+    <span class="hljs-attr">tasks</span>: {
+      <span class="hljs-attr">type</span>: <span class="hljs-title class_">Array</span>,
+      <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>
+    },
+  },
+  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">columnTitle</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">column</span>.<span class="hljs-property">title</span>,
+      <span class="hljs-attr">isInputShowed</span>: <span class="hljs-literal">false</span>
+    };
+  },
+  <span class="hljs-attr">computed</span>: {
+    <span class="hljs-title function_">columnTasks</span>(<span class="hljs-params"></span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span>
+        .<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">task</span> =&gt;</span> task.<span class="hljs-property">columnId</span> === <span class="hljs-variable language_">this</span>.<span class="hljs-property">column</span>.<span class="hljs-property">id</span>)
+        .<span class="hljs-title function_">sort</span>(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a.<span class="hljs-property">sortOrder</span> - b.<span class="hljs-property">sortOrder</span>);
+    }
+  },
+};
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"scss"</span> <span class="hljs-attr">scoped</span>&gt;</span>
+...
+<span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+</code></pre>
+              </div>
+            </div>
+            <p>Данный компонент принимает несколько параметров: объект колонка, массив задач и&nbsp;фильтры.</p>
+            <p>Теперь мы&nbsp;можем заменить значительную часть кода в&nbsp;<strong>views/Index.vue</strong> файле.</p>
+            <div class="spoiler">
+              <button class="spoiler__button" data-toggle="Index" data-toggle-class="spoiler__button--opened"><span>Изменения в&nbsp;Index.vue</span></button>
+              <div class="spoiler__content hidden" data-toggle-area="Index">
+                <pre class="diff language-diff"><code class="hljs language-diff">&lt;template&gt;
+  &lt;section class="desk"&gt;
+    &lt;div class="desk__header"&gt;
+      &lt;div class="desk__header-top"&gt;
+        &lt;h1 class="desk__title"&gt;
+          Design Coffee Lab
+        &lt;/h1&gt;
+        &lt;button
+          class="desk__add"
+          type="button"
+        &gt;
+          Добавить столбец
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class="desk__filters"&gt;
+        &lt;div class="desk__user-filter"&gt;
+          &lt;ul class="user-filter"&gt;
+            &lt;li
+              v-for="user in users"
+              :key="user.id"
+              :title="user.name"
+              class="user-filter__item"
+            &gt;
+              &lt;a class="user-filter__button"&gt;
+                &lt;img
+                  :src="user.avatar"
+                  alt="Аватар юзера"
+                  width="24"
+                  height="24"
+                /&gt;
+              &lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class="desk__meta-filter"&gt;
+          &lt;ul class="meta-filter"&gt;
+            &lt;li
+              v-for="({ value, label }) in statuses"
+              :key="value"
+              class="meta-filter__item"
+            &gt;
+              &lt;a
+                class="meta-filter__status"
+                :class="`meta-filter__status--${value}`"
+                :title="label"
+              /&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div
+      v-if="columns.length"
+      ref="columns"
+      class="desk__columns"
+    &gt;
+<span class="hljs-deletion">-     &lt;div</span>
+<span class="hljs-addition">+     &lt;DeskColumn</span>
+        v-for="column in columns"
+        :key="column.id"
+<span class="hljs-deletion">-        class="column"</span>
+<span class="hljs-deletion">-      &gt;</span>
+<span class="hljs-deletion">-        &lt;h2 class="column__name"&gt;</span>
+<span class="hljs-deletion">-          &lt;span&gt;{{ column.title }}&lt;/span&gt;</span>
+<span class="hljs-deletion">-        &lt;/h2&gt;</span>
+<span class="hljs-deletion">-</span>
+<span class="hljs-deletion">-        &lt;div class="column__target-area"&gt;</span>
+<span class="hljs-deletion">-          &lt;div</span>
+<span class="hljs-deletion">-            v-for="task in columnTasks[column.id]"</span>
+<span class="hljs-deletion">-            :key="task.title"</span>
+<span class="hljs-deletion">-            class="column__task"</span>
+<span class="hljs-deletion">-          &gt;</span>
+<span class="hljs-deletion">-            &lt;div class="task"&gt;</span>
+<span class="hljs-deletion">-              &lt;div</span>
+<span class="hljs-deletion">-                v-if="task.user"</span>
+<span class="hljs-deletion">-                class="task__user"</span>
+<span class="hljs-deletion">-              &gt;</span>
+<span class="hljs-deletion">-                &lt;div class="task__avatar"&gt;</span>
+<span class="hljs-deletion">-                  &lt;img</span>
+<span class="hljs-deletion">-                    :src="task.user.avatar"</span>
+<span class="hljs-deletion">-                    :alt="task.user.name"</span>
+<span class="hljs-deletion">-                    width="20"</span>
+<span class="hljs-deletion">-                    height="20"</span>
+<span class="hljs-deletion">-                  /&gt;</span>
+<span class="hljs-deletion">-                &lt;/div&gt;</span>
+<span class="hljs-deletion">-                {{ task.user.name }}</span>
+<span class="hljs-deletion">-              &lt;/div&gt;</span>
+<span class="hljs-deletion">-</span>
+<span class="hljs-deletion">-              &lt;div class="task__statuses"&gt;</span>
+<span class="hljs-deletion">-                &lt;span</span>
+<span class="hljs-deletion">-                  v-if="task.status"</span>
+<span class="hljs-deletion">-                  class="task__status"</span>
+<span class="hljs-deletion">-                  :class="`task__status--${task.status}`"</span>
+<span class="hljs-deletion">-                /&gt;</span>
+<span class="hljs-deletion">-                &lt;span</span>
+<span class="hljs-deletion">-                  v-if="task.timeStatus"</span>
+<span class="hljs-deletion">-                  class="task__status"</span>
+<span class="hljs-deletion">-                  :class="`task__status--${task.timeStatus}`"</span>
+<span class="hljs-deletion">-                /&gt;</span>
+<span class="hljs-deletion">-              &lt;/div&gt;</span>
+<span class="hljs-deletion">-</span>
+<span class="hljs-deletion">-              &lt;h5</span>
+<span class="hljs-deletion">-                class="task__title"</span>
+<span class="hljs-deletion">-                :class="{ 'task__title--first': !task.user }"</span>
+<span class="hljs-deletion">-              &gt;</span>
+<span class="hljs-deletion">-                {{ task.title }}</span>
+<span class="hljs-deletion">-              &lt;/h5&gt;</span>
+<span class="hljs-deletion">-</span>
+<span class="hljs-deletion">-              &lt;ul</span>
+<span class="hljs-deletion">-                v-if="task.tags &amp;&amp; task.tags.length"</span>
+<span class="hljs-deletion">-                class="task__tags"</span>
+<span class="hljs-deletion">-              &gt;</span>
+<span class="hljs-deletion">-                &lt;li</span>
+<span class="hljs-deletion">-                  v-for="(tag, index) in task.tags"</span>
+<span class="hljs-deletion">-                  :key="index"</span>
+<span class="hljs-deletion">-                &gt;</span>
+<span class="hljs-deletion">-                  &lt;span class="task__tag"&gt;</span>
+<span class="hljs-deletion">-                    {{ tag }}</span>
+<span class="hljs-deletion">-                  &lt;/span&gt;</span>
+<span class="hljs-deletion">-                &lt;/li&gt;</span>
+<span class="hljs-deletion">-              &lt;/ul&gt;</span>
+<span class="hljs-deletion">-            &lt;/div&gt;</span>
+<span class="hljs-deletion">-          &lt;/div&gt;</span>
+<span class="hljs-deletion">-        &lt;/div&gt;</span>
+<span class="hljs-deletion">-      &lt;/div&gt;</span>
+<span class="hljs-addition">+       :column="column"</span>
+<span class="hljs-addition">+       :tasks="tasks"</span>
+<span class="hljs-addition">+     /&gt;</span>
+    &lt;/div&gt;
+    &lt;p
+      v-else
+      class="desk__emptiness"
+    &gt;
+      Пока нет ни одной колонки
+    &lt;/p&gt;
+  &lt;/section&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import columns from '@/static/columns.json';
+<span class="hljs-deletion">- import tasks from '@/static/tasks.json';</span>
+import users from '@/static/users.json';
+import taskStatuses from '@/common/enums/taskStatuses';
+import { statuses } from '@/common/constants';
+<span class="hljs-deletion">- import {</span>
+<span class="hljs-deletion">-   getTagsArrayFromString,</span>
+<span class="hljs-deletion">-   getTimeStatus,</span>
+<span class="hljs-deletion">-   normalizeTask</span>
+<span class="hljs-deletion">- } from '@/common/helpers';</span>
+<span class="hljs-addition">+ import DeskColumn from '@/modules/columns/components/DeskColumn';</span>
+
+export default {
+  name: 'IndexHome',
+<span class="hljs-addition">+  components: { DeskColumn },</span>
+<span class="hljs-addition">+  props: {</span>
+<span class="hljs-addition">+    tasks: {</span>
+<span class="hljs-addition">+      type: Array,</span>
+<span class="hljs-addition">+      required: true</span>
+<span class="hljs-addition">+    },</span>
+<span class="hljs-addition">+  },</span>
+  data() {
+    return {
+      columns,
+<span class="hljs-deletion">-      tasks: tasks.map(task =&gt; normalizeTask(task)),</span>
+      users,
+      statuses,
+<span class="hljs-deletion">-      taskStatuses</span>
+<span class="hljs-addition">+      taskStatuses,</span>
+<span class="hljs-addition">+      newColumnTitle: 'Новый столбец'</span>
+    };
+  },
+<span class="hljs-deletion">-  computed: {</span>
+<span class="hljs-deletion">-    columnTasks() {</span>
+<span class="hljs-deletion">-      return this.tasks</span>
+<span class="hljs-deletion">-        .filter(({ columnId }) =&gt; columnId)</span>
+<span class="hljs-deletion">-        .reduce((accumulator, task) =&gt; {</span>
+<span class="hljs-deletion">-          task.tags = getTagsArrayFromString(task.tags);</span>
+<span class="hljs-deletion">-          task.status = task.statusId ? taskStatuses[task.statusId] : '';</span>
+<span class="hljs-deletion">-          task.timeStatus = getTimeStatus(task.dueDate);</span>
+<span class="hljs-deletion">-          if (accumulator[task.columnId]) {</span>
+<span class="hljs-deletion">-            accumulator[task.columnId] = [...accumulator[task.columnId], task];</span>
+<span class="hljs-deletion">-          } else {</span>
+<span class="hljs-deletion">-            accumulator[task.columnId] = [task];</span>
+<span class="hljs-deletion">-          }</span>
+<span class="hljs-deletion">-          return accumulator;</span>
+<span class="hljs-deletion">-        }, {});</span>
+<span class="hljs-deletion">-    }</span>
+<span class="hljs-deletion">-  }</span>
+};
+&lt;/script&gt;
+
+&lt;style lang="scss" scoped&gt;
+...
+&lt;/style&gt;
+</code></pre>
+              </div>
+            </div>
+            <p>Также нам нужно вынести получение данных в&nbsp;корневой компонент <strong>App.vue</strong> и&nbsp;передать параметры вниз.</p>
+            <div class="spoiler">
+              <button class="spoiler__button" data-toggle="App" data-toggle-class="spoiler__button--opened"><span>Изменения в&nbsp;App.vue</span></button>
+              <div class="spoiler__content hidden" data-toggle-area="App">
+                <pre class="diff language-diff"><code class="hljs language-diff">&lt;template&gt;
+  &lt;div id="app"&gt;
+<span class="hljs-deletion">-    &lt;AppLayout /&gt;</span>
+<span class="hljs-addition">+    &lt;AppLayout</span>
+<span class="hljs-addition">+      :tasks="tasks"</span>
+<span class="hljs-addition">+      :filters="filters"</span>
+<span class="hljs-addition">+    /&gt;</span>
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import AppLayout from '@/layouts/AppLayout';
+<span class="hljs-addition">+ import tasks from '@/static/tasks.json';</span>
+<span class="hljs-addition">+ import { normalizeTask } from '@/common/helpers'</span>
+
+export default {
+  name: 'App',
+  components: {
+    AppLayout
+  },
+<span class="hljs-addition">+  data() {</span>
+<span class="hljs-addition">+    return {</span>
+<span class="hljs-addition">+      tasks: tasks.map(task =&gt; normalizeTask(task)),</span>
+<span class="hljs-addition">+      filters: {</span>
+<span class="hljs-addition">+        search: '',</span>
+<span class="hljs-addition">+        users: [],</span>
+<span class="hljs-addition">+        statuses: []</span>
+<span class="hljs-addition">+      }</span>
+<span class="hljs-addition">+    };</span>
+<span class="hljs-addition">+  },</span>
+<span class="hljs-addition">+  computed: {</span>
+<span class="hljs-addition">+    filteredTasks() {</span>
+<span class="hljs-addition">+      const filtersAreEmpty = Object.values(this.filters)</span>
+<span class="hljs-addition">+        .every(value =&gt; !value.length);</span>
+<span class="hljs-addition">+      if (filtersAreEmpty) {</span>
+<span class="hljs-addition">+        // Note: to avoid tasks filtering if the filter are not set</span>
+<span class="hljs-addition">+        return this.tasks;</span>
+<span class="hljs-addition">+      }</span>
+<span class="hljs-addition">+</span>
+<span class="hljs-addition">+      const searchFilter = task =&gt; task.title</span>
+<span class="hljs-addition">+        .toLowerCase()</span>
+<span class="hljs-addition">+        .includes(this.filters.search.toLowerCase().trim());</span>
+<span class="hljs-addition">+</span>
+<span class="hljs-addition">+      const usersFilter = task =&gt; this.filters.users</span>
+<span class="hljs-addition">+        .some(userId =&gt; userId === task.userId);</span>
+<span class="hljs-addition">+</span>
+<span class="hljs-addition">+      const statusesFilter = task =&gt; this.filters.statuses</span>
+<span class="hljs-addition">+        .some(el =&gt; el === task.status || el === task.timeStatus);</span>
+<span class="hljs-addition">+</span>
+<span class="hljs-addition">+      return this.tasks.filter(task =&gt; {</span>
+<span class="hljs-addition">+        let result = {</span>
+<span class="hljs-addition">+          search: searchFilter,</span>
+<span class="hljs-addition">+          users: usersFilter,</span>
+<span class="hljs-addition">+          statuses: statusesFilter</span>
+<span class="hljs-addition">+        };</span>
+<span class="hljs-addition">+        return Object.entries(result)</span>
+<span class="hljs-addition">+          .every(([key, callback]) =&gt;</span>
+<span class="hljs-addition">+            !this.filters[key].length || callback(task));</span>
+<span class="hljs-addition">+      });</span>
+<span class="hljs-addition">+    }</span>
+<span class="hljs-addition">+  },</span>
+};
+&lt;/script&gt;
+
+&lt;style lang="scss"&gt;
+@import "assets/scss/app";
+&lt;/style&gt;
+</code></pre>
+              </div>
+            </div>
+            <p>Мы&nbsp;импортировали задачи из&nbsp;файла <strong>static/tasks.json</strong>, сделали их&nbsp;нормализацию и&nbsp;добавили в&nbsp;<code>data</code>. Кроме того, мы&nbsp;определили фильтры по&nbsp;юзерам и&nbsp;статусам. Мы&nbsp;добавили одно вычисляемое свойство (<em>Computed</em>) <code>filteredTasks</code>, которое делает фильтрацию задач в&nbsp;соответствии с&nbsp;фильтрами. В&nbsp;шаблоне (<em>Template</em>) мы&nbsp;передали задачи и&nbsp;фильтры в&nbsp;дочерний компонент <code>AppLayout</code>.</p>
+            <div class="spoiler">
+              <button class="spoiler__button" data-toggle="AppLayout" data-toggle-class="spoiler__button--opened"><span>Изменения в&nbsp;AppLayout.vue</span></button>
+              <div class="spoiler__content hidden" data-toggle-area="AppLayout">
+                <pre class="diff language-diff"><code class="hljs language-diff">&lt;template&gt;
+  &lt;div class="app-layout"&gt;
+<span class="hljs-deletion">-    &lt;AppLayoutHeader /&gt;</span>
+<span class="hljs-addition">+    &lt;AppLayoutHeader :filters="filters" /&gt;</span>
+    &lt;div class="content"&gt;
+<span class="hljs-deletion">-      &lt;AppLayoutMainSidebar /&gt;</span>
+<span class="hljs-deletion">-      &lt;IndexHome /&gt;</span>
+<span class="hljs-addition">+      &lt;AppLayoutMainSidebar</span>
+<span class="hljs-addition">+        :tasks="tasks"</span>
+<span class="hljs-addition">+        :filters="filters"</span>
+<span class="hljs-addition">+      /&gt;</span>
+<span class="hljs-addition">+      &lt;IndexHome</span>
+<span class="hljs-addition">+        :tasks="tasks"</span>
+<span class="hljs-addition">+        :filters="filters"</span>
+<span class="hljs-addition">+      /&gt;</span>
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import AppLayoutMainSidebar from '@/layouts/AppLayoutMainSidebar';
+import AppLayoutHeader from '@/layouts/AppLayoutHeader';
+import IndexHome from '@/views/Index';
+
+export default {
+  name: 'AppLayout',
+  components: {
+    AppLayoutMainSidebar,
+    AppLayoutHeader,
+    IndexHome
+  },
+<span class="hljs-addition">+  props: {</span>
+<span class="hljs-addition">+    tasks: {</span>
+<span class="hljs-addition">+      type: Array,</span>
+<span class="hljs-addition">+      required: true</span>
+<span class="hljs-addition">+    },</span>
+<span class="hljs-addition">+    filters: {</span>
+<span class="hljs-addition">+      type: Object,</span>
+<span class="hljs-addition">+      required: true</span>
+<span class="hljs-addition">+    }</span>
+<span class="hljs-addition">+  }</span>
+};
+&lt;/script&gt;
+
+&lt;style lang="scss" scoped&gt;
+...
+&lt;/style&gt;
+</code></pre>
+              </div>
+            </div>
+            <div class="spoiler">
+              <button class="spoiler__button" data-toggle="AppLayoutHeader" data-toggle-class="spoiler__button--opened"><span>Изменения в&nbsp;AppLayoutHeader.vue</span></button>
+              <div class="spoiler__content hidden" data-toggle-area="AppLayoutHeader">
+                <pre class="diff language-diff"><code class="hljs language-diff">&lt;template&gt;
+  &lt;header class="header"&gt;
+    &lt;div class="header__logo"&gt;
+      &lt;a class="logo"&gt;
+        &lt;img
+          src="@/assets/img/logo.svg"
+          alt="VueWork logo"
+          width="147"
+          height="23"
+        /&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;form
+        action="#"
+        class="header__search"
+      &gt;
+        &lt;input
+<span class="hljs-addition">+          :value="filters.search"</span>
+          type="search"
+          name="search"
+          required
+          placeholder="Поиск"
+        /&gt;
+        &lt;button type="submit"&gt;
+          Найти
+        &lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: 'AppLayoutHeader',
+<span class="hljs-addition">+  props: {</span>
+<span class="hljs-addition">+    filters: {</span>
+<span class="hljs-addition">+      type: Object,</span>
+<span class="hljs-addition">+      required: true</span>
+<span class="hljs-addition">+    }</span>
+<span class="hljs-addition">+  }</span>
+};
+&lt;/script&gt;
+
+&lt;style lang="scss" scoped&gt;
+...
+&lt;/style&gt;
+</code></pre>
+              </div>
+            </div>
+            <div class="spoiler">
+              <button class="spoiler__button" data-toggle="AppLayoutMainSidebar" data-toggle-class="spoiler__button--opened"><span>Изменения в&nbsp;AppLayoutMainSidebar.vue</span></button>
+              <div class="spoiler__content hidden" data-toggle-area="AppLayoutMainSidebar">
+                <pre class="diff language-diff"><code class="hljs language-diff">&lt;template&gt;
+  &lt;div
+    class="backlog"
+    :class="{ 'backlog--hide': backlogIsHidden }"
+    @click="backlogIsHidden = !backlogIsHidden"
+  &gt;
+    &lt;button class="backlog__title"&gt;
+      &lt;span&gt;
+        Бэклог
+      &lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class="backlog__content"&gt;
+      &lt;div class="backlog__scroll"&gt;
+        &lt;div class="backlog__collapse"&gt;
+          &lt;div class="backlog__user"&gt;
+            &lt;div class="backlog__account"&gt;
+              &lt;img
+                src="/public/user6.jpg"
+                alt="Ваш аватар"
+                width="32"
+                height="32"
+              /&gt;
+              Игорь Пятин
+            &lt;/div&gt;
+
+            &lt;div class="backlog__counter"&gt;
+              {{ sidebarTasks.length }}
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class="backlog__target-area"&gt;
+<span class="hljs-deletion">-            &lt;div</span>
+<span class="hljs-addition">+            &lt;TaskCard</span>
+              v-for="task in sidebarTasks"
+<span class="hljs-deletion">-              :key="task.title"</span>
+<span class="hljs-addition">+              :key="task.id"</span>
+<span class="hljs-addition">+              :task="task"</span>
+              class="backlog__task"
+<span class="hljs-deletion">-            &gt;</span>
+<span class="hljs-deletion">-              &lt;div class="task"&gt;</span>
+<span class="hljs-deletion">-                &lt;div</span>
+<span class="hljs-deletion">-                  v-if="task.user"</span>
+<span class="hljs-deletion">-                  class="task__user"</span>
+<span class="hljs-deletion">-                &gt;</span>
+<span class="hljs-deletion">-                  &lt;div class="task__avatar"&gt;</span>
+<span class="hljs-deletion">-                    &lt;img</span>
+<span class="hljs-deletion">-                      :src="task.user.avatar"</span>
+<span class="hljs-deletion">-                      :alt="task.user.name"</span>
+<span class="hljs-deletion">-                      width="20"</span>
+<span class="hljs-deletion">-                      height="20"</span>
+<span class="hljs-deletion">-                    /&gt;</span>
+<span class="hljs-deletion">-                  &lt;/div&gt;</span>
+<span class="hljs-deletion">-                  {{ task.user.name }}</span>
+<span class="hljs-deletion">-                &lt;/div&gt;</span>
+<span class="hljs-deletion">-</span>
+<span class="hljs-deletion">-                &lt;div class="task__statuses"&gt;</span>
+<span class="hljs-deletion">-                  &lt;span</span>
+<span class="hljs-deletion">-                    v-if="task.status"</span>
+<span class="hljs-deletion">-                    class="task__status"</span>
+<span class="hljs-deletion">-                    :class="`task__status--${task.status}`"</span>
+<span class="hljs-deletion">-                  /&gt;</span>
+<span class="hljs-deletion">-                  &lt;span</span>
+<span class="hljs-deletion">-                    v-if="task.timeStatus"</span>
+<span class="hljs-deletion">-                    class="task__status"</span>
+<span class="hljs-deletion">-                    :class="`task__status--${task.timeStatus}`"</span>
+<span class="hljs-deletion">-                  /&gt;</span>
+<span class="hljs-deletion">-                &lt;/div&gt;</span>
+<span class="hljs-deletion">-</span>
+<span class="hljs-deletion">-                &lt;h5</span>
+<span class="hljs-deletion">-                  class="task__title"</span>
+<span class="hljs-deletion">-                  :class="{ 'task__title--first': !task.user }"</span>
+<span class="hljs-deletion">-                &gt;</span>
+<span class="hljs-deletion">-                  {{ task.title }}</span>
+<span class="hljs-deletion">-                &lt;/h5&gt;</span>
+<span class="hljs-deletion">-</span>
+<span class="hljs-deletion">-                &lt;ul</span>
+<span class="hljs-deletion">-                  v-if="task.tags &amp;&amp; task.tags.length"</span>
+<span class="hljs-deletion">-                  class="task__tags"</span>
+<span class="hljs-deletion">-                &gt;</span>
+<span class="hljs-deletion">-                  &lt;li</span>
+<span class="hljs-deletion">-                    v-for="(tag, index) in task.tags"</span>
+<span class="hljs-deletion">-                    :key="index"</span>
+<span class="hljs-deletion">-                  &gt;</span>
+<span class="hljs-deletion">-                    &lt;span class="task__tag"&gt;</span>
+<span class="hljs-deletion">-                      {{ tag }}</span>
+<span class="hljs-deletion">-                    &lt;/span&gt;</span>
+<span class="hljs-deletion">-                  &lt;/li&gt;</span>
+<span class="hljs-deletion">-                &lt;/ul&gt;</span>
+<span class="hljs-deletion">-              &lt;/div&gt;</span>
+<span class="hljs-deletion">-            &lt;/div&gt;</span>
+<span class="hljs-addition">+            /&gt;</span>
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+<span class="hljs-deletion">- import tasks from '@/static/tasks.json';</span>
+import taskStatuses from '@/common/enums/taskStatuses';
+<span class="hljs-deletion">- import { normalizeTask, getTagsArrayFromString } from '@/common/helpers';</span>
+<span class="hljs-addition">+ import TaskCard from '@/modules/tasks/components/TaskCard';</span>
+
+export default {
+  name: 'AppLayoutMainSidebar',
+<span class="hljs-addition">+  components: { TaskCard },</span>
+<span class="hljs-addition">+  props: {</span>
+<span class="hljs-addition">+    tasks: {</span>
+<span class="hljs-addition">+      type: Array,</span>
+<span class="hljs-addition">+      required: true</span>
+<span class="hljs-addition">+    },</span>
+<span class="hljs-addition">+    filters: {</span>
+<span class="hljs-addition">+      type: Object,</span>
+<span class="hljs-addition">+      required: true</span>
+<span class="hljs-addition">+    }</span>
+<span class="hljs-addition">+  },</span>
+  data() {
+    return {
+<span class="hljs-deletion">-      tasks: tasks.map(task =&gt; normalizeTask(task)),</span>
+      taskStatuses,
+      backlogIsHidden: false
+    };
+  },
+  computed: {
+    sidebarTasks() {
+      return this.tasks
+        .filter(task =&gt; !task.columnId)
+<span class="hljs-deletion">-        .map(task =&gt; ({</span>
+<span class="hljs-deletion">-          ...task,</span>
+<span class="hljs-deletion">-          tags: getTagsArrayFromString(task.tags)</span>
+<span class="hljs-deletion">-        }))</span>
+        .sort((a, b) =&gt; a.sortOrder - b.sortOrder);
+    }
+  }
+};
+&lt;/script&gt;
+
+&lt;style lang="scss" scoped&gt;
+...
+&lt;/style&gt;
+</code></pre>
+              </div>
+            </div>
+            <p>Теперь мы&nbsp;передаём данные сверху вниз с&nbsp;помощью props по&nbsp;следующей цепочке:</p>
+            <p><em>App</em> -&gt; <em>AppLayout</em> -&gt; <em>Index</em> -&gt; <em>DeckColumns</em> -&gt; <em>TaskCard</em> -&gt; <em>TaskCardTasgs</em>.</p>
+            <p>Для понимания, как передаются параметры от&nbsp;компонента, этого достаточно, но&nbsp;в&nbsp;будущем мы&nbsp;будем использовать Vuex и&nbsp;сможем избавиться от&nbsp;длинных цепочек передачи параметров.</p>
+          </div>
+          <div class="grid grid--offset grid--gutters mt-20 mb-40">
+            <div class="grid__cell" data-program-item="">
+              <div data-complete-item="">
+                <h3 style="margin-top:0;">Прочитали главу?</h3>
+                <p class="mb-20">Нажмите кнопку «Готово», чтобы сохранить прогресс.</p>
+                <a class="button button--green button--wide" href="../index.html/item/4/complete">Готово</a>
+                <p class="text-small text-red hidden" data-complete-message=""></p>
+              </div>
+              <a class="button button--wide button--transparent  hidden" href="../index.html/item/5" data-next-item="">Продолжить обучение</a></div>
+            <div class="grid__cell">
+              <div class="card card--rating card--rating-embedded" data-rating="" data-rating-comment="" style="width:100%;">
+                <h3 class="card__header">Поделитесь, как вам&nbsp;глава учебника?</h3>
+                <div class="card__content">
+                  <form class="card-rating " action="../index.html/item/4/value" method="POST">
+                    <div class="card-rating__values">
+                      <input class="sr-only" type="radio" name="value" id="tutorial-2.2.1-rating-5" value="5">
+                      <label for="tutorial-2.2.1-rating-5"><span class="sr-only">Глава —&nbsp;огонь!</span>
+                        <svg aria-hidden="true" width="16" height="16">
+                          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#star-fill-16"></use>
+                        </svg>
+                      </label>
+                      <input class="sr-only" type="radio" name="value" id="tutorial-2.2.1-rating-4" value="4">
+                      <label for="tutorial-2.2.1-rating-4"><span class="sr-only">Это было полезно</span>
+                        <svg aria-hidden="true" width="16" height="16">
+                          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#star-fill-16"></use>
+                        </svg>
+                      </label>
+                      <input class="sr-only" type="radio" name="value" id="tutorial-2.2.1-rating-3" value="3">
+                      <label for="tutorial-2.2.1-rating-3"><span class="sr-only">Неплохо, но можно лучше</span>
+                        <svg aria-hidden="true" width="16" height="16">
+                          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#star-fill-16"></use>
+                        </svg>
+                      </label>
+                      <input class="sr-only" type="radio" name="value" id="tutorial-2.2.1-rating-2" value="2">
+                      <label for="tutorial-2.2.1-rating-2"><span class="sr-only">Ничего полезного не было</span>
+                        <svg aria-hidden="true" width="16" height="16">
+                          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#star-fill-16"></use>
+                        </svg>
+                      </label>
+                      <input class="sr-only" type="radio" name="value" id="tutorial-2.2.1-rating-1" value="1">
+                      <label for="tutorial-2.2.1-rating-1"><span class="sr-only">Я напишу эту главу лучше</span>
+                        <svg aria-hidden="true" width="16" height="16">
+                          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#star-fill-16"></use>
+                        </svg>
+                      </label>
+                    </div>
+                    <p class="card-rating__title "></p>
+                    <div class="card-rating__evaluate hidden "><span class="card-rating__text"></span></div>
+                    <div class="card-rating__comment hidden">
+                      <label class="sr-only" for="tutorial-2.2.1-rating-comment">Комментарий</label>
+                      <div class="form__group">
+                        <textarea class="field field--area field--full-width" rows="2" cols="40" placeholder="Оставьте ваш комментарий." name="comment" id="tutorial-2.2.1-rating-comment"></textarea>
+                        <p class="form__notice form__notice--red hidden">Пожалуйста, оставьте комментарий.</p>
+                      </div>
+                      <button class="button button--small" type="submit">Отправить</button>
+                    </div>
+                  </form>
+                  <p class="alert alert--green alert--full-width text-right hidden" data-rating-finish="" style="margin-top:10px;">Спасибо!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card card--orphus">
+            <div class="card__content">
+              <p>
+                <svg aria-hidden="true" width="16" height="16">
+                  <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#shield-16"></use>
+                </svg>
+                Если вы обнаружили ошибку или неработающую ссылку, выделите ее и нажмите Ctrl + Enter</p>
+            </div>
+          </div>
+        </article>
+        <button class="up-interface__chat-control" type="button" title="Свернуть"><span class="sr-only">Свернуть</span>
+        <svg aria-hidden="true" width="8" height="16">
+          <use xlink:href="/img/sprites/up.svg?cs=fb70597153879c70ce140224310b7444b664990a#icon-arrow-right"></use>
+        </svg>
+        </button>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="modal" data-item="0">
+  <div class="modal__inner">
+    <div class="modal__wrapper js-tutor-info hidden">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="tutor-info"></button>
+      <h3 class="modal__header text-left">Мой наставник</h3>
+      <p>Для полноценного прохождения курса вам нужно выбрать наставника.</p>
+      <p>После выбора вы&nbsp;сможете всегда держать под рукой его контакты (почту и&nbsp;ссылки на&nbsp;профиль в&nbsp;соцсетях, которые
+        он&nbsp;укажет для связи со&nbsp;своими студентами), а&nbsp;также расписание консультаций.</p>
+      <p>Вы&nbsp;в&nbsp;любой момент можете поменять наставника, если вам кажется, что с&nbsp;текущим наладить работу не&nbsp;получается.</p>
+    </div>
+    <div class="modal__wrapper js-projects-info hidden">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="projects-info"></button>
+      <h3 class="modal__header text-left">Мои проекты</h3>
+      <p>Для удобства работы с&nbsp;проектами, мы&nbsp;собрали их&nbsp;в&nbsp;этом блоке.</p>
+      <p>Основной личный проект, который вы&nbsp;будете готовить к&nbsp;финальной защите, находится в&nbsp;начале списка и&nbsp;рядом с&nbsp;ним
+        стоит иконка <span class="up-icon">
+        <svg aria-hidden="true" width="24" height="24">
+          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#heart-24"></use>
+        </svg>
+        </span>. Если на&nbsp;курсе
+        используется учебный проект, то&nbsp;он&nbsp;будет следующим и&nbsp;с&nbsp;иконкой&nbsp;<span class="up-icon">
+        <svg aria-hidden="true" width="24" height="24">
+          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#mortar-board-24"></use>
+        </svg>
+        </span>. Далее будут идти все остальные проекты, если
+        для них были созданы репозитории.</p>
+      <p>Вы&nbsp;можете выбрать, какой именно проект будет основным, в&nbsp;любой момент прохождения курса, но&nbsp;мы&nbsp;советуем
+        определиться с&nbsp;выбором как можно скорее.</p>
+    </div>
+    <div class="modal__wrapper js-tutor-task-value hidden">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="tutor-task-value"></button>
+      <h3 class="modal__header text-left">Оцените наставника</h3>
+      <p>Мы всегда стремимся улучшать качество услуг. И нам важно знать, как идёт ваша работа с наставником.</p>
+      <p>Уделите пару секунд вашего времени и дайте нам знать, как обстоят дела.</p>
+      <p>Также вы всегда можете задать свои вопросы напрямую <a href="https://up.htmlacademy.ru/vue/1/curator">куратору</a>.</p>
+    </div>
+    <div class="modal__wrapper js-first-todo hidden">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="first-todo"></button>
+      <h3 class="modal__header text-left">Ваши первые задачи</h3>
+      <p>В&nbsp;этом списке мы собрали задачи, с&nbsp;которых начинается обучение на&nbsp;курсе.</p>
+      <p>Выполняйте задачи по&nbsp;порядку, а&nbsp;система будет автоматически отмечать галочками ваш прогресс. Когда весь список
+        будет выполнен, этот блок закроется и&nbsp;больше не&nbsp;будет вам надоедать.</p>
+    </div>
+    <div class="modal__wrapper js-whoami hidden">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="whoami"></button>
+      <h3 class="modal__header text-left">Стандартный тариф</h3>
+      <p>Студенты стандартного тарифа работают с&nbsp;наставником в&nbsp;течение первых пяти недель обучения. Оставшееся время консультаций, можно потратить на подготовку проекта к&nbsp;защите.</p>
+    </div>
+    <div class="modal__wrapper js-add-tutor-resource-request hidden modal--application-consultation">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="add-tutor-resource-request"></button>
+      <h4 class="modal__header text-left">Запись на консультацию</h4>
+      <form class="consultation-form form" action="https://up.htmlacademy.ru/vue/1/requests/create" method="post" novalidate="">
+        <div class="form__group radio-button-group">
+          <label class="radio-button">
+            <input class="radio-button__input" type="radio" value="voice" name="consultation-type" data-type="voice" checked="">
+            <span class="radio-button__text">
+            <svg aria-hidden="true" width="16" height="16">
+              <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#megaphone-16"></use>
+            </svg>
+            Голосовая</span></label>
+          <label class="radio-button">
+            <input class="radio-button__input" type="radio" value="text" name="consultation-type" data-type="text">
+            <span class="radio-button__text">
+            <svg aria-hidden="true" width="16" height="16">
+              <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#pencil-16"></use>
+            </svg>
+            Текстовая</span></label>
+          <label class="radio-button">
+            <input class="radio-button__input" type="radio" value="code-review" name="consultation-type" data-type="review">
+            <span class="radio-button__text">
+            <svg aria-hidden="true" width="16" height="16">
+              <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#code-review-16"></use>
+            </svg>
+            Кодревью</span></label>
+        </div>
+        <p class="form__text" data-type-content="voice"><b>Голосовая консультация</b> — это живое общение с&nbsp;наставником, который ответит на&nbsp;интересующие вас вопросы.</p>
+        <p class="form__text hidden" data-type-content="text"><b>Текстовая консультация</b> — это общение с&nbsp;наставником в&nbsp;чате. Чат доступен 1&nbsp;день с&nbsp;момента начала консультации.</p>
+        <p class="form__text hidden" data-type-content="review"><b>Кодревью</b> — это проверка пулреквеста в&nbsp;репозитории вашего проекта. Наставник оставит комментарии к&nbsp;вашему коду.</p>
+        <div class="form__group" data-type-content="voice,text,review">
+          <label class="form__label" for="module_id">Выберите раздел</label>
+          <div class="field-wrapper field-wrapper--select   field-wrapper--full-width">
+            <select class="field field--select   field-wrapper--full-width  consultation-module" name="module_id" id="module_id" required="">
+              <option value="2531">1. Основы синтаксиса и базовых возможностей Vue.js</option>
+              <option value="2533" selected="">2. Взаимодействие между компонентами Vue.js</option>
+              <option value="2535">3. Углублённое понимание Vue.js</option>
+              <option value="2537">4. Подключение и использование Vuex</option>
+              <option value="2539">5. Работа с HTTP</option>
+              <option value="2541">6. Анимации Vue.js</option>
+              <option value="2543">7. Тестирование компонентов Vue.js</option>
+              <option value="2545">8. Продвинутые техники Vue.js</option>
+              <option value="2547">9. Обзор Nuxt.js</option>
+            </select>
+          </div>
+          <p class="form__notice">От выбранного раздела зависит, кто из наставников сможет провести консультацию.</p>
+        </div>
+        <div class="form__group" data-type-content="voice,text,review">
+          <label class="form__label" for="consultation-tutor">Выберите наставника</label>
+          <div class="field-wrapper field-wrapper--select field-wrapper--full-width">
+            <select class="field field--select field--full-width consultation-tutor" id="consultation-tutor" name="tutor_id">
+              <option selected="" value="0">Любой</option>
+              <option value="30818" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Олег Сорокин</option>
+              <option value="43033" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Артем Дегтярев</option>
+              <option value="58484" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Василий Пономаренко</option>
+              <option value="123259" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Дима Паутов</option>
+              <option value="171216" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Ростислав Козленко</option>
+              <option value="191691" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Дарина Сыромятникова</option>
+              <option value="201015" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Андрей Рыжаков</option>
+              <option value="208340" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Сергей Зубов</option>
+              <option value="334643" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Александр Катеринин</option>
+              <option value="614731" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Виталий Мосин</option>
+              <option value="666435" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Алексей Белявский</option>
+              <option value="684595" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Тимур Турсунбаев</option>
+              <option value="773389" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Антон Пермяков</option>
+              <option value="918955" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Александр Калинин</option>
+              <option value="926645" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Сергей Парфенов</option>
+              <option value="939693" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Максим Усиков</option>
+              <option value="1013637" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Дмитрий Гребнев</option>
+              <option value="1164203" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Алексей Середа</option>
+              <option value="1339065" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Анатолий Васильев</option>
+              <option value="1827533" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Александр Дроздов</option>
+              <option value="1844769" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Гиес Аббасханов</option>
+              <option value="1844851" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Кирилл Романов</option>
+            </select>
+          </div>
+          <p class="form__notice">Вы можете отправить заявку на&nbsp;консультацию конкретному наставнику, или её возьмёт первый, освободившийся из живой очереди.</p>
+        </div>
+        <div class="form__group " data-type-content="voice">
+          <label class="form__label" for="voice-comment">Комментарий</label>
+          <div class="form__group-fields">
+            <textarea class="field field--area  field--full-width" rows="4" cols="40" name="voice-comment" id="voice-comment" placeholder="Обсудить как строить сетки на гридах."></textarea>
+          </div>
+        </div>
+        <div class="form__group  hidden" data-type-content="text">
+          <label class="form__label" for="text-comment">Список вопросов наставнику</label>
+          <div class="form__group-fields">
+            <textarea class="field field--area  field--full-width" rows="4" cols="40" name="text-comment" id="text-comment" placeholder="Как строить сетки на гридах? Как правильно доступно скрыть блок?"></textarea>
+          </div>
+        </div>
+        <div class="form__group  hidden" data-type-content="review">
+          <label class="form__label" for="pr_url">Ссылка на пулреквест</label>
+          <div class="form__group-fields">
+            <input class="field field--text  field--full-width" type="url" name="pr_url" value="" id="pr_url" required="" placeholder="https://github.com/htmlacademy-vue/35063.../pull/.." pattern="^https:\/\/github.com\/htmlacademy-vue\/35063.+\/pull\/\d+">
+            <p class="form__notice form__notice--red hidden"></p>
+          </div>
+        </div>
+        <div class="form__group  hidden" data-type-content="review">
+          <label class="form__label" for="code-review-comment">На что обратить внимание</label>
+          <div class="form__group-fields">
+            <textarea class="field field--area  field--full-width" rows="4" cols="40" name="code-review-comment" id="code-review-comment" placeholder="Обратить внимание на строчку 20"></textarea>
+          </div>
+        </div>
+        <button class="button  button--full-width" type="submit"> Записаться </button>
+      </form>
+    </div>
+    <div class="modal__wrapper js-buy-increase hidden">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close"></button>
+      <h4 class="modal__header">Докупить консультации</h4>
+      <p class="modal__description">Вы использовали все консультации, доступные на вашем тарифе. Если вам необходимо больше консультаций, вы можете их докупить.</p>
+      <p class="modal__description">Укажите, сколько консультаций вы хотите докупить.</p>
+      <form action="https://up.htmlacademy.ru/vue/1/requests/increases/create" method="post" class="increase_form">
+        <div class="grid grid--gutters">
+          <div class="grid__cell">
+            <div class="form__group">
+              <label class="form__label" for="amount">Количество</label>
+              <div class="form__group-fields">
+                <input class="field field--text" type="number" name="amount" value="3" id="amount" required="">
+                <p class="form__notice form__notice--red hidden"></p>
+              </div>
+            </div>
+          </div>
+          <div class="grid__cell">
+            <div class="form__group">
+              <div class="form__label">Стоимость</div>
+              <div class="form__group-fields" style="font-size: 24px;"><span id="price" data-price="1000">3000</span>₽ </div>
+            </div>
+          </div>
+        </div>
+        <button class="button  button--full-width" type="submit"> Продолжить </button>
+      </form>
+    </div>
+    <div class="modal__wrapper js-orphus hidden" data-class-mod="modal--orphus">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="orphus"></button>
+      <h4 class="modal__header">Нашли опечатку?</h4>
+      <form class="modal__form form" action="https://up.htmlacademy.ru/api/orphus">
+        <input type="hidden" name="token" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbnRlbnNpdmUiOiIyMjMiLCJ1c2VyIjoiMzUwNjMiLCJ1cmwiOiJodHRwczpcL1wvdXAuaHRtbGFjYWRlbXkucnVcL3Z1ZVwvMVwvbW9kdWxlXC8yXC9pdGVtXC80In0.WEG4fibHdSxWjePPRLRK8DvZOCDEgGndwKQrgFns3XU">
+        <div class="form__group ">
+          <div class="form__group-fields">
+            <textarea class="field field--area  field--full-width" rows="4" cols="40" name="comment" id="comment" placeholder="Необязательно"></textarea>
+          </div>
+        </div>
+        <button class="button  button--full-width modal__button" type="submit"> Отправить </button>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="./2.4. Передача параметров в дочерний компонент_files/up.js.Без названия"></script><script async="" src="./2.4. Передача параметров в дочерний компонент_files/general.js.Без названия" data-assets="https://assets.htmlacademy.ru" data-require="highlight,toggle,tabs,tab-switcher,modal,ajax,autocomplete,orphus,newsfeed-messages,modal,form,tabs"></script><script async="" src="./2.4. Передача параметров в дочерний компонент_files/scripts.13.js.Без названия"></script><a href="https://up.htmlacademy.ru/vue/1/curator" class="curator-chat" style="position:fixed;right:12px;bottom:10px;z-index:100;width:80px;height:80px;background:url(&#39;https://assets.htmlacademy.ru/img/icons/icon_tutor-face.svg?cs=84aaed90c9e719bb3e5d9eeb0c5c7cbe29a464b0&#39;) 0 0 no-repeat;background-size:cover;"></a><script>window.intercomSettings = {app_id:'omq12oer',custom_launcher_selector:'.curator-chat',hide_default_launcher:true,name:'Anakolis',email:'anakolis@mail.ru',type:'Студент',joined_at:1726834210,company:{id:223,name:'Vue.js для опытных разработчиков',type:'vue',number:'1'},tutor:'',tutor_id:'',user_id:'35063',user_hash:'b89d4d27875dae42a7b37e407e850197e1212ba460435c65b50713c892c1ac9c'};</script><script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/omq12oer';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();[].map.call(document.querySelectorAll('[data-intercom-link]'),function(link){link.addEventListener('click',function(evt){evt.preventDefault();Intercom('show')})});
+  </script> <script type="text/javascript" id="">(function(a,e,f,g,b,c,d){a[b]=a[b]||function(){(a[b].a=a[b].a||[]).push(arguments)};a[b].l=1*new Date;c=e.createElement(f);d=e.getElementsByTagName(f)[0];c.async=1;c.src=g;d.parentNode.insertBefore(c,d)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(51609551,"init",{id:51609551,clickmap:!0,trackLinks:!0,accurateTrackBounce:!0,webvisor:!0});</script>
+<noscript>
+<div><img src="https://mc.yandex.ru/watch/51609551" style="position:absolute; left:-9999px;" alt=""></div>
+</noscript>
+<script type="text/javascript" id="">(function(e,a){function f(b,a){b.prototype[a]=function(){this._q.push([a].concat(Array.prototype.slice.call(arguments,0)));return this}}function g(b){function a(a){b[a]=function(){b._q.push([a].concat(Array.prototype.slice.call(arguments,0)))}}for(var c=0;c<h.length;c++)a(h[c])}var c=e.amplitude||{_q:[],_iq:{}},b=a.createElement("script");b.type="text/javascript";b.integrity="sha384-d/yhnowERvm+7eCU79T/bYjOiMmq4F11ElWYLmt0ktvYEVgqLDazh4+gW9CKMpYW";b.crossOrigin="anonymous";b.async=!0;b.src="https://cdn.amplitude.com/libs/amplitude-5.2.2-min.gz.js";
+b.onload=function(){e.amplitude.runQueuedFunctions||console.log("[Amplitude] Error: could not load SDK")};a=a.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a);b=function(){this._q=[];return this};a="add append clearAll prepend set setOnce unset".split(" ");for(var d=0;d<a.length;d++)f(b,a[d]);c.Identify=b;b=function(){this._q=[];return this};a=["setProductId","setQuantity","setPrice","setRevenueType","setEventProperties"];for(d=0;d<a.length;d++)f(b,a[d]);c.Revenue=b;var h="init logEvent logRevenue setUserId setUserProperties setOptOut setVersionName setDomain setDeviceId setGlobalUserProperties identify clearUserProperties setGroup logRevenueV2 regenerateDeviceId groupIdentify onInit logEventWithTimestamp logEventWithGroups setSessionId resetSessionId".split(" ");
+g(c);c.getInstance=function(a){a=(a&&0!==a.length?a:"$default_instance").toLowerCase();c._iq.hasOwnProperty(a)||(c._iq[a]={_q:[]},g(c._iq[a]));return c._iq[a]};e.amplitude=c})(window,document);amplitude.getInstance().init("f602c01f1c06db4f52768e6adaa4eb56",google_tag_manager["GTM-W3ZS73J"].macro(6),{includeUtm:!0,includeGclid:!0,includeReferrer:!0,deviceIdFromUrlParam:!0},function(e){window.amplitudeLoaded=!0});</script><script type="text/javascript" id="">var eventProperties={};eventProperties.origin=google_tag_manager["GTM-W3ZS73J"].macro(7);eventProperties.domain=google_tag_manager["GTM-W3ZS73J"].macro(8);amplitude.getInstance().logEvent("user.visit",eventProperties);</script>
+<div class="autocomplete-suggestions " style="left: 1332px; top: 296px; width: 320px;"></div>
+<iframe id="intercom-frame" style="position: absolute !important; opacity: 0 !important; width: 1px !important; height: 1px !important; top: 0 !important; left: 0 !important; border: none !important; display: block !important; z-index: -1 !important; pointer-events: none;" aria-hidden="true" tabindex="-1" title="Intercom" src="./2.4. Передача параметров в дочерний компонент_files/saved_resource.html"></iframe>
+<div class="intercom-lightweight-app" aria-live="polite">
+  <style id="intercom-lightweight-app-style" type="text/css">
+  @keyframes intercom-lightweight-app-launcher {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes intercom-lightweight-app-gradient {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes intercom-lightweight-app-messenger {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .intercom-lightweight-app {
+    position: fixed;
+    z-index: 2147483001;
+    width: 0;
+    height: 0;
+    font-family: intercom-font, "Helvetica Neue", "Apple Color Emoji", Helvetica, Arial, sans-serif;
+  }
+
+  .intercom-lightweight-app-gradient {
+    position: fixed;
+    z-index: 2147483002;
+    width: 500px;
+    height: 500px;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at bottom right,
+      rgba(29, 39, 54, 0.16) 0%,
+      rgba(29, 39, 54, 0) 72%);
+    animation: intercom-lightweight-app-gradient 200ms ease-out;
+  }
+
+  .intercom-lightweight-app-launcher {
+    position: fixed;
+    z-index: 2147483003;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #2D2D44;
+    cursor: pointer;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.06), 0 2px 32px 0 rgba(0, 0, 0, 0.16);
+    animation: intercom-lightweight-app-launcher 250ms ease;
+  }
+
+  .intercom-lightweight-app-launcher:focus {
+    outline: none;
+    
+  }
+
+  .intercom-lightweight-app-launcher-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    transition: transform 100ms linear, opacity 80ms linear;
+  }
+
+  .intercom-lightweight-app-launcher-icon-open {
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-open svg {
+    width: 28px;
+    height: 32px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-open svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve {
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve svg {
+    height: 56px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-launcher-custom-icon-open {
+    max-height: 36px;
+    max-width: 36px;
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize {
+    
+        opacity: 0;
+        transform: rotate(-60deg) scale(0);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize svg {
+    width: 16px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-messenger {
+    position: fixed;
+    z-index: 2147483003;
+    overflow: hidden;
+    background-color: white;
+    animation: intercom-lightweight-app-messenger 250ms ease-out;
+    
+        width: 376px;
+        height: calc(100% - 40px);
+        max-height: 704px;
+        min-height: 250px;
+        right: 20px;
+        bottom: 20px;
+        box-shadow: 0 5px 40px rgba(0,0,0,0.16);
+        border-radius: 8px;
+      
+  }
+
+  .intercom-lightweight-app-messenger-header {
+    height: 75px;
+    background: linear-gradient(
+      135deg,
+      rgb(45, 45, 68) 0%,
+      rgb(4, 4, 7) 100%
+    );
+  }
+
+  @media print {
+    .intercom-lightweight-app {
+      display: none;
+    }
+  }
+</style>
+</div>
+</body>
+<app-content ng-version="11.1.0"></app-content>
+</html>

@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ru-RU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>ch004.xhtml</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body epub:type="bodymatter">
+<section id="группировка-условия-сохранение-состояния-и-обратные-ссылки" class="level1" data-number="4">
+<h1 data-number="4">4. Группировка, условия, сохранение состояния и обратные ссылки</h1>
+<div class="text-container text-container--module">
+<p>В этом разделе мы познакомимся с круглыми и фигурными скобками.</p>
+</div>
+<section id="количество-повторений" class="level2" data-number="4.1">
+<h2 data-number="4.1">4.1. Количество повторений</h2>
+<div class="text-container text-container--module">
+<p>Мы научились выбирать отдельные символы и их группы, но как указать нашему выражению точное количество символов, которые должны совпасть? Для этого существуют фигурные скобки <code>{}</code>, которые численно ограничивают совпадения. Фигурные скобки ещё называют <code>численными квантификаторами</code>.</p>
+<blockquote>
+<p>Квантификатор — выражение для обозначения количественных отношений.</p>
+</blockquote>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Квантификатор</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>{n}</strong></td>
+<td>совпадение с точным количеством, где n — число</td>
+</tr>
+<tr class="even">
+<td><strong>{min, max}</strong></td>
+<td>совпадение в диапазоне от минимального до максимального значения</td>
+</tr>
+<tr class="odd">
+<td><strong>{min, }</strong></td>
+<td>совпадение в диапазоне от минимального значения до бесконечности</td>
+</tr>
+</tbody>
+</table>
+<p>Например, при валидации даты нам поможет следующий паттерн:</p>
+<p><code>&lt;input type="text" name="date" placeholder="дд.мм.гггг" pattern="\d{2}\.\d{2}\.\d{4}"&gt;</code></p>
+<p>Если вы допускаете, что день и месяц могут быть указаны одним числом, а не двумя, то можно записать так:</p>
+<p><code>&lt;input type="text" name="date" placeholder="дд.мм.гггг" pattern="\d{1,2}\.\d{1,2}\.\d{4}"&gt;</code></p>
+<p>Если присмотреться, то данный паттерн не оптимален, ведь месяцев может быть только 12, а дней не больше 31. Сейчас наше правило позволяет написать <code>77.88.9999</code>.</p>
+<p>Попробуйте самостоятельно оптимизировать паттерн, а мы к нему вернёмся в разделе «Оптимизация регулярных выражений».</p>
+<p><strong>Оптимизируем одну из предыдущих задач</strong></p>
+<p>В предыдущем разделе мы проверяли наличие шестнадцатеричного цвета в строке:</p>
+<p><code>/#[0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f]/.test('Этот цвет #FF0000 — красный')</code></p>
+<p>с учётом новых возможностей мы получим:</p>
+<p><code>/#[0-9A-Fa-f]{6}/.test('Этот цвет #FF0000 — красный')</code></p>
+<p><strong>Оптимизируем одну из предыдущих задач</strong></p>
+<p>В предыдущем разделе мы писали функцию, которая расставляет абзацные теги и переводы строк, вот она:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> setParagraph <span class="op">=</span> (str) <span class="kw">=&gt;</span> (str) <span class="op">?</span> <span class="vs">`&lt;p&gt;</span><span class="sc">${</span>str<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\n\n</span><span class="ss">/g</span><span class="op">,</span> <span class="st">&#39;&lt;/p&gt;&lt;p&gt;&#39;</span>)<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\n</span><span class="ss">/g</span><span class="op">,</span> <span class="st">&#39;&lt;br&gt;&#39;</span>)<span class="sc">}</span><span class="vs">&lt;/p&gt;`</span><span class="op">:</span> str<span class="op">;</span></span></code></pre></div>
+<p>Функция не умела захватывать несколько переводов строки и оборачивать их в один абзац, давайте это исправим:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> setParagraph <span class="op">=</span> (str) <span class="kw">=&gt;</span> (str) <span class="op">?</span> <span class="vs">`&lt;p&gt;</span><span class="sc">${</span>str<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\n{2,}</span><span class="ss">/g</span><span class="op">,</span> <span class="st">&#39;&lt;/p&gt;&lt;p&gt;&#39;</span>)<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\n</span><span class="ss">/g</span><span class="op">,</span> <span class="st">&#39;&lt;br&gt;&#39;</span>)<span class="sc">}</span><span class="vs">&lt;/p&gt;`</span><span class="op">:</span> str<span class="op">;</span></span></code></pre></div>
+<p>Мы использовали паттерн совпадения от двух до бесконечности переводов строк <code>\n</code>. В результате функция будет работать даже на неподготовленных текстах.</p>
+<hr />
+<p>Мы научились ограничивать количество совпадений и попробовали оптимизировать одно из наших первых регулярных выражений.</p>
+</div>
+</section>
+<section id="сохранение-совпадения" class="level2" data-number="4.2">
+<h2 data-number="4.2">4.2. Сохранение совпадения</h2>
+<div class="text-container text-container--module">
+<p>Для полноценной работы с частями выражений было бы неплохо объединять (группировать) части выражений, сохранять состояния и создавать условия. Всем этим функционалом обладают круглые скобки <code>()</code>.</p>
+<p>Главная задача скобок — сохранить состояние (содержимое совпадения), чтобы им можно было воспользоваться в дальнейшем как внутри самого регулярного выражения, так и при обработке результата.</p>
+<p><strong>Решим реальную задачу</strong></p>
+<p>Переводчик книги про работу на рынке акций не учел, что в русском языке денежные единицы пишут справа, сразу за цифрой. Книгу пора сдавать в тираж, но перед этим нужно переставить все символы валют, а вручную это сделать физически невозможно.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> str <span class="op">=</span> <span class="vs">`Стоимость акции прошла психологическую отметку $100, что примерно равно €85.`</span><span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>str<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">([$€£¥])(\d+)</span><span class="ss">/g</span><span class="op">,</span> <span class="st">&#39;$2$1&#39;</span>)<span class="op">;</span></span></code></pre></div>
+<p>Подставить сохранённое значение в результат можно с помощью символа доллар <code>$1</code>, где цифра — это порядковый номер скобок внутри регулярного выражения, начинающийся с единицы.</p>
+<blockquote>
+<p>Если скобки вложены друг в друга, то это тоже будет работать, но порядок обхода скобок будет следующим: первая внешняя, первая внутренняя — слева направо и так далее.</p>
+</blockquote>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> str <span class="op">=</span> <span class="vs">`28.10.2021`</span><span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>str<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">(\d{2}\.\d{2}\.(\d{4}))</span><span class="ss">/g</span><span class="op">,</span> <span class="st">&#39;$2 — $1&#39;</span>)<span class="op">;</span> <span class="co">// 2021 — 28.10.2021</span></span></code></pre></div>
+<p><strong>Решим реальную задачу</strong></p>
+<p>Автор текста так торопился, что кое-где написал повторяющиеся слова, а мы бы хотели их убрать. Потому что повторяющиеся слова в русском языке пишутся через дефис.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> str <span class="op">=</span> <span class="vs">`В этой строке строке автор допустил повторение. Так-так, давайте это исправим.`</span><span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>str<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">([а-яёА-ЯЁ]+)\s+\1</span><span class="ss">/</span><span class="op">,</span> <span class="st">&#39;$1&#39;</span>)<span class="op">;</span></span></code></pre></div>
+<p>Обратите внимание, что мы использовали сохраняющие круглые скобки <code>([а-яёА-ЯЁ]+)</code> и в дальнейшем воспользовались сразу двумя вариантами подстановки.</p>
+<p>Подстановка сохранённого состояния внутрь регулярного выражения осуществляется с помощью конструкции «обратный слэш и цифра <code>\1</code>», где цифра — это порядковый номер скобок внутри регулярного выражения, начинающийся с единицы.</p>
+<hr />
+<p>Мы научились сохранять содержимое совпадения для передачи и дальнейшего использования в методах JavaScript.</p>
+</div>
+</section>
+<section id="группировка-с-условием-или" class="level2" data-number="4.3">
+<h2 data-number="4.3">4.3. Группировка с условием ИЛИ</h2>
+<div class="text-container text-container--module">
+<p>Как мы уже отметили ранее, круглые скобки выполняют функцию сохранения. Но помимо этого они могут являться и группирующей конструкцией. Группировка может пригодиться для повторения части регулярного выражения совместно с дублирующим квантификатором <code>+</code>.</p>
+<p>Если нужно объединить селекторы в логическое условие «или», можно воспользоваться метасимволом <code>|</code>.</p>
+<p><strong>Решим реальную задачу</strong></p>
+<p>Заменим даты в тексте, написанные в полном формате <code>01 января 2021</code>, на их короткие аналоги <code>01.01.2021</code></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> months <span class="op">=</span> {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;января&#39;</span><span class="op">:</span> <span class="st">&#39;01&#39;</span><span class="op">,</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;февраля&#39;</span><span class="op">:</span> <span class="st">&#39;02&#39;</span><span class="op">,</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;марта&#39;</span><span class="op">:</span> <span class="st">&#39;03&#39;</span><span class="op">,</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;апреля&#39;</span><span class="op">:</span> <span class="st">&#39;04&#39;</span><span class="op">,</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;мая&#39;</span><span class="op">:</span> <span class="st">&#39;05&#39;</span><span class="op">,</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;июня&#39;</span><span class="op">:</span> <span class="st">&#39;06&#39;</span><span class="op">,</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;июля&#39;</span><span class="op">:</span> <span class="st">&#39;07&#39;</span><span class="op">,</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;августа&#39;</span><span class="op">:</span> <span class="st">&#39;08&#39;</span><span class="op">,</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;сентября&#39;</span><span class="op">:</span> <span class="st">&#39;09&#39;</span><span class="op">,</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;октября&#39;</span><span class="op">:</span> <span class="st">&#39;10&#39;</span><span class="op">,</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;ноября&#39;</span><span class="op">:</span> <span class="st">&#39;11&#39;</span><span class="op">,</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;декабря&#39;</span><span class="op">:</span> <span class="st">&#39;12&#39;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> str <span class="op">=</span> <span class="vs">`По субботам в клубе с сентября по октябрь пройдут вечера встреч для тех, кому за 40, а 17 декабря 2021 мы соберёмся на предновогодний бал.`</span><span class="op">;</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>str<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">(\d{1,2})\s(</span><span class="ss">января</span><span class="sc">|</span><span class="ss">февраля</span><span class="sc">|</span><span class="ss">марта</span><span class="sc">|</span><span class="ss">апреля</span><span class="sc">|</span><span class="ss">мая</span><span class="sc">|</span><span class="ss">июня</span><span class="sc">|</span><span class="ss">июля</span><span class="sc">|</span><span class="ss">августа</span><span class="sc">|</span><span class="ss">сентября</span><span class="sc">|</span><span class="ss">октября</span><span class="sc">|</span><span class="ss">ноября</span><span class="sc">|</span><span class="ss">декабря</span><span class="sc">)\s(\d{4})</span><span class="ss">/gi</span><span class="op">,</span> (s<span class="op">,</span> $1<span class="op">,</span> $2<span class="op">,</span> $3) <span class="kw">=&gt;</span> {</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> $1 <span class="op">+</span> <span class="st">&#39;.&#39;</span> <span class="op">+</span> months[$2] <span class="op">+</span> <span class="st">&#39;.&#39;</span> <span class="op">+</span> $3<span class="op">;</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p>Давайте разобьем выражение <code>(\d{1,2})\s(января|февраля|марта|апреля|мая|июня|июля|августа|сентября|октября|ноября|декабря)\s(\d{4})</code> на части:</p>
+<ul>
+<li><code>(\d{1,2})</code> число из одного или двух знаков. Это не совсем точное совпадение, потому что оно может совпасть с числом <code>33</code> или <code>99</code>, но о точности поговорим в последнем разделе</li>
+<li>далее мы ищем любой пробельный символ <code>\s</code></li>
+<li>затем сохраняющее условие из <code>(января|февраля|марта|апреля|мая|июня|июля|августа|сентября|октября|ноября|декабря)</code>, важно отметить что здесь не учитываются падежные окончания. Если хотите, можете самостоятельно доработать правило.</li>
+<li>далее снова пробельный символ <code>\s</code></li>
+<li>заканчивается всё сохраняющими скобками (\d{4}), которые совпадут с годом</li>
+<li>функция возвращает конкатенированную строку где месяца <code>$2</code> используются как свойства объекта</li>
+</ul>
+<p><strong>Решим реальную задачу</strong></p>
+<p>Дотошный дизайнер просит, чтобы сокращения денежных единиц в тексте переносились на новую строку вместе с цифрами. Нам необходимо связать цифры и сокращения неразрывным пробелом.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> str <span class="op">=</span> <span class="vs">`Помимо подготовки кадров это финансирование разработок в области цифровых технологий (на это планируют потратить 23,6 млрд рублей), чистой и ресурсосберегающей энергетики (19,5 млрд рублей), персонализированной медицины (29,99 млрд рублей), высокопродуктивного агро- и автохозяйства (0,4 млрд рублей). А также работ, направленных на противодействие техногенным, биогенным, социокультурным угрозам, терроризму и киберугрозам (1,09 млрд рублей).`</span><span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>str<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">(\d)\s+(</span><span class="ss">тыс</span><span class="sc">|</span><span class="ss">млн</span><span class="sc">|</span><span class="ss">млрд</span><span class="sc">|</span><span class="ss">трлн</span><span class="sc">)\s+(</span><span class="ss">рублей</span><span class="sc">|</span><span class="ss">долларов</span><span class="sc">|</span><span class="ss">евро</span><span class="sc">)</span><span class="ss">/g</span><span class="op">,</span> <span class="st">&#39;$1&amp;nbsp;$2&amp;nbsp;$3&#39;</span>)<span class="op">;</span></span></code></pre></div>
+<p>Здесь аналогично первому примеру:</p>
+<ul>
+<li>сохраняем последнюю цифру (\d), причем не важно будет она частью целого или дробного числа</li>
+<li>далее мы ищем любой пробельный символ <code>\s+</code> в след за которым идут сохраняющие скобки <code>(тыс|млн|млрд|трлн)</code></li>
+<li>и завершается правило пробельными символами <code>\s+</code>, за которыми следуют <code>(рублей|долларов|евро)</code></li>
+<li>функция заменяет пробельные символы на неразрывные пробелы <code>&amp;nbsp;</code></li>
+</ul>
+<blockquote>
+<p>Не скупитесь ставить патерн для пробельных символов <code>\s+</code>, т. к. это убережет вас от проблем с множественными пробелами и табуляторами</p>
+</blockquote>
+<p>Здесь в одном регулярном выражении мы используем и группировку, и условия с сохранением.</p>
+<hr />
+<p>Быть или не быть совпадению, вот в чём вопрос. Мы научились с помощью скобок создавать условия логического ИЛИ.</p>
+</div>
+</section>
+<section id="отмена-сохранения" class="level2" data-number="4.4">
+<h2 data-number="4.4">4.4. Отмена сохранения</h2>
+<div class="text-container text-container--module">
+<p>Часто возникает ситуация, когда нужно одновременно применить группировку и логическое «или», но сохранять само значение совпадения не имеет смысла, потому что оно не будет использовано в дальнейшей обработке. В таких случаях отменить сохранение скобок можно с помощью конструкции <code>(?:выражение)</code>.</p>
+<p>Стоит заметить, что и номер сохранённого состояния для подобных скобок не присваивается.</p>
+<p><strong>Решим реальную задачу</strong></p>
+<p>Корректор попросил заменить все символы дефиса <code>-</code> и <code>&amp;ndash;</code> в диапазонах римских чисел на длинное тире <code>&amp;mdash;</code>.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;XIX-XX вв.&#39;</span><span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">(\b[IVXL]+)(?</span><span class="ss">:</span><span class="sc">\-|</span><span class="ss">&amp;ndash;</span><span class="sc">)([IVXL]+\b)</span><span class="ss">/</span><span class="op">,</span> <span class="st">&#39;$1&amp;mdash;$2&#39;</span>)<span class="op">;</span></span></code></pre></div>
+<p>Чтобы убедиться, что мы находимся в диапазоне римских чисел, мы должны их сохранить. А <code>-</code> или <code>&amp;ndash;</code> сохранять не имеет смысла, потому что они будут заменены.</p>
+<p>Обратите внимание, что у третьей по счёту скобки индекс 2 за счёт пропуска второй.</p>
+<hr />
+<p>Такая, казалось бы, несложная конструкция позволяет не расходовать память на сохранение лишних состояний.</p>
+</div>
+</section>
+<section id="торжество-лени" class="level2" data-number="4.5">
+<h2 data-number="4.5">4.5. Торжество лени</h2>
+<div class="text-container text-container--module">
+<p>Поступило задание: заменить в тексте все аббревиатуры <strong>HTML</strong>, <strong>CSS</strong>, <strong>JS</strong> на:</p>
+<ul>
+<li><code>&lt;abbr title=”Hyper Text Markup Language”&gt;HTML&lt;/abbr&gt;</code>,</li>
+<li><code>&lt;abbr title=”Cascading Style Sheets”&gt;CSS&lt;/abbr&gt;</code>,</li>
+<li><code>&lt;abbr title="JavaScript”&gt;JS&lt;/abbr&gt;</code>.</li>
+</ul>
+<p>Если эти сокращения написаны строчными — заменить на прописные. Важно, чтобы выражение не совпадало на расширениях файлов.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> str <span class="op">=</span> <span class="vs">`Одностраничное приложение — это приложение, которое состоит из единственной страницы и прочих ресурсов (таких как HTML, js и CSS), необходимых для успешной работы. Запуск приложения осуществляется из единственного файла index.html в корневой папке.`</span><span class="op">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> Abbr <span class="op">=</span> {</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">CSS</span><span class="op">:</span> <span class="vs">`Cascading Style Sheets`</span><span class="op">,</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">HTML</span><span class="op">:</span> <span class="vs">`Hyper Text Markup Language`</span><span class="op">,</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">JS</span><span class="op">:</span> <span class="vs">`JavaScript”`</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> insertAbbr <span class="op">=</span> (str) <span class="kw">=&gt;</span> {</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">// ваш вариант решения</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="fu">insertAbbr</span>(str)<span class="op">;</span></span></code></pre></div>
+</div>
+</section>
+<section id="торжество-лени-решение" class="level2" data-number="4.6">
+<h2 data-number="4.6">4.6. Торжество лени (решение)</h2>
+<div class="text-container text-container--module">
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> str <span class="op">=</span> <span class="vs">`Одностраничное приложение — это приложение, которое состоит из единственной страницы и прочих ресурсов (таких как HTML, js и CSS), необходимых для успешной работы. Запуск приложения осуществляется из единственного файла index.html в корневой папке.`</span><span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> Abbr <span class="op">=</span> {</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">CSS</span><span class="op">:</span> <span class="vs">`Cascading Style Sheets`</span><span class="op">,</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">HTML</span><span class="op">:</span> <span class="vs">`Hyper Text Markup Language`</span><span class="op">,</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">JS</span><span class="op">:</span> <span class="vs">`JavaScript`</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> insertAbbr <span class="op">=</span> (str) <span class="kw">=&gt;</span> {</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>str) {</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="vs">``</span><span class="op">;</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> regex <span class="op">=</span> <span class="kw">new</span> <span class="bu">RegExp</span>(<span class="vs">`(</span><span class="sc">\\</span><span class="vs">.)?</span><span class="sc">\\</span><span class="vs">b(</span><span class="sc">${</span><span class="bu">Object</span><span class="op">.</span><span class="fu">keys</span>(Abbr)<span class="op">.</span><span class="fu">join</span>(<span class="st">&#39;|&#39;</span>)<span class="sc">}</span><span class="vs">|</span><span class="sc">${</span><span class="bu">Object</span><span class="op">.</span><span class="fu">keys</span>(Abbr)<span class="op">.</span><span class="fu">map</span>((abbr) <span class="kw">=&gt;</span> abbr<span class="op">.</span><span class="fu">toLowerCase</span>())<span class="op">.</span><span class="fu">join</span>(<span class="st">&#39;|&#39;</span>)<span class="sc">}</span><span class="vs">)</span><span class="sc">\\</span><span class="vs">b`</span><span class="op">,</span> <span class="st">&#39;g&#39;</span>)<span class="op">;</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> str<span class="op">.</span><span class="fu">replace</span>(regex<span class="op">,</span> (string<span class="op">,</span> $1<span class="op">,</span> $2) <span class="kw">=&gt;</span> {</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>$1) {</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> upper <span class="op">=</span> $2<span class="op">.</span><span class="fu">toUpperCase</span>()<span class="op">;</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="vs">`&lt;abbr title=&quot;</span><span class="sc">${</span>Abbr[upper]<span class="sc">}</span><span class="vs">&quot;&gt;</span><span class="sc">${</span>upper<span class="sc">}</span><span class="vs">&lt;/abbr&gt;`</span><span class="op">;</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> $1 <span class="op">+</span> $2<span class="op">;</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="fu">insertAbbr</span>(str)<span class="op">;</span></span></code></pre></div>
+<p>Для решения задачи мы использовали конструктор <code>new RegExp()</code>, внутри которого собрали значения ключей исходного объекта в разных регистрах.</p>
+<p>Обращаем внимание, что в случае с конструктором регулярное выражение записывается как строковое значение, где символ обратного слэша <code>\</code> должен быть экранирован <code>\\</code>.</p>
+<p>Разберем само выражение:</p>
+<ul>
+<li>Скобки <code>(\\.)?</code> сохранят точку если в тексте попадется выражение типа index.html, она нужна нам чтобы отсечь подобные совпадения в будущем</li>
+<li>Выражение <code>\\b(${Object.keys(Abbr).join('|')}|${Object.keys(Abbr).map((abbr) =&gt; abbr.toLowerCase()).join('|')})\\b</code> соберет все возможные варианты совпадения ключей в нижнем и верхнем регистре. После компиляции оно будет выглядеть так <code>\b(CSS|HTML|JS|css|html|js)\b</code>. Обязательно устанавливаем границы слов <code>\b</code>, чтобы в выборку не попадали посторонние конструкции, например <code>jsDoc</code></li>
+<li>Далее, уже в самой функции замены, проверяем отсутствие точки перед аббревиатурой, переводим совпадение в верхний регистр и выводим тег <code>&lt;abbr&gt;</code></li>
+</ul>
+</div>
+</section>
+<section id="тест-по-пройденному-материалу" class="level2" data-number="4.7">
+<h2 data-number="4.7">4.7. Тест по пройденному материалу</h2>
+<div class="text-container text-container--module">
+<p>Повторим основные моменты, которые были рассмотрены во 2—4 разделах.</p>
+<ol type="1">
+<li><strong>Регулярные выражения чувствительны к регистру?</strong></li>
+</ol>
+<ul>
+<li>Нет</li>
+<li>Да</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Как выглядит набор букв для селектора <code>\w</code>, если переписать его в квадратных скобках?</strong></li>
+</ol>
+<ul>
+<li><code>[a-z0-9_]</code></li>
+<li><code>[a-zA-Z0-9_]</code></li>
+<li><code>[a-zA-Zа-яА-Я0-9_]</code></li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Как правильно записать «не число»?</strong></li>
+</ol>
+<ul>
+<li><code>\D</code></li>
+<li><code>^[0-9]</code></li>
+<li><code>[^0-9]</code></li>
+</ul>
+<ol start="4" type="1">
+<li><strong>С чем совпадёт <code>\d\.\d</code>?</strong></li>
+</ol>
+<ul>
+<li>С целым числом.</li>
+<li>С числами, между которыми стоит любой символ, кроме <code>\n</code>.</li>
+<li>С дробным числом.</li>
+</ul>
+<ol start="5" type="1">
+<li><strong>Какое выражение будет верно для даты 24.11.2021?</strong></li>
+</ol>
+<ul>
+<li><code>\d{1,2}.\d{1,2}.\d{4}</code></li>
+<li><code>\D{1,2}\.\D{1,2}\.\D{4}</code></li>
+<li><code>\d{1,2}\.\d{1,2}\.\d{4}</code></li>
+</ul>
+<ol start="6" type="1">
+<li><strong>Что сделает следующее выражение? <code>(?:[a-z]|\d)</code></strong></li>
+</ol>
+<ul>
+<li>Совпадёт с латинской буквой, перед которой есть вопрос и двоеточие, или цифрой, при этом совпадение сохранится.</li>
+<li>Совпадёт с латинской буквой или цифрой, при этом совпадение не сохранится.</li>
+<li>Совпадёт с латинской буквой или цифрой, при этом совпадение сохранится.</li>
+</ul>
+</div>
+</section>
+<section id="тест-по-пройденному-материалу-ответы" class="level2" data-number="4.8">
+<h2 data-number="4.8">4.7. Тест по пройденному материалу (ответы)</h2>
+<div class="text-container text-container--module">
+<ol type="1">
+<li><strong>Регулярные выражения чувствительны к регистру?</strong></li>
+</ol>
+<ul>
+<li>Да</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Как выглядит набор букв для селектора <code>\w</code>, если переписать его в квадратных скобках?</strong></li>
+</ol>
+<ul>
+<li><code>[a-zA-Z0-9_]</code></li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Как правильно записать «не число»?</strong></li>
+</ol>
+<ul>
+<li><code>\D</code></li>
+<li><code>[^0-9]</code></li>
+</ul>
+<ol start="4" type="1">
+<li><strong>С чем совпадёт <code>\d\.\d</code>?</strong></li>
+</ol>
+<ul>
+<li>С дробным числом.</li>
+</ul>
+<ol start="5" type="1">
+<li><strong>Какое выражение будет верно для даты 24.11.2021?</strong></li>
+</ol>
+<ul>
+<li><code>\d{1,2}\.\d{1,2}\.\d{4}</code></li>
+</ul>
+<ol start="6" type="1">
+<li><strong>Что сделает следующее выражение? <code>(?:[a-z]|\d)</code></strong></li>
+</ol>
+<ul>
+<li>Совпадёт с латинской буквой или цифрой, при этом совпадение не сохранится.</li>
+</ul>
+</div>
+</section>
+</section>
+</body>
+</html>

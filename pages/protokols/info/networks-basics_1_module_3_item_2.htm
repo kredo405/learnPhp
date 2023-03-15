@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html class="" lang="ru"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="utf-8">
+
+
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/octicons-3.css">
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/core.css">
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/text.css"><link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/extended-ui-kit.css"><link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/up.css"><meta name="theme-color" content="#2d2d44">
+
+</head><body>
+
+              <div class="page-content "><div class="page-content__inner"><div class="up-interface up-interface--up "><section class="up-interface__left-col"><nav class="breadcrumbs"><ul class="breadcrumbs__list"><li class="breadcrumbs__item"><a href="../index.htm">Главная</a></li><li class="breadcrumbs__item"><a href="networks-basics_1_module_3.htm">3. HTTP, HTTP/2, HTTP/3</a></li></ul></nav><article class="up-text"><div class="up-text__head"><h1 class="up-text__title"><svg aria-hidden="true" width="24" height="24"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg>
+          3.2.&nbsp;HTTP
+        </h1></div><div class="text-container text-container--module"><p>HTTP
+ был разработан ещё в&nbsp;1990-х годах вместе с&nbsp;разметкой HTML для
+ создания первого интерактивного текстового веб-браузера, который 
+мы&nbsp;теперь называем Всемирной паутиной. С&nbsp;тех пор протокол HTTP
+ претерпел множество изменений, сохранив большую часть своей простоты 
+и&nbsp;став более гибким. Он&nbsp;превратился из&nbsp;раннего протокола 
+обмена файлами в&nbsp;современный интернет. На&nbsp;начало 2022 года 
+протокол HTTP всё ещё остаётся одним из&nbsp;основных способов связи 
+в&nbsp;интернете.</p><p>Теперь рассмотрим особенности и&nbsp;недостатки протокола HTTP.</p><h2>Особенности HTTP</h2><ol><li><p>Клиент
+ и&nbsp;сервер знают о&nbsp;наличии друг друга только во&nbsp;время 
+соединения. После разрыва соединения они как&nbsp;бы забывают друг 
+о&nbsp;друге. И&nbsp;при следующем соединении общаются словно 
+в&nbsp;первый раз.</p></li><li><p>Из&nbsp;этого следует, что HTTP не&nbsp;имеет состояния (stateless), так как не&nbsp;поддерживает постоянное соединение.</p></li><li><p>HTTP
+ не&nbsp;зависит от&nbsp;носителя. По&nbsp;HTTP может быть отправлен 
+любой тип данных, если и&nbsp;клиент и&nbsp;сервер знают, как 
+обрабатывать его содержимое.</p></li><li><p>HTTP загружает отдельные элементы при помощи нескольких соединений.</p></li><li><p>HTTP
+ не&nbsp;содержит информацию о&nbsp;том, когда необходимо закрыть 
+соединение (но&nbsp;есть заголовки, позволяющие это сделать).</p></li></ol><h2>Недостатки HTTP</h2><ol><li><p>Данные передаются в&nbsp;формате текста, поэтому хакерам легко их&nbsp;получить и&nbsp;использовать в&nbsp;своих целях.</p></li><li><p>HTTP
+ не&nbsp;имеет состояния, поэтому ни&nbsp;клиент, ни&nbsp;сервер 
+не&nbsp;могут сохранять информацию между различными запросами.</p></li><li><p>При
+ HTTP браузеры приоритизируют загружаемые ресурсы, создавая очередь 
+на&nbsp;клиенте и&nbsp;предположения о&nbsp;том, как наилучшим образом 
+использовать доступные TCP-соединения. Это задерживает отправку 
+запросов.</p></li><li><p>Параллельная загрузка ресурсов ограничена количеством подключений. На&nbsp;практике это около шести подключений.</p></li><li><p>HTTP
+ (HOL) проблема с&nbsp;Head of&nbsp;Line Blocking. Это то, что 
+происходит, когда клиент запрашивает несколько ресурсов и&nbsp;один 
+ресурс застревает из-за задержки предыдущего большого. Возникает очередь
+ запросов и&nbsp;отложенная отправка запросов на&nbsp;клиенте. Этому 
+мешает ещё и&nbsp;строгий порядок ответов на&nbsp;сервере.</p></li><li><p>Заголовки не&nbsp;сжимаются, поэтому в&nbsp;веб-приложениях с&nbsp;большим количеством запросов скорость загрузки будет больше.</p></li><li><p>Открытие нескольких TCP-соединений для запроса нескольких ресурсов.</p></li></ol><p>Были
+ созданы многочисленные обходные пути для решения этих проблем, 
+например, сегментирование домена, спрайты. Кроме того, компания Google 
+создала протокол SPDY (произносится как «спиди») для ускорения загрузки 
+веб-приложений и&nbsp;улучшения работы HTTP.</p><p><strong>Какие улучшения ввёл SPDY:</strong></p><ul><li>Использование параллельных запросов в&nbsp;одном соединении TCP (мультиплексирование).</li><li>Сжатие заголовков HTTP, то&nbsp;есть уменьшение их&nbsp;размера.</li><li>Реализация технологии server push, когда сервер может пересылать браузеру нужные на&nbsp;данной странице ресурсы без запроса.</li><li>Безопасность: SPDY обязывает шифровать соединение между браузером и&nbsp;сервером, то&nbsp;есть использовать HTTPS.</li><li>Браузеры могут устанавливать приоритеты, чтобы ресурсы, важные для отображения страницы, загружались первыми.</li></ul><p>Поддержку
+ SPDY начали прекращать из-за того, что браузеры реализовали поддержку 
+HTTP/2, в&nbsp;котором SPDY использован как стартовая платформа. 
+На&nbsp;момент 2022 года браузеры практически не&nbsp;поддерживают SPDY:</p><p><img src="networks-basics_1_module_3_item_2_files/spdy-support.jpeg" alt="Поддержка браузерами SPDY"></p></div>
+
+</div></div></div>
+
+
+
+</body></html>

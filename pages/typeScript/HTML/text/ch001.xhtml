@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ru-RU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>ch001.xhtml</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body epub:type="bodymatter">
+<section id="введение.-для-чего-нужен-typescript" class="level1" data-number="1">
+<h1 data-number="1">1. Введение. Для чего нужен TypeScript</h1>
+<div class="text-container text-container--module">
+<p>Достоинства и об ограничения TypeScript. Настройка окружения для работы</p>
+</div>
+<section id="что-такое-typescript-и-зачем-он-нужен" class="level2" data-number="1.1">
+<h2 data-number="1.1">1.1. Что такое TypeScript и зачем он нужен</h2>
+<div class="text-container text-container--module">
+<p>Кому потребовалось создание TypeScript? Чего ожидают разработчики от TypeScript? Чем он лучше &lt;впишите нужное имя&gt;? В этом курсе мы постараемся ответить на эти и многие другие вопросы.</p>
+<p>Формально TypeScript — это статически-<strong>типизированный</strong>, объектно-ориентированный, <strong>компилируемый</strong> язык программирования с глубокой <strong>поддержкой инструментов</strong> разработчика. Программы, написанные на TypeScript, исполняются в любом контексте, где работает JavaScript. TypeScript разрабатывается как <strong>open-source</strong>-проект.</p>
+<p>TypeScript содержит три взаимосвязанные части:</p>
+<ul>
+<li>язык программирования,</li>
+<li>компилятор,</li>
+<li>сервис поддержки инструментов разработки.</li>
+</ul>
+<p><img src="../media/file0.png" /></p>
+<section id="компилятор" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1">Компилятор</h3>
+<p>Возможность обнаружить ошибку до начала исполнения веб-приложения повышает производительность труда разработчика и качество кода. Без использования TypeScript определённую поддержку можно получить со стороны JSLint, но он всё же не является заменой компилятору. Поэтому наличие настоящего компилятора и сервисов языка, предоставляемых TypeScript — большое преимущество.</p>
+<p>Браузеры играют в команде пользователей. Они предназначены для приятного просмотра веб-страниц и прилагают усилия, чтобы по возможности проигнорировать проблемы с JavaScript. Такое поведение среды исполнения не добавляет уверенности разработчику. TypeScript, в свою очередь, играет в команде разработки и помогает как можно раньше обнаружить потенциальные проблемы с кодом.</p>
+<p>Согласитесь, компилятор нужен каждому разработчику. Пусть он выискивает опечатки, а не заказчик.</p>
+</section>
+<section id="язык-программирования-и-система-типов" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2">Язык программирования и система типов</h3>
+<p>Весь курс посвящён изучению системы типов TypeScript. Типизация значений позволяет увереннее судить об их применимости для разных алгоритмов. Авторы полагают, что у вас есть базовые знания JavaScript и вам знакомы головоломки на тему опечаток и недописанных выражений.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> a <span class="op">=</span> ({})<span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">a</span>()<span class="op">;</span></span></code></pre></div>
+<p>Получаем <em>TypeError: a is not a function</em>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> {href} <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">&#39;.no-such-class-on-the-page&#39;</span>)</span></code></pre></div>
+<p>Браузер сообщает в ответ: <em>Cannot destructure property ‘href’ of ‘document.querySelector (…)’ as it is null</em>.</p>
+<p>TypeScript на вашей стороне. Декларация типов аргументов функций снижает уровень стресса, который вы испытываете при сопровождении своего же кода. Это почти документация! Так почему бы не использовать её?</p>
+</section>
+<section id="инструменты-разработчика" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3">Инструменты разработчика</h3>
+<p>Благодаря TypeScript в редакторе исходного кода вы получаете быструю навигацию, контекстные подсказки, рефакторинг и многое другое. Это достигается в том числе благодаря наличию статической типизации.</p>
+<p>TypeScript поддерживается, без преувеличения, всеми популярными средами разработки. Для определённости обратите внимание на VS-Code. Изучать TypeScript можно и без установки посторонних программ: для этого есть песочница в браузере <a href="https://www.typescriptlang.org/play">TypeScript</a>.</p>
+<hr />
+<p>Итак, TypeScript нужен разработчикам для увеличения продуктивности, снижения стресса и улучшения качества работы. Попробуйте сами — что-то из этого вам наверняка понравится.</p>
+</section>
+</div>
+</section>
+<section id="цель-курса" class="level2" data-number="1.2">
+<h2 data-number="1.2">1.2. Цель курса</h2>
+<div class="text-container text-container--module">
+<p>Работа на TypeScript требует знаний. В первую очередь нужно понимать взаимоотношения между значениями, чтобы управлять всем разнообразием значений, которые получает ваша программа. Мы поступим разумно: рассортируем их и сгруппируем по определённым признакам — другими словами, разделим на группы. В этом курсе мы займёмся изучением этих групп — <strong>типов</strong> значений.</p>
+<p>TypeScript — нечто большее, чем статический анализатор типов. Вам потребуется также понимание системы модулей: как они создаются и как загружаются. TypeScript может создавать модули и для браузера, и для node.</p>
+<p>Множество вариантов модульных систем, для которых TypeScript может создавать код:</p>
+<ul>
+<li>None — компилирует TypeScript, но не создаёт специфические форматы файлов для какой-либо системы загрузки модулей.</li>
+<li>CommonJS — система загрузки модулей, часто используется в работе на серверной стороне (nodejs) или упаковщиками (webpack).</li>
+<li>AMD — Asynchronous Module Definition — используется, например, загрузчиком <code>require.js</code>.</li>
+<li>UMD — Universal Module Definition — попытка унифицировать форматы и спецификации в области загрузки модулей.</li>
+<li>System — спецификация модулей, задуманная для реализации модулей типа ES6 в рамках стандарта ES5.</li>
+<li>ES2015, ES6, ES2020, ES2022 — стандартный формат модуля JS.</li>
+<li>ESNext — экспериментальный формат, возможно, для следующей версии JS.</li>
+<li>Node12 — формат модуля для nodejs.</li>
+<li>NodeNext — экспериментальный формат модуля для nodejs.</li>
+</ul>
+<p>Мы не будем детально изучать особенности каждого формата в этом курсе.</p>
+<p>TypeScript — это ещё и объектно-ориентированный язык. Поэтому, если ваша команда использует в работе принципы ООП, TypeScript станет хорошим помощником. В этом курсе мы тоже обратимся к классам TypeScript. При этом нашей задачей является изучение вопросов, связанных с типами классов: методологию ООП мы затрагивать не будем.</p>
+<p>TypeScript — полезный инструмент в работе над новыми или уже существующими проектами — даже если они изначально работают в JavaScript. На начало 2022 года TypeScript используется всеми популярными экосистемами, в которых раньше был только JavaScript. Среди них <a href="https://angular.io/guide/typescript-configuration">Angular</a>, <a href="https://create-react-app.dev/docs/adding-typescript/">React</a>, <a href="https://nodejs.dev/learn/nodejs-with-typescript">Node</a>, <a href="https://nextjs.org/docs/basic-features/typescript">Next</a>, <a href="https://v2.vuejs.org/v2/guide/typescript.html">Vue</a>.</p>
+<p>Мы не будем рассматривать вопросы сборки приложения и его развёртывания. При использовании упаковщиков (webpack), скорее всего, вы увидите больше знакомого, чем нового. Но мы посмотрим на применение методов модульного тестирования и будем использовать некоторые из них во время демонстраций. Каких-либо предварительных знаний о модульном тестировании вам не потребуется.</p>
+<hr />
+<p>Итак, задача курса — изучить теорию типов TypeScript в минимально необходимом объёме, которого достаточно для ежедневной продуктивной работы. Вместе с теорией мы продемонстрируем и применим на практике подходы, ускоряющие работу как во время написания, так и во время сопровождения программных продуктов любого размера.</p>
+</div>
+</section>
+<section id="возможности-typescript" class="level2" data-number="1.3">
+<h2 data-number="1.3">1.3. Возможности TypeScript</h2>
+<div class="text-container text-container--module">
+<ol type="1">
+<li><strong>Правда ли, что JavaScript был создан для разработки сложных распределённых многопользовательских систем?</strong></li>
+</ol>
+<ul>
+<li>Да, JavaScript был языком программирования сложных распределённых систем с момента создания.</li>
+<li>Нет, JavaScript разрабатывался как язык создания сценариев для оживления пользовательского интерфейса.</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Процесс создания каких приложений не выигрывает от использования TypeScript вместо JavaScript?</strong></li>
+</ol>
+<ul>
+<li>SPA — одностраничные приложения</li>
+<li>Написание JavaScript-библиотеки функций и компонентов для коллег и сообщества в целом.</li>
+<li>Оформление JavaScript-пакета для Node.js.</li>
+<li>Сопровождение существующего приложения.</li>
+<li>Правильного ответа среди перечисленных нет.</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Чем привлекателен TypeScript во время редактирования исходного кода в совместимых редакторах?</strong></li>
+</ol>
+<ul>
+<li>Сокращает потери времени на поиск дефектов.</li>
+<li>Мотивирует на улучшение существующего кода.</li>
+<li>Снижает стресс во время поиска нужных мест в программе для срочных действий.</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>Какие специфические знания и умения потребуются для эффективной работы на TypeScript?</strong></li>
+</ol>
+<ul>
+<li>Знание свойств, методов, событий компонентов DOM.</li>
+<li>Понимание свойств фундаментальных структур данных, таких как очередь, список, дерево.</li>
+<li>Понимание отношений между типами значений.</li>
+<li>Знание синтаксиса аннотации типов.</li>
+</ul>
+</div>
+</section>
+<section id="возможности-typescript-ответы" class="level2" data-number="1.4">
+<h2 data-number="1.4">1.3. Возможности TypeScript (Ответы)</h2>
+<div class="text-container text-container--module">
+<ol type="1">
+<li><strong>Правда ли, что JavaScript был создан для разработки сложных распределённых многопользовательских систем?</strong></li>
+</ol>
+<ul>
+<li>Нет, JavaScript разрабатывался как язык создания сценариев для оживления пользовательского интерфейса.</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Процесс создания каких приложений не выигрывает от использования TypeScript вместо JavaScript?</strong></li>
+</ol>
+<ul>
+<li>Правильного ответа среди перечисленных нет.</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Чем привлекателен TypeScript во время редактирования исходного кода в совместимых редакторах?</strong></li>
+</ol>
+<ul>
+<li>Сокращает потери времени на поиск дефектов.</li>
+<li>Мотивирует на улучшение существующего кода.</li>
+<li>Снижает стресс во время поиска нужных мест в программе для срочных действий.</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>Какие специфические знания и умения потребуются для эффективной работы на TypeScript?</strong></li>
+</ol>
+<ul>
+<li>Знание синтаксиса аннотации типов.</li>
+</ul>
+</div>
+</section>
+<section id="песочница-для-проверки-typescript-идей" class="level2" data-number="1.5">
+<h2 data-number="1.5">1.4. Песочница для проверки TypeScript-идей</h2>
+<div class="text-container text-container--module">
+<p>В статьях курса вы встретите ссылки на песочницу: она нужна для знакомства с возможностями языка и для экспериментов. Онлайн-редактор песочницы вы найдёте по адресу <a href="https://www.typescriptlang.org/play">https://www.typescriptlang.org/play</a>.</p>
+<p>Цель песочницы — предоставить для работы с TypeScript-кодом безопасное окружение, которое не требует установки. Вы можете делиться с коллегами ссылками на модели и примеры, созданные в песочнице.</p>
+<p>При необходимости редактор может импортировать описание типов из npm.</p>
+<p><img src="../media/file1.png" /></p>
+<p>В левой части окна вы можете описывать программу на TypeScript. В правой — изучать результаты работы компилятора. Здесь также можно:</p>
+<ul>
+<li>рассмотреть результат JavaScript;</li>
+<li>увидеть сообщения об ошибках;</li>
+<li>изучить определения типов, созданных компилятором;</li>
+<li>прочитать вывод на консоль;</li>
+<li>подключить дополнительные плагины.</li>
+</ul>
+<p>Песочница предоставляет ряд инструментов и настроек, которые дополняют редактор. Вы можете изменять настройки и флаги компиляции во вкладке TS Config.</p>
+<p>Флагов у компилятора много: уже сейчас их около 80, и их количество продолжает увеличиваться. Но вам не нужно запоминать их значения наизусть, в практической работе можно обращаться к <a href="https://www.typescriptlang.org/tsconfig">справочнику</a> по флагам.</p>
+<p>Флаги в справочнике сгруппированы по темам. В описании каждого флага обращайте внимание на примечания, в которых указывается взаимосвязь между разными флагами.</p>
+<p>Со списком флагов вы можете познакомиться самостоятельно.</p>
+<p>Песочница задумана для исследования возможностей TypeScript — она не предназначена для запуска результатов компиляции. Тем не менее создатели предоставили кнопку Run. При нажатии на неё происходит следующее:</p>
+<ul>
+<li>TypeScript компилируется в JavaScript;</li>
+<li>удаляются ссылки на reflect-matadata;</li>
+<li>JavaScript запускается в контексте сессии браузера;</li>
+<li>в правой части окна выводятся результаты вызова методов log, debug, warn error.</li>
+</ul>
+<p>Для запуска можно использовать Ctrl+Enter или Cmd+Enter.</p>
+<section id="сообщения-об-ошибках" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1">Сообщения об ошибках</h3>
+<p>Перед погружением в основной материал курса исследуйте в песочнице приведённые ниже примеры. Попробуйте <strong>пропустить</strong> ошибку. Вы убедитесь, что даже в самых простых случаях вы получите хорошую защиту от опечаток и тем самым сэкономите время поиска ошибок.</p>
+<p>Под надзором TypeScript эта программа компилируется успешно:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">process</span>(text<span class="op">:</span><span class="dt">string</span>) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> text<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/б/g</span><span class="op">,</span> <span class="st">&quot;с&quot;</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> a <span class="op">=</span> <span class="st">&quot;боль&quot;</span><span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">process</span>(a)<span class="op">.</span><span class="fu">toUpperCase</span>()<span class="op">;</span></span></code></pre></div>
+<p><a href="https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABABwE5wgUwM7YBRSYAeUAXNlKjGAOYCUiA3gFCKKqZQipKEkB0HZABsAhljwB6QIwgkmgBpEAIkCCIErrMAvs2GdEoxAF5l0wHwggbhBAMiBKA3MzQYc+UXX5Q4AVWTJMqAMKi2Jh4dDZAA">Посмотреть в песочнице</a>.</p>
+<p>А следующие две ещё в редакторе предупреждают разработчика об ошибках:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">process</span>(text<span class="op">:</span><span class="dt">string</span>) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> text<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/б/g</span><span class="op">,</span> <span class="st">&quot;с&quot;</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> a <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">process</span>(a)<span class="op">.</span><span class="fu">toUpperCase</span>()<span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">//      ^</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">//      Argument of type &#39;null&#39; is not assignable to parameter of type &#39;string&#39;.(2345)</span></span></code></pre></div>
+<p><img src="../media/file2.png" /></p>
+<p><a href="https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABABwE5wgUwM7YBRSYAeUAXNlKjGAOYCUiA3gFCKKqZQipKEkB0HZABsAhljwB6QIwgkmgBpEAIkCCIErrMAvs2GdEoxAF5EYEMOEBuZmgw58ouvyhwAqsmSZUAYVHZMeOgsgA">Посмотреть в песочнице</a>.</p>
+<p>И здесь тоже:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">process</span>(text<span class="op">:</span><span class="dt">string</span>) {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> text<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/б/g</span><span class="op">,</span> <span class="st">&quot;с&quot;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> a <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">process</span>(a)<span class="op">.</span><span class="fu">toUpperCase</span>()<span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">//      ^</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">//      Argument of type &#39;number&#39; is not assignable to parameter of type &#39;string&#39;.(2345)</span></span></code></pre></div>
+<p><img src="../media/file3.png" /></p>
+<p><a href="https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABABwE5wgUwM7YBRSYAeUAXNlKjGAOYCUiA3gFCKKqZQipKEkB0HZABsAhljwB6QIwgkmgBpEAIkCCIErrMAvs2GdEoxAF5EABgDczNBhz5RdflDgBVZMkyoAwqOyY8dM0A">Посмотреть в песочнице</a>.</p>
+<p>Используйте ссылку и убедитесь сами в песочнице TypeScript.</p>
+</section>
+</div>
+</section>
+<section id="особенности-typescript" class="level2" data-number="1.6">
+<h2 data-number="1.6">1.5. Особенности TypeScript</h2>
+<div class="text-container text-container--module">
+<p>TypeScript помогает при редактировании исходного когда программы. Однако во время работы программы никакого TypeScript нет — есть лишь обычный JavaScript. С этим связано множество жалоб, приведём некоторые из них:</p>
+<ul>
+<li>Перед запуском программы на TypeScript требуется компиляция. Это дополнительное время.</li>
+<li>Абстрактные классы в TypeScript превращаются в конкретные функции JavaScript.</li>
+<li>Для использования в TypeScript «редких» JavaScript-пакетов требуется вручную создать декларации типов.</li>
+<li>Разработчик тратит рабочее время и силы на изучение особенностей нового языка.</li>
+<li>TypeScript не в состоянии выявить все дефекты программы.</li>
+</ul>
+<p>Трудности TypeScript связаны не с ним, а с его отсутствием. Такие нюансы нужно знать и понимать, чтобы использовать силу инструмента по назначению</p>
+<section id="статический-анализ-и-его-ограничения" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1">Статический анализ и его ограничения</h3>
+<p>Компилятор TypeScript прикладывает максимум усилий, чтобы обеспечить согласованность различных частей API. Анализ производится на основе определений типов и операций над ними статически. Другими словами, обнаружение дефектов в программе производится без её запуска.</p>
+<p>Во многих случаях этот метод позволяет повысить качество кода. Он находит места, которые могут привести к неправильной работе программы. Также статический анализ позволяет создавать единообразный код, который легче читать и сопровождать.</p>
+<p>Однако статический анализ имеет ограничения. Как думаете, будет ли работать следующий код или завершится исключением?</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> x <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">&lt;</span> <span class="fl">0.5</span> <span class="op">?</span> <span class="dv">0</span> <span class="op">:</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">42</span> <span class="op">/</span> x)<span class="op">;</span></span></code></pre></div>
+<p><a href="https://www.typescriptlang.org/play?ssl=3&amp;ssc=21&amp;pln=1&amp;pc=1#code/MYewdgzgLgBAHjAvDAsgQygCwHQCc1gAmIAtgBQCUMAPDAAzYCsMA-PTAFwwCMA3AFD9QkEABsAptlEgA5mQAsAJhgB6eBV5A">Попробовать в песочнице</a>.</p>
+<p><strong>Важно!</strong> Понимание особенностей операций над числами с плавающей точкой — это тоже полезное знание.</p>
+<p>Статический анализ не понимает намерений программиста и не подскажет, если название функции не соответствует её алгоритму.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> rectangleArea <span class="op">=</span> (width<span class="op">:</span> <span class="dt">number</span><span class="op">,</span> height<span class="op">:</span> <span class="dt">number</span>)<span class="op">:</span> <span class="dt">number</span> <span class="kw">=&gt;</span> width <span class="op">+</span> height<span class="op">;</span></span></code></pre></div>
+<p>Для TypeScript <a href="https://www.typescriptlang.org/play?#code/MYewdgzgLgBATgU2FAhmA5gGwQQUSmAXhgAoB3ASwBMoALALhjAFcBbAIwTgBoZaEK6WlEYsOXAJSi2nOEQB8MSjVowA1HwFCoAbiA">этот фрагмент</a> является вполне приличным.</p>
+<p>TypeScript не может контролировать обращение за пределы массива или к несуществующим свойствам:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> arr<span class="op">:</span><span class="dt">number</span>[] <span class="op">=</span>[]<span class="op">;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> obj<span class="op">:</span><span class="bu">Record</span><span class="op">&lt;</span><span class="dt">string</span><span class="op">,</span> <span class="dt">number</span><span class="op">&gt;</span> <span class="op">=</span> {}<span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> elementOfArray <span class="op">=</span> arr[<span class="dv">0</span>]<span class="op">;</span> <span class="co">//TypeScript считает, что переменная имеет тип number. но её значение undefined</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> propertyValue <span class="op">=</span> obj[<span class="st">&quot;property&quot;</span>]<span class="op">;</span><span class="co">// Такая же ситуация.</span></span></code></pre></div>
+<p><a href="https://www.typescriptlang.org/play?ssl=5&amp;ssc=58&amp;pln=1&amp;pc=1#code/MYewdgzgLgBAhgJwQLjAVwLYCMCmCDaAujALxEDcAUKJLCFgFbIBKOoCAJgDzQICWYAOYAaGOmx4AfKRgBvAL5Vq4aDBwAbHBhxgoAeQBmAQSRwAnjMQEADIXIwA9A6hmADjgjB+r2IEEQQOIggBwggEIggAwggKwgwaL+wYB8IDCA-CDhgAIg4YA8IOGAvCCZoYDyIDCBGZEwwYEJYpi4CKKZ8eHhMIDsIDn+WYENaGAcOAYCOBzKtDCuCCDuCC4AanDqaDgy9Az4AEQjY3guy3ZOJaGAXCB5MIBsIA2BvnHJgblAA">Проверьте в песочнице</a>.</p>
+<p>Проконтролировать выход за пределы массива и другие краевые ситуации в работе алгоритма — задача разработчика. Было бы полезно иметь автоматические инструменты, которые позволили бы убедиться, что <em>динамические</em> намерения разработчика соблюдаются так же, как и намерения по использованию типов. Но это выходит за рамки возможностей TypeScript.</p>
+<p>Подчеркнём, что у статического анализа есть свои преимущества. Этот метод действительно позволяет зафиксировать намерения разработчика с точки зрения типов и контролировать их соблюдения. Но надо что-то делать с контролем поведения программы.</p>
+</section>
+</div>
+</section>
+<section id="назначения-флагов-компилятора" class="level2" data-number="1.7">
+<h2 data-number="1.7">1.6. Назначения флагов компилятора</h2>
+<div class="text-container text-container--module">
+<ol type="1">
+<li><strong>Чтобы уменьшить размер файла .js, в него не следует включать комментарии. Какой флаг компилятора позволяет это сделать?</strong></li>
+</ol>
+<ul>
+<li>Флаг declaration.</li>
+<li>Флаг removeComments.</li>
+<li>Флаг removeComments исключает комментарии из.js-файлов.</li>
+<li>Флаг esModuleInterop.</li>
+<li>Флаг noUnusedLocals.</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>В приведённом ниже отрывке разработчик использует eval, и TypeScript не в состоянии догадаться, что модуль используется. Какой флаг компилятора вам поможет избежать ошибок компиляции?</strong></li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {Oil} <span class="im">from</span> <span class="st">&quot;./anna.ts&quot;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="pp">eval</span>(<span class="st">&#39;new Oil().hasBeenSpilled()&#39;</span>)</span></code></pre></div>
+<ul>
+<li>Флаг preserveValueImports.</li>
+<li>Флаг allowUnusedLabels.</li>
+<li>Флаг allowUnusedLabels подавляет генерацию ошибок про неиспользованные метки.</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Какие из перечисленных флагов не зависят от состояния флага strict?</strong></li>
+</ol>
+<ul>
+<li>Флаг strict включает все самые строгие флаги компиляции, но не вообще все флаги.</li>
+<li>Флаг noImplicitAny.</li>
+<li>Флаг noImplicitThis.</li>
+<li>Флаг useUnknownInCatchVariables.</li>
+<li>Флаг noUnusedParameters.</li>
+<li>Флаг noUncheckedIndexedAccess.</li>
+</ul>
+</div>
+</section>
+<section id="назначения-флагов-компилятора-ответы" class="level2" data-number="1.8">
+<h2 data-number="1.8">1.6. Назначения флагов компилятора (Ответы)</h2>
+<div class="text-container text-container--module">
+<ol type="1">
+<li><strong>Чтобы уменьшить размер файла .js, в него не следует включать комментарии. Какой флаг компилятора позволяет это сделать?</strong></li>
+</ol>
+<ul>
+<li>Флаг removeComments.</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>В приведённом ниже отрывке разработчик использует eval, и TypeScript не в состоянии догадаться, что модуль используется. Какой флаг компилятора вам поможет избежать ошибок компиляции?</strong></li>
+</ol>
+<div class="sourceCode" id="cb10"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {Oil} <span class="im">from</span> <span class="st">&quot;./anna.ts&quot;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="pp">eval</span>(<span class="st">&#39;new Oil().hasBeenSpilled()&#39;</span>)</span></code></pre></div>
+<ul>
+<li>Флаг preserveValueImports.</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Какие из перечисленных флагов не зависят от состояния флага strict?</strong></li>
+</ol>
+<ul>
+<li>Флаг noUnusedParameters.</li>
+<li>Флаг noUncheckedIndexedAccess.</li>
+</ul>
+</div>
+</section>
+<section id="настройка-typescript-окружения-для-работы" class="level2" data-number="1.9">
+<h2 data-number="1.9">1.7. Настройка TypeScript-окружения для работы</h2>
+<div class="text-container text-container--module">
+<section id="шаг-1" class="level3" data-number="1.9.1">
+<h3 data-number="1.9.1">Шаг №1</h3>
+<p>Цель этой демонстрации — создать окружение для работы над проектом в TypeScript. В других ситуациях вы можете использовать инструменты Angular, Next, React, Vue и прочих популярных библиотек и фреймворков. Вам также может потребоваться создать TypeScript-окружение в рамках существующего проекта. Все эти варианты возможны и не сложнее нашей сегодняшней задачи. В конце курса мы рассмотрим некоторые из них. А сейчас, чтобы обратить внимание на наиболее значимые моменты, мы начнём с чистого листа.</p>
+<p>Чтобы развернуть рабочее TypeScript-окружение, нужна пустая директория.</p>
+<section id="структура-проекта" class="level4" data-number="1.9.1.1">
+<h4 data-number="1.9.1.1">Структура проекта</h4>
+<p>Исходники будут находиться в директории <code>./src</code>, а результаты компиляции — обычные JavaScript-файлы — будут храниться в <code>./js</code>.</p>
+</section>
+</section>
+<section id="шаг-2" class="level3" data-number="1.9.2">
+<h3 data-number="1.9.2">Шаг №2</h3>
+<p>Мы рекомендуем использовать систему контроля версий.</p>
+<p>Настроим git так, чтобы он не хранил результаты компиляции.</p>
+<pre><code>git init</code></pre>
+<p>Откройте панель команд <code>Ctrl+P</code> и наберите <code>New File</code>. Назовите новый файл <code>.gitignore</code> и впишите в него:</p>
+<pre class="gitignore"><code>js
+node_modules</code></pre>
+</section>
+<section id="шаг-3" class="level3" data-number="1.9.3">
+<h3 data-number="1.9.3">Шаг №3</h3>
+<p>TypeScript развивается, поэтому при создании нового проекта имеет смысл использовать последнюю версию компилятора.</p>
+<p>Для установки компилятора используется менеджер <code>npm</code>:</p>
+<pre><code>npm i -D typescript</code></pre>
+<p>Можете проверить версию установленного компилятора:</p>
+<pre><code>npx tsc -v</code></pre>
+<p>Ваша версия, вероятнее всего, будет старше <code>4.5</code>.</p>
+<p>Создадим файл конфигурации проекта, а на следующем шаге внесём в него изменения:</p>
+<pre><code>npx tsc --init</code></pre>
+<p>Обратите внимание, команда содержит два минуса: <code>--init</code>.</p>
+<p>В директории вашего проекта появится файл tsconfig.json. Во-первых, в нём есть комментарии, что не делает его валидным.json-ом, но очень удобно. Во-вторых, некоторые опции уже установлены так, как кажется удобно компилятору.</p>
+<p>Отметим, что формат JSON не предусматривает комментариев. TypeScript на них не обращает внимания, так что в файле tsconfig.json при необходимости их можно добавить.</p>
+<pre><code>{
+   &quot;compilerOptions&quot;: {
+     &quot;target&quot;: &quot;es2016&quot;, /*Показывает, в какой вариант JavaScript следует компилировать программу.*/
+     &quot;module&quot;: &quot;commonjs&quot;, /*Устанавливает требуемый формат системы модулей.*/
+     &quot;esModuleInterop&quot;: true,   /*Требует поддержки со стороны компилятора во время загрузки модулей commonjs в среду es-модулей.*/
+     &quot;forceConsistentCasingInFileNames&quot;: true, /*Заставляет компилятор следить за регистром букв в именах файлов, если OS (Windows) за этим следить не хочет.*/
+     &quot;strict&quot;: true,   /*Для нового проекта это единственное оправданное значение флага, иначе зачем тогда TypeScript.*/
+     &quot;skipLibCheck&quot;: true, /*Просит компилятор не «капризничать» по поводу сторонних библиотек.*/
+   }
+}</code></pre>
+</section>
+<section id="шаг-4" class="level3" data-number="1.9.4">
+<h3 data-number="1.9.4">Шаг №4</h3>
+<p>Дополним конфигурацию, предложенную TypeScript, нашими соглашениями. В разделе <code>compilerOptions</code>:</p>
+<pre><code>+    &quot;rootDir&quot;: &quot;./src&quot;,
++    &quot;outDir&quot;: &quot;./js&quot;,</code></pre>
+<p>И в корне:</p>
+<pre><code>+  &quot;include&quot;: [&quot;./src&quot;]</code></pre>
+<section id="демо-файлы" class="level4" data-number="1.9.4.1">
+<h4 data-number="1.9.4.1">Демо-файлы</h4>
+<p>Добавим файл <code>main.ts</code> в директорию <code>scr</code> и заполним его одной строкой:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="at">title</span> <span class="op">=</span> <span class="vs">`</span><span class="sc">${</span><span class="kw">new</span> <span class="bu">Date</span>()<span class="op">.</span><span class="fu">toISOString</span>()<span class="sc">}</span><span class="vs"> TypeScript compiled`</span><span class="op">;</span></span></code></pre></div>
+<p>Добавим файл <code>index.html</code> и укажем зависимость от скрипта:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script</span> <span class="er">src</span><span class="ot">=</span><span class="st">&quot;js/main.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></span></code></pre></div>
+<p>Обратите внимание, что в браузер следует подгружать JavaScript. Сейчас мы им займёмся.</p>
+</section>
+</section>
+<section id="шаг-5" class="level3" data-number="1.9.5">
+<h3 data-number="1.9.5">Шаг №5</h3>
+<p>Чтобы получить файл <code>./js/main.js</code>, нужно скомпилировать исходник <code>./src/main.ts</code>. У нас всё готово!</p>
+<pre><code>npx tsc</code></pre>
+<p>В директории с вашим проектом появилась директория <code>./js</code> с файлом <code>main.js</code> — это результат работы TypeScript.</p>
+<p>Теперь можете запустить, например, plugin vs-code live server и убедиться, что во вкладке браузера на странице index.html отображается текущее время.</p>
+<section id="дополнительные-инструменты" class="level4" data-number="1.9.5.1">
+<h4 data-number="1.9.5.1">Дополнительные инструменты</h4>
+<p>В реальной работе вам может быть полезно настроить сборку webpack или добавить инструменты тестирования. Эти вопросы важны, но выходят за рамки текущего курса. Мы их подробно рассмотрим на следующих этапах изучения TypeScript.</p>
+</section>
+</section>
+</div>
+</section>
+<section id="настройка-typescript-окружения-для-работы-в-редакторе-кода" class="level2" data-number="1.10">
+<h2 data-number="1.10">1.8. Настройка TypeScript-окружения для работы в редакторе кода</h2>
+<div class="text-container text-container--module">
+<p>Ваша задача: настроить редактор кода для работы с TypeScript. Мы используем бесплатный VS-Code, но способ настройки подойдёт для любого редактора.</p>
+<ol type="1">
+<li>Установить систему контроля версий.</li>
+<li>Установить компилятор TypeScript.</li>
+<li>Установить и настроить систему модульного тестирования mocha/chai для определённости.</li>
+<li>Установить и настроить контроль правил eslinter.</li>
+</ol>
+<p>В материалах к этому заданию вы найдёте файл index.html, main.ts, main.test.ts, utils.ts и utils.test.ts. Вы сможете проверить правильность настройки, разместив эти файлы в своём проекте:</p>
+<pre><code>/index.html
+/src/main.ts
+/src/main.test.ts
+/src/utils.ts
+/src/utils.test.ts</code></pre>
+<p>При правильной настройке…</p>
+<pre><code>npm run test</code></pre>
+<p>… расскажет вам о результатах модульного тестирования.</p>
+<p>После самостоятельного выполнения задания можно открыть решение авторов и сравнить получившийся результат. Для этого нажмите кнопку «Задание готово», и вам станет доступна пошаговая демонстрация эталонного решения.</p>
+</div>
+</section>
+<section id="чек-лист-для-проверки-корректности-настройки-редактора" class="level2" data-number="1.11">
+<h2 data-number="1.11">1.9. Чек-лист для проверки корректности настройки редактора</h2>
+<div class="text-container text-container--module">
+<section id="шаг-1-1" class="level3" data-number="1.11.1">
+<h3 data-number="1.11.1">Шаг №1</h3>
+<p>Если всё сделано правильно, то в созданной директории в командной строке терминала можно убедиться в работоспособности компилятора. В частности можно узнать его версию:</p>
+<pre><code>PS D:\sources\html-academy\courses\levelup-typescript&gt; npx tsc -v
+Version 4.5.5
+PS D:\sources\html-academy\courses\levelup-typescript&gt;</code></pre>
+</section>
+<section id="шаг-2-1" class="level3" data-number="1.11.2">
+<h3 data-number="1.11.2">Шаг №2</h3>
+<p>После выполнения компиляции в директории <code>./js</code> должен образоваться набор файлов.js.</p>
+<pre><code>PS D:\sources\html-academy\courses\typescript&gt; npx tsc
+PS D:\sources\html-academy\courses\typescript&gt; dir js | select name
+
+Name
+----
+main.js
+utils.js
+
+PS D:\sources\html-academy\courses\typescript&gt;</code></pre>
+</section>
+<section id="шаг-3-1" class="level3" data-number="1.11.3">
+<h3 data-number="1.11.3">Шаг №3</h3>
+<p>В файле main.ts убедитесь в том, что редактор вас поддерживает.</p>
+<p><img src="../media/file4.png" /></p>
+</section>
+<section id="шаг-4-1" class="level3" data-number="1.11.4">
+<h3 data-number="1.11.4">Шаг №4</h3>
+<p>Также, если всё сделано правильно, ваши настройки позволяют запускать процессы модульного тестирования.</p>
+<pre><code>PS D:\sources\html-academy\courses\typescript&gt; npm run test
+
+&gt; test
+&gt; mocha
+
+(node:15976) ExperimentalWarning: --experimental-loader is an experimental feature. This feature could change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+  main program
+    ✔ should render result of createHeader
+
+  formatDate in utils
+    ✔ formats date   
+
+
+  2 passing (124ms)  
+
+PS D:\sources\html-academy\courses\typescript&gt;</code></pre>
+</section>
+<section id="шаг-5-1" class="level3" data-number="1.11.5">
+<h3 data-number="1.11.5">Шаг №5</h3>
+<p>Во время работы вам могут понадобиться и другие настройки — как для компилятора, так и для других блоков: сборки, упаковки, развёртывания. В большинстве случаев поставщики и разработчики сообщают вам, как это сделать. При необходимости обращайтесь и к сообществу. Кто-то уже решил все ваши вопросы.</p>
+</section>
+</div>
+</section>
+</section>
+</body>
+</html>

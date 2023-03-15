@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ru-RU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>ch006.xhtml</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body epub:type="bodymatter">
+<section id="опережающие-и-ретроспективные-проверки.-модификаторы" class="level1" data-number="6">
+<h1 data-number="6">6. Опережающие и ретроспективные проверки. Модификаторы</h1>
+<div class="text-container text-container--module">
+<p>В этом разделе мы познакомимся с условиями, которые позволяют регулярным выражениям заглядывать вперед и назад, а также познакомимся с модификаторами.</p>
+</div>
+<section id="позиционные-проверки" class="level2" data-number="6.1">
+<h2 data-number="6.1">6.1. Позиционные проверки</h2>
+<div class="text-container text-container--module">
+<p>Чтобы понять позиционные проверки, нужно вспомнить, как ведут себя символы начала и конца строки. Это не отдельный литерал — это позиция в тексте. С позиционными проверками ситуация похожая, это не нахождение и сохранение захваченного текста, а нахождение <strong>позиции</strong> в тексте, при которой может возникнуть совпадение.</p>
+<blockquote>
+<p>Стоит отметить, что скобки позиционных проверок не являются сохраняющими и не получают номера сохранения.</p>
+</blockquote>
+<p>Позиционные проверки могут быть <strong>опережающими</strong> и <strong>ретроспективными</strong>, то есть заглядывать относительно позиции вперед или назад. Каждая сама по себе может быть <strong>позитивной</strong> или <strong>негативной</strong>, что говорит о совпадениях или несовпадениях.</p>
+<p>Все доступные варианты позиционных проверок описаны в таблице:</p>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 83%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Проверка</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong><code>x(?=y)</code></strong></td>
+<td>опережающая проверка (найдет <code>x</code>, справа от которого есть <code>y</code>)</td>
+</tr>
+<tr class="even">
+<td><strong><code>x(?!y)</code></strong></td>
+<td>негативная опережающая проверка (найдет <code>x</code>, справа от которого нет <code>y</code>)</td>
+</tr>
+<tr class="odd">
+<td><strong><code>(?&lt;=y)x</code></strong></td>
+<td>ретроспективная проверка (найдет <code>x</code>, слева от которого есть <code>y</code>)</td>
+</tr>
+<tr class="even">
+<td><strong><code>(?&lt;!y)x</code></strong></td>
+<td>негативная ретроспективная проверка (найдет <code>x</code>, слева от которого нет <code>y</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Решим реальную задачу</strong></p>
+<p>Нам с сервера пришел текст с HTML-разметкой, но верстальщик был ленив и не все ссылки сделал активными. Нужно спасать положение.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> source <span class="op">=</span> <span class="vs">`Информацию о профессии «Фронтенд-разработчик» можно прочитать по &lt;a href=&quot;https://htmlacademy.ru/profession/frontender&quot;&gt;ссылке&lt;/a&gt;, а узнать примеры из практики в нашем уютном блоге https://htmlacademy.ru/blog`</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> parseLinks <span class="op">=</span> (str) <span class="kw">=&gt;</span> str <span class="op">?</span> str<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">(?</span><span class="ss">&lt;!</span><span class="sc">[=&quot;])((?</span><span class="ss">:https</span><span class="sc">?</span><span class="ss">:</span><span class="sc">\/\/|</span><span class="ss">ftp:</span><span class="sc">\/\/|</span><span class="ss">mailto:</span><span class="sc">)(?</span><span class="ss">:</span><span class="sc">[:a-zа-яё~%{}./?=&amp;@,#-]+))</span><span class="ss">/gi</span><span class="op">,</span> <span class="st">&#39;&lt;a href=&quot;$1&quot;&gt;$1&lt;/a&gt;&#39;</span>) <span class="op">:</span> str<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">parseLinks</span>(source)<span class="op">;</span></span></code></pre></div>
+<p>С помощью ретроспективной проверки мы проверяем, нет ли в позиции начала ссылки символов <code>="</code>, чтобы не обернуть повторно <code>href="{{ссылка}}"</code>.</p>
+<p>Подумайте, как изменить решение, чтобы ссылка навешивалась на предыдущее слово.</p>
+<p><strong>Оптимизируем одну из предыдущих задач</strong></p>
+<p>Мы писали проверку IP-адреса без учёта того, что значения не могут быть больше 255.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> checkIP <span class="op">=</span> (ip) <span class="kw">=&gt;</span> <span class="ss">/</span><span class="sc">^(\d{1,3}(\.|</span><span class="ss">$</span><span class="sc">)){4}$</span><span class="ss">/</span><span class="op">.</span><span class="fu">test</span>(ip)<span class="op">;</span></span></code></pre></div>
+<p>Давайте усложним пример: добавим проверку, что значения чисел не могут быть больше 255.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> checkIP <span class="op">=</span> (ip) <span class="kw">=&gt;</span> <span class="ss">/</span><span class="sc">^((</span><span class="ss">25</span><span class="sc">[0-5]|(</span><span class="ss">2</span><span class="sc">[0-4]|</span><span class="ss">1</span><span class="sc">\d|[1-9]|)\d)(\.(?</span><span class="ss">!$</span><span class="sc">)|</span><span class="ss">$</span><span class="sc">)){4}$</span><span class="ss">/</span><span class="op">.</span><span class="fu">test</span>(ip)<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">checkIP</span>(<span class="vs">`234.56.38.3`</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">checkIP</span>(<span class="vs">`255.255.255.255`</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">checkIP</span>(<span class="vs">`192.168.1.1`</span>)<span class="op">;</span> <span class="co">// true</span></span></code></pre></div>
+<p>Почему наш первый пример был не настолько хорош? Кроме того, что он допускал числа большие <code>255</code>, он бы сработал на адресе, у которого в конце имеется точка <code>127.0.0.1.</code>. В новом варианте мы исключили такую возможность, так как проверили наличие конца строки с помощью опережающей негативной проверки <code>\.(?!$)</code>. В позиции перед точкой нет символа конца строки.</p>
+<p><strong>Поддержка браузерами</strong></p>
+<p>Большинство современных браузеров уже поддерживает ретроспективные проверки в регулярных выражениях, но до сегодняшнего момента их не поддерживает Safari. Прежде чем применять их в своих проектах, подумайте, на какую аудиторию вы рассчитываете и сверьтесь с <a href="https://caniuse.com/js-regexp-lookbehind">таблицей</a> поддержки.</p>
+<hr />
+<p>Заглядывать в будущее и прошлое не так уж и сложно. Магия всегда была рядом, мы просто не умели её применять.</p>
+</div>
+</section>
+<section id="модификаторы" class="level2" data-number="6.2">
+<h2 data-number="6.2">6.2. Модификаторы</h2>
+<div class="text-container text-container--module">
+<p>Мы смотрели разные примеры и лишь вскользь касались модификаторов. Пришло время разобрать, что это и зачем их использовать.</p>
+<p>Модификаторы (флаги) используют для упрощения регулярных выражений и изменения поведения некоторых селекторов.</p>
+<p><strong>Список основных модификаторов</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Модификатор</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>g</strong></td>
+<td>искать все совпадения</td>
+</tr>
+<tr class="even">
+<td><strong>i</strong></td>
+<td>не учитывать регистр</td>
+</tr>
+<tr class="odd">
+<td><strong>m</strong></td>
+<td>многострочный режим</td>
+</tr>
+</tbody>
+</table>
+<p>Модификаторы записывают двумя способами:</p>
+<ul>
+<li>в литеральном виде сразу после ограничивающего слэша <code>/выражение/модификатор</code>;</li>
+<li>в случае с конструктором — в виде отдельного параметра <code>new RegExp('выражение', 'модификатор')</code>.</li>
+</ul>
+<p>Модификаторы можно использовать как по отдельности, так и составляя различные комбинации. Порядок их следования значения не имеет.</p>
+<section id="модификатор-g" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1">Модификатор g</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> str <span class="op">=</span> <span class="vs">`Булочка`</span><span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ss">/</span><span class="sc">[а-яёА-ЯЁ]</span><span class="ss">/g</span><span class="op">.</span><span class="fu">test</span>(str)<span class="op">;</span> <span class="co">// true</span></span></code></pre></div>
+<p>Как мы помним из начала курса, квадратные скобки без квантификатора <code>+</code> или <code>*</code> дают нам совпадение только с одним символом, но модификатор <code>g</code> меняет это поведение. В нашем примере выражение возвращает <code>true</code> для первого символа. Потом, не меняя позицию, за счёт флага <code>g</code> регулярное выражение будет пытаться совпасть снова уже со вторым символом и тоже вернет <code>true</code> — и так до конца. В итоге всё слово окажется совпавшим.</p>
+<p>Гораздо интереснее модификатор <code>g</code> работает с точкой <code>.</code>.</p>
+<blockquote>
+<p>Из предыдущего раздела: точка совпадает со всеми символами, кроме перевода строки <code>\n</code>.</p>
+</blockquote>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> str <span class="op">=</span> <span class="vs">`один</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="vs">два</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="vs">три`</span><span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>str<span class="op">.</span><span class="fu">match</span>(<span class="ss">/.</span><span class="sc">+</span><span class="ss">/</span>)<span class="op">;</span> <span class="co">// [&#39;один&#39;]</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>str<span class="op">.</span><span class="fu">match</span>(<span class="ss">/.</span><span class="sc">+</span><span class="ss">/g</span>)<span class="op">;</span> <span class="co">// [&#39;один&#39;, &#39;два&#39;, &#39;три&#39;]</span></span></code></pre></div>
+<p>Что здесь важно, в первом случае без модификатора «жадный» квантификатор <code>.+</code> захватит только первую строку, потому что <code>\n</code> является символом несовпадения.</p>
+<p>В случае с модификатором <code>g</code> он также захватит только первую строку. Но так как перевод строки не является символом, это всего лишь позиция в тексте, то модификатор продолжит захватывать дальше с этой позиции. Тем самым захватит весь текст, но в нём не будет переводов строк.</p>
+<p>Прочувствовать эту разницу можно на следующем примере: заменим <code>.+</code> на другое выражение <code>[\s\S]+</code>.</p>
+<blockquote>
+<p>Селектор <code>\s</code> включает в себя все пробельные символы, в том числе и перевод строки, а <code>\S</code> всё, кроме пробельных символов.</p>
+</blockquote>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> str <span class="op">=</span> <span class="vs">`один</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="vs">два</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="vs">три`</span><span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>str<span class="op">.</span><span class="fu">match</span>(<span class="ss">/</span><span class="sc">[\s\S]+</span><span class="ss">/</span>)<span class="op">;</span> <span class="co">// [&#39;один\nдва\nтри&#39;]</span></span></code></pre></div>
+<p>Как мы видим, здесь модификатор не нужен, так как с первого раза захвачена вся строка.</p>
+<p>Важно понимать разницу поведения селектора <code>.</code> в совокупности с модификатором <code>g</code>, чтобы случайно не удалить переводы строк.</p>
+</section>
+<section id="модификатор-i" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2">Модификатор i</h3>
+<p>Ещё один интереснейший модификатор — <code>i</code>. Он позволяет выражению становиться нечувствительным к регистру.</p>
+<p><strong>Оптимизируем одну из задач</strong></p>
+<p>В предыдущем разделе мы уже оптимизировали правило проверки наличия шестнадцатеричного цвета в строке:</p>
+<p><code>/#[0-9A-Fa-f]{6}/.test('Этот цвет #FF0000 — красный');</code></p>
+<p>Использование модификатора позволит нам ещё раз сократить регулярное выражение:</p>
+<p><code>/#[0-9a-f]{6}/i.test('Этот цвет #FF0000 — красный');</code></p>
+<p>Достаточно написать любую последовательность латинского или русского алфавита в любом регистре, остальные варианты правило подставит само.</p>
+</section>
+<section id="модификатор-m" class="level3" data-number="6.2.3">
+<h3 data-number="6.2.3">Модификатор m</h3>
+<p>Ещё один модификатор, который влияет на поведение селекторов — <code>m</code>. Он позволяет регулярному выражению воспринимать текст как многострочный, где символы начала <code>^</code> и конца <code>$</code> текста будут восприниматься как начало и конец строки.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> str <span class="op">=</span> <span class="vs">`один</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="vs">два</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="vs">три`</span><span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>str<span class="op">.</span><span class="fu">match</span>(<span class="ss">/</span><span class="sc">^[а-я]+?\n</span><span class="ss">/</span>)<span class="op">;</span> <span class="co">// [&#39;один&#39;]</span></span></code></pre></div>
+<p>Чтобы захватить только первую строку, нужно описать её содержимое, включая перевод строки.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> str <span class="op">=</span> <span class="vs">`один</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="vs">два</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="vs">три`</span><span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>str<span class="op">.</span><span class="fu">match</span>(<span class="ss">/</span><span class="sc">^[а-я]+?$</span><span class="ss">/m</span>)<span class="op">;</span> <span class="co">// [&#39;один&#39;]</span></span></code></pre></div>
+<p>В случае с модификатором нам достаточно обозначить конец строки <code>$</code>, и он станет якорем для «жадного» квантификатора.</p>
+<hr />
+<p>Магия регулярных выражений заключается в умении комбинировать различные селекторы и модификаторы для достижения наилучшего эффекта.</p>
+</section>
+</div>
+</section>
+<section id="триадам-да" class="level2" data-number="6.3">
+<h2 data-number="6.3">6.3. Триадам да</h2>
+<div class="text-container text-container--module">
+<p>Дизайнер просит, чтобы все числа в тексте были разбиты на триады и переносились на новую строку только целиком. Давайте поможем ему познать дзен.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> text <span class="op">=</span> <span class="vs">`В больших городах медианная зарплата ИТ-специалиста в 2018 году составляла 92000 рублей. Зарплата начинающего специалиста — 46000 рублей. Медианная зарплата того же специалиста в иностранных компаниях составляла 220000 рублей.`</span><span class="op">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> parseTriads <span class="op">=</span> (str) <span class="kw">=&gt;</span> {</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">// ваше решение</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">parseTriads</span>(text)<span class="op">;</span></span></code></pre></div>
+</div>
+</section>
+<section id="триадам-да-решение" class="level2" data-number="6.4">
+<h2 data-number="6.4">6.4. Триадам да (решение)</h2>
+<div class="text-container text-container--module">
+<pre><code>const text = `В больших городах медианная зарплата ИТ-специалиста в 2018 году составляла 92000 рублей. Зарплата начинающего специалиста — 46000 рублей. Медианная зарплата того же специалиста в иностранных компаниях составляла 220000 рублей.`;
+
+const parseTriads = (str) =&gt; str ? str.replace(/(\d{5,})/g, (text, $1) =&gt; $1.replace(/(?&lt;=\d)(?=(\d{3})+$)/g, &#39;&amp;nbsp;&#39;)) : str;
+
+parseTriads(text);</code></pre>
+<p>Задача разбивается на две части:</p>
+<ul>
+<li>Получить все числа, содержащие более пяти знаков, чтобы под раздачу триад не попадали даты.</li>
+<li>Найти позиции, в которых справа до конца строки остаётся число, кратное трём цифрам, спереди от которого тоже есть число. Заменить их на неразрывный пробел.</li>
+</ul>
+</div>
+</section>
+</section>
+</body>
+</html>

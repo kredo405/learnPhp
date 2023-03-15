@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ru-RU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>ch001.xhtml</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body epub:type="bodymatter">
+<section id="основы-регулярных-выражений" class="level1" data-number="1">
+<h1 data-number="1">1. Основы регулярных выражений</h1>
+<div class="text-container text-container--module">
+<p>В первом разделе мы познакомимся с основными принципами работы регулярных выражений, основными терминами. Разберем механизм движения паттернов и возвраты. Вспомним об атрибуте pattern=”” в элементах форм из курса HTML. Познакомимся с методами JavaScript для работы с регулярными выражениями.</p>
+</div>
+<section id="основные-принципы-регулярных-выражений" class="level2" data-number="1.1">
+<h2 data-number="1.1">1.1. Основные принципы регулярных выражений</h2>
+<div class="text-container text-container--module">
+<p>Прежде чем мы приступим к основной теме нашего курса, обозначим маленькое условие: здесь и далее мы будем говорить только о строке и строковых данных. Даже если речь идет о числах, подразумеваем, что число преобразовано в формат строки.</p>
+<p>Итак, регулярные выражения — это формальный язык поиска подстроки в строке. Они поддерживаются многими программами: редакторами, системными утилитами, базами данных. Но особенно хорошо они раскрывают свои возможности в языках программирования. В рамках курса мы будем рассматривать регулярные выражения применительно к языку JavaScript.</p>
+<blockquote>
+<p>Историческая справка: регулярные выражения пришли к нам из теории автоматов, которая является частью дискретной математики.</p>
+</blockquote>
+<p>Чтобы обозначить основную причину использования регулярных выражений, поставим себе простую задачу:</p>
+<p>Найти и заменить в строке <code>Быстрее всего мы догоним ее на машине</code> местоимение <code>ее</code> на <code>его</code>.</p>
+<p>Самым логичным способом было бы использовать прямую замену:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;Быстрее всего мы догоним ее на машине&#39;</span><span class="op">.</span><span class="fu">replace</span>(<span class="st">&#39;ее&#39;</span><span class="op">,</span> <span class="st">&#39;его&#39;</span>)<span class="op">;</span> <span class="co">// &#39;Быстрее всего мы догоним её на машине&#39;</span></span></code></pre></div>
+<p>В нашем случае мы получим ожидаемо неверный результат: <code>ее</code> является частью слова <code>Быстрее</code>, а <code>.replace()</code> заменит первое вхождение подстроки.</p>
+<p>Поэтому при решении задачи мы должны делать проверку на наличие символа, стоящего перед окончанием <code>ее</code>, и только в случае его отсутствия делать замену.</p>
+<p>Давайте усложним задачу ещё несколькими условиями, чтобы окончательно убедиться в «беспомощности» нашего решения:</p>
+<ul>
+<li>мы не знаем, в каком регистре написаны слова, например: <code>ее</code>, <code>Ее</code>, <code>ЕЕ</code>;</li>
+<li>также не знаем, используется ли буква <code>ё</code>.</li>
+</ul>
+<p>В этом случае прямая замена уже точно «не подходит». Нам нужна полноценная функция, которая проверит все условия.</p>
+<blockquote>
+<p>«Не подходит» неслучайно взято в кавычки, ведь пока мы с вами ничего не знаем о возможностях регулярных выражений и не можем их применить в связке с <code>.replace()</code></p>
+</blockquote>
+<section id="где-применять" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1">Где применять?</h3>
+<p>Как только появляется задача, в которой вы заранее не знаете содержимое строки и не можете однозначно сформулировать формат — с большой долей вероятности можно говорить о необходимости использования регулярных выражений.</p>
+<p>Обозначим основной круг задач, которые решают регулярные выражения:</p>
+<ul>
+<li><p><strong>Поиск или замена подстроки в строке с «плавающими» (неизвестными) данными.</strong> Самая распространенная задача — найти в тексте ссылки и адреса электронной почты и сделать их кликабельными.</p></li>
+<li><p><strong>Валидация данных формы и ограничение ввода.</strong> Например, валидация номера телефона, электронной почты, данных паспорта гражданина РФ и других данных.</p></li>
+<li><p><strong>Получение части строки или формирование новых структур данных из строк с «плавающими» разделителями.</strong> Найти количество вхождений ключевых слов в тексте без учета падежных окончаний, составить из них массив с данными для дальнейшего использования в инфографике.</p></li>
+</ul>
+<p>Первая и вторая задачи в целом очень похожи и отличаются лишь тем, что в одном случае придётся писать регулярное выражение под готовый текст, а во втором, наоборот, текст под готовое регулярное выражение.</p>
+</section>
+<section id="основные-термины" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2">Основные термины</h3>
+<p>В контексте нашего курса мы будем использовать некоторые термины, которые в других языках программирования и технологиях могут иметь иное значение:</p>
+<p><strong>Строка</strong> — любой текст, включающий или не включающий в себя символы перевода строки.</p>
+<p><strong>Подстрока</strong> — любая часть строки.</p>
+<p><strong>Паттерн</strong>, <strong>правило</strong>, <strong>шаблон</strong>, <strong>выражение</strong> — это часть или всё регулярное выражение целиком. В русскоязычной среде программисты также используют выражение «регулярка». В англоязычных источниках могут встречаться сокращения <code>RegEx</code> или <code>RegExp</code>, но это всё об одном и том же.</p>
+<p><strong>Селекторы</strong> — именно так будут в нашем курсе называться части паттернов, из которых мы будем составлять регулярные выражения.</p>
+<p><strong>Матчить</strong> текст — применить к строке правило регулярного выражения с целью определения совпадения.</p>
+<hr />
+<p>Мы только-только начинаем знакомиться с регулярными выражениями, но уже написали первый паттерн. Далее разберём, как работает поиск внутри самого выражения, движения вперёд и возвраты.</p>
+</section>
+</div>
+</section>
+<section id="движение-паттернов-и-возвраты" class="level2" data-number="1.2">
+<h2 data-number="1.2">1.2. Движение паттернов и возвраты</h2>
+<div class="text-container text-container--module">
+<p>Мы обозначили круг задач, но ещё ни слова не сказали о построении регулярных выражений (паттернов) и о том, как они работают.</p>
+<p>Давайте составим первый паттерн и попробуем найти <code>ее</code> средствами регулярных выражений:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ss">/ее/</span><span class="op">.</span><span class="fu">test</span>(<span class="st">&#39;Быстрее всего мы догоним ее на машине&#39;</span>)<span class="op">;</span> <span class="co">// вернёт true</span></span></code></pre></div>
+<p>Первое, на что стоит обратить внимание из нашего примера: в JavaScript регулярное выражение пишется между двух слэшей: <code>/{{селектор}}/</code>. Текст внутри выражения называют <strong>литералами</strong>, а специальные символы, добавляющие функционал выражению — метасимволами.</p>
+<p>Второе, селектор может совпадать с целым словом, предложением или строкой:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ss">/Быстрее всего/</span><span class="op">.</span><span class="fu">test</span>(<span class="st">&#39;Быстрее всего мы догоним ее на машине&#39;</span>)<span class="op">;</span> <span class="co">// вернёт true</span></span></code></pre></div>
+<blockquote>
+<p>Можно использовать регулярные выражения для поиска подстроки в строке, но это не самое эффективное решение. Мы поговорим об этом в следующих главах.</p>
+</blockquote>
+<p>Здесь стоит остановиться и разобрать паттерн <code>/ее/</code>, ведь это не единое слово в его общем понимании, а набор из двух символьных селекторов, следующих в определённой последовательности.</p>
+<p>Регулярное выражение, если намеренно не задан другой порядок, будет последовательно перебирать символы строки слева направо и искать первое совпадение с первым селектором паттерна — <code>е</code>:</p>
+<p><img src="../media/file0.svg" /></p>
+<p>Когда будет найдено совпадение с первым селектором, не меняя позиции и не возвращаясь к началу строки, механизм поиска попробует сравнить следующий символ строки со следующим селектором. Если и второй символ совпадёт, то на этом поиск закончится.</p>
+<p><img src="../media/file1.svg" /></p>
+<p>Но что произойдет, если не будет совпадения? Механизму придётся вернуться к первому селектору и продолжить искать совпадение с позиции, на которой он в данный момент находится.</p>
+<p>Немного изменим строку поиска:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ss">/ее/</span><span class="op">.</span><span class="fu">test</span>(<span class="st">&#39;Всего быстрее мы догоним ее на машине&#39;</span>)<span class="op">;</span></span></code></pre></div>
+<p><img src="../media/file2.svg" /></p>
+<p>В нашем случае первое совпадение первого селектора <code>е</code> произойдёт на слове <code>всего</code>. Затем механизм поиска перейдёт на одну позицию вперед и попробует сопоставить второй селектор <code>е</code> — а там буква <code>г</code>, которая не совпадает. Чтобы отбросить это несовпадение и продолжить поиск дальше, придётся вернуться на одну позицию назад и вернуться к первому селектору. Этот механизм в регулярных выражениях называется <strong>возврат</strong>.</p>
+<p>В зависимости от сложности текстовой строки и сложности паттерна, возвраты могут происходить не только к селектору, но и к начальной позиции строки. Чем больше (длиннее) само регулярное выражение и чем чаще оно двигается назад, тем больше сохраняет позиций в памяти. Поэтому большие и сложные регулярные выражения — это всегда ресурсоёмкий код.</p>
+<p>Важно научиться составлять паттерны так, чтобы был баланс между точностью совпадения и скоростью обработки. При этом вы всегда будете добиваться, чтобы регулярное выражение совпадало с чем нужно и не совпадало со всем остальным. В этом кроется <strong>эффективность</strong> написания регулярных выражений, о которой мы будем говорить в течение всего курса.</p>
+<hr />
+<p>Мы разобрали главный принцип движения и возвратов поиска регулярного выражения в строке. От этого будет зависеть, насколько эффективно мы будем писать выражения в дальнейшем.</p>
+</div>
+</section>
+<section id="атрибут-pattern" class="level2" data-number="1.3">
+<h2 data-number="1.3">1.3. Атрибут pattern</h2>
+<div class="text-container text-container--module">
+<p>Если вы верстаете HTML, то наверняка уже успели «попробовать» атрибут <code>pattern</code> в элементах форм или хотя бы слышали о нем. Давайте освежим в памяти.</p>
+<blockquote>
+<p>Для удобства чтения в этой главе мы заменим привычный термин «паттерн» на слово «шаблон», чтобы понятия не пересекались.</p>
+</blockquote>
+<p>Итак, атрибут <code>pattern="{{регулярное выражение}}"</code> используется в HTML-элементах формы <code>&lt;input&gt;</code> и <code>&lt;textarea&gt;</code>. Предназначен <code>pattern</code> для проверки корректности (валидности) данных, вводимых в поле. Это единственный атрибут, который требует отдельных знаний и навыков для корректной настройки.</p>
+<blockquote>
+<p>Важное замечание: <code>pattern</code> не является шаблонизатором или ограничителем ввода. Он лишь управляет признаком <strong>valid</strong>/<strong>invalid</strong> для вводимых данных.</p>
+</blockquote>
+<div class="sourceCode" id="cb5"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;text&quot;</span> <span class="er">pattern</span><span class="ot">=</span><span class="st">&quot;\D+&quot;</span><span class="kw">&gt;</span></span></code></pre></div>
+<p>Пример выше позволяет вводить в текстовое поле любое количество не цифр. Если ввести данные, не подходящие под условия <code>pattern</code>, отправка данных на сервер будет блокирована, а поле выдаст подсказку:</p>
+<p><img src="../media/file3.png" /></p>
+<p>Однако, как уже говорилось ранее, в строку всё ещё можно ввести абсолютно любые символы.</p>
+<p>С этим связывают проблему чрезмерной точности регулярного выражения. Браузер не отображает значение <code>pattern</code>, поэтому пользователь не знает, что разработчик заложил в шаблон проверки. При попытке отправить неверные данные браузер выведет «Пожалуйста, используйте требуемый формат», но при этом не покажет, что именно неправильно.</p>
+<p>Поэтому при использовании <code>pattern</code> стоит придерживаться максимально простых правил, подсказку для которых можно описать с помощью атрибута <code>placeholder</code>.</p>
+<p>Для примера давайте напишем шаблон проверки паспорта гражданина РФ:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;text&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;passport&quot;</span> <span class="er">placeholder</span><span class="ot">=</span><span class="st">&quot;00 00 №000000&quot;</span> <span class="er">pattern</span><span class="ot">=</span><span class="st">&quot;\d{2}\s*\d{2}\s*№?\d{6}&quot;</span><span class="kw">&gt;</span></span></code></pre></div>
+<p>Пока рано разбирать всё регулярное выражение. Достаточно сказать, что поле позволит ввести серию и номер паспорта, разделённые пробелами или без них, с символом <code>№</code> или без него. Даже 10 подряд идущих цифр будут считаться валидным паспортом, а разбивку в таком случае придётся сделать на бэкенде.</p>
+<p>Вы можете возразить, что в таком случае теряется смысл валидации. Вовсе нет. Мы должны как можно меньше ограничивать пользователя и лишь направить его в нужное русло. Тем более, если нам известен формат вводимых данных и мы всё это можем разбить на бэкенде.</p>
+<p>Стоит отметить, что наше регулярное выражение не допускает пробельных символов в начале и конце строки, хотя сами по себе пробельные символы не мешают прочтению корректных данных. Как уже говорилось, всё лишнее можно отсечь как перед отправкой, так и на сервере.</p>
+<p>Попробуйте дополнить шаблон самостоятельно, чтобы исправить это недоразумение.</p>
+<hr />
+<p>Валидация форм — одна из часто встречаемых задач для регулярных выражений. Берём на заметку и переходим к JavaScript.</p>
+</div>
+</section>
+<section id="методы-javascript-для-работы-с-регулярными-выражениями" class="level2" data-number="1.4">
+<h2 data-number="1.4">1.4. Методы JavaScript для работы с регулярными выражениями</h2>
+<div class="text-container text-container--module">
+<p>Методов для работы с регулярными выражениями в языке JavaScript не так много, давайте вместе пройдёмся по списку и обозначим их основное назначение:</p>
+<ul>
+<li><p><strong><code>str.split(str|regExp, limit)</code></strong> — разбивает строку разделителем, образуя массив из элементов подстрок. В качестве разделителя могут быть регулярное выражение или строка.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;Ехали  медведи на   велосипеде&#39;</span><span class="op">.</span><span class="fu">split</span>(<span class="ss">/</span><span class="sc">\s+</span><span class="ss">/</span>)<span class="op">;</span> <span class="co">// [&#39;Ехали&#39;, &#39;медведи&#39;, &#39;на&#39;, &#39;велосипеде&#39;]</span></span></code></pre></div>
+<p>В данном примере строка разбивается <em>одним и более</em> пробельными символами.</p>
+<p>Если указать числовое значение <code>limit</code>, длина массива будет равна его величине.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;Ехали  медведи на   велосипеде&#39;</span><span class="op">.</span><span class="fu">split</span>(<span class="ss">/</span><span class="sc">\s+</span><span class="ss">/</span><span class="op">,</span> <span class="dv">3</span>)<span class="op">;</span> <span class="co">// [&#39;Ехали&#39;, &#39;медведи&#39;, &#39;на&#39;]</span></span></code></pre></div></li>
+<li><p><strong><code>str.replace(str|regExp, replacement|function)</code></strong> — заменяет <strong>первое</strong> вхождение подстроки на replacement или результат работы функции. Шаблон поиска может быть как строкой, так и регулярным выражением.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;Florence__+__The_Machine_-_Spectrum&#39;</span><span class="op">.</span><span class="fu">replace</span>(<span class="st">&#39;_+&#39;</span><span class="op">,</span> <span class="st">&#39; &#39;</span>)<span class="op">;</span> <span class="co">// Florence_ __The_Machine_-_Spectrum</span></span></code></pre></div>
+<p>Та же замена, но с помощью регулярного выражения:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;Florence__+__The_Machine_-_Spectrum&#39;</span><span class="op">.</span><span class="fu">replace</span>(<span class="ss">/_</span><span class="sc">+</span><span class="ss">/g</span><span class="op">,</span> <span class="st">&#39; &#39;</span>)<span class="op">;</span> <span class="co">// Florence + The Machine - Spectrum</span></span></code></pre></div>
+<p>Обратите внимание, в отличие от первого примера здесь <code>+</code> является не шаблоном поиска, а функциональной частью регулярного выражения.</p></li>
+<li><p><strong><code>str.replaceAll(str|regExp, replacement|function)</code></strong> — заменяет <strong>все</strong> вхождения подстроки на replacement или результат работы функции.</p>
+<p>С помощью регулярных выражений <code>.replace()</code> может выполнять ту же функцию, что и <code>.replaceAll()</code>. Посмотрите ещё раз на второй пример для <code>.replace()</code>.</p></li>
+<li><p><strong><code>str.search(regExp)</code></strong> — возвращает позицию первого совпадения подстроки. Если совпадение отсутствует, вернет -1. Важно добавить, что последующие совпадения нельзя найти с помощью <code>.search()</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;Потому что ты медведь...&#39;</span><span class="op">.</span><span class="fu">search</span>(<span class="ss">/медведь/</span>)<span class="op">;</span> <span class="co">// 14</span></span></code></pre></div></li>
+<li><p><strong><code>regExp.test(str)</code></strong> — возвращает true/false в случае совпадения регулярного выражения с частью или всей строкой.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ss">/-/</span><span class="op">.</span><span class="fu">test</span>(<span class="st">&#39;Жизнь - туман!&#39;</span>)<span class="op">;</span> <span class="co">// true</span></span></code></pre></div></li>
+</ul>
+<p>На данном этапе работу остальных методов будет трудно понять, поэтому пока только перечислим их, а подробнее разберём в следующих главах:</p>
+<ul>
+<li><strong><code>regExp.exec(str)</code></strong></li>
+<li><strong><code>str.match(regExp)</code></strong></li>
+<li><strong><code>str.matchAll(regExp)</code></strong></li>
+</ul>
+<blockquote>
+<p>Некоторые примеры кода, которые мы будем давать на протяжении курса, будут содержать незнакомые символы регулярных выражений. Нам постоянно придётся забегать вперёд, чтобы не упрощать правила до бесполезных. Мы специально подготовили полную таблицу символов регулярных выражений, чтобы вы могли с ними познакомиться.</p>
+</blockquote>
+<hr />
+<p>Мы лишь мельком пробежали по методам JavaScript, позволяющим работать с регулярными выражениями. В следующих разделах мы ещё не раз будем обращаться к ним и на примерах разберём различные способы их использования.</p>
+</div>
+</section>
+<section id="справочник" class="level2" data-number="1.5">
+<h2 data-number="1.5">1.5. Справочник</h2>
+<div class="text-container text-container--module">
+<div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> regex <span class="op">=</span> <span class="ss">/выражение/модификатор</span><span class="op">;</span></span></code></pre></div>
+<p>или</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> regex <span class="op">=</span> <span class="kw">new</span> <span class="bu">RegExp</span>(<span class="st">&#39;выражение&#39;</span><span class="op">,</span> <span class="st">&#39;модификатор&#39;</span>)<span class="op">;</span></span></code></pre></div>
+<section id="специальные-символы" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1">Специальные символы</h3>
+<p><strong>Символьные селекторы (наборы символов)</strong></p>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Селектор</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>[]</strong></td>
+<td>последовательность символов</td>
+</tr>
+<tr class="even">
+<td><strong>[^]</strong></td>
+<td>отрицание последовательности символов</td>
+</tr>
+<tr class="odd">
+<td><strong>[0-9]</strong></td>
+<td>любая цифра от 0 до 9</td>
+</tr>
+<tr class="even">
+<td><strong>[1-8]</strong></td>
+<td>любая цифра от 1 до 8</td>
+</tr>
+<tr class="odd">
+<td><strong>[а-яё]</strong></td>
+<td>любая буква русского алфавита в нижнем регистре</td>
+</tr>
+<tr class="even">
+<td><strong>[а-яёА-ЯЁ]</strong></td>
+<td>любая буква русского алфавита в нижнем и верхнем регистре</td>
+</tr>
+<tr class="odd">
+<td><strong>[а-яёА-ЯЁa-zA-Z]</strong></td>
+<td>любая буква русского или английского алфавита в нижнем и верхнем регистре</td>
+</tr>
+<tr class="even">
+<td><strong>[D-Q]</strong></td>
+<td>буква английского алфавита в верхнем регистре между D и Q</td>
+</tr>
+<tr class="odd">
+<td><strong>[^.,: ;?! -]</strong></td>
+<td>не знаки препинания</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Символьные селекторы (классы)</strong></p>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 22%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Селектор</th>
+<th>Эквивалент</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>\d</strong></td>
+<td>[0-9]</td>
+<td>цифры</td>
+</tr>
+<tr class="even">
+<td><strong>\w</strong></td>
+<td>[a-zA-Z0-9_]</td>
+<td>латинские буквы, цифры и символ подчеркивания</td>
+</tr>
+<tr class="odd">
+<td><strong>\s</strong></td>
+<td>[ \n\r\t]</td>
+<td>пробельные символы</td>
+</tr>
+<tr class="even">
+<td><strong>.</strong></td>
+<td>кроме <code>\n</code></td>
+<td>любой символ, кроме перевода строки</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Символьные отрицающие селекторы</strong></p>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 23%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Селектор</th>
+<th>Эквивалент</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>\D</strong></td>
+<td>[^0-9]</td>
+<td>не цифры</td>
+</tr>
+<tr class="even">
+<td><strong>\W</strong></td>
+<td>[^a-zA-Z0-9_]</td>
+<td>не латинские буквы, цифры и символ подчеркивания</td>
+</tr>
+<tr class="odd">
+<td><strong>\S</strong></td>
+<td>[^ \n\r\t]</td>
+<td>не пробельные символы</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Селекторы непечатных символов</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Селектор</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>\n</strong></td>
+<td>перевод строки</td>
+</tr>
+<tr class="even">
+<td><strong>\r</strong></td>
+<td>возврат каретки</td>
+</tr>
+<tr class="odd">
+<td><strong>\t</strong></td>
+<td>символ табуляции</td>
+</tr>
+<tr class="even">
+<td><strong>\v</strong></td>
+<td>символ вертикальной табуляции</td>
+</tr>
+<tr class="odd">
+<td><strong>\b</strong></td>
+<td>граница слова (только латиница)</td>
+</tr>
+<tr class="even">
+<td><strong>\B</strong></td>
+<td>не граница слова</td>
+</tr>
+<tr class="odd">
+<td><strong>^</strong></td>
+<td>начало строки</td>
+</tr>
+<tr class="even">
+<td><strong>$</strong></td>
+<td>конец строки</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Квантификаторы</strong></p>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 11%" />
+<col style="width: 62%" />
+<col style="width: 9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Квантификатор</th>
+<th>Эквивалент</th>
+<th>Описание</th>
+<th>Жадность</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>{n}</strong></td>
+<td>—</td>
+<td>совпадение с точным количеством, где n — число</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><strong>{min, max}</strong></td>
+<td>—</td>
+<td>совпадение в диапазоне от минимального до максимального значения</td>
+<td>жадный</td>
+</tr>
+<tr class="odd">
+<td><strong>{min, max}?</strong></td>
+<td>—</td>
+<td>совпадение в диапазоне от минимального до максимального значения</td>
+<td>ленивый</td>
+</tr>
+<tr class="even">
+<td><strong>{min, }</strong></td>
+<td>—</td>
+<td>совпадение в диапазоне от минимального до бесконечности</td>
+<td>жадный</td>
+</tr>
+<tr class="odd">
+<td><strong>+</strong></td>
+<td><em>{1,}</em></td>
+<td>один или бесконечное множество совпадений</td>
+<td>жадный</td>
+</tr>
+<tr class="even">
+<td><strong>*</strong></td>
+<td><em>{0,}</em></td>
+<td>ни одного или бесконечное множество совпадений</td>
+<td>жадный</td>
+</tr>
+<tr class="odd">
+<td><strong>?</strong></td>
+<td><em>{0,1}</em></td>
+<td>одно или ни одного совпадения</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><strong>+?</strong></td>
+<td><em>{1,}?</em></td>
+<td>один или бесконечное множество совпадений</td>
+<td>ленивый</td>
+</tr>
+<tr class="odd">
+<td><strong>*?</strong></td>
+<td><em>{0,}?</em></td>
+<td>ни одного или бесконечное множество совпадений</td>
+<td>ленивый</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Скобки</strong></p>
+<table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Конструкция</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>()</strong></td>
+<td>сохранение и группировка</td>
+</tr>
+<tr class="even">
+<td><strong>(? :)</strong></td>
+<td>группировка без сохранения</td>
+</tr>
+<tr class="odd">
+<td><strong>(a|b|c)</strong></td>
+<td>условие ИЛИ</td>
+</tr>
+<tr class="even">
+<td><strong>x (? =y)</strong></td>
+<td>опережающая проверка (найдет <code>x</code>, справа от которого есть <code>y</code>)</td>
+</tr>
+<tr class="odd">
+<td><strong>x (?! y)</strong></td>
+<td>негативная опережающая проверка (найдет <code>x</code>, справа от которого нет <code>y</code>)</td>
+</tr>
+<tr class="even">
+<td><strong>(?&lt;=y)x</strong></td>
+<td>ретроспективная проверка (найдет <code>x</code>, слева от которого есть <code>y</code>)</td>
+</tr>
+<tr class="odd">
+<td><strong>(?&lt;! y)x</strong></td>
+<td>негативная ретроспективная проверка (найдет <code>x</code>, слева от которого нет <code>y</code>)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Модификаторы (флаги)</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Модификатор</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>g</strong></td>
+<td>искать все совпадения</td>
+</tr>
+<tr class="even">
+<td><strong>i</strong></td>
+<td>не учитывать регистр</td>
+</tr>
+<tr class="odd">
+<td><strong>m</strong></td>
+<td>многострочный режим (<code>.</code> совпадает с <code>\n</code>)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Экранирование</strong></p>
+<p><strong>\</strong> — символ экранирования</p>
+<p><strong>^ | $ () [] { }. + *? \</strong> — символы, требующие экранирования</p>
+</section>
+</div>
+</section>
+</section>
+</body>
+</html>

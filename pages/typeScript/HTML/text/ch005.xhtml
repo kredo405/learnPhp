@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ru-RU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>ch005.xhtml</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body epub:type="bodymatter">
+<section id="манипуляция-типами-во-время-разработки" class="level1" data-number="5">
+<h1 data-number="5">5. Манипуляция типами во время разработки</h1>
+<div class="text-container text-container--module">
+<p>Условные, индексированные и строковые типы. Проекция типов. Создание прокси</p>
+</div>
+<section id="условные-типы" class="level2" data-number="5.1">
+<h2 data-number="5.1">5.1. Условные типы</h2>
+<div class="text-container text-container--module">
+<p>TypeScript — проект открытого кода. Разработчики, использующие TypeScript, своими <a href="https://github.com/microsoft/TypeScript/issues">замечаниями и пожеланиями</a> определяют направление его развития. <a href="https://twitter.com/SeaRyanC/status/1029846761718702081">Ryan Cavanaugh</a>, один из разработчиков TypeScript, как-то заметил, что если существует единственная вещь, способная помочь в работе с TypeScript, то это <strong>условные типы</strong>.</p>
+<p>С ними мы сейчас и познакомимся.</p>
+<section id="параллель" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1">Параллель</h3>
+<p>Предлагаем изучить и сравнить два кусочка кода. Следите за ключевыми словами <code>const</code> и <code>type</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> former <span class="op">=</span> <span class="dv">7</span><span class="op">*</span><span class="dv">2</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> latter <span class="op">=</span> <span class="dv">7</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> result <span class="op">=</span> latter <span class="op">&lt;</span> former <span class="op">?</span> <span class="st">&#39;correct&#39;</span> <span class="op">:</span> <span class="st">&#39;wrong&#39;</span><span class="op">;</span></span></code></pre></div>
+<p>В третьей строке используется условный оператор. Сравним его с приведённым ниже выражением для типов.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Former <span class="op">=</span> <span class="dv">7</span><span class="op">|</span><span class="dv">2</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Latter <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Result <span class="op">=</span> Latter <span class="kw">extends</span> Former<span class="op">?</span> <span class="st">&#39;correct&#39;</span> <span class="op">:</span> <span class="st">&#39;wrong&#39;</span><span class="op">;</span></span></code></pre></div>
+<p>Для вас очевидно, что значением константы <code>result</code> будет строка ‘correct’. Интуиция подсказывает: что-то подобное произойдёт и со значением типа <code>Result</code>. Откройте код в <a href="https://www.typescriptlang.org/play?#code/MYewdgzgLgBAZiATgWwKaJgXhgdgFQBMA3AFCiSwA2AhlFOlrqWeNDIqhAK6WzY10GAHnhI0GAPwwA5KEQdgUaTABcMgO6JwAc2nMoATwAOqGADExDbDgA+BEoZMwAMrXoZrJB8dMAlTjx8Lm4MqAAe9GAAJhDmlohSMnIKSqoaWmC6REA">песочнице</a> и наведите мышкой на символ <code>Result</code>.</p>
+<p>Синтаксис условного типа похож на тернарный оператор.</p>
+<ul>
+<li>Значение типа Result будет зависеть от сравнения типов <code>Latter</code> и <code>Former</code>.</li>
+<li>Если <code>Latter</code> является специализацией <code>Former</code> (переменной типа <code>Former</code> можно присвоить значения типа <code>Latter</code>), то результатом будет тип, стоящий после <code>?</code> — на месте true-результата.</li>
+<li>Если <code>Latter</code> не является специализацией <code>Former</code>, то выбирается тип, стоящий после <code>:</code> — на месте false-результата.</li>
+</ul>
+<p>Проверьте себя:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Debug <span class="op">=</span> <span class="dv">2</span> <span class="kw">extends</span> <span class="dt">number</span> <span class="op">?</span> <span class="dt">boolean</span> <span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span></code></pre></div>
+<p>Тип <code>Debug</code> эквивалентен <code>boolean</code>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> items <span class="op">=</span> [<span class="st">&#39;&#39;</span>]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">const</span> length<span class="op">:</span> (</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">typeof</span> items) <span class="kw">extends</span> { length<span class="op">:</span> <span class="dt">number</span> }</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">?</span> number</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">:</span> never</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>) <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span></code></pre></div>
+<p>Приведённый выше код компилируется без ошибок. Давайте проследуем за компилятором и выясним, что происходит.</p>
+<ol type="1">
+<li>Вычисления типа начинаются со внутренней скобки <code>(typeof items)</code>. Значением этого выражения будет тип <code>string[]</code> — массив строк. Мы обозначим этот тип T1.</li>
+<li>Также обозначим тип <code>T2 = {length: number}</code> — тип, у которого есть числовое свойство <code>length</code>.</li>
+<li>Далее компилятор проверяет, является ли тип T1 специализацией типа T2. Можно переформулировать: есть ли у значений типа T1 числовое свойство <code>length</code>. По тексту программы видно, что такое свойство есть.</li>
+<li>Компилятор выбирает одну из веток тернарного оператора <code>(Condition)?(OnTrue):(OnFalse)</code>. Из пункта № 3 следует, что выбирается ветка (OnTrue). В этой ветке указан тип <code>number</code>.</li>
+<li>В результате вычислений условий и значений типов, указанных в разных ветках, компилятор приходит к выводу, что значение внешних скобок (тип переменной <code>length</code>) эквивалентно типу <code>number</code>.</li>
+<li>Переменной типа <code>number</code> можно присвоить значение <code>0</code>, и программа компилируется без ошибок.</li>
+</ol>
+<p>Таким образом, компилятор и сервисы TypeScript в редакторе обеспечили контроль намерений разработчика по использованию значений в переменной <code>length</code>. А свои намерения разработчик высказал в виде «программы на типах».</p>
+</section>
+<section id="обобщённые-условные-типы" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2">Обобщённые условные типы</h3>
+<p>Выражение условного типа — это оператор ветвления (если — то, иначе — другое). При этом компилятор выполняет предписанные действия во время компиляции, а редактор выполняет их по мере того, как вы пишете код. Это особенно удобно при написании коротких программ для вычисления типа при одном или нескольких заданных других типах.</p>
+<p>Первая программа на типах TypeScript позволит нам вычислить новый тип, который является специализацией первого дженерик-параметра <code>Probe</code>, но при этом полностью исключает другой тип (<code>Ref</code>).</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Other<span class="op">&lt;</span>Probe<span class="op">,</span> Ref<span class="op">&gt;</span> <span class="op">=</span> Probe <span class="kw">extends</span> Ref <span class="op">?</span> <span class="dt">never</span> <span class="op">:</span> Probe<span class="op">;</span></span></code></pre></div>
+<p>Мы назвали «программу» <code>Other</code>. Она работает, выполняя вычисления над исходной информацией из двух частей. Первая часть — первый тип-параметр <code>Probe</code>. Это тип, который мы будем исследовать. Второй тип-параметр — <code>Ref</code>. Это опорные данные.</p>
+<p>Программа работает так: если входящий тип является специализацией опорного, то он заменяется на тип <code>never</code>, если же входящий тип не является специализацией опорного, то используется сам входящий тип.</p>
+<p>Проверим нашу «программу» на эквивалентных типах:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Debug1 <span class="op">=</span> Other<span class="op">&lt;</span><span class="dv">1</span><span class="op">,</span><span class="dv">1</span><span class="op">&gt;;</span></span></code></pre></div>
+<p><img src="../media/file13.png" /></p>
+<p>А теперь проверим на заведомо разных типах:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Debug2 <span class="op">=</span> Other<span class="op">&lt;</span><span class="st">&#39;line&#39;</span><span class="op">,</span><span class="dv">1</span><span class="op">&gt;;</span></span></code></pre></div>
+<p><img src="../media/file14.png" />;</p>
+</section>
+<section id="дистрибутивный-условный-тип" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3">Дистрибутивный условный тип</h3>
+<p>Когда тестируемый тип в условном типе используется без дополнительной структуры, условный оператор становится дистрибутивным. В результате поведение программы становится очень полезным.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> TrafficLights <span class="op">=</span> <span class="st">&#39;red&#39;</span> <span class="op">|</span> <span class="st">&#39;yellow&#39;</span> <span class="op">|</span> <span class="st">&#39;green&#39;</span><span class="op">;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> StopLights <span class="op">=</span> <span class="st">&#39;red&#39;</span> <span class="op">|</span> <span class="st">&#39;yellow&#39;</span><span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> GoLights <span class="op">=</span> Other<span class="op">&lt;</span>TrafficLights<span class="op">,</span> StopLights<span class="op">&gt;</span></span></code></pre></div>
+<p>На первом шаге все составные элементы объединения TrafficLights используются отдельно:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> GoLights_Step1 <span class="op">=</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  Other<span class="op">&lt;</span><span class="st">&#39;red&#39;</span><span class="op">,</span> StopLights<span class="op">&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> Other<span class="op">&lt;</span><span class="st">&#39;yellow&#39;</span><span class="op">,</span> StopLights<span class="op">&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> Other<span class="op">&lt;</span><span class="st">&#39;green&#39;</span><span class="op">,</span> StopLights<span class="op">&gt;</span></span></code></pre></div>
+<p>На следующем шаге вычислений мы видим объединение результатов:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> GoLights_Step2 <span class="op">=</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">never</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">never</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="st">&#39;green&#39;</span></span></code></pre></div>
+<p>Наконец, объединение с типом never не изменяет ничего в системе типов, и never опускается вовсе.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> GoLights_Step3_Final <span class="op">=</span> <span class="st">&#39;green&#39;</span></span></code></pre></div>
+<p>Проверьте результат в <a href="https://www.typescriptlang.org/play?#code/FAFwngDgpgBA8iAFlATgHgAooPYCMoA0MASlAGYB8MAvDFnrFAB4hQB2AJgM4nkwD8MNlABuqGAC46OfAG5goSLAAqKAIZkyASwDGAGS0BzRCB60A5CigdzMAD4xzYKABsX2AO62H5w1fbm8uDQMADKINgQBsamNI5WNvaOzm6egQrBsADi2NEmZvBIqGiqGtr6RvlE4ZF5phTAQA">песочнице</a>.</p>
+<blockquote>
+<p>Использование такого условного типа настолько распространено, что TypeScript предоставил эту реализацию в составе библиотеки, что называется «из коробки» — смотрим <code>Exclude</code>.</p>
+</blockquote>
+<p>В составе TypeScript больше дюжины таких утилитарных, часто используемых условных типов.</p>
+<ul>
+<li>Partial&lt;Type&gt;</li>
+<li>Required&lt;Type&gt;</li>
+<li>Readonly&lt;Type&gt;</li>
+<li>Record&lt;Keys, Type&gt;</li>
+<li>Pick&lt;Type, Keys&gt;</li>
+<li>Omit&lt;Type, Keys&gt;</li>
+<li>Exclude&lt;UnionType, ExcludedMembers&gt;</li>
+<li>Extract&lt;Type, Union&gt;</li>
+<li>NonNullable&lt;Type&gt;</li>
+<li>Parameters&lt;Type&gt;</li>
+<li>ConstructorParameters&lt;Type&gt;</li>
+<li>ReturnType&lt;Type&gt;</li>
+<li>InstanceType&lt;Type&gt;</li>
+<li>ThisParameterType&lt;Type&gt;</li>
+<li>OmitThisParameter&lt;Type&gt;</li>
+<li>ThisType&lt;Type&gt;</li>
+</ul>
+<p>Все они используют библиотечные реализации, похожие на нашу <code>Other</code>.</p>
+</section>
+<section id="ключевое-слово-infer" class="level3" data-number="5.1.4">
+<h3 data-number="5.1.4">Ключевое слово infer</h3>
+<p>Для создания программ вы используете переменные. При создании программ на типах для вычисления типов (условных типов) переменные обозначаются ключевым словом infer. Это ключевое слово может использоваться в условии, то есть до знака <code>?</code>, и имеет значение только при выполнении условия, то есть между <code>?</code> и <code>:</code>. Несмотря на такие ограничения, это очень сильная возможность.</p>
+<p>Вот как она используется для создания типа <code>ReturnType</code>:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a> <span class="kw">type</span> <span class="bu">ReturnType</span><span class="op">&lt;</span>T <span class="kw">extends</span> (<span class="op">...</span>args<span class="op">:</span> <span class="dt">any</span>) <span class="kw">=&gt;</span> <span class="dt">any</span><span class="op">&gt;</span> <span class="op">=</span> T <span class="kw">extends</span> (<span class="op">...</span>args<span class="op">:</span> <span class="dt">any</span>) <span class="kw">=&gt;</span> <span class="kw">infer</span> R <span class="op">?</span> R <span class="op">:</span> <span class="dt">any</span><span class="op">;</span></span></code></pre></div>
+<p>В этом условном типе указано, что на вход можно подать тип любой функции: <code>&lt;T extends (...args: any) =&gt; any&gt;</code>.</p>
+<p>Далее производится анализ и назначается временная переменная <code>R</code>. Читается <code>T extends (...args: any) =&gt; infer R</code>: если входной тип является функцией, то обозначим тип её результата <code>R</code>.</p>
+<p>Далее программа «возвращает» результат вычисления: либо <code>R</code>, либо <code>any</code>.</p>
+<p>В следующем разделе мы познакомимся со способом организации циклов при вычислении типов в TypeScript. После этого вы сможете самостоятельно написать выражения для таких условных типов, как <code>Pick&lt;Type, Keys&gt;</code> или многих других.</p>
+</section>
+</div>
+</section>
+<section id="ветвление-типов" class="level2" data-number="5.2">
+<h2 data-number="5.2">5.2. Ветвление типов</h2>
+<div class="text-container text-container--module">
+<ol type="1">
+<li><strong>Существует ли операция, в отношении которой определения типа Verbalize&lt;boolean&gt; и TrueFalseNamed не являются эквивалентными?</strong></li>
+</ol>
+<div class="sourceCode" id="cb13"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Verbalize<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> T <span class="kw">extends</span> <span class="dt">boolean</span><span class="op">?</span> <span class="st">&quot;true&quot;</span><span class="op">|</span><span class="st">&quot;false&quot;</span><span class="op">:</span> <span class="dt">never</span><span class="op">;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> TrueFalseNamed <span class="op">=</span> <span class="st">&quot;false&quot;</span><span class="op">|</span><span class="st">&quot;true&quot;</span><span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Нет.</li>
+<li>Да.</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>В контексте определения типов Color и определите тип переменных x и y.</strong></li>
+</ol>
+<div class="sourceCode" id="cb14"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Color <span class="op">=</span> <span class="st">&quot;red&quot;</span> <span class="op">|</span> <span class="st">&quot;green&quot;</span> <span class="op">|</span> <span class="st">&quot;blue&quot;</span><span class="op">;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> BorderSetting<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> {</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>      color<span class="op">:</span> T<span class="op">;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>      width<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Border<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> Color <span class="kw">extends</span> T <span class="op">?</span> BorderSetting<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">:</span> <span class="st">&quot;none&quot;</span><span class="op">;</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">setBorder</span><span class="op">&lt;</span>T <span class="kw">extends</span> Color <span class="op">|</span> <span class="st">&quot;none&quot;</span><span class="op">&gt;</span>(color<span class="op">:</span> T<span class="op">,</span> width<span class="op">?:</span> <span class="dt">number</span><span class="op">|</span><span class="dt">undefined</span>)<span class="op">:</span> Border<span class="op">&lt;</span>T<span class="op">&gt;;</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> x <span class="op">=</span> <span class="fu">setBorder</span>(<span class="st">&quot;red&quot;</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> y <span class="op">=</span> <span class="fu">setBorder</span>(<span class="st">&quot;none&quot;</span>)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Обе переменные имеют специализированный строковый тип “none”.</li>
+<li>x имеет тип BorderSetting&lt;“red”&gt;.</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>В контексте определения типов определите тип переменных x и y.</strong></li>
+</ol>
+<div class="sourceCode" id="cb15"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Color <span class="op">=</span> <span class="st">&quot;red&quot;</span> <span class="op">|</span> <span class="st">&quot;green&quot;</span> <span class="op">|</span> <span class="st">&quot;blue&quot;</span><span class="op">;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> BorderSetting<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> {</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    color<span class="op">:</span> T<span class="op">;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    width<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Border<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> T <span class="kw">extends</span> Color <span class="op">?</span> BorderSetting<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">:</span> <span class="st">&quot;none&quot;</span><span class="op">;</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">setBorder</span><span class="op">&lt;</span>T <span class="kw">extends</span> Color <span class="op">|</span> <span class="st">&quot;none&quot;</span><span class="op">&gt;</span>(color<span class="op">:</span> T<span class="op">,</span> width<span class="op">?:</span> <span class="dt">number</span><span class="op">|</span><span class="dt">undefined</span>)<span class="op">:</span> Border<span class="op">&lt;</span>T<span class="op">&gt;;</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> x <span class="op">=</span> <span class="fu">setBorder</span>(<span class="st">&quot;red&quot;</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> y <span class="op">=</span> <span class="fu">setBorder</span>(<span class="st">&quot;none&quot;</span>)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Обе переменные имеют специализированный строковый тип “none”.</li>
+<li>x имеет тип BorderSetting&lt;“red”&gt;.</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>В контексте определения типов укажите верное значение типа Debug1.</strong></li>
+</ol>
+<div class="sourceCode" id="cb16"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Promised<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> T <span class="kw">extends</span> <span class="dt">string</span><span class="op">?</span> <span class="bu">Promise</span><span class="op">&lt;</span>T<span class="op">&gt;:</span> <span class="dt">never</span><span class="op">;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Debug1 <span class="op">=</span> Promised<span class="op">&lt;</span>\<span class="st">&quot;title</span><span class="sc">\&quot;</span><span class="st">|</span><span class="sc">\&quot;</span><span class="st">description</span><span class="sc">\&quot;</span><span class="st">&gt;;</span></span></code></pre></div>
+<ul>
+<li>Promise&lt;“title”&gt; | Promise&lt;“description”&gt;.</li>
+<li>never.</li>
+<li>Promise&lt;“title”|“description”&gt;.</li>
+</ul>
+<ol start="5" type="1">
+<li><strong>В контексте определения типов укажите верное значение типа Debug1.</strong></li>
+</ol>
+<div class="sourceCode" id="cb17"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Promised<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> [T] <span class="kw">extends</span> [<span class="dt">string</span>]<span class="op">?</span> <span class="bu">Promise</span><span class="op">&lt;</span>T<span class="op">&gt;:</span> <span class="dt">never</span><span class="op">;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Debug1 <span class="op">=</span> Promised<span class="op">&lt;</span><span class="st">&quot;title&quot;</span><span class="op">|</span><span class="st">&quot;description&quot;</span><span class="op">&gt;;</span></span></code></pre></div>
+<ul>
+<li>Promise&lt;“title”&gt; | Promise&lt;“description”&gt;.</li>
+<li>never.</li>
+<li>Promise&lt;“title”|“description”&gt;.</li>
+</ul>
+</div>
+</section>
+<section id="ветвление-типов-ответы" class="level2" data-number="5.3">
+<h2 data-number="5.3">5.2. Ветвление типов (Ответы)</h2>
+<div class="text-container text-container--module">
+<ol type="1">
+<li><strong>Существует ли операция, в отношении которой определения типа Verbalize&lt;boolean&gt; и TrueFalseNamed не являются эквивалентными?</strong></li>
+</ol>
+<div class="sourceCode" id="cb18"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Verbalize<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> T <span class="kw">extends</span> <span class="dt">boolean</span><span class="op">?</span> <span class="st">&quot;true&quot;</span><span class="op">|</span><span class="st">&quot;false&quot;</span><span class="op">:</span> <span class="dt">never</span><span class="op">;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> TrueFalseNamed <span class="op">=</span> <span class="st">&quot;false&quot;</span><span class="op">|</span><span class="st">&quot;true&quot;</span><span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Нет.</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>В контексте определения типов Color и определите тип переменных x и y.</strong></li>
+</ol>
+<div class="sourceCode" id="cb19"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Color <span class="op">=</span> <span class="st">&quot;red&quot;</span> <span class="op">|</span> <span class="st">&quot;green&quot;</span> <span class="op">|</span> <span class="st">&quot;blue&quot;</span><span class="op">;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> BorderSetting<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> {</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>      color<span class="op">:</span> T<span class="op">;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>      width<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Border<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> Color <span class="kw">extends</span> T <span class="op">?</span> BorderSetting<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">:</span> <span class="st">&quot;none&quot;</span><span class="op">;</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">setBorder</span><span class="op">&lt;</span>T <span class="kw">extends</span> Color <span class="op">|</span> <span class="st">&quot;none&quot;</span><span class="op">&gt;</span>(color<span class="op">:</span> T<span class="op">,</span> width<span class="op">?:</span> <span class="dt">number</span><span class="op">|</span><span class="dt">undefined</span>)<span class="op">:</span> Border<span class="op">&lt;</span>T<span class="op">&gt;;</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> x <span class="op">=</span> <span class="fu">setBorder</span>(<span class="st">&quot;red&quot;</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> y <span class="op">=</span> <span class="fu">setBorder</span>(<span class="st">&quot;none&quot;</span>)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Обе переменные имеют специализированный строковый тип “none”.</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>В контексте определения типов определите тип переменных x и y.</strong></li>
+</ol>
+<div class="sourceCode" id="cb20"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Color <span class="op">=</span> <span class="st">&quot;red&quot;</span> <span class="op">|</span> <span class="st">&quot;green&quot;</span> <span class="op">|</span> <span class="st">&quot;blue&quot;</span><span class="op">;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> BorderSetting<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> {</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    color<span class="op">:</span> T<span class="op">;</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    width<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Border<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> T <span class="kw">extends</span> Color <span class="op">?</span> BorderSetting<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">:</span> <span class="st">&quot;none&quot;</span><span class="op">;</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">setBorder</span><span class="op">&lt;</span>T <span class="kw">extends</span> Color <span class="op">|</span> <span class="st">&quot;none&quot;</span><span class="op">&gt;</span>(color<span class="op">:</span> T<span class="op">,</span> width<span class="op">?:</span> <span class="dt">number</span><span class="op">|</span><span class="dt">undefined</span>)<span class="op">:</span> Border<span class="op">&lt;</span>T<span class="op">&gt;;</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> x <span class="op">=</span> <span class="fu">setBorder</span>(<span class="st">&quot;red&quot;</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> y <span class="op">=</span> <span class="fu">setBorder</span>(<span class="st">&quot;none&quot;</span>)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>x имеет тип BorderSetting&lt;“red”&gt;.</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>В контексте определения типов укажите верное значение типа Debug1.</strong></li>
+</ol>
+<div class="sourceCode" id="cb21"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Promised<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> T <span class="kw">extends</span> <span class="dt">string</span><span class="op">?</span> <span class="bu">Promise</span><span class="op">&lt;</span>T<span class="op">&gt;:</span> <span class="dt">never</span><span class="op">;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Debug1 <span class="op">=</span> Promised<span class="op">&lt;</span>\<span class="st">&quot;title</span><span class="sc">\&quot;</span><span class="st">|</span><span class="sc">\&quot;</span><span class="st">description</span><span class="sc">\&quot;</span><span class="st">&gt;;</span></span></code></pre></div>
+<ul>
+<li>Promise&lt;“title”&gt; | Promise&lt;“description”&gt;.</li>
+</ul>
+<ol start="5" type="1">
+<li><strong>В контексте определения типов укажите верное значение типа Debug1.</strong></li>
+</ol>
+<div class="sourceCode" id="cb22"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Promised<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> [T] <span class="kw">extends</span> [<span class="dt">string</span>]<span class="op">?</span> <span class="bu">Promise</span><span class="op">&lt;</span>T<span class="op">&gt;:</span> <span class="dt">never</span><span class="op">;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Debug1 <span class="op">=</span> Promised<span class="op">&lt;</span><span class="st">&quot;title&quot;</span><span class="op">|</span><span class="st">&quot;description&quot;</span><span class="op">&gt;;</span></span></code></pre></div>
+<ul>
+<li>Promise&lt;“title”|“description”&gt;.</li>
+</ul>
+</div>
+</section>
+<section id="типы-с-доступом-по-индексу" class="level2" data-number="5.4">
+<h2 data-number="5.4">5.3. Типы с доступом по индексу</h2>
+<div class="text-container text-container--module">
+<p>В TypeScript объекты являются ассоциативными массивами (словарями), где ключом является строка.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> dictionary <span class="op">=</span> {</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    language<span class="op">:</span> <span class="st">&#39;TypeScript&#39;</span><span class="op">,</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">//Получить доступ к значению можно через имя ключа.</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> key <span class="op">=</span> <span class="st">&#39;language&#39;</span><span class="op">;</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(dictionary[key])<span class="op">;</span></span></code></pre></div>
+<p>Компилятор TypeScript внимательно следит за доступом к свойствам. Он строже относится к синтаксису индексированных значений объектов. Сравните следующий отрывок:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> dictionary <span class="op">=</span> {</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    language<span class="op">:</span> <span class="st">&#39;TypeScript&#39;</span><span class="op">,</span>    </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> key<span class="op">:</span><span class="dt">string</span> <span class="op">=</span> <span class="st">&#39;language&#39;</span><span class="op">;</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(dictionary[key])<span class="op">;</span><span class="co">// Ошибка!</span></span></code></pre></div>
+<p>Чтобы использовать синтаксис доступа по индексу, вы должны явно указать компилятору, что значение ключа относится к типу правильных ключей.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> dictionary <span class="op">=</span> {</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    language<span class="op">:</span> <span class="st">&#39;TypeScript&#39;</span><span class="op">,</span>    </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> key<span class="op">:</span> <span class="kw">keyof</span> <span class="kw">typeof</span> dictionary <span class="op">=</span> <span class="st">&#39;language&#39;</span><span class="op">;</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(dictionary[key])<span class="op">;</span><span class="co">// Снова компилируется без ошибок.</span></span></code></pre></div>
+<p>Здесь мы познакомились с оператором <code>keyof</code>. TypeScript применяет его к типу для получения <strong>объединения</strong> всех ключей.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> dictionary <span class="op">=</span> {</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    language<span class="op">:</span> <span class="st">&#39;TypeScript&#39;</span><span class="op">,</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    platform<span class="op">:</span> <span class="st">&#39;any&#39;</span><span class="op">,</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    types<span class="op">:</span> <span class="st">&#39;structural&#39;</span><span class="op">,</span>    </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> keys <span class="op">=</span> <span class="kw">keyof</span> <span class="kw">typeof</span> dictionary<span class="op">;</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co">//type keys = &#39;language&#39;|&#39;platform&#39;|&#39;types&#39;</span></span></code></pre></div>
+<p><a href="https://www.typescriptlang.org/play?ssl=8&amp;ssc=44&amp;pln=1&amp;pc=1#code/MYewdgzgLgBAJgS2FB4CGAnAnjAvDAbwCgZSYAbNMAcwFc1qBTALhgHIAVLAB0YGVgGBNyhsANCTLdKUAGYgMAW1ZsqWcZNJQejCCugZayWhjTlxZGEQC+RItt4wA1oywQ8z1yFkwHjb-BIKOjYANxEAPQRfp5uHmyUNPRMbAA+bNJocgqKaWx+EGxAA">Посмотреть в песочнице</a>.</p>
+<p>Не всегда ключи известны по именам. Чтобы описать тип с произвольным количеством ключей, используйте сигнатуру доступа по индексу:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> CustomDictionary <span class="op">=</span>{</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    [key<span class="op">:</span><span class="dt">string</span>]<span class="op">:</span> <span class="dt">string</span><span class="op">,</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<section id="составление-структуры-по-именам-ключей" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1">Составление структуры по именам ключей</h3>
+<p>На практике бывает нужно создать массив флагов и описать тип, где эти значения были бы ключами.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Массив объявляется с указанием as const. </span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co">// Это заставляет TypeScript рассматривать его </span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">// как запись, и все элементы получают специализированные</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co">// типы.</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> flags <span class="op">=</span> [<span class="st">&#39;archive&#39;</span><span class="op">,</span><span class="st">&#39;hidden&#39;</span><span class="op">,</span><span class="st">&#39;readonly&#39;</span><span class="op">,</span><span class="st">&#39;encrypted&#39;</span><span class="op">,</span><span class="st">&#39;system&#39;</span>] <span class="im">as</span> <span class="kw">const</span><span class="op">;</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co">// Извлекаем специализированные типы </span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co">// в виде объединения. </span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Flags <span class="op">=</span> (<span class="kw">typeof</span> flags)[<span class="dt">number</span>]<span class="op">;</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co">// Создаём описание типа,</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="co">// где TypeScript в цикле </span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="co">// распределяет все элементы объединения.</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> FileInfo <span class="op">=</span> {</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>    [key <span class="kw">in</span> Flags]<span class="op">:</span> <span class="dt">boolean</span><span class="op">;</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="co">// Можем использовать </span></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="co">// обозначенный тип.</span></span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> systemSettings<span class="op">:</span>FileInfo <span class="op">=</span> {</span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>    archive<span class="op">:</span><span class="kw">true</span><span class="op">,</span></span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>    encrypted<span class="op">:</span><span class="kw">false</span><span class="op">,</span></span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>    hidden<span class="op">:</span><span class="kw">true</span><span class="op">,</span></span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>    readonly<span class="op">:</span><span class="kw">true</span><span class="op">,</span></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>    system<span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<p>Такой подход позволит сэкономить время и избежать нарушения синхронизации между списком элементов в массиве и фактически обозначенными ключами.</p>
+</section>
+<section id="о-специализации-типов-значений-элементов-массива" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2">О специализации типов значений элементов массива</h3>
+<p>Предыдущий отрывок содержит запись <code>type Flags = (typeof flags)[number];</code>. Давайте обсудим, что происходит в недрах компилятора и сервисов TypeScript при вычислении этой записи.</p>
+<ol type="1">
+<li>Обратим внимание на <code>as const</code> в конце первой строки отрывка. Эта запись требует от компилятора принять во внимание намерения разработчика <em>никогда</em> не изменять содержимое массива. Ещё раз: константа — это не только переменная flags, но и всё содержимое массива. Нельзя ни добавить элементы, ни убрать их, ни заменить содержащуюся в нём строку на какую-либо другую.</li>
+<li>В этих условиях массив становится кортежем из пяти определённых строк. Выражение <code>(typeof flags)</code> вычисляется в тип (<strong>не значение</strong>) <code>['archive','hidden','readonly','encrypted','system']</code>. Элементы кортежа имеют определённые типы. В нашем случае левый элемент кортежа обязан иметь тип — литеральную специализацию строки, а именно <code>archive</code>. Аналогично самый правый элемент кортежа обязан иметь литеральный специализированный тип <code>system</code>.</li>
+<li>Выражение <code>[number]</code> информирует компилятор, что следует создать объединение типов элементов кортежа. В нашем случае <code>(typeof flags)[number]</code> становится эквивалентным <code>'archive'|'hidden'|'readonly'|'encrypted'|'system'</code>.</li>
+</ol>
+<p>Подход вида ‘массив as const’ + typeof…[number] позволяет изменять определение типа синхронно с изменением содержимого массива.</p>
+</section>
+</div>
+</section>
+<section id="концепция-индексированных-типов" class="level2" data-number="5.5">
+<h2 data-number="5.5">5.4. Концепция индексированных типов</h2>
+<div class="text-container text-container--module">
+<ol type="1">
+<li><strong>В контексте определения переменной укажите тип, эквивалентный типу Timeout в отношении всех возможных операций.</strong></li>
+</ol>
+<div class="sourceCode" id="cb29"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> config <span class="op">=</span> {</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>        endpoint<span class="op">:</span> <span class="st">&quot;https://example.com/api&quot;</span><span class="op">,</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>        timeout<span class="op">:</span> <span class="dv">5</span><span class="op">,</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>        autoRetry<span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">type</span> Timeout <span class="op">=</span> (<span class="kw">typeof</span> config)[<span class="st">&quot;timeout&quot;</span>]</span></code></pre></div>
+<ul>
+<li>string | number | boolean.</li>
+<li>number.</li>
+<li>5.</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>В контексте определения переменной укажите тип, эквивалентный типу Timeout в отношении всех возможных операций.</strong></li>
+</ol>
+<div class="sourceCode" id="cb30"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> config <span class="op">=</span> {</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>        endpoint<span class="op">:</span> <span class="st">&quot;https://example.com/api&quot;</span><span class="op">,</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>        timeout<span class="op">:</span> <span class="dv">5</span><span class="op">,</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>        autoRetry<span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    } <span class="im">as</span> <span class="kw">const</span><span class="op">;</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">type</span> Timeout <span class="op">=</span> (<span class="kw">typeof</span> config)[<span class="st">&quot;timeout&quot;</span>]</span></code></pre></div>
+<ul>
+<li>string | number | boolean.</li>
+<li>number.</li>
+<li>5.</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>В контексте определения переменной укажите тип, эквивалентный типу Timeout в отношении все возможных операций.</strong></li>
+</ol>
+<div class="sourceCode" id="cb31"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> config <span class="op">=</span> {</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>        endpoint<span class="op">:</span> <span class="st">&quot;https://example.com/api&quot;</span><span class="op">,</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>        timeout<span class="op">:</span> <span class="dv">5</span><span class="op">,</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>        autoRetry<span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">type</span> Timeout <span class="op">=</span> (<span class="kw">typeof</span> config)[<span class="kw">keyof</span> <span class="kw">typeof</span> config]</span></code></pre></div>
+<ul>
+<li>string | number | boolean.</li>
+<li>number.</li>
+<li>5.</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>В контексте определения типов укажите, сколько числовых свойств будет иметь значение типа Options?</strong></li>
+</ol>
+<div class="sourceCode" id="cb32"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Decoration <span class="op">=</span> <span class="st">&quot;bold&quot;</span><span class="op">|</span><span class="st">&quot;italic&quot;</span><span class="op">|</span><span class="st">&quot;underline&quot;</span><span class="op">|</span><span class="st">&quot;strikethrough&quot;</span><span class="op">;</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>      <span class="kw">type</span> OptionType<span class="op">&lt;</span>T <span class="kw">extends</span> Decoration <span class="op">|</span> <span class="st">&quot;size&quot;</span><span class="op">&gt;</span> <span class="op">=</span> T <span class="kw">extends</span> <span class="st">&quot;size&quot;</span><span class="op">?</span><span class="dt">number</span><span class="op">:</span><span class="dt">boolean</span><span class="op">;</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>      <span class="kw">type</span> Options <span class="op">=</span> {</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>          [key <span class="kw">in</span> Decoration<span class="op">|</span><span class="st">&quot;size&quot;</span>]<span class="op">:</span> OptionType<span class="op">&lt;</span>key<span class="op">&gt;</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>      }</span></code></pre></div>
+<ul>
+<li>0.</li>
+<li>1.</li>
+<li>4.</li>
+<li>5.</li>
+</ul>
+</div>
+</section>
+<section id="концепция-индексированных-типов-ответы" class="level2" data-number="5.6">
+<h2 data-number="5.6">5.4. Концепция индексированных типов (Ответы)</h2>
+<div class="text-container text-container--module">
+<ol type="1">
+<li><strong>В контексте определения переменной укажите тип, эквивалентный типу Timeout в отношении всех возможных операций.</strong></li>
+</ol>
+<div class="sourceCode" id="cb33"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> config <span class="op">=</span> {</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>        endpoint<span class="op">:</span> <span class="st">&quot;https://example.com/api&quot;</span><span class="op">,</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>        timeout<span class="op">:</span> <span class="dv">5</span><span class="op">,</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>        autoRetry<span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">type</span> Timeout <span class="op">=</span> (<span class="kw">typeof</span> config)[<span class="st">&quot;timeout&quot;</span>]</span></code></pre></div>
+<ul>
+<li>number.</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>В контексте определения переменной укажите тип, эквивалентный типу Timeout в отношении всех возможных операций.</strong></li>
+</ol>
+<div class="sourceCode" id="cb34"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> config <span class="op">=</span> {</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>        endpoint<span class="op">:</span> <span class="st">&quot;https://example.com/api&quot;</span><span class="op">,</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>        timeout<span class="op">:</span> <span class="dv">5</span><span class="op">,</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>        autoRetry<span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    } <span class="im">as</span> <span class="kw">const</span><span class="op">;</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">type</span> Timeout <span class="op">=</span> (<span class="kw">typeof</span> config)[<span class="st">&quot;timeout&quot;</span>]</span></code></pre></div>
+<ul>
+<li>5.</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>В контексте определения переменной укажите тип, эквивалентный типу Timeout в отношении все возможных операций.</strong></li>
+</ol>
+<div class="sourceCode" id="cb35"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> config <span class="op">=</span> {</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>        endpoint<span class="op">:</span> <span class="st">&quot;https://example.com/api&quot;</span><span class="op">,</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>        timeout<span class="op">:</span> <span class="dv">5</span><span class="op">,</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>        autoRetry<span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">type</span> Timeout <span class="op">=</span> (<span class="kw">typeof</span> config)[<span class="kw">keyof</span> <span class="kw">typeof</span> config]</span></code></pre></div>
+<ul>
+<li>string | number | boolean.</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>В контексте определения типов укажите, сколько числовых свойств будет иметь значение типа Options?</strong></li>
+</ol>
+<div class="sourceCode" id="cb36"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Decoration <span class="op">=</span> <span class="st">&quot;bold&quot;</span><span class="op">|</span><span class="st">&quot;italic&quot;</span><span class="op">|</span><span class="st">&quot;underline&quot;</span><span class="op">|</span><span class="st">&quot;strikethrough&quot;</span><span class="op">;</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>      <span class="kw">type</span> OptionType<span class="op">&lt;</span>T <span class="kw">extends</span> Decoration <span class="op">|</span> <span class="st">&quot;size&quot;</span><span class="op">&gt;</span> <span class="op">=</span> T <span class="kw">extends</span> <span class="st">&quot;size&quot;</span><span class="op">?</span><span class="dt">number</span><span class="op">:</span><span class="dt">boolean</span><span class="op">;</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>      <span class="kw">type</span> Options <span class="op">=</span> {</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>          [key <span class="kw">in</span> Decoration<span class="op">|</span><span class="st">&quot;size&quot;</span>]<span class="op">:</span> OptionType<span class="op">&lt;</span>key<span class="op">&gt;</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>      }</span></code></pre></div>
+<ul>
+<li>1.</li>
+</ul>
+</div>
+</section>
+<section id="ключевое-слово-in-в-словарях" class="level2" data-number="5.7">
+<h2 data-number="5.7">5.5. Ключевое слово in в словарях</h2>
+<div class="text-container text-container--module">
+<p>В этом параграфе мы познакомимся с возможностями TypeScript создавать типы словарей. Мы потренируемся использовать ключевое слово <code>in</code> и продолжим изучать обобщённое программирование.</p>
+<p>Следующий отрывок использует цикл TypeScript по всем ключам типа-параметра и добавляет каждому из них признак «только для чтения»:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> LockType<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> {</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> <span class="kw">readonly</span> [key <span class="kw">in</span> <span class="kw">keyof</span> T]<span class="op">:</span> T[key]</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<p>Разберём строку <code>+ readonly [key in keyof T]: T[key]</code>:</p>
+<ul>
+<li><code>+ readonly</code> добавляет к описанию каждого поля модификатор readonly. TypeScript позволяет как добавлять, так и стирать модификаторы. Чтобы стереть модификатор, используем знак <code>-</code> (минус).</li>
+<li><code>[key in keyof T]</code> организует цикл по всем ключам из типа-параметра <code>T</code>.</li>
+<li><code>: T[key]</code> указывает, какой тип следует зарегистрировать для данного ключа. Под «данным» мы понимаем, что при каждой итерации цикла значение типа-переменной <code>key</code> меняется.</li>
+</ul>
+<p>Обратите внимание, что эта обобщённая типа-программа эквивалента исходному коду стандартного утилитарного условного типа Readonly.</p>
+<section id="тип-ключа-можно-изменить" class="level3" data-number="5.7.1">
+<h3 data-number="5.7.1">Тип ключа можно изменить</h3>
+<p>При составлении словаря условным типом мы можем поменять не только модификаторы ключа, но и тип значения. В следующем отрывке мы сделаем доступ к каждому ключу асинхронным.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> AsyncData<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> {</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    [key <span class="kw">in</span> <span class="kw">keyof</span> T]<span class="op">:</span> <span class="bu">Promise</span><span class="op">&lt;</span>T[key]<span class="op">&gt;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> AppState{</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    users<span class="op">:</span> <span class="dt">string</span> []<span class="op">;</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    posts<span class="op">:</span> <span class="dt">string</span> []<span class="op">;</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> AsyncAppState <span class="op">=</span> AsyncData<span class="op">&lt;</span>AppState<span class="op">&gt;;</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">const</span> state<span class="op">:</span>AsyncAppState<span class="op">;</span></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>state<span class="op">.</span><span class="at">posts</span><span class="op">.</span><span class="fu">then</span>((data)<span class="kw">=&gt;</span>{<span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(data)})<span class="op">;</span></span></code></pre></div>
+<p>Этот отрывок отличается от предыдущего только тем, как указан тип нового свойства <code>: Promise&lt;T[key]&gt;</code>.</p>
+</section>
+<section id="название-ключа-можно-изменить" class="level3" data-number="5.7.2">
+<h3 data-number="5.7.2">Название ключа можно изменить</h3>
+<p>При описании условного типа-словаря можно поменять не только тип значения свойства, но и преобразовать имя этого свойства</p>
+<p>Если собрать воедино знания о дискриминантных объединениях, о литеральных типах и об условных словарях, то вы сможете объяснить, что происходит в следующем отрывке:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">//Интерфейс для иллюстрации.</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> Control{</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">renderIn</span>(container<span class="op">:</span><span class="bu">HTMLElement</span>)<span class="op">:</span><span class="dt">void</span><span class="op">;</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co">//Программа на типах для TypeScript.</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> UIControlFactory<span class="op">&lt;</span>T <span class="kw">extends</span> {tag<span class="op">:</span> <span class="dt">string</span>}<span class="op">&gt;</span> <span class="op">=</span> {</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>    [CurrentFactory <span class="kw">in</span> T <span class="im">as</span> CurrentFactory[<span class="st">&quot;tag&quot;</span>]]<span class="op">:</span>(settings<span class="op">:</span> <span class="bu">Omit</span><span class="op">&lt;</span>CurrentFactory<span class="op">,</span><span class="st">&quot;tag&quot;</span><span class="op">&gt;</span>)<span class="kw">=&gt;</span>Control</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Мы требуем, чтобы входящий тип имел специализацию по отношению к {tag: string}. Ключевое слово <code>as</code> показывает, что именно это значение мы будем использовать в качестве наших ключей — методов. Методы фабрики будут получать в качестве параметра все ключи из текущего значения итерации CurrentFactory.</p>
+<p>Предположим, у нас есть набор настроек для контролов:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> MaskEdit{</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    tag<span class="op">:</span> <span class="st">&quot;mask&quot;</span><span class="op">;</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    mask<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> AccountEdit{</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    tag<span class="op">:</span> <span class="st">&quot;account&quot;</span><span class="op">;</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    chartsOfAccounts<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Тогда наша программа изготовит тип — интерфейс фабрики для создания контролов:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> CorporateFactory <span class="op">=</span> UIControlFactory<span class="op">&lt;</span>MaskEdit<span class="op">|</span>AccountEdit<span class="op">&gt;;</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">const</span> factory<span class="op">:</span>CorporateFactory<span class="op">;</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>factory<span class="op">.</span><span class="fu">account</span>({chartsOfAccounts<span class="op">:</span><span class="dv">103</span>})<span class="op">;</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>factory<span class="op">.</span><span class="fu">mask</span>({mask<span class="op">:</span><span class="st">&#39;# ##0.00&#39;</span>})<span class="op">;</span></span></code></pre></div>
+<p>Проверьте реализацию в <a href="https://www.typescriptlang.org/play?ssl=23&amp;ssc=33&amp;pln=18&amp;pc=1#code/JYOwLgpgTgZghgYwgAgMIHtxXQGwN4BQyxyUEIAJtAJIgAUCmYco0AXABIAqAsgDIBRHBAC25MAEo2AN3TAKAbgIBfAmACeABxQBVahiy4AYojDoo6gDxdkEAB6RKAZ2R5mAczbInYKKHfKAHzIALyuRCQA2qgArlBk4CYIZhbIoMg2cC6x8eJJKeqRAEQeRQC6ZWx0ThBgYP5OXgDyIsBgljkJYPnm6gA0JXDuRYESIYEGvrgqBASgkLCIKDxZANYCFG2EJMgeXkUia0VKO4dOq14+fiDuSqpz4NDwSMgAggiMMeAbWxHEe8giohPuBjn9kAgABZwKBgJxNGDvEFwrwgGIiABG0Dusw02jQ5k05jgkB6qTCekm2BwZKsK3OPzAAB8kegvmBGYElAQqAgcDCUIwQD5kM8CmwMFAiVASRBadyxb0AHTAtngOh4KEwuEI1nsxoARgADABmZQSJSKixKs6rDW2tgAcgAxMhnc6jUqjUbHeaFEA">песочнице</a>.</p>
+</section>
+</div>
+</section>
+<section id="использование-методов-проекции-и-отражения-типов" class="level2" data-number="5.8">
+<h2 data-number="5.8">5.6. Использование методов проекции и отражения типов</h2>
+<div class="text-container text-container--module">
+<section id="шаг-1-15" class="level3" data-number="5.8.1">
+<h3 data-number="5.8.1">Шаг №1</h3>
+<p>TypeScript предоставляет множество полезных условных типов. Их применение не только сокращает время на выписывание структуры интерфейсов, но и добавляет смысловой контекст для разработчика.</p>
+<p>В различных приложениях пользователь часто добавляет новые записи в базу данных. Это может быть бизнес, где добавляются новые заказы, или игра, где регистрируются рекорды.</p>
+<p>Часть сведений к записи добавляет сам сервер. Например, пользователь не должен указывать данные о дате получения заказа. Пусть это делает только центральный сервер.</p>
+<p>TypeScript позволяет разработчику создавать описания типов, удовлетворяющих таким требованиям. В частности Pick и Omit. В своей основе утилитарные Pick и Omit являются проекциями. Например, вы могли бы самостоятельно реализовать Pick:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> MyPick<span class="op">&lt;</span>T<span class="op">,</span> K <span class="kw">extends</span> <span class="kw">keyof</span> T<span class="op">&gt;</span> <span class="op">=</span> {</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  [k <span class="kw">in</span> K]<span class="op">:</span> T[k]<span class="op">;</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<p>Но вам этого делать не придётся. В библиотеке типов TypeScript Pick и Omit уже подготовлены.</p>
+<section id="пример-интерфейса-и-обсуждение-вычисляемых-полей" class="level4" data-number="5.8.1.1">
+<h4 data-number="5.8.1.1">Пример интерфейса и обсуждение вычисляемых полей</h4>
+<p>Мы обсудим использование утилитарных типов с целью донести до коллег сведения о происхождении типов. В прошлых демонстрациях, когда нужно было уменьшить количество полей в ожидаемом аргументе, мы определяли новый, ни с чем не связанный тип. Использование Pick и Omit позволяет не только изменить количество полей, но и показать связь между используемыми в приложениях типами.</p>
+<p>По форме интерфейса <code>Message</code> пользователь может передавать и получать сведения о дате создания и прочтения сообщения. При создании нового сообщения пользователь заполняет не все поля. Приложение самостоятельно инициализирует идентификатор отправителя <code>from</code>, а поле <code>read</code> для отправляемого сообщения не является актуальным.</p>
+<p>Представим работу приложения по обмену сообщениями. Реализовать хранение состояния такого приложения можно в рамках идеологии redux.</p>
+<p>Кстати, redux содержит необходимые для TypeScript декларации внутри своего пакета npm.</p>
+</section>
+</section>
+<section id="шаг-2-15" class="level3" data-number="5.8.2">
+<h3 data-number="5.8.2">Шаг №2</h3>
+<p>Изучим функции создания действий.</p>
+<p>Когда коллеги читают <code>postMessage</code>, они могут сделать вывод, что при развитии приложения аргумент этой функции эволюционирует синфазно с формой интерфейса <code>Message</code>. Только надо исключить дату прочтения, что естественно для нового сообщения.</p>
+<p>При изучении функции <code>deleteConversation</code> можно сделать вывод, что её аргумент тоже имеет отношение к <code>Message</code>, но использует лишь значение адресата, чью переписку нужно удалить.</p>
+<p>К слову, мы обращаем внимание на использование ключевого слова <strong>as const</strong>. Он подсказывает TypeScript возможность создания распадающегося объединения:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">export type</span> MessageActions <span class="op">=</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="bu">ReturnType</span><span class="op">&lt;</span><span class="kw">typeof</span> postMessage<span class="op">&gt;</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="bu">ReturnType</span><span class="op">&lt;</span><span class="kw">typeof</span> readMessage<span class="op">&gt;</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="bu">ReturnType</span><span class="op">&lt;</span><span class="kw">typeof</span> deleteMessage<span class="op">&gt;</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="bu">ReturnType</span><span class="op">&lt;</span><span class="kw">typeof</span> deleteConversation<span class="op">&gt;;</span></span></code></pre></div>
+<p>В этом отрывке написано указание TypeScript:</p>
+<ul>
+<li>изучить функции <code>postMessage</code>, <code>readMessage</code>, <code>deleteMessage</code>,<code>deleteConversation</code>;</li>
+<li>выяснить типы их результатов (<strong>ReturnType&lt;&gt;</strong>);</li>
+<li>создать объединение <code>MessageActions</code>.</li>
+</ul>
+<p>Благодаря <strong>as const</strong> результат объединения окажется распадающимся, поскольку типы ключа <code>type</code> будут литеральными специализациями, а не строками в широком смысле. И эти пять строк эквивалентны тем, что написаны выше.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> MessageActions <span class="op">=</span> {</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">readonly</span> type<span class="op">:</span> <span class="st">&quot;POST_MESSAGE&quot;</span><span class="op">;</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">readonly</span> payload<span class="op">:</span> <span class="bu">Omit</span><span class="op">&lt;</span>Message<span class="op">,</span> <span class="st">&quot;read&quot;</span><span class="op">&gt;;</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>} <span class="op">|</span> {</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">readonly</span> type<span class="op">:</span> <span class="st">&quot;READ_MESSAGE&quot;</span><span class="op">;</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">readonly</span> payload<span class="op">:</span> <span class="bu">Pick</span><span class="op">&lt;</span>Message<span class="op">,</span> <span class="st">&quot;read&quot;</span> <span class="op">|</span> <span class="st">&quot;id&quot;</span><span class="op">&gt;;</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>} <span class="op">|</span> {</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">readonly</span> type<span class="op">:</span> <span class="st">&quot;DELETE_MESSAGE&quot;</span><span class="op">;</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">readonly</span> payload<span class="op">:</span><span class="bu">Pick</span><span class="op">&lt;</span>Message<span class="op">,</span> <span class="st">&#39;id&#39;</span><span class="op">&gt;;</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>} <span class="op">|</span> {</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">readonly</span> type<span class="op">:</span> <span class="st">&quot;DELETE_CONVERSATION&quot;</span><span class="op">;</span></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">readonly</span> payload<span class="op">:</span> <span class="bu">Pick</span><span class="op">&lt;</span>Message<span class="op">,</span> <span class="st">&quot;to&quot;</span><span class="op">&gt;;</span></span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Мы рекомендуем использовать возможности TypeScript для сокращения времени.</p>
+</section>
+<section id="шаг-3-15" class="level3" data-number="5.8.3">
+<h3 data-number="5.8.3">Шаг №3</h3>
+<p>Создавая код редуктора message-reducer.ts или user-reducer.ts, вы используете ранее реализованные объединения действий, и тогда TypeScript помогает вам.</p>
+<p>Изучите в каждой веточке case тип значения <code>payload</code>. Убедитесь, что TypeScript определяет тип этого свойства верно на каждой из этих веток.</p>
+<p>Нужно только помнить, что redux будет вызывать ваш редуктор и для других действий тоже, поэтому в конце вы видите <code>return state</code>.</p>
+</section>
+<section id="шаг-4-13" class="level3" data-number="5.8.4">
+<h3 data-number="5.8.4">Шаг №4</h3>
+<p>После создания хранилища в модуле store.ts мы экспортируем определение типа данных в хранилище.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">export type</span> RootState <span class="op">=</span> <span class="bu">ReturnType</span><span class="op">&lt;</span><span class="bu">ReturnType</span><span class="op">&lt;</span><span class="kw">typeof</span> initStore<span class="op">&gt;</span>[<span class="st">&quot;getState&quot;</span>]<span class="op">&gt;;</span></span></code></pre></div>
+<p>Этот тип мы будем использовать при исследовании thunk.</p>
+</section>
+<section id="шаг-5-4" class="level3" data-number="5.8.5">
+<h3 data-number="5.8.5">Шаг №5</h3>
+<p>Нам потребуются ссылки на пакет redux-thunk и на определения типов <span class="citation" data-cites="types/redux-thunk">@types/redux-thunk</span>. Зарегистрируем thunk в качестве middleware при инициализации хранилища. Дополнительно обратите внимание, как мы поменяли сведения о диспетчере.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> {</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  dispatch<span class="op">:</span> dispatch <span class="im">as</span> ThunkDispatch<span class="op">&lt;</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">ReturnType</span><span class="op">&lt;</span><span class="kw">typeof</span> getState<span class="op">&gt;,</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">void</span><span class="op">,</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    AnyAction</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">&gt;,</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>  getState<span class="op">,</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  replaceReducer<span class="op">,</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>  subscribe</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<section id="добавим-обработку-регистрации-сообщения" class="level4" data-number="5.8.5.1">
+<h4 data-number="5.8.5.1">Добавим обработку регистрации сообщения</h4>
+<p>Для демонстрации создадим имитацию регистрации сообщения. В реальной жизни, возможно, сервер определит дату регистрации сообщения, мы же изготовим register-message.ts проще.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">const</span> registerMessage <span class="op">=</span> (message<span class="op">:</span> <span class="bu">Pick</span><span class="op">&lt;</span>Message<span class="op">,</span> <span class="st">&quot;to&quot;</span> <span class="op">|</span> <span class="st">&quot;body&quot;</span><span class="op">&gt;</span>) <span class="kw">=&gt;</span> (</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  dispatch<span class="op">:</span> Dispatch<span class="op">&lt;</span>AnyAction<span class="op">&gt;,</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  getState<span class="op">:</span> () <span class="kw">=&gt;</span> RootState</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>) <span class="kw">=&gt;</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dispatch</span>(</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">postMessage</span>({</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span>message<span class="op">,</span></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>      created<span class="op">:</span> <span class="fu">now</span>()<span class="op">,</span></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>      from<span class="op">:</span> <span class="fu">getState</span>()<span class="op">.</span><span class="at">user</span><span class="op">,</span></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>      id<span class="op">:</span> <span class="vs">`message-</span><span class="sc">${</span><span class="op">++</span>lastId<span class="sc">}</span><span class="vs">`</span><span class="op">,</span></span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>      posted<span class="op">:</span> <span class="fu">now</span>()</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>  )<span class="op">;</span></span></code></pre></div>
+<p>Или процесс отметки о прочтении:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">const</span> markAsRead <span class="op">=</span> (message<span class="op">:</span> <span class="bu">Pick</span><span class="op">&lt;</span>Message<span class="op">,</span> <span class="st">&quot;id&quot;</span><span class="op">&gt;</span>) <span class="kw">=&gt;</span> (</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  dispatch<span class="op">:</span> Dispatch</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>) <span class="kw">=&gt;</span> <span class="fu">dispatch</span>(<span class="fu">readMessage</span>({ <span class="op">...</span>message<span class="op">,</span> read<span class="op">:</span> <span class="fu">now</span>() }))<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="демонстрация-в-работе" class="level4" data-number="5.8.5.2">
+<h4 data-number="5.8.5.2">Демонстрация в работе</h4>
+<p>Обычно вы не тестируете «библиотечный» код. Но в данном случае мы используем скорее не модульный, а почти интеграционный тест для демонстрации результатов помощи от TypeScript.</p>
+</section>
+</section>
+</div>
+</section>
+<section id="интерполяция-строковых-литеральных-типов" class="level2" data-number="5.9">
+<h2 data-number="5.9">5.7. Интерполяция строковых литеральных типов</h2>
+<div class="text-container text-container--module">
+<section id="интерполяция-строковых-типов" class="level3" data-number="5.9.1">
+<h3 data-number="5.9.1">Интерполяция строковых типов</h3>
+<p>Предположим, нам нужно для простых JavaScript-объектов данных создавать прокси. Наш прокси должен позволять заинтересованным функциям подписаться на изменения полей объекта. Компилятор TypeScript позволяет выполнить задачу безопасным способом.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> WithSubscription<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> T <span class="op">&amp;</span> {</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">addEventListener</span>(event<span class="op">:</span> <span class="kw">keyof</span> T<span class="op">,</span> handler<span class="op">:</span> (target<span class="op">:</span> T) <span class="kw">=&gt;</span> <span class="dt">void</span>)<span class="op">:</span> <span class="dt">void</span><span class="op">;</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">removeEventListener</span>(event<span class="op">:</span> <span class="kw">keyof</span> T<span class="op">,</span> handler<span class="op">:</span> (target<span class="op">:</span> T) <span class="kw">=&gt;</span> <span class="dt">void</span>)<span class="op">:</span> <span class="dt">void</span><span class="op">;</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>В этом примере мы воспользовались оператором <code>keyof</code>. Мы применили его к типу, который, как мы объяснили компилятору, нам будет известен позднее. Компилятор запоминает этот новый тип и в дальнейшем подсказывает, если мы его используем.</p>
+<p>Ниже мы воспользуемся этим типом и объявим функцию. Она будет получать структурный объект, выполнять над ним определённые действия и возвращать новый объект. У нового объекта будут те же свойства, что и у исходного. Дополнительно у него появится два метода для подписки и отписки.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">createObservableProxy</span><span class="op">&lt;</span>T<span class="op">&gt;</span>(</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    value<span class="op">:</span> T</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>)<span class="op">:</span> WithSubscription<span class="op">&lt;</span>T<span class="op">&gt;</span></span></code></pre></div>
+<p>Так можно будет использовать наш API:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> target <span class="op">=</span> {</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    name<span class="op">:</span> <span class="st">&quot;Tom Sawyer&quot;</span><span class="op">,</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    age<span class="op">:</span> <span class="dv">13</span><span class="op">,</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> proxy <span class="op">=</span> <span class="fu">createObservableProxy</span>(target)<span class="op">;</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>proxy<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;age&quot;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="kw">undefined</span>)<span class="op">;</span></span></code></pre></div>
+<p>Проверьте <a href="https://www.typescriptlang.org/play?#code/C4TwDgpgBA6glsAFgZQK4CMDOBjATnMYOAewDsAeAFQD4oBeKSqAMigG8AoKbqAQwBN+AUQBuEUsAAycTMHERcACghiJALigBrCCGIAzRgBooiXqX4AbBRsXBeuAOYRgGygEp6tEcTj83G718Abi4eXAgAW2IxUXEpGTlSBWVVFy0dfSMTM0trKFt7JzT3TyhAvwCffhCAXw4OfghsC3toPVRSbCIyKDwIXjkAeSwFEV50KwAFXGIADxAqakVQ7jGLVAhXDn9YBBQMHHxCEgoaeuwyWSg7R2d6dhWoUl4IzagAIkpiCKhkXgB3EAKd6GR68JwaACMAGZQTUQhwLqQrmAZvN7n0BhBhphRuMpmiQAVbsA3AjUXMQAA6ATCVLSWTyJTvcEQEH5Dx0WgdRp6OBJPwhIA">в песочнице</a>. Редактор будет вам подсказывать, на какие события можно подписаться.</p>
+</section>
+<section id="полезные-операции-со-строковыми-типами" class="level3" data-number="5.9.2">
+<h3 data-number="5.9.2">Полезные операции со строковыми типами</h3>
+<p>Компилятор даёт удобный инструмент для изменения имён полей и для манипуляции строковыми типами. В рассмотренном примере хотелось бы называть событие не «name» или «age», а как-то более привычно, например, «onNameChanged». И этого можно достичь.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> WithSubscription<span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">=</span> T <span class="op">&amp;</span> {</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">addEventListener</span>(event<span class="op">:</span> <span class="vs">`on</span><span class="sc">${</span>Capitalize<span class="op">&lt;</span><span class="dt">string</span> <span class="op">&amp;</span> <span class="kw">keyof</span> T<span class="op">&gt;</span><span class="sc">}</span><span class="vs">Changed`</span><span class="op">,</span> handler<span class="op">:</span> (target<span class="op">:</span> T) <span class="kw">=&gt;</span> <span class="dt">void</span>)<span class="op">:</span> <span class="dt">void</span><span class="op">;</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">removeEventListener</span>(event<span class="op">:</span> <span class="vs">`on</span><span class="sc">${</span>Capitalize<span class="op">&lt;</span><span class="dt">string</span> <span class="op">&amp;</span> <span class="kw">keyof</span> T<span class="op">&gt;</span><span class="sc">}</span><span class="vs">Changed`</span><span class="op">,</span> handler<span class="op">:</span> (target<span class="op">:</span> T) <span class="kw">=&gt;</span> <span class="dt">void</span>)<span class="op">:</span> <span class="dt">void</span><span class="op">;</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Компилятор предоставляет ряд полезных типов для манипуляции строковыми типами:</p>
+<ul>
+<li>Uppercase&lt;StringType&gt;: тип <code>type A1 = Uppercase&lt;"name"&gt;</code> эквивалентен <code>type A2 = "NAME"</code>;</li>
+<li>Lowercase&lt;StringType&gt;: тип <code>type A1 = Lowercase&lt;"NAME"&gt;</code> эквивалентен <code>type A2 = "name"</code>;</li>
+<li>Capitalize&lt;StringType&gt;: тип <code>type A1 = Capitalize&lt;name&gt;</code> эквивалентен <code>type A2 = "Name"</code>;</li>
+<li>Uncapitalize&lt;StringType&gt;: тип <code>type A1 = Uncapitalize&lt;"NAME"&gt;</code> эквивалентен <code>type A2 = "nAME"</code></li>
+</ul>
+<p>Попробуйте в песочнице заменить описание типа WithSubscription и посмотрите, какие названия для событий <em>придумает</em> компилятор.</p>
+</section>
+</div>
+</section>
+<section id="манипуляция-типами---литеральные-условные-типы" class="level2" data-number="5.10">
+<h2 data-number="5.10">5.8. Манипуляция типами - литеральные условные типы</h2>
+<div class="text-container text-container--module">
+<section id="шаг-1-16" class="level3" data-number="5.10.1">
+<h3 data-number="5.10.1">Шаг №1</h3>
+<p><strong>Манипуляция декларацией типов</strong></p>
+<p>В этой демонстрации мы увидим, как TypeScript позволяет манипулировать типами во время разработки.</p>
+<p>В файле <code>main.ts</code> содержится вызов <em>ненаписанной</em> функции <code>registerHandler</code>. Мы планируем заставить TypeScript сопоставить слова: название поля в строке запроса и имя ключа в параметрах функции обратного вызова.</p>
+</section>
+<section id="шаг-2-16" class="level3" data-number="5.10.2">
+<h3 data-number="5.10.2">Шаг №2</h3>
+<p><strong>Реализация JavaScript</strong></p>
+<p>Во время работы программы мы будем сопоставлять имена полей строки запроса и обработчики через <code>Map</code>.</p>
+<p>Функция регистрации преобразует шаблон ожидаемой строки запроса в ключ и регистрирует полученный обработчик относительно этого ключа. Функция-диспетчер извлекает ключ из реальной строки запроса, разыскивает обработчик и передаёт ему плоский объект, изготовленный из строки запроса.</p>
+</section>
+<section id="шаг-3-16" class="level3" data-number="5.10.3">
+<h3 data-number="5.10.3">Шаг №3</h3>
+<p><strong>Первая манипуляция</strong></p>
+<p>TypeScript может проявить свою силу только в случае литерального указания шаблона. Нам придётся учитывать, что в ситуации с обычной, неспециализированной, строкой обработчик будет принимать просто запись.</p>
+<p><strong>Для строки</strong></p>
+<p>Для ветки <code>"а"</code> будем использовать наиболее общий тип <code>Record&lt;string,string&gt;</code>.</p>
+</section>
+<section id="шаг-4-14" class="level3" data-number="5.10.4">
+<h3 data-number="5.10.4">Шаг №4</h3>
+<p><strong>Вторая манипуляция</strong></p>
+<p>Воспользуемся способностью TypeScript вычислять литеральные типы по шаблону. В результате получается, что для длинной строки из нескольких полей и при наличии знака <code>&amp;</code> TypeScript выбирает ветку <code>'a'</code>.</p>
+<p>Когда в строке запроса одна пара <code>поле</code>=<code>значение</code>, мы используем для составления результирующего типа имя поля. Если в строке запроса нет пары <code>поле-значение</code>, мы решаем использовать тип без ключей.</p>
+<p>Для длинной строки, имеющей множество пар, мы воспользуемся рекурсией.</p>
+</section>
+<section id="шаг-5-5" class="level3" data-number="5.10.5">
+<h3 data-number="5.10.5">Шаг №5</h3>
+<p><strong>Финальная манипуляция</strong></p>
+<p>На этом шаге мы доопределим тип функции registerHandler таким образом, чтобы добавить работу с обобщённым типом с условием, что он будет специализацией строки. Смотрим файл query-string-router.ts.</p>
+<p>Теперь нам удобно создавать обработчики запросов. TypeScript читает формат строки запроса и помогает правильно определить сигнатуру функции-обработчика. Смотрим файл main.ts.</p>
+</section>
+</div>
+</section>
+<section id="практическое-использование-утилитарных-условных-типов" class="level2" data-number="5.11">
+<h2 data-number="5.11">5.9. Практическое использование утилитарных условных типов</h2>
+<div class="text-container text-container--module">
+<p>Потренируйтесь использовать возможности TypeScript по созданию новых типов как проекций других, уже известных типов. Для эффективного решения вам следует оценить применимость условных, утилитарных типов, а также возможности объявления типов из существующих констант-значений.</p>
+<section id="задача-1" class="level3" data-number="5.11.1">
+<h3 data-number="5.11.1">Задача</h3>
+<p>Вам предлагается создать набор функций для системы записи событий в журнал. Каждое событие имеет категорию — это строка, обозначающая модуль или группу модулей, в отношении которых создано событие. Категорией может быть, например, «Выборка из базы», compression middleware и так далее.</p>
+<p>Каждое событие имеет значение уровня серьёзности:</p>
+<ul>
+<li>info — сообщения о нормальном порядке работы алгоритма;</li>
+<li>warning — сообщение о том, что нужно обратить внимание на какую-то особенность, например, исчерпание квоты диска;</li>
+<li>error — сообщение о ситуации, требующей вмешательства.</li>
+</ul>
+<p>Событие должно иметь идентификатор — номер по порядку — и дату/время возникновения.</p>
+<p>Дополнительно нужно предоставить администратору возможность регулировать серьёзность событий, которые будут фактически записаны в журнал. Если администратор установит регистрацию ошибок, то отправка событий info, warning должна быть эквивалентна no-op, то есть «ничего не делать».</p>
+</section>
+<section id="структура-записи" class="level3" data-number="5.11.2">
+<h3 data-number="5.11.2">Структура записи</h3>
+<p>В журнале нужно хранить записи с указанными полями.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">interface</span> LogRecord {</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  id<span class="op">:</span> <span class="dt">number</span><span class="op">;</span> <span class="co">// Уникальный идентификатор — identity. Создаёт база данных.</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  date<span class="op">:</span> DateTime<span class="op">;</span> <span class="co">// Дата регистрации события. Инициализирует «центральный сервер».</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  severity<span class="op">:</span> Severity<span class="op">;</span> <span class="co">// Критичность сообщения поможет администратору при анализе логов.</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>  category<span class="op">:</span> <span class="dt">string</span><span class="op">;</span> <span class="co">// Категория поможет сгруппировать сообщения по месту их возникновения.</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  message<span class="op">:</span> <span class="dt">string</span><span class="op">;</span> <span class="co">// Текст сообщения поможет разработчику в поиске ошибок.</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Постарайтесь сделать свои функции так, чтобы их было удобно применять.</p>
+</section>
+</div>
+</section>
+<section id="использование-утилитарных-типов-при-создании-системы-связанных-типов" class="level2" data-number="5.12">
+<h2 data-number="5.12">5.10. Использование утилитарных типов при создании системы связанных типов</h2>
+<div class="text-container text-container--module">
+<section id="шаг-1-17" class="level3" data-number="5.12.1">
+<h3 data-number="5.12.1">Шаг №1</h3>
+<p><strong>Демонстрация использования утилитарных типов</strong></p>
+<p>Когда мы создаём систему типов приложения, бывает полезно зафиксировать зависимость типов друг от друга. TypeScript предлагает набор условных типов, которые позволяют сделать такую зависимость видимой невооружённым глазом.</p>
+<p>В ходе этой демонстрации мы познакомимся с использованием <code>Omit</code>, <code>Readonly</code>.</p>
+</section>
+<section id="шаг-2-17" class="level3" data-number="5.12.2">
+<h3 data-number="5.12.2">Шаг №2</h3>
+<p><strong>Система типов для модуля ведения журналов</strong></p>
+<p>Построим упрощённую систему типов для ведения журналов. Пройдём по используемым типам и познакомимся с возможностями TypeScript по поддержке этой работы.</p>
+</section>
+<section id="шаг-3-17" class="level3" data-number="5.12.3">
+<h3 data-number="5.12.3">Шаг №3</h3>
+<p><strong>Реализация регистратора событий</strong></p>
+<p>Для регистрации событий создадим простой набор функций.</p>
+</section>
+<section id="шаг-4-15" class="level3" data-number="5.12.4">
+<h3 data-number="5.12.4">Шаг №4</h3>
+<p><strong>Реализация фабрики по созданию категорий журналов</strong></p>
+<p>Реализация фабрики по созданию журналов опирается на созданные ранее функции. Можете посмотреть в инструментах разработчика, что запись производится для указанного уровня критичности.</p>
+</section>
+</div>
+</section>
+<section id="адаптация-api-обратного-вызова-для-asyncawait" class="level2" data-number="5.13">
+<h2 data-number="5.13">5.11. Адаптация API обратного вызова для async/await</h2>
+<div class="text-container text-container--module">
+<section id="шаг-1-18" class="level3" data-number="5.13.1">
+<h3 data-number="5.13.1">Шаг №1</h3>
+<p><strong>Преобразование типов из обратного вызова в Promise</strong></p>
+<p>В нашем распоряжение тренажёрный зал для Супермена. Герою нужно выполнить три задачи одновременно:</p>
+<ol type="1">
+<li>Нейтрализовать злодея.</li>
+<li>Деактивировать разрушительное устройство.</li>
+<li>Поддержать товарищей по оружию.</li>
+</ol>
+<p>Интерфейс реализован с использованием функций обратного вызова. В функции <code>start</code> в файле main.ts приходится хранить промежуточное состояние игры и проверять, все ли задачи выполнены.</p>
+<p>Мы заинтересованы в переделке интерфейса <code>GameBoardView</code>, чтобы было удобнее ожидать выполнения задания.</p>
+</section>
+<section id="шаг-2-18" class="level3" data-number="5.13.2">
+<h3 data-number="5.13.2">Шаг №2</h3>
+<p><strong>Изготовим описание нового типа</strong></p>
+<p>TypeScript предлагает набор утилитарных типов для удобства манипулирования уже существующими. В данном случае нам полезно использовать <code>Capitalize</code> и оператор <code>keyof</code> в контексте типа.</p>
+</section>
+<section id="шаг-3-18" class="level3" data-number="5.13.3">
+<h3 data-number="5.13.3">Шаг №3</h3>
+<p><strong>Выполнение обещаний</strong></p>
+<p>Чтобы реализовать созданный интерфейс, добавим обёртку вокруг оригинального, а функции <code>resolve</code> поручим выполнять роль функции обратного вызова.</p>
+</section>
+<section id="шаг-4-16" class="level3" data-number="5.13.4">
+<h3 data-number="5.13.4">Шаг №4</h3>
+<p><strong>Использование нового интерфейса</strong></p>
+<p>При использовании обещаний реализация функции <code>start</code> сократилась в пять раз. А это именно та функция, которую будут создавать пользователи нашего движка. Таким образом, мы позаботились о наших коллегах-разработчиках.</p>
+</section>
+</div>
+</section>
+<section id="создание-наблюдаемых-прокси-на-примере-простых-объектов" class="level2" data-number="5.14">
+<h2 data-number="5.14">5.12. Создание наблюдаемых прокси на примере простых объектов</h2>
+<div class="text-container text-container--module">
+<p>Опишите систему типов, которая объяснит TypeScript результат работы функции <code>wrapNotify</code>. Эта функция принимает простой плоский объект JavaScript, без вложенных объектов и массивов. Функция создаёт:</p>
+<ul>
+<li>новый объект, который имеет все ключи аргумента,</li>
+<li>набор свойств для подписки и отмены подписки на уведомление изменения значения каждого свойства.</li>
+</ul>
+<p>Для исходного объекта со свойством <code>name</code> функция возвращает объект, у которого всё ещё есть свойство <code>name</code>, но появляется и свойство <code>nameChanged</code>, с помощью которого заинтересованный клиентский код может подписать колбэк. Если после подписки поменять значение <code>name</code>, то колбэк должен быть вызван.</p>
+<section id="идея" class="level3" data-number="5.14.1">
+<h3 data-number="5.14.1">Идея</h3>
+<p>Для решения задачи потребуются сведения из двух областей:</p>
+<ul>
+<li>Условные типы TypeScript — помогут нам во время разработки;</li>
+<li>api JavaScript Object.defineProperty.</li>
+</ul>
+</section>
+</div>
+</section>
+<section id="создание-прокси-для-создания-наблюдаемых-свойств" class="level2" data-number="5.15">
+<h2 data-number="5.15">5.13. Создание прокси для создания наблюдаемых свойств</h2>
+<div class="text-container text-container--module">
+<section id="шаг-1-19" class="level3" data-number="5.15.1">
+<h3 data-number="5.15.1">Шаг №1</h3>
+<p><strong>Наше решение задачи об обёртке с уведомлением</strong></p>
+<p>Для решения задачи потребуются сведения из двух областей:</p>
+<ul>
+<li>Условные типы TypeScript — помогут во время разработки,</li>
+<li>API JavaScript Object.defineProperty.</li>
+</ul>
+<p><strong>Базовая система типов</strong></p>
+<p>Определим типы для обработчиков, для событий и вспомогательные типы.</p>
+</section>
+<section id="шаг-2-19" class="level3" data-number="5.15.2">
+<h3 data-number="5.15.2">Шаг №2</h3>
+<p><strong>Производный тип WithPropertyChangeEvents</strong></p>
+<p>Изучите описание типа <code>WithPropertyChangeEvents</code>. Здесь мы работаем с индексированными типами, модифицируем тип ключа с помощью интерполяции и заменяем тип свойства.</p>
+</section>
+<section id="шаг-3-19" class="level3" data-number="5.15.3">
+<h3 data-number="5.15.3">Шаг №3</h3>
+<p><strong>Реализация createEventManager</strong></p>
+<p>Изучите реализацию функции-фабрики createEventManager. Здесь мы добавляем обёртку вокруг набора обработчиков событий. Созданное этой фабрикой значение предоставляет сервис для подписки на событие, её отмены и уведомления всех подписчиков.</p>
+</section>
+<section id="шаг-4-17" class="level3" data-number="5.15.4">
+<h3 data-number="5.15.4">Шаг №4</h3>
+<p><strong>Реализация адаптера</strong></p>
+<p>Со стороны TypeScript центральное место этой демонстрации — описание типа <code>WithPropertyChangeEvents</code>. Основная реализация JavaScript (или run-time) будет выполнена в функции reducer. Мы будем создавать этот reducer для переданного нам значения и вызывать его для каждого существующего ключа.</p>
+<p>В процессе свёртки мы дополним изначально «пустой» объект нужными ключами.</p>
+</section>
+<section id="шаг-5-6" class="level3" data-number="5.15.5">
+<h3 data-number="5.15.5">Шаг №5</h3>
+<p><strong>Реализация добавления нужных сеттеров и событий</strong></p>
+<p>В уведомлении об изменении значения свойства основную роль играет сеттер.</p>
+<p>Изучите реализацию редуктора и убедите себя, что он делает то, что от него ожидают.</p>
+<p>В файле <code>main.ts</code> мы показываем, как воспользоваться полученной конструкцией.</p>
+</section>
+</div>
+</section>
+</section>
+</body>
+</html>

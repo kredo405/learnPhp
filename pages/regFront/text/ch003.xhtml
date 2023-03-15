@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ru-RU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>ch003.xhtml</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body epub:type="bodymatter">
+<section id="символьные-селекторы" class="level1" data-number="3">
+<h1 data-number="3">3. Символьные селекторы</h1>
+<div class="text-container text-container--module">
+<p>В этом разделе мы познакомимся с разнообразием символьных селекторов, а также разберем нюансы их применения.</p>
+</div>
+<section id="символьные-селекторы-1" class="level2" data-number="3.1">
+<h2 data-number="3.1">3.1. Символьные селекторы</h2>
+<div class="text-container text-container--module">
+<p>Мы уже попробовали сделать первые шаги, но неужели всё настолько сложно, разве нельзя как-то упростить регулярные выражения?</p>
+<p>Можно! И в этом нам помогут символьные селекторы.</p>
+<p>Смысл символьных селекторов довольно простой: сократить запись одиночных селекторов и их диапазонов. Условно можно разделить все эти селекторы на смысловые и служебные.</p>
+<p>Большинство этих селекторов имеют свои противоположные значения, которые в регулярных выражениях называются <strong>отрицаниями</strong>.</p>
+<p>Мы будем изучать их сразу парами, чтобы было легче запомнить.</p>
+<p><strong>\d</strong> — все цифры, <strong>\D</strong> — все не цифры.</p>
+<p>Символьному селектору <code>\d</code> будет соответствовать диапазон <code>[0-9]</code>, а <code>\D</code> соответственно <code>[^0-9]</code>. В своих регулярных выражениях вы можете использовать любые селекторы и их комбинации, так как они равнозначны в использовании.</p>
+<p>Совпадает селектор <code>\d</code>, как и одиночный символ или диапазон, только с одним символом в тексте.</p>
+<p>Для сокращения выражения символьный селектор может быть записан в квадратные скобки <code>[\d]</code>, но такая запись не устоялась, и обычно его используют отдельно.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;text&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;integer&quot;</span> <span class="er">pattern</span><span class="ot">=</span><span class="st">&quot;\d+&quot;</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;onlyNumber&quot;</span><span class="kw">&gt;</span></span></code></pre></div>
+<p>Паттерн разрешит записывать в поле только целые числа, но вы же помните, что он не запрещает писать всё остальное, он только предотвратит отправку невалидных данных.</p>
+<p><strong>Решим реальную задачу</strong></p>
+<p>За основу возьмём разметку из первого примера. Давайте запретим пользователю вводить в поле любые символы, кроме цифр, а если он всё-таки пытается их ввести, будем сразу удалять их.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> numberField <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="vs">`#onlyNumber`</span>)<span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>numberField<span class="op">.</span><span class="fu">addEventListener</span>(<span class="vs">`input`</span><span class="op">,</span> (e) <span class="kw">=&gt;</span> {</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  e<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">value</span> <span class="op">=</span> e<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">value</span><span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\D+</span><span class="ss">/g</span><span class="op">,</span> <span class="st">&#39;&#39;</span>)<span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p>Здесь нам удобнее воспользоваться отрицанием и всё, что является <strong>не цифрами</strong>, заменить на пустоту.</p>
+<p>Далее в таблице сведены самые используемые символьные селекторы:</p>
+<table>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 16%" />
+<col style="width: 45%" />
+<col style="width: 10%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Селектор</th>
+<th>Диапазон</th>
+<th>Описание</th>
+<th>Отрицание</th>
+<th>Диапазон</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>\d</strong></td>
+<td>[0-9]</td>
+<td>цифры</td>
+<td><strong>\D</strong></td>
+<td>[^0-9]</td>
+</tr>
+<tr class="even">
+<td><strong>\w</strong></td>
+<td>[a-zA-Z0-9_]</td>
+<td>латинские буквы, цифры и символ подчеркивания</td>
+<td><strong>\W</strong></td>
+<td>[^a-zA-Z0-9_]</td>
+</tr>
+<tr class="odd">
+<td><strong>\s</strong></td>
+<td>[ \n\r\t]</td>
+<td>пробельные символы</td>
+<td><strong>\S</strong></td>
+<td>[^ \n\r\t]</td>
+</tr>
+<tr class="even">
+<td><strong>\b</strong></td>
+<td>нет</td>
+<td>граница слова</td>
+<td><strong>\B</strong></td>
+<td>нет</td>
+</tr>
+</tbody>
+</table>
+<p>Отдельно пройдемся по нюансам. Из-за особенностей реализации регулярных выражений в языке JavaScript <code>\w</code> совпадает только с буквами латинского алфавита (не включая умляуты), а в других языках программирования может совпадать с кириллическими и другими языками.</p>
+<p>Перечень пробельных символов гораздо шире, чем указан в таблице. Полный список выглядит так:</p>
+<p><code>[ \f\n\r\t\v​\u00A0\u1680​\u180e\u2000​\u2001\u2002​\u2003\u2004​\u2005\u2006​\u2007\u2008​\u2009\u200a​\u2028\u2029​\u2028\u2029​\u202f\u205f​\u3000]</code></p>
+<p>Стоит обратить внимание, что первым в квадратных скобках указан обычный пробел. Остальные символы — это подача страницы, перевод строки, возврат каретки, табуляторы, неразрывной пробел, узкий, средний, кегельный, полукегельный и прочие их разновидности. В общем, всё, что можно обобщить фразой «пробельные символы».</p>
+<p>Символ границы слова <code>\b</code> совпадает не с конкретным символом, а с позицией в тексте. Он очень похож на начало <code>^</code> или конец <code>$</code> строки с одной только разницей, что более универсален. Граница слова помечается одним селектором слева и справа и расположена между <code>[0-9a-zA-Z]</code> и <code>\W</code>.</p>
+<p>К сожалению, в JavaScript <code>\b</code> работает только с символами латинского алфавита и цифрами, что заметно усложняет составление правил для кириллических и прочих языков.</p>
+<p><strong>Решим реальную задачу</strong></p>
+<p>Убрать все дублирующие пробелы из текста (HTML).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> str <span class="op">=</span> <span class="vs">`   &lt;p&gt;Когда в  тексте   много пробелов...&lt;/p&gt;`</span><span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>str<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\s+</span><span class="ss">/g</span><span class="op">,</span> <span class="st">&#39; &#39;</span>)<span class="op">;</span> <span class="co">// &lt;p&gt;Когда в тексте много пробелов...&lt;/p&gt;</span></span></code></pre></div>
+<p>Это решение слишком универсальное и заменит все пробельные символы, включая переводы строк на пробел.</p>
+<p>Попробуйте переписать пример самостоятельно, чтобы переводы строк остались, а дублирующие пробельные символы исчезли.</p>
+<hr />
+<p>Мы разобрали основные символьные селекторы, но текст — это не только видимая часть. В следующей главе разберёмся с тем, что скрыто.</p>
+</div>
+</section>
+<section id="служебные-символы" class="level2" data-number="3.2">
+<h2 data-number="3.2">3.2. Служебные символы</h2>
+<div class="text-container text-container--module">
+<p>Помимо привычных глазу букв, цифр и пунктуации в строке ещё присутствуют так называемые «непечатные» символы. Они нужны для того, чтобы обеспечить отступы и переводы строк.</p>
+<blockquote>
+<p>У этих символов нет визуального представления, поэтому большинство пользователей вообще не знает об их существовании.</p>
+</blockquote>
+<table>
+<thead>
+<tr class="header">
+<th>Селектор</th>
+<th>Описание</th>
+<th>Отрицание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>\n</strong></td>
+<td>перевод строки</td>
+<td>нет</td>
+</tr>
+<tr class="even">
+<td><strong>\r</strong></td>
+<td>возврат каретки</td>
+<td>нет</td>
+</tr>
+<tr class="odd">
+<td><strong>\t</strong></td>
+<td>символ табуляции</td>
+<td>нет</td>
+</tr>
+<tr class="even">
+<td><strong>\v</strong></td>
+<td>символ вертикальной табуляции</td>
+<td>нет</td>
+</tr>
+</tbody>
+</table>
+<p>Для разных операционных систем используют разные комбинации символов перевода строки:</p>
+<ul>
+<li><strong>\r\n</strong> возврат каретки, перевод строки для Windows (CRLF),</li>
+<li><strong>\n</strong> перевод строки для Unix-подобных (LF),</li>
+<li><strong>\r</strong> возврат каретки для Mac OS до 10 версии (CR).</li>
+</ul>
+<p>В текстовых редакторах в статусной строке обычно написано, в какой схеме перевода строк вы работаете:</p>
+<p><img src="../media/file4.png" /></p>
+<p><strong>Решим реальную задачу</strong></p>
+<p>Превратим обычный текст без форматирования в HTML. Заменим двойные переводы строки на абзацные теги <code>&lt;p&gt;&lt;/p&gt;</code>, а одиночный — на <code>&lt;br&gt;</code>. Заранее условимся, что задачу будем решать для схемы перевода строк LF.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> str <span class="op">=</span> <span class="vs">`А.С. Пушкин в своей заметке от 1824 года утверждал, в частности, что «некоторые оды Державина, несмотря на неровность слога и неправильность языка, исполнены порывами истинного гения...»</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="vs">В следующем же году в письме к А.А. Дельвигу оценка Пушкина звучит, однако, резко критически: «Он (Державин. - З.Т.) не имел понятия ни о слоге, ни о гармонии - ни даже о правилах стихосложения.</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="vs">Что ж в нем: мысли, картины и движения истинно поэтические; читая его, кажется, читаешь дурной, вольный перевод с какого-то чудесного подлинника», - писал Пушкин А. Дельвигу в июне 1825 года.`</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> setParagraph <span class="op">=</span> (str) <span class="kw">=&gt;</span> {</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (str) <span class="op">?</span> <span class="vs">`&lt;p&gt;</span><span class="sc">${</span>str<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\n\n</span><span class="ss">/g</span><span class="op">,</span> <span class="st">&#39;&lt;/p&gt;&lt;p&gt;&#39;</span>)<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\n</span><span class="ss">/g</span><span class="op">,</span> <span class="st">&#39;&lt;br&gt;&#39;</span>)<span class="sc">}</span><span class="vs">&lt;/p&gt;`</span><span class="op">:</span> str<span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> html <span class="op">=</span> <span class="fu">setParagraph</span>(str)<span class="op">;</span></span></code></pre></div>
+<p>Здесь крайне важна последовательность. Сперва мы заменяем строки с двумя переводами строки подряд, а потом — с одним.</p>
+<p>Решение можно улучшить, в частности, если переводов строк будет больше, чем два. В следующем разделе мы к нему обязательно вернёмся.</p>
+<hr />
+<p>Мы узнали про символы, которые спрятаны от обывателя, но которые формируют структуру и отступы в текстах.</p>
+</div>
+</section>
+<section id="универсальный-селектор" class="level2" data-number="3.3">
+<h2 data-number="3.3">3.3. Универсальный селектор</h2>
+<div class="text-container text-container--module">
+<p>Самый универсальный селектор — десятичная точка <code>.</code>. Он совпадает с абсолютно любым символом, кроме перевода строки <code>\n</code>. Внутри квадратных скобок, в отличие от других символьных селекторов, точка является именно точкой. При необходимости её можно экранировать с помощью обратного слэша <code>\.</code>. Внутри квадратных скобок экранирование не требуется.</p>
+<p><strong>Решим реальную задачу</strong></p>
+<p>Напишем паттерн для валидации десятичных чисел. Поле должно содержать значение opacity для CSS в диапазоне от 0.1 до 0.9, не включая крайние значения:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;number&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;opacity&quot;</span> <span class="er">step</span><span class="ot">=</span><span class="st">&quot;0.1&quot;</span> <span class="er">min</span><span class="ot">=</span><span class="st">&quot;0.1&quot;</span> <span class="er">max</span><span class="ot">=</span><span class="st">&quot;0.9&quot;</span> <span class="er">pattern</span><span class="ot">=</span><span class="st">&quot;0\.\d&quot;</span><span class="kw">&gt;</span></span></code></pre></div>
+<p>Чаще всего точку используют, когда ничего не известно о входящем тексте или какая-то часть текста не влияет ни на что, но нужно её обозначить в правиле.</p>
+<p>Например, если словами, это звучит так:</p>
+<ul>
+<li>должно совпасть с шаблоном, впереди или позади которого стоит какой-то текст или набор символов;</li>
+<li>должно совпасть с шаблоном, разделителем которого является какой-то текст</li>
+</ul>
+<p>Точка будет компенсировать незнание текста, который мы не смогли описать отдельными метасимволами.</p>
+<p><strong>Решим реальную задачу</strong></p>
+<p>Вы решили написать свой шаблонизатор писем, который будет заменять записи внутри фигурных скобок <code>{{name}}</code> на значения из внешнего объекта.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> obj <span class="op">=</span> {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">name</span><span class="op">:</span> <span class="vs">`Иван Иванович`</span><span class="op">,</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">date</span><span class="op">:</span> <span class="vs">`12.03.2021`</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> str <span class="op">=</span> <span class="vs">`Уважаемый, {{name}}! Поздравляем вас... {{date}} г.`</span><span class="op">;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>str<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/{{</span><span class="sc">(</span><span class="ss">.</span><span class="sc">+?)</span><span class="ss">}}/g</span><span class="op">,</span> (str<span class="op">,</span> $1) <span class="kw">=&gt;</span> {</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> obj[$1]<span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p>Здесь придётся немного забежать вперед и пояснить конструкцию <code>(.+?)</code>. Это сохраняющие скобки, внутри которых выбирается любой максимально совпавший текст до первой закрывающей скобки <code>}</code>. Более подробно назначение этих метасимволов разберём в следующей главе.</p>
+<p>Подумайте, что вернет этот код: <code>'Some text'.replace(/./g, '')</code>?</p>
+<hr />
+<p>Мы разобрали основные символьные и служебные селекторы, которые используются в регулярных выражениях. Дальше мы будем работать с построением логики выражений.</p>
+</div>
+</section>
+<section id="оцифруемся" class="level2" data-number="3.4">
+<h2 data-number="3.4">3.4. Оцифруемся</h2>
+<div class="text-container text-container--module">
+<p>Нам прислали строку из.csv файла, в которой поля разделены символом табуляции. Создайте из строки массив с данными, используя регулярное выражение.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> csv <span class="op">=</span> <span class="vs">`Иван   Иванович    Иванов  36  холост  ivanych_ii@ivanov.ru`</span><span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> parts <span class="op">=</span> <span class="co">//ваше решение</span></span></code></pre></div>
+</div>
+</section>
+<section id="оцифруемся-решение" class="level2" data-number="3.5">
+<h2 data-number="3.5">3.5. Оцифруемся (решение)</h2>
+<div class="text-container text-container--module">
+<pre><code>const csv = `Иван   Иванович    Иванов  36  холост  ivanych_ii@ivanov.ru`;
+
+const parts = csv.split(/\t/);</code></pre>
+</div>
+</section>
+</section>
+</body>
+</html>

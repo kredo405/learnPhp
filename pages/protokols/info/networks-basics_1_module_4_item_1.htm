@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html class="" lang="ru"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="utf-8">
+
+
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/octicons-3.css">
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/core.css">
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/text.css"><link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/extended-ui-kit.css"><link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/up.css"><meta name="theme-color" content="#2d2d44">
+
+</head><body>
+
+
+              <div class="page-content "><div class="page-content__inner"><div class="up-interface up-interface--up "><section class="up-interface__left-col"><nav class="breadcrumbs"><ul class="breadcrumbs__list"><li class="breadcrumbs__item"><a href="../index.html">Главная</a></li><li class="breadcrumbs__item"><a href="networks-basics_1_module_4.htm">4. Заключение</a></li></ul></nav><article class="up-text"><div class="up-text__head"><h1 class="up-text__title"><svg aria-hidden="true" width="24" height="24"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg>
+          4.1.&nbsp;Итоги
+        </h1></div><div class="text-container text-container--module"><p>Теперь
+ вы&nbsp;знаете, какой путь проходят данные и&nbsp;из&nbsp;каких частей 
+он&nbsp;состоит. Если говорить о&nbsp;модели OSI, то&nbsp;это семь 
+уровней. В&nbsp;стеке TCP/IP четыре уровня.</p><p>Для подключения к&nbsp;каждому сайту браузер должен выполнить следующие действия:</p><ol><li>Найти IP-адрес сервера при помощи DNS.</li><li>Инициировать
+ TCP-соединение с&nbsp;сервером, то&nbsp;есть «рукопожатия» TCP. Здесь 
+происходит обмен пакетами: клиент → сервер → клиент.</li><li>Для сайтов 
+с&nbsp;безопасным подключением HTTPS происходит «рукопожатие» TLS. Здесь
+ два раунда обмена пакетами: клиент → сервер → клиент → сервер → клиент.
+ Однако при работе по&nbsp;небезопасному HTTP-соединению поисковики 
+понижают рейтинг сайта в&nbsp;поиске. Поэтому (и&nbsp;не&nbsp;только), 
+несмотря на&nbsp;уменьшение скорости доставки данных, безопасное 
+подключение&nbsp;— необходимость.</li></ol><p>Пусть для пользователя 
+подключение происходит почти мгновенно: процесс можно ускорить разными 
+способами и&nbsp;на&nbsp;разных уровнях OSI.</p><p>На&nbsp;прикладном уровне вы&nbsp;можете инициировать TCP-соединение при помощи <code>preload</code>, <code>prefetch</code>, <code>preconnect</code>, <code>dns-prefetch</code>, <code>prerender</code>.</p><p>Следующий
+ способ ускорения передачи данных&nbsp;— использование WebSockets. 
+«Рукопожатие» происходит при каждом установлении соединения. WebSockets 
+обеспечивает постоянное соединение между клиентом и&nbsp;сервером, 
+и&nbsp;данные передаются в&nbsp;рамках этого соединения. То&nbsp;есть 
+«рукопожатие» происходит только один раз для передачи различных данных.</p><p>Сокращение
+ передачи данных обеспечивает Server Push, во&nbsp;время которого сервер
+ отдаёт ресурсы, предполагая, что они понадобятся клиенту 
+в&nbsp;ближайшем будущем. Server Push реализован в&nbsp;HTTP/2.</p><p>Для уменьшения объёма передачи данных HTTP/2 объединяет все заголовки пакетов и&nbsp;передаёт один заголовок на&nbsp;все пакеты.</p><p>Развитие
+ интернета движется в&nbsp;сторону HTTP/3, который работает через 
+протокол UDP, поэтому безопасность реализовывается самостоятельно. При 
+этом скорость доставки данных гораздо выше.</p><p>Далее вас ждёт итоговый тест для проверки полученных на&nbsp;курсе знаний.</p></div>
+
+</div></div></div>
+
+
+
+</body></html>

@@ -1,0 +1,584 @@
+/* This defines styles and classes used in the book */
+body { margin: 5%; text-align: justify; font-size: medium; }
+code { font-family: monospace; }
+h1 { text-align: left; }
+h2 { text-align: left; }
+h3 { text-align: left; }
+h4 { text-align: left; }
+h5 { text-align: left; }
+h6 { text-align: left; }
+/* For title, author, and date on the cover page */
+h1.title { }
+p.author { }
+p.date { }
+nav#toc ol,
+nav#landmarks ol { padding: 0; margin-left: 1em; }
+nav#toc ol li,
+nav#landmarks ol li { list-style-type: none; margin: 0; padding: 0; }
+a.footnote-ref { vertical-align: super; }
+em, em em em, em em em em em { font-style: italic;}
+em em, em em em em { font-style: normal; }
+code{ white-space: pre-wrap; }
+span.smallcaps{ font-variant: small-caps; }
+span.underline{ text-decoration: underline; }
+q { quotes: "“" "”" "‘" "’"; }
+div.column{ display: inline-block; vertical-align: top; width: 50%; }
+div.hanging-indent{ margin-left: 1.5em; text-indent: -1.5em; }
+@media screen { /* Workaround for iBooks issue; see #6242 */
+    .sourceCode {
+        overflow: visible !important;
+        white-space: pre-wrap !important;
+    }
+}
+
+/* Custom */
+img { max-width: 100%; }
+
+/* Html academy */
+@font-face {
+    font-weight: 400;
+    font-family: "Ubuntu Mono";
+    font-style: normal;
+    font-display: swap;
+    src: url(../fonts/ubuntu-mono.woff2) format("woff2"),url(../fonts/ubuntu-mono.woff) format("woff")
+}
+
+@font-face {
+    font-weight: 400;
+    font-family: "TT Norms Pro";
+    font-style: normal;
+    font-display: swap;
+    src: url(../fonts/tt-norms-pro-400-normal.v2.woff2) format("woff2"),url(../fonts/tt-norms-pro-400-normal.v2.woff) format("woff")
+}
+
+@font-face {
+    font-weight: 400;
+    font-family: "TT Norms Pro";
+    font-style: italic;
+    font-display: swap;
+    src: url(../fonts/tt-norms-pro-400-italic.v2.woff2) format("woff2"),url(../fonts/tt-norms-pro-400-italic.v2.woff) format("woff")
+}
+
+@font-face {
+    font-weight: 500;
+    font-family: "TT Norms Pro";
+    font-style: normal;
+    font-display: swap;
+    src: url(../fonts/tt-norms-pro-500-normal.v2.woff2) format("woff2"),url(../fonts/tt-norms-pro-500-normal.v2.woff) format("woff")
+}
+
+@font-face {
+    font-weight: 500;
+    font-family: "TT Norms Pro";
+    font-style: italic;
+    font-display: swap;
+    src: url(../fonts/tt-norms-pro-500-italic.v2.woff2) format("woff2"),url(../fonts/tt-norms-pro-500-italic.v2.woff) format("woff")
+}
+
+@font-face {
+    font-weight: 700;
+    font-family: "TT Norms Pro";
+    font-style: normal;
+    font-display: swap;
+    src: url(../fonts/tt-norms-pro-700-normal.v2.woff2) format("woff2"),url(../fonts/tt-norms-pro-700-normal.v2.woff) format("woff")
+}
+
+@font-face {
+    font-weight: 700;
+    font-family: "TT Norms Pro";
+    font-style: italic;
+    font-display: swap;
+    src: url(../fonts/tt-norms-pro-700-italic.v2.woff2) format("woff2"),url(../fonts/tt-norms-pro-700-italic.v2.woff) format("woff")
+}
+
+body {
+    font-family: "TT Norms Pro", "Arial", sans-serif;
+}
+h1,h2,h3,h4 {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: block;
+    font-weight: 700;
+    font-family: inherit;
+    color: inherit
+}
+
+h4 {
+    font-weight: 400
+}
+
+h1 {
+    margin: .97em 0 .44em;
+    font-size: 30px;
+    line-height: 1.17em
+}
+
+h2 {
+    margin: 1.17em 0 .53em;
+    font-size: 24px;
+    line-height: 1.2em
+}
+
+h3,h4,h5,h6 {
+    margin: 1.46em 0 .67em;
+    font-size: 18px;
+    line-height: 1.25em
+}
+
+p {
+    margin: .63em 0
+}
+
+blockquote {
+    position: relative;
+    margin: 1.67em 0;
+    padding: 0 0 0 30px
+}
+
+blockquote::before {
+    content: "«";
+    position: absolute;
+    top: -5px;
+    left: 0;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 30px;
+    color: #ff6f40
+}
+
+blockquote:lang(en)::before {
+    content: "“"
+}
+
+blockquote footer {
+    margin: .89em 0 .63em;
+    text-align: right
+}
+
+blockquote footer::before {
+    content: "\2014 \00A0"
+}
+
+blockquote.text-big::before {
+    top: -5px
+}
+
+address,cite {
+    font-style: normal
+}
+
+address,dl,li,ol,ul {
+    margin: .63em 0
+}
+
+b,dt,strong {
+    font-weight: 700
+}
+
+dd {
+    margin-left: 0;
+    padding-left: 1.75rem
+}
+
+dd+dt {
+    margin-top: .63em
+}
+
+hr {
+    margin: 1.67em 0;
+    border: 0;
+    border-top: 3px solid #9696a2
+}
+
+mark {
+    padding: .2em
+}
+
+em {
+    font-weight: 400;
+    font-style: italic
+}
+
+abbr[title] {
+    text-decoration: none;
+    border-bottom: 1px dotted #333;
+    cursor: help
+}
+
+small {
+    font-size: .86em
+}
+
+code,kbd,pre,samp {
+    font-size: 1em;
+    font-family: "Ubuntu Mono","Menlo","Monaco","Consolas","Courier New",monospace
+}
+
+code {
+    word-break: break-word;
+    word-wrap: break-word;
+    padding: 1px 4px 2px;
+    font-size: inherit;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    border-color: #d5d5d5
+}
+
+code,kbd,pre {
+    background-color: #f8f8f8
+}
+
+kbd {
+    padding: 0 .4em;
+    font-weight: 700;
+    color: inherit;
+    box-shadow: inset -1px -1px 0 rgba(0,0,0,.25)
+}
+
+kbd kbd {
+    padding: 0;
+    box-shadow: none
+}
+
+code,pre,pre code {
+    white-space: pre-wrap;
+    color: inherit
+}
+
+pre {
+    display: block;
+    margin: 1.7em 0;
+    padding: .7em;
+    line-height: 1.15em;
+    border: 1px solid #e8e8e8
+}
+
+pre code {
+    word-break: break-word;
+    word-wrap: break-word;
+    padding: 0;
+    font-size: inherit;
+    background-color: transparent;
+    border: 0;
+    border-radius: 0
+}
+
+figure {
+    max-width: 100%;
+    margin: 1.9em 0;
+    padding-bottom: 1px;
+    overflow-x: hidden
+}
+
+figure pre {
+    margin: 0 0 5px
+}
+
+figcaption {
+    color: #757575
+}
+
+.text-container {
+    font-feature-settings: unset;
+    font-variant-ligatures: none
+}
+
+.text-container h1,.text-container h2 {
+    padding-bottom: .25em;
+    border-bottom: 3px solid #e8e8e8
+}
+
+.text-container h2 {
+    padding-bottom: .33em
+}
+
+.text-container h3,.text-container h4 {
+    padding-bottom: .45em;
+    border-bottom: 3px solid #e8e8e8
+}
+
+.text-container .header-without-border {
+    padding-bottom: 0;
+    border-bottom: 0
+}
+
+.text-container .header-link a {
+    color: #333
+}
+
+.text-container .header-link a:hover {
+    text-decoration: none
+}
+
+.text-container p {
+    margin: 1.2em 0;
+    line-height: 1.5
+}
+
+.text-container blockquote {
+    line-height: 1.5
+}
+
+.text-container ul>li {
+    position: relative;
+    padding-left: 1.38em
+}
+
+.text-container ul>li::before {
+    content: "\2014";
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+.text-container ul li:first-child,.text-container--module ul li:first-child,.text-container--specification ul li p:first-child,.text-container--up .text-container__nav li:first-child {
+    margin-top: 0
+}
+
+.text-container ol {
+    padding-left: 1.3em
+}
+
+.text-container .margin-bottom-none {
+    margin-bottom: 0
+}
+
+.text-container--link-wrap a {
+    word-break: break-all
+}
+
+.text-container--up {
+    font-size: 16px;
+    line-height: 1.5
+}
+
+.text-container--module h1,.text-container--module h2,.text-container--module h3,.text-container--module h4,.text-container--module h5,.text-container--up h1,.text-container--up h2,.text-container--up h3,.text-container--up h4,.text-container--up h5 {
+    border-bottom: none
+}
+
+.text-container--module a:not(.button),.text-container--up a:not(.button) {
+    color: #3527b6
+}
+
+.text-container--up a:not(.button):hover {
+    color: #302683
+}
+
+.text-container--up a:not(.button):focus {
+    color: #302683
+}
+
+.text-container--module a:not(.button):hover {
+    color: #302683
+}
+
+.text-container--module a:not(.button):focus {
+    color: #302683
+}
+
+.text-container--module h3+h3,.text-container--module h3+h4,.text-container--module h4+h5,.text-container--module p,.text-container--up h3+h3,.text-container--up h3+h4,.text-container--up h4+h5,.text-container--up p {
+    margin-top: 0
+}
+
+.text-container--up h3 {
+    padding-bottom: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px
+}
+
+.text-container--module h3,.text-container--up h3 {
+    margin-top: 25px;
+    margin-bottom: 15px
+}
+
+.text-container--module h3,.text-container--module h4,.text-container--up h4 {
+    padding-bottom: 0;
+    font-weight: 700
+}
+
+.text-container--module .up-title__button--download:focus,.text-container--module .up-title__button--download:hover,.text-container--up .up-title__button--download:focus,.text-container--up .up-title__button--download:hover {
+    color: #fff
+}
+
+.text-container--module .text-container__nav,.text-container--up .text-container__nav {
+    margin: 0;
+    font-size: 16px;
+    line-height: 24px
+}
+
+.text-container--module b+p,.text-container--up b+p {
+    margin-top: 10px
+}
+
+.text-container--module table td:first-child,.text-container--up table td:first-child {
+    max-width: 250px
+}
+
+.text-container--module {
+    font-size: 16px;
+    line-height: 24px
+}
+
+.text-container--module h3,.text-container--module h4 {
+    font-size: 20px;
+    line-height: 1.5
+}
+
+.text-container--module h5 {
+    font-size: 18px;
+    line-height: 1.5
+}
+
+.text-container--module ul {
+    list-style: none;
+    margin: 15px 0 0
+}
+
+.text-container--module .criteria li.criteria__item {
+    padding-left: 0
+}
+
+.text-container--module .criteria li.criteria__item::before,.text-container--specification ul li::before {
+    display: none
+}
+
+.text-container--module .criteria .criteria__arrow svg {
+    transform: rotate(-90deg)
+}
+
+.text-container--module .criteria .criteria__arrow--opened svg {
+    transform: rotate(90deg)
+}
+
+.text-container--module .form__group h3,.text-container--module .grid--list {
+    margin-top: 0
+}
+
+.text-container--module .fixed-aspect-ratio,.text-container--module .text-container__nav,.text-container--module ol {
+    margin-bottom: 20px
+}
+
+.text-container--module>h2,.text-container--module>h3,.text-container--module>h4,.text-container--module>p,.text-container--module>ul {
+    margin-top: 15px;
+    padding-bottom: 0
+}
+
+.text-container--module .up-title--task-heading {
+    padding-bottom: 0
+}
+
+.text-container--specification ul {
+    margin-left: -10px
+}
+
+.text-container--specification ul li {
+    margin: 0 0 5px;
+    padding: 5px 10px
+}
+
+.text-container--specification ul li:target {
+    background-color: #ffc
+}
+
+.text-container--specification ul li p:last-of-type {
+    margin-bottom: 0
+}
+
+.text-container--specification ul li ol {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 0
+}
+
+.text-container--specification ul li ol li {
+    padding: 0 0 0 5px
+}
+
+.text-container--specification ul li ol li:last-child,.text-container--specification ul li ul li:last-child {
+    margin-bottom: 0
+}
+
+.text-container--specification ul li ul {
+    margin-top: 5px;
+    margin-left: 0
+}
+
+.text-container--specification ul li ul li {
+    padding: 0 0 0 20px
+}
+
+table {
+    width: 100%;
+    margin-top: 0;
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+table td, table th {
+    position: relative;
+    padding: .63em;
+    border-bottom: 1px solid #e8e8e8
+}
+
+table td:first-child, table th:first-child {
+    padding-left: 0
+}
+
+table th {
+    font-weight: 400;
+    font-size: 14px;
+    text-align: left;
+    color: #757575
+}
+
+table caption {
+    padding-bottom: .5em;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.4;
+    text-align: left
+}
+
+@media (min-width: 768px) {
+    .blockquote-accent::after,.blockquote-accent::before,.blockquote-italic-centered::after,.blockquote-italic-centered::before,.numbered-list__item::before,h1 {
+        font-size:36px
+    }
+
+    h2 {
+        font-size: 30px
+    }
+
+    h3,h4,h5,h6 {
+        font-size: 24px
+    }
+
+    blockquote::before {
+        top: -6px
+    }
+
+    blockquote.text-big::before {
+        top: -4px
+    }
+
+    .text-container--up {
+        font-size: 18px;
+        line-height: 1.7
+    }
+
+    .text-container--module h3,.text-container--up h3 {
+        font-size: 30px;
+        line-height: 42px
+    }
+
+    .text-container--up p {
+        line-height: 1.7
+    }
+
+    .text-container--module {
+        font-size: 16px;
+        line-height: 24px
+    }
+}

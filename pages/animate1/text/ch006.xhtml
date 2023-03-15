@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ru-RU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>ch006.xhtml</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body epub:type="bodymatter">
+<section id="производительность-анимаций" class="level1" data-number="6">
+<h1 data-number="6">6. Производительность анимаций</h1>
+<div class="text-container text-container--module">
+<p>В шестом разделе мы познакомимся с разными видами анимаций и обсудим производительность. Рассмотрим конкретные инструменты оптимизации для линейных анимаций.</p>
+</div>
+<section id="линейные-и-покадровые-анимации" class="level2" data-number="6.1">
+<h2 data-number="6.1">6.1. Линейные и покадровые анимации</h2>
+<div class="text-container text-container--module">
+<p>В этой главе поговорим, как улучшить производительность, но для начала разберёмся с двумя техниками создания компьютерной анимации: линейной и покадровой.</p>
+<p><strong>Линейная анимация</strong> — это абстракция над покадровой анимацией. Она выполняется на основе абстрактных преобразований объекта, который анимируется.</p>
+<p>Например, при работе с DOM можно создать эффект анимации, плавно меняя те или иные свойства CSS. При линейной анимации кадры всё равно перерисовываются, но управление перерисовкой берёт на себя браузер. Именно эти анимации мы создавали на курсе, про них поговорим подробнее.</p>
+<p><strong>Покадровая анимация</strong> — низкоуровневая техника, подобная той, что используют в мультипликации и кинематографе. То есть отрисовывается каждый отдельный кадр, и преобразовывать можно как весь кадр, так и только определённую область.</p>
+<p>Технология покадровой анимации заключается в смене параметров объекта с каждым следующим кадром. Основной её показатель — fps (frames per seconds), количество кадров в секунду. В вебе эталонным значением отрисовки анимации считается 60 fps, для игр это уже 150–200 fps, для видео — 24-30 fps. Чем больше кадров отрисовывается в секунду, тем плавнее кажется анимация. В целом, 24 кадров в секунду достаточно, чтобы создать эффект плавности. За 16,7 миллисекунд нужно отрисовать каждый следующий кадр, чтобы получить максимально плавную веб-анимацию. Это очень мало, поэтому хорошая JavaScript-анимация требует высокого уровня знаний.</p>
+<p>Покадровая анимация с JavaScript позволяет достичь результатов, невозможных на CSS. Преимущества такой анимации:</p>
+<ul>
+<li>низкоуровневость — можно сделать производительную анимацию в 60 fps;</li>
+<li>покадровость — даёт возможность точно контролировать выполнение анимации;</li>
+<li>вариативность временных функций — в отличие от CSS, внутри JavaScript-анимации можно установить изменения элемента по любой заданной кривой, не только по кривой Безье;</li>
+<li>анимация контента HTML — можно изменять или дополнять контент HTML-тегов;</li>
+<li>canvas анимация — с помощью JavaScript можно анимировать сцены, отрисованные в Canvas.</li>
+</ul>
+<p>Покадровой анимации посвящён отдельный курс.</p>
+<p>Далее рассмотрим более подробно, как оптимизировать линейную анимацию, созданную за время этого курса.</p>
+</div>
+</section>
+<section id="как-браузер-отрисовывает-страницы" class="level2" data-number="6.2">
+<h2 data-number="6.2">6.2. Как браузер отрисовывает страницы</h2>
+<div class="text-container text-container--module">
+<p>Как говорилось ранее, линейная анимация — это процесс плавной смены свойств CSS. Тем не менее за каждым таким изменением стоит большая работа на стороне браузера. В этой главе рассмотрим, какие процессы происходят под «капотом» браузера, когда меняется то или иное свойство в CSS.</p>
+<p>Перерисовка страницы называется рендерингом. Рендеринг — это заполнение страницы пикселями, полученными в результате выполнения кода HTML, CSS и JavaScript. Весь процесс рендеринга разбит на области, которые выполняются последовательно одна за другой.</p>
+<p>Есть пять областей, на которые может повлиять разработчик веб-приложений. При изменениях в какой-либо из них происходит перерисовка следующих за ней областей (на изображении слева направо).</p>
+<figure>
+<img src="../media/file87.jpg" alt="Области перерисовки страницы" />
+<figcaption aria-hidden="true">Области перерисовки страницы</figcaption>
+</figure>
+<ul>
+<li><p>JavaScript вызывает изменения в DOM, например: изменение контента в элементах, добавление DOM-элементов, изменение атрибутов.</p></li>
+<li><p>Style (пересчёт стилей) — область расчёта каскада стилей и определения финальных стилей элемента. Вызывается при изменении набора селекторов элемента или добавлении новых блоков CSS.</p></li>
+<li><p>Layout (расстановка) — определяет размеры и позиции всех элементов. Эта перерисовка запускается при изменении свойств, которые влияют на размеры, отступы и позиции элементов: <code>width</code>, <code>height</code>, <code>margin</code>, <code>max-width</code>, <code>padding</code>, <code>left</code> или другие свойства. В некоторых источниках этот процесс называется <strong>reflow</strong>.</p></li>
+<li><p>Paint (рисование) — область, отвечающая за внешний вид элементов. Триггером для её запуска является изменение свойств, связанных с внешним видом элемента: <code>background</code>, <code>color</code> и других.</p></li>
+<li><p>Composite (компоновка) — последняя часть процесса рендеринга страницы. На этом этапе определяется порядок наложения слоёв, создаётся прозрачность и накладывается трансформация. Применялись следующие свойства: <code>z-index</code>, <code>transform</code>, <code>opacity</code>, <code>filter</code>.</p></li>
+</ul>
+<p>Подробнее про производительность визуализации можно прочитать <a href="https://developers.google.com/web/fundamentals/performance/rendering">здесь</a>.</p>
+<p>Из статьи «Физиология восприятия анимации. Понятие FPS» первого модуля мы помним, что основным показателем плавности анимации является FPS (Frame Per Second). Это единица измерения, которая показывает количество кадров, отображаемых за одну секунду. Большинство современных компьютеров может воспроизводить до 60 кадров в секунду. 1000 миллисекунд / 60 кадров = 16,667 миллисекунды на кадр. То есть если нужно получить плавную анимацию, то процесс повторного рендеринга страницы должен занимать не более 16,667 миллисекунды.</p>
+<p>Самый простой способ оптимизировать отрисовку — использовать анимирование свойств, которые применяются в областях «рисование» и «компоновка». Пример такой оптимизации — замена свойства <code>left</code> на <code>transform: translateX</code>.</p>
+<p>До:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.block</span> {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">position</span>: <span class="dv">absolute</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transition</span>: <span class="dv">left</span> <span class="dv">0.3</span><span class="dt">s</span> <span class="dv">ease</span><span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">left</span>: <span class="dv">-300</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">.block</span><span class="in">:hover</span> {</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">left</span>: <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>После:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.block</span> {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">position</span>: <span class="dv">absolute</span><span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transition</span>: transform <span class="dv">0.3</span><span class="dt">s</span> <span class="dv">ease</span><span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transform</span>: translateX(<span class="dv">-300</span><span class="dt">px</span>)<span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">.block</span><span class="in">:hover</span> {</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transform</span>: translateX(<span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Мы старались придерживаться этого правила с самого начала.</p>
+<p>В этом <a href="https://codepen.io/GreenSock/full/2a53bbbcd47df627f25ed1b74beb407d">небольшом демо</a> можно оценить разницу значения FPS при использовании свойств <code>left</code> и <code>transform</code>. В пункте <em>Engine</em> выберите <em>Pure CSS</em>, в <em>Animate</em> выберите <em>transform: translateX ()</em> и нажмите <em>Start</em>. Смотрите за анимацией и изменением значения fps. Оно изменяется в корректных пределах от 50 до 60 fps. Остановите анимацию. Затем выберите в пункте <em>Animate</em> вариант <em>left</em>, снова нажмите <em>Start</em> и следите за изменением значения fps. Теперь оно значительно ниже: от 30 до 45 максимум. Это наглядный пример того, как выбор подходящих свойств помогает достичь лучшей производительности анимации.</p>
+<p>На сайте <a href="https://csstriggers.com/">CSS Triggers</a> можно проверить, какие области перерисовки запускаются при изменении того или иного CSS-свойства, и выбрать самые эффективные свойства для создания плавной анимации.</p>
+<p>Дальше рассмотрим инструменты для мониторинга областей перерисовки и профилирования скорости рендеринга в CSS.</p>
+</div>
+</section>
+<section id="инструменты-производительности-и-отладки-анимации" class="level2" data-number="6.3">
+<h2 data-number="6.3">6.3. Инструменты производительности и отладки анимации</h2>
+<div class="text-container text-container--module">
+<p>Прежде чем разбираться с производительностью линейных анимаций, поговорим об инструментах, которые могут пригодиться для работы с анимацией. Примеры покажем на основе Google Chrome, но альтернативные инструменты встроены и в другие браузеры Chromium, а также Firefox и Safari. Эти инструменты очень похожи на те, что будут рассматриваться.</p>
+<section id="конструктор-кривых-безье" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1">Конструктор кривых Безье</h3>
+<p>Про этот графический редактор временных функций мы уже говорили во второй главе. Он позволяет выбрать одну из заготовленных кривых или создать свою путём перетаскивания двух точек в декартовой системе координат.</p>
+<p>Вызвать этот редактор можно, нажав на иконку кривой возле любой из временных функций. После сохранения результат записывается в свойство и сразу применяется к элементу.</p>
+<figure>
+<img src="../media/file88.gif" alt="Конструктор кривых Безье" />
+<figcaption aria-hidden="true">Конструктор кривых Безье</figcaption>
+</figure>
+</section>
+<section id="вкладка-performance" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2">Вкладка Performance</h3>
+<p>С её помощью можно оценить производительность приложения. Инструмент показывает на временной шкале (область 1), где происходят самые большие просадки, какие в этот момент выполняются процессы (области 2 и 3) и аппаратные ресурсы, которые были задействованы (область 4). В случае CSS-анимации стоит проследить, что время отрисовки кадра не превышает 16,7 миллисекунды, то есть 60 fps.</p>
+<figure>
+<img src="../media/file89.png" alt="fps-debug" />
+<figcaption aria-hidden="true">fps-debug</figcaption>
+</figure>
+<p>Небольшой скринкаст расскажет о вкладке подробнее:</p>
+</section>
+<section id="вкладка-animations-timeline" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3">Вкладка Animations (Timeline)</h3>
+<p>Таймлайн является одной из разновидностей <a href="https://ru.wikipedia.org/wiki/%D0%94%D0%B8%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0_%D0%93%D0%B0%D0%BD%D1%82%D0%B0">диаграмм Ганта</a> и представляет собой двухмерное поле, в котором по оси Y располагаются атомарные части анимации, а по оси X — шкала времени. Анимации на таймлайне отображаются в виде прямоугольников, чаще всего разноцветных, одинаковой высоты по оси Y и длиной, которая соответствует времени их выполнения. Начало прямоугольников отображается со сдвигом по оси X, равному времени перед началом анимации.</p>
+<p>Таймлайн — значимый инструмент при проектировании сцен. Можно заранее продумать поведение всего, что будет происходить, ещё до начала реализации. Особенно важно правильно спланировать сцену с соблюдением принципа сценичности из 12-ти принципов анимации. Поскольку пользователь фокусируется только на определённой части сцены, необходимо управлять его вниманием и создавать незначительные триггеры, которые позволят вовремя переключить его взгляд на то место, где через мгновение развернётся основное действие сцены. В общем случае это можно сделать, например, в анимационных программах Adobe Animate и других.</p>
+<p>Такую абстракцию, как таймлайн, используют не только в анимации. Её можно встретить во множестве приложений разного назначения. В их числе видеомонтаж, звукозапись, приложения для создания VFX и 3D или множество других, где может понадобиться создание каких-либо действий относительно реального времени.</p>
+<p>В браузере Google Chrome есть встроенная панель таймлайнов, найти её можно в <code>Devtools -&gt; Settings -&gt; More Tools -&gt; Animations</code></p>
+<figure>
+<img src="../media/file90.png" alt="TimeLine" />
+<figcaption aria-hidden="true">TimeLine</figcaption>
+</figure>
+<p>В этой панели анимации добавляются автоматически при их выполнении на экране. При этом не связанные между собой анимации добавляются на разные таймлайны (прямоугольники над основным таймлайном). При нажатии на миниатюру анимация из этого таймлайна проигрывается повторно.</p>
+<p>Также в этой панели доступны две опции для управления временем:</p>
+<ol type="1">
+<li>Скорость воспроизведения — доступны опции 100%, 25%, 10%. Это нужно для просмотра анимации, которая выполняется быстро: можно замедлить её для более удобного восприятия.</li>
+<li>Временная шкала — та самая ось X, о которой говорилось выше. При нажатии на неё можно переключить анимацию на определённое время, при этом она не будет проигрываться: можно рассмотреть состояние анимации в заданный момент времени. Также на шкале указано точное время в миллисекундах от начала первой анимации на этом таймлайне.</li>
+</ol>
+<p>Все анимации, отображённые на таймлайне, доступны для редактирования в реальном времени. При этом на основе внесённых изменений будет меняться и CSS (в инспекторе кода), с помощью которого описана эта анимация. Для редактирования доступно два параметра:</p>
+<ul>
+<li>время начала (delay) — нужно нажать в центре блока и перетащить;</li>
+<li>время выполнения (duration) — нужно навести курсор мыши на точку в начале или конце блока и перетащить.</li>
+</ul>
+<p>В отличие от классических таймлайнов, анимации на таймлайн Google Chrome изображены не как прямоугольные блоки, а в виде некоторых кривых. Эти кривые — изображение временных функций Безье, по которым выполняется каждая конкретная анимация. По оси X у них отображается время выполнения, по оси Y — интенсивность. Чем выше кривая в точке, тем интенсивнее в этот момент будет выполняться анимация.</p>
+<p>С Timeline можно точно настроить порядок анимации и в итоге сделать её более привлекательной.</p>
+</section>
+<section id="fps-метр" class="level3" data-number="6.3.4">
+<h3 data-number="6.3.4">FPS-метр</h3>
+<p>Это простой инструмент, он позволяет отследить рендеринг страницы в реальном времени. Чтобы его открыть, нужно перейти в таб Rendering и включить FPS-meter.</p>
+<figure>
+<img src="../media/file91.png" alt="fps-meter" />
+<figcaption aria-hidden="true">fps-meter</figcaption>
+</figure>
+</section>
+<section id="подсветка-перерисовки" class="level3" data-number="6.3.5">
+<h3 data-number="6.3.5">Подсветка перерисовки</h3>
+<p>Про неё мы упоминали ранее, и здесь тоже всё просто. С подсветкой можно отследить, какие части перерисовываются в настоящий момент, и на основании этого понять, как оптимизировать тот или иной участок страницы. Включить «Подсветку перерисовки» можно в том же меню, что и FPS-метр.</p>
+<p>Например, вот так может подсвечиваться страница одного из заданий четвёртого модуля:</p>
+</section>
+<section id="инструменты-для-отладки-анимации" class="level3" data-number="6.3.6">
+<h3 data-number="6.3.6">Инструменты для отладки анимации</h3>
+<p>Это только часть инструментов, которые могут понадобиться для отладки. В меню <em>console drawer</em> есть и другие панели. Попробуйте сами в них разобраться — они ещё больше упростят разработку.</p>
+</section>
+</div>
+</section>
+<section id="оптимизация-производительности-css-анимации" class="level2" data-number="6.4">
+<h2 data-number="6.4">6.4. Оптимизация производительности CSS-анимации</h2>
+<div class="text-container text-container--module">
+<p>Если во время выполнения анимации на сайте есть зависания (фризы), значит, нужна дополнительная оптимизация.</p>
+<p>Первым делом стоит запустить профилирование страницы и выполнить каждую анимацию по очереди. Начинать оптимизацию нужно с той анимации, которая больше всего просаживает FPS.</p>
+<section id="использование-свойств-из-области-компоновки" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1">Использование свойств из области компоновки</h3>
+<p>Как мы говорили с самой первой главы, в анимации не стоит использовать свойства из области расстановки (Layout). Они заставляют браузер повторно рендерить страницу на каждом шаге. Это можно отследить, включив Paint flashing в меню Rendering.</p>
+<figure>
+<img src="../media/file92.gif" alt="Paint flashing в меню Rendering" />
+<figcaption aria-hidden="true">Paint flashing в меню Rendering</figcaption>
+</figure>
+<p>Необходимо вместо свойств Layout использовать свойства из области компоновки (Composite). Например, <code>left</code> и <code>top</code> заменить на <code>translate</code>, <code>border</code> заменить на <code>outline</code></p>
+<p>Начиная с первой главы, мы старались использовать только свойства из Composite или, если иначе никак, Paint.</p>
+</section>
+<section id="css-анимация-на-gpu" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2">CSS анимация на GPU</h3>
+<p>Ещё один способ повысить производительность — перенести анимации на отдельный слой, чтобы он обрабатывался на графическом ускорителе.</p>
+<p>Графический ускоритель (GPU) — это отдельный процессор, который используется для решения задач, связанных с геометрией и графикой. В отличие от CPU, он умеет решать эти задачи гораздо эффективнее.</p>
+<p>Нельзя указать браузеру напрямую, что нужно считать на GPU, а что следует оставить на CPU, но есть два способа обработать элемент на GPU.</p>
+<section id="использование-3d-трансформаций" class="level4" data-number="6.4.2.1">
+<h4 data-number="6.4.2.1">Использование 3D-трансформаций</h4>
+<p>Первый — добавить на элемент 3D-трансформацию, то есть одно из следующих свойств: <code>transform: translate3d...</code>, <code>transform: translateZ(0px)</code>, <code>transform:scale3d...</code>. К примеру, для перемещения элемента по оси X и Y можно использовать <code>transform: translate3d(300px, -300px, 0)</code>, что аналогично <code>transform: translate(300px, -300px)</code>.</p>
+<p>Этот способ будет работать, только если на элементе анимируются свойства из области компоновки.</p>
+</section>
+<section id="свойство-will-change" class="level4" data-number="6.4.2.2">
+<h4 data-number="6.4.2.2">Свойство will-change</h4>
+<p>Второй способ — использовать <code>will-change: transform</code>.</p>
+<p>Свойство <code>will-change</code> указывает браузеру, что обозначенные свойства этого элемента будут меняться и ему нужно произвести оптимизацию до того, как эти изменения произойдут.</p>
+<p>Возникает соблазн написать вот так:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">*,</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">*</span><span class="in">::before</span><span class="op">,</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">*</span><span class="in">::after</span> {</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">will-change</span>: <span class="dv">all</span><span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Это очень плохая идея. Для каждого элемента с <code>will-change</code> браузер создаёт отдельный слой, который требует дополнительных ресурсов: оперативной памяти и вычислительных ресурсов CPU и GPU. Большое количество элементов с указанным <code>will-change</code> будет иметь скорее негативный эффект и создаст ещё большие просадки FPS.</p>
+<p>Использовать <code>will-change</code> лучше всего на тех элементах, на которых зациклена анимация.</p>
+<p>Хорошая практика — добавлять <code>will-change</code> перед началом анимации:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>a {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transition</span>: transform <span class="dv">0.5</span><span class="dt">s</span> <span class="dv">ease</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>a<span class="in">:hover</span> {</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">will-change</span>: transform<span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>a<span class="in">:active</span> {</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transform</span>: <span class="fu">scale(</span><span class="dv">5</span><span class="fu">)</span> <span class="fu">rotate(</span><span class="dv">900</span><span class="dt">deg</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Для оптимизации нужно время. В примере используется <code>will-change</code> на <code>:hover</code>, чтобы у браузера был этот зазор времени и он успел выполнить задачу. Когда пользователь уведёт курсор мыши с элемента, браузер очистит ресурсы, занятые для оптимизации.</p>
+<p>Не пытайтесь выполнить оптимизацию в тот же момент, когда запускается анимация: браузер не успеет ничего сделать и оставит всё как есть:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>a {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transition</span>: transform <span class="dv">0.5</span><span class="dt">s</span> <span class="dv">ease</span><span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>a<span class="in">:active</span> {</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">will-change</span>: transform<span class="op">;</span> <span class="er">// Оптимизация не будет выполнена. </span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transform</span>: <span class="fu">scale(</span><span class="dv">5</span><span class="fu">)</span> <span class="fu">rotate(</span><span class="dv">900</span><span class="dt">deg</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</section>
+</section>
+</div>
+</section>
+<section id="отключение-анимации-на-сайте" class="level2" data-number="6.5">
+<h2 data-number="6.5">6.5. Отключение анимации на сайте</h2>
+<div class="text-container text-container--module">
+<p>Не всем пользователям нравится анимация во время просмотра страниц. Одни люди страдают нарушениями вестибулярного аппарата, у других смена изображения может вызвать приступ эпилепсии, а третьих анимация просто раздражает. Это может относиться, например, к анимации бегущей строки или любых других постоянно вращающихся или движущихся элементов.</p>
+<p>Кроме того, устройства некоторых пользователей вообще не могут воспроизводить анимацию (например, с дисплеем E-ink) или их работа от этого сильно замедляется. Специально для таких людей на уровне операционных систем добавили опцию «Уменьшить движение».</p>
+<figure>
+<img src="../media/file93.png" alt="Уменьшить движения MacOS" />
+<figcaption aria-hidden="true">Уменьшить движения MacOS</figcaption>
+</figure>
+<p>Когда она включена, в браузере рекомендуется отключить всю анимацию, автопроигрывание видео, а иногда и полностью переработать страницу.</p>
+<section id="медиазапрос-prefers-reduced-motion" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1">Медиазапрос prefers-reduced-motion</h3>
+<p>Чтобы отследить, включена ли эта опция у пользователей, в браузер был добавлен специальный медиазапрос <code>prefers-reduced-motion</code>.</p>
+<p>У него бывает два состояния:</p>
+<ul>
+<li>no-preference — у пользователя нет предпочтений по уменьшению количества анимации на странице;</li>
+<li>reduce — нужно уменьшить количество анимации на странице.</li>
+</ul>
+<p>Пример:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">@media</span> (<span class="kw">prefers-reduced-motion</span>: reduce) {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">.block</span> {</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">animation</span>: <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">transition</span>: <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Если анимации вынесены в отдельный файл, можно использовать подобную конструкцию в HTML:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;link</span> <span class="er">rel</span><span class="ot">=</span><span class="st">&quot;stylesheet&quot;</span> <span class="er">href</span><span class="ot">=</span><span class="st">&quot;animations.css&quot;</span> <span class="er">media</span><span class="ot">=</span><span class="st">&quot;(prefers-reduced-motion: no-preference)&quot;</span><span class="kw">&gt;</span></span></code></pre></div>
+<p>В JavaScript также можно подписаться на это свойство:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> mediaQuery <span class="op">=</span> <span class="bu">window</span><span class="op">.</span><span class="fu">matchMedia</span>(<span class="st">&#39;(prefers-reduced-motion: reduce)&#39;</span>)<span class="op">;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>mediaQuery<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&#39;change&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<p>На момент начала 2022 года свойство находится в состоянии Working Draft, но при этом поддерживается последними версиями всех популярных браузеров, кроме Internet Explorer.</p>
+<p>Проверить поддержку можно на сайте <a href="https://caniuse.com/#feat=mdn-css_at-rules_media_prefers-reduced-motion">caniuse.com</a>.</p>
+</section>
+<section id="медиазапрос-update" class="level3" data-number="6.5.2">
+<h3 data-number="6.5.2">Медиазапрос update</h3>
+<p>Ещё один важный медиазапрос — <code>update</code>. Он позволяет изменить анимацию в зависимости от того, быстро ли обновляется экран устройства.</p>
+<p>У <code>update</code> может быть одно из трёх значений:</p>
+<ul>
+<li><code>none</code> — если страница печатается на принтере.</li>
+<li><code>slow</code> — стили могут динамически меняться в соответствии с обычными правилами CSS, но устройство вывода не может отображать анимацию или делать это достаточно быстро, чтобы она была плавной. Примеры: электронные книги или устройства с недостаточной мощностью.</li>
+<li><code>fast</code> — свойства могут меняться и сразу же воспроизводиться на дисплее.</li>
+</ul>
+<p>На момент написания этой главы в стабильных версиях нет поддержки такого медиазапроса, но его можно дополнительно указать вместе с <code>prefers-reduced-motion</code>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">@media</span> <span class="dv">screen</span> <span class="kw">and</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">prefers-reduced-motion</span>: reduce), </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">update</span>: slow) {</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span> {</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>      <span class="kw">animation-duration</span>: <span class="dv">0.001</span><span class="dt">ms</span> <span class="at">!important</span><span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>      <span class="kw">animation-iteration-count</span>: <span class="dv">1</span> <span class="at">!important</span><span class="op">;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>      <span class="kw">transition-duration</span>: <span class="dv">0.001</span><span class="dt">ms</span> <span class="at">!important</span><span class="op">;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<p>Следует иметь в виду, что в техническом задании требование к наличию такого поведения стилей может отсутствовать в явном виде. Следует уточнять этот момент у менеджеров или узнавать, какие стандарты имеются в команде, в которой вы работаете.</p>
+</section>
+</div>
+</section>
+<section id="тест-по-материалам-модуля-6" class="level2" data-number="6.6">
+<h2 data-number="6.6">6.6. Тест по материалам модуля 6</h2>
+<div class="text-container text-container--module">
+<ol type="1">
+<li><strong>К какой технике создания анимации относится это определение?</strong></li>
+</ol>
+<blockquote>
+<p>«Анимация, управляемая браузером и выполняемая за счёт плавного изменения тех или иных свойств объекта».</p>
+</blockquote>
+<ul>
+<li>Покадровая анимация.</li>
+<li>Линейная анимация.</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Что такое fps?</strong></li>
+</ol>
+<ul>
+<li>Время выполнения анимации.</li>
+<li>Количество кадров в секунду.</li>
+<li>Количество анимируемых CSS-свойств объекта.</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Какое значение fps является эталонным для веба?</strong></li>
+</ol>
+<ul>
+<li>24-30 fps.</li>
+<li>60 fps.</li>
+<li>150–200 fps.</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>Использование свойств из каких областей помогает оптимизировать отрисовку анимаций?</strong></li>
+</ol>
+<ul>
+<li>Style.</li>
+<li>Layout.</li>
+<li>Paint.</li>
+<li>Composite.</li>
+</ul>
+<ol start="5" type="1">
+<li><strong>В каком из примеров анимация оптимизирована?</strong></li>
+</ol>
+<ul>
+<li>Вариант A.</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.block</span> {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transition</span>: width <span class="dv">0.3</span><span class="dt">s</span> <span class="dv">ease</span><span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">Width</span>: <span class="dv">200</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.block</span><span class="in">:hover</span> {</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">width</span>: <span class="dv">220</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>Вариант Б.</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.block</span> {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transition</span>: width <span class="dv">0.3</span><span class="dt">s</span> <span class="dv">ease</span><span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">max-width</span>: <span class="dv">200</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.block</span><span class="in">:hover</span> {</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">max-width</span>: <span class="dv">220</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>Вариант В.</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.block</span> {</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transition</span>: transform <span class="dv">0.3</span><span class="dt">s</span> <span class="dv">ease</span><span class="op">;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transform</span>: <span class="fu">scale(</span><span class="dv">1</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.block</span><span class="in">:hover</span> {</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transform</span>: <span class="fu">scale(</span><span class="dv">1.1</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ol start="6" type="1">
+<li><strong>С помощью какого инструмента браузера можно оценить производительность приложения?</strong></li>
+</ol>
+<ul>
+<li>Вкладка Performance.</li>
+<li>Вкладка Animations.</li>
+<li>Paint flashing.</li>
+</ul>
+<ol start="7" type="1">
+<li><strong>С помощью чего из нижеперечисленного можно перенести анимации на отдельный слой, чтобы он обрабатывался на графическом ускорителе (GPU)?</strong></li>
+</ol>
+<ul>
+<li>Использование свойств из области компоновки.</li>
+<li>Использование 3D-трансформаций и свойств области компоновки.</li>
+<li>Использование свойства will-change.</li>
+</ul>
+<ol start="8" type="1">
+<li><strong>Какое правило поможет отключить анимацию элемента .element у пользователей, у которых устройство вывода не может отображать анимацию или делать это достаточно быстро, чтобы она была плавной?</strong></li>
+</ol>
+<ul>
+<li>вариант А.</li>
+</ul>
+<pre class="scss"><code>@ media all and  (prefers-reduced-motion: reduce) {
+  .element {
+    animation: none;
+    transition: none;
+  }
+}</code></pre>
+<ul>
+<li>вариант Б.</li>
+</ul>
+<pre class="scss"><code>@ media screen and  (update: slow) {
+.element {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}</code></pre>
+</div>
+</section>
+<section id="тест-по-материалам-модуля-6-ответы" class="level2" data-number="6.7">
+<h2 data-number="6.7">6.6. Тест по материалам модуля 6 (Ответы)</h2>
+<div class="text-container text-container--module">
+<ol type="1">
+<li><strong>К какой технике создания анимации относится это определение?</strong></li>
+</ol>
+<blockquote>
+<p>«Анимация, управляемая браузером и выполняемая за счёт плавного изменения тех или иных свойств объекта».</p>
+</blockquote>
+<ul>
+<li>Покадровая анимация.</li>
+<li>Линейная анимация.</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Что такое fps?</strong></li>
+</ol>
+<ul>
+<li>Время выполнения анимации.</li>
+<li>Количество кадров в секунду.</li>
+<li>Количество анимируемых CSS-свойств объекта.</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Какое значение fps является эталонным для веба?</strong></li>
+</ol>
+<ul>
+<li>24-30 fps.</li>
+<li>60 fps.</li>
+<li>150–200 fps.</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>Использование свойств из каких областей помогает оптимизировать отрисовку анимаций?</strong></li>
+</ol>
+<ul>
+<li>Style.</li>
+<li>Layout.</li>
+<li>Paint.</li>
+<li>Composite.</li>
+</ul>
+<ol start="5" type="1">
+<li><strong>В каком из примеров анимация оптимизирована?</strong></li>
+</ol>
+<ul>
+<li>Вариант A.</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.block</span> {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transition</span>: width <span class="dv">0.3</span><span class="dt">s</span> <span class="dv">ease</span><span class="op">;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">Width</span>: <span class="dv">200</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.block</span><span class="in">:hover</span> {</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">width</span>: <span class="dv">220</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>Вариант Б.</li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.block</span> {</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transition</span>: width <span class="dv">0.3</span><span class="dt">s</span> <span class="dv">ease</span><span class="op">;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">max-width</span>: <span class="dv">200</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.block</span><span class="in">:hover</span> {</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">max-width</span>: <span class="dv">220</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>Вариант В.</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.block</span> {</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transition</span>: transform <span class="dv">0.3</span><span class="dt">s</span> <span class="dv">ease</span><span class="op">;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transform</span>: <span class="fu">scale(</span><span class="dv">1</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.block</span><span class="in">:hover</span> {</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transform</span>: <span class="fu">scale(</span><span class="dv">1.1</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ol start="6" type="1">
+<li><strong>С помощью какого инструмента браузера можно оценить производительность приложения?</strong></li>
+</ol>
+<ul>
+<li>Вкладка Performance.</li>
+<li>Вкладка Animations.</li>
+<li>Paint flashing.</li>
+</ul>
+<ol start="7" type="1">
+<li><strong>С помощью чего из нижеперечисленного можно перенести анимации на отдельный слой, чтобы он обрабатывался на графическом ускорителе (GPU)?</strong></li>
+</ol>
+<ul>
+<li>Использование свойств из области компоновки.</li>
+<li>Использование 3D-трансформаций и свойств области компоновки.</li>
+<li>Использование свойства will-change.</li>
+</ul>
+<ol start="8" type="1">
+<li><strong>Какое правило поможет отключить анимацию элемента .element у пользователей, у которых устройство вывода не может отображать анимацию или делать это достаточно быстро, чтобы она была плавной?</strong></li>
+</ol>
+<ul>
+<li>вариант А.</li>
+</ul>
+<pre class="scss"><code>@ media all and  (prefers-reduced-motion: reduce) {
+  .element {
+    animation: none;
+    transition: none;
+  }
+}</code></pre>
+<ul>
+<li>вариант Б.</li>
+</ul>
+<pre class="scss"><code>@ media screen and  (update: slow) {
+.element {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}</code></pre>
+</div>
+</section>
+</section>
+</body>
+</html>

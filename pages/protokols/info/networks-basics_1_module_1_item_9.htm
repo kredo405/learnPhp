@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html class="" lang="ru"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="utf-8">
+
+
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/octicons-3.css">
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/core.css">
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/text.css"><link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/extended-ui-kit.css"><link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/up.css"><meta name="theme-color" content="#2d2d44"><link rel="mask-icon" href="https://up.htmlacademy.ru/meta/favicon.svg" color="#2e368e">
+
+
+</head><body>
+
+              <div class="page-content "><div class="page-content__inner"><div class="up-interface up-interface--up "><section class="up-interface__left-col"><nav class="breadcrumbs"><ul class="breadcrumbs__list"><li class="breadcrumbs__item"><a href="../index.htm">Главная</a></li><li class="breadcrumbs__item"><a href="networks-basics_1_module_1.htm">1. Архитектура, атаки и составляющие безопасности</a></li></ul></nav><article class="up-text"><div class="up-text__head"><h1 class="up-text__title"><svg aria-hidden="true" width="24" height="24"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg>
+
+
+          1.9.&nbsp;Эталонное решение: открытие TCP-соединений
+        </h1></div><div class="text-container text-container--module"><p>Перед
+ внесением корректировок в&nbsp;проект замерим скорость загрузки 
+веб-страниц во&nbsp;вкладке Network и&nbsp;посмотрим, когда загружаются 
+нужные ресурсы.</p><p>Для следующих ресурсов мы&nbsp;предлагаем использовать <code>preload</code>, <code>prefetch</code>, <code>preconnect</code>, <code>dns-prefetch</code>, <code>prerender</code>:</p><ul><li><code>preload</code>: кастомные шрифты, основной скрипт, картинки во&nbsp;вкладке&nbsp;— максимум пять элементов;</li><li><code>prerender</code>: страница списка всех магазинов;</li><li><code>preconnect</code>: teletype.app.</li></ul><p>Предподключение для Yandex Maps через <code>dns-prefetch</code> или <code>preconnect</code>
+ бессмысленно. Всё равно карта находится внизу страницы, 
+и&nbsp;пользователь может не&nbsp;дойти до&nbsp;этого блока. А&nbsp;вот 
+если&nbsp;бы на&nbsp;сайте были страницы «Наш адрес» или «Как 
+добраться», то&nbsp;такая мера была&nbsp;бы целесообразной. Ведь 
+на&nbsp;них пользователи заходят как раз для уточнения 
+месторасположения.</p><p>Возможно, стоит предзагружать ссылки на&nbsp;соцсети Вконтакте и&nbsp;Инстаграм через <code>dns-prefetch</code> или <code>preconnect</code>,
+ так как отзывы могут быть важны. Но&nbsp;сначала нужно запросить 
+информацию о&nbsp;кликабельности этих ссылок. Часто бывает так, что 
+отзывов уже достаточно, и&nbsp;по&nbsp;ссылкам никто не&nbsp;переходит. 
+Поэтому нужно стоит смотреть на&nbsp;конкретное веб-приложение.</p><p>После
+ внесения корректировок смотрим изменения во&nbsp;вкладке Network: 
+действительно&nbsp;ли увеличилась скорость загрузки, как браузер 
+проставил приоритеты загружаемым ресурсам. Также можно добавить в&nbsp;<code>preload</code> дополнительный ресурс и&nbsp;посмотреть на&nbsp;реакцию браузера.</p><p>Если
+ показатели улучшились&nbsp;—&nbsp;прекрасно! Если что-то ухудшилось, 
+стоит подкорректировать предподключения или поменять приоритеты 
+загрузки.</p></div>
+
+
+</div></div></div>
+
+
+
+</body></html>

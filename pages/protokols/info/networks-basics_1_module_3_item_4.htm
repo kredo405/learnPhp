@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html class="" lang="ru"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="utf-8">
+
+
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/octicons-3.css">
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/core.css">
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/text.css"><link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/extended-ui-kit.css"><link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/up.css"><meta name="theme-color" content="#2d2d44">
+
+</head><body>
+
+              <div class="page-content "><div class="page-content__inner"><div class="up-interface up-interface--up "><section class="up-interface__left-col"><nav class="breadcrumbs"><ul class="breadcrumbs__list"><li class="breadcrumbs__item"><a href="../index.htm">Главная</a></li><li class="breadcrumbs__item"><a href="networks-basics_1_module_3.htm">3. HTTP, HTTP/2, HTTP/3</a></li></ul></nav><article class="up-text"><div class="up-text__head"><h1 class="up-text__title"><svg aria-hidden="true" width="24" height="24"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg>
+          3.4.&nbsp;HTTPS secure HTTP
+        </h1></div><div class="text-container text-container--module"><p>HTTPS&nbsp;—
+ это HTTP с&nbsp;шифрованием. Единственная разница между этими двумя 
+протоколами заключается в&nbsp;том, что HTTPS использует SSL/TLS для 
+шифрования обычных HTTP-запросов и&nbsp;ответов. В&nbsp;результате HTTPS
+ гораздо более безопасен, чем HTTP. Веб-приложение на&nbsp;HTTP имеет <code>http://</code> в&nbsp;своём URL-адресе, а&nbsp;веб-сайт на&nbsp;HTTPS&nbsp;— <code>https://</code>.</p><p>Посмотрим, как выглядит запрос при HTTPS.</p><p>Вместо:</p><pre class="html language-html"><code class="hljs xml">GET /hello HTTP/1.1
+User-Agent: curl/7.63.0 libcurl/7.63.0 OpenSSL/1.1.l zlib/1.2.11
+Host: www.htmlacademy.ru
+Accept-Language: ru
+</code></pre><p>Запрос будет выглядеть примерно так:</p><pre class="html language-html"><code class="hljs xml">t8Fw6T8UV81pQfyhDkhebbz7+oiwldr1j2gHBB3L3RFTRsQCpaSnSBZ78Vme+DpDVJPvZdZUZHpzbb
+</code></pre><p>HTTPS использует SSL/TLS для шифрования HTTP-запросов 
+и&nbsp;ответов, поэтому вместо текста злоумышленник увидит набор, 
+казалось&nbsp;бы, случайных символов.</p><h2>Как TLS/SSL шифрует HTTP-запросы и&nbsp;ответы в&nbsp;HTTPS?</h2><p>TLS
+ использует технологию, называемую шифрованием с&nbsp;открытым ключом. 
+Есть два ключа: открытый и&nbsp;закрытый. Открытый ключ передаётся 
+клиентским устройствам через SSL-сертификат сервера. Когда клиент 
+открывает соединение с&nbsp;сервером, два устройства используют открытый
+ и&nbsp;закрытый ключи, чтобы согласовать новые (их&nbsp;называют 
+ключами сеанса) для шифрования дальнейших коммуникаций.</p><p>Затем все 
+HTTP-запросы и&nbsp;ответы шифруются с&nbsp;помощью этих сеансовых 
+ключей, так что любой, кто перехватывает сообщения, может видеть только 
+случайную строку символов, а&nbsp;не&nbsp;открытый текст.</p><p>Дополнительные сведения о&nbsp;том, как работают шифрование и&nbsp;ключи, читайте в&nbsp;<a href="networks-basics_1_module_2.htm">разделе SSL/TLS</a>.</p><h2>Как HTTPS помогает аутентифицировать веб-серверы?</h2><p>Аутентификация
+ означает проверку того, что человек или машина являются теми, 
+за&nbsp;кого себя выдают. В&nbsp;HTTP нет проверки личности&nbsp;— 
+он&nbsp;основан на&nbsp;принципе доверия. Но&nbsp;в&nbsp;современном 
+интернете аутентификация необходима.</p><p>Как паспорт подтверждает 
+личность человека, так и&nbsp;закрытый ключ подтверждает личность 
+сервера. Когда клиент открывает канал с&nbsp;исходным сервером 
+(например, если пользователь переходит на&nbsp;веб-приложение), владение
+ закрытым ключом, совпадающим с&nbsp;открытым ключом 
+в&nbsp;SSL-сертификате веб-сайта, доказывает, что сервер на&nbsp;самом 
+деле является законным хостом веб-сайта.</p><p>При правильной настройке HTTPS-соединение гарантирует три условия:</p><ul><li><strong>Конфиденциальность</strong>. Соединение посетителя зашифровано, что скрывает URL-адреса, файлы cookie и&nbsp;другие конфиденциальные метаданные.</li><li><strong>Подлинность</strong>. Посетитель общается с&nbsp;«настоящим» веб-сайтом, а&nbsp;не&nbsp;с&nbsp;имитатором или через посредника.</li><li><strong>Честность</strong>. Данные, передаваемые между посетителем и&nbsp;веб-сайтом, не&nbsp;были подделаны или изменены.</li></ul><h2>Какую информацию защищает HTTPS?</h2><p>Незашифрованный
+ HTTP-запрос показывает не&nbsp;только тело запроса, 
+но&nbsp;и&nbsp;полный URL-адрес, строку запроса и&nbsp;различные 
+заголовки HTTP о&nbsp;клиенте и&nbsp;запросе:</p><p><img src="networks-basics_1_module_3_item_4_files/http.jpeg" alt="Какая информация доступна в HTTP"></p><p>HTTPS-запрос шифрует почти всю информацию, передаваемую между клиентом и&nbsp;веб-службой:</p><p><img src="networks-basics_1_module_3_item_4_files/https.jpeg" alt="Какая информация доступна в HTTPS"></p><p>Это
+ одинаково для всех методов HTTP (GET, POST, PUT и&nbsp;так далее). 
+URL-адрес и&nbsp;параметры строки запроса зашифрованы, как и&nbsp;тело.</p><h2>Какую информацию не&nbsp;защищает HTTPS?</h2><p>В&nbsp;то&nbsp;время
+ как HTTPS шифрует весь HTTP-запрос и&nbsp;ответ, разрешение DNS 
+и&nbsp;настройка соединения могут раскрывать другую информацию: исходный
+ IP-адрес и&nbsp;полный домен или субдомен.</p><p>Кроме того, 
+злоумышленники по-прежнему могут анализировать зашифрованный 
+HTTPS-трафик, например, проведённое на&nbsp;сайте время.</p><h2>Как HTTPS связан с&nbsp;HTTP/2?</h2><p>HTTP/2
+ (доработка завершена в&nbsp;2015 году)&nbsp;— это обратно совместимое 
+обновление HTTP/1.1 (доработан в&nbsp;1999 году), оптимизированное для 
+современной сети. Он&nbsp;включает в&nbsp;себя множество функций, 
+которые могут значительно повысить производительность веб-сайта 
+и&nbsp;появились благодаря SPDY.</p><p>Хотя HTTP/2 не&nbsp;требует 
+использования шифрования в&nbsp;его формальной спецификации, каждый 
+браузер с&nbsp;поддержкой HTTP/2 реализовал только поддержку 
+зашифрованных соединений. И&nbsp;ни&nbsp;один из&nbsp;основных браузеров
+ не&nbsp;работает над поддержкой HTTP/2 для незашифрованных соединений.</p><p>Это
+ означает, что на&nbsp;практике основные преимущества HTTP/2 
+в&nbsp;производительности в&nbsp;первую очередь требуют использования 
+HTTPS.</p><h2>Как переход на&nbsp;HTTPS влияет на&nbsp;поисковую оптимизацию (SEO)</h2><p>Переход
+ на&nbsp;HTTPS улучшает SEO и&nbsp;аналитику веб-сайта. С&nbsp;2014 года
+ Google использует HTTPS в&nbsp;качестве элемента ранжирования, что 
+может повысить рейтинг в&nbsp;поиске. Переход на&nbsp;HTTPS улучшит 
+аналитику веб-трафика, перенаправленного с&nbsp;веб-приложений HTTPS, 
+поскольку информация не&nbsp;передаётся с&nbsp;веб-сайтов HTTPS 
+на&nbsp;веб-сайты HTTP.</p><h2>Можно&nbsp;ли атаковать HTTPS-соединение</h2><p>Да, конечно, ведь у&nbsp;любого протокола есть свои недостатки. Также атака может происходить подменой сертификата безопасности.</p><p>Всё
+ это возможно, но&nbsp;для большинства злоумышленников HTTPS-соединения 
+очень сложны и&nbsp;требуют значительных затрат. Важно отметить, что 
+такие атаки являются целенаправленными. Их&nbsp;невозможно выполнить 
+против любого пользователя, подключившегося к&nbsp;какому-либо 
+веб-приложению.</p><p>А&nbsp;вот простые HTTP-соединения может 
+перехватить и&nbsp;изменить любой участник сетевого соединения, поэтому 
+атаки могут выполняться в&nbsp;крупных масштабах и&nbsp;с&nbsp;низкими 
+затратами.</p><h2>Как сделать миграцию плавной и&nbsp;избежать SEO-удара</h2><p>Используйте правильный 301-редирект для перенаправления пользователей с&nbsp;<code>http://</code> на&nbsp;<code>https://</code>. Не&nbsp;используйте переадресацию 302, это может негативно повлиять на&nbsp;ранжирование.</p><p>Также используйте элемент канонической ссылки <code>&lt;link rel="canonical"&gt;</code>, чтобы сообщить поисковым системам, что «канонический» URL-адрес веб-сайта использует <code>https://</code>.</p><p>HTML:</p><pre class="html language-html"><code class="hljs xml"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"canonical"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://htmlacademy.ru/page.php"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre><p>HTTP:</p><pre class="html language-html"><code class="hljs xml">HTTP/1.1 200 OK
+Content-Type: application/pdf
+Link: &lt;https://htmlacademy.ru/page.php&gt;; rel="canonical"
+Content-Length: 4223
+</code></pre><p>Приведён пример HTML-кода, в&nbsp;котором используется <code>rel=canonical</code> внутри тега <code>&lt;head&gt;</code>. Код можно использовать на&nbsp;странице <code>https://htmlacademy.ru/page.php?parameter=1</code>. Он&nbsp;сообщит поисковым системам о&nbsp;том, что <code>https://htmlacademy.ru/page.php</code> является предпочтительной версией веб-страницы.</p><h2>HTTPS защищает не&nbsp;всё</h2><p>Использовать
+ HTTPS&nbsp;— важно. Однако для онлайн-безопасности нужно гораздо 
+больше, чем просто выбор защищённой веб-страницы вместо незащищённой.</p><p>Например,
+ HTTPS не&nbsp;помогает в&nbsp;случаях фишинга, когда пользователя 
+обманывают, побуждая вводить пароль в&nbsp;поддельную форму входа. Сама 
+страница вполне может использовать HTTPS. Но&nbsp;если 
+на&nbsp;её&nbsp;принимающей стороне кто-то собирает пользовательскую 
+информацию, HTTPS будет просто туннелем, который использовали для этих 
+целей.</p><p>Пользователь также может загружать вредоносные файлы через 
+HTTPS. Опять&nbsp;же, протокол вообще ничего не&nbsp;говорит 
+о&nbsp;данных, которые он&nbsp;передаёт. Вы&nbsp;можете целый день 
+скачивать вредоносное ПО&nbsp;по&nbsp;защищённому каналу, и&nbsp;HTTPS 
+ничего не&nbsp;сделает, чтобы остановить это.</p><p>Что ещё нужно 
+помнить о&nbsp;веб-безопасности с&nbsp;точки зрения HTTPS и&nbsp;HTTP: 
+пользователей по-прежнему нужно побуждать на&nbsp;создание надёжных 
+паролей для своих учётных записей.</p></div>
+
+</div></div></div>
+
+
+
+</body></html>

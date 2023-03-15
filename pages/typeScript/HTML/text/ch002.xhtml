@@ -1,0 +1,1113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ru-RU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>ch002.xhtml</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" type="text/css" href="../styles/stylesheet1.css" />
+</head>
+<body epub:type="bodymatter">
+<section id="эквивалентность-типов" class="level1" data-number="2">
+<h1 data-number="2">2. Эквивалентность типов</h1>
+<div class="text-container text-container--module">
+<p>Типизация в TypeScript. Структура типа и эквивалентность функций</p>
+</div>
+<section id="параллельные-пространства-имён-декларации-и-типы" class="level2" data-number="2.1">
+<h2 data-number="2.1">2.1. Параллельные пространства имён: декларации и типы</h2>
+<div class="text-container text-container--module">
+<p>Приведённый ниже код — первоклассный код в TypeScript. Никаких проблем с пересечением имён не наблюдается.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> Paths <span class="op">=</span> [<span class="st">&quot;/&quot;</span><span class="op">,</span> <span class="st">&quot;/bin&quot;</span><span class="op">,</span> <span class="st">&quot;/etc&quot;</span>]<span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Paths <span class="op">=</span> <span class="st">&quot;/&quot;</span> <span class="op">|</span> <span class="st">&quot;/bin&quot;</span> <span class="op">|</span> <span class="st">&quot;/etc&quot;</span><span class="op">;</span></span></code></pre></div>
+<p><a href="https://www.typescriptlang.org/play?ssl=2&amp;ssc=36&amp;pln=1&amp;pc=1#code/MYewdgzgLgBACgQygCwjAvDA2gIgPQ4A0+ARgJZhEz4CmUwOAugNwCwAUFAJ4AON8SVBmoEYAHxHlK4kXQZt2QA">Посмотреть в песочнице</a>.</p>
+<p>Следующий код не может похвастаться таким свойством. Компилятор «жалуется», что <code>Cannot redeclare block-scoped variable 'Paths'</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> Paths <span class="op">=</span> [<span class="st">&quot;/&quot;</span><span class="op">,</span> <span class="st">&quot;/bin&quot;</span><span class="op">,</span> <span class="st">&quot;/etc&quot;</span>]<span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Paths {}<span class="op">;</span></span></code></pre></div>
+<p><a href="https://www.typescriptlang.org/play?#code/MYewdgzgLgBACgQygCwjAvDA2gIgPQ4A0+ARgJZhEz4CmUwOAugNwCwAUMADYIRqIo0AbwC+zIA">Посмотреть в песочнице</a>.</p>
+<p>Приходится делать вывод, что <code>type Path</code> существует в какой-то другой, параллельной Вселенной — и это правда.</p>
+<blockquote>
+<p><strong>На заметку</strong>: термин «Вселенная» в отношении типов используется в математике с середины 70-х годов XX века (Мартин-Леф, 1975 год). Можете почитать об <a href="https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D0%BE%D1%80%D0%B8%D1%8F_%D1%82%D0%B8%D0%BF%D0%BE%D0%B2">этой теории</a>.</p>
+</blockquote>
+<p>В TypeScript используются три параллельных набора имён. Любая декларация — объявление имени — делает вклад как минимум в одно из этих трёх пространств:</p>
+<ul>
+<li>namespace,</li>
+<li>types,</li>
+<li>values.</li>
+</ul>
+<p>Когда декларации относятся к разным Вселенным, они не мешают друг другу.</p>
+<section id="декларации-и-их-вселенные" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1">Декларации и их Вселенные</h3>
+<p>Познакомьтесь с типичными представителями разных Вселенных.</p>
+<table>
+<thead>
+<tr class="header">
+<th>декларация</th>
+<th>namespace</th>
+<th>type</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>namespace</code></td>
+<td>Да</td>
+<td></td>
+<td>Да</td>
+</tr>
+<tr class="even">
+<td><code>class</code></td>
+<td></td>
+<td>Да</td>
+<td>Да</td>
+</tr>
+<tr class="odd">
+<td><code>enum</code></td>
+<td></td>
+<td>Да</td>
+<td>Да</td>
+</tr>
+<tr class="even">
+<td><code>interface</code></td>
+<td></td>
+<td>Да</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>type</code></td>
+<td></td>
+<td>Да</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>function</code></td>
+<td></td>
+<td></td>
+<td>Да</td>
+</tr>
+<tr class="odd">
+<td><code>const</code></td>
+<td></td>
+<td></td>
+<td>Да</td>
+</tr>
+<tr class="even">
+<td><code>let</code></td>
+<td></td>
+<td></td>
+<td>Да</td>
+</tr>
+</tbody>
+</table>
+<p>Таблица подтверждает, что переменные и типы обитают в разных Вселенных и не мешают друг другу.</p>
+</section>
+<section id="типы" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2">Типы</h3>
+<p>В этом курсе мы сосредоточим внимание на колонке <strong>type</strong>. Это значит, что целями нашего изучения будут типы, интерфейсы, перечисления и классы. При этом часть сведений о классах и перечислениях, важных для разработки и для разработчика, мы оставим на следующие курсы.</p>
+<p>TypeScript использует структурную типизацию. Это значит, что типы, обладающие одинаковым внутренним устройством, считаются эквивалентными. Как это выглядит на практике, мы увидим в следующем параграфе.</p>
+</section>
+</div>
+</section>
+<section id="эквивалентные-и-различные-типы" class="level2" data-number="2.2">
+<h2 data-number="2.2">2.2. Эквивалентные и различные типы</h2>
+<div class="text-container text-container--module">
+<p>Когда перед компилятором TypeScript оказываются два типа, может ли он определить, являются ли эти типы эквивалентными? И да, и нет. TypeScript считает, что типы эквиваленты, если они выглядят одинаково и действуют одинаково. Разработчики называют такой подход «утиной типизацией»: если выглядит, ходит и крякает как утка — значит, это утка.</p>
+<p>В следующем примере над переменными <code>leadingRole</code> и <code>limitedEdition</code> можно производить одинаковые действия: для обрабатывающих функций они похожи до неузнаваемости. Не зря TypeScript считает типы <code>Book</code> и <code>Hero</code> эквивалентными.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Hero <span class="op">=</span> {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  name<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> Book {</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  name<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> leadingRole<span class="op">:</span> Hero <span class="op">=</span> { name<span class="op">:</span> <span class="st">&#39;Leonardo da Vinci&#39;</span> }</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> limitedEdition<span class="op">:</span> Book <span class="op">=</span> { name<span class="op">:</span> <span class="st">&#39;The Art of Computer Programming&#39;</span> }</span></code></pre></div>
+<p><a href="https://www.typescriptlang.org/play?#code/C4TwDgpgBAEhBOB7KBeKBvAsAKClAdgIYC2EAXFAM7DwCW+A5gNw4C+OO9wCAZoQMbQAQokQBrDDjxFSFanUYts7bDn6J81KABsIhACb0GAJUS6KcJKgwES5KAHIAMhA2F4+5PsJQAavX5aBygVdU1gHVpiWm59AFFDYFoNChFxa3RbWUcAFQALaABBeAjEHigAYURiMABXbngoAAUkBngSaMZg1iA">Посмотреть в песочнице</a>.</p>
+<p>Таким образом, эквивалентность типов определяется их структурой. Типы с различной структурой — различные типы.</p>
+<p>Когда перед компилятором TypeScript оказываются два различных типа, он может задать вопрос, является ли один из них специализацией другого.</p>
+<section id="отношение-специализации" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1">Отношение специализации</h3>
+<p>Говорят, что тип <strong>C</strong> (<em>child</em>) является специализацией (<strong>extends</strong>) типа <strong>B</strong> (<em>base</em>), если везде, где можно использовать <strong>любое</strong> значение типа <strong>B</strong>, подойдёт и <strong>любое</strong> значение типа <strong>С</strong>.</p>
+<p>Там, где допускается всякое числовое значение, допускается и числовое значение 42. В этом смысле тип числа 42 (конкретного числа) является специализацией типа <code>number</code>. В TypeScript используется ключевое слово <code>extends</code>. По-видимому, применяется определение слова extend: <em>If an object <strong>extends</strong> from a surface or place, it sticks out from it…</em> (<em>если объект выступает из…</em>). Действительно, 42 «высовывается» из ряда всех чисел.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> FortyTwo <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> AllNumbers <span class="op">=</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">getAnswer</span>()<span class="op">:</span>FortyTwo<span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">getRandom</span>()<span class="op">:</span>AllNumbers<span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">//TypeScript допускает такое присваивание.</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> v1<span class="op">:</span>AllNumbers <span class="op">=</span> <span class="fu">getAnswer</span>()<span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">//А такое нет.</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> v2<span class="op">:</span> FortyTwo <span class="op">=</span> <span class="fu">getRandom</span>()<span class="op">;</span></span></code></pre></div>
+<p><a href="https://www.typescriptlang.org/play?#code/C4TwDgpgBAYg9gVwE6gCoHc5QLxQCwBMA3ALABQokUAggDa0ByCAtgEYRIDOOUAdi+ySky5ACYQAxrQCGSaADMEvCcACWcXlADmEYNV6d0HABQBKAFzxkaTMPFTZCpSvWadwAErTeouMzPmdIwCHJzC5AD0EajgEADKEkiqYMBQgCwggHwggPwggMIggIIggFwggAwggKwggEIgUGVFBRklUFmAAiCAHCB5gEwgRU3tgLwgTSXkEhqcqQBuAIyB9ExsoTzu+oYmpuFkUUWV1bVQXeX9gyME5rCIKCAYWLjuXj5+ZkRAA">Посмотреть в песочнице</a>.</p>
+<p>Таким образом, типы могут быть эквивалентны и могут различаться. Различные типы могут быть связаны отношением «специализации», а могут быть не связаны друг с другом вовсе.</p>
+<p>Используя эти знания, TypeScript «наводит порядок» в коде и подсказывает, если обнаружит логические нестыковки. Он удивится, если вы попытаетесь сравнить значения несвязанных типов: вы получите в этом случае предупреждение. Так как результат сравнения значений совершенно разных типов известен заранее, TypeScript делает вывод, что вы где-то что-то перепутали.</p>
+<p>Оцените:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> SomeType <span class="op">=</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> OtherType <span class="op">=</span> <span class="bu">Date</span><span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">getSomeType</span>()<span class="op">:</span>SomeType<span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">getOtherType</span>()<span class="op">:</span>OtherType<span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">getSomeType</span>() <span class="op">===</span> <span class="fu">getOtherType</span>()){</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;А смысл...&#39;</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">//This condition will always return &#39;false&#39; since the types &#39;string&#39; and &#39;Date&#39; have no overlap.</span></span></code></pre></div>
+<p><a href="https://www.typescriptlang.org/play?#code/C4TwDgpgBAyg9gWwgFXNAvFAzsATgSwDsBzAbgFgAoUSKAeWAAsJdVbMARAQ2AgsqoATCAGMANl1zQAZgFdCI4PjiEoxCMHhI2EABQBKAFxaUafsPGSZ8xctXrgDZqzQHDTljv5V80qLocTHQModDC1DQ8XSAN9AG8qKCgRFSw4MQgAOjE4Yl0AckAEEChAQRBAHhBAaRASwG4QTLr8-SoAXyoAelbkRnwsZJVBfCUVKAB3fDExKC4xYa4QHqlgWVxVfOkprAh87CIRaCY9tB78nAISLa5CQSh87l4txi4AN2hCOCg4Z9wJMEygA">Посмотреть в песочнице</a>.</p>
+<p>И ведь не поспоришь.</p>
+<p>Среди множества типов значений в программах TypeScript есть те, которые достались от JavaScript. С ними мы познакомимся в следующей статье.</p>
+</section>
+</div>
+</section>
+<section id="важное-значение-примитивных-типов" class="level2" data-number="2.3">
+<h2 data-number="2.3">2.3. Важное значение примитивных типов</h2>
+<div class="text-container text-container--module">
+<p>При работе с JavaScript-функциями вы, вероятно, встречали приём, который позволяет отличить вариант получения настройки в виде объекта от варианта с функцией обратного вызова. Вспомните хотя бы <a href="https://webpack.js.org/configuration/configuration-types/">настройки webpack</a>.</p>
+<p>Во время работы функции вы проверяете, а является ли полученное в параметре значение функцией, и действуете по обстоятельствам:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">init</span>(settings){</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="kw">typeof</span> settings <span class="op">===</span> <span class="st">&#39;function&#39;</span>){</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    settings <span class="op">=</span> <span class="fu">settings</span>()<span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">//Используем извлечённые значения.</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<section id="оператор-typeof" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1">Оператор typeof</h3>
+<p>В примере выше мы воспользовались оператором JavaScript <code>typeof</code>. Этот оператор доступен и в TypeScript: он выполняется во время работы результата компиляции TypeScript, поэтому формально остаётся оператором JavaScript.</p>
+<p>Использование <code>typeof</code> позволяет выяснить типы значений во время работы программы. У этого оператора есть ограничения: он расскажет только о примитивных типах:</p>
+<ul>
+<li>bigint,</li>
+<li>boolean,</li>
+<li>function,</li>
+<li>number,</li>
+<li>object,</li>
+<li>string,</li>
+<li>symbol.</li>
+</ul>
+<p>Оператор <code>typeof</code> не поможет, если нужно отличить объекты разных классов. От него не дождёшься информации об аргументах функции и типе её результата. Но всё же <code>typeof</code> — очень полезный оператор. Мы будем работать с ним в третьем модуле при выяснении типа значений, полученных от сервера. Он поможет вам и во многих случаях. Этот оператор работает во время исполнения программы и действует во Вселенной значений.</p>
+<p>У оператора <code>typeof</code> есть двойник в параллельной Вселенной типов. Будьте внимательны.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> theEvent <span class="op">=</span> {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  id<span class="op">:</span><span class="dv">1</span><span class="op">,</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  title<span class="op">:</span> <span class="st">&#39;big bang&#39;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> EventType <span class="op">=</span> <span class="kw">typeof</span> theEvent<span class="op">;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">type EventType = {</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">    id: number;</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">    title: string;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">}</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="kw">typeof</span> theEvent <span class="op">===</span> <span class="st">&#39;object&#39;</span>){</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(theEvent<span class="op">,</span><span class="kw">null</span><span class="op">,</span> <span class="st">&#39; &#39;</span>))<span class="op">;</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">[LOG]: &quot;{</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co"> &quot;id&quot;: 1,</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co"> &quot;title&quot;: &quot;big bang&quot;</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">}&quot; </span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co"> */</span></span></code></pre></div>
+<p><a href="https://www.typescriptlang.org/play?#code/MYewdgzgLgBFAWBTAogN0WWBeGBvAUDDAJYAmAXAIwA0hcxUANouTAOQBGxA5jBwIZhubfAF98+KAE8ADohhoMUACqz5OaXJAAzOEkWYA3PgD0AKklqF6TKrkwcBIkTKswAVwC2HRACdjzvRMLDDQvsRCxuJmJhLE2gAUmog6eig22Fg4bCAcAFaIwFBsAJROMKCQIMwAdIwg3AkAUgDKAPIAcjVhEdzxUkn6GdQejIzU7OwlJVGmFgDaADJtAOIAuqwARE6bZJusNISbUAzM+zCbXLwCQptimzCEMUA">Посмотреть в песочнице</a>.</p>
+</section>
+<section id="специальные-примитивные-типы-typescript" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2">Специальные примитивные типы TypeScript</h3>
+<p>TypeScript добавляет несколько примитивных типов, работающих во Вселенной типов. Мы познакомимся с ними в третьем модуле.</p>
+<p>Эти типы:</p>
+<ul>
+<li>undefined,</li>
+<li>null,</li>
+<li>unknown,</li>
+<li>never,</li>
+<li>void,</li>
+<li>any.</li>
+</ul>
+<p>Тип <code>any</code> — самый непредсказуемый. Старайтесь его не использовать ни явно, ни косвенно. Аннотацией <code>any</code> вы заставляете TypeScript «отойти в сторону» и в результате остаётесь один на один с потенциальными ошибками. Не делайте так.</p>
+</section>
+</div>
+</section>
+<section id="примитивные-типы.-использование-преобразование-обнаружение" class="level2" data-number="2.4">
+<h2 data-number="2.4">2.4. Примитивные типы. Использование, преобразование, обнаружение</h2>
+<div class="text-container text-container--module">
+<ol type="1">
+<li><strong>В каких операциях из приведённого ниже отрывка происходит явное преобразование типа значения?</strong></li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> a <span class="op">=</span> (<span class="dv">42</span> <span class="op">===</span> <span class="st">&#39;42&#39;</span> <span class="im">as</span> <span class="dt">string</span> <span class="op">|</span> <span class="dt">number</span> <span class="im">as</span> <span class="dt">number</span>)<span class="op">;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> b <span class="op">=</span> (<span class="dv">42</span> <span class="op">==</span> <span class="st">&#39;42&#39;</span> <span class="im">as</span> <span class="dt">string</span> <span class="op">|</span> <span class="dt">number</span> <span class="im">as</span> <span class="dt">number</span>)<span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> c <span class="op">=</span> (<span class="dv">42</span> <span class="op">==</span> <span class="kw">new</span> <span class="bu">Number</span>(<span class="st">&#39;42&#39;</span>))<span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> d <span class="op">=</span> (<span class="dv">42</span> <span class="op">===</span> <span class="kw">new</span> <span class="bu">Number</span>(<span class="st">&#39;42&#39;</span>))<span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> e <span class="op">=</span> (<span class="dv">42</span> <span class="op">===</span> <span class="bu">Number</span>(<span class="st">&#39;42&#39;</span>))<span class="op">;</span></span></code></pre></div>
+<ul>
+<li><ol type="a">
+<li>указание (as string | number as number) явно преобразует значение строки в число.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>для выполнения сравнения (42 == ‘42’) строка преобразуется в число</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>для выполнения сравнения объект типа Number преобразуется к типу number.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>для выполнения строгого сравнения разработчик прибегнул к явному преобразованию типов.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>для выполнения строгого сравнения строка явно преобразуется в число.</li>
+</ol></li>
+</ul>
+<ol start="2" type="1">
+<li><strong>В чём отличие отрывка программы, если его читать как TypeScript или как JavaScript?</strong></li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> buffer <span class="op">=</span> <span class="st">&#39;боль&#39;</span><span class="op">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>buffer[<span class="dv">0</span>] <span class="op">=</span> <span class="st">&#39;с&#39;</span><span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(buffer)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Компилятор TypeScript генерирует ошибку, JavaScript не исполняется.</li>
+<li>Компилятор TypeScript генерирует ошибку, JavaScript исполняется, строка не изменяется.</li>
+<li>Компилятор TypeScript допускает такой отрывок, JavaScript завершает работу с ошибкой.</li>
+<li>Компилятор TypeScript генерирует ошибку, JavaScript исполняется. На консоль выводится ‘соль’.</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Выберите наиболее правильный тип значений, которые получат флаги из отрывка ниже.</strong></li>
+</ol>
+<div class="sourceCode" id="cb10"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> buffer <span class="op">=</span> <span class="st">&#39;боль&#39;</span><span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>buffer[<span class="dv">0</span>] <span class="op">=</span> <span class="st">&#39;с&#39;</span><span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(buffer)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Оба флага получат значения типа boolean, поскольку перед присвоением производится логическая операция.</li>
+<li>Оба флага — разные значения одного и того же ‘сложного’ типа.</li>
+<li>flag1 получит значение 42 — это значение тип number, flag2 получит значение ‘zero-coding’ — это значение строкового типа.</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>Значение какой переменной относится к примитивному типу?</strong></li>
+</ol>
+<div class="sourceCode" id="cb11"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> a <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> b <span class="op">=</span> <span class="kw">new</span> <span class="bu">Number</span>(<span class="dv">42</span>)<span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> c <span class="op">=</span> <span class="bu">Number</span>(<span class="dv">42</span>)<span class="op">;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> d <span class="op">=</span> <span class="bu">Number</span>(<span class="st">&#39;Life, the universe, everything&#39;</span>)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Значение переменной `a` имеет встроенный примитивный тип `number`.</li>
+<li>Значение переменной `b` имеет встроенный примитивный тип `Number`.</li>
+<li>Значение переменной `c` имеет встроенный примитивный тип `number`.</li>
+<li>Значение переменной `d` имеет встроенный примитивный тип `string`.</li>
+</ul>
+<ol start="5" type="1">
+<li><strong>Изменится ли значение примитивного типа?</strong></li>
+</ol>
+<div class="sourceCode" id="cb12"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> primitiveValue <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>primitiveValue <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Да, значение примитивного типа 42 станет равным 43.</li>
+<li>Нет, значение примитивного типа 42 так и останется значением 42.</li>
+</ul>
+<ol start="6" type="1">
+<li><strong>TypeScript предоставляет оператор typeof. Он возвращает стоку с названием типа значения, содержащегося в переменной. Этот оператор можно использовать, чтобы выяснить тип полученного параметра. Сколько сравнений необходимо выполнить, чтобы уверенно выяснит</strong></li>
+</ol>
+<p>Для иллюстрации, в API браузера метод <code>addEventListener(type, listener, useCapture);</code> может принимать три параметра. Третий параметр, если присутствует, может быть примитивным значением или структурой. Нужно определить, что значение такого параметра — это не строка, не число и не флаг, а именно структура с полями (свойствами).</p>
+<ul>
+<li>Это должен выяснить компилятор и сервисы TypeScript. Никаких дополнительных действий от разработчика не требуется.</li>
+<li>Достаточно выяснить значение оператора typeof.</li>
+<li>Следует проверить значение оператора `typeof` и сравнить значение с `null`.</li>
+<li>Необходимо проверить, что значение задано, сравнить результат оператора `typeof` с ‘object’ и проверить значение на равенство ‘null’.</li>
+</ul>
+</div>
+</section>
+<section id="примитивные-типы.-использование-преобразование-обнаружение-ответы" class="level2" data-number="2.5">
+<h2 data-number="2.5">2.4. Примитивные типы. Использование, преобразование, обнаружение (Ответы)</h2>
+<div class="text-container text-container--module">
+<ol type="1">
+<li><strong>В каких операциях из приведённого ниже отрывка происходит явное преобразование типа значения?</strong></li>
+</ol>
+<div class="sourceCode" id="cb13"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> a <span class="op">=</span> (<span class="dv">42</span> <span class="op">===</span> <span class="st">&#39;42&#39;</span> <span class="im">as</span> <span class="dt">string</span> <span class="op">|</span> <span class="dt">number</span> <span class="im">as</span> <span class="dt">number</span>)<span class="op">;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> b <span class="op">=</span> (<span class="dv">42</span> <span class="op">==</span> <span class="st">&#39;42&#39;</span> <span class="im">as</span> <span class="dt">string</span> <span class="op">|</span> <span class="dt">number</span> <span class="im">as</span> <span class="dt">number</span>)<span class="op">;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> c <span class="op">=</span> (<span class="dv">42</span> <span class="op">==</span> <span class="kw">new</span> <span class="bu">Number</span>(<span class="st">&#39;42&#39;</span>))<span class="op">;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> d <span class="op">=</span> (<span class="dv">42</span> <span class="op">===</span> <span class="kw">new</span> <span class="bu">Number</span>(<span class="st">&#39;42&#39;</span>))<span class="op">;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> e <span class="op">=</span> (<span class="dv">42</span> <span class="op">===</span> <span class="bu">Number</span>(<span class="st">&#39;42&#39;</span>))<span class="op">;</span></span></code></pre></div>
+<ul>
+<li><ol start="5" type="a">
+<li>для выполнения строгого сравнения строка явно преобразуется в число.</li>
+</ol></li>
+</ul>
+<ol start="2" type="1">
+<li><strong>В чём отличие отрывка программы, если его читать как TypeScript или как JavaScript?</strong></li>
+</ol>
+<div class="sourceCode" id="cb14"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> buffer <span class="op">=</span> <span class="st">&#39;боль&#39;</span><span class="op">;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>buffer[<span class="dv">0</span>] <span class="op">=</span> <span class="st">&#39;с&#39;</span><span class="op">;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(buffer)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Компилятор TypeScript генерирует ошибку, JavaScript исполняется, строка не изменяется.</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Выберите наиболее правильный тип значений, которые получат флаги из отрывка ниже.</strong></li>
+</ol>
+<div class="sourceCode" id="cb15"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> buffer <span class="op">=</span> <span class="st">&#39;боль&#39;</span><span class="op">;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>buffer[<span class="dv">0</span>] <span class="op">=</span> <span class="st">&#39;с&#39;</span><span class="op">;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(buffer)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>flag1 получит значение 42 — это значение тип number, flag2 получит значение ‘zero-coding’ — это значение строкового типа.</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>Значение какой переменной относится к примитивному типу?</strong></li>
+</ol>
+<div class="sourceCode" id="cb16"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> a <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> b <span class="op">=</span> <span class="kw">new</span> <span class="bu">Number</span>(<span class="dv">42</span>)<span class="op">;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> c <span class="op">=</span> <span class="bu">Number</span>(<span class="dv">42</span>)<span class="op">;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> d <span class="op">=</span> <span class="bu">Number</span>(<span class="st">&#39;Life, the universe, everything&#39;</span>)<span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Значение переменной `a` имеет встроенный примитивный тип `number`.</li>
+<li>Значение переменной `c` имеет встроенный примитивный тип `number`.</li>
+<li>Значение переменной `d` имеет встроенный примитивный тип `string`.</li>
+</ul>
+<ol start="5" type="1">
+<li><strong>Изменится ли значение примитивного типа?</strong></li>
+</ol>
+<div class="sourceCode" id="cb17"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> primitiveValue <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>primitiveValue <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Нет, значение примитивного типа 42 так и останется значением 42.</li>
+</ul>
+<ol start="6" type="1">
+<li><strong>TypeScript предоставляет оператор typeof. Он возвращает стоку с названием типа значения, содержащегося в переменной. Этот оператор можно использовать, чтобы выяснить тип полученного параметра. Сколько сравнений необходимо выполнить, чтобы уверенно выяснит</strong></li>
+</ol>
+<p>Для иллюстрации, в API браузера метод <code>addEventListener(type, listener, useCapture);</code> может принимать три параметра. Третий параметр, если присутствует, может быть примитивным значением или структурой. Нужно определить, что значение такого параметра — это не строка, не число и не флаг, а именно структура с полями (свойствами).</p>
+<ul>
+<li>Следует проверить значение оператора `typeof` и сравнить значение с `null`.</li>
+</ul>
+</div>
+</section>
+<section id="внутренняя-структура-типа" class="level2" data-number="2.6">
+<h2 data-number="2.6">2.5. Внутренняя структура типа</h2>
+<div class="text-container text-container--module">
+<p>Данные в программах TypeScript можно группировать по смыслу и назначению в структурные типы.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> hero <span class="op">=</span> {</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    givenName<span class="op">:</span> <span class="st">&#39;Илья&#39;</span><span class="op">,</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    fathersName<span class="op">:</span> <span class="st">&#39;Ильич&#39;</span><span class="op">,</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    familyName<span class="op">:</span> <span class="st">&#39;Обломов&#39;</span><span class="op">,</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<p>В этом примере для TypeScript <code>hero</code> имеет не только имеет значение, но ещё и тип.</p>
+<p><strong>Важно</strong> описание этого типа существует только для TypeScript и после окончания трансляции в JS полностью исчезает.</p>
+<p>Мы можем использовать знание этого типа и в других частях программы. Чтобы объявить ещё одну переменную, содержащую такие же поля, а главное, заставить TypeScript проверить, что мы не ошиблись, мы можем запомнить описание типа и обозначить это описание отдельным идентификатором.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Hero <span class="op">=</span> <span class="kw">typeof</span> hero<span class="op">;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> supporting<span class="op">:</span> Hero <span class="op">=</span> {</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    givenName<span class="op">:</span> <span class="st">&#39;Андрей&#39;</span><span class="op">,</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    fathersName<span class="op">:</span> <span class="st">&#39;Иванович&#39;</span><span class="op">,</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    familyName<span class="op">:</span> <span class="st">&#39;Штольц&#39;</span><span class="op">,</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<p>Выполните эксперимент в песочнице. Скопируйте определение константы <code>hero</code> и типа <code>Hero</code>. Затем начинайте выписывать инициализацию константы <code>supporting</code>. Вы увидите, как редактор начинает вас поддерживать и подсказывать.</p>
+<p>Обратите внимание, мы можем обозначить описание типа несколько раз разными словами. Все описания исчезнут во время работы программы, а во время компиляции эти значения будут идентичны друг другу.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Hero <span class="op">=</span> <span class="kw">typeof</span> hero<span class="op">;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> FullName <span class="op">=</span> <span class="kw">typeof</span> hero<span class="op">;</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> AnotherAlias <span class="op">=</span> Hero<span class="op">;</span></span></code></pre></div>
+<p><strong>Важно:</strong> структурные типы в TypeScript эквивалентны, если их поля попарно эквивалентны или имеют одинаковые примитивные типы. Порядок следования полей несущественный.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> NameStructure <span class="op">=</span> {</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    givenName<span class="op">:</span> <span class="dt">string</span><span class="op">,</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    familyName<span class="op">:</span> <span class="dt">string</span><span class="op">,</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    fathersName<span class="op">:</span> <span class="dt">string</span><span class="op">,</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Посмотрим следующий пример. Поскольку нам известно только имя кухарки Обломова, мы не сможем использовать ни один из этих псевдонимов для инициализации переменной. Попытка написать что-то вроде этого приведёт к ошибке:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> cook<span class="op">:</span> NameStructure <span class="op">=</span> { <span class="co">// </span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    givenName<span class="op">:</span> <span class="st">&quot;Анисья&quot;</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>Сообщение</strong>: <em>Type ‘{ givenName: string; }’ is missing the following properties from type ‘NameStructure’: familyName, fathersName (2739)</em>.</p>
+<p>Мы уже убедились, что TypeScript требует точного выражения намерений в использовании типов. Ему надо заранее знать, что переменной будут присвоены значения и числовые, и строковые. Так же он поступает и со структурными типами. Когда программисту нужно оставить некоторые поля без инициализации, следует использовать специальный тип <em>undefined</em>.</p>
+<p>Мы можем использовать другое определение типа:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Character <span class="op">=</span> {</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    givenName<span class="op">:</span> <span class="dt">string</span><span class="op">,</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    familyName<span class="op">?:</span> <span class="dt">string</span> <span class="op">|</span> <span class="dt">undefined</span><span class="op">,</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    fathersName<span class="op">?:</span> <span class="dt">string</span> <span class="op">|</span> <span class="dt">undefined</span><span class="op">,</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> cook<span class="op">:</span> Character <span class="op">=</span> { <span class="co">// </span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    givenName<span class="op">:</span> <span class="st">&quot;Анисья&quot;</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>В коде TypeScript можно встретить два разных undefined. Первый <em>undefined</em>, как и в JavaScript, — это значение неинициализированной переменной. В этом случае ключевое слово undefined живёт в пространстве значений, вы можете присвоить это значение переменной или свойству объекта. Второй <strong>undefined</strong> живёт в пространстве типов. Это тоже ключевое слово, но оно обозначает тип возможного значения переменной. В приведённом выше примере <strong>undefined</strong> обозначает специальный тип.</p>
+<p>Попробуйте прочитать запись о типе следующим образом.</p>
+<blockquote>
+<p>Значения типа Character могут (смотрим наличие вопросительного знака ‘?’) иметь свойство <code>fathersName</code>. При этом, если свойство присутствует, его значение может быть либо строкой, либо оставаться неинициализированным.</p>
+</blockquote>
+<p>Вот такой абзац сдержится в короткой записи <code>fathersName?: string | undefined</code>.</p>
+<section id="специальный-тип-unknown" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1">Специальный тип unknown</h3>
+<p>При работе программы вы можете получить значение, тип которого вам заранее неизвестен. Удалённый сервис может вернуть вам что-то непонятное. В таких случаях вы можете объяснить TypeScript, что не знаете заранее тип значения. И тогда TypeScript позаботится о том, чтобы вы не забыли проверить какие-нибудь признаки для определения типа значения.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a> <span class="kw">const</span> uv<span class="op">:</span><span class="dt">unknown</span> <span class="op">=</span> <span class="dv">42</span><span class="op">;</span> <span class="co">//Значение, полученное в ответ от API.</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span>(<span class="kw">typeof</span> uv <span class="op">===</span> <span class="st">&quot;number&quot;</span> <span class="op">&amp;&amp;</span> <span class="bu">Number</span><span class="op">.</span><span class="fu">isFinite</span>(uv)){</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>     <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(uv<span class="op">/</span><span class="dv">2</span>)<span class="op">;</span> <span class="co">//Проверено, число!</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a> }</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span>(<span class="kw">typeof</span> uv <span class="op">===</span><span class="st">&quot;string&quot;</span> <span class="op">&amp;&amp;</span> uv<span class="op">.</span><span class="at">length</span><span class="op">&gt;</span><span class="dv">0</span>){</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>     <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(uv[<span class="dv">0</span>])<span class="op">;</span> <span class="co">//Проверено, строка!</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a> }</span></code></pre></div>
+<p>В этом примере мы намеренно указали тип переменной <code>unknown</code> и продемонстрировали вариант опознавания реального типа. В следующих разделах мы познакомимся и с другими способами выяснить тип и произвести действия со значениями неизвестного типа.</p>
+</section>
+</div>
+</section>
+<section id="функции-и-их-эквивалентность" class="level2" data-number="2.7">
+<h2 data-number="2.7">2.6. Функции и их эквивалентность</h2>
+<div class="text-container text-container--module">
+<p>Функции — основной строительный материал для программ на JavaScript-языке. TypeScript даёт разработчику дополнительные возможности, но функции всё равно остаются важной частью системы, поэтому нужно уметь выражать назначение и ожидания от функций в разных обстоятельствах. Давайте посмотрим, как сообщить TypeScript эти намерения.</p>
+<section id="явная-аннотация-типов" class="level3" data-number="2.7.1">
+<h3 data-number="2.7.1">Явная аннотация типов</h3>
+<p>Когда вы явно укажете все типы возможных значений, компилятор будет их использовать как для анализа внутри функции, так и в коде, где эта функция используется.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">// В этом примере разработчик явно указывает, </span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">// значения каких типов требуются для нормального </span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">// использования функций.</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">exampleAction</span>()<span class="op">:</span><span class="dt">void</span> {</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;еще элемент найден&#39;</span>)<span class="op">;</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">exampleAdapter</span>(inValue<span class="op">:</span><span class="dt">number</span>)<span class="op">:</span><span class="dt">string</span> {</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="vs">`</span><span class="sc">${</span>inValue<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">exampleReducer</span>(state<span class="op">:</span><span class="dt">number</span><span class="op">,</span> action<span class="op">:</span> <span class="dt">number</span>)<span class="op">:</span><span class="dt">number</span> {</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> state<span class="op">+</span>action<span class="op">;</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>При описании функции <code>exampleAction</code> разработчик объяснил компилятору, что функция не ожидает никаких параметров и не возвращает никакого значения. Тип <code>void</code> указывает на то, что вызывающий код не должен ожидать от функции какого-то результата.</p>
+<p>При описании функции <code>exampleAdapter</code> разработчик объяснил компилятору, что для штатной работы перед вызовом в функцию надо передать параметр, содержащий числовое значение. Компилятор будет следить за этим во время анализа.</p>
+<p>Описание этой функции одновременно сообщает компилятору и другим пользователям, что в результате нормального завершения функция вернёт результат строкового типа.</p>
+<p>Из описания третьей функции <code>exampleReducer</code> мы делаем вывод, что для нормальной работы в функцию надо передать два числовых аргумента, а результат будет числом.</p>
+</section>
+<section id="неявный-вывод-о-типе-результата-функции" class="level3" data-number="2.7.2">
+<h3 data-number="2.7.2">Неявный вывод о типе результата функции</h3>
+<p>Во многих случаях компилятор достаточно сообразителен, чтобы самостоятельно выяснить тип возвращаемого значения, поэтому следующий вариант эквивалентен предыдущему:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Пример функции, от которой мы не ждём результата.</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">exampleAction</span>() {</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;еще элемент найден&#39;</span>)<span class="op">;</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">// Пример функции, возвращающей строку.</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">exampleAdapter</span>(inValue<span class="op">:</span> <span class="dt">number</span>) {</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="vs">`</span><span class="sc">${</span>inValue<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co">// Пример функции, возвращающей число.</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">exampleReducer</span>(state<span class="op">:</span> <span class="dt">number</span><span class="op">,</span> action<span class="op">:</span> <span class="dt">number</span>) {</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> state <span class="op">+</span> action<span class="op">;</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">readTemperature</span>()<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">retportTemperture</span>(temp<span class="op">:</span> <span class="dt">number</span>)<span class="op">:</span> <span class="dt">void</span><span class="op">;</span></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="co">// Пример функции, никогда не возвращающейся.</span></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">monitor</span>()<span class="op">:</span><span class="dt">never</span> {</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (<span class="kw">true</span>) {</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">retportTemperture</span>(<span class="fu">readTemperature</span>())</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><a href="https://www.typescriptlang.org/play?#code/PTAEnwQQBEEDhBB4QRWEEqQIiCGEQQvCCC4QQYiDWgGlED4QQIRBRNSjIjBOEFFkGkQUdeUQNhBAWEHllEnkHYQVIG4QQDIgJQAwgEgFAAzAK4A7AMYAXAJYB7BaACmADwCGAWwAOAGx0BBVZoUAKAJSgA3lNCglWgM4aLAOjMNAHM7AHJ4QEkQVkBZECFueHQydHEaLnRQhwBuKQBfbKkQCBgEJDQsXAJQQCYQIn4qyHEI8UA5ECi6QEEQEmpMVFlFGy1dQ1MLSwATAxMVHQAnOzUFADUDMzkdAC5QBTkjACNZp1d3GZ0VORntAAMAEmcF5dWdHMvsnKkCsCg4RBQMHDxCDU6g0mq14HRAOIg0HaQiIfWU6kG+mM5h0ACUdGM5EpZnYvCoDNNNts9rNCAYBgpiTt9jNDm5QCczhdQPjCTpQABqUAUxEKV7vMY6JRmAwnUDyBG2Rk6AxjAAqOlMs0J5x0jmppJm2SFIrFHMllJlKhMGhmKkVyvNars01MmtpDk2ADcNGoxtlCl8Sr9ygDmNAKIBmEA44mYrCBVUaLTa7UA8iDwo1GLRqFRmjUKHTO2YuBkAdwAFmoLKBbTM1vT3MdTqbzZaTLNmeqTnL6yqm44HAy3jkgA">Посмотреть в песочнице</a></p>
+<p>Рассматривая текст функций в примере, вы легко можете выяснить, значения каких типов они возвращают. Компилятор действует так же. Кроме того, он запоминает свои догадки и использует их в других местах программы так, словно описание было сделано с явным указанием типа результата. В этом смысле описания функций в этом и в предыдущем разделе эквивалентны.</p>
+</section>
+<section id="вывод-о-типах-параметров-функции-по-контексту" class="level3" data-number="2.7.3">
+<h3 data-number="2.7.3">Вывод о типах параметров функции по контексту</h3>
+<p>Если определение функции появляется в контексте, то TypeScript в состоянии выяснить и типы аргументов.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Сравните с предыдущим примером.</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]<span class="op">.</span><span class="fu">forEach</span>(</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">exampleAction</span>(){</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;еще элемент найден&#39;</span>)<span class="op">;</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> stringArray <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]<span class="op">.</span><span class="fu">map</span>(</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">exampleAdapter</span>(inValue){</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="vs">`</span><span class="sc">${</span>inValue<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> sum <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]<span class="op">.</span><span class="fu">reduce</span>(</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">exampleReducer</span>(state<span class="op">,</span>action){</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> state<span class="op">+</span>action<span class="op">;</span></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div>
+<p>В примере выше мы снова определили три функции, но на этот раз типы параметров и типы аргументов компилятор выяснил самостоятельно, по контексту использования.</p>
+</section>
+<section id="функциональный-вызываемый-тип" class="level3" data-number="2.7.4">
+<h3 data-number="2.7.4">Функциональный (вызываемый) тип</h3>
+<p>Вы можете обозначить, что переменная должна содержать функцию и может быть вызвана, с помощью синтаксиса <code>(...)=&gt;...</code> — с виду похожего на стрелочную функцию. В следующем примере это <code>()=&gt;boolean</code>:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> myFuncVar<span class="op">:</span> ()<span class="kw">=&gt;</span><span class="dt">boolean</span> <span class="op">=</span> ()<span class="kw">=&gt;true</span><span class="op">;</span></span></code></pre></div>
+<p>Этот код транслируется в JavaScript предсказуемым образом. Описание типа изымается из текста.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> myFuncVar <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="kw">true</span><span class="op">;</span></span></code></pre></div>
+<p>Описание типа <code>()=&gt;boolean</code> подсказывает компилятору, что функция не ожидает аргументов и возвращает значение типа <code>boolean</code>. Компилятор использует эту информацию для статического анализа программы. Компилятор проинформирует вас, если функция используется ненадлежащим образом.</p>
+<p>Следующие выражения вызывают ошибку во время компиляции</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> message<span class="op">:</span><span class="dt">string</span> <span class="op">=</span> <span class="fu">myFuncVar</span>()<span class="op">;</span><span class="co">//Type &#39;boolean&#39; is not assignable to type &#39;string&#39;.</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> flag<span class="op">:</span><span class="dt">boolean</span> <span class="op">=</span> <span class="fu">myFuncVar</span>(<span class="st">&quot;test&quot;</span>)<span class="op">;</span> <span class="co">//Expected 0 arguments, but got 1.</span></span></code></pre></div>
+<p>Описанию типа функции можно назначить псевдоним.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> UsefulService <span class="op">=</span> ()<span class="kw">=&gt;</span><span class="dt">boolean</span><span class="op">;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> myFuncVar<span class="op">:</span>UsefulService <span class="op">=</span> ()<span class="kw">=&gt;true</span><span class="op">;</span></span></code></pre></div>
+</section>
+<section id="сигнатура-функции-в-структурном-типе" class="level3" data-number="2.7.5">
+<h3 data-number="2.7.5">Сигнатура функции в структурном типе</h3>
+<p>В JavaScript функции являются полноценными объектами, к ним можно добавлять свойства. TypeScript предусматривает специальный синтаксис, позволяющий разработчику объявить намерение иметь значение, которое можно вызвать <code>()</code>, но у которого есть и другие поля. Если мы планируем иметь объект — функцию, у которой дополнительно есть свойство <code>description</code>—, то воспользуемся следующим описанием:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> DescribedFunction <span class="op">=</span> {</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    ()<span class="op">:</span><span class="dt">boolean</span><span class="op">;</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    description<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Попробуйте прочитать эту декларацию типа.</p>
+<blockquote>
+<p>К значениям типа <code>DescribedFunction</code> можно применить операцию вызова (invokation). Кроме того, значения типа <code>DescribedFunction</code> имеют свойство <code>description</code> со строковыми значениями.</p>
+</blockquote>
+<p>Мы можем использовать договорённость, описанную такой декларацией типа для наших бизнес-потребностей.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">logExecution</span>(fn<span class="op">:</span>DescribedFunction){</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>{</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fn</span>()<span class="op">;</span><span class="co">//Применяем операцию вызова.</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">catch</span>(ex){</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(ex<span class="op">,</span>fn<span class="op">.</span><span class="at">description</span>)<span class="op">;</span> <span class="co">//Пользуемся описанием функции.</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Синтаксис сигнатуры вызова позволяет определять тип перегруженной функции:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> DateCreator{</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  (ticks<span class="op">:</span> <span class="dt">number</span>)<span class="op">:</span> <span class="bu">Date</span><span class="op">;</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  (year<span class="op">:</span> <span class="dt">number</span><span class="op">,</span> month<span class="op">:</span> <span class="dt">number</span><span class="op">,</span> day<span class="op">:</span> <span class="dt">number</span>)<span class="op">:</span><span class="bu">Date</span><span class="op">;</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  (isoString<span class="op">:</span> <span class="dt">string</span>)<span class="op">:</span><span class="bu">Date</span><span class="op">;</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">const</span> creator<span class="op">:</span>DateCreator<span class="op">;</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="fu">creator</span>(<span class="dv">2015</span><span class="op">,</span><span class="dv">10</span><span class="op">,</span><span class="dv">21</span>)<span class="op">;</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="fu">creator</span>(<span class="dv">1445817600000</span>)<span class="op">;</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="fu">creator</span>(<span class="st">&#39;2015-10-26T00:00:00.000Z&#39;</span>)</span></code></pre></div>
+<p><a href="https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgCJ0gYShDB7KAbwFgAoZZACjGAQGsBnALmRAFcBbAI2gEoX0kANxkKlAJ64oLdt2gAaZBzzgAFjM48oigCZxxGuVH6CII8lWAM8AZTBRQAcxYN7TkxjNkAvmTI6IBAAbOBxkBBVXcJx8aVNsXDACczIEGKSoSgAmAAYARgBWeTyc+Sy83nM0xIJKPIAWeoKADjyAdgA2HO7uytT02oByXMKAWhLRrI6AFW6mOe6AOh6ALUHeIA">Посмотреть в песочнице</a>.</p>
+<p>Внимательный читатель может заметить кажущееся противоречие. Как так, TypeScript позволяет определить перегруженные функции, но компилируется в обычный JavaScript, где нет понятия перегруженных функций. Это кажущееся противоречие TypeScript разрешает очень элегантно. TypeScript и сервисы компилятора в редакторе не показывают разработчику, как сам же разработчик реализовал перегруженную функцию. <strong>Не показывают</strong> — это значит, что в intellisense эти сведения отсутствуют. Вот и всё. Кстати, реализация перегруженной функции выполняется примерно так же, как и в JavaScript — методичным изучением полученных в параметрах значений. Мы скоро встретимся с этим подходом в демо.</p>
+</section>
+<section id="несколько-слов-о-контексте-this" class="level3" data-number="2.7.6">
+<h3 data-number="2.7.6">Несколько слов о контексте this</h3>
+<p>Контекст исполнения функции (<code>handler1</code> для определённости) в JavaScript можно заменить несколькими способами: присвоением свойству объекта и вызовом через точку.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> obj <span class="op">=</span> {}<span class="op">;</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>obj<span class="op">.</span><span class="at">handler1</span> <span class="op">=</span> handler1<span class="op">;</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>obj<span class="op">.</span><span class="fu">handler1</span>()<span class="op">;</span><span class="co">// this === obj</span></span></code></pre></div>
+<p>Или использованием методов <code>call</code>, <code>apply</code>.</p>
+<p>В любом случае разработчик вправе ожидать от TypeScript контроля допустимого или ожидаемого типа значения контекста <code>this</code>. TypeScript использует синтаксис первого аргумента функции и использует зарезервированное слово this для указания типа контекста. Следует помнить, что во время работы JavaScript ничего не знает об этом «якобы» первом аргументе.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">function</span> <span class="fu">handler1</span>(this<span class="op">:</span> <span class="bu">HTMLAnchorElement</span><span class="op">,</span> ev<span class="op">:</span><span class="bu">MouseEvent</span>){</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    ev<span class="op">.</span><span class="fu">preventDefault</span>()<span class="op">;</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">title</span> <span class="op">=</span> <span class="st">&#39;clicked&#39;</span><span class="op">;</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> a <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">&#39;a&#39;</span>)<span class="op">;</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(a<span class="op">===</span><span class="kw">null</span>){</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>()<span class="op">;</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>a<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&#39;click&#39;</span><span class="op">,</span>handler1)<span class="op">;</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> b <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">&#39;button&#39;</span>)<span class="op">;</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(b<span class="op">===</span><span class="kw">null</span>){</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>()<span class="op">;</span></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>b<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&#39;click&#39;</span><span class="op">,</span>handler1)<span class="op">;</span></span></code></pre></div>
+<p><a href="https://www.typescriptlang.org/play?ssl=17&amp;ssc=1&amp;pln=1&amp;pc=1#code/KYDwDg9gTgLgBAMwK4DsDGMCWEVwBYCGKAJgDbBQCMAFDHpgM4BccAEgCoCyAMgILp5oAUXIBbYChgAaOMABuTThCQNgQuRJgBKAN4AoOIdlyAdGCjzNAEWAICSUjGpaA3AaN1GJrDHJwAvHAA5GikmGgA1sDEQW4Avnp6aDgM8AQBcMQQaEjikiYAjkgUAJ4AysDkGNDUQQRBrnqYCNQE-u0oDqS67oZ0UBAA7nAowMNCUANQzvF6BCYExMTqmtyMMBIUtaHhEUFShCTkVI1JKfAARhlZOXkwhcVQ5ZXA1dNBF0gwMDgNbs3UC7tfydUjdfRGOD9IYjMZwCZTGZ6BIXBZLFaSNapTbvHaRfaHMgUSiNIA">Изучите в песочнице</a> фрагмент. Посмотрите, какой результат JavaScript формируется, и выясните, в какой строке сервисы TypeScript подскажут неправомерность использования функции. Обратите внимание на количество аргументов у функции <code>handler1</code> в модуле TypeScript и в модуле JavaScript</p>
+<p>В следующем разделе мы рассмотрим вопрос о создании программ, которым, как и компилятору TypeScript, важно только то, что можно сделать со значениями, но точное название типа менее существенно. Будем создавать программы в обобщённом виде.</p>
+</section>
+</div>
+</section>
+<section id="программирование-на-типах.-дженерики" class="level2" data-number="2.8">
+<h2 data-number="2.8">2.7. Программирование на типах. Дженерики</h2>
+<div class="text-container text-container--module">
+<p>Когда TypeScript гарантирует нам, что со значениями того или иного типа можно делать оговорённые действия, мы можем создавать процедуры, которые заранее не определяют конкретный тип. Обобщённое программирование эксплуатирует понятие совместимости типов.</p>
+<p>Совместимость типов в TypeScript основана на структурной эквивалентности, принятой в JavaScript. Этот подход отличает TypeScript от статически типизированных языков: Java, C# и других. Вооружённые этим знанием, мы можем создать первую обобщённую программу.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Функция вернёт первый элемент массива.</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co">// Его тип и значение будет известно потом,</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co">// сейчас важно, что аргумент — массив.</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">firstItem</span><span class="op">&lt;</span>T<span class="op">&gt;</span>(array<span class="op">:</span>T[])<span class="op">:</span>T{</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(array<span class="op">.</span><span class="at">length</span><span class="op">&gt;</span><span class="dv">0</span>){</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> array[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">&quot;empty array&quot;</span>)<span class="op">;</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Слева от круглых скобок с аргументами функции мы написали выражение <code>&lt;T&gt;</code>. Эта запись уведомляет TypeScript о намерении использовать символ <strong>T</strong> в качестве псевдонима типа значений. В частности мы требуем, чтобы в качестве аргумента наша функция получала значение массива тех самых элементов типа <strong>T</strong>. Видите <code>array:T[]</code>?</p>
+<blockquote>
+<p>Мы говорим, что <strong>T</strong> — это <strong>дженерик</strong>-тип (вместо «псевдоним обобщённого типа»). Мы называем функцию <strong>дженерик</strong>-функцией firstItem. Вы можете встретить рассуждения о <strong>дженерик</strong>-интерфейсах и прочее.</p>
+</blockquote>
+<p>Вместо <strong>T</strong> можно подставить <code>string</code> или <code>number</code> или имя любого другого типа — работоспособность функции не нарушится.</p>
+<p>Имея описание такой функции, мы можем опереться на компилятор и поручить ему убедиться, что после получения элемента мы сможем использовать значения.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> array1 <span class="op">=</span> [<span class="dv">42</span><span class="op">,</span><span class="dv">73</span>]<span class="op">;</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co">// Компилятор проделает логические рассуждения:</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co">// 1. Он видит, что значением переменной array1 является массив чисел.</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co">// 2. Компилятор вспоминает: firstArray&lt;T&gt;(items:T[]):T декларирует, что вернёт значение типа, совпадающего с типом элемента массива.</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co">// 3. Следовательно, theAnswer будет иметь тип «число».</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> theAnswer <span class="op">=</span> <span class="fu">firstItem</span>(array1)<span class="op">;</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co">// typeof theAnswer === &quot;number&quot;;</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="co">// Мы можем использовать значение безопасно.</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(theAnswer)<span class="op">;</span> <span class="co">//OK</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>theAnswer<span class="op">.</span><span class="fu">split</span>(<span class="st">&quot;,&quot;</span>)<span class="op">;</span> <span class="co">//Property &#39;split&#39; does not exist on type &#39;number&#39;.(2339)</span></span></code></pre></div>
+<p><a href="https://www.typescriptlang.org/play?#code/PTAEhEQRhEEXhBC4QQxEEBwgh5EFIJhBCsIIARBocEIgog-CDZqDSIIJwgogsiCDcIBoDwgG0B9gDCCCCIO4mqwHSgAoEKECoIIGYQQHwgoPIkKhEoQOwg0VoHEQJogyhAjCCRALCD55izOzzQphCXgn1+QsOwzlVHdK0BsIOYA0oVddCsWGKQjMygALTU-myc3AIAZgCuAHYAxgAuAJYA9smg8ZkATgDO6QCS6QCmALYAPAAqAHwAFACGhYWtAJ4AXPUA2gC6AJR9AN4CoKCZ8W0d3bwANpXJAObpABaNAAzDE1NThZXpiYV57Z1d-duDANyToAC+D5uF2QDuoMmVnwCiHdlCs0AEQ1AAO6S6oAu3WBw3uz1SuVK0PmXQAjKAALygfoAFgATF4AOwAZju9lAsBshEQNGQ1iwRCwEgMNFYhhoEjEiHU7FgmlAWA47Eg7gM0BQlPR-Ak0HQiD0iDwPj8UmUag0DCI2AYTHMlBhGKmyDQ9Pw7FQMS4aF8iEcNF4lIJ-Gp9Fp9MZ6HYlnoiBU+FV-gKJXSAEE0Q0WpkqtVin0hqN6qADLB2VhEFhIIHfP5MDhDBr1JKtDJCKwfOwJGhy3pWIA5EEAkiAYSSgdjSWQ2ah0UJ4Viga3cViU0n8dh0PTV1h4DA0QAyIOZQJtKmHksV3pVCjp9IZEIw8HOO3JVPauU6kWv0kuNiu1xutziQ6UKjU5pd0fCBJTIWDKtl4tet7rpu2JYjiwLJIk1QAEabsC9zCPQpADhI7i7j6EjzooU4HkoKjFoK2gYNh5bsOYAgALKtJsvCtNBxTNMuq7AYU8KgCA2QANYCExd6brwxRgosMYgl4cK3OxwAAApvL+hSQqAADkgnCekimgAAJtklTFF82RXpUAAemQorkS5dL+SmQTBm6KbwzQEqSpIAJzDAIQA">Ссылка на песочницу</a>.</p>
+<p><strong>Внимание!</strong> В строке <code>const theAnswer = firstItem(array1);</code> мы не указывали никаких угловых скобок — так короче. Но мы можем предупредить компилятор о желании получать именно строки в качестве специализации дженерика, и тогда компилятор предупредит нас о необходимости использовать другой массив.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">firstItem</span><span class="op">&lt;</span>T<span class="op">&gt;</span>(array<span class="op">:</span>T[])<span class="op">:</span>T{</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(array<span class="op">.</span><span class="at">length</span><span class="op">&gt;</span><span class="dv">0</span>){</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> array[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">&quot;empty array&quot;</span>)<span class="op">;</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> array1 <span class="op">=</span> [<span class="dv">42</span><span class="op">,</span><span class="dv">73</span>]<span class="op">;</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> theAnswer <span class="op">=</span> <span class="fu">firstItem</span><span class="op">&lt;</span><span class="dt">string</span><span class="op">&gt;</span>(array1)<span class="op">;</span><span class="co">//Argument of type &#39;number[]&#39; is not assignable to parameter of type &#39;string[]&#39;.</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(theAnswer)<span class="op">;</span> <span class="co">//Argument of type &#39;string&#39; is not assignable to parameter of type &#39;number&#39;.</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>theAnswer<span class="op">.</span><span class="fu">split</span>(<span class="st">&quot;,&quot;</span>)<span class="op">;</span> <span class="co">//OK</span></span></code></pre></div>
+<p><a href="https://www.typescriptlang.org/play?ssl=11&amp;ssc=1&amp;pln=1&amp;pc=1#code/GYVwdgxgLglg9mABMGAnAzlAklApgWwB4AVAPgAoBDVVSgTwC5iBtAXQEomBvAKEURjAqNegDoANrjABzKAAtSABna9+-VLighUSarTrNFrANx9EAXzPzUcAO6IwuewFEacVOQBEBAA5Q6iHr0nuymlhAImIEidACMiAC8iMwALABMADQA7ADMJjwRYFHyuACCRba4qInIaJg4BISYqDAyFEFxoQD0XaWo0iD4UlCIcMCI-j64iADkYIMARlVsMwLoDnAjlOjoMNJglAuSE3CIPtSUQ3jVYxN0U7PNrdIrojwAspTyoofo5CXldCVVChRA9PoDIZgEa3SbTGZPGSrGDrMCbQI7PYHI7TKCnc60K5VUbjOGzeb4JaoGZvAEVKqidA+cQwKBeDIhYxgroAeQA0jwgA">Попробуйте в песочнице</a> исправить ошибку или изучите <a href="https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABMGAnAzlAklApgWwB4AVAPgAoBDVVSgTwC5iBtAXQEomBvAKEURjAqNegDoANrjABzKAAtSABna9+-VLighUSarTrNFrANx9EAXzPzUcAO6IwuewFEacVOQBEBAA5Q6iHr0nuymlhAImIEidACMiAC8iMwALABMADQA7ADMJjwRYFHyuACCRba4qInIaJg4BISYqDAyFEFxoviUPuTkuOwJpLiiUHAAYjAAHrgAJuRp7EumJeXolaii6D7iMFBeGSHGiAD0JwDyANI8QA">следующий код</a>.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">firstItem</span><span class="op">&lt;</span>T<span class="op">&gt;</span>(array<span class="op">:</span>T[])<span class="op">:</span>T{</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(array<span class="op">.</span><span class="at">length</span><span class="op">&gt;</span><span class="dv">0</span>){</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> array[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">&quot;empty array&quot;</span>)<span class="op">;</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> array1 <span class="op">=</span> [<span class="dv">42</span><span class="op">,</span><span class="dv">73</span>]<span class="op">;</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> theAnswer <span class="op">=</span> <span class="fu">firstItem</span><span class="op">&lt;</span><span class="dt">string</span><span class="op">&gt;</span>(array1<span class="op">.</span><span class="fu">map</span>((e)<span class="kw">=&gt;</span>e<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)))<span class="op">;</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>theAnswer<span class="op">.</span><span class="fu">split</span>(<span class="st">&quot;,&quot;</span>)<span class="op">;</span> <span class="co">//OK</span></span></code></pre></div>
+<p>Как видно, разработчик может использовать TypeScript и для автоматического определения типа переменной (начальный вариант), и для контроля типов значений аргумента в обобщённой функции.</p>
+<p>Возможности обобщённого программирования делают TypeScript мощным инструментом, и мы регулярно будем использовать их в работе.</p>
+<section id="синтаксис-для-обозначения-обобщённого-типа" class="level3" data-number="2.8.1">
+<h3 data-number="2.8.1">Синтаксис для обозначения обобщённого типа</h3>
+<p>Кроме обобщения функций вы можете использовать обобщение в структуре типов и интерфейсов.</p>
+<p>Для определения обобщённого дерева может пригодиться тип <code>TreeNode</code>, способный хранить полезные данные любого типа.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> TreeNode<span class="op">&lt;</span>T<span class="op">&gt;</span>{</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  parent<span class="op">:</span> TreeNode<span class="op">&lt;</span>T<span class="op">&gt;;</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  children<span class="op">:</span> TreeNode<span class="op">&lt;</span>T<span class="op">&gt;</span>[]<span class="op">;</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  payload<span class="op">:</span> T<span class="op">;</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><a href="https://www.typescriptlang.org/play?ssl=5&amp;ssc=2&amp;pln=1&amp;pc=1#code/JYOwLgpgTgZghgYwgAgCpQhAcgewCYQA8qAfAN4CwAUMsgA5wbgBcaG2+RpA3NbQgAtgAGzxNW6TLgLESAbQC6vGvTgBPYTjh4JygL5A">Посмотреть в песочнице</a>.</p>
+<p>Допускается использовать больше одного параметра типа, в этом случае они разделяются запятой:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">// В качестве контейнера можно использовать разные типы</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co">// HTML-элементов.</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="kw">declare</span> <span class="kw">function</span> <span class="fu">render</span><span class="op">&lt;</span><span class="bu">HTMLElement</span><span class="op">,</span> TView<span class="op">&gt;</span>(</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    container<span class="op">:</span> <span class="bu">HTMLElement</span><span class="op">,</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    view<span class="op">:</span> TView<span class="op">,</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>)<span class="op">:</span> <span class="dt">void</span><span class="op">;</span></span></code></pre></div>
+<p><a href="https://www.typescriptlang.org/play?jsx=0#code/CYUwxgNghgTiAEAzArgOzAFwJYHtXzlVBgB4AVACTIFkAZAUQhAFsRUMAaeMgNSxADuAPgAUAWABQ8afDB4MULKhAwAXNyp1GLNp0kz4AN34D1vEx0kBKdYZxZgAbiA">Посмотреть в песочнице</a>.</p>
+<p>Символ обобщённого типа может использоваться в любом месте соответствующей декларации, где можно использовать обозначение типа.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Обобщённый тип T распространяется на определение всего интерфейса.</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> DataBase<span class="op">&lt;</span>T<span class="op">&gt;</span>{</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">getConnection</span>()<span class="op">:</span>T<span class="op">;</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">closeConnection</span>(connection<span class="op">:</span>T)<span class="op">:</span><span class="dt">void</span><span class="op">;</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><a href="https://www.typescriptlang.org/play?jsx=0#code/JYOwLgpgTgZghgYwgAgCJzHAQnAzhAHgBUA+AbwFgAoZW5AcwjAGEB7EECBMYdgCgCUALiIBuanWQIANq3xsOXHvwTtO3XiBHCAbq2AATcVQC+QA">Посмотреть в песочнице</a>.</p>
+<p>Изучите демонстрации, показывающие приёмы работы с типами.</p>
+</section>
+</div>
+</section>
+<section id="варианты-проставления-аннотации-типов" class="level2" data-number="2.9">
+<h2 data-number="2.9">2.8. Варианты проставления аннотации типов</h2>
+<div class="text-container text-container--module">
+<section id="шаг-1-2" class="level3" data-number="2.9.1">
+<h3 data-number="2.9.1">Шаг №1</h3>
+<p><strong>Подготовить аннотацию типов данных</strong></p>
+<p>Распространённая ситуация: вы получаете json из удалённого сервера. Реализация этого сервера вам неподвластна. Есть вероятность, что она будет стабильной, но кто знает?</p>
+<p>Чтобы в определённой степени гарантировать устойчивость приложения, нужно зафиксировать структуру данных, на которую вы рассчитываете в своей работе. Вам также хочется, чтобы изменение структуры данных как минимум можно было обнаружить и обработать.</p>
+<p>TypeScript поможет вам. В этой демонстрации мы зафиксируем тип данных и поручим TypeScript следить за соблюдением договорённостей.</p>
+<p><strong>Загрузили данные</strong></p>
+<p>В файле <code>users.ts</code> вы видите список пользователей, загруженных с удалённого сервера.</p>
+</section>
+<section id="шаг-2-2" class="level3" data-number="2.9.2">
+<h3 data-number="2.9.2">Шаг №2</h3>
+<p><strong>Используем первую запись в качестве примера</strong></p>
+<p>Воспользуемся полученной выборкой и зафиксируем понимание структуры данных.</p>
+<p>В первой записи выделим все ключи и составим описание интерфейса. Сложные значения обозначим пока типом <strong>unknown</strong> — будем считать, что мы их пока не знаем.</p>
+<p><strong>Обозначим аннотацию типа</strong></p>
+<p>Воспользуемся нашей догадкой и добавим аннотацию типа переменной <code>users</code> в файл users.ts. К сожалению, мы обнаружим проблемы. А если быть точнее, то проблемы обнаружит компилятор.</p>
+<p>Компилятор сообщает об отсутствии в 54 строке сведений о компании. Эти знания следует зафиксировать. Обозначим поле <code>company</code> как факультативное.</p>
+</section>
+<section id="шаг-3-2" class="level3" data-number="2.9.3">
+<h3 data-number="2.9.3">Шаг №3</h3>
+<p><strong>Изучим структуру полей address, company</strong></p>
+<p>Методом проб и ошибок создадим описание всех структур, которые мы нашли в примерной выборке. Обозначим иногда отсутствующие поля как необязательные и получим набор интерфейсов, который, как мы считаем, наилучшим образом отображает доступные данные.</p>
+<p>Мы можем сделать контракт более конкретным. Давайте изучим список ролей пользователей и создадим специализированный литеральный строковый тип.</p>
+</section>
+<section id="шаг-4-2" class="level3" data-number="2.9.4">
+<h3 data-number="2.9.4">Шаг №4</h3>
+<p><strong>Итоговый набор интерфейсов</strong></p>
+<p>Мы создали набор интерфейсов. Он согласуется с полученной выборкой, и мы будем продолжать его совершенствовать, если в последующем выявим расхождение. Важно, что, опираясь на созданную систему типов, мы можем поручить TypeScript-компилятору задачу контроля правильного использования данных.</p>
+<p><strong>А как же сервер?</strong></p>
+<p>Что будет, если сервер поменяет структуру данных, а в нашем приложении описание типов останется прежним?</p>
+<p>Мы предложим решение этой проблемы в третьем модуле, в демо «Честное получение данных из удалённого сервера». Главная мысль решения: не допускать непроверенные данные во внутренний круг нашей системы.</p>
+</section>
+</div>
+</section>
+<section id="защита-от-значений-непроверенного-типа" class="level2" data-number="2.10">
+<h2 data-number="2.10">2.9. Защита от значений непроверенного типа</h2>
+<div class="text-container text-container--module">
+<section id="шаг-1-3" class="level3" data-number="2.10.1">
+<h3 data-number="2.10.1">Шаг №1</h3>
+<p><strong>Взаимозаменяемые хранилища с настройками</strong></p>
+<p>Приложению приходится хранить состояние. В зависимости от предпочтений пользователя и заказчика хранение может быть организовано разными способами: в памяти, в сессии браузера или в облаке. Вам необходимо создать экземпляр хранилища, получив сведения о настройках.</p>
+<p>Дополнительно мы ожидаем, что настройки могут быть заданы во время проектирования, а могут вычисляться в процессе работы приложения.</p>
+<p>Как мы поступим?</p>
+<p><strong>Четыре драйвера</strong></p>
+<p>Изучите интерфейсы фабрик по созданию хранилища разного типа. В этом демо мы познакомимся с вариантом, позволяющим создавать настройки безопаснее с точки зрения типов.</p>
+<p>Реализация драйверов в рамках этой демонстрации несущественна. К тому же хранилища, скорее всего, медленные, и нам бы следовало использовать асинхронный доступ. Но это мы обсудим позднее.</p>
+</section>
+<section id="шаг-2-3" class="level3" data-number="2.10.2">
+<h3 data-number="2.10.2">Шаг №2</h3>
+<p><strong>Функция или литерал</strong></p>
+<p>В JavaScript часто встречается подход, когда мы передаём в фабрику либо объект, либо функцию, возвращающую такой объект. При использовании TypeScript мы явно обозначим обе возможности с помощью типа <code>SettingsProvider</code>. Мы воспользуемся оператором <code>typeof</code>, чтобы отличить два варианта использования нашей фабрики.</p>
+<p>Со стороны кода программы в 10 строке файла <code>main.ts</code> нет никаких отличий от обычного JavaScript. Однако в TypeScript эта строка содержит дополнительную информацию. Мы сможем это увидеть на следующем шаге.</p>
+</section>
+<section id="шаг-3-3" class="level3" data-number="2.10.3">
+<h3 data-number="2.10.3">Шаг №3</h3>
+<p><strong>Настройки для драйвера</strong></p>
+<p>Вы уже изучили предлагаемые настройки для каждого из драйверов. Понятно, что общие настройки могли бы содержать любые из настроек. Казалось бы, проще всего это сделать, перечислив каждую из возможностей.</p>
+<p>Есть одна неприятность: в такой форме настройки придётся заполнять данными независимо от типа драйвера. Даже если мы выбираем драйвер в оперативной памяти, который вообще не требует настроек, нам придётся заполнить чем-то ключи для облачного и браузерного хранилища.</p>
+<p>Но мы можем поступить иначе.</p>
+</section>
+<section id="шаг-4-3" class="level3" data-number="2.10.4">
+<h3 data-number="2.10.4">Шаг №4</h3>
+<p><strong>Различимые объединения — discriminating unions</strong></p>
+<p>Воспользуемся способностью TypeScript различать значения объединённых типов. Составим тип <code>Settings</code> как объединение различимых интерфейсов. Теперь нам достаточно узнать значение поля <code>type</code>, и реализация функции <code>createStorageInternal</code> распадается на простейшие веточки.</p>
+<p>Вы можете убедиться, что TypeScript действительно знает и подсказывает вам в настройках, как только вы объявите о желании использовать тот или иной драйвер.</p>
+<p>В этом подходе оператор <code>switch</code> выступает как защитник в деле проверки допустимости различимых значений объединения.</p>
+<p><strong>Специальные защитники</strong></p>
+<p>При создании драйвера могут произойти ошибки. Обычно JavaScript-исключения имеют тип <code>Error</code>, но это не точно и не всегда. Поэтому TypeScript считает значение переменной ошибки в выражении <code>catch</code> — тип <code>unknown</code>.</p>
+<p>Посмотрим, как мы можем работать с этим значением.</p>
+<p>Перед переходом к следующему шагу поменяйте <code>const type = 'cloud'</code> на <code>let type = 'cloud'</code> в файле <em>main.ts</em>.</p>
+</section>
+<section id="шаг-5-2" class="level3" data-number="2.10.5">
+<h3 data-number="2.10.5">Шаг №5</h3>
+<p><strong>Выясним неизвестность</strong></p>
+<p>Обратите внимание, что в main.ts переменная <code>type</code> перестала быть постоянным значением, и TypeScript сразу «заволновался». Он прав. К тому времени, когда функцию обратного вызова попросят вычислить настройки, значение этой переменной может измениться. TypeScript разрешает любые строковые значения для переменной <code>type</code>. А нам для настроек облачного хранилища требуется значение специализированного строкового типа <code>'cloud'</code>.</p>
+<p><strong>Специальный защитник</strong></p>
+<p>Создадим две функции. Первая из них isCloud — защитник. Обратите внимание на тип возвращаемых значений. Там написано, что когда результат <code>true</code>, то указанный аргумент имеет указанный тип. Вторая функция нужна, чтобы своевременно сообщить об ошибке.</p>
+<p>Обратите внимание, как TypeScript ненавязчиво заставляет вас проверять данные на отсутствие противоречий.</p>
+</section>
+</div>
+</section>
+<section id="система-типов-для-описания-объектной-модели" class="level2" data-number="2.11">
+<h2 data-number="2.11">2.10. Система типов для описания объектной модели</h2>
+<div class="text-container text-container--module">
+<section id="шаг-1-4" class="level3" data-number="2.11.1">
+<h3 data-number="2.11.1">Шаг №1</h3>
+<p><strong>Свойства, методы и события модели</strong></p>
+<p>В этой демонстрации мы создадим систему типов, удобную для описания объектной модели, с её свойствами, методами и событиями.</p>
+<p>Нам нужно реализовать модель для таблицы из записей с полем id — уникальным ключом.</p>
+</section>
+<section id="шаг-2-4" class="level3" data-number="2.11.2">
+<h3 data-number="2.11.2">Шаг №2</h3>
+<p><strong>Диспетчер события</strong></p>
+<p>Нам нужна реализация, управляющая подписками и вызывающая обработчики по мере надобности. Для этого добавим описание интерфейс-функции <code>Callable</code> и займёмся реализацией в файле <code>event-manager.ts</code>.</p>
+</section>
+<section id="шаг-3-4" class="level3" data-number="2.11.3">
+<h3 data-number="2.11.3">Шаг №3</h3>
+<p><strong>Реализация диспетчера событий</strong></p>
+<p>При реализации диспетчера воспользуемся тем, что функции в JavaScript (и в TypeScript) являются в том числе обычными значениями. <code>Object.assign</code> поможет нам в этом.</p>
+</section>
+<section id="шаг-4-4" class="level3" data-number="2.11.4">
+<h3 data-number="2.11.4">Шаг №4</h3>
+<p><strong>Реализация модели — таблицы записей</strong></p>
+<p>Если реализован диспетчер событий, создание модели становится практически прямолинейным.</p>
+<p>Вы можете усовершенствовать эту реализацию, исключив лишние события, если значение новой строки сортировки совпадает с ранее установленным.</p>
+</section>
+<section id="шаг-5-3" class="level3" data-number="2.11.5">
+<h3 data-number="2.11.5">Шаг №5</h3>
+<p><strong>Воспользуемся результатами</strong></p>
+<p>Изобразим использование нашей модели в виде простой программы.</p>
+<p>В этом примере в файле <code>main.ts</code> мы сначала создаём список, отсортированный по значению id, а потом по значению name. Досчитайте до трёх, и результат будет доступен.</p>
+</section>
+</div>
+</section>
+<section id="типизация-функций-на-примере-журнала-операций" class="level2" data-number="2.12">
+<h2 data-number="2.12">2.11. Типизация функций на примере журнала операций</h2>
+<div class="text-container text-container--module">
+<p>В файле <code>ledger-or.json</code> хранится демо-выборка из журнала операций организации. Операции представляют json-объект вида, похожего на такой:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;generalLedgerId&quot;</span><span class="fu">:</span> <span class="dv">2</span><span class="fu">,</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;posted&quot;</span><span class="fu">:</span> <span class="st">&quot;2021-07-28T07:49:45.507&quot;</span><span class="fu">,</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;debitAccountId&quot;</span><span class="fu">:</span> <span class="st">&quot;311.0001 income&quot;</span><span class="fu">,</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;creditAccountId&quot;</span><span class="fu">:</span> <span class="st">&quot;158.0001 project&quot;</span><span class="fu">,</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;amount&quot;</span><span class="fu">:</span> <span class="fl">2021.43</span><span class="fu">,</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;referenceId&quot;</span><span class="fu">:</span> <span class="st">&quot;promo&quot;</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>В соответствии с правилами двойной записи движения средств по счетам, этот журнал содержит записи, в каждой из которых задействовано два счёта:</p>
+<ul>
+<li>дебетуемый счёт <code>debitAccountId</code>,</li>
+<li>кредитуемый счёт <code>creditAccountId</code>.</li>
+</ul>
+<p>В разных записях счёт может встречаться много раз (0 или больше) — как в поле debitAccountId, так и в поле creditAccountId. Один и тот же счёт не может встречаться одновременно в обоих свойствах в одной и той же записи.</p>
+<section id="задание" class="level3" data-number="2.12.1">
+<h3 data-number="2.12.1">Задание</h3>
+<p>Преобразуйте список таких объектов-записей журнала в другой список — <strong>ежедневные обороты по счёту</strong>. Нужно, чтобы по форме элементы этого массива соответствовали указанному интерфейсу <code>AccountDaily</code> для одного конкретного указанного значения счёта.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">interface</span> AccountDaily {</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  date<span class="op">:</span> <span class="dt">string</span><span class="op">;</span> <span class="co">// Этот день.</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  debitDayTotal<span class="op">:</span> <span class="dt">number</span><span class="op">;</span> <span class="co">//Сумма amount всех записей журнала за этот день, где указанный счёт дебетуется.</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  creditDayTotal<span class="op">:</span> <span class="dt">number</span><span class="op">;</span>  <span class="co">// Сумма amount все записей журнала за этот день, где указанный счёт кредитуется.</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Отфильтруйте журнал операций. Оставьте только те записи, которые либо по кредиту, либо по дебету связаны с переданным вам счётом. Составьте результирующий агрегированный массив.</p>
+<p>Дополнительно известно, что значение в поле <code>AccountDaily.date</code> не должно содержать значения времени (то есть быть в форме <code>YYYY-MM-DD</code>T<code>00:00:00.000</code>Z);</p>
+<p>Функцию свёртки нужно сделать в соответствии с интерфейсом:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">export type</span> AccountDailyReducer <span class="op">=</span> (accountId<span class="op">:</span> <span class="dt">string</span><span class="op">,</span> ledger<span class="op">:</span> <span class="dt">unknown</span>) <span class="kw">=&gt;</span> AccountDaily[]<span class="op">;</span></span></code></pre></div>
+<p>Тип параметра <code>ledger</code> следует определить таким образом, чтобы, с одной стороны, в функцию можно было бы передать записи из <code>ledger-or.json</code>, а с другой, чтобы тип значения был минимально необходимым для выполнения операции.</p>
+<p>Значение параметра <code>accountId</code> (строка) может присутствовать в журнале либо в поле <code>debitAccountId</code>, либо в поле <code>creditAccountId</code>.</p>
+</section>
+</div>
+</section>
+<section id="система-типов-для-функций-работающих-с-записями" class="level2" data-number="2.13">
+<h2 data-number="2.13">2.12. Система типов для функций, работающих с записями</h2>
+<div class="text-container text-container--module">
+<section id="шаг-1-5" class="level3" data-number="2.13.1">
+<h3 data-number="2.13.1">Шаг №1</h3>
+<p>В файле с выборкой данных обратим внимание на регистрацию событий с точностью до долей секунды и отметим, что нам придётся отбрасывать дробную часть суток.</p>
+<p>В файле с предоставленными интерфейсами отметим, что от нас требуется лишь дата и две суммы: сумма поступлений и сумма списаний.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">interface</span> AccountDaily {</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  date<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  debitDayTotal<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  creditDayTotal<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</section>
+<section id="шаг-2-5" class="level3" data-number="2.13.2">
+<h3 data-number="2.13.2">Шаг №2</h3>
+<p>Для построения суммарной статистики функция должна получать массив. В связи с этим изменяем описание интерфейса на следующее:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="im">export type</span> AccountDailyReducer <span class="op">=</span> (</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  accountId<span class="op">:</span> <span class="dt">string</span><span class="op">,</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  ledger<span class="op">:</span> <span class="dt">unknown</span>[]</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>) <span class="kw">=&gt;</span> AccountDaily[]<span class="op">;</span></span></code></pre></div>
+<p>Зная, что параметр функции — массив, организуем его свёртку. Для этого нам нужно предоставить методу <code>reduce</code> начальное значение и группирующую функцию, отбирающую данные для нужного нам счёта.</p>
+<p>Будем собирать данные так, чтобы если операция происходила по указанному счёту, то сумма операции накапливалась бы в соответствующем поле. Помня о том, что требуется использовать дату без времени, а операции могут быть выбраны из базы в любом порядке, организуем индекс по значению дня с помощью объекта Map.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> IndexedAccumulator <span class="op">=</span> <span class="bu">Map</span><span class="op">&lt;</span><span class="bu">Date</span><span class="op">,</span> AccountDaily<span class="op">&gt;;</span></span></code></pre></div>
+<p>Этот индекс мы создадим в функции <code>getInitialBuffer</code>.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> getInitialBuffer <span class="op">=</span> ()<span class="op">:</span> IndexedAccumulator <span class="kw">=&gt;</span> <span class="kw">new</span> <span class="bu">Map</span>()<span class="op">;</span></span></code></pre></div>
+<p>А сам редуктор создадим в функции <code>createReducer</code></p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> createReducer <span class="op">=</span> (account<span class="op">:</span> <span class="dt">string</span>) <span class="kw">=&gt;</span> (</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  previous<span class="op">:</span> IndexedAccumulator<span class="op">,</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  entry<span class="op">:</span> <span class="dt">unknown</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>)<span class="op">:</span> IndexedAccumulator <span class="kw">=&gt;</span> {</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>()<span class="op">;</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<p>Обратите внимание, что мы не определили тип значения <code>entry</code>, но запомнили в окружении редуктора (замкнули) идентификатор счёта. Он потребуется для фильтрации.</p>
+</section>
+<section id="шаг-3-5" class="level3" data-number="2.13.3">
+<h3 data-number="2.13.3">Шаг №3</h3>
+<p>Как мы помним, нам нужно «отрезать» время. Сделаем вспомогательную функцию. Мы обнаружим, что нам требуется значение даты и времени операции — мы видим его в исходном массиве в элементе в свойстве <code>posted</code>.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> GeneralLedgerEntryPart {</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  posted<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">// to be continue...</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> getDate <span class="op">=</span> (dateTime<span class="op">:</span> <span class="dt">string</span>) <span class="kw">=&gt;</span> dateTime<span class="op">.</span><span class="fu">substring</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">10</span>)<span class="op">;</span></span></code></pre></div>
+<p>Для каждого дня, в котором были операции по счёту, нам нужно аккумулировать суммы приходов и списаний. Мы будем хранить такие данные в специальном объекте, а создавать его будем функцией:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> createAccountDaily <span class="op">=</span> (date<span class="op">:</span> <span class="dt">string</span>)<span class="op">:</span> AccountDaily <span class="kw">=&gt;</span> ({</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  creditDayTotal<span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  date<span class="op">,</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  debitDayTotal<span class="op">:</span> <span class="dv">0</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p>Операция <code>set</code> объекта Map предназначена для fluent-использования, но нам требуется версия, возвращающая установленное значение:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> setMapThough <span class="op">=</span> (</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  accumulator<span class="op">:</span> <span class="bu">Map</span><span class="op">&lt;</span><span class="dt">string</span><span class="op">,</span> AccountDaily<span class="op">&gt;,</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  row<span class="op">:</span> AccountDaily</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>) <span class="kw">=&gt;</span> {</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>  accumulator<span class="op">.</span><span class="fu">set</span>(row<span class="op">.</span><span class="at">date</span><span class="op">,</span> row)<span class="op">;</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> row<span class="op">;</span></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<p>Сначала в редукторе добавим определение функций фильтрации, чтобы проверить, затрагивала ли операция рассматриваемый счёт.</p>
+<p>Мы обнаружим, что нам нужно знать <code>debitAccountId</code> и <code>creditAccountId</code>. Добавим их в определение интерфейса.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> GeneralLedgerEntryPart {</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  posted<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">// to be continued...</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  debitAccountId<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>  creditAccountId<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// to be continued 2 ...</span></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> createReducer <span class="op">=</span> (accountId<span class="op">:</span> <span class="dt">string</span>) <span class="kw">=&gt;</span> {</span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> debitFilter <span class="op">=</span> (item<span class="op">:</span> GeneralLedgerEntryPart) <span class="kw">=&gt;</span></span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a>    accountId <span class="op">===</span> item<span class="op">.</span><span class="at">debitAccountId</span><span class="op">;</span></span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> creditFilter <span class="op">=</span> (item<span class="op">:</span> GeneralLedgerEntryPart) <span class="kw">=&gt;</span></span>
+<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a>    accountId <span class="op">===</span> item<span class="op">.</span><span class="at">creditAccountId</span><span class="op">;</span></span>
+<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>()<span class="op">;</span></span>
+<span id="cb55-16"><a href="#cb55-16" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<p>Наконец, мы изготовим функцию редуктора, где нам потребуется знание суммы операции. А значит, мы сможем типизировать наш редуктор:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> GeneralLedgerEntryPart {</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  posted<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">// to be continued...</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  debitAccountId<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>  creditAccountId<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// to be continued 2 ...</span></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>  amount<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> createReducer <span class="op">=</span> (accountId<span class="op">:</span> <span class="dt">string</span>) <span class="kw">=&gt;</span> {</span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> debitFilter <span class="op">=</span> (item<span class="op">:</span> GeneralLedgerEntryPart) <span class="kw">=&gt;</span></span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>    accountId <span class="op">===</span> item<span class="op">.</span><span class="at">debitAccountId</span><span class="op">;</span></span>
+<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> creditFilter <span class="op">=</span> (item<span class="op">:</span> GeneralLedgerEntryPart) <span class="kw">=&gt;</span></span>
+<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a>    accountId <span class="op">===</span> item<span class="op">.</span><span class="at">creditAccountId</span><span class="op">;</span></span>
+<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb56-16"><a href="#cb56-16" aria-hidden="true" tabindex="-1"></a>    accumulator<span class="op">:</span> <span class="bu">Map</span><span class="op">&lt;</span><span class="dt">string</span><span class="op">,</span> AccountDaily<span class="op">&gt;,</span></span>
+<span id="cb56-17"><a href="#cb56-17" aria-hidden="true" tabindex="-1"></a>    item<span class="op">:</span> GeneralLedgerEntryPart</span>
+<span id="cb56-18"><a href="#cb56-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="kw">=&gt;</span> {</span>
+<span id="cb56-19"><a href="#cb56-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> isCredit <span class="op">=</span> <span class="fu">creditFilter</span>(item)<span class="op">;</span></span>
+<span id="cb56-20"><a href="#cb56-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> isDebit <span class="op">=</span> <span class="fu">debitFilter</span>(item)<span class="op">;</span></span>
+<span id="cb56-21"><a href="#cb56-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (isCredit <span class="op">||</span> isDebit) {</span>
+<span id="cb56-22"><a href="#cb56-22" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> row <span class="op">=</span> <span class="fu">getOrCreateDaily</span>(accumulator<span class="op">,</span> item<span class="op">.</span><span class="at">posted</span>)<span class="op">;</span></span>
+<span id="cb56-23"><a href="#cb56-23" aria-hidden="true" tabindex="-1"></a>      row<span class="op">.</span><span class="at">creditDayTotal</span> <span class="op">+=</span> isCredit <span class="op">?</span> item<span class="op">.</span><span class="at">amount</span> <span class="op">:</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb56-24"><a href="#cb56-24" aria-hidden="true" tabindex="-1"></a>      row<span class="op">.</span><span class="at">debitDayTotal</span> <span class="op">+=</span> isDebit <span class="op">?</span> item<span class="op">.</span><span class="at">amount</span> <span class="op">:</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb56-25"><a href="#cb56-25" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb56-26"><a href="#cb56-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> accumulator<span class="op">;</span></span>
+<span id="cb56-27"><a href="#cb56-27" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb56-28"><a href="#cb56-28" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="шаг-4-5" class="level3" data-number="2.13.4">
+<h3 data-number="2.13.4">Шаг №4</h3>
+<p>Мы создали редуктор, который использует минимальное количество необходимых полей из журнала операций. Его поведение следует зафиксировать.</p>
+<p>Если вы использовали предложенный файл <code>.json</code> с данными, то следующий набор тестов должен пройти успешно.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> data <span class="im">from</span> <span class="st">&quot;./ledger-01.json&quot;</span><span class="op">;</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { accountDaily } <span class="im">from</span> <span class="st">&quot;./account-daily&quot;</span><span class="op">;</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> ACCOUNT_TO_PROBE <span class="op">=</span> <span class="st">&quot;101.0001 cash&quot;</span><span class="op">;</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> ACCOUNT_DAYS_COUNT <span class="op">=</span> <span class="dv">31</span><span class="op">;</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> ACCOUNT_TO_CREDIT <span class="op">=</span> <span class="st">&quot;311.0001 income&quot;</span><span class="op">;</span></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> ACCOUNT_TOTAL_CREDIT <span class="op">=</span> <span class="dv">304964</span><span class="op">;</span></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> ACCOUNT_TO_DEBIT <span class="op">=</span> <span class="st">&quot;103.0001 bank&quot;</span><span class="op">;</span></span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> ACCOUNT_TOTAL_DEBIT <span class="op">=</span> <span class="dv">336205</span><span class="op">;</span></span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(<span class="st">&quot;general ledger reducer accountDaily&quot;</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">it</span>(<span class="st">&quot;creates array for each day&quot;</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> result <span class="op">=</span> <span class="fu">accountDaily</span>(ACCOUNT_TO_PROBE<span class="op">,</span> data)<span class="op">;</span></span>
+<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect</span>(result<span class="op">.</span><span class="at">length</span>)<span class="op">.</span><span class="fu">toBe</span>(ACCOUNT_DAYS_COUNT)<span class="op">;</span></span>
+<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">it</span>(<span class="st">&quot;collects all credits for an account&quot;</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> result <span class="op">=</span> <span class="fu">accountDaily</span>(ACCOUNT_TO_CREDIT<span class="op">,</span> data)<span class="op">;</span></span>
+<span id="cb57-21"><a href="#cb57-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> total <span class="op">=</span> result<span class="op">.</span><span class="fu">reduce</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a <span class="op">+</span> b<span class="op">.</span><span class="at">creditDayTotal</span><span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb57-22"><a href="#cb57-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(total))<span class="op">.</span><span class="fu">toBe</span>(ACCOUNT_TOTAL_CREDIT)<span class="op">;</span></span>
+<span id="cb57-23"><a href="#cb57-23" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb57-24"><a href="#cb57-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-25"><a href="#cb57-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">it</span>(<span class="st">&quot;collects all debits for an account&quot;</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb57-26"><a href="#cb57-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> result <span class="op">=</span> <span class="fu">accountDaily</span>(ACCOUNT_TO_DEBIT<span class="op">,</span> data)<span class="op">;</span></span>
+<span id="cb57-27"><a href="#cb57-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> total <span class="op">=</span> result<span class="op">.</span><span class="fu">reduce</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a <span class="op">+</span> b<span class="op">.</span><span class="at">creditDayTotal</span><span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb57-28"><a href="#cb57-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(total))<span class="op">.</span><span class="fu">toBe</span>(ACCOUNT_TOTAL_DEBIT)<span class="op">;</span></span>
+<span id="cb57-29"><a href="#cb57-29" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb57-30"><a href="#cb57-30" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+</section>
+</div>
+</section>
+</section>
+</body>
+</html>

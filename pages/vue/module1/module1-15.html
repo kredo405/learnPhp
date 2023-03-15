@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://up.htmlacademy.ru/vue/1/module/1/item/15 -->
+<html lang="ru" class="">
+<style>
+ytp-player-minimized {
+    overflow: hidden;
+    outline: none;
+}
+</style>
+<script type="text/javascript" async="" src="./1.15. Практика по основам_files/omq12oer"></script><script type="text/javascript" async="" src="./1.15. Практика по основам_files/linkid.js.Без названия"></script><script type="text/javascript" integrity="sha384-d/yhnowERvm+7eCU79T/bYjOiMmq4F11ElWYLmt0ktvYEVgqLDazh4+gW9CKMpYW" crossorigin="anonymous" async="" src="./1.15. Практика по основам_files/amplitude-5.2.2-min.gz.js.Без названия"></script><script async="" src="./1.15. Практика по основам_files/tag.js.Без названия"></script><script type="text/javascript" async="" src="./1.15. Практика по основам_files/analytics.js.Без названия"></script><script async="" src="./1.15. Практика по основам_files/gtm.js.Без названия"></script><script src="chrome-extension://ldkihpcibakajmpnggbjnehoifnnpebn/content.js"></script>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Основы синтаксиса и базовых возможностей Vue.js&nbsp;— Vue.js для опытных разработчиков #1 / HTML Academy</title>
+<script>document.documentElement.classList.remove('no-js');</script><script src="./1.15. Практика по основам_files/sentry.js.Без названия" data-sentry="a64ad1fd170847efa544b305c67696aa" data-project="10" data-version="2" data-sample-rate="0.25"></script>
+<link rel="stylesheet" href="./1.15. Практика по основам_files/octicons-3.3.0.min.css">
+<link rel="stylesheet" href="./1.15. Практика по основам_files/core.css">
+<link rel="stylesheet" href="./1.15. Практика по основам_files/text.css">
+<link rel="stylesheet" href="./1.15. Практика по основам_files/extended-ui-kit.css">
+<link rel="stylesheet" href="./1.15. Практика по основам_files/up.css">
+<meta name="theme-color" content="#18213F">
+<link rel="mask-icon" href="https://up.htmlacademy.ru/meta/favicon.svg" color="#18213F">
+<meta name="application-name" content="Vue.js для опытных разработчиков #1">
+<meta name="apple-mobile-web-app-title" content="Vue.js для опытных разработчиков #1">
+<link rel="apple-touch-icon" href="https://up.htmlacademy.ru/meta/javascript-touch-icon.png">
+<link rel="shortcut icon" type="image/x-icon" href="https://up.htmlacademy.ru/meta/javascript-favicon.ico">
+<link rel="manifest" href="https://up.htmlacademy.ru/meta/javascript.webmanifest">
+<link rel="preload" href="https://assets.htmlacademy.ru/fonts/tt-norms-pro-400-normal.woff2?cs=9368bed5a8f0c297d5938ffb45f6a27bdb56b166" type="font/woff2" as="font" crossorigin="anonymous">
+<link rel="preload" href="https://assets.htmlacademy.ru/fonts/tt-norms-pro-500-normal.woff2?cs=1eb51247bf7c0f96b4ac3c19b05d6df1083d683b" type="font/woff2" as="font" crossorigin="anonymous">
+<link rel="preload" href="https://assets.htmlacademy.ru/fonts/tt-norms-pro-700-normal.woff2?cs=fa6abeb686814ab5fd0cbcfd2a0c8b02508b1451" type="font/woff2" as="font" crossorigin="anonymous">
+<link rel="preload" href="https://assets.htmlacademy.ru/fonts/ubuntu-mono.woff2?cs=7882c41280d8256972fd2b8ee74e2d7d28a857b6" type="font/woff2" as="font" crossorigin="anonymous">
+<link rel="preload" as="script" href="./1.15. Практика по основам_files/general.js.Без названия">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W3ZS73J');</script><script charset="utf-8" src="./1.15. Практика по основам_files/3591ce.js.Без названия"></script><script charset="utf-8" src="./1.15. Практика по основам_files/0971a8.js.Без названия"></script>
+<style></style>
+<style>
+.hljs {
+    display: block;
+    color: black;
+}
+.hljs-keyword, .hljs-builtin-name, .hljs-selector-id {
+    color: blue;
+}
+.hljs-subst, .hljs-attr {
+    color: black;
+}
+.hljs-title, .hljs-type {
+    color: #0000A2;
+}
+.hljs-literal {
+    color: rgb(88,92,246);
+}
+.hljs-number {
+    color: rgb(0,0,205);
+}
+.hljs-regexp, .hljs-string, .hljs-doctag, .hljs-selector-pseudo, .hljs-code {
+    color: rgb(3,106,7);
+}
+.hljs-selector-class, .hljs-variable {
+    color: rgb(49,132,149);
+}
+.hljs-selector-tag, .hljs-selector-attr, .hljs-link {
+    color: rgb(197,6,11);
+}
+.hljs-attribute {
+    color: rgb(109,121,222);
+}
+.hljs-comment, .hljs-quote {
+    color: rgb(188,20,175);
+}
+.hljs-meta {
+    color: rgb(104,104,91);
+}
+.hljs-tag {
+    color: rgb(0,22,142);
+}
+.hljs-addition {
+    background-color: rgba(155, 185, 85, 0.2);
+}
+.hljs-deletion {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+.hljs-params, .hljs-built_in {
+    color: rgb(49, 132, 149);
+}
+</style>
+<script charset="utf-8" src="./1.15. Практика по основам_files/796544.js.Без названия"></script><script charset="utf-8" src="./1.15. Практика по основам_files/85ca94.js.Без названия"></script><script charset="utf-8" src="./1.15. Практика по основам_files/0fd8b0.js.Без названия"></script><script charset="utf-8" src="./1.15. Практика по основам_files/66c7c8.js.Без названия"></script><script charset="utf-8" src="./1.15. Практика по основам_files/e2b43a.js.Без названия"></script><script charset="utf-8" src="./1.15. Практика по основам_files/38e38f.js.Без названия"></script><script charset="utf-8" src="./1.15. Практика по основам_files/c44bf0.js.Без названия"></script><script charset="utf-8" src="./1.15. Практика по основам_files/791b31.js.Без названия"></script><script charset="utf-8" src="./1.15. Практика по основам_files/79cf05.js.Без названия"></script><script charset="utf-8" src="./1.15. Практика по основам_files/e65860.js.Без названия"></script>
+</head>
+<body>
+<noscript>
+<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W3ZS73J"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<header class="up-header up-header--vue">
+  <div class="up-header__inner">
+    <div class="up-header__text">
+      <h1 class="up-header__title"><a href="index.html">Vue.js для опытных разработчиков</a></h1>
+      <span class="up-header__date"></span></div>
+    <ul class="up-header__social">
+      <li><a href="https://up.htmlacademy.ru/vue/1/feed" title="Лента уведомлений"><span class="sr-only">Лента уведомлений</span><span class="feed-counter hidden" data-newsfeed="https://newsfeed.htmlacademy.ru" data-newsfeed-token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjM1MDYzLCJpbnRlbnNpdmVJZCI6MjIzLCJyb2xlIjoic3R1ZGVudCJ9.7dAVgIMq-LFi-F7RsLBBIQDPE4gFMy3Z5nA5rSQFA7w">0</span>
+        <svg aria-hidden="true" width="32" height="32">
+          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#bell-24"></use>
+        </svg>
+        </a></li>
+      <li><a href="https://join.slack.com/t/htmlacademy-vue/shared_invite/zt-rqoxfz8j-h7rhSjglhICSzbPjl8gZGA" title="Канал в Slack"><span class="sr-only">Канал в Slack</span>
+        <svg aria-hidden="true" width="32" height="32">
+          <use xlink:href="/img/sprites/general.svg?cs=915d3446796b7b9fb94be6b8ae7ffc43d042c5d3#new_slack"></use>
+        </svg>
+        </a></li>
+    </ul>
+  </div>
+  <div class="up-header__nav">
+    <nav class="tabs tabs--up">
+      <button class="tabs__button" type="button"><span class="sr-only">Меню курса</span><span class="tabs__icon">
+      <svg aria-hidden="true">
+        <use xlink:href="/img/sprites/up.svg?cs=fb70597153879c70ce140224310b7444b664990a#icon-arrow-right"></use>
+      </svg>
+      </span></button>
+       <ul class="tabs__list">
+        <li class="tabs__item tabs__item--active"><a class="tabs__item-link" href="../index.html">Программа</a></li>
+        <li class="tabs__item "><a class="tabs__item-link" href="book/index.html"> Учебник </a></li>
+        <li class="tabs__item "><a class="tabs__item-link" href="../criteries.html"> Критерии </a></li>
+        <li class="tabs__item "><a class="tabs__item-link" href="../project.html"> Проекты </a></li>
+        <li class="tabs__item  tabs__item--dropdown "><a class="tabs__item-link" href="../examination.html"> Защита </a>
+          <ul class="tabs__dropdown">
+            <li><a href="../regulations.html"> Регламент </a></li>
+          </ul>
+        </li>
+        <li class="tabs__item  tabs__item--dropdown "><a class="tabs__item-link" href="../help/index.html"> Помощь </a>
+          <ul class="tabs__dropdown">
+            <li><a href="../faq.html"> FAQ </a></li>
+          </ul>
+        </li>
+        <li class="tabs__item "><a class="tabs__item-link" href="../results.html"> Итоги </a></li>
+        <li class="tabs__item tabs__item--mobile"><a class="tabs__item-link" href="../index.html">Меню курса</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="page-content ">
+  <div class="page-content__inner">
+    <div class="up-interface up-interface--up ">
+      <section class="up-interface__left-col">
+        <nav class="breadcrumbs">
+          <ul class="breadcrumbs__list">
+            <li class="breadcrumbs__item"><a href="index.html">Главная</a></li>
+            <li class="breadcrumbs__item"><a href="https://up.htmlacademy.ru/vue/1/module/1">1. Основы синтаксиса и базовых возможностей Vue.js</a></li>
+          </ul>
+        </nav>
+        <article class="up-text">
+          <div class="up-text__head">
+            <h1 class="up-text__title">
+              <svg aria-hidden="true" width="24" height="24">
+                <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#book-16"></use>
+              </svg>
+              1.15.&nbsp;Практика по основам </h1>
+          </div>
+          <div class="text-container text-container--module">
+            <p>Пришло время поработать над проектом. Вот наш план действий:</p>
+            <ol>
+              <li>Добавляем JSON тестовые данные.</li>
+              <li>Создаём компонент хедера.</li>
+              <li>Создаём компонент сайдбара.</li>
+              <li>Создаём компонент доски задач.</li>
+              <li>Объединяем компоненты в&nbsp;1 лейауте.</li>
+              <li>Подключаем лейаут в&nbsp;App.vue.</li>
+            </ol>
+            <blockquote>
+              <p><strong>Важно:</strong> в&nbsp;теоретических статьях мы&nbsp;будем вырезать стили scss и&nbsp;заменять их&nbsp;на&nbsp;«...».
+                Кроме того, части кода мы&nbsp;будем оформлять в&nbsp;виде комментариев, чтобы у&nbsp;студента было понимание, какая часть кода комментируется. Для облегчения восприятия материалов некоторые части кода могут не&nbsp;входить в&nbsp;статьи.</p>
+            </blockquote>
+            <blockquote>
+              <p>Окончательный вариант состояния проекта студент может посмотреть в&nbsp;репозитории.</p>
+            </blockquote>
+            <h2 id="dobavlyaem-json-testovie-dannie">Добавляем JSON тестовые данные</h2>
+            <p>Во&nbsp;<code>frontend/src/static</code> мы&nbsp;добавили тестовые данные:</p>
+            <div class="spoiler">
+              <button class="spoiler__button" data-toggle="columns" data-toggle-class="spoiler__button--opened"><span>Файл columns.json</span></button>
+              <div class="spoiler__content hidden" data-toggle-area="columns">
+                <pre class="json language-json"><code class="hljs language-json"><span class="hljs-punctuation">[</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Запланировано"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"В работе"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"На проверке"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Выполнено"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">5</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"На удаление"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">]</span>
+</code></pre>
+              </div>
+            </div>
+            <div class="spoiler">
+              <button class="spoiler__button" data-toggle="tasks" data-toggle-class="spoiler__button--opened"><span>Файл tasks.json</span></button>
+              <div class="spoiler__content hidden" data-toggle-area="tasks">
+                <pre class="json language-json"><code class="hljs language-json"><span class="hljs-punctuation">[</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Задача № 1"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"dueDate"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">""</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"columnId"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"statusId"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"userId"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Задача № 2"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"dueDate"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"#Фронтенд#Для верски#Бекэнд"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"columnId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"statusId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"userId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"7c7a4c48-3896-4353-b050-c8e50b967e8f"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"user"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"7c7a4c48-3896-4353-b050-c8e50b967e8f"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Василий Ложкин"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user5.jpg"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Задача № 3"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"dueDate"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"#Дизайн"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"columnId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"statusId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"userId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"86aea12a-9dbf-4e8f-856a-cad238dd66c5"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"user"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"86aea12a-9dbf-4e8f-856a-cad238dd66c5"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Сергей Есенин"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user2.jpg"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Задача № 4"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"dueDate"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"#Бекэнд#Фронтенд#Срочно"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"columnId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"statusId"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"userId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"b6009037-1d39-4452-8883-cc4c34a48c33"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"user"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"b6009037-1d39-4452-8883-cc4c34a48c33"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Алексей Яшин"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user3.jpg"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">5</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Задача № 5"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"dueDate"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"#Дизайн"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"columnId"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"statusId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"userId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"9a655ecf-0966-4c81-aad9-e0b707cb73e8"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"user"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"9a655ecf-0966-4c81-aad9-e0b707cb73e8"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Игорь Пятин"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user6.jpg"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">6</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Задача № 6"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"dueDate"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"#Срочно#Для верски#Бекэнд"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"columnId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"statusId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"userId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"059d070d-9d48-4120-af9d-6028cdae0e5a"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"user"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"059d070d-9d48-4120-af9d-6028cdae0e5a"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Елена Шаповалова"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user1.jpg"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">7</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Задача № 7"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"dueDate"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"#Фронтенд#Срочно#Срочно"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"columnId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"statusId"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"userId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"a8e98a44-41ae-46bb-8cf4-cba932c463e5"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"user"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"a8e98a44-41ae-46bb-8cf4-cba932c463e5"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Андрей Ильин"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user7.jpg"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">8</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Задача № 8"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"dueDate"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">""</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"columnId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"statusId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"userId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"55f2968a-cc2b-42e2-b918-be3c973bf546"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"user"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"55f2968a-cc2b-42e2-b918-be3c973bf546"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Диана Аверина"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user4.jpg"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">9</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Задача № 9"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"dueDate"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"#Дизайн"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"columnId"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"statusId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"userId"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">10</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Задача № 10"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"dueDate"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">""</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"columnId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"statusId"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"userId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"7c7a4c48-3896-4353-b050-c8e50b967e8f"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"user"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"7c7a4c48-3896-4353-b050-c8e50b967e8f"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Василий Ложкин"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user5.jpg"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">11</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Задача № 11"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"dueDate"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"#Бекэнд#Дизайн#Дизайн"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"columnId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"statusId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"userId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"86aea12a-9dbf-4e8f-856a-cad238dd66c5"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"user"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"86aea12a-9dbf-4e8f-856a-cad238dd66c5"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Сергей Есенин"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user2.jpg"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">12</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Задача № 12"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"dueDate"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"#Фронтенд#Дизайн"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"columnId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"statusId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"userId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"b6009037-1d39-4452-8883-cc4c34a48c33"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"user"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"b6009037-1d39-4452-8883-cc4c34a48c33"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Алексей Яшин"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user3.jpg"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Задача № 13"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"dueDate"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"#Дизайн"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"columnId"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"statusId"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"userId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"9a655ecf-0966-4c81-aad9-e0b707cb73e8"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"user"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"9a655ecf-0966-4c81-aad9-e0b707cb73e8"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Игорь Пятин"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user6.jpg"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">14</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Задача № 14"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"dueDate"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"#Дизайн"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"columnId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"statusId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"userId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"059d070d-9d48-4120-af9d-6028cdae0e5a"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"user"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"059d070d-9d48-4120-af9d-6028cdae0e5a"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Елена Шаповалова"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user1.jpg"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">15</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Задача № 15"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"dueDate"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"#Для верски#Бекэнд#Срочно#Фронтенд"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"columnId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"statusId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"userId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"a8e98a44-41ae-46bb-8cf4-cba932c463e5"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"user"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"a8e98a44-41ae-46bb-8cf4-cba932c463e5"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Андрей Ильин"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user7.jpg"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">16</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Задача № 16"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"dueDate"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"#Фронтенд"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"columnId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"statusId"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"userId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"55f2968a-cc2b-42e2-b918-be3c973bf546"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"user"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"55f2968a-cc2b-42e2-b918-be3c973bf546"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Диана Аверина"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user4.jpg"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">17</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Задача № 17"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"dueDate"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">""</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"columnId"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"statusId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"userId"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">18</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Задача № 18"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"dueDate"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2021-01-08T11:40:03.000Z"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">""</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"columnId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"statusId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"userId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"7c7a4c48-3896-4353-b050-c8e50b967e8f"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"user"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"7c7a4c48-3896-4353-b050-c8e50b967e8f"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Василий Ложкин"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user5.jpg"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">19</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Задача № 19"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"dueDate"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2021-01-08T11:40:03.000Z"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">""</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"columnId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"statusId"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"userId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"86aea12a-9dbf-4e8f-856a-cad238dd66c5"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"user"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"86aea12a-9dbf-4e8f-856a-cad238dd66c5"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Сергей Есенин"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user2.jpg"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">20</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"title"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Задача № 20"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"sortOrder"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"dueDate"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2021-01-08T11:40:03.000Z"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tags"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">""</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"columnId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"statusId"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"userId"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"b6009037-1d39-4452-8883-cc4c34a48c33"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"user"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"b6009037-1d39-4452-8883-cc4c34a48c33"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Алексей Яшин"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user3.jpg"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">]</span>
+</code></pre>
+              </div>
+            </div>
+            <div class="spoiler">
+              <button class="spoiler__button" data-toggle="users" data-toggle-class="spoiler__button--opened"><span>Файл users.json</span></button>
+              <div class="spoiler__content hidden" data-toggle-area="users">
+                <pre class="json language-json"><code class="hljs language-json"><span class="hljs-punctuation">[</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"cdr09037-1569-4542-as83-gt5d34a48c33"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Администратор"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"email"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"admin@example.com"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"isAdmin"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/admin.jpg"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"7c7a4c48-3896-4353-b050-c8e50b967e8f"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Василий Ложкин"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"email"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"vasia@example.com"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"isAdmin"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">false</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user5.jpg"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"86aea12a-9dbf-4e8f-856a-cad238dd66c5"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Сергей Есенин"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"email"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"seresen@example.com"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"isAdmin"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">false</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user2.jpg"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"b6009037-1d39-4452-8883-cc4c34a48c33"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Алексей Яшин"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"email"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"yashin@example.com"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"isAdmin"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">false</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user3.jpg"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"9a655ecf-0966-4c81-aad9-e0b707cb73e8"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Игорь Пятин"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"email"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"five@example.com"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"isAdmin"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">false</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user6.jpg"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"059d070d-9d48-4120-af9d-6028cdae0e5a"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Елена Шаповалова"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"email"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"six@example.com"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"isAdmin"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">false</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user1.jpg"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"a8e98a44-41ae-46bb-8cf4-cba932c463e5"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Андрей Ильин"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"email"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"seven@example.com"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"isAdmin"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">false</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user7.jpg"</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"55f2968a-cc2b-42e2-b918-be3c973bf546"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Диана Аверина"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"email"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"eight@example.com"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"isAdmin"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">false</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"avatar"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/public/user4.jpg"</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">]</span>
+</code></pre>
+              </div>
+            </div>
+            <p>Получение реальных данных с&nbsp;сервера мы&nbsp;реализуем в&nbsp;разделе по&nbsp;работе с&nbsp;сетью. Пока что будем работать с&nbsp;данными из&nbsp;JSON.</p>
+            <h2 id="header">Header</h2>
+            <p>Реализован в&nbsp;качестве части лейаута <code>frontend/src/layouts/AppLayoutHeader.vue</code>.</p>
+            <p>Выносим хедер в&nbsp;отдельный компонент:</p>
+            <div class="spoiler">
+              <button class="spoiler__button" data-toggle="AppLayoutHeader" data-toggle-class="spoiler__button--opened"><span>Файл AppLayoutHeader.vue</span></button>
+              <div class="spoiler__content hidden" data-toggle-area="AppLayoutHeader">
+                <pre class="javascript language-javascript"><code class="hljs language-javascript">&lt;template&gt;
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"header"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"header__logo"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"logo"</span>&gt;</span>
+        // @ — это алиас, как при импорте в скриптах. Для доступа к src/assets/...
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+          <span class="hljs-attr">src</span>=<span class="hljs-string">"@/assets/img/logo.svg"</span>
+          <span class="hljs-attr">alt</span>=<span class="hljs-string">"VueWork logo"</span>
+          <span class="hljs-attr">width</span>=<span class="hljs-string">"147"</span>
+          <span class="hljs-attr">height</span>=<span class="hljs-string">"23"</span>
+        /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">form</span>
+        <span class="hljs-attr">action</span>=<span class="hljs-string">"#"</span>
+        <span class="hljs-attr">class</span>=<span class="hljs-string">"header__search"</span>
+      &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+          <span class="hljs-attr">type</span>=<span class="hljs-string">"search"</span>
+          <span class="hljs-attr">name</span>=<span class="hljs-string">"search"</span>
+          <span class="hljs-attr">required</span>
+          <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Поиск"</span>
+        /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span>
+          Найти
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span></span>
+&lt;/template&gt;
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'AppLayoutHeader'</span>
+};
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+
+<span class="hljs-comment">// Используем scss препроцессор и scoped, чтобы ограничить область</span>
+<span class="hljs-comment">// влияния стилей текущим компонентом.</span>
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"scss"</span> <span class="hljs-attr">scoped</span>&gt;</span>
+...
+<span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span>
+</code></pre>
+              </div>
+            </div>
+            <h2 id="sidebar">Sidebar</h2>
+            <p>Реализован в&nbsp;качестве части лейаута <code>frontend/src/layouts/AppLayoutMainSidebar.vue</code>.</p>
+            <p>В&nbsp;шаблоне мы&nbsp;используем <code>v-for</code>&nbsp;— для отрисовки списка задач и&nbsp;тегов внутри.</p>
+            <p>Используем <code>v-if</code> для статусов по&nbsp;важности и&nbsp;по&nbsp;времени, для блока тегов.</p>
+            <p>Используем интерполяцию для вывода количества задач, имени пользователя и&nbsp;названия задачи.</p>
+            <p>Используем динамические классы для статусов.</p>
+            <div class="spoiler">
+              <button class="spoiler__button" data-toggle="AppLayoutMainSidebar" data-toggle-class="spoiler__button--opened"><span>Файл AppLayoutMainSidebar.vue</span></button>
+              <div class="spoiler__content hidden" data-toggle-area="AppLayoutMainSidebar">
+                <pre class="javascript language-javascript"><code class="hljs language-javascript">&lt;template&gt;
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"backlog"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"backlog__title"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>
+        Бэклог
+      <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"backlog__content"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"backlog__scroll"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"backlog__collapse"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"backlog__user"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"backlog__account"</span>&gt;</span>
+              // Благодаря прокси дев сервера мы берём /public изображения
+              // с сервера, запущенного на порту 3000.
+              // В этом случае мы выбрали user6.jpg в качестве заглушки.
+              <span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+                <span class="hljs-attr">src</span>=<span class="hljs-string">"/public/user6.jpg"</span>
+                <span class="hljs-attr">alt</span>=<span class="hljs-string">"Ваш аватар"</span>
+                <span class="hljs-attr">width</span>=<span class="hljs-string">"32"</span>
+                <span class="hljs-attr">height</span>=<span class="hljs-string">"32"</span>
+              /&gt;</span>
+              Игорь Пятин
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+            // выводим количество задач в шаблоне
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"backlog__counter"</span>&gt;</span>
+              {{ sidebarTasks.length }}
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+          // в цикле выводим список задач
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"backlog__target-area"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>
+              <span class="hljs-attr">v-for</span>=<span class="hljs-string">"task in sidebarTasks"</span>
+              <span class="hljs-attr">:key</span>=<span class="hljs-string">"task.id"</span>
+              <span class="hljs-attr">class</span>=<span class="hljs-string">"backlog__task"</span>
+            &gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"task"</span>&gt;</span>
+                // если есть назначенный пользователь — выводим информацию о нём
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span>
+                  <span class="hljs-attr">v-if</span>=<span class="hljs-string">"task.user"</span>
+                  <span class="hljs-attr">class</span>=<span class="hljs-string">"task__user"</span>
+                &gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"task__avatar"</span>&gt;</span>
+                    // src и alt — динамические атрибуты. Берём значения из объекта юзера
+                    <span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+                      <span class="hljs-attr">:src</span>=<span class="hljs-string">"task.user.avatar"</span>
+                      <span class="hljs-attr">:alt</span>=<span class="hljs-string">"task.user.name"</span>
+                      <span class="hljs-attr">width</span>=<span class="hljs-string">"20"</span>
+                      <span class="hljs-attr">height</span>=<span class="hljs-string">"20"</span>
+                    /&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                  {{ task.user.name }}
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+                // статусы по важности и по времени с динамическими классами
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"task__statuses"</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
+                    <span class="hljs-attr">v-if</span>=<span class="hljs-string">"task.status"</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">"task__status"</span>
+                    <span class="hljs-attr">:class</span>=<span class="hljs-string">"`task__status--${task.status}`"</span>
+                  /&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
+                    <span class="hljs-attr">v-if</span>=<span class="hljs-string">"task.timeStatus"</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">"task__status"</span>
+                    <span class="hljs-attr">:class</span>=<span class="hljs-string">"`task__status--${task.timeStatus}`"</span>
+                  /&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+                // Добавляем динамический класс для заголовка задачи, если
+                // в задаче не указан ответственный пользователь
+                <span class="hljs-tag">&lt;<span class="hljs-name">h5</span>
+                  <span class="hljs-attr">class</span>=<span class="hljs-string">"task__title"</span>
+                  <span class="hljs-attr">:class</span>=<span class="hljs-string">"{ 'task__title--first': !task.user }"</span>
+                &gt;</span>
+                  {{ task.title }}
+                <span class="hljs-tag">&lt;/<span class="hljs-name">h5</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>
+                  <span class="hljs-attr">v-if</span>=<span class="hljs-string">"task.tags &amp;&amp; task.tags.length"</span>
+                  <span class="hljs-attr">class</span>=<span class="hljs-string">"task__tags"</span>
+                &gt;</span>
+                  // список тегов задачи. Список статический.
+                  // Поэтому можем использовать индекс в качестве ключа.
+                  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>
+                    <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(tag, index) in task.tags"</span>
+                    <span class="hljs-attr">:key</span>=<span class="hljs-string">"index"</span>
+                  &gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"task__tag"</span>&gt;</span>
+                      {{ tag }}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+&lt;/template&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-comment">// Список задач, из которого достанем задачи для сайдбара.</span>
+<span class="hljs-keyword">import</span> tasks <span class="hljs-keyword">from</span> <span class="hljs-string">'@/static/tasks.json'</span>;
+<span class="hljs-comment">// Вспомогательные функции для нормализации задач и тегов задач.</span>
+<span class="hljs-keyword">import</span> { normalizeTask, getTagsArrayFromString } <span class="hljs-keyword">from</span> <span class="hljs-string">'@/common/helpers'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'AppLayoutMainSidebar'</span>,
+  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-comment">// получаем нормализованные задачи</span>
+      <span class="hljs-attr">tasks</span>: tasks.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">task</span> =&gt;</span> <span class="hljs-title function_">normalizeTask</span>(task))
+      <span class="hljs-attr">backlogIsHidden</span>: <span class="hljs-literal">false</span>
+    };
+  },
+  <span class="hljs-attr">computed</span>: {
+    <span class="hljs-comment">// Выбираем только задачи без id колонки (у нас это именно задачи сайдбара).</span>
+    <span class="hljs-comment">// Нормализуем список тегов.</span>
+    <span class="hljs-comment">// Сортируем задачи по их порядку внутри колонки.</span>
+    <span class="hljs-title function_">sidebarTasks</span>(<span class="hljs-params"></span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span>
+        .<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">task</span> =&gt;</span> !task.<span class="hljs-property">columnId</span>)
+        .<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">task</span> =&gt;</span> ({
+          ...task,
+          <span class="hljs-attr">tags</span>: <span class="hljs-title function_">getTagsArrayFromString</span>(task.<span class="hljs-property">tags</span>)
+        }));
+    }
+  }
+};
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+
+<span class="hljs-comment">// Обратите внимание на импорт scss файла со стилями для задач.</span>
+<span class="hljs-comment">// Мы оставили его в отдельном файле, так как позже у задач будет отдельный компонент.</span>
+<span class="hljs-comment">// @import — синтаксис импорта в scss</span>
+<span class="hljs-comment">// Знак тильды "~" — это символ, который указывает на то,</span>
+<span class="hljs-comment">// что следующее за ним значение будет alias.</span>
+<span class="hljs-comment">// Знак "@" — это алиас из webpack, который мы используем для замены на "src"</span>
+<span class="hljs-comment">// В результате стили будут импортированы из "src/assets/..."</span>
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"scss"</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="language-css">
+<span class="hljs-keyword">@import</span> <span class="hljs-string">"~@/assets/scss/blocks/task.scss"</span>;
+...
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span>
+</code></pre>
+              </div>
+            </div>
+            <h2 id="vspomogatelnie-metodi-i-konstanti">Вспомогательные методы и&nbsp;константы</h2>
+            <p>Список задач в&nbsp;том виде, в&nbsp;котором мы&nbsp;будем получать его с&nbsp;сервера, отличается от&nbsp;формата, который мы&nbsp;будем использовать на&nbsp;фронтенде. Чтобы решить эту задачу, мы&nbsp;сделали вспомогательные методы и&nbsp;константы. Файл с&nbsp;методами находится в&nbsp;<code>frontend/src/common/helpers.js</code>.</p>
+            <div class="spoiler">
+              <button class="spoiler__button" data-toggle="helpers" data-toggle-class="spoiler__button--opened"><span>Файл helpers.js</span></button>
+              <div class="spoiler__content hidden" data-toggle-area="helpers">
+                <pre class="js language-js"><code class="hljs language-javascript"><span class="hljs-keyword">import</span> {
+  <span class="hljs-variable constant_">DAY_IN_MILLISEC</span>,
+  <span class="hljs-variable constant_">TAG_SEPARATOR</span>
+} <span class="hljs-keyword">from</span> <span class="hljs-string">'@/common/constants'</span>;
+<span class="hljs-keyword">import</span> timeStatuses <span class="hljs-keyword">from</span> <span class="hljs-string">'@/common/enums/timeStatuses'</span>;
+<span class="hljs-keyword">import</span> taskStatuses <span class="hljs-keyword">from</span> <span class="hljs-string">'@/common/enums/taskStatuses'</span>;
+
+<span class="hljs-comment">// Получение тегов из строки тегов.</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">getTagsArrayFromString</span> = tags =&gt; {
+  <span class="hljs-keyword">const</span> array = tags.<span class="hljs-title function_">split</span>(<span class="hljs-variable constant_">TAG_SEPARATOR</span>);
+  <span class="hljs-keyword">return</span> array.<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>, array.<span class="hljs-property">length</span>);
+};
+
+<span class="hljs-comment">// Нормализация статуса по времени.</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">getTimeStatus</span> = dueDate =&gt; {
+  <span class="hljs-keyword">if</span> (!dueDate) {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">''</span>;
+  }
+  <span class="hljs-keyword">const</span> currentTime = +<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();
+  <span class="hljs-keyword">const</span> taskTime = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">parse</span>(dueDate);
+  <span class="hljs-keyword">const</span> timeDelta = taskTime - currentTime;
+  <span class="hljs-keyword">if</span> (timeDelta &gt; <span class="hljs-variable constant_">DAY_IN_MILLISEC</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">''</span>;
+  }
+  <span class="hljs-keyword">return</span> timeDelta &lt; <span class="hljs-number">0</span> ? timeStatuses.<span class="hljs-property">deadline</span> : timeStatuses.<span class="hljs-property">expired</span>;
+};
+
+<span class="hljs-comment">// Нормализация задачи.</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">normalizeTask</span> = task =&gt; {
+  <span class="hljs-keyword">return</span> {
+    ...task,
+    <span class="hljs-attr">status</span>: task.<span class="hljs-property">statusId</span> ? taskStatuses[task.<span class="hljs-property">statusId</span>] : <span class="hljs-string">''</span>,
+    <span class="hljs-attr">timeStatus</span>: <span class="hljs-title function_">getTimeStatus</span>(task.<span class="hljs-property">dueDate</span>)
+  };
+};
+</code></pre>
+              </div>
+            </div>
+            <p>Как видите, у&nbsp;нас также появились константы <code>frontend/src/common/constants.js</code>, списки статусов по&nbsp;времени <code>frontend/src/common/enums/timeStatuses.js</code> и&nbsp;по&nbsp;важности <code>frontend/src/common/enums/taskStatuses.js</code>. Посмотрим на&nbsp;них:</p>
+            <p>Файл <strong>constants.js</strong>:</p>
+            <pre class="js language-js"><code class="hljs language-javascript"><span class="hljs-comment">// Все возможные статусы</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> statuses = [
+  {
+    <span class="hljs-attr">label</span>: <span class="hljs-string">'Важно, не срочно'</span>,
+    <span class="hljs-attr">value</span>: <span class="hljs-string">'green'</span>
+  },
+  {
+    <span class="hljs-attr">label</span>: <span class="hljs-string">'Срочно, не важно'</span>,
+    <span class="hljs-attr">value</span>: <span class="hljs-string">'orange'</span>
+  },
+  {
+    <span class="hljs-attr">label</span>: <span class="hljs-string">'Срочно, важно'</span>,
+    <span class="hljs-attr">value</span>: <span class="hljs-string">'red'</span>
+  },
+  {
+    <span class="hljs-attr">label</span>: <span class="hljs-string">'Дедлайн'</span>,
+    <span class="hljs-attr">value</span>: <span class="hljs-string">'time'</span>
+  },
+  {
+    <span class="hljs-attr">label</span>: <span class="hljs-string">'Просрочено'</span>,
+    <span class="hljs-attr">value</span>: <span class="hljs-string">'alert'</span>
+  }
+];
+
+<span class="hljs-comment">// Для работы с временем создания задачи и статусом по времени</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">SEC</span> = <span class="hljs-number">1000</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">MINUTE_IN_SEC</span> = <span class="hljs-number">60</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">HOUR_IN_SEC</span> = <span class="hljs-variable constant_">MINUTE_IN_SEC</span> * <span class="hljs-number">60</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">DAY_IN_SEC</span> = <span class="hljs-variable constant_">HOUR_IN_SEC</span> * <span class="hljs-number">24</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">DAY_IN_MILLISEC</span> = <span class="hljs-variable constant_">DAY_IN_SEC</span> * <span class="hljs-variable constant_">SEC</span>;
+
+<span class="hljs-comment">// Разделитель тегов внутри строки тегов.</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">TAG_SEPARATOR</span> = <span class="hljs-string">'#'</span>;
+</code></pre>
+            <p>Файл <strong>timeStatuses.js</strong>:</p>
+            <pre class="js language-js"><code class="hljs language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  <span class="hljs-attr">DEADLINE</span>: <span class="hljs-string">'alert'</span>,
+  <span class="hljs-attr">EXPIRED</span>: <span class="hljs-string">'time'</span>
+};
+</code></pre>
+            <p>Файл <strong>taskStatuses.js</strong>:</p>
+            <pre class="js language-js"><code class="hljs language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  <span class="hljs-number">1</span>: <span class="hljs-string">'green'</span>,
+  <span class="hljs-number">2</span>: <span class="hljs-string">'orange'</span>,
+  <span class="hljs-number">3</span>: <span class="hljs-string">'red'</span>
+};
+</code></pre>
+            <p>Как видите, статусы по&nbsp;времени и&nbsp;по&nbsp;важности (цвета) соответствуют значению <code>value</code> в&nbsp;константе <code>statuses</code>.</p>
+            <h2 id="doska-zadach">Доска задач</h2>
+            <p>Реализована в&nbsp;качестве нашего первого view <code>frontend/src/views/Index.vue</code>.</p>
+            <div class="spoiler">
+              <button class="spoiler__button" data-toggle="index" data-toggle-class="spoiler__button--opened"><span>Файл Index.vue</span></button>
+              <div class="spoiler__content hidden" data-toggle-area="index">
+                <pre><code class="hljs language-handlebars"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"desk"</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"desk__header"</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"desk__header-top"</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"desk__title"</span>&gt;</span> Design Coffee Lab <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"desk__add"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> &gt;</span> Добавить столбец <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span> // Блок фильтров. <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"desk__filters"</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"desk__user-filter"</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"user-filter"</span>&gt;</span> // Отрисовываем аватарки пользователей для фильтров. <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"user in users"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"user.id"</span> <span class="hljs-attr">:title</span>=<span class="hljs-string">"user.name"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"user-filter__item"</span> &gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"user-filter__button"</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">:src</span>=<span class="hljs-string">"user.avatar"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Аватар юзера"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"24"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"24"</span> /&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"desk__meta-filter"</span>&gt;</span> // Блок фильтров по статусам <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"meta-filter"</span>&gt;</span> // Используем деструктуризацию для доступа к свойствам статуса. <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"({ value, label }) in statuses"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"value"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"meta-filter__item"</span> &gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"meta-filter__status"</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"`meta-filter__status--${value}`"</span> <span class="hljs-attr">:title</span>=<span class="hljs-string">"label"</span> /&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span> // Если колонок нет - мы покажем доп информацию ниже. <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">"columns.length"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"columns"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"desk__columns"</span> &gt;</span> // Отрисовываем список колонок <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"column in columns"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"column.id"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column"</span> &gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column__name"</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span></span><span class="hljs-template-variable">{{ <span class="hljs-name">column.title</span> }}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column__target-area"</span>&gt;</span>
+          // Отрисовываем задачи для каждой колонки.
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span>
+            <span class="hljs-attr">v-for</span>=<span class="hljs-string">"task in columnTasks[column.id]"</span>
+            <span class="hljs-attr">:key</span>=<span class="hljs-string">"task.id"</span>
+            <span class="hljs-attr">class</span>=<span class="hljs-string">"column__task"</span>
+          &gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"task"</span>&gt;</span>
+              // Если у задачи есть ответственный - выводим информацию о нем
+              <span class="hljs-tag">&lt;<span class="hljs-name">div</span>
+                <span class="hljs-attr">v-if</span>=<span class="hljs-string">"task.user"</span>
+                <span class="hljs-attr">class</span>=<span class="hljs-string">"task__user"</span>
+              &gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"task__avatar"</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+                    <span class="hljs-attr">:src</span>=<span class="hljs-string">"task.user.avatar"</span>
+                    <span class="hljs-attr">:alt</span>=<span class="hljs-string">"task.user.name"</span>
+                    <span class="hljs-attr">width</span>=<span class="hljs-string">"20"</span>
+                    <span class="hljs-attr">height</span>=<span class="hljs-string">"20"</span>
+                  /&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                </span><span class="hljs-template-variable">{{ <span class="hljs-name">task.user.name</span> }}</span><span class="language-xml">
+              <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+              // Назначаем динамические классы для статусов.
+              <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"task__statuses"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
+                  <span class="hljs-attr">v-if</span>=<span class="hljs-string">"task.status"</span>
+                  <span class="hljs-attr">class</span>=<span class="hljs-string">"task__status"</span>
+                  <span class="hljs-attr">:class</span>=<span class="hljs-string">"`task__status--${task.status}`"</span>
+                /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
+                  <span class="hljs-attr">v-if</span>=<span class="hljs-string">"task.timeStatus"</span>
+                  <span class="hljs-attr">class</span>=<span class="hljs-string">"task__status"</span>
+                  <span class="hljs-attr">:class</span>=<span class="hljs-string">"`task__status--${task.timeStatus}`"</span>
+                /&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+              <span class="hljs-tag">&lt;<span class="hljs-name">h5</span>
+                <span class="hljs-attr">class</span>=<span class="hljs-string">"task__title"</span>
+                <span class="hljs-attr">:class</span>=<span class="hljs-string">"{ 'task__title--first': !task.user }"</span>
+              &gt;</span>
+                </span><span class="hljs-template-variable">{{ <span class="hljs-name">task.title</span> }}</span><span class="language-xml">
+              <span class="hljs-tag">&lt;/<span class="hljs-name">h5</span>&gt;</span>
+
+              // Отрисовываем список тегов внутри задачи.
+              <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>
+                <span class="hljs-attr">v-if</span>=<span class="hljs-string">"task.tags &amp;&amp; task.tags.length"</span>
+                <span class="hljs-attr">class</span>=<span class="hljs-string">"task__tags"</span>
+              &gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>
+                  <span class="hljs-attr">v-for</span>=<span class="hljs-string">"(tag, index) in task.tags"</span>
+                  <span class="hljs-attr">:key</span>=<span class="hljs-string">"index"</span>
+                &gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"task__tag"</span>&gt;</span>
+                    </span><span class="hljs-template-variable">{{ <span class="hljs-name">tag</span> }}</span><span class="language-xml">
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    // Если колонок нет - показываем инфо текст
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>
+      <span class="hljs-attr">v-else</span>
+      <span class="hljs-attr">class</span>=<span class="hljs-string">"desk__emptiness"</span>
+    &gt;</span>
+      Пока нет ни одной колонки
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-comment">// Импортируем JSON данные и статусы для фильтров.</span>
+<span class="hljs-keyword">import</span> columns <span class="hljs-keyword">from</span> <span class="hljs-string">'@/static/columns.json'</span>;
+<span class="hljs-keyword">import</span> tasks <span class="hljs-keyword">from</span> <span class="hljs-string">'@/static/tasks.json'</span>;
+<span class="hljs-keyword">import</span> users <span class="hljs-keyword">from</span> <span class="hljs-string">'@/static/users.json'</span>;
+<span class="hljs-keyword">import</span> { statuses } <span class="hljs-keyword">from</span> <span class="hljs-string">'@/common/constants'</span>;
+<span class="hljs-keyword">import</span> {
+  getTagsArrayFromString,
+  normalizeTask
+} <span class="hljs-keyword">from</span> <span class="hljs-string">'@/common/helpers'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'IndexHome'</span>,
+  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> {
+      columns,
+      <span class="hljs-attr">tasks</span>: tasks.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">task</span> =&gt;</span> <span class="hljs-title function_">normalizeTask</span>(task)),
+      users,
+      statuses,
+      taskStatuses
+    };
+  },
+  <span class="hljs-attr">computed</span>: {
+    <span class="hljs-comment">// Получаем список задач для колонок в формате объекта</span>
+    <span class="hljs-comment">// (ключ - id колонки, значение - массив задач колонки)</span>
+    <span class="hljs-title function_">columnTasks</span>(<span class="hljs-params"></span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">tasks</span>
+        .<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">{ columnId }</span>) =&gt;</span> columnId)
+        .<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">accumulator, task</span>) =&gt;</span> {
+          task.<span class="hljs-property">tags</span> = <span class="hljs-title function_">getTagsArrayFromString</span>(task.<span class="hljs-property">tags</span>);
+          <span class="hljs-keyword">if</span> (accumulator[task.<span class="hljs-property">columnId</span>]) {
+            accumulator[task.<span class="hljs-property">columnId</span>] = [...accumulator[task.<span class="hljs-property">columnId</span>], task];
+          } <span class="hljs-keyword">else</span> {
+            accumulator[task.<span class="hljs-property">columnId</span>] = [task];
+          }
+          <span class="hljs-keyword">return</span> accumulator;
+        }, {});
+    }
+  }
+};
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+// Импортируем стили фильтров, колонок и задач отдельными файлами
+// Позже они будут вынесены в отдельные компоненты
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"scss"</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="language-css">
+<span class="hljs-keyword">@import</span> <span class="hljs-string">"~@/assets/scss/blocks/meta-filter.scss"</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">"~@/assets/scss/blocks/user-filter.scss"</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">"~@/assets/scss/blocks/column.scss"</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">"~@/assets/scss/blocks/task.scss"</span>;
+...
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+</span></code></pre>
+              </div>
+            </div>
+            <h2 id="obedinyaem-komponenti-v-leiaute">Объединяем компоненты в&nbsp;лейауте</h2>
+            <p>Создаём <code>frontend/src/layouts/AppLayout.vue</code>, который внутри будет содержать: хедер, сайдбар, доску задач с&nbsp;фильтрами.</p>
+            <div class="spoiler">
+              <button class="spoiler__button" data-toggle="AppLayout" data-toggle-class="spoiler__button--opened"><span>Файл AppLayout.vue</span></button>
+              <div class="spoiler__content hidden" data-toggle-area="AppLayout">
+                <pre><code class="hljs language-xquery"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span> </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"app-layout"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">AppLayoutHeader</span> /&gt;</span>
+    </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"content"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">AppLayoutMainSidebar</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">IndexHome</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><span class="language-xml">
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span>
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">AppLayoutMainSidebar</span> <span class="hljs-keyword">from</span> <span class="hljs-string">'@/layouts/AppLayoutMainSidebar'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">AppLayoutHeader</span> <span class="hljs-keyword">from</span> <span class="hljs-string">'@/layouts/AppLayoutHeader'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">IndexHome</span> <span class="hljs-keyword">from</span> <span class="hljs-string">'@/views/Index'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> </span></span><span class="language-xquery">{
+ <span class="hljs-built_in"> name</span>: <span class="hljs-string">'AppLayout'</span>,
+  components: {
+    AppLayoutMainSidebar,
+    AppLayoutHeader,
+    IndexHome
+  }</span><span class="language-xml">
+};
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+</code></pre>
+              </div>
+            </div>
+            <h2 id="podklyuchaem-leiaut-v-app.vue">Подключаем лейаут в&nbsp;App.vue</h2>
+            <p>Файл <strong>App.vue</strong>:</p>
+            <pre><code class="hljs language-xquery"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span> </span><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">AppLayout</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span>
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">AppLayout</span> <span class="hljs-keyword">from</span> <span class="hljs-string">'@/layouts/AppLayout'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> </span></span><span class="language-xquery">{
+ <span class="hljs-built_in"> name</span>: <span class="hljs-string">'App'</span>,
+  components: {
+    AppLayout
+  }</span><span class="language-xml">
+};
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+
+// Импортируем глобальные стили для приложения
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"scss"</span>&gt;</span><span class="language-css">
+<span class="hljs-keyword">@import</span> <span class="hljs-string">"~@/assets/scss/app"</span>;
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span>
+</code></pre>
+            <p>Теперь вместо окна приветствия Vue мы&nbsp;увидим черновик приложения&nbsp;— уже с&nbsp;хедером, сайдбаром и&nbsp;доской задач.</p>
+          </div>
+          <div class="grid grid--offset grid--gutters mt-20 mb-40">
+            <div class="grid__cell" data-program-item="">
+              <div data-complete-item="">
+                <h3 style="margin-top:0;">Прочитали главу?</h3>
+                <p class="mb-20">Нажмите кнопку «Готово», чтобы сохранить прогресс.</p>
+                <a class="button button--green button--wide" href="https://up.htmlacademy.ru/vue/1/module/1/item/15/complete">Готово</a>
+                <p class="text-small text-red hidden" data-complete-message=""></p>
+              </div>
+              <a class="button button--wide button--transparent  hidden" href="https://up.htmlacademy.ru/vue/1/tasks/2" data-next-item="">Продолжить обучение</a></div>
+            <div class="grid__cell">
+              <div class="card card--rating card--rating-embedded" data-rating="" data-rating-comment="" style="width:100%;">
+                <h3 class="card__header">Поделитесь, как вам&nbsp;глава учебника?</h3>
+                <div class="card__content">
+                  <form class="card-rating " action="https://up.htmlacademy.ru/vue/1/module/1/item/15/value" method="POST">
+                    <div class="card-rating__values">
+                      <input class="sr-only" type="radio" name="value" id="tutorial-1.2-rating-5" value="5">
+                      <label for="tutorial-1.2-rating-5"><span class="sr-only">Глава —&nbsp;огонь!</span>
+                        <svg aria-hidden="true" width="16" height="16">
+                          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#star-fill-16"></use>
+                        </svg>
+                      </label>
+                      <input class="sr-only" type="radio" name="value" id="tutorial-1.2-rating-4" value="4">
+                      <label for="tutorial-1.2-rating-4"><span class="sr-only">Это было полезно</span>
+                        <svg aria-hidden="true" width="16" height="16">
+                          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#star-fill-16"></use>
+                        </svg>
+                      </label>
+                      <input class="sr-only" type="radio" name="value" id="tutorial-1.2-rating-3" value="3">
+                      <label for="tutorial-1.2-rating-3"><span class="sr-only">Неплохо, но можно лучше</span>
+                        <svg aria-hidden="true" width="16" height="16">
+                          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#star-fill-16"></use>
+                        </svg>
+                      </label>
+                      <input class="sr-only" type="radio" name="value" id="tutorial-1.2-rating-2" value="2">
+                      <label for="tutorial-1.2-rating-2"><span class="sr-only">Ничего полезного не было</span>
+                        <svg aria-hidden="true" width="16" height="16">
+                          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#star-fill-16"></use>
+                        </svg>
+                      </label>
+                      <input class="sr-only" type="radio" name="value" id="tutorial-1.2-rating-1" value="1">
+                      <label for="tutorial-1.2-rating-1"><span class="sr-only">Я напишу эту главу лучше</span>
+                        <svg aria-hidden="true" width="16" height="16">
+                          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#star-fill-16"></use>
+                        </svg>
+                      </label>
+                    </div>
+                    <p class="card-rating__title "></p>
+                    <div class="card-rating__evaluate hidden "><span class="card-rating__text"></span></div>
+                    <div class="card-rating__comment hidden">
+                      <label class="sr-only" for="tutorial-1.2-rating-comment">Комментарий</label>
+                      <div class="form__group">
+                        <textarea class="field field--area field--full-width" rows="2" cols="40" placeholder="Оставьте ваш комментарий." name="comment" id="tutorial-1.2-rating-comment"></textarea>
+                        <p class="form__notice form__notice--red hidden">Пожалуйста, оставьте комментарий.</p>
+                      </div>
+                      <button class="button button--small" type="submit">Отправить</button>
+                    </div>
+                  </form>
+                  <p class="alert alert--green alert--full-width text-right hidden" data-rating-finish="" style="margin-top:10px;">Спасибо!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card card--orphus">
+            <div class="card__content">
+              <p>
+                <svg aria-hidden="true" width="16" height="16">
+                  <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#shield-16"></use>
+                </svg>
+                Если вы обнаружили ошибку или неработающую ссылку, выделите ее и нажмите Ctrl + Enter</p>
+            </div>
+          </div>
+        </article>
+        <button class="up-interface__chat-control" type="button" title="Свернуть"><span class="sr-only">Свернуть</span>
+        <svg aria-hidden="true" width="8" height="16">
+          <use xlink:href="/img/sprites/up.svg?cs=fb70597153879c70ce140224310b7444b664990a#icon-arrow-right"></use>
+        </svg>
+        </button>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="modal" data-item="0">
+  <div class="modal__inner">
+    <div class="modal__wrapper js-tutor-info hidden">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="tutor-info"></button>
+      <h3 class="modal__header text-left">Мой наставник</h3>
+      <p>Для полноценного прохождения курса вам нужно выбрать наставника.</p>
+      <p>После выбора вы&nbsp;сможете всегда держать под рукой его контакты (почту и&nbsp;ссылки на&nbsp;профиль в&nbsp;соцсетях, которые
+        он&nbsp;укажет для связи со&nbsp;своими студентами), а&nbsp;также расписание консультаций.</p>
+      <p>Вы&nbsp;в&nbsp;любой момент можете поменять наставника, если вам кажется, что с&nbsp;текущим наладить работу не&nbsp;получается.</p>
+    </div>
+    <div class="modal__wrapper js-projects-info hidden">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="projects-info"></button>
+      <h3 class="modal__header text-left">Мои проекты</h3>
+      <p>Для удобства работы с&nbsp;проектами, мы&nbsp;собрали их&nbsp;в&nbsp;этом блоке.</p>
+      <p>Основной личный проект, который вы&nbsp;будете готовить к&nbsp;финальной защите, находится в&nbsp;начале списка и&nbsp;рядом с&nbsp;ним
+        стоит иконка <span class="up-icon">
+        <svg aria-hidden="true" width="24" height="24">
+          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#heart-24"></use>
+        </svg>
+        </span>. Если на&nbsp;курсе
+        используется учебный проект, то&nbsp;он&nbsp;будет следующим и&nbsp;с&nbsp;иконкой&nbsp;<span class="up-icon">
+        <svg aria-hidden="true" width="24" height="24">
+          <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#mortar-board-24"></use>
+        </svg>
+        </span>. Далее будут идти все остальные проекты, если
+        для них были созданы репозитории.</p>
+      <p>Вы&nbsp;можете выбрать, какой именно проект будет основным, в&nbsp;любой момент прохождения курса, но&nbsp;мы&nbsp;советуем
+        определиться с&nbsp;выбором как можно скорее.</p>
+    </div>
+    <div class="modal__wrapper js-tutor-task-value hidden">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="tutor-task-value"></button>
+      <h3 class="modal__header text-left">Оцените наставника</h3>
+      <p>Мы всегда стремимся улучшать качество услуг. И нам важно знать, как идёт ваша работа с наставником.</p>
+      <p>Уделите пару секунд вашего времени и дайте нам знать, как обстоят дела.</p>
+      <p>Также вы всегда можете задать свои вопросы напрямую <a href="https://up.htmlacademy.ru/vue/1/curator">куратору</a>.</p>
+    </div>
+    <div class="modal__wrapper js-first-todo hidden">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="first-todo"></button>
+      <h3 class="modal__header text-left">Ваши первые задачи</h3>
+      <p>В&nbsp;этом списке мы собрали задачи, с&nbsp;которых начинается обучение на&nbsp;курсе.</p>
+      <p>Выполняйте задачи по&nbsp;порядку, а&nbsp;система будет автоматически отмечать галочками ваш прогресс. Когда весь список
+        будет выполнен, этот блок закроется и&nbsp;больше не&nbsp;будет вам надоедать.</p>
+    </div>
+    <div class="modal__wrapper js-whoami hidden">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="whoami"></button>
+      <h3 class="modal__header text-left">Стандартный тариф</h3>
+      <p>Студенты стандартного тарифа работают с&nbsp;наставником в&nbsp;течение первых пяти недель обучения. Оставшееся время консультаций, можно потратить на подготовку проекта к&nbsp;защите.</p>
+    </div>
+    <div class="modal__wrapper js-add-tutor-resource-request hidden modal--application-consultation">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="add-tutor-resource-request"></button>
+      <h4 class="modal__header text-left">Запись на консультацию</h4>
+      <form class="consultation-form form" action="https://up.htmlacademy.ru/vue/1/requests/create" method="post" novalidate="">
+        <div class="form__group radio-button-group">
+          <label class="radio-button">
+            <input class="radio-button__input" type="radio" value="voice" name="consultation-type" data-type="voice" checked="">
+            <span class="radio-button__text">
+            <svg aria-hidden="true" width="16" height="16">
+              <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#megaphone-16"></use>
+            </svg>
+            Голосовая</span></label>
+          <label class="radio-button">
+            <input class="radio-button__input" type="radio" value="text" name="consultation-type" data-type="text">
+            <span class="radio-button__text">
+            <svg aria-hidden="true" width="16" height="16">
+              <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#pencil-16"></use>
+            </svg>
+            Текстовая</span></label>
+          <label class="radio-button">
+            <input class="radio-button__input" type="radio" value="code-review" name="consultation-type" data-type="review">
+            <span class="radio-button__text">
+            <svg aria-hidden="true" width="16" height="16">
+              <use xlink:href="/img/sprites/octicons.svg?cs=383670f54b8e2848bc08f59f87d5b382846becfe#code-review-16"></use>
+            </svg>
+            Кодревью</span></label>
+        </div>
+        <p class="form__text" data-type-content="voice"><b>Голосовая консультация</b> — это живое общение с&nbsp;наставником, который ответит на&nbsp;интересующие вас вопросы.</p>
+        <p class="form__text hidden" data-type-content="text"><b>Текстовая консультация</b> — это общение с&nbsp;наставником в&nbsp;чате. Чат доступен 1&nbsp;день с&nbsp;момента начала консультации.</p>
+        <p class="form__text hidden" data-type-content="review"><b>Кодревью</b> — это проверка пулреквеста в&nbsp;репозитории вашего проекта. Наставник оставит комментарии к&nbsp;вашему коду.</p>
+        <div class="form__group" data-type-content="voice,text,review">
+          <label class="form__label" for="module_id">Выберите раздел</label>
+          <div class="field-wrapper field-wrapper--select   field-wrapper--full-width">
+            <select class="field field--select   field-wrapper--full-width  consultation-module" name="module_id" id="module_id" required="">
+              <option value="2531" selected="">1. Основы синтаксиса и базовых возможностей Vue.js</option>
+              <option value="2533">2. Взаимодействие между компонентами Vue.js</option>
+              <option value="2535">3. Углублённое понимание Vue.js</option>
+              <option value="2537">4. Подключение и использование Vuex</option>
+              <option value="2539">5. Работа с HTTP</option>
+              <option value="2541">6. Анимации Vue.js</option>
+              <option value="2543">7. Тестирование компонентов Vue.js</option>
+              <option value="2545">8. Продвинутые техники Vue.js</option>
+              <option value="2547">9. Обзор Nuxt.js</option>
+            </select>
+          </div>
+          <p class="form__notice">От выбранного раздела зависит, кто из наставников сможет провести консультацию.</p>
+        </div>
+        <div class="form__group" data-type-content="voice,text,review">
+          <label class="form__label" for="consultation-tutor">Выберите наставника</label>
+          <div class="field-wrapper field-wrapper--select field-wrapper--full-width">
+            <select class="field field--select field--full-width consultation-tutor" id="consultation-tutor" name="tutor_id">
+              <option selected="" value="0">Любой</option>
+              <option value="30818" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Олег Сорокин</option>
+              <option value="43033" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Артем Дегтярев</option>
+              <option value="58484" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Василий Пономаренко</option>
+              <option value="123259" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Дима Паутов</option>
+              <option value="171216" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Ростислав Козленко</option>
+              <option value="191691" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Дарина Сыромятникова</option>
+              <option value="201015" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Андрей Рыжаков</option>
+              <option value="208340" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Сергей Зубов</option>
+              <option value="334643" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Александр Катеринин</option>
+              <option value="614731" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Виталий Мосин</option>
+              <option value="666435" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Алексей Белявский</option>
+              <option value="684595" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Тимур Турсунбаев</option>
+              <option value="773389" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Антон Пермяков</option>
+              <option value="918955" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Александр Калинин</option>
+              <option value="926645" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Сергей Парфенов</option>
+              <option value="939693" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Максим Усиков</option>
+              <option value="1013637" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Дмитрий Гребнев</option>
+              <option value="1164203" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Алексей Середа</option>
+              <option value="1339065" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Анатолий Васильев</option>
+              <option value="1827533" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Александр Дроздов</option>
+              <option value="1844769" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Гиес Аббасханов</option>
+              <option value="1844851" data-up-module="2531,2533,2535,2537,2539,2541,2543,2545,2547">Кирилл Романов</option>
+            </select>
+          </div>
+          <p class="form__notice">Вы можете отправить заявку на&nbsp;консультацию конкретному наставнику, или её возьмёт первый, освободившийся из живой очереди.</p>
+        </div>
+        <div class="form__group " data-type-content="voice">
+          <label class="form__label" for="voice-comment">Комментарий</label>
+          <div class="form__group-fields">
+            <textarea class="field field--area  field--full-width" rows="4" cols="40" name="voice-comment" id="voice-comment" placeholder="Обсудить как строить сетки на гридах."></textarea>
+          </div>
+        </div>
+        <div class="form__group  hidden" data-type-content="text">
+          <label class="form__label" for="text-comment">Список вопросов наставнику</label>
+          <div class="form__group-fields">
+            <textarea class="field field--area  field--full-width" rows="4" cols="40" name="text-comment" id="text-comment" placeholder="Как строить сетки на гридах? Как правильно доступно скрыть блок?"></textarea>
+          </div>
+        </div>
+        <div class="form__group  hidden" data-type-content="review">
+          <label class="form__label" for="pr_url">Ссылка на пулреквест</label>
+          <div class="form__group-fields">
+            <input class="field field--text  field--full-width" type="url" name="pr_url" value="" id="pr_url" required="" placeholder="https://github.com/htmlacademy-vue/35063.../pull/.." pattern="^https:\/\/github.com\/htmlacademy-vue\/35063.+\/pull\/\d+">
+            <p class="form__notice form__notice--red hidden"></p>
+          </div>
+        </div>
+        <div class="form__group  hidden" data-type-content="review">
+          <label class="form__label" for="code-review-comment">На что обратить внимание</label>
+          <div class="form__group-fields">
+            <textarea class="field field--area  field--full-width" rows="4" cols="40" name="code-review-comment" id="code-review-comment" placeholder="Обратить внимание на строчку 20"></textarea>
+          </div>
+        </div>
+        <button class="button  button--full-width" type="submit"> Записаться </button>
+      </form>
+    </div>
+    <div class="modal__wrapper js-buy-increase hidden">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close"></button>
+      <h4 class="modal__header">Докупить консультации</h4>
+      <p class="modal__description">Вы использовали все консультации, доступные на вашем тарифе. Если вам необходимо больше консультаций, вы можете их докупить.</p>
+      <p class="modal__description">Укажите, сколько консультаций вы хотите докупить.</p>
+      <form action="https://up.htmlacademy.ru/vue/1/requests/increases/create" method="post" class="increase_form">
+        <div class="grid grid--gutters">
+          <div class="grid__cell">
+            <div class="form__group">
+              <label class="form__label" for="amount">Количество</label>
+              <div class="form__group-fields">
+                <input class="field field--text" type="number" name="amount" value="3" id="amount" required="">
+                <p class="form__notice form__notice--red hidden"></p>
+              </div>
+            </div>
+          </div>
+          <div class="grid__cell">
+            <div class="form__group">
+              <div class="form__label">Стоимость</div>
+              <div class="form__group-fields" style="font-size: 24px;"><span id="price" data-price="1000">3000</span>₽ </div>
+            </div>
+          </div>
+        </div>
+        <button class="button  button--full-width" type="submit"> Продолжить </button>
+      </form>
+    </div>
+    <div class="modal__wrapper js-orphus hidden" data-class-mod="modal--orphus">
+      <button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close" data-value="orphus"></button>
+      <h4 class="modal__header">Нашли опечатку?</h4>
+      <form class="modal__form form" action="https://up.htmlacademy.ru/api/orphus">
+        <input type="hidden" name="token" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbnRlbnNpdmUiOiIyMjMiLCJ1c2VyIjoiMzUwNjMiLCJ1cmwiOiJodHRwczpcL1wvdXAuaHRtbGFjYWRlbXkucnVcL3Z1ZVwvMVwvbW9kdWxlXC8xXC9pdGVtXC8xNSJ9.qokf529rza1mObdH12i8FXXux-Eh1GaRQyYN9s2uJ4o">
+        <div class="form__group ">
+          <div class="form__group-fields">
+            <textarea class="field field--area  field--full-width" rows="4" cols="40" name="comment" id="comment" placeholder="Необязательно"></textarea>
+          </div>
+        </div>
+        <button class="button  button--full-width modal__button" type="submit"> Отправить </button>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="./1.15. Практика по основам_files/up.js.Без названия"></script><script async="" src="./1.15. Практика по основам_files/general.js.Без названия" data-assets="https://assets.htmlacademy.ru" data-require="highlight,toggle,tabs,tab-switcher,modal,ajax,autocomplete,orphus,newsfeed-messages,modal,form,tabs"></script><script async="" src="./1.15. Практика по основам_files/scripts.13.js.Без названия"></script><a href="https://up.htmlacademy.ru/vue/1/curator" class="curator-chat" style="position:fixed;right:12px;bottom:10px;z-index:100;width:80px;height:80px;background:url(&#39;https://assets.htmlacademy.ru/img/icons/icon_tutor-face.svg?cs=84aaed90c9e719bb3e5d9eeb0c5c7cbe29a464b0&#39;) 0 0 no-repeat;background-size:cover;"></a><script>window.intercomSettings = {app_id:'omq12oer',custom_launcher_selector:'.curator-chat',hide_default_launcher:true,name:'Anakolis',email:'anakolis@mail.ru',type:'Студент',joined_at:1726834210,company:{id:223,name:'Vue.js для опытных разработчиков',type:'vue',number:'1'},tutor:'',tutor_id:'',user_id:'35063',user_hash:'b89d4d27875dae42a7b37e407e850197e1212ba460435c65b50713c892c1ac9c'};</script><script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/omq12oer';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();[].map.call(document.querySelectorAll('[data-intercom-link]'),function(link){link.addEventListener('click',function(evt){evt.preventDefault();Intercom('show')})});
+  </script> <script type="text/javascript" id="">(function(a,e,f,g,b,c,d){a[b]=a[b]||function(){(a[b].a=a[b].a||[]).push(arguments)};a[b].l=1*new Date;c=e.createElement(f);d=e.getElementsByTagName(f)[0];c.async=1;c.src=g;d.parentNode.insertBefore(c,d)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(51609551,"init",{id:51609551,clickmap:!0,trackLinks:!0,accurateTrackBounce:!0,webvisor:!0});</script>
+<noscript>
+<div><img src="https://mc.yandex.ru/watch/51609551" style="position:absolute; left:-9999px;" alt=""></div>
+</noscript>
+<script type="text/javascript" id="">(function(e,a){function f(b,a){b.prototype[a]=function(){this._q.push([a].concat(Array.prototype.slice.call(arguments,0)));return this}}function g(b){function a(a){b[a]=function(){b._q.push([a].concat(Array.prototype.slice.call(arguments,0)))}}for(var c=0;c<h.length;c++)a(h[c])}var c=e.amplitude||{_q:[],_iq:{}},b=a.createElement("script");b.type="text/javascript";b.integrity="sha384-d/yhnowERvm+7eCU79T/bYjOiMmq4F11ElWYLmt0ktvYEVgqLDazh4+gW9CKMpYW";b.crossOrigin="anonymous";b.async=!0;b.src="https://cdn.amplitude.com/libs/amplitude-5.2.2-min.gz.js";
+b.onload=function(){e.amplitude.runQueuedFunctions||console.log("[Amplitude] Error: could not load SDK")};a=a.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a);b=function(){this._q=[];return this};a="add append clearAll prepend set setOnce unset".split(" ");for(var d=0;d<a.length;d++)f(b,a[d]);c.Identify=b;b=function(){this._q=[];return this};a=["setProductId","setQuantity","setPrice","setRevenueType","setEventProperties"];for(d=0;d<a.length;d++)f(b,a[d]);c.Revenue=b;var h="init logEvent logRevenue setUserId setUserProperties setOptOut setVersionName setDomain setDeviceId setGlobalUserProperties identify clearUserProperties setGroup logRevenueV2 regenerateDeviceId groupIdentify onInit logEventWithTimestamp logEventWithGroups setSessionId resetSessionId".split(" ");
+g(c);c.getInstance=function(a){a=(a&&0!==a.length?a:"$default_instance").toLowerCase();c._iq.hasOwnProperty(a)||(c._iq[a]={_q:[]},g(c._iq[a]));return c._iq[a]};e.amplitude=c})(window,document);amplitude.getInstance().init("f602c01f1c06db4f52768e6adaa4eb56",google_tag_manager["GTM-W3ZS73J"].macro(6),{includeUtm:!0,includeGclid:!0,includeReferrer:!0,deviceIdFromUrlParam:!0},function(e){window.amplitudeLoaded=!0});</script><script type="text/javascript" id="">var eventProperties={};eventProperties.origin=google_tag_manager["GTM-W3ZS73J"].macro(7);eventProperties.domain=google_tag_manager["GTM-W3ZS73J"].macro(8);amplitude.getInstance().logEvent("user.visit",eventProperties);</script>
+<div class="autocomplete-suggestions " style="left: 1332px; top: 296px; width: 320px;"></div>
+<iframe id="intercom-frame" style="position: absolute !important; opacity: 0 !important; width: 1px !important; height: 1px !important; top: 0 !important; left: 0 !important; border: none !important; display: block !important; z-index: -1 !important; pointer-events: none;" aria-hidden="true" tabindex="-1" title="Intercom" src="./1.15. Практика по основам_files/saved_resource.html"></iframe>
+<div class="intercom-lightweight-app" aria-live="polite">
+  <style id="intercom-lightweight-app-style" type="text/css">
+  @keyframes intercom-lightweight-app-launcher {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes intercom-lightweight-app-gradient {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes intercom-lightweight-app-messenger {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .intercom-lightweight-app {
+    position: fixed;
+    z-index: 2147483001;
+    width: 0;
+    height: 0;
+    font-family: intercom-font, "Helvetica Neue", "Apple Color Emoji", Helvetica, Arial, sans-serif;
+  }
+
+  .intercom-lightweight-app-gradient {
+    position: fixed;
+    z-index: 2147483002;
+    width: 500px;
+    height: 500px;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at bottom right,
+      rgba(29, 39, 54, 0.16) 0%,
+      rgba(29, 39, 54, 0) 72%);
+    animation: intercom-lightweight-app-gradient 200ms ease-out;
+  }
+
+  .intercom-lightweight-app-launcher {
+    position: fixed;
+    z-index: 2147483003;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #2D2D44;
+    cursor: pointer;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.06), 0 2px 32px 0 rgba(0, 0, 0, 0.16);
+    animation: intercom-lightweight-app-launcher 250ms ease;
+  }
+
+  .intercom-lightweight-app-launcher:focus {
+    outline: none;
+    
+  }
+
+  .intercom-lightweight-app-launcher-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    transition: transform 100ms linear, opacity 80ms linear;
+  }
+
+  .intercom-lightweight-app-launcher-icon-open {
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-open svg {
+    width: 28px;
+    height: 32px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-open svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve {
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve svg {
+    height: 56px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-launcher-custom-icon-open {
+    max-height: 36px;
+    max-width: 36px;
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize {
+    
+        opacity: 0;
+        transform: rotate(-60deg) scale(0);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize svg {
+    width: 16px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-messenger {
+    position: fixed;
+    z-index: 2147483003;
+    overflow: hidden;
+    background-color: white;
+    animation: intercom-lightweight-app-messenger 250ms ease-out;
+    
+        width: 376px;
+        height: calc(100% - 40px);
+        max-height: 704px;
+        min-height: 250px;
+        right: 20px;
+        bottom: 20px;
+        box-shadow: 0 5px 40px rgba(0,0,0,0.16);
+        border-radius: 8px;
+      
+  }
+
+  .intercom-lightweight-app-messenger-header {
+    height: 75px;
+    background: linear-gradient(
+      135deg,
+      rgb(45, 45, 68) 0%,
+      rgb(4, 4, 7) 100%
+    );
+  }
+
+  @media print {
+    .intercom-lightweight-app {
+      display: none;
+    }
+  }
+</style>
+</div>
+</body>
+<app-content ng-version="11.1.0"></app-content>
+</html>

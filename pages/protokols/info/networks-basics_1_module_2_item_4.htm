@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html class="" lang="ru"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="utf-8">
+
+
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/octicons-3.css">
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/core.css">
+<link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/text.css"><link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/extended-ui-kit.css"><link rel="stylesheet" href="networks-basics_1_module_1_item_1_files/up.css"><meta name="theme-color" content="#2d2d44">
+
+</head><body>
+
+              <div class="page-content "><div class="page-content__inner"><div class="up-interface up-interface--up "><section class="up-interface__left-col"><nav class="breadcrumbs"><ul class="breadcrumbs__list"><li class="breadcrumbs__item"><a href="../index.htm">Главная</a></li><li class="breadcrumbs__item"><a href="networks-basics_1_module_2.htm">2. Защита данных</a></li></ul></nav><article class="up-text"><div class="up-text__head"><h1 class="up-text__title"><svg aria-hidden="true" width="24" height="24"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg>
+          2.4.&nbsp;Создание аутентификации на&nbsp;Node.js
+        </h1></div><div class="text-container text-container--module"><p>Разберём,
+ как подключить систему, гарантирующую, что доступ к&nbsp;сохранённым 
+данным будет предоставлен только пользователю, которому они принадлежат.
+ Это нужно для приложений с&nbsp;пользовательским входом (логин 
+и&nbsp;пароль), например, админки сайта, личного кабинета, 
+интернет-магазинов или форумов.</p><p>Для этого воспользуемся <a href="https://auth0.com/">Auth0</a>&nbsp;— платформой авторизации и&nbsp;аутентификации, которая возьмёт на&nbsp;себя функции сервера.</p><p>Мы&nbsp;напишем аутентификацию через Auth0 на&nbsp;Node.js и&nbsp;библиотеке Express OpenID Connect.</p><p>Приступим. Если вы&nbsp;начинаете проект с&nbsp;нуля или хотите потренироваться, то&nbsp;инициируем проект:</p><pre class="JavaScript language-JavaScript"><code class="hljs">npm init
+</code></pre><p>Если у&nbsp;вас уже есть проект, то&nbsp;начинайте с&nbsp;этого шага. Установите библиотеку <code>Express OpenID Connect</code> и&nbsp;пакет <code>dotenv</code>, который поможет работать c&nbsp;файлами <code>.env</code>:</p><pre class="JavaScript language-JavaScript"><code class="hljs">npm install express express-openid-connect dotenv
+</code></pre><p>Теперь зарегистрируйте проект в&nbsp;Auth0: <a href="https://auth0.com/signup">страница регистрации</a></p><p><img src="networks-basics_1_module_2_item_4_files/auth0-signup.png" alt="Регистрация проекта в Auth0"></p><p>Выберите подходящий тип аккаунта:</p><p><img src="networks-basics_1_module_2_item_4_files/auth0-type.png" alt="Выбор типа аккаунта в Auth0"></p><p>Во&nbsp;вкладке Applications выберите Applications:</p><p><img src="networks-basics_1_module_2_item_4_files/auth0-apps.jpeg" alt="Выбор Applications в Auth0"></p><p>Создайте новый проект, нажав Create Application:</p><p><img src="networks-basics_1_module_2_item_4_files/auth0-new-app.jpeg" alt="Создание нового проекта в Auth0"></p><p>Введите название проекта, выберите тип проекта Regular Web Application, нажмите кнопку Create:</p><p><img src="networks-basics_1_module_2_item_4_files/auth0-new-app-type.jpeg" alt="Настройки проекта в Auth0"></p><p>Перейдите во&nbsp;вкладку Settings:</p><p><img src="networks-basics_1_module_2_item_4_files/auth0-new-app-created.jpeg" alt="Настройки проекта в Auth0"></p><p>Прокрутите вниз до&nbsp;пункта Allowed Callback URLs и&nbsp;добавьте <a href="http://localhost:3000/callback">http://localhost:3000/callback</a>. Это необходимо для того, чтобы Auth0 провела необходимую аутентификацию.</p><p><img src="networks-basics_1_module_2_item_4_files/auth0-allowed-callback.jpeg" alt="Allowed Callback URLs в Auth0"></p><p>В&nbsp;Allowed Logout URLs добавьте <a href="http://localhost:3000/">http://localhost:3000</a>:</p><p><img src="networks-basics_1_module_2_item_4_files/auth0-allowed-logout.jpeg" alt="Allowed Logout URLs в Auth0"></p><p>Прокрутите вниз и&nbsp;нажмите Save Changes:</p><p><img src="networks-basics_1_module_2_item_4_files/auth0-app-save.jpeg" alt="Save changes в Auth0"></p><p>Библиотека
+ Express OpenID Connect предоставляет маршрутизатор аутентификации, 
+чтобы добавить аутентификацию к&nbsp;приложению. Теперь нужно настроить 
+маршрутизатор со&nbsp;следующими ключами конфигурации:</p><ul><li><p><code>authRequired</code>&nbsp;— требуется&nbsp;ли аутентификация для всех маршрутов;</p></li><li><p><code>auth0Logout</code>&nbsp;— выход из&nbsp;системы;</p></li><li><p><code>baseURL</code>&nbsp;— URL расположения приложения;</p></li><li><p><code>secret</code>&nbsp;— длинная произвольная строка, минимум 32 символа;</p></li><li><p><code>issuerBaseURL</code>&nbsp;— защищённый URL-адрес, указанный в&nbsp;настройках приложения;</p></li><li><p><code>clientID</code>&nbsp;— Client ID, указанный в&nbsp;настройках приложения.</p></li></ul><p>Сделаем&nbsp;это. Создадим файл <code>app.js</code>, импортируем <code>express</code> и&nbsp;пакет <code>dotenv</code>:</p><pre class="JavaScript language-JavaScript"><code class="hljs"><span class="hljs-keyword">const</span> exprees = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);
+<span class="hljs-keyword">const</span> app = express();
+<span class="hljs-built_in">require</span>(<span class="hljs-string">'dotenv'</span>).config();
+</code></pre><p>Укажем порт 3000 по&nbsp;умолчанию или другой открытый:</p><pre class="JavaScript language-JavaScript"><code class="hljs"><span class="hljs-keyword">const</span> port = process.env.PORT || <span class="hljs-number">3000</span>;
+</code></pre><p>Начнём слушать порт и&nbsp;выведем в&nbsp;консоль сообщение, если всё в&nbsp;порядке:</p><pre class="JavaScript language-JavaScript"><code class="hljs">app.listen(port, <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'слушает порт ${port}'</span>);
+});
+</code></pre><p>Библиотеке нужны <code>ISSUER_BASE_URL</code>, <code>CLIENT_ID</code>, <code>BASE_URL</code> и&nbsp;<code>SECRET</code>, чтобы запрашивать и&nbsp;принимать аутентификацию. Их&nbsp;можно настроить с&nbsp;помощью переменных:</p><p>ISSUER_BASE_URL=https://YOUR_DOMAIN</p><p>CLIENT_ID=YOUR_CLIENT_ID</p><p>BASE_URL=https://YOUR_APPLICATION_ROOT_URL</p><p>SECRET=LONG_RANDOM_VALUE</p><p><code>ISSUER_BASE_URL</code> и&nbsp;<code>CLIENT_ID</code> берём из&nbsp;настроек приложения, пункты <code>Domain</code> и&nbsp;<code>Client ID</code> соответственно:</p><p><img src="networks-basics_1_module_2_item_4_files/env-settings-1.jpeg" alt="ISSUER_BASE_URL и CLIENT_ID в настройках"></p><p>BASE_URL&nbsp;— это локалхост, а&nbsp;SECRET&nbsp;— длинная произвольная строка, минимум 32 символа.</p><p>Всё это прописываем в&nbsp;файле <code>.env</code>:</p><pre class="JavaScript language-JavaScript"><code class="hljs">ISSUER_BASE_URL=https:<span class="hljs-comment">//dev-84-b0-zj.us.auth0.com</span>
+CLIENT_ID=5R39ZIpwSagbpmItMriRG9mGneJFy
+BASE_URL=http:<span class="hljs-comment">//localhost:3000</span>
+SECRET=sahfaskjwesahfaskjwesahfaskjwedd
+</code></pre><p>Теперь в&nbsp;файл <code>app.js</code> добавляем конфигурации и&nbsp;вписываем переменные из&nbsp;файла <code>.env</code>:</p><pre class="JavaScript language-JavaScript"><code class="hljs"><span class="hljs-keyword">const</span> { auth } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express-openid-connect'</span>);
+app.use(
+  auth({
+    <span class="hljs-attr">issuerBaseURL</span>: process.env.ISSUER_BASE_URL,
+    <span class="hljs-attr">baseURL</span>: process.env.BASE_URL,
+    <span class="hljs-attr">clientID</span>: process.env.CLIENT_ID,
+    <span class="hljs-attr">secret</span>: process.env.SECRET,
+    <span class="hljs-attr">idpLogout</span>: <span class="hljs-literal">true</span>,
+  })
+);
+</code></pre><p>Также давайте используем пакет <a href="https://www.npmjs.com/package/nodemon">nodemon</a>, который перезапускает сервер при изменении файлов.</p><p>И&nbsp;запустим проект командой <code>nodemon app.js</code>:</p><pre class="JavaScript language-JavaScript"><code class="hljs">nodemon app.js
+</code></pre><p>В&nbsp;консоли:</p><p><img src="networks-basics_1_module_2_item_4_files/start.jpeg" alt="Start app.js"></p><p>В&nbsp;браузере:</p><p><img src="networks-basics_1_module_2_item_4_files/browser-after-start.jpeg" alt="В браузере после старта"></p><p>Нажмём
+ зелёную кнопку. Нас перенаправили на&nbsp;локалхост с&nbsp;сообщением 
+о&nbsp;том, что не&nbsp;удаётся получить директорию:</p><p><img src="networks-basics_1_module_2_item_4_files/localhost-cannot-get.png" alt="В браузере после старта"></p><p>Настроим директорию в&nbsp;<code>app.js</code>:</p><pre class="JavaScript language-JavaScript"><code class="hljs">app.get(<span class="hljs-string">'/'</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.send(req.oidc.isAuthenticated() ? <span class="hljs-string">'Logged in'</span> : <span class="hljs-string">'Logged out'</span>);
+});
+</code></pre><p>Выведем сообщение <code>Logged in</code>, если пользователь авторизован, и&nbsp;сообщение <code>Logged out</code>, если не&nbsp;авторизован. В&nbsp;браузере теперь отображается верное сообщение:</p><p><img src="networks-basics_1_module_2_item_4_files/logged-in.png" alt="Авторизован"></p><p>Теперь мы&nbsp;знаем, что пользователь авторизован.</p><p>Допишем <code>authRequired</code> со&nbsp;значением <code>false</code>, чтобы пользователю не&nbsp;нужно было авторизовываться при каждом входе. И&nbsp;<code>auth0Logout</code> со&nbsp;значением <code>true</code> для возможности выйти из&nbsp;учётной записи:</p><pre class="JavaScript language-JavaScript"><code class="hljs">app.use(
+  auth({
+
+    <span class="hljs-attr">authRequired</span>: <span class="hljs-literal">false</span>;
+    auth0Logout: <span class="hljs-literal">true</span>;
+
+    issuerBaseURL: process.env.ISSUER_BASE_URL,
+    <span class="hljs-attr">baseURL</span>: process.env.BASE_URL,
+    <span class="hljs-attr">clientID</span>: process.env.CLIENT_ID,
+    <span class="hljs-attr">secret</span>: process.env.SECRET,
+    <span class="hljs-attr">idpLogout</span>: <span class="hljs-literal">true</span>,
+  })
+);
+</code></pre><p>Проверим. Перейдём по&nbsp;URL <code>localhost:3000/logout</code> и&nbsp;увидим, что мы&nbsp;вышли из&nbsp;учётной записи:</p><p><img src="networks-basics_1_module_2_item_4_files/logged-out-1.jpeg" alt="Вышли из учётной записи"></p><p>Далее мы&nbsp;будем перенаправлены опять на&nbsp;директорию <code>localhost:3000</code> с&nbsp;сообщением <code>Logged out</code>:</p><p><img src="networks-basics_1_module_2_item_4_files/logged-out-2.png" alt="Вышли из учётной записи на localhost:3000"></p><p>Далее, если перейти по&nbsp;URL <code>localhost:3000/login</code>, увидим, что теперь можно авторизовываться разными способами:</p><p><img src="networks-basics_1_module_2_item_4_files/login.jpeg" alt="Авторизация"></p><p>При авторизации вас перенаправят на&nbsp;локалхост с&nbsp;сообщением <code>Logged in</code>:</p><p><img src="networks-basics_1_module_2_item_4_files/localhost-after-login.png" alt="Перенаправление с сообщением Logged in"></p><p>Готово!</p></div>
+
+
+
+
+                      </div></div></div>
+
+
+
+</body></html>
