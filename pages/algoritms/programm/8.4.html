@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)6.6.html -->
+<html lang="ru" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Алгоритмы и структуры данных</title><script type="text/javascript" async="" src="..\STYLE\6.6_files/omq12oer"></script><script type="text/javascript" async="" src="..\STYLE\6.6_files/linkid.js.Без названия"></script><script type="text/javascript" integrity="sha384-d/yhnowERvm+7eCU79T/bYjOiMmq4F11ElWYLmt0ktvYEVgqLDazh4+gW9CKMpYW" crossorigin="anonymous" async="" src="..\STYLE\6.6_files/amplitude-5.2.2-min.gz.js.Без названия"></script><script async="" src="..\STYLE\6.6_files/tag.js.Без названия"></script><script type="text/javascript" async="" src="..\STYLE\6.6_files/analytics.js.Без названия"></script><script async="" src="..\STYLE\6.6_files/gtm.js.Без названия"></script><script>document.documentElement.classList.remove('no-js');</script><script src="..\STYLE\6.6_files/sentry.js.Без названия" data-sentry="a64ad1fd170847efa544b305c67696aa" data-project="10" data-version="2" data-sample-rate="0.25"></script><link rel="stylesheet" href="..\STYLE\6.6_files/octicons-3.3.0.min.css"><link rel="stylesheet" href="..\STYLE\6.6_files/core.v187.css"><link rel="stylesheet" href="..\STYLE\6.6_files/text.v67.css"><link rel="stylesheet" href="..\STYLE\6.6_files/extended-ui-kit.v64.css"><link rel="stylesheet" href="..\STYLE\6.6_files/up.v174.css"><meta name="theme-color" content="#2d2d44"><link rel="mask-icon" href="https://up.htmlacademy.ru/meta/favicon.svg" color="#2e368e"><meta name="application-name" content="Алгоритмы и структуры данных #1"><meta name="apple-mobile-web-app-title" content="Алгоритмы и структуры данных #1"><link rel="apple-touch-icon" href="https://up.htmlacademy.ru/meta/htmlcss-touch-icon.png"><link rel="shortcut icon" type="image/x-icon" href="https://up.htmlacademy.ru/meta/htmlcss-favicon.ico"><link rel="manifest" href="https://up.htmlacademy.ru/meta/htmlcss.webmanifest"><link rel="preload" href="https://assets.htmlacademy.ru/fonts/tt-norms-pro-400-normal.v2.woff2" type="font/woff2" as="font" crossorigin="anonymous"><link rel="preload" href="https://assets.htmlacademy.ru/fonts/tt-norms-pro-500-normal.v2.woff2" type="font/woff2" as="font" crossorigin="anonymous"><link rel="preload" href="https://assets.htmlacademy.ru/fonts/tt-norms-pro-700-normal.v2.woff2" type="font/woff2" as="font" crossorigin="anonymous"><link rel="preload" href="https://assets.htmlacademy.ru/fonts/ubuntu-mono.woff2?cs=7882c41280d8256972fd2b8ee74e2d7d28a857b6" type="font/woff2" as="font" crossorigin="anonymous"><link rel="preload" as="script" href="..\STYLE\6.6_files/general.v209.js.Без названия"><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GAM-Q4AS61O');</script><script charset="utf-8" src="..\STYLE\6.6_files/043546.js.Без названия"></script><script charset="utf-8" src="..\STYLE\6.6_files/834ec9.js.Без названия"></script><style type="text/css">.vue-star-rating-star[data-v-ef4bc576]{overflow:visible!important}.vue-star-rating-star-rotate[data-v-ef4bc576]{transition:all .25s}.vue-star-rating-star-rotate[data-v-ef4bc576]:hover{transition:transform .25s;transform:rotate(-15deg) scale(1.3)}</style><style type="text/css">.vue-star-rating-star[data-v-fde73a0c]{display:inline-block}.vue-star-rating-pointer[data-v-fde73a0c]{cursor:pointer}.vue-star-rating[data-v-fde73a0c]{display:flex;align-items:center}.vue-star-rating-inline[data-v-fde73a0c]{display:inline-flex}.vue-star-rating-rating-text[data-v-fde73a0c]{margin-left:7px}.vue-star-rating-rtl[data-v-fde73a0c]{direction:rtl}.vue-star-rating-rtl .vue-star-rating-rating-text[data-v-fde73a0c]{margin-right:10px;direction:rtl}.sr-only[data-v-fde73a0c]{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}</style><style type="text/css" id="ctre_styles">
+			#ctre_wnd {
+				position: fixed; bottom: 0; right: 10px; width: 360px; padding: 10px 20px;
+				box-sizing: content-box;
+				text-align: left; font-family: Helvetica, Arial, sans-serif;
+				background: #fff; box-shadow: 0px 0px 40px rgba(0,0,0,0.15);
+				z-index: 2147483647;
+				font-size: 12px; color: #666;
+			}
+			#ctre_wnd * {
+				line-height: 1.3; font-size: inherit; color: inherit;
+				font-weight: normal; font-style: normal; font-family: inherit;
+				cursor: default;
+			}
+			#ctre_wnd a, #ctre_wnd input[type=checkbox] { cursor: pointer; }
+
+			#ctre_wnd .ct_minimize, #ctre_wnd .ct_close {
+				display: block; cursor: pointer;
+				position: absolute; top: 0; right: 0; width: 32px; line-height: 32px;
+				font-size: 14px; text-align: center;
+				transition: color 0.3s, background 0.3s;
+			}
+			#ctre_wnd .ct_minimize { right: 32px; background: #fff; color: #0fb4d4; }
+			#ctre_wnd .ct_minimize:hover { background: #0fb4d4; color: #fff; }
+			#ctre_wnd .ct_minimize i {
+				display: inline-block; cursor: pointer;
+				transform: rotate(45deg); transition: transform 0.5s;
+			}
+			#ctre_wnd .ct_close { color: #f00; background: #fff0f0; }
+			#ctre_wnd .ct_close:hover { color: #fff; background: #f00; }
+			#ctre_wnd .key {
+				display: inline-block;
+				font-family: monospace;
+				background: #f7f7f7; color: #999;
+				padding: 0 2px; margin: 0 2px;
+				border: solid 1px #d5d5d5; border-radius: 3px;
+			}
+			#ctre_wnd .ct_logo { font-size: 15px; font-weight: bold; }
+			#ctre_wnd .ct_logo.small { display: none; }
+			#ctre_wnd .ct_logo svg {
+				fill: #666; vertical-align: -15%;
+				transform: rotate(-240deg); transition: transform 1s;
+			}
+			#ctre_wnd .ct_logo.anim svg { transform: rotate(0deg); }
+
+			#ctre_wnd .version { color: #bbb; }
+			#ctre_wnd .keys { font-size: 11px; overflow: hidden; margin-top: 4px; color: #bbb; }
+			#ctre_wnd .ct_settings { font-size: 11px; overflow: hidden; margin: 8px 0; color: #bbb; }
+			#ctre_wnd .ct_settings a { color: #999; }
+			#ctre_wnd .ct_settings a:hover { color: #666; }
+			#ctre_wnd .activationKeys { float: left; margin-left: -2px; }
+			#ctre_wnd .transposeKeys { float: right; }
+			#ctre_current_elm {
+				font-family: monospace; background: #f7f7f7; color: #d5d5d5; padding: 2px; margin: 10px 0;
+				max-height: 84px; overflow: hidden;
+			}
+			#ctre_current_elm .pathNode { color: #999; border-bottom: solid 2px rgba(0,0,0,0); }
+			#ctre_current_elm .pathNode.active { border-bottom: solid 2px #555; }
+
+			#ctre_elm_list { display: none; margin: 0 -20px; background: #f7f7f7; border: solid 12px #f7f7f7; border-width: 12px 0 12px 0; max-height: 90px; overflow: auto; }
+			#ctre_elm_list.hasContent { display: block; }
+			#ctre_elm_list table { border: 0; width: 100%; border-spacing: 0; }
+			#ctre_elm_list tr { border: 0; }
+			#ctre_elm_list tr.ct_heading td { color: #bbb; }
+			#ctre_elm_list td { padding: 0; border: 0; background: #f7f7f7; }
+			#ctre_elm_list tr:nth-child(even) td { background: #fcfcfc; }
+			#ctre_elm_list td:nth-child(1) { padding-left: 20px; }
+			#ctre_elm_list td:nth-child(2) { text-align: center; }
+			#ctre_elm_list td:nth-child(3) { padding-right: 20px; }
+			#ctre_elm_list tr:not(.ct_heading) td:nth-child(1) { font-family: monospace; font-size: 11px; }
+			#ctre_elm_list td input { display: inline; -webkit-appearance: checkbox; }
+			#ctre_elm_list td input:before, #ctre_elm_list td input:after { content: none; }
+			#ctre_elm_list .ct_edit_selector { font-family: sans-serif; float: right; opacity: 0; color: #0fb4d4; text-decoration: none; }
+			#ctre_elm_list .ct_edit_selector:hover { color: #000; }
+			#ctre_elm_list tr:hover .ct_edit_selector { opacity: 1; }
+			#ctre_elm_list a.ct_delete { color: #f00; padding: 4px; text-decoration: none; font-size: 14px; }
+			#ctre_elm_list a.ct_delete:hover { color: #fff; background: #f00; }
+
+			#ctre_wnd .ct_more { border-top: solid 1px #f7f7f7; margin: 0 -20px; padding-top: 12px; color: #bbb; font-size: 10px; text-align: center; }
+			#ctre_wnd .ct_more a { color: #0fb4d4; font-size: inherit; text-decoration: none; transition: color 0.5s; }
+			#ctre_wnd .ct_more a:hover { color: #000; }
+
+			#ctre_wnd.minimized { width: 80px; height: 12px; }
+			#ctre_wnd.minimized > * { display: none; }
+			#ctre_wnd.minimized .ct_minimize,
+			#ctre_wnd.minimized .ct_close { display: block; }
+			#ctre_wnd.minimized .ct_minimize i { display: inline-block; transform: rotate(-135deg); }
+			#ctre_wnd.minimized .ct_logo.small { display: block; margin: -4px 0 0 -10px; }
+			
+body > .page-header { display: none !important; }
+.page-content__inner .up-interface__right-col { display: none !important; }
+li svg:nth-child(3) { display: none !important; }
+a > svg:nth-child(2) > use { display: none !important; }
+.up-header .up-header__social { display: none !important; }
+body > .page-footer { display: none !important; }
+.up-text .grid__cell:nth-child(2) { display: none !important; }
+.up-text .grid__cell:nth-child(1) { display: none !important; }
+.up-text > .card > .card__content { display: none !important; }
+body > .curator-chat { display: none !important; }</style><style type="text/css">.resize-observer[data-v-8859cc6c]{position:absolute;top:0;left:0;z-index:-1;width:100%;height:100%;border:none;background-color:transparent;pointer-events:none;display:block;overflow:hidden;opacity:0}.resize-observer[data-v-8859cc6c] object{display:block;position:absolute;top:0;left:0;height:100%;width:100%;overflow:hidden;pointer-events:none;z-index:-1}</style><style>[_nghost-gkf-c60]{font-family:Open Sans,sans-serif;color:#121212}</style><style>.hljs {display: block;color: black;}.hljs-keyword,.hljs-builtin-name,.hljs-selector-id {color: blue;}.hljs-subst,.hljs-attr {color: black;}.hljs-title,.hljs-type {color: #0000A2;}.hljs-literal {color: rgb(88,92,246);}.hljs-number {color: rgb(0,0,205);}.hljs-regexp,.hljs-string,.hljs-doctag,.hljs-selector-pseudo,.hljs-code {color: rgb(3,106,7);}.hljs-selector-class,.hljs-variable {color: rgb(49,132,149);}.hljs-selector-tag,.hljs-selector-attr,.hljs-link {color: rgb(197,6,11);}.hljs-attribute {color: rgb(109,121,222);}.hljs-comment,.hljs-quote {color: rgb(188,20,175);}.hljs-meta {color: rgb(104,104,91);}.hljs-tag {color: rgb(0,22,142);}.hljs-addition {background-color: rgba(155, 185, 85, 0.2);}.hljs-deletion {background-color: rgba(255, 0, 0, 0.2);}.hljs-params,.hljs-built_in {color: rgb(49, 132, 149);}</style><script charset="utf-8" src="..\STYLE\6.6_files/b1baaa.js.Без названия"></script><script charset="utf-8" src="..\STYLE\6.6_files/823153.js.Без названия"></script><script charset="utf-8" src="..\STYLE\6.6_files/2adbeb.js.Без названия"></script><script charset="utf-8" src="..\STYLE\6.6_files/bdf2e3.js.Без названия"></script><script charset="utf-8" src="..\STYLE\6.6_files/5000ba.js.Без названия"></script><script charset="utf-8" src="..\STYLE\6.6_files/3725ba.js.Без названия"></script><script charset="utf-8" src="..\STYLE\6.6_files/a15424.js.Без названия"></script><script charset="utf-8" src="..\STYLE\6.6_files/6b8076.js.Без названия"></script><script charset="utf-8" src="..\STYLE\6.6_files/958863.js.Без названия"></script><script charset="utf-8" src="..\STYLE\6.6_files/011a0e.js.Без названия"></script></head><body><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GAM-Q4AS61O"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><header class="page-header "><div class="page-header__inner"><div class="page-header__top"><a class="page-header__logo" href="https://htmlacademy.ru/" aria-label="HTML Academy"><img src="..\STYLE\6.6_files/logo.svg" width="104" height="36" alt="HTML Academy"></a><nav class="main-nav" aria-label="Основное меню" itemscope="itemscope" itemtype="http://www.schema.org/SiteNavigationElement"><ul class="main-nav__list main-nav__list--main main-nav__list--adaptive"><li class="main-nav__item main-nav__item--logo"><a class="main-nav__link" href="https://up.htmlacademy.ru/" title="На главную HTML Academy"><img src="..\STYLE\6.6_files/logo.svg" width="104" height="36" alt="HTML Academy"></a></li><li class="main-nav__item "><a class="main-nav__link" href="https://htmlacademy.ru/courses"><span class="main-nav__icon"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#course"></use></svg></span>Практикум</a></li><li class="main-nav__item "><a class="main-nav__link" href="https://htmlacademy.ru/profession/frontender"><span class="main-nav__icon"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#hat"></use></svg></span>Профессия</a></li><li class="main-nav__item "><a class="main-nav__link" href="https://htmlacademy.ru/intensive"><span class="main-nav__icon"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#intensive"></use></svg></span>Курсы</a></li></ul><button class="main-nav__trigger" type="button"><span></span></button><div class="main-nav__dropdown" id="main-menu"><div class="main-nav__dropdown-inner"><ul class="main-nav__list main-nav__list--main"><li class="main-nav__item main-nav__item--dropdown" itemprop="name"><a class="main-nav__link " href="https://htmlacademy.ru/courses" itemprop="url"><span class="main-nav__icon" aria-hidden="true"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#course"></use></svg></span>Практикум</a><ul class="main-nav__list main-nav__list--lvl2"><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/courses">Тренажёры</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://l.htmlacademy.ru/professional-skills">Профессиональные навыки</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://l.htmlacademy.ru/projects-and-templates">Проекты для практики</a></li></ul></li><li class="main-nav__item main-nav__item--dropdown " itemprop="name"><span class="main-nav__link" title="Профессии" tabindex="0"><span class="main-nav__icon"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#hat"></use></svg></span>Профессии</span><ul class="main-nav__list main-nav__list--lvl2"><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/profession/frontender" itemprop="url">Фронтенд-разработчик</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/profession/react" itemprop="url">React-разработчик</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/profession/fullstack" itemprop="url">Фулстек-разработчик</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/profession/backender" itemprop="url">Бэкенд-разработчик</a></li></ul></li><li class="main-nav__item main-nav__item--dropdown " itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive" itemprop="url"><span class="main-nav__icon" aria-hidden="true"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#intensive"></use></svg></span>Курсы</a><ul class="main-nav__list main-nav__list--lvl2 main-nav__list--wide"><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/htmlcss" itemprop="url">HTML и&nbsp;CSS.<br> Профессиональная вёрстка сайтов</a></li><li class="main-nav__item main-nav__item--divider" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/adaptive" itemprop="url">HTML и&nbsp;CSS.<br> Адаптивная вёрстка и&nbsp;автоматизация</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/javascript" itemprop="url">JavaScript.<br> Профессиональная разработка веб-интерфейсов</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/ecmascript" itemprop="url">JavaScript.<br> Архитектура клиентских приложений</a></li><li class="main-nav__item main-nav__item--divider" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/react" itemprop="url">React.<br> Разработка сложных клиентских приложений</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/php" itemprop="url">PHP.<br> Профессиональная веб-разработка</a></li><li class="main-nav__item main-nav__item--divider" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/php2" itemprop="url">PHP и&nbsp;Yii.<br> Архитектура сложных веб-сервисов</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/nodejs" itemprop="url">Node.js.<br> Разработка серверов приложений и&nbsp;API</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/animation" itemprop="url">Анимация для фронтендеров</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/email" itemprop="url">Node.js. Разработка серверов приложений и API</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://levelup.htmlacademy.ru/vue" itemprop="url">Vue.js.<br> Разработка клиентских приложений</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://levelup.htmlacademy.ru/regular-expressions" itemprop="url">Регулярные выражения для фронтендеров</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://levelup.htmlacademy.ru/template-engine" itemprop="url">Алгоритмы и структуры данных</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://levelup.htmlacademy.ru/algorithms" itemprop="url">Алгоритмы и&nbsp;структуры данных</a></li></ul></li><li class="main-nav__item main-nav__item--dropdown " itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/study" itemprop="url"><span class="main-nav__icon" aria-hidden="true"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#my-intensive"></use></svg></span>Моё обучение</a><ul class="main-nav__list main-nav__list--lvl2 main-nav__list--wide"><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://up.htmlacademy.ru/email/1" itemprop="url">Node.js. Разработка серверов приложений и API&nbsp;#1</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://up.htmlacademy.ru/vue/1" itemprop="url">Анимация для фронтендеров</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="1.html" itemprop="url">Алгоритмы и структуры данных</a></li></ul></li></ul><ul class="main-nav__list main-nav__list--user "><li class="main-nav__item main-nav__item--user main-nav__item--dropdown"><a class="main-nav__link main-nav__link--user" href="https://htmlacademy.ru/profile/id35001" title="marat1975" itemprop="url"><img class="main-nav__avatar" src="..\STYLE\6.6_files/unknown-raccoon.v4.svg" alt="marat1975"><span class="main-nav__username">marat1975</span></a><ul class="main-nav__list main-nav__list--lvl2"><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/discounts" title="Мои акции" itemprop="url"><span class="main-nav__icon "><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#discount"></use></svg></span>Мои акции</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/profile/settings" title="Настройки" itemprop="url"><span class="main-nav__icon"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#settings"></use></svg></span>Настройки</a></li><li class="main-nav__item main-nav__item--login" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/logout?redirect_url=6.6.html" title="Выйти" itemprop="url"><span class="main-nav__icon"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#logout"></use></svg></span>Выйти</a></li></ul></li></ul></div></div></nav></div></div></header><header class="up-header up-header--template-engine"><div class="up-header__inner"><div class="up-header__text"><h1 class="up-header__title"><a href="1.html">Алгоритмы и структуры данных</a></h1><span class="up-header__date"></span></div><ul class="up-header__social"><li><a href="1.html/feed" title="Лента уведомлений"><span class="sr-only">Лента уведомлений</span><span class="feed-counter hidden" data-newsfeed="https://newsfeed.htmlacademy.ru" data-newsfeed-token="e3J0eXAiOiJKV14iLCJhbGc3OiJIUzI4Ni49.e4J1c2dySWQiOdM1MDYzLCJpdnRlbnNpdmVJZCI6Mjc1LCJyb2xlIjoic3D1ZGVudCJ9.O5DDDDMolrvRtg_aO5Dc7pm2KjGT4aEMZmhA4wLmw_D">0</span><svg aria-hidden="true" width="32" height="32"><use xlink:href="/img/sprites/octicons.v10.svg#bell-24"></use></svg></a></li><li><a href="https://discord.gg/n1AmdWbWRA" title="Группа курса в Discord"><span class="sr-only">Группа курса в Discord</span><svg aria-hidden="true" width="32" height="32"><use xlink:href="/img/sprites/general.v45.svg#discord"></use></svg></a></li></ul></div><div class="up-header__nav"><nav class="tabs tabs--up"><button class="tabs__button" type="button"><span class="sr-only">Меню курса</span><span class="tabs__icon"><svg aria-hidden="true"><use xlink:href="/img/sprites/up.v9.svg#icon-arrow-right"></use></svg></span></button><ul class="tabs__list"><li class="tabs__item tabs__item--active"><a class="tabs__item-link" href="1.html">Программа</a></li><li class="tabs__item "><a class="tabs__item-link" href="FAQ.html">
+                FAQ
+              </a></li><li class="tabs__item "><a class="tabs__item-link" href="#">
+                Итоги
+              </a></li><li class="tabs__item tabs__item--mobile"><a class="tabs__item-link" href="6.6.html#">Меню курса</a></li></ul></nav></div></header><div class="page-content "><div class="page-content__inner"><div class="up-interface up-interface--up "><section class="up-interface__left-col"><nav class="breadcrumbs"><ul class="breadcrumbs__list"><li class="breadcrumbs__item"><a href="1.html">Главная</a></li><li class="breadcrumbs__item"><a href="8.html">8. Стек и очередь</a></li></ul></nav><article class="up-text"><div class="up-text__head"><h1 class="up-text__title"><svg aria-hidden="true" width="24" height="24"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg>
+         8.4.&nbsp;Демонстрация - Чем можно заменить рекурсию: стек
+        </h1></div><div class="text-container text-container--module"><h2>Шаг 1</h2>
+          <p>Есть ещё один способ замены рекурсии, который, в отличие от циклов, не даёт особого выигрыша по памяти — применение стека (или иногда очереди). Порой можно встретить подобные алгоритмы на практике, если их разработчик не дошёл до использования рекурсии, либо просто как альтернативное решение с другой логикой.
+
+Хорошим примером альтернативности решений является обход деревьев, о котором мы узнали пару модулей назад: можно использовать либо рекурсивный поиск в глубину, либо поиск в ширину с очередью. Но также можно написать и поиск в глубину с использованием стека.</p>
+<pre class="jade language-jade"><code>const root = document.body;
+const resultElement = document.getElementById('result');
+
+function traverse(node) {
+  const result = [];
+
+  // в рекурсивной функции...
+  function recursive(node) {
+    // ... сначала обрабатываем ноду, в которой находимся ...
+    result.push(node.localName);
+
+    // ...а потом вызываем её же на всех детях
+    for (const child of node.children) {
+      recursive(child);
+    }
+  }
+
+  recursive(node);
+
+  resultElement.innerHTML = result.join(' -> ');
+}
+
+traverse(root);</code></pre>
+<h2>Шаг 2</h2>
+<p>Для этого мы просто берём наш поиск в ширину с очередью.</p>
+<pre class="jade language-jade"><code>
+const root = document.body;
+const resultElement = document.getElementById('result');
+
+function traverse(node) {
+  const result = [];
+
+  // очередь для просмотра нод
+  const queue = [];
+
+  // куда мы сразу же кладем ноду, с которой будем начинать обход
+  queue.push(node);
+
+  // обходим, пока в очереди что-то есть
+  while(queue.length) {
+    // получаем ноду из списка
+    const currentNode = queue.shift();
+
+    // делаем всё, что нужно с нашей нодой (сейчас это просто перекладывание ноды в список просмотренных)
+    result.push(currentNode.localName);
+
+    // и кладем в очередь всех потомков нашей ноды.
+    // из-за того, что мы будем класть потомков в конец и доставать из начала, мы гарантированно просмотрим все ноды текущего уровня перед спуском на следующий
+    queue.push(...currentNode.children);
+  }
+
+  resultElement.innerHTML = result.join(' -> ');
+}
+
+traverse(root);
+
+</code></pre>
+<h2>Шаг 3</h2><p>И меняем очередь на стек!
+
+Опять же, решение с рекурсией гораздо нагляднее. Оно короче и понятнее, чем использование стека. Да и по памяти решение со стеком не выигрывает. Однако, во-первых, рекурсия может перестать вас устраивать в условиях «высокого» дерева. А во-вторых, просто забавно посмотреть, как алгоритмы получаются друг из друга и при небольших отличиях начинают работать оптимальнее с разными наборами данных.</p>
+<pre class="jade language-jade"><code>const root = document.body;
+const resultElement = document.getElementById('result');
+
+function traverse(node) {
+  const result = [];
+
+  // очередь для просмотра нод
+  const queue = [];
+
+  // куда мы сразу же кладем ноду, с которой будем начинать обход
+  queue.push(node);
+
+  // обходим, пока в стеке что-то есть
+  while(queue.length) {
+    // получаем ноду из стека
+    const currentNode = queue.pop();
+
+    // делаем всё, что нужно с нашей нодой (сейчас это просто перекладывание ноды в список просмотренных)
+    result.push(currentNode.localName);
+
+    // и кладем в очередь всех потомков нашей ноды.
+    // из-за того, что мы будем класть потомков в конец и доставать из начала, мы гарантированно просмотрим все ноды текущего уровня перед спуском на следующий
+    queue.push(...currentNode.children);
+  }
+
+  resultElement.innerHTML = result.join(' -> ');
+}
+
+traverse(root);
+</code></pre>
+
+</div> <div></div> <!----> <!----> <div></div> <div></div> <!----> <!----></div></div> <script type="text/javascript" id="">(function(a,e,f,g,b,c,d){a[b]=a[b]||function(){(a[b].a=a[b].a||[]).push(arguments)};a[b].l=1*new Date;c=e.createElement(f);d=e.getElementsByTagName(f)[0];c.async=1;c.src=g;d.parentNode.insertBefore(c,d)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(52619253,"init",{id:52619253,clickmap:!0,trackLinks:!0,accurateTrackBounce:!0,webvisor:!0});</script> <noscript><div><img src="https://mc.yandex.ru/watch/52619253" style="position:absolute; left:-9999px;" alt=""></div></noscript> <script type="text/javascript" id="">(function(e,a){function f(b,a){b.prototype[a]=function(){this._q.push([a].concat(Array.prototype.slice.call(arguments,0)));return this}}function g(b){function a(a){b[a]=function(){b._q.push([a].concat(Array.prototype.slice.call(arguments,0)))}}for(var c=0;c<h.length;c++)a(h[c])}var c=e.amplitude||{_q:[],_iq:{}},b=a.createElement("script");b.type="text/javascript";b.integrity="sha384-d/yhnowERvm+7eCU79T/bYjOiMmq4F11ElWYLmt0ktvYEVgqLDazh4+gW9CKMpYW";b.crossOrigin="anonymous";b.async=!0;b.src="https://cdn.amplitude.com/libs/amplitude-5.2.2-min.gz.js";
+b.onload=function(){e.amplitude.runQueuedFunctions||console.log("[Amplitude] Error: could not load SDK")};a=a.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a);b=function(){this._q=[];return this};a="add append clearAll prepend set setOnce unset".split(" ");for(var d=0;d<a.length;d++)f(b,a[d]);c.Identify=b;b=function(){this._q=[];return this};a=["setProductId","setQuantity","setPrice","setRevenueType","setEventProperties"];for(d=0;d<a.length;d++)f(b,a[d]);c.Revenue=b;var h="init logEvent logRevenue setUserId setUserProperties setOptOut setVersionName setDomain setDeviceId setGlobalUserProperties identify clearUserProperties setGroup logRevenueV2 regenerateDeviceId groupIdentify onInit logEventWithTimestamp logEventWithGroups setSessionId resetSessionId".split(" ");
+g(c);c.getInstance=function(a){a=(a&&0!==a.length?a:"$default_instance").toLowerCase();c._iq.hasOwnProperty(a)||(c._iq[a]={_q:[]},g(c._iq[a]));return c._iq[a]};e.amplitude=c})(window,document);amplitude.getInstance().init("f602c01f1c06db4f52768e6adaa4eb56",google_tag_manager["GAM-Q4AS61O"].macro(6),{includeUtm:!0,includeGclid:!0,includeReferrer:!0,deviceIdFromUrlParam:!0},function(e){window.amplitudeLoaded=!0});</script><script type="text/javascript" id="">var eventProperties={};eventProperties.origin=google_tag_manager["GAM-Q4AS61O"].macro(7);eventProperties.domain=google_tag_manager["GAM-Q4AS61O"].macro(8);amplitude.getInstance().logEvent("user.visit",eventProperties);</script><div class="autocomplete-suggestions "></div><iframe id="intercom-frame" style="position: absolute !important; opacity: 0 !important; width: 1px !important; height: 1px !important; top: 0 !important; left: 0 !important; border: none !important; display: block !important; z-index: -1 !important; pointer-events: none;" aria-hidden="true" tabindex="-1" title="Intercom" src="..\STYLE\6.6_files/saved_resource.html"></iframe><div class="intercom-lightweight-app"><style id="intercom-lightweight-app-style" type="text/css">
+  @keyframes intercom-lightweight-app-launcher {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes intercom-lightweight-app-gradient {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes intercom-lightweight-app-messenger {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .intercom-lightweight-app {
+    position: fixed;
+    z-index: 2147483001;
+    width: 0;
+    height: 0;
+    font-family: intercom-font, "Helvetica Neue", "Apple Color Emoji", Helvetica, Arial, sans-serif;
+  }
+
+  .intercom-lightweight-app-gradient {
+    position: fixed;
+    z-index: 2147483002;
+    width: 500px;
+    height: 500px;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at bottom right,
+      rgba(29, 39, 54, 0.16) 0%,
+      rgba(29, 39, 54, 0) 72%);
+    animation: intercom-lightweight-app-gradient 200ms ease-out;
+  }
+
+  .intercom-lightweight-app-launcher {
+    position: fixed;
+    z-index: 2147483003;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #2D2D44;
+    cursor: pointer;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.06), 0 2px 32px 0 rgba(0, 0, 0, 0.16);
+    animation: intercom-lightweight-app-launcher 250ms ease;
+  }
+
+  .intercom-lightweight-app-launcher:focus {
+    outline: none;
+    
+  }
+
+  .intercom-lightweight-app-launcher-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    transition: transform 100ms linear, opacity 80ms linear;
+  }
+
+  .intercom-lightweight-app-launcher-icon-open {
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-open svg {
+    width: 28px;
+    height: 32px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-open svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve {
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve svg {
+    height: 56px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-launcher-custom-icon-open {
+    max-height: 36px;
+    max-width: 36px;
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize {
+    
+        opacity: 0;
+        transform: rotate(-60deg) scale(0);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize svg {
+    width: 16px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-messenger {
+    position: fixed;
+    z-index: 2147483003;
+    overflow: hidden;
+    background-color: white;
+    animation: intercom-lightweight-app-messenger 250ms ease-out;
+    
+        width: 376px;
+        height: calc(100% - 40px);
+        max-height: 704px;
+        min-height: 250px;
+        right: 20px;
+        bottom: 20px;
+        box-shadow: 0 5px 40px rgba(0,0,0,0.16);
+        border-radius: 8px;
+      
+  }
+
+  .intercom-lightweight-app-messenger-header {
+    height: 75px;
+    background: linear-gradient(
+      135deg,
+      rgb(45, 45, 68) 0%,
+      rgb(4, 4, 7) 100%
+    );
+  }
+
+  @media print {
+    .intercom-lightweight-app {
+      display: none;
+    }
+  }
+</style></div></body><app-content ng-version="11.1.0"></app-content></html>

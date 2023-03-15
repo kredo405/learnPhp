@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)1.html -->
+<html lang="ru" class="" data-kantu="1"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Алгоритмы и структуры данных #1 / HTML Academy</title><script type="text/javascript" async="" src="../STYLE/./index_files/omq12oer"></script><script type="text/javascript" async="" src="../STYLE/./index_files/linkid.js.Без названия"></script><script type="text/javascript" integrity="sha384-d/yhnowERvm+7eCU79T/bYjOiMmq4F11ElWYLmt0ktvYEVgqLDazh4+gW9CKMpYW" crossorigin="anonymous" async="" src="../STYLE/./index_files/amplitude-5.2.2-min.gz.js.Без названия"></script><script async="" src="../STYLE/./index_files/tag.js.Без названия"></script><script type="text/javascript" async="" src="../STYLE/./index_files/analytics.js.Без названия"></script><script async="" src="../STYLE/./index_files/gtm.js.Без названия"></script><script>document.documentElement.classList.remove('no-js');</script><script src="../STYLE/./index_files/sentry.js.Без названия" data-sentry="a64ad1fd170847efa544b305c67696aa" data-project="10" data-version="2" data-sample-rate="0.25"></script><link rel="stylesheet" href="../STYLE/./index_files/octicons-3.3.0.min.css"><link rel="stylesheet" href="../STYLE/./index_files/core.v187.css"><link rel="stylesheet" href="../STYLE/./index_files/text.v67.css"><link rel="stylesheet" href="../STYLE/./index_files/extended-ui-kit.v64.css"><link rel="stylesheet" href="../STYLE/./index_files/up.v174.css"><meta name="theme-color" content="#2d2d44"><link rel="mask-icon" href="https://up.htmlacademy.ru/meta/favicon.svg" color="#2e368e"><meta name="application-name" content="Алгоритмы и структуры данных #1"><meta name="apple-mobile-web-app-title" content="Алгоритмы и структуры данных #1"><link rel="apple-touch-icon" href="https://up.htmlacademy.ru/meta/htmlcss-touch-icon.png"><link rel="shortcut icon" type="image/x-icon" href="https://up.htmlacademy.ru/meta/htmlcss-favicon.ico"><link rel="manifest" href="https://up.htmlacademy.ru/meta/htmlcss.webmanifest"><link rel="preload" href="https://assets.htmlacademy.ru/fonts/tt-norms-pro-400-normal.v2.woff2" type="font/woff2" as="font" crossorigin="anonymous"><link rel="preload" href="https://assets.htmlacademy.ru/fonts/tt-norms-pro-500-normal.v2.woff2" type="font/woff2" as="font" crossorigin="anonymous"><link rel="preload" href="https://assets.htmlacademy.ru/fonts/tt-norms-pro-700-normal.v2.woff2" type="font/woff2" as="font" crossorigin="anonymous"><link rel="preload" href="https://assets.htmlacademy.ru/fonts/ubuntu-mono.woff2?cs=7882c41280d8256972fd2b8ee74e2d7d28a857b6" type="font/woff2" as="font" crossorigin="anonymous"><link rel="preload" as="script" href="../STYLE/./index_files/general.v209.js.Без названия"><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GAM-Q4AS61O');</script><script charset="utf-8" src="../STYLE/./index_files/b1baaa.js.Без названия"></script><style type="text/css">.vue-star-rating-star[data-v-ef4bc576]{overflow:visible!important}.vue-star-rating-star-rotate[data-v-ef4bc576]{transition:all .25s}.vue-star-rating-star-rotate[data-v-ef4bc576]:hover{transition:transform .25s;transform:rotate(-15deg) scale(1.3)}</style><style type="text/css">.vue-star-rating-star[data-v-fde73a0c]{display:inline-block}.vue-star-rating-pointer[data-v-fde73a0c]{cursor:pointer}.vue-star-rating[data-v-fde73a0c]{display:flex;align-items:center}.vue-star-rating-inline[data-v-fde73a0c]{display:inline-flex}.vue-star-rating-rating-text[data-v-fde73a0c]{margin-left:7px}.vue-star-rating-rtl[data-v-fde73a0c]{direction:rtl}.vue-star-rating-rtl .vue-star-rating-rating-text[data-v-fde73a0c]{margin-right:10px;direction:rtl}.sr-only[data-v-fde73a0c]{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}</style><style type="text/css" id="ctre_styles">
+			#ctre_wnd {
+				position: fixed; bottom: 0; right: 10px; width: 360px; padding: 10px 20px;
+				box-sizing: content-box;
+				text-align: left; font-family: Helvetica, Arial, sans-serif;
+				background: #fff; box-shadow: 0px 0px 40px rgba(0,0,0,0.15);
+				z-index: 2147483647;
+				font-size: 12px; color: #666;
+			}
+			#ctre_wnd * {
+				line-height: 1.3; font-size: inherit; color: inherit;
+				font-weight: normal; font-style: normal; font-family: inherit;
+				cursor: default;
+			}
+			#ctre_wnd a, #ctre_wnd input[type=checkbox] { cursor: pointer; }
+
+			#ctre_wnd .ct_minimize, #ctre_wnd .ct_close {
+				display: block; cursor: pointer;
+				position: absolute; top: 0; right: 0; width: 32px; line-height: 32px;
+				font-size: 14px; text-align: center;
+				transition: color 0.3s, background 0.3s;
+			}
+			#ctre_wnd .ct_minimize { right: 32px; background: #fff; color: #0fb4d4; }
+			#ctre_wnd .ct_minimize:hover { background: #0fb4d4; color: #fff; }
+			#ctre_wnd .ct_minimize i {
+				display: inline-block; cursor: pointer;
+				transform: rotate(45deg); transition: transform 0.5s;
+			}
+			#ctre_wnd .ct_close { color: #f00; background: #fff0f0; }
+			#ctre_wnd .ct_close:hover { color: #fff; background: #f00; }
+			#ctre_wnd .key {
+				display: inline-block;
+				font-family: monospace;
+				background: #f7f7f7; color: #999;
+				padding: 0 2px; margin: 0 2px;
+				border: solid 1px #d5d5d5; border-radius: 3px;
+			}
+			#ctre_wnd .ct_logo { font-size: 15px; font-weight: bold; }
+			#ctre_wnd .ct_logo.small { display: none; }
+			#ctre_wnd .ct_logo svg {
+				fill: #666; vertical-align: -15%;
+				transform: rotate(-240deg); transition: transform 1s;
+			}
+			#ctre_wnd .ct_logo.anim svg { transform: rotate(0deg); }
+
+			#ctre_wnd .version { color: #bbb; }
+			#ctre_wnd .keys { font-size: 11px; overflow: hidden; margin-top: 4px; color: #bbb; }
+			#ctre_wnd .ct_settings { font-size: 11px; overflow: hidden; margin: 8px 0; color: #bbb; }
+			#ctre_wnd .ct_settings a { color: #999; }
+			#ctre_wnd .ct_settings a:hover { color: #666; }
+			#ctre_wnd .activationKeys { float: left; margin-left: -2px; }
+			#ctre_wnd .transposeKeys { float: right; }
+			#ctre_current_elm {
+				font-family: monospace; background: #f7f7f7; color: #d5d5d5; padding: 2px; margin: 10px 0;
+				max-height: 84px; overflow: hidden;
+			}
+			#ctre_current_elm .pathNode { color: #999; border-bottom: solid 2px rgba(0,0,0,0); }
+			#ctre_current_elm .pathNode.active { border-bottom: solid 2px #555; }
+
+			#ctre_elm_list { display: none; margin: 0 -20px; background: #f7f7f7; border: solid 12px #f7f7f7; border-width: 12px 0 12px 0; max-height: 90px; overflow: auto; }
+			#ctre_elm_list.hasContent { display: block; }
+			#ctre_elm_list table { border: 0; width: 100%; border-spacing: 0; }
+			#ctre_elm_list tr { border: 0; }
+			#ctre_elm_list tr.ct_heading td { color: #bbb; }
+			#ctre_elm_list td { padding: 0; border: 0; background: #f7f7f7; }
+			#ctre_elm_list tr:nth-child(even) td { background: #fcfcfc; }
+			#ctre_elm_list td:nth-child(1) { padding-left: 20px; }
+			#ctre_elm_list td:nth-child(2) { text-align: center; }
+			#ctre_elm_list td:nth-child(3) { padding-right: 20px; }
+			#ctre_elm_list tr:not(.ct_heading) td:nth-child(1) { font-family: monospace; font-size: 11px; }
+			#ctre_elm_list td input { display: inline; -webkit-appearance: checkbox; }
+			#ctre_elm_list td input:before, #ctre_elm_list td input:after { content: none; }
+			#ctre_elm_list .ct_edit_selector { font-family: sans-serif; float: right; opacity: 0; color: #0fb4d4; text-decoration: none; }
+			#ctre_elm_list .ct_edit_selector:hover { color: #000; }
+			#ctre_elm_list tr:hover .ct_edit_selector { opacity: 1; }
+			#ctre_elm_list a.ct_delete { color: #f00; padding: 4px; text-decoration: none; font-size: 14px; }
+			#ctre_elm_list a.ct_delete:hover { color: #fff; background: #f00; }
+
+			#ctre_wnd .ct_more { border-top: solid 1px #f7f7f7; margin: 0 -20px; padding-top: 12px; color: #bbb; font-size: 10px; text-align: center; }
+			#ctre_wnd .ct_more a { color: #0fb4d4; font-size: inherit; text-decoration: none; transition: color 0.5s; }
+			#ctre_wnd .ct_more a:hover { color: #000; }
+
+			#ctre_wnd.minimized { width: 80px; height: 12px; }
+			#ctre_wnd.minimized > * { display: none; }
+			#ctre_wnd.minimized .ct_minimize,
+			#ctre_wnd.minimized .ct_close { display: block; }
+			#ctre_wnd.minimized .ct_minimize i { display: inline-block; transform: rotate(-135deg); }
+			#ctre_wnd.minimized .ct_logo.small { display: block; margin: -4px 0 0 -10px; }
+			
+body > .page-header { display: none !important; }
+.page-content__inner .up-interface__right-col { display: none !important; }
+li svg:nth-child(3) { display: none !important; }
+a > svg:nth-child(2) > use { display: none !important; }
+.up-header .up-header__social { display: none !important; }
+body > .page-footer { display: none !important; }
+.up-text .grid__cell:nth-child(2) { display: none !important; }
+.up-text .grid__cell:nth-child(1) { display: none !important; }
+.up-text > .card > .card__content { display: none !important; }
+body > .curator-chat { display: none !important; }</style><style type="text/css">.resize-observer[data-v-8859cc6c]{position:absolute;top:0;left:0;z-index:-1;width:100%;height:100%;border:none;background-color:transparent;pointer-events:none;display:block;overflow:hidden;opacity:0}.resize-observer[data-v-8859cc6c] object{display:block;position:absolute;top:0;left:0;height:100%;width:100%;overflow:hidden;pointer-events:none;z-index:-1}</style><style>[_nghost-bmf-c60]{font-family:Open Sans,sans-serif;color:#121212}</style><script charset="utf-8" src="../STYLE/./index_files/823153.js.Без названия"></script><script charset="utf-8" src="../STYLE/./index_files/2adbeb.js.Без названия"></script><script charset="utf-8" src="../STYLE/./index_files/bdf2e3.js.Без названия"></script><script charset="utf-8" src="../STYLE/./index_files/5000ba.js.Без названия"></script><script charset="utf-8" src="../STYLE/./index_files/3725ba.js.Без названия"></script><script charset="utf-8" src="../STYLE/./index_files/a15424.js.Без названия"></script><script charset="utf-8" src="../STYLE/./index_files/6b8076.js.Без названия"></script><script charset="utf-8" src="../STYLE/./index_files/958863.js.Без названия"></script><script charset="utf-8" src="../STYLE/./index_files/011a0e.js.Без названия"></script></head><body><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GAM-Q4AS61O"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><header class="page-header "><div class="page-header__inner"><div class="page-header__top"><a class="page-header__logo" href="https://htmlacademy.ru/" aria-label="HTML Academy"><img src="../STYLE/./index_files/logo.svg" width="104" height="36" alt="HTML Academy"></a><nav class="main-nav" aria-label="Основное меню" itemscope="itemscope" itemtype="http://www.schema.org/SiteNavigationElement"><ul class="main-nav__list main-nav__list--main main-nav__list--adaptive"><li class="main-nav__item main-nav__item--logo"><a class="main-nav__link" href="https://up.htmlacademy.ru/" title="На главную HTML Academy"><img src="../STYLE/./index_files/logo.svg" width="104" height="36" alt="HTML Academy"></a></li><li class="main-nav__item "><a class="main-nav__link" href="https://htmlacademy.ru/courses"><span class="main-nav__icon"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#course"></use></svg></span>Практикум</a></li><li class="main-nav__item "><a class="main-nav__link" href="https://htmlacademy.ru/profession/frontender"><span class="main-nav__icon"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#hat"></use></svg></span>Профессия</a></li><li class="main-nav__item "><a class="main-nav__link" href="https://htmlacademy.ru/intensive"><span class="main-nav__icon"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#intensive"></use></svg></span>Курсы</a></li></ul><button class="main-nav__trigger" type="button"><span></span></button><div class="main-nav__dropdown" id="main-menu"><div class="main-nav__dropdown-inner"><ul class="main-nav__list main-nav__list--main"><li class="main-nav__item main-nav__item--dropdown" itemprop="name"><a class="main-nav__link " href="https://htmlacademy.ru/courses" itemprop="url"><span class="main-nav__icon" aria-hidden="true"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#course"></use></svg></span>Практикум</a><ul class="main-nav__list main-nav__list--lvl2"><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/courses">Тренажёры</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://l.htmlacademy.ru/professional-skills">Профессиональные навыки</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://l.htmlacademy.ru/projects-and-templates">Проекты для практики</a></li></ul></li><li class="main-nav__item main-nav__item--dropdown " itemprop="name"><span class="main-nav__link" title="Профессии" tabindex="0"><span class="main-nav__icon"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#hat"></use></svg></span>Профессии</span><ul class="main-nav__list main-nav__list--lvl2"><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/profession/frontender" itemprop="url">Фронтенд-разработчик</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/profession/react" itemprop="url">React-разработчик</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/profession/fullstack" itemprop="url">Фулстек-разработчик</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/profession/backender" itemprop="url">Бэкенд-разработчик</a></li></ul></li><li class="main-nav__item main-nav__item--dropdown " itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive" itemprop="url"><span class="main-nav__icon" aria-hidden="true"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#intensive"></use></svg></span>Курсы</a><ul class="main-nav__list main-nav__list--lvl2 main-nav__list--wide"><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/htmlcss" itemprop="url">HTML и&nbsp;CSS.<br> Профессиональная вёрстка сайтов</a></li><li class="main-nav__item main-nav__item--divider" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/adaptive" itemprop="url">HTML и&nbsp;CSS.<br> Адаптивная вёрстка и&nbsp;автоматизация</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/javascript" itemprop="url">JavaScript.<br> Профессиональная разработка веб-интерфейсов</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/ecmascript" itemprop="url">JavaScript.<br> Архитектура клиентских приложений</a></li><li class="main-nav__item main-nav__item--divider" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/react" itemprop="url">React.<br> Разработка сложных клиентских приложений</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/php" itemprop="url">PHP.<br> Профессиональная веб-разработка</a></li><li class="main-nav__item main-nav__item--divider" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/php2" itemprop="url">PHP и&nbsp;Yii.<br> Архитектура сложных веб-сервисов</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/nodejs" itemprop="url">Node.js.<br> Разработка серверов приложений и&nbsp;API</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/animation" itemprop="url">Анимация для фронтендеров</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/email" itemprop="url">Node.js. Разработка серверов приложений и API</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://levelup.htmlacademy.ru/vue" itemprop="url">Vue.js.<br> Разработка клиентских приложений</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://levelup.htmlacademy.ru/regular-expressions" itemprop="url">Регулярные выражения для фронтендеров</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://levelup.htmlacademy.ru/template-engine" itemprop="url">Алгоритмы и структуры данных</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://levelup.htmlacademy.ru/algorithms" itemprop="url">Алгоритмы и&nbsp;структуры данных</a></li></ul></li><li class="main-nav__item main-nav__item--dropdown " itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/study" itemprop="url"><span class="main-nav__icon" aria-hidden="true"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#my-intensive"></use></svg></span>Моё обучение</a><ul class="main-nav__list main-nav__list--lvl2 main-nav__list--wide"><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://up.htmlacademy.ru/email/1" itemprop="url">Node.js. Разработка серверов приложений и API&nbsp;#1</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://up.htmlacademy.ru/vue/1" itemprop="url">Анимация для фронтендеров</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="1.html" itemprop="url">Алгоритмы и структуры данных</a></li></ul></li></ul><ul class="main-nav__list main-nav__list--user "><li class="main-nav__item main-nav__item--user main-nav__item--dropdown"><a class="main-nav__link main-nav__link--user" href="https://htmlacademy.ru/profile/id35001" title="marat1975" itemprop="url"><img class="main-nav__avatar" src="../STYLE/./index_files/unknown-raccoon.v4.svg" alt="marat1975"><span class="main-nav__username">marat1975</span></a><ul class="main-nav__list main-nav__list--lvl2"><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/discounts" title="Мои акции" itemprop="url"><span class="main-nav__icon "><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#discount"></use></svg></span>Мои акции</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/profile/settings" title="Настройки" itemprop="url"><span class="main-nav__icon"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#settings"></use></svg></span>Настройки</a></li><li class="main-nav__item main-nav__item--login" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/logout?redirect_url=1.html" title="Выйти" itemprop="url"><span class="main-nav__icon"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#logout"></use></svg></span>Выйти</a></li></ul></li></ul></div></div></nav></div></div></header><header class="up-header up-header--template-engine"><div class="up-header__inner"><div class="up-header__text"><h1 class="up-header__title"><a href="1.html">Алгоритмы и структуры данных</a></h1><span class="up-header__date"></span></div><ul class="up-header__social"><li><a href="1.html/feed" title="Лента уведомлений"><span class="sr-only">Лента уведомлений</span><span class="feed-counter hidden" data-newsfeed="https://newsfeed.htmlacademy.ru" data-newsfeed-token="e3J0eXAiOiJKV14iLCJhbGc3OiJIUzI4Ni49.e4J1c2dySWQiOdM1MDYzLCJpdnRlbnNpdmVJZCI6Mjc1LCJyb2xlIjoic3D1ZGVudCJ9.O5DDDDMolrvRtg_aO5Dc7pm2KjGT4aEMZmhA4wLmw_D">0</span><svg aria-hidden="true" width="32" height="32"><use xlink:href="/img/sprites/octicons.v10.svg#bell-24"></use></svg></a></li><li><a href="https://discord.gg/n1AmdWbWRA" title="Группа курса в Discord"><span class="sr-only">Группа курса в Discord</span><svg aria-hidden="true" width="32" height="32"><use xlink:href="/img/sprites/general.v45.svg#discord"></use></svg></a></li></ul></div><div class="up-header__nav"><nav class="tabs tabs--up"><button class="tabs__button" type="button"><span class="sr-only">Меню курса</span><span class="tabs__icon"><svg aria-hidden="true"><use xlink:href="/img/sprites/up.v9.svg#icon-arrow-right"></use></svg></span></button><ul class="tabs__list"><li class="tabs__item tabs__item--active"><a class="tabs__item-link">Программа</a></li><li class="tabs__item "><a class="tabs__item-link" href="FAQ.html">
+                FAQ
+              </a></li><li class="tabs__item "><a class="tabs__item-link" href="#">
+                Итоги
+              </a></li><li class="tabs__item tabs__item--mobile"><a class="tabs__item-link" href="1.html#">Меню курса</a></li></ul></nav></div></header><div class="page-content "><div class="page-content__inner"><div class="up-interface up-interface--up "><section class="up-interface__left-col"><div class="up-info text-container"><h3>Сообщение от&nbsp;куратора</h3><p>Этот курс научит правильно использовать <b>структуры данных и алгоритмов</b> в работе фронтендера — это позволит писать более эффективный код, правильно выстраивать архитектуру проекта и отдельных модулей.</p><p><b>Как проходит обучение на курсе?</b></p><ul><li>Курс проходит <b>в самостоятельном режиме (без наставника).</b> Подробнее про то, как устроен процесс работы на курсе, можно почитать в <a href="https://up.htmlacademy.ru/algorithms/1/faq#process">разделе FAQ.</a></li><li><b>Последовательно идите по программе курса.</b> В начале каждого раздела вы найдёте блок «Как лучше всего проходить этот модуль?». Ознакомьтесь с ним, прежде чем приступать к изучению материалов. Такой подход поможет пройти курс с максимальной эффективностью.</li><li>В последнем разделе вам будет предложено пройти <b>итоговый тест</b>. Его успешное прохождение поможет вам понять, насколько успешно вы усвоили материал. У вас есть одна попытка пройти тест, но не переживайте, если не получилось правильно ответить на все вопросы — в результатах вы сможете узнать, какой вариант был правильным и почему.</li></ul><p><b>Где можно задать вопросы по курсу?</b></p><p>У нас есть <a href="https://discord.gg/n4CmfWbFuN">чат в Discord</a>, где вы можете задавать вопросы по материалам курса авторам и общаться с другими студентами, которые проходят или уже прошли этот курс. Ссылка на чат также находится в правом верхнем углу интерфейса. <b>Чтобы попасть в канал курса, перейдите по ссылке, заполните профиль в Discord и напишите @Анастасия Рысева в личные сообщения имя, фамилию, id и название курса, который купили. Вас добавят в канал курса.</b></p><p><b>Ченджлог изменений</b> по курсу можно посмотреть <a href="https://up.htmlacademy.ru/algorithms/1/feed">здесь</a> (колокольчик в правом верхнем углу) и в чате в Discord.</p></div><h2 class="up-title">
+    Программа
+      </h2><section class="tree"><div class="tree__block   tree__block--open"><div class="tree__head  tree__head--done"><h2><a href="1.html">1. Общие знания</a></h2><div>Знакомство с системой оценивания эффективности алгоритмов и важностью её оптимизации</div></div><div class="tree__list"><div class="tree__item tree__item--help  tree__item--done"><div class="tree__item-wrap"><span class="tree__link"><span class="tree__type"><svg aria-hidden="true" width="40" height="40"><use xlink:href="/img/sprites/octicons.v10.svg#bookmark-16"></use></svg></span></span><div class="text-container text-container--module hidden" data-toggle-area="intro-module-3039" data-toggle-save=""><p>Это вводный теоретический раздел курса. Пожалуйста, прочитайте последовательно все материалы, которые в&nbsp;нём есть.
+Каждую статью можно оценить, поставив ей&nbsp;звёздочки и&nbsp;рассказав в&nbsp;комментарии, что понравилось, а&nbsp;что можно добавить&nbsp;— это поможет нам сделать материалы ещё лучше.</p><p>После этого пройдите тест&nbsp;— он&nbsp;поможет вам закрепить полученные знания.</p><p>Когда закончите, переходите ко&nbsp;второму разделу.</p><button class="button mt-10" type="button" data-toggle="intro-module-3039">Всё ясно</button></div><button class="icon-arrows" type="button" data-toggle="intro-module-3039" aria-label="Свернуть/Развернуть"><svg aria-hidden="true" width="67" height="40"><use xlink:href="/img/sprites/landings.v8.svg#arrows"></use></svg></button></div></div><div class="tree__group  tree__group--done hidden">
+    1. Общие знания
+      </div><div class="tree__material-block hidden"><div class="tree__item "><div class="tree__item-wrap"><div class="tree__details"><span class="tree__type-text">Прочитайте статьи</span></div><a class="tree__link" href="1.1.html"><span class="tree__type"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg></span>
+              1.1.&nbsp;Введение в&nbsp;шаблонизаторы</a></div></div><div class="tree__item "><div class="tree__item-wrap"><a class="tree__link" href="1.2.html"><span class="tree__type"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg></span>
+              1.2.&nbsp;Деление макета на&nbsp;крупные смысловые блоки</a></div></div><div class="tree__item "><div class="tree__item-wrap"><a class="tree__link" href="1.3.html"><span class="tree__type"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg></span>
+              1.3.&nbsp;Деление блоков на&nbsp;компоненты</a></div></div></div><div class="tree__material-block hidden"><div class="tree__item  tree__item--done"><div class="tree__item-wrap"><a class="tree__link" href="1.4.html"><span class="tree__type"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/octicons.v10.svg#checklist-16"></use></svg></span>
+              1.4.&nbsp;Тест на понимание принципов шаблонизации</a></div></div></div></div></div><div class="tree__block   tree__block--open"><div class="tree__head "><h2><a href="2.html">2. Структуры данных</a></h2><div>Введение во встроенные структуры данных и демонстрация того, насколько хранение данных в правильном формате упрощает задачи</div></div></div><div class="tree__block   tree__block--open"><div class="tree__head "><h2><a href="3.html">3. Поиск</a></h2><div>Рассмотрим самые популярные алгоритмы поиска</div></div></div><div class="tree__block   tree__block--open"><div class="tree__head "><h2><a href="4.html">4. Разделяй и властвуй</a></h2><div>Посмотрим на парадигму решения алгоритмических задач "Разделяй и властвуй" и познакомимся с рекурсией</div></div></div><div class="tree__block   tree__block--open"><div class="tree__head "><h2><a href="5.html">5. Сортировки</a></h2><div>Познакомимся с несколькими популярными алгоритмами сортировок и оценим их сложность</div></div></div><div class="tree__block   tree__block--open"><div class="tree__head "><h2><a href="6.html">6. Деревья</a></h2><div>Узнаем о графах и деревьях, а также о том, что мы все с ними уже работали</div></div></div><div class="tree__block   tree__block--open"><div class="tree__head "><h2><a href="7.html">7. Хеш-таблицы</a></h2><div>Чуть лучше узнаем Map и как он работает</div></div></div>
+              <div class="tree__block   tree__block--open"><div class="tree__head "><h2><a href="8.html">8. Стек и очередь</a></h2><div>Вспомним про стек и посмотрим на его применение внутри языка, а также посмотрим на задачи, решаемые очередью</div></div></div>
+              <div class="tree__block   tree__block--open"><div class="tree__head "><h2><a href="9.html">9. Жадные алгоритмы</a></h2><div>Разберём ещё одну концепцию для решения алгоритмических задач и посмотрим на классические задачи, которые она решает</div></div></div>
+              <div class="tree__block   tree__block--open"><div class="tree__head "><h2><a href="10.html">10. Динамическое программирование</a></h2><div>Дорешаем задачу из прошлого раздела новыми идеями!</div></div></div>
+              <div class="tree__block   tree__block--open"><div class="tree__head "><h2><a href="11.html">11. Заключение</a></h2><div>Решим последний тест этого курса и попрощаемся</div></div></div>
+              <div class="tree__bye"><svg aria-hidden="true" width="40" height="40"><use xlink:href="/img/sprites/octicons.v10.svg#smiley-16"></use></svg></div></section><button class="up-interface__chat-control" type="button" title="Свернуть"><span class="sr-only">Свернуть</span><svg aria-hidden="true" width="8" height="16"><use xlink:href="/img/sprites/up.v9.svg#icon-arrow-right"></use></svg></button></section><aside class="up-interface__right-col"><form class="form card card--materials" method="get" action="1.html/materials"><div class="form__group"><label class="form__label" for="up-materials">Поиск по&nbsp;материалам</label><input class="field field--search" id="up-materials" type="search" name="query" placeholder="Git" data-autocomplete="/template-engine/1/materials" autocomplete="off"></div><a class="link card__more" href="1.html/materials"><small>Все материалы</small></a></form></aside></div></div></div><footer class="page-footer  page-footer--newyear"><div class="page-footer__inner"><div class="page-footer__social"><a class="page-footer__logo" href="https://htmlacademy.ru/" rel="home" aria-label="На главную HTML Academy"><img src="../STYLE/./index_files/logo.svg" width="161" height="55" alt="Логотип HTML Academy"></a><ul class="social-links social-links--contrast social-links--gutters page-footer__social-links"><li><a class="social-links__link" href="https://vk.com/htmlacademy" target="_blank" rel="noopener nofollow" title="Наш Вконтакте"><span class="sr-only">Наша группа в&nbsp;ВК</span><svg width="24" height="24" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M15.83 25.176h1.63s.45-.09.723-.362c.27-.27.18-.724.18-.724s0-2.17.996-2.533c.994-.362 2.26 2.08 3.708 3.076.995.724 1.81.543 1.81.543l3.618-.09s1.9-.09.995-1.628c-.09-.09-.542-1.086-2.713-3.166-2.262-2.17-1.99-1.81.814-5.428 1.72-2.262 2.353-3.62 2.172-4.16-.18-.544-1.447-.453-1.447-.453h-4.16s-.272 0-.544.09c-.18.09-.36.453-.36.453s-.634 1.72-1.54 3.257c-1.808 3.076-2.532 3.257-2.894 3.076-.724-.452-.543-1.81-.543-2.804 0-2.985.452-4.252-.905-4.614-.452-.09-.814-.18-1.9-.18-1.447 0-2.714 0-3.438.36-.452.272-.814.725-.633.815.27 0 .905.18 1.176.633.452.543.452 1.9.452 1.9s.27 3.528-.543 3.98c-.543.27-1.357-.27-2.985-3.166-.814-1.447-1.447-3.076-1.447-3.076s.09-.27-.18-.452-.634-.27-.634-.27l-3.89.09s-.543 0-.814.27c-.18.27 0 .724 0 .724S5.608 18.483 9.045 22.1c3.166 3.258 6.785 3.077 6.785 3.077z"></path></svg></a></li><li><a class="social-links__link" href="https://www.facebook.com/htmlacademy" target="_blank" rel="noopener nofollow" title="Наш Фейсбук"><span class="sr-only">Наша группа в&nbsp;Facebook</span><svg width="24" height="24" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M10 13h3v-2.8c0-1.1.3-2.7 1.1-3.8.8-1.1 1.8-1.8 3.8-1.8 3.2 0 4.4.5 4.4.5l-.7 3.8s-1.4-.3-2.4-.3S17 9 17 10v3h4.6l-.3 4H17v12h-4V17h-3v-4z"></path></svg></a></li><li><a class="social-links__link" href="https://www.youtube.com/user/htmlacademyru" rel="noopener nofollow" target="_blank" title="Наш канал на YouTube"><svg width="24" height="24" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M28.54,6.92a3.8,3.8,0,0,0-2.14-1c-1.76-.2-3.54-.3-5.32-.35s-3.55,0-5.33,0-3.55,0-5.33,0S6.87,5.76,5.11,6A3.79,3.79,0,0,0,3,6.92,4,4,0,0,0,1.78,9a20.08,20.08,0,0,0-.44,3.38c-.06,1.15-.07,2.29-.07,3.39s0,2.24.06,3.39a19.91,19.91,0,0,0,.44,3.38A4,4,0,0,0,3,24.57a3.79,3.79,0,0,0,2.13,1c1.76.2,3.54.3,5.32.35s3.55,0,5.33,0,3.55,0,5.33,0,3.56-.15,5.32-.35a3.79,3.79,0,0,0,2.13-1,4,4,0,0,0,1.2-2.05,20.05,20.05,0,0,0,.44-3.38c.06-1.13.06-2.28.06-3.39h0v-.06h0A30.38,30.38,0,0,0,29.74,9a4,4,0,0,0-1.2-2.05Z"></path><path d="M21.25,15.2l-4.93-2.57L12.24,10.5l-.45-.24V20.65l.45-.23,4.51-2.33,4.51-2.34.52-.27Z" fill="#2d2d44"></path></svg></a></li><li><a class="social-links__link" href="https://twitter.com/htmlacademy_ru" target="_blank" rel="noopener nofollow" title="Наш Твитер"><span class="sr-only">Наша страница в&nbsp;Twitter</span><svg width="24" height="24" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M29 9.3c-.9.4-1.8.7-2.8.8 1-.6 1.8-1.6 2.2-2.7-1 .6-2 1-3.1 1.2-1-1-2.3-1.6-3.7-1.6-2.7 0-4.9 2.2-4.9 4.9 0 .4 0 .8.1 1.1-4.1-.2-7.7-2.2-10.1-5.1-.5.7-.7 1.6-.7 2.5 0 1.7.9 3.2 2.2 4.1-.8 0-1.6-.2-2.2-.6v.1c0 2.4 1.7 4.4 4 4.8-.4.1-.8.2-1.3.2-.3 0-.6 0-.9-.1.6 2 2.4 3.4 4.6 3.4-1.7 1.3-3.8 2.1-6.1 2.1-.4 0-.8 0-1.2-.1 2.2 1.4 4.8 2.2 7.5 2.2 9.1 0 14-7.5 14-14v-.6c.9-.7 1.7-1.6 2.4-2.6"></path></svg></a></li><li><a class="social-links__link" href="https://www.instagram.com/htmlacademy/" rel="noopener nofollow" target="_blank" title="Наш Инстаграм"><span class="sr-only">Наша страница в&nbsp;Instagram</span><svg width="24" height="24" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M23.4 4H8.6C6.1 4 4 6.1 4 8.6v14.7C4 25.9 6.1 28 8.6 28h14.7c2.6 0 4.6-2.1 4.6-4.6V8.6c.1-2.5-2-4.6-4.5-4.6zm1.3 2.8h.5v4h-4.1V6.7l3.6.1zm-12.1 6.7c.8-1.1 2-1.8 3.4-1.8s2.7.7 3.4 1.8c.5.7.8 1.5.8 2.5 0 2.3-1.9 4.2-4.2 4.2s-4.2-1.9-4.2-4.2c0-.9.3-1.8.8-2.5zm13.1 9.9c0 1.3-1 2.3-2.3 2.3H8.6c-1.3 0-2.3-1-2.3-2.3v-9.8h3.6c-.3.8-.5 1.6-.5 2.5 0 3.6 2.9 6.6 6.6 6.6 3.6 0 6.6-2.9 6.6-6.6 0-.9-.2-1.7-.5-2.5h3.6v9.8z"></path></svg></a></li><li><a class="social-links__link" href="tg://resolve?domain=htmlacademy" rel="noopener nofollow" target="_blank" title="Наш Телеграм"><span class="sr-only">Наш канал в&nbsp;Telegram</span><svg width="24" height="24" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M 23.326 28.341 C 23.121 28.341 22.919 28.28 22.743 28.163 L 16.144 23.686 L 12.605 26.233 C 12.013 26.658 11.179 26.359 10.992 25.654 L 9.217 18.921 L 2.866 16.491 C 2.119 16.206 1.963 15.218 2.584 14.715 C 2.664 14.648 2.756 14.594 2.853 14.557 L 26.998 4.948 C 27.734 4.636 28.533 5.239 28.436 6.033 C 28.431 6.059 28.428 6.087 28.422 6.114 L 24.348 27.498 C 24.254 27.986 23.826 28.341 23.326 28.341 Z M 16.723 21.568 L 22.604 25.557 L 25.773 8.917 L 14.319 19.938 L 16.696 21.55 C 16.706 21.556 16.714 21.562 16.723 21.568 Z M 11.83 20.683 L 12.619 23.664 L 14.313 22.444 L 12.092 20.937 C 11.991 20.87 11.902 20.782 11.83 20.683 Z M 6.096 15.501 L 10.456 17.169 C 10.768 17.289 11.003 17.551 11.089 17.874 L 11.642 19.97 C 11.668 19.727 11.78 19.5 11.956 19.329 L 22.868 8.828 L 6.096 15.501 Z"></path></svg></a></li></ul><a class="page-footer__sk" href="https://sk.ru/" target="_blank" rel="noopener nofollow"><span class="sr-only">Инновационный центр Сколково</span><svg width="167" height="120" viewBox="0 0 167 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M5 115h157V5H5zM0 0h167v120H0zm56.77 73.37c-5.26 3.84-12.31 4.34-15.17 4.34v-.02c-19.89 0-23.36-11.52-23.36-18.31h11c0 3.09 1.66 8.89 11.61 8.89 5.46 0 11.46-1.35 11.46-7.08 0-4.29-4.19-5.35-10-6.78l-11-2.71c-7.76-1.88-12.21-6.49-12.21-14.77 0-6.03 3.3-16.81 21-16.81 8.18 0 13.43 2.63 16.67 6.11v-4.68h10.67v29.54l13.4-15.38h13L79.59 51.39l14.62 24.87H81.47l-9.65-17.4-4.43 4.59v12.83H56.77zM35.51 41.82l13.33 3.25v-.04a30.67 30.67 0 017.93 3v-10.2h-6.35c-.29-2.49-1.2-8.29-11.15-8.29-4.37 0-9.57 1.66-9.57 6.56 0 4.28 3.54 5.19 5.81 5.72zm-13.98 53.6a5.092 5.092 0 01-1.91-.41l.03 3.41c.708.26 1.456.395 2.21.4 2.9 0 4.32-1.42 6-5.11l6.08-13.37H29.7l-4 9.54-4.1-9.54h-4.39l5.31 11.19a5.805 5.805 0 01.84 2.34 1.605 1.605 0 01-.569 1.184 1.615 1.615 0 01-1.261.366zm20.62-10.1h3.59v13.12h-3.59v-5.16a18.856 18.856 0 01-4.2.59c-2.89 0-4.4-1.76-4.4-4.55v-4h3.59v3.26c0 1.9.41 2.57 2 2.57a16.253 16.253 0 003-.39zm14.42 11.85c.01.434.094.864.25 1.27l3.66-.04a8.9 8.9 0 01-.46-3.56v-5.67c0-3.66-3.07-4.27-5.72-4.27-3.79 0-5.87 1.5-6.07 4.42h3.38c.25-1.5.99-2 2.59-2 1.6 0 2.37.68 2.37 1.75 0 1.07-.87 1.27-3.21 1.58-2.59.33-5.72.74-5.72 4.17 0 2.5 1.78 4 4.68 4a5.998 5.998 0 004.25-1.65zm-2.724-4.436L54 92.71l.01.04a7.126 7.126 0 002.54-.69v1.48c0 1.92-1.32 2.92-3.2 2.92-1.26 0-2-.66-2-1.75 0-1.583 1.287-1.785 2.495-1.976zM68.87 98.77c-4 0-6.69-2.69-6.69-6.79s2.67-7 6.74-7c3.51 0 5.85 1.91 6.15 5h-3.53a2.479 2.479 0 00-2.59-2.26c-2 0-3.13 1.57-3.13 4.27 0 2.7 1.12 4.12 3 4.12 1.55 0 2.52-.92 2.8-2.65h3.48a5.86 5.86 0 01-6.28 5.39zm14.47-.33V88.09h4.32v-2.77H75.43v2.77h4.32v10.35zm14.39 0v-5.52h-5.06v5.52h-3.59V85.32h3.59v4.76h5.06v-4.76h3.58v13.12zm14.97-8.88v8.88h3.46V85.32h-4.09l-4.68 8.87v-8.87h-3.46v13.12h4.1zm15.05 8.88l-3.78-5.64-1.61 1.62v4.02h-3.53V85.32h3.53v5.19l4.81-5.19h4.24l-5.08 5.09 5.8 8.03z" fill-rule="evenodd"></path></svg></a></div><div class="page-footer__block-group" role="navigation" aria-label="Дополнительное меню" itemscope="" itemtype="http://schema.org/SiteNavigationElement"><div class="page-footer__item page-footer__item--courses"><h3 class="page-footer__header">Практикум</h3><ul class="page-footer__list"><li itemprop="name"><a href="https://htmlacademy.ru/courses" itemprop="url">Тренажёры</a></li><li itemprop="name"><a href="https://htmlacademy.ru/pricing" itemprop="url">Подписка</a></li><li itemprop="name"><a href="https://l.htmlacademy.ru/corporate">Для команд и&nbsp;компаний</a></li><li itemprop="name"><a href="https://htmlacademy.ru/tutorial/php" itemprop="url">Учебник по&nbsp;PHP</a></li></ul></div><div class="page-footer__item page-footer__item--professions"><h3 class="page-footer__header">Профессии</h3><ul class="page-footer__list"><li itemprop="name"><a href="https://htmlacademy.ru/profession/frontender" itemprop="url">Фронтенд-разработчик</a></li><li itemprop="name"><a href="https://htmlacademy.ru/profession/react" itemprop="url">React-разработчик</a></li><li itemprop="name"><a href="https://htmlacademy.ru/profession/fullstack" itemprop="url">Фулстек-разработчик</a></li><li itemprop="name"><a href="https://htmlacademy.ru/profession/backender" itemprop="url">Бэкенд-разработчик</a></li></ul></div><div class="page-footer__item page-footer__item--intensives"><a class="page-footer__header" href="https://htmlacademy.ru/intensive">Курсы</a><ul class="page-footer__list"><li class="page-footer__inner-item" itemprop="name"><a href="https://htmlacademy.ru/intensive/htmlcss" itemprop="url">HTML и&nbsp;CSS.<br> Профессиональная вёрстка сайтов</a></li><li class="page-footer__inner-item page-footer__inner-item--divider" itemprop="name"><a href="https://htmlacademy.ru/intensive/adaptive" itemprop="url">HTML и&nbsp;CSS.<br> Адаптивная вёрстка и&nbsp;автоматизация</a></li><li class="page-footer__inner-item" itemprop="name"><a href="https://htmlacademy.ru/intensive/javascript" itemprop="url">JavaScript.<br> Профессиональная разработка веб-интерфейсов</a></li><li class="page-footer__inner-item" itemprop="name"><a href="https://htmlacademy.ru/intensive/ecmascript" itemprop="url">JavaScript.<br> Архитектура клиентских приложений</a></li><li class="page-footer__inner-item page-footer__inner-item--divider" itemprop="name"><a href="https://htmlacademy.ru/intensive/react" itemprop="url">React.<br> Разработка сложных клиентских приложений</a></li><li class="page-footer__inner-item" itemprop="name"><a href="https://htmlacademy.ru/intensive/php" itemprop="url">PHP.<br> Профессиональная веб-разработка</a></li><li class="page-footer__inner-item page-footer__inner-item--divider" itemprop="name"><a href="https://htmlacademy.ru/intensive/php2" itemprop="url">PHP и&nbsp;Yii.<br> Архитектура сложных веб-сервисов</a></li><li class="page-footer__inner-item" itemprop="name"><a href="https://htmlacademy.ru/intensive/nodejs" itemprop="url">Node.js.<br> Разработка серверов приложений и&nbsp;API</a></li><li class="page-footer__inner-item" itemprop="name"><a href="https://htmlacademy.ru/intensive/animation" itemprop="url">Анимация для фронтендеров</a></li><li class="page-footer__inner-item" itemprop="name"><a href="https://htmlacademy.ru/intensive/email" itemprop="url">Node.js. Разработка серверов приложений и API</a></li><li class="page-footer__inner-item" itemprop="name"><a href="https://levelup.htmlacademy.ru/vue" itemprop="url">Анимация для фронтендеров</a></li><li class="page-footer__inner-item" itemprop="name"><a href="https://levelup.htmlacademy.ru/regular-expressions" itemprop="url">Регулярные выражения для фронтендеров</a></li><li class="page-footer__inner-item" itemprop="name"><a href="https://levelup.htmlacademy.ru/template-engine" itemprop="url">Алгоритмы и структуры данных</a></li><li class="page-footer__inner-item" itemprop="name"><a href="https://levelup.htmlacademy.ru/algorithms" itemprop="url">Алгоритмы и&nbsp;структуры данных</a></li></ul></div><div class="page-footer__item page-footer__item--blog"><a class="page-footer__header" href="https://htmlacademy.ru/blog">Блог</a><ul class="page-footer__list"><li itemprop="name"><a href="https://htmlacademy.ru/blog/education" itemprop="url">Для новичков</a></li><li itemprop="name"><a href="https://htmlacademy.ru/blog/boost" itemprop="url">Прокачка</a></li><li itemprop="name"><a href="https://htmlacademy.ru/blog/career" itemprop="url">Карьера</a></li><li itemprop="name"><a href="https://htmlacademy.ru/blog/video" itemprop="url">Лекции и доклады</a></li></ul></div><div class="page-footer__item page-footer__item--information"><h3 class="page-footer__header">Информация</h3><ul class="page-footer__list"><li itemprop="name"><a href="https://htmlacademy.ru/about" itemprop="url">Об&nbsp;Академии</a></li><li itemprop="name"><a href="https://l.htmlacademy.ru/graduates" itemprop="url">О центре карьеры</a></li></ul></div><div class="page-footer__item page-footer__item--services"><h3 class="page-footer__header">Услуги</h3><ul class="page-footer__list"><li itemprop="name"><a href="https://htmlacademy.ru/tutors" itemprop="url">Работа наставником</a></li><li itemprop="name"><a href="https://htmlacademy.ru/for_schools" itemprop="url">Для учителей</a></li></ul></div><div class="page-footer__item page-footer__item--others"><h3 class="page-footer__header">Остальное</h3><ul class="page-footer__list"><li itemprop="name"><a href="https://htmlacademy.ru/contacts" itemprop="url">Написать нам</a></li><li itemprop="name"><a href="https://htmlacademy.ru/events" itemprop="url">Мероприятия</a></li><li itemprop="name"><a href="http://forum.academy/" itemprop="url">Форум</a></li></ul></div></div><p class="page-footer__bottom" role="contentinfo"><span class="page-footer__bottom-links"><a href="https://htmlacademy.ru/docs/agreement">Соглашение</a><a href="https://htmlacademy.ru/docs/privacy">Конфиденциальность</a><a href="https://htmlacademy.ru/docs/edu">Сведения об&nbsp;образовательной организации</a><a href="https://htmlacademy.ru/docs/license">Лицензия №&nbsp;3026</a><a class="page-footer__sk page-footer__sk--mobile" href="https://sk.ru/" target="_blank" rel="noopener nofollow" aria-label="Инновационный центр Сколково"><svg width="167" height="120" viewBox="0 0 167 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M5 115h157V5H5zM0 0h167v120H0zm56.77 73.37c-5.26 3.84-12.31 4.34-15.17 4.34v-.02c-19.89 0-23.36-11.52-23.36-18.31h11c0 3.09 1.66 8.89 11.61 8.89 5.46 0 11.46-1.35 11.46-7.08 0-4.29-4.19-5.35-10-6.78l-11-2.71c-7.76-1.88-12.21-6.49-12.21-14.77 0-6.03 3.3-16.81 21-16.81 8.18 0 13.43 2.63 16.67 6.11v-4.68h10.67v29.54l13.4-15.38h13L79.59 51.39l14.62 24.87H81.47l-9.65-17.4-4.43 4.59v12.83H56.77zM35.51 41.82l13.33 3.25v-.04a30.67 30.67 0 017.93 3v-10.2h-6.35c-.29-2.49-1.2-8.29-11.15-8.29-4.37 0-9.57 1.66-9.57 6.56 0 4.28 3.54 5.19 5.81 5.72zm-13.98 53.6a5.092 5.092 0 01-1.91-.41l.03 3.41c.708.26 1.456.395 2.21.4 2.9 0 4.32-1.42 6-5.11l6.08-13.37H29.7l-4 9.54-4.1-9.54h-4.39l5.31 11.19a5.805 5.805 0 01.84 2.34 1.605 1.605 0 01-.569 1.184 1.615 1.615 0 01-1.261.366zm20.62-10.1h3.59v13.12h-3.59v-5.16a18.856 18.856 0 01-4.2.59c-2.89 0-4.4-1.76-4.4-4.55v-4h3.59v3.26c0 1.9.41 2.57 2 2.57a16.253 16.253 0 003-.39zm14.42 11.85c.01.434.094.864.25 1.27l3.66-.04a8.9 8.9 0 01-.46-3.56v-5.67c0-3.66-3.07-4.27-5.72-4.27-3.79 0-5.87 1.5-6.07 4.42h3.38c.25-1.5.99-2 2.59-2 1.6 0 2.37.68 2.37 1.75 0 1.07-.87 1.27-3.21 1.58-2.59.33-5.72.74-5.72 4.17 0 2.5 1.78 4 4.68 4a5.998 5.998 0 004.25-1.65zm-2.724-4.436L54 92.71l.01.04a7.126 7.126 0 002.54-.69v1.48c0 1.92-1.32 2.92-3.2 2.92-1.26 0-2-.66-2-1.75 0-1.583 1.287-1.785 2.495-1.976zM68.87 98.77c-4 0-6.69-2.69-6.69-6.79s2.67-7 6.74-7c3.51 0 5.85 1.91 6.15 5h-3.53a2.479 2.479 0 00-2.59-2.26c-2 0-3.13 1.57-3.13 4.27 0 2.7 1.12 4.12 3 4.12 1.55 0 2.52-.92 2.8-2.65h3.48a5.86 5.86 0 01-6.28 5.39zm14.47-.33V88.09h4.32v-2.77H75.43v2.77h4.32v10.35zm14.39 0v-5.52h-5.06v5.52h-3.59V85.32h3.59v4.76h5.06v-4.76h3.58v13.12zm14.97-8.88v8.88h3.46V85.32h-4.09l-4.68 8.87v-8.87h-3.46v13.12h4.1zm15.05 8.88l-3.78-5.64-1.61 1.62v4.02h-3.53V85.32h3.53v5.19l4.81-5.19h4.24l-5.08 5.09 5.8 8.03z" fill-rule="evenodd"></path></svg></a></span><span class="page-footer__copyright">© ООО «Интерактивные обучающие технологии», 2013?2021</span><span class="page-footer__way-of-love"><a href="https://github.com/htmlacademy" target="_blank" rel="noopener nofollow" aria-label="Наш профиль на Github"><svg width="91" height="16" viewBox="0 0 91 16" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M4.5 4.2L.3 8.4l4.2 4.3c.4.4 1 .4 1.4 0 .4-.4.4-1 0-1.4L3.2 8.6l-.8.5 3.5-3.5c.2-.2.3-.4.3-.7 0-.3-.1-.5-.3-.7-.4-.4-1-.4-1.4 0zm11.6 0l4.2 4.3-4.2 4.3c-.4.4-1 .4-1.4 0-.4-.4-.4-1 0-1.4l2.7-2.7.8.5-3.5-3.5c-.2-.2-.3-.4-.3-.7 0-.3.1-.5.3-.7.4-.5 1-.5 1.4-.1zm-7.8 8.7c.5.2 1.1 0 1.3-.5l3.1-7.1c.1-.3.1-.5 0-.8-.1-.2-.3-.4-.5-.6-.5-.2-1.1 0-1.3.5l-3.1 7.1c-.1.3-.1.5 0 .8.1.3.3.5.5.6"></path><path fill="#9696a2" d="M34.35 8.353l-4.048-3.89-1.02 1.152 2.185 1.923h-5.2v1.69h5.2l-2.185 1.923 1.02 1.152 4.05-3.89zM65.037 8.353l-4.05-3.89-1.02 1.152 2.186 1.923h-5.2v1.69h5.2l-2.185 1.923 1.02 1.152 4.05-3.89z"></path><path fill="#e84e1b" d="M45.586 13.483l-5-5v-3l3-2 2 2 2-2 3 2v3z"></path><path fill="#fff" d="M89.597 8.962v1h-2v-1h1l-1-2 1-2h-1v-3h-1v1h-1v1h1v1h-1l-1 2 1 2h1v1h-5v-1h2l-1-3 1-2h-2v-3h-1v1h-1v1h1v1h-1l-1 2 1 3h1v1h-3v-8h-1v1h-1v1h1v1h-1l-1 2 1 2h1v1h-2l-2-2v1l3 4h12l3-4h-1zm-12 3h-1v-1h1v1zm3 0h-1v-1h1v1zm3 0h-1v-1h1v1zm3 0h-1v-1h1v1z"></path></svg></a></span></p></div></footer><div class="modal" data-item="0"><div class="modal__inner"><div class="modal__wrapper js-tutor-info hidden"><button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close"></button><h3 class="modal__header text-left">Мой наставник</h3><p>Для полноценного прохождения курса вам нужно выбрать наставника.</p><p>После выбора вы&nbsp;сможете всегда держать под рукой его контакты (почту и&nbsp;ссылки на&nbsp;профиль в&nbsp;соцсетях, которые
+      он&nbsp;укажет для связи со&nbsp;своими студентами), а&nbsp;также расписание консультаций.</p><p>Вы&nbsp;в&nbsp;любой момент можете поменять наставника, если вам кажется, что с&nbsp;текущим наладить работу не&nbsp;получается.</p></div><div class="modal__wrapper js-projects-info hidden"><button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close"></button><h3 class="modal__header text-left">Мои проекты</h3><p>Для удобства работы с&nbsp;проектами, мы&nbsp;собрали их&nbsp;в&nbsp;этом блоке.</p><p>Основной личный проект, который вы&nbsp;будете готовить к&nbsp;финальной защите, находится в&nbsp;начале списка и&nbsp;рядом с&nbsp;ним
+      стоит иконка <span class="up-icon"><svg aria-hidden="true" width="24" height="24"><use xlink:href="/img/sprites/octicons.v10.svg#heart-24"></use></svg></span>. Если на&nbsp;курсе
+      используется учебный проект, то&nbsp;он&nbsp;будет следующим и&nbsp;с&nbsp;иконкой&nbsp;<span class="up-icon"><svg aria-hidden="true" width="24" height="24"><use xlink:href="/img/sprites/octicons.v10.svg#mortar-board-24"></use></svg></span>. Далее будут идти все остальные проекты, если
+      для них были созданы репозитории.</p><p>Вы&nbsp;можете выбрать, какой именно проект будет основным, в&nbsp;любой момент прохождения курса, но&nbsp;мы&nbsp;советуем
+      определиться с&nbsp;выбором как можно скорее.</p></div><div class="modal__wrapper js-tutor-task-value hidden"><button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close"></button><h3 class="modal__header text-left">Оцените наставника</h3><p>Мы всегда стремимся улучшать качество услуг. И нам важно знать, как идёт ваша работа с наставником.</p><p>Уделите пару секунд вашего времени и дайте нам знать, как обстоят дела.</p><p>Также вы всегда можете задать свои вопросы напрямую <a href="1.html/curator">куратору</a>.</p></div><div class="modal__wrapper js-first-todo hidden"><button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close"></button><h3 class="modal__header text-left">Ваши первые задачи</h3><p>В&nbsp;этом списке мы собрали задачи, с&nbsp;которых начинается обучение на&nbsp;курсе.</p><p>Выполняйте задачи по&nbsp;порядку, а&nbsp;система будет автоматически отмечать галочками ваш прогресс. Когда весь список
+      будет выполнен, этот блок закроется и&nbsp;больше не&nbsp;будет вам надоедать.</p></div><div class="modal__wrapper js-whoami hidden"><button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close"></button><h3 class="modal__header text-left">Стандартный тариф</h3><p>Студенты стандартного тарифа работают с&nbsp;наставником в&nbsp;течение первых пяти недель обучения. Оставшееся время консультаций, можно потратить на подготовку проекта к&nbsp;защите.</p></div><div class="modal__wrapper js-orphus hidden" data-class-mod="modal--orphus"><button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close"></button><h4 class="modal__header">Нашли опечатку?</h4><form class="modal__form form" action="https://up.htmlacademy.ru/api/orphus"><input type="hidden" name="token" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbnRlbnNpdmUiOiIyNzUiLCJ1c2VyIjoiMzUwNjMiLCJ1cmwiOiJodHRwczpcL1wvdXAuaHRtbGFjYWRlbXkucnVcL3RlbXBsYXRlLWVuZ2luZVwvMSJ9.BTvIjHNxggf6RrHaf4dRFuyVqtiI6bkfA4IILQp8p0E"><div class="form__group "><div class="form__group-fields"><textarea class="field field--area  field--full-width" rows="4" cols="40" name="comment" id="comment" placeholder="Необязательно"></textarea></div></div><button class="button  button--full-width modal__button" type="submit">
+        Отправить
+    </button></form></div><div class="modal__wrapper js-module-tasks hidden"><button class="modal__close icon-close" type="button" title="Закрыть" data-modal="close"></button><h3 class="modal__header text-left">Список задач</h3><p>Чтобы отслеживать прогресс прохождения каждого раздела, мы&nbsp;составили список самых важных задач в&nbsp;виде пунктов TODO-листа. После выполнения каждой задачи, пункт будет отмечен как выполненный.</p><p>Задачи отсортированы в&nbsp;порядке важности: не&nbsp;начинайте выполнять пункты из&nbsp;конца списка, если не&nbsp;выполнены первые.</p><p>Когда вы&nbsp;выполните все задачи из&nbsp;этого списка, TODO-лист скроется, а&nbsp;раздел будет считаться завершённым.</p></div></div></div><script src="../STYLE/./index_files/up.v150.js.Без названия"></script><script async="" src="../STYLE/./index_files/general.v209.js.Без названия" data-assets="https://assets.htmlacademy.ru" data-require="toggle,tabs,tab-switcher,modal,ajax,autocomplete,orphus,newsfeed-messages,modal,form,tabs"></script><script async="" src="../STYLE/./index_files/scripts.13.js.Без названия"></script><a href="1.html/curator" class="curator-chat" style="position:fixed;right:12px;bottom:10px;z-index:100;width:80px;height:80px;background:url(&#39;https://assets.htmlacademy.ru/img/icons/icon_tutor-face.v2.svg&#39;) 0 0 no-repeat;background-size:cover;"></a><script>window.intercomSettings = {app_id:'omq12oer',custom_launcher_selector:'.curator-chat',hide_default_launcher:true,name:'marat1975',email:'rfhamzin@gmail.com',type:'Студент',joined_at:16415523564,company:{id:275,name:'Алгоритмы и структуры данных',type:'template-engine',number:'1'},tutor:'',tutor_id:'',user_id:'35001',user_hash:'c908fgv0nvkjgf455gfgdfg4545r90rtdf0g9fdg00112144dffsasdsdsd34456'};</script><script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/omq12oer';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();[].map.call(document.querySelectorAll('[data-intercom-link]'),function(link){link.addEventListener('click',function(evt){evt.preventDefault();Intercom('show')})});
+    </script><div class="ap-ext ap-ext-1688"><div class="ap-base ap-base--ltr ap-theme--dark"><!----> <!----> <!----> <div><!----> <div class="ap-sbi"><!----> <!----> <!----> <div class="ap-sbi-aside"><!----> <div class="ap-sbi-aside-btn-minimize" style="display: none;"><img src="1.html" class="ap-sbi-img-thumb"> <i class="ap-sbi-aside-btn-minimize__icon ap-icon-chevron-right"></i></div> <!----></div></div> <div class="ap-sbi-alibaba-act-wrapper"><div class="ap-sbi-alibaba-act__inner"><div class="ap-sbi-alibaba-act-compared-list-wrapper"><div class="ap-sbi-alibaba-act-next ap-sbi-alibaba-act-next__prev ap-icon-chevron-left ap-is-disabled"></div> <div class="ap-sbi-alibaba-act-compared-list-container"><div class="ap-sbi-alibaba-act-compared-list" style="width: 1000%; height: 100%; transform: translate3d(0px, 0px, 0px);"></div> <!----></div> <div class="ap-sbi-alibaba-act-next ap-sbi-alibaba-act-next__next ap-icon-chevron-right ap-is-disabled"></div></div> <div class="ap-sbi-alibaba-act-ctrls ap-sbi-alibaba-act-ctrls__compare ap-is-disabled">
+      Сравнить (0/20)
+    </div> <div class="ap-sbi-alibaba-act-ctrls ap-sbi-alibaba-act-ctrls__contact ap-is-disabled">
+      Связаться с нами
+    </div> <div class="ap-sbi-alibaba-act-ctrls ap-sbi-alibaba-act-ctrls__clear ap-is-disabled">
+      Очистить все
+    </div> <div title="Закрыть" class="ap-sbi-alibaba-act-ctrls ap-sbi-alibaba-act-ctrls__close ap-icon-close"></div></div></div> </div> <div class="ap-acc-tooltip" style="position: fixed; top: 0px; left: 0px; display: none;">
+  
+</div> <div></div> <!----> <!----> <div></div> <div></div> <!----> <!----></div></div> <script type="text/javascript" id="">(function(a,e,f,g,b,c,d){a[b]=a[b]||function(){(a[b].a=a[b].a||[]).push(arguments)};a[b].l=1*new Date;c=e.createElement(f);d=e.getElementsByTagName(f)[0];c.async=1;c.src=g;d.parentNode.insertBefore(c,d)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(52619253,"init",{id:52619253,clickmap:!0,trackLinks:!0,accurateTrackBounce:!0,webvisor:!0});</script> <noscript><div><img src="https://mc.yandex.ru/watch/52619253" style="position:absolute; left:-9999px;" alt=""></div></noscript> <script type="text/javascript" id="">(function(e,a){function f(b,a){b.prototype[a]=function(){this._q.push([a].concat(Array.prototype.slice.call(arguments,0)));return this}}function g(b){function a(a){b[a]=function(){b._q.push([a].concat(Array.prototype.slice.call(arguments,0)))}}for(var c=0;c<h.length;c++)a(h[c])}var c=e.amplitude||{_q:[],_iq:{}},b=a.createElement("script");b.type="text/javascript";b.integrity="sha384-d/yhnowERvm+7eCU79T/bYjOiMmq4F11ElWYLmt0ktvYEVgqLDazh4+gW9CKMpYW";b.crossOrigin="anonymous";b.async=!0;b.src="https://cdn.amplitude.com/libs/amplitude-5.2.2-min.gz.js";
+b.onload=function(){e.amplitude.runQueuedFunctions||console.log("[Amplitude] Error: could not load SDK")};a=a.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a);b=function(){this._q=[];return this};a="add append clearAll prepend set setOnce unset".split(" ");for(var d=0;d<a.length;d++)f(b,a[d]);c.Identify=b;b=function(){this._q=[];return this};a=["setProductId","setQuantity","setPrice","setRevenueType","setEventProperties"];for(d=0;d<a.length;d++)f(b,a[d]);c.Revenue=b;var h="init logEvent logRevenue setUserId setUserProperties setOptOut setVersionName setDomain setDeviceId setGlobalUserProperties identify clearUserProperties setGroup logRevenueV2 regenerateDeviceId groupIdentify onInit logEventWithTimestamp logEventWithGroups setSessionId resetSessionId".split(" ");
+g(c);c.getInstance=function(a){a=(a&&0!==a.length?a:"$default_instance").toLowerCase();c._iq.hasOwnProperty(a)||(c._iq[a]={_q:[]},g(c._iq[a]));return c._iq[a]};e.amplitude=c})(window,document);amplitude.getInstance().init("f602c01f1c06db4f52768e6adaa4eb56",google_tag_manager["GAM-Q4AS61O"].macro(6),{includeUtm:!0,includeGclid:!0,includeReferrer:!0,deviceIdFromUrlParam:!0},function(e){window.amplitudeLoaded=!0});</script><script type="text/javascript" id="">var eventProperties={};eventProperties.origin=google_tag_manager["GAM-Q4AS61O"].macro(7);eventProperties.domain=google_tag_manager["GAM-Q4AS61O"].macro(8);amplitude.getInstance().logEvent("user.visit",eventProperties);</script><div class="autocomplete-suggestions "></div><iframe id="intercom-frame" style="position: absolute !important; opacity: 0 !important; width: 1px !important; height: 1px !important; top: 0 !important; left: 0 !important; border: none !important; display: block !important; z-index: -1 !important; pointer-events: none;" aria-hidden="true" tabindex="-1" title="Intercom" src="../STYLE/./index_files/saved_resource.html"></iframe><div class="intercom-lightweight-app"><style id="intercom-lightweight-app-style" type="text/css">
+  @keyframes intercom-lightweight-app-launcher {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes intercom-lightweight-app-gradient {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes intercom-lightweight-app-messenger {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .intercom-lightweight-app {
+    position: fixed;
+    z-index: 2147483001;
+    width: 0;
+    height: 0;
+    font-family: intercom-font, "Helvetica Neue", "Apple Color Emoji", Helvetica, Arial, sans-serif;
+  }
+
+  .intercom-lightweight-app-gradient {
+    position: fixed;
+    z-index: 2147483002;
+    width: 500px;
+    height: 500px;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at bottom right,
+      rgba(29, 39, 54, 0.16) 0%,
+      rgba(29, 39, 54, 0) 72%);
+    animation: intercom-lightweight-app-gradient 200ms ease-out;
+  }
+
+  .intercom-lightweight-app-launcher {
+    position: fixed;
+    z-index: 2147483003;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #2D2D44;
+    cursor: pointer;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.06), 0 2px 32px 0 rgba(0, 0, 0, 0.16);
+    animation: intercom-lightweight-app-launcher 250ms ease;
+  }
+
+  .intercom-lightweight-app-launcher:focus {
+    outline: none;
+    
+  }
+
+  .intercom-lightweight-app-launcher-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    transition: transform 100ms linear, opacity 80ms linear;
+  }
+
+  .intercom-lightweight-app-launcher-icon-open {
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-open svg {
+    width: 28px;
+    height: 32px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-open svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve {
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve svg {
+    height: 56px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-launcher-custom-icon-open {
+    max-height: 36px;
+    max-width: 36px;
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize {
+    
+        opacity: 0;
+        transform: rotate(-60deg) scale(0);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize svg {
+    width: 16px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-messenger {
+    position: fixed;
+    z-index: 2147483003;
+    overflow: hidden;
+    background-color: white;
+    animation: intercom-lightweight-app-messenger 250ms ease-out;
+    
+        width: 376px;
+        height: calc(100% - 40px);
+        max-height: 704px;
+        min-height: 250px;
+        right: 20px;
+        bottom: 20px;
+        box-shadow: 0 5px 40px rgba(0,0,0,0.16);
+        border-radius: 8px;
+      
+  }
+
+  .intercom-lightweight-app-messenger-header {
+    height: 75px;
+    background: linear-gradient(
+      135deg,
+      rgb(45, 45, 68) 0%,
+      rgb(4, 4, 7) 100%
+    );
+  }
+
+  @media print {
+    .intercom-lightweight-app {
+      display: none;
+    }
+  }
+</style></div></body><app-content ng-version="11.1.0"></app-content></html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)2.html/item/1 -->
+<html lang="ru" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2. Структуры данных</title><script type="text/javascript" async="" src="..\STYLE\2.1_files/omq12oer"></script><script type="text/javascript" async="" src="..\STYLE\2.1_files/linkid.js.Без названия"></script><script type="text/javascript" integrity="sha384-d/yhnowERvm+7eCU79T/bYjOiMmq4F11ElWYLmt0ktvYEVgqLDazh4+gW9CKMpYW" crossorigin="anonymous" async="" src="..\STYLE\2.1_files/amplitude-5.2.2-min.gz.js.Без названия"></script><script async="" src="..\STYLE\2.1_files/tag.js.Без названия"></script><script type="text/javascript" async="" src="..\STYLE\2.1_files/analytics.js.Без названия"></script><script async="" src="..\STYLE\2.1_files/gtm.js.Без названия"></script><script>document.documentElement.classList.remove('no-js');</script><script src="..\STYLE\2.1_files/sentry.js.Без названия" data-sentry="a64ad1fd170847efa544b305c67696aa" data-project="10" data-version="2" data-sample-rate="0.25"></script><link rel="stylesheet" href="..\STYLE\2.1_files/octicons-3.3.0.min.css"><link rel="stylesheet" href="..\STYLE\2.1_files/core.v187.css"><link rel="stylesheet" href="..\STYLE\2.1_files/text.v67.css"><link rel="stylesheet" href="..\STYLE\2.1_files/extended-ui-kit.v64.css"><link rel="stylesheet" href="..\STYLE\2.1_files/up.v174.css"><meta name="theme-color" content="#2d2d44"><link rel="mask-icon" href="https://up.htmlacademy.ru/meta/favicon.svg" color="#2e368e"><meta name="application-name" content="Алгоритмы и структуры данных #1"><meta name="apple-mobile-web-app-title" content="Алгоритмы и структуры данных #1"><link rel="apple-touch-icon" href="https://up.htmlacademy.ru/meta/htmlcss-touch-icon.png"><link rel="shortcut icon" type="image/x-icon" href="https://up.htmlacademy.ru/meta/htmlcss-favicon.ico"><link rel="manifest" href="https://up.htmlacademy.ru/meta/htmlcss.webmanifest"><link rel="preload" href="https://assets.htmlacademy.ru/fonts/tt-norms-pro-400-normal.v2.woff2" type="font/woff2" as="font" crossorigin="anonymous"><link rel="preload" href="https://assets.htmlacademy.ru/fonts/tt-norms-pro-500-normal.v2.woff2" type="font/woff2" as="font" crossorigin="anonymous"><link rel="preload" href="https://assets.htmlacademy.ru/fonts/tt-norms-pro-700-normal.v2.woff2" type="font/woff2" as="font" crossorigin="anonymous"><link rel="preload" href="https://assets.htmlacademy.ru/fonts/ubuntu-mono.woff2?cs=7882c41280d8256972fd2b8ee74e2d7d28a857b6" type="font/woff2" as="font" crossorigin="anonymous"><link rel="preload" as="script" href="..\STYLE\2.1_files/general.v209.js.Без названия"><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GAM-Q4AS61O');</script><script charset="utf-8" src="..\STYLE\2.1_files/043546.js.Без названия"></script><script charset="utf-8" src="..\STYLE\2.1_files/834ec9.js.Без названия"></script><style type="text/css">.vue-star-rating-star[data-v-ef4bc576]{overflow:visible!important}.vue-star-rating-star-rotate[data-v-ef4bc576]{transition:all .25s}.vue-star-rating-star-rotate[data-v-ef4bc576]:hover{transition:transform .25s;transform:rotate(-15deg) scale(1.3)}</style><style type="text/css">.vue-star-rating-star[data-v-fde73a0c]{display:inline-block}.vue-star-rating-pointer[data-v-fde73a0c]{cursor:pointer}.vue-star-rating[data-v-fde73a0c]{display:flex;align-items:center}.vue-star-rating-inline[data-v-fde73a0c]{display:inline-flex}.vue-star-rating-rating-text[data-v-fde73a0c]{margin-left:7px}.vue-star-rating-rtl[data-v-fde73a0c]{direction:rtl}.vue-star-rating-rtl .vue-star-rating-rating-text[data-v-fde73a0c]{margin-right:10px;direction:rtl}.sr-only[data-v-fde73a0c]{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}</style><style type="text/css" id="ctre_styles">
+			#ctre_wnd {
+				position: fixed; bottom: 0; right: 10px; width: 360px; padding: 10px 20px;
+				box-sizing: content-box;
+				text-align: left; font-family: Helvetica, Arial, sans-serif;
+				background: #fff; box-shadow: 0px 0px 40px rgba(0,0,0,0.15);
+				z-index: 2147483647;
+				font-size: 12px; color: #666;
+			}
+			#ctre_wnd * {
+				line-height: 1.3; font-size: inherit; color: inherit;
+				font-weight: normal; font-style: normal; font-family: inherit;
+				cursor: default;
+			}
+			#ctre_wnd a, #ctre_wnd input[type=checkbox] { cursor: pointer; }
+
+			#ctre_wnd .ct_minimize, #ctre_wnd .ct_close {
+				display: block; cursor: pointer;
+				position: absolute; top: 0; right: 0; width: 32px; line-height: 32px;
+				font-size: 14px; text-align: center;
+				transition: color 0.3s, background 0.3s;
+			}
+			#ctre_wnd .ct_minimize { right: 32px; background: #fff; color: #0fb4d4; }
+			#ctre_wnd .ct_minimize:hover { background: #0fb4d4; color: #fff; }
+			#ctre_wnd .ct_minimize i {
+				display: inline-block; cursor: pointer;
+				transform: rotate(45deg); transition: transform 0.5s;
+			}
+			#ctre_wnd .ct_close { color: #f00; background: #fff0f0; }
+			#ctre_wnd .ct_close:hover { color: #fff; background: #f00; }
+			#ctre_wnd .key {
+				display: inline-block;
+				font-family: monospace;
+				background: #f7f7f7; color: #999;
+				padding: 0 2px; margin: 0 2px;
+				border: solid 1px #d5d5d5; border-radius: 3px;
+			}
+			#ctre_wnd .ct_logo { font-size: 15px; font-weight: bold; }
+			#ctre_wnd .ct_logo.small { display: none; }
+			#ctre_wnd .ct_logo svg {
+				fill: #666; vertical-align: -15%;
+				transform: rotate(-240deg); transition: transform 1s;
+			}
+			#ctre_wnd .ct_logo.anim svg { transform: rotate(0deg); }
+
+			#ctre_wnd .version { color: #bbb; }
+			#ctre_wnd .keys { font-size: 11px; overflow: hidden; margin-top: 4px; color: #bbb; }
+			#ctre_wnd .ct_settings { font-size: 11px; overflow: hidden; margin: 8px 0; color: #bbb; }
+			#ctre_wnd .ct_settings a { color: #999; }
+			#ctre_wnd .ct_settings a:hover { color: #666; }
+			#ctre_wnd .activationKeys { float: left; margin-left: -2px; }
+			#ctre_wnd .transposeKeys { float: right; }
+			#ctre_current_elm {
+				font-family: monospace; background: #f7f7f7; color: #d5d5d5; padding: 2px; margin: 10px 0;
+				max-height: 84px; overflow: hidden;
+			}
+			#ctre_current_elm .pathNode { color: #999; border-bottom: solid 2px rgba(0,0,0,0); }
+			#ctre_current_elm .pathNode.active { border-bottom: solid 2px #555; }
+
+			#ctre_elm_list { display: none; margin: 0 -20px; background: #f7f7f7; border: solid 12px #f7f7f7; border-width: 12px 0 12px 0; max-height: 90px; overflow: auto; }
+			#ctre_elm_list.hasContent { display: block; }
+			#ctre_elm_list table { border: 0; width: 100%; border-spacing: 0; }
+			#ctre_elm_list tr { border: 0; }
+			#ctre_elm_list tr.ct_heading td { color: #bbb; }
+			#ctre_elm_list td { padding: 0; border: 0; background: #f7f7f7; }
+			#ctre_elm_list tr:nth-child(even) td { background: #fcfcfc; }
+			#ctre_elm_list td:nth-child(1) { padding-left: 20px; }
+			#ctre_elm_list td:nth-child(2) { text-align: center; }
+			#ctre_elm_list td:nth-child(3) { padding-right: 20px; }
+			#ctre_elm_list tr:not(.ct_heading) td:nth-child(1) { font-family: monospace; font-size: 11px; }
+			#ctre_elm_list td input { display: inline; -webkit-appearance: checkbox; }
+			#ctre_elm_list td input:before, #ctre_elm_list td input:after { content: none; }
+			#ctre_elm_list .ct_edit_selector { font-family: sans-serif; float: right; opacity: 0; color: #0fb4d4; text-decoration: none; }
+			#ctre_elm_list .ct_edit_selector:hover { color: #000; }
+			#ctre_elm_list tr:hover .ct_edit_selector { opacity: 1; }
+			#ctre_elm_list a.ct_delete { color: #f00; padding: 4px; text-decoration: none; font-size: 14px; }
+			#ctre_elm_list a.ct_delete:hover { color: #fff; background: #f00; }
+
+			#ctre_wnd .ct_more { border-top: solid 1px #f7f7f7; margin: 0 -20px; padding-top: 12px; color: #bbb; font-size: 10px; text-align: center; }
+			#ctre_wnd .ct_more a { color: #0fb4d4; font-size: inherit; text-decoration: none; transition: color 0.5s; }
+			#ctre_wnd .ct_more a:hover { color: #000; }
+
+			#ctre_wnd.minimized { width: 80px; height: 12px; }
+			#ctre_wnd.minimized > * { display: none; }
+			#ctre_wnd.minimized .ct_minimize,
+			#ctre_wnd.minimized .ct_close { display: block; }
+			#ctre_wnd.minimized .ct_minimize i { display: inline-block; transform: rotate(-135deg); }
+			#ctre_wnd.minimized .ct_logo.small { display: block; margin: -4px 0 0 -10px; }
+			
+body > .page-header { display: none !important; }
+.page-content__inner .up-interface__right-col { display: none !important; }
+li svg:nth-child(3) { display: none !important; }
+a > svg:nth-child(2) > use { display: none !important; }
+.up-header .up-header__social { display: none !important; }
+body > .page-footer { display: none !important; }
+.up-text .grid__cell:nth-child(2) { display: none !important; }
+.up-text .grid__cell:nth-child(1) { display: none !important; }
+.up-text > .card > .card__content { display: none !important; }
+body > .curator-chat { display: none !important; }</style><style>[_nghost-txh-c60]{font-family:Open Sans,sans-serif;color:#121212}</style><style type="text/css">.resize-observer[data-v-8859cc6c]{position:absolute;top:0;left:0;z-index:-1;width:100%;height:100%;border:none;background-color:transparent;pointer-events:none;display:block;overflow:hidden;opacity:0}.resize-observer[data-v-8859cc6c] object{display:block;position:absolute;top:0;left:0;height:100%;width:100%;overflow:hidden;pointer-events:none;z-index:-1}</style><style>.hljs {display: block;color: black;}.hljs-keyword,.hljs-builtin-name,.hljs-selector-id {color: blue;}.hljs-subst,.hljs-attr {color: black;}.hljs-title,.hljs-type {color: #0000A2;}.hljs-literal {color: rgb(88,92,246);}.hljs-number {color: rgb(0,0,205);}.hljs-regexp,.hljs-string,.hljs-doctag,.hljs-selector-pseudo,.hljs-code {color: rgb(3,106,7);}.hljs-selector-class,.hljs-variable {color: rgb(49,132,149);}.hljs-selector-tag,.hljs-selector-attr,.hljs-link {color: rgb(197,6,11);}.hljs-attribute {color: rgb(109,121,222);}.hljs-comment,.hljs-quote {color: rgb(188,20,175);}.hljs-meta {color: rgb(104,104,91);}.hljs-tag {color: rgb(0,22,142);}.hljs-addition {background-color: rgba(155, 185, 85, 0.2);}.hljs-deletion {background-color: rgba(255, 0, 0, 0.2);}.hljs-params,.hljs-built_in {color: rgb(49, 132, 149);}</style><script charset="utf-8" src="..\STYLE\2.1_files/b1baaa.js.Без названия"></script><script charset="utf-8" src="..\STYLE\2.1_files/823153.js.Без названия"></script><script charset="utf-8" src="..\STYLE\2.1_files/2adbeb.js.Без названия"></script><script charset="utf-8" src="..\STYLE\2.1_files/bdf2e3.js.Без названия"></script><script charset="utf-8" src="..\STYLE\2.1_files/5000ba.js.Без названия"></script><script charset="utf-8" src="..\STYLE\2.1_files/3725ba.js.Без названия"></script><script charset="utf-8" src="..\STYLE\2.1_files/a15424.js.Без названия"></script><script charset="utf-8" src="..\STYLE\2.1_files/6b8076.js.Без названия"></script><script charset="utf-8" src="..\STYLE\2.1_files/958863.js.Без названия"></script><script charset="utf-8" src="..\STYLE\2.1_files/011a0e.js.Без названия"></script></head><body><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GAM-Q4AS61O"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><header class="page-header "><div class="page-header__inner"><div class="page-header__top"><a class="page-header__logo" href="https://htmlacademy.ru/" aria-label="HTML Academy"><img src="..\STYLE\2.1_files/logo.svg" width="104" height="36" alt="HTML Academy"></a><nav class="main-nav" aria-label="Основное меню" itemscope="itemscope" itemtype="http://www.schema.org/SiteNavigationElement"><ul class="main-nav__list main-nav__list--main main-nav__list--adaptive"><li class="main-nav__item main-nav__item--logo"><a class="main-nav__link" href="https://up.htmlacademy.ru/" title="На главную HTML Academy"><img src="..\STYLE\2.1_files/logo.svg" width="104" height="36" alt="HTML Academy"></a></li><li class="main-nav__item "><a class="main-nav__link" href="https://htmlacademy.ru/courses"><span class="main-nav__icon"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#course"></use></svg></span>Практикум</a></li><li class="main-nav__item "><a class="main-nav__link" href="https://htmlacademy.ru/profession/frontender"><span class="main-nav__icon"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#hat"></use></svg></span>Профессия</a></li><li class="main-nav__item "><a class="main-nav__link" href="https://htmlacademy.ru/intensive"><span class="main-nav__icon"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#intensive"></use></svg></span>Курсы</a></li></ul><button class="main-nav__trigger" type="button"><span></span></button><div class="main-nav__dropdown" id="main-menu"><div class="main-nav__dropdown-inner"><ul class="main-nav__list main-nav__list--main"><li class="main-nav__item main-nav__item--dropdown" itemprop="name"><a class="main-nav__link " href="https://htmlacademy.ru/courses" itemprop="url"><span class="main-nav__icon" aria-hidden="true"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#course"></use></svg></span>Практикум</a><ul class="main-nav__list main-nav__list--lvl2"><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/courses">Тренажёры</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://l.htmlacademy.ru/professional-skills">Профессиональные навыки</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://l.htmlacademy.ru/projects-and-templates">Проекты для практики</a></li></ul></li><li class="main-nav__item main-nav__item--dropdown " itemprop="name"><span class="main-nav__link" title="Профессии" tabindex="0"><span class="main-nav__icon"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#hat"></use></svg></span>Профессии</span><ul class="main-nav__list main-nav__list--lvl2"><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/profession/frontender" itemprop="url">Фронтенд-разработчик</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/profession/react" itemprop="url">React-разработчик</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/profession/fullstack" itemprop="url">Фулстек-разработчик</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/profession/backender" itemprop="url">Бэкенд-разработчик</a></li></ul></li><li class="main-nav__item main-nav__item--dropdown " itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive" itemprop="url"><span class="main-nav__icon" aria-hidden="true"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#intensive"></use></svg></span>Курсы</a><ul class="main-nav__list main-nav__list--lvl2 main-nav__list--wide"><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/htmlcss" itemprop="url">HTML и&nbsp;CSS.<br> Профессиональная вёрстка сайтов</a></li><li class="main-nav__item main-nav__item--divider" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/adaptive" itemprop="url">HTML и&nbsp;CSS.<br> Адаптивная вёрстка и&nbsp;автоматизация</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/javascript" itemprop="url">JavaScript.<br> Профессиональная разработка веб-интерфейсов</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/ecmascript" itemprop="url">JavaScript.<br> Архитектура клиентских приложений</a></li><li class="main-nav__item main-nav__item--divider" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/react" itemprop="url">React.<br> Разработка сложных клиентских приложений</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/php" itemprop="url">PHP.<br> Профессиональная веб-разработка</a></li><li class="main-nav__item main-nav__item--divider" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/php2" itemprop="url">PHP и&nbsp;Yii.<br> Архитектура сложных веб-сервисов</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/nodejs" itemprop="url">Node.js.<br> Разработка серверов приложений и&nbsp;API</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/animation" itemprop="url">Анимация для фронтендеров</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/intensive/email" itemprop="url">Node.js. Разработка серверов приложений и API</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://levelup.htmlacademy.ru/vue" itemprop="url">Vue.js.<br> Разработка клиентских приложений</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://levelup.htmlacademy.ru/regular-expressions" itemprop="url">Регулярные выражения для фронтендеров</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://levelup.htmlacademy.ru/template-engine" itemprop="url">Алгоритмы и структуры данных</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://levelup.htmlacademy.ru/algorithms" itemprop="url">Алгоритмы и&nbsp;структуры данных</a></li></ul></li><li class="main-nav__item main-nav__item--dropdown " itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/study" itemprop="url"><span class="main-nav__icon" aria-hidden="true"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#my-intensive"></use></svg></span>Моё обучение</a><ul class="main-nav__list main-nav__list--lvl2 main-nav__list--wide"><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://up.htmlacademy.ru/email/1" itemprop="url">Node.js. Разработка серверов приложений и API&nbsp;#1</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://up.htmlacademy.ru/vue/1" itemprop="url">Анимация для фронтендеров</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="1.html" itemprop="url">Алгоритмы и структуры данных</a></li></ul></li></ul><ul class="main-nav__list main-nav__list--user "><li class="main-nav__item main-nav__item--user main-nav__item--dropdown"><a class="main-nav__link main-nav__link--user" href="https://htmlacademy.ru/profile/id35001" title="marat1975" itemprop="url"><img class="main-nav__avatar" src="..\STYLE\2.1_files/unknown-raccoon.v4.svg" alt="marat1975"><span class="main-nav__username">marat1975</span></a><ul class="main-nav__list main-nav__list--lvl2"><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/discounts" title="Мои акции" itemprop="url"><span class="main-nav__icon "><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#discount"></use></svg></span>Мои акции</a></li><li class="main-nav__item" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/profile/settings" title="Настройки" itemprop="url"><span class="main-nav__icon"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#settings"></use></svg></span>Настройки</a></li><li class="main-nav__item main-nav__item--login" itemprop="name"><a class="main-nav__link" href="https://htmlacademy.ru/logout?redirect_url=2.html/item/1" title="Выйти" itemprop="url"><span class="main-nav__icon"><svg aria-hidden="true" width="16" height="16"><use xlink:href="/img/sprites/general.v45.svg#logout"></use></svg></span>Выйти</a></li></ul></li></ul></div></div></nav></div></div></header><header class="up-header up-header--template-engine"><div class="up-header__inner"><div class="up-header__text"><h1 class="up-header__title"><a href="1.html">Алгоритмы и структуры данных</a></h1><span class="up-header__date"></span></div><ul class="up-header__social"><li><a href="1.html/feed" title="Лента уведомлений"><span class="sr-only">Лента уведомлений</span><span class="feed-counter hidden" data-newsfeed="https://newsfeed.htmlacademy.ru" data-newsfeed-token="e3J0eXAiOiJKV14iLCJhbGc3OiJIUzI4Ni49.e4J1c2dySWQiOdM1MDYzLCJpdnRlbnNpdmVJZCI6Mjc1LCJyb2xlIjoic3D1ZGVudCJ9.O5DDDDMolrvRtg_aO5Dc7pm2KjGT4aEMZmhA4wLmw_D">0</span><svg aria-hidden="true" width="32" height="32"><use xlink:href="/img/sprites/octicons.v10.svg#bell-24"></use></svg></a></li><li><a href="https://discord.gg/n1AmdWbWRA" title="Группа курса в Discord"><span class="sr-only">Группа курса в Discord</span><svg aria-hidden="true" width="32" height="32"><use xlink:href="/img/sprites/general.v45.svg#discord"></use></svg></a></li></ul></div><div class="up-header__nav"><nav class="tabs tabs--up"><button class="tabs__button" type="button"><span class="sr-only">Меню курса</span><span class="tabs__icon"><svg aria-hidden="true"><use xlink:href="/img/sprites/up.v9.svg#icon-arrow-right"></use></svg></span></button><ul class="tabs__list"><li class="tabs__item tabs__item--active"><a class="tabs__item-link" href="1.html">Программа</a></li><li class="tabs__item "><a class="tabs__item-link" href="FAQ.html">
+                FAQ
+              </a></li><li class="tabs__item "><a class="tabs__item-link" href="#">
+                Итоги
+              </a></li><li class="tabs__item tabs__item--mobile"><a class="tabs__item-link" href="2.html/item/1#">Меню курса</a></li></ul></nav></div></header><div class="page-content "><div class="page-content__inner"><div class="up-interface up-interface--up "><section class="up-interface__left-col"><nav class="breadcrumbs"><ul class="breadcrumbs__list"><li class="breadcrumbs__item"><a href="1.html">Главная</a></li><li class="breadcrumbs__item"><a href="2.html">2. Структуры данных</a></li></ul></nav><article class="up-text"><div class="up-text__head"><h1 class="up-text__title"><svg aria-hidden="true" width="24" height="24"><use xlink:href="/img/sprites/octicons.v10.svg#file-16"></use></svg>
+          2.1. Структуры данных, встроенные в JavaScript
+        </h1></div>
+        <div class="text-container text-container--module"><p>Структура данных&nbsp;— это определённый способ организации и&nbsp;хранения данных. Для решения каждой конкретной задачи нужно сначала определиться, в&nbsp;каких именно структурах будут лежать необходимые данные: от&nbsp;этого напрямую зависит и&nbsp;удобство разработки, и&nbsp;скорость работы вашей программы. В&nbsp;этой статье посмотрим на&nbsp;структуры данных, которые есть в&nbsp;JavaScript, и&nbsp;сложности операций над ними.</p><h2>Массив</h2><p>Массив&nbsp;— это структура данных, которая позволяет нам хранить совокупности элементов в&nbsp;определённом порядке и&nbsp;получать их&nbsp;по&nbsp;их&nbsp;положению внутри массива (индексу). Все мы&nbsp;с&nbsp;ним работали, все мы&nbsp;знаем, какие методы у&nbsp;него есть.</p><pre class="js language-js"><code class="hljs javascript"><span class="hljs-keyword">const</span> contacts = []; <span class="hljs-comment">// Например, какой-то массив из пользовательских контактов</span>
+
+contacts.push(<span class="hljs-string">'+1 999 123 45 67'</span>); <span class="hljs-comment">// Куда мы что-то кладем в конец</span>
+contacts[<span class="hljs-number">1</span>] = <span class="hljs-string">'+7 999 123 45 67'</span>; <span class="hljs-comment">// Или по конкретному месту</span>
+
+contacts.sort(); <span class="hljs-comment">// Можем его сортировать (напоминаем, что сортировка изменяет исходный массив, а не создаёт новый)</span>
+
+<span class="hljs-keyword">const</span> firstContact = contacts[<span class="hljs-number">0</span>]; <span class="hljs-comment">// Или получать что-то из массива</span>
+</code></pre><p>Но&nbsp;вы&nbsp;когда-нибудь задумывались, работают&nbsp;ли операции над массивами одинаково быстро? На&nbsp;самом деле, работая с&nbsp;массивом, мы&nbsp;часто используем его даже не&nbsp;как массив, а&nbsp;как структуры данных, работающие поверх него&nbsp;— очереди и&nbsp;стеки.</p><h4>Массив как очередь</h4><p>Очередь&nbsp;— это структура данных, «мимикрирующая» под очередь из&nbsp;реальной жизни: элементы попадают в&nbsp;конец массива-очереди и&nbsp;достаются из&nbsp;начала. Такие структуры в&nbsp;литературе обычно ещё называют First in&nbsp;first out (сокращенно FIFO)&nbsp;— первый зашёл, первый вышел.</p><p>Для работы над очередями нам необходимы два метода: <code>push</code> и&nbsp;<code>shift</code>.</p><p>Во&nbsp;фронтенде стоит использовать очереди, если вам важен порядок операций&nbsp;— например, последовательный показ оповещений пользователю, чтобы не&nbsp;выводить всё за&nbsp;раз. А&nbsp;«под капотом» JavaScript использует очереди для того, чтобы последовательно выполнять наши коллбеки из&nbsp;асинхронных операций.</p><pre class="js language-js"><code class="hljs javascript"><span class="hljs-keyword">const</span> notifications = []; <span class="hljs-comment">// Какая-то очередь для показа нотификаций пользователю</span>
+
+<span class="hljs-comment">// &lt;...&gt;</span>
+
+notifications.push(<span class="hljs-string">'Всё прошло просто восхитительно!'</span>) <span class="hljs-comment">// Куда наш код кладёт какие-то оповещения</span>
+notifications.push(<span class="hljs-string">'И все контакты сохранились!'</span>)
+notifications.push(<span class="hljs-string">'И вообще всё прекрасно!'</span>)
+
+<span class="hljs-comment">// &lt;...&gt;</span>
+
+<span class="hljs-keyword">const</span> firstAlert = notifications.shift(); <span class="hljs-comment">// А когда нужно, мы достаём самое старое оповещение...</span>
+showAlert(firstAlert); <span class="hljs-comment">// ...и каким-либо образом показываем его пользователю</span>
+</code></pre><p>Давайте вспомним O-нотацию из&nbsp;первого модуля и&nbsp;оценим, насколько эти операции затратны. Метод <code>push</code> «под капотом» просто берёт переданный ему элемент и&nbsp;кладёт его в&nbsp;конец массива. Мы&nbsp;знаем, где у&nbsp;нас конец массива (нам не&nbsp;нужно его вычислять) и&nbsp;просто добавляем туда новый элемент. Это занимает всегда одинаковое количество операций, которое не&nbsp;зависит ни&nbsp;от&nbsp;длины массива, ни&nbsp;от&nbsp;передаваемого элемента. Перекладывая это в&nbsp;О-нотацию, получаем оценку в&nbsp;<code>O(1)</code>, что в&nbsp;целом является лучшей из&nbsp;возможных оценок.</p><p>Можно подумать, что <code>shift</code> также работает за&nbsp;<code>O(1)</code>: мы&nbsp;знаем, где массив начинается, и&nbsp;просто достаём оттуда элемент. Но&nbsp;на&nbsp;самом деле это не&nbsp;всё, что делает <code>shift</code>. Ему нужно не&nbsp;просто вернуть элемент из&nbsp;начала массива, но&nbsp;ещё и&nbsp;сдвинуть все остальные элементы массива на&nbsp;одно «место» ближе к&nbsp;началу массива. Например, если имеем массив <code>[1, 2, 3, 4]</code>, вызов <code>shift</code> вернёт 1, а&nbsp;после этого в&nbsp;массиве останется <code>[&lt;ничего&gt;, 2, 3, 4]</code>. «Под капотом» <code>shift</code> сдвинет 2 в&nbsp;начало массива, получит <code>[2, &lt;ничего&gt;, 3, 4]</code>, потом сдвинет в&nbsp;начало тройку и&nbsp;так далее до&nbsp;конца массива. Если мы&nbsp;добавим в&nbsp;этот массив один новый элемент, то&nbsp;<code>shift</code> будет работать на&nbsp;одну операцию больше, добавим n&nbsp;элементов&nbsp;— будет работать на&nbsp;n&nbsp;операций больше. Отсюда можем заключить, что сложность <code>shift</code>&nbsp;— <code>O(n)</code></p><p>Забежим немного вперёд. Как и&nbsp;<code>shift</code>, <code>unshift</code> тоже отрабатывает за&nbsp;<code>O(n)</code> по&nbsp;схожей причине: нужно сначала подвинуть все элементы «вправо», к&nbsp;концу массива, а&nbsp;уже затем добавлять нужные элементы. Из&nbsp;этого следует довольно важный вывод: <strong>работа с&nbsp;началом массива гораздо трудозатратнее, чем работа с&nbsp;его концом</strong>. Поэтому если вам не&nbsp;принципиально, куда добавлять элементы, то&nbsp;добавляйте их&nbsp;в&nbsp;конец. Это на&nbsp;порядок эффективнее!</p><h4>Массив как стек</h4><p>Стек (англ. stack)&nbsp;— это структура данных, которая работает только с&nbsp;концом массива: кладёт элементы в&nbsp;его конец и&nbsp;достаёт их&nbsp;тоже из&nbsp;конца. Подобные структуры называются Last in&nbsp;first out (LIFO)&nbsp;— последний зашёл, первый вышел. Для функционирования массива как стека мы&nbsp;используем методы <code>pop</code> и&nbsp;<code>push</code>. Оба они, как следует из&nbsp;замечания выше, работают за&nbsp;<code>O(1)</code>, а&nbsp;потому работа со&nbsp;стеком гораздо быстрее, чем работа с&nbsp;очередью.</p><p>Во&nbsp;фронтенде стек используется, например, на&nbsp;уровне браузера. При переходе между сайтами мы&nbsp;заполняем историю просмотра (кладём в&nbsp;стек просмотренные страницы), а&nbsp;при нажатии кнопки «Назад» достаём из&nbsp;стека последнюю страницу и&nbsp;переходим на&nbsp;неё. Такой&nbsp;же подход используется для собственных решений для undo-redo: отмены и&nbsp;повторения сделанных действий в&nbsp;вашем приложении. Такое решение используется в&nbsp;большинстве редакторов текста внутри браузера с&nbsp;форматированием, использующих <code>contentEditable</code>:</p><pre class="js language-js"><code class="hljs javascript"><span class="hljs-keyword">const</span> changesHistory = []; <span class="hljs-comment">// Заведём стек для сохранения состояний нашего редактора</span>
+
+<span class="hljs-comment">// &lt;...&gt;</span>
+
+changesHistory.push(input.innerHTML); <span class="hljs-comment">// Каждый раз, когда пользователь что-то вводит в наше поле, сохраняем HTML</span>
+
+<span class="hljs-comment">// &lt;...&gt;</span>
+
+input.innerHTML = changesHistory.pop(); <span class="hljs-comment">// А как только пользователь поймет, что ошибся, и нажмет Ctrl+Z — возьмём последнее сохранённое состояние и откатимся к нему</span>
+</code></pre><h4>Другие методы работы с&nbsp;массивами</h4><p>Один из&nbsp;самых популярных методов на&nbsp;массиве&nbsp;— это сортировка. На&nbsp;виды сортировок и&nbsp;их&nbsp;внутреннее устройство мы&nbsp;посмотрим дальше по&nbsp;курсу, а&nbsp;пока что просто запомним, что асимптотика сортировки массива <code>O(n*logn)</code> (чаще пишется как <code>O(nlogn)</code>). Откуда берётся эта оценка, вы&nbsp;точно узнаете, не&nbsp;переживайте! А&nbsp;если вы&nbsp;вдруг забыли, что такое логарифмы, то&nbsp;советуем вам <a href="https://www.berdov.com/docs/logarithm/what/">освежить память</a>&nbsp;— с&nbsp;ними мы&nbsp;ещё встретимся.</p><p>Ещё одним часто используемым оператором в&nbsp;JavaScript является <code>spread</code>&nbsp;— то&nbsp;самое троеточие, которое позволяет вам, например, объединять массивы вот так: <code>[...array1, ...array2]</code>. Выглядит и&nbsp;читается это очень приятно, но&nbsp;злоупотреблять этим оператором в&nbsp;больших массивах не&nbsp;стоит: он&nbsp;также итерируется по&nbsp;всем элементам массива, и&nbsp;в&nbsp;итоге вы&nbsp;получаете сложность <code>O(n)</code>! Использовать <code>spread</code> в&nbsp;циклах нужно только в&nbsp;крайнем случае, иначе получим сложность минимум <code>O(n²)</code>.</p><h2>Set</h2><p><code>Set</code> (множество)&nbsp;— это структура, которая чем-то похожа на&nbsp;массив и&nbsp;в&nbsp;это&nbsp;же время значительно от&nbsp;него отличается. Главное отличие <code>Set</code> в&nbsp;том, что в&nbsp;нём могут находиться только уникальные элементы. Возможно, вы&nbsp;уже встречали такой способ избавления от&nbsp;дубликатов: <code>[...(new Set([1, 1, 1, 2]))] =&gt; [1, 2]</code> (кстати, за&nbsp;сколько он&nbsp;работает?). Второе отличие&nbsp;— в&nbsp;нём отсутствует индексация: мы&nbsp;не&nbsp;сможем получить конкретный элемент в&nbsp;множестве, зная его положение в&nbsp;нём (честно говоря, мы&nbsp;и&nbsp;не&nbsp;то&nbsp;чтобы знаем). А&nbsp;ещё все операции (кроме перебора) работают на&nbsp;нём за&nbsp;<code>O(1)</code>: и&nbsp;удаление, и&nbsp;вставка, и&nbsp;проверка на&nbsp;вхождение элемента. Почему так быстро?</p><h4>Хеш-функция</h4><p>Именно использование этого заклинания позволяет нам достичь таких скоростей. Если говорить простыми словами, это обычная функция, которая берёт любой элемент и&nbsp;получает на&nbsp;основе него число (хеш). Полученное число мы&nbsp;используем как индекс в&nbsp;массиве и&nbsp;по&nbsp;этому адресу кладём, получаем или проверяем элемент во&nbsp;множестве. Любая хеш-функция принимает только один элемент и&nbsp;работает за&nbsp;константное время, то&nbsp;есть имеет асимптотику <code>O(1)</code>. Очень важный аспект хеш-функций в&nbsp;том, что разные элементы могут давать одинаковый результат в&nbsp;функции. Тогда, оперируя только хешами, мы&nbsp;можем подумать, что эти элементы равны. Получение таких ситуаций называется коллизиями. Чем больше у&nbsp;функции стойкость к&nbsp;коллизиям, тем она лучше. Не&nbsp;беспокойтесь, вероятность такой коллизии при использовании встроенных структур крайне мала.</p><p>Чаще всего на&nbsp;практике множества используются именно для быстрой проверки на&nbsp;вхождение в&nbsp;какой-то огромный список или для предотвращения появления дубликатов:</p><pre class="js language-js"><code class="hljs javascript"><span class="hljs-keyword">const</span> cards = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>([<span class="hljs-string">'6541'</span>, <span class="hljs-string">'2202'</span>]); <span class="hljs-comment">// Например, заведём какой-то массив сохранённых пользователем банковских карточек</span>
+
+<span class="hljs-comment">// &lt;...&gt;</span>
+
+cards.add(<span class="hljs-string">'7483'</span>) <span class="hljs-comment">// Добавляем новую карточку</span>
+cards.size() <span class="hljs-comment">// Выдаст размер множества, то есть 3, потому что карточек внутри него три</span>
+
+<span class="hljs-comment">// &lt;...&gt;</span>
+
+cards.add(<span class="hljs-string">'2202'</span>) <span class="hljs-comment">// А вот пользователь попытался сохранить ту же карту, что уже была сохранена...</span>
+cards.size() <span class="hljs-comment">// ...но Set не допустил образование дубликата, поэтому его размер всё ещё 3.</span>
+</code></pre><p>Согласитесь, такая проверка на&nbsp;дубликаты и&nbsp;работает быстрее, и&nbsp;выглядит лучше, чем работа с&nbsp;массивом:</p><pre class="js language-js"><code class="hljs javascript"><span class="hljs-keyword">const</span> newCard = <span class="hljs-string">'2202'</span>;
+
+<span class="hljs-keyword">if</span> (!cards.includes(newCard)) {
+  cards.push(newCard);
+}
+</code></pre><h2>Map</h2><p><code>Map</code>&nbsp;— это структура вида ключ-значение (key-value): грубо говоря, мы&nbsp;кладём в&nbsp;неё элементы по&nbsp;какому-то «названию» (ключу) и&nbsp;по&nbsp;нему&nbsp;же достаём. В&nbsp;случае <code>Map</code> ключом может являться как строка, так и&nbsp;любой другой произвольный примитив или даже объект. <code>Map</code> тоже использует хеш-функцию, как и&nbsp;<code>Set</code>, но&nbsp;высчитывает хеш не&nbsp;от&nbsp;значения, которое мы&nbsp;кладём в&nbsp;неё, а&nbsp;от&nbsp;ключа. Таким образом, скорость получения, удаления и&nbsp;проверки нахождения в&nbsp;<code>Map</code> также работает за&nbsp;<code>O(1)</code>!</p><p>За&nbsp;счёт этого <code>Map</code> хорошо использовать как кеш для каких-либо трудно или долго вычисляемых элементов. Например, если мы&nbsp;разрабатываем приложение для совершения платежей, пользователь может выбирать в&nbsp;форме оплаты одну из&nbsp;нескольких десятков привязанных карт. На&nbsp;фронтенде карты&nbsp;— это большие объекты, которые включают в&nbsp;себя id, номер и&nbsp;множество других полей. А&nbsp;в&nbsp;поле ввода как значение мы&nbsp;используем какую-нибудь строку, получаемую обработкой всех полей. Чтобы не&nbsp;пересчитывать эту строку каждый раз, когда мы&nbsp;что-то выбираем из&nbsp;списка, можно завести <code>Map</code>, где ключом будет огромный объект карты, а&nbsp;значением&nbsp;— наша строка. Тогда этот <code>Map</code> можно будет и&nbsp;переиспользовать в&nbsp;других местах, где нужны подобные вычисления. Посмотрим (и&nbsp;познакомимся с&nbsp;методами <code>Map</code>, если вы&nbsp;их&nbsp;ещё не&nbsp;видели) на&nbsp;примере:</p><pre class="js language-js"><code class="hljs javascript"><span class="hljs-keyword">const</span> iconsCache = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>(); <span class="hljs-comment">// Заведём Map для хранения иконок платёжных систем из примера выше</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getIcon</span>(<span class="hljs-params">system</span>) </span>{
+  <span class="hljs-keyword">if</span> (iconsCache.has(system)) { <span class="hljs-comment">// Далее если в нашем коде нам понадобится получить иконку и мы её уже запрашивали, то...</span>
+    <span class="hljs-keyword">return</span> iconsCache.get(system); <span class="hljs-comment">// ...просто вернём её из кеша</span>
+  }
+
+  <span class="hljs-keyword">const</span> icon = <span class="hljs-keyword">await</span> fetchIcon(system); <span class="hljs-comment">// Иначе стартанём долгий асинхронный процесс получения иконки с сервера...</span>
+
+  iconsCache.set(system, icon); <span class="hljs-comment">// ...положим нашу иконку в кеш, чтобы в следующий раз не ходить на сервер</span>
+
+  <span class="hljs-keyword">return</span> icon;
+}
+</code></pre><p>Если иконок потенциально могут быть тысячи, <code>Map</code> не&nbsp;даст вам проиграть в&nbsp;скорости.</p><h2>Объект</h2><p>Как и&nbsp;в&nbsp;случае с&nbsp;массивами, вы, скорее всего, несчётное количество раз пользовались объектами. Объекты, как и&nbsp;<code>Map</code>, являются key-value структурами, но&nbsp;внутри устроены совершенно иначе. На&nbsp;самом деле они настолько различаются, что в&nbsp;разных ситуациях даже получение значения по&nbsp;ключу работает с&nbsp;разной асимптотикой. А&nbsp;ещё в&nbsp;обычных объектах ключами могут служить только строки. Это, кстати, тема одного из&nbsp;любимых вопросов многих интервьюеров на&nbsp;собеседованиях. Посмотрите на&nbsp;следующий код:</p><pre class="js language-js"><code class="hljs javascript"><span class="hljs-keyword">const</span> a = {
+  <span class="hljs-attr">foo</span>: <span class="hljs-string">'bar'</span>
+};
+
+<span class="hljs-keyword">const</span> b = {
+  <span class="hljs-attr">bar</span>: <span class="hljs-string">'baz'</span>
+};
+
+<span class="hljs-keyword">const</span> someObject = {
+  [a]: <span class="hljs-number">1</span>,
+  [b]: <span class="hljs-number">2</span>,
+}
+
+<span class="hljs-built_in">console</span>.log(someObject[a]) <span class="hljs-comment">// ?</span>
+</code></pre><p>Что выведется в&nbsp;консоль? Если вы&nbsp;ответили <code>1</code>, то&nbsp;попробуйте выполнить этот код самостоятельно.</p><p><code>Spread</code> оператор на&nbsp;объектах, как и&nbsp;на&nbsp;массивах, выполняется за&nbsp;<code>O(n)</code>, поэтому тут работает та&nbsp;же рекомендация не&nbsp;использовать его в&nbsp;циклах. Такое случается часто при сборке объектов! Взгляните на&nbsp;следующий пример: из&nbsp;массива вида <code>[['size', 'm'], ['id', 3], ['color', 'white']]</code> нам нужно получить объект</p><pre class="js language-js"><code class="hljs javascript">{
+  <span class="hljs-attr">size</span>: <span class="hljs-string">'m'</span>,
+  <span class="hljs-attr">id</span>: <span class="hljs-number">3</span>,
+  <span class="hljs-attr">color</span>: <span class="hljs-string">'white'</span>,
+}
+</code></pre><p>Самое наивное и&nbsp;простое решение этой задачи, простая итерация:</p><pre class="js language-js"><code class="hljs javascript"><span class="hljs-keyword">const</span> properties = [[<span class="hljs-string">'size'</span>, <span class="hljs-string">'m'</span>], [<span class="hljs-string">'id'</span>, <span class="hljs-number">3</span>], [<span class="hljs-string">'color'</span>, <span class="hljs-string">'white'</span>]];
+
+<span class="hljs-keyword">const</span> object = {};
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [key, value] <span class="hljs-keyword">of</span> properties) {
+  object[key] = value;
+}
+</code></pre><blockquote><p>Если вы&nbsp;впервые видите объявление по&nbsp;типу <code>const [key, value]...</code>, почитайте про <a href="https://learn.javascript.ru/destructuring-assignment">деструктуризацию</a>.</p></blockquote><p>Работает это решение за&nbsp;<code>O(n)</code>&nbsp;— мы&nbsp;просто итерируемся по&nbsp;массиву. Но&nbsp;если к&nbsp;задаче подпустить человека, который везде пытается добавить filter/map/reduce, то&nbsp;мы, скорее всего, получим:</p><pre class="js language-js"><code class="hljs javascript"><span class="hljs-keyword">const</span> object = properties.reduce(<span class="hljs-function">(<span class="hljs-params">accumulator, [key, value]</span>) =&gt;</span> ({
+  ...accumulator,
+  [key]: value,
+}), {})
+</code></pre><p>Этот код выглядит более заумным, но&nbsp;работает он&nbsp;гораздо хуже&nbsp;— за&nbsp;<code>O(n²)</code>&nbsp;— n&nbsp;итераций и&nbsp;n&nbsp;для <code>spread</code> оператора внутри каждой из&nbsp;них.</p><p>Это подводит ещё к&nbsp;одному важному выводу: <strong>не&nbsp;бойтесь, а&nbsp;даже старайтесь писать максимально простоватый код&nbsp;— чаще всего он&nbsp;работает лучше мудрёного!</strong> Помимо встроенных в&nbsp;JavaScript структур, мы&nbsp;можем реализовать свои собственные, используя уже доступные в&nbsp;качестве строительных блоков.</p></div>
+    </div></div></div><script src="..\STYLE\2.1_files/up.v150.js.Без названия"></script><script async="" src="..\STYLE\2.1_files/general.v209.js.Без названия" data-assets="https://assets.htmlacademy.ru" data-require="highlight,toggle,tabs,tab-switcher,modal,ajax,autocomplete,orphus,newsfeed-messages,modal,form,tabs"></script><script async="" src="..\STYLE\2.1_files/scripts.13.js.Без названия"></script><a href="1.html/curator" class="curator-chat" style="position:fixed;right:12px;bottom:10px;z-index:100;width:80px;height:80px;background:url(&#39;https://assets.htmlacademy.ru/img/icons/icon_tutor-face.v2.svg&#39;) 0 0 no-repeat;background-size:cover;"></a><script>window.intercomSettings = {app_id:'omq12oer',custom_launcher_selector:'.curator-chat',hide_default_launcher:true,name:'marat1975',email:'rfhamzin@gmail.com',type:'Студент',joined_at:16415523564,company:{id:275,name:'Алгоритмы и структуры данных',type:'template-engine',number:'1'},tutor:'',tutor_id:'',user_id:'35001',user_hash:'c908fgv0nvkjgf455gfgdfg4545r90rtdf0g9fdg00112144dffsasdsdsd34456'};</script><script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/omq12oer';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();[].map.call(document.querySelectorAll('[data-intercom-link]'),function(link){link.addEventListener('click',function(evt){evt.preventDefault();Intercom('show')})});
+    </script><div class="ap-ext ap-ext-1688"><div class="ap-base ap-base--ltr ap-theme--dark"><!----> <!----> <!----> <div><!----> <div class="ap-sbi"><!----> <!----> <!----> <div class="ap-sbi-aside"><!----> <div class="ap-sbi-aside-btn-minimize" style="display: none;"><img src="2.html/item/1" class="ap-sbi-img-thumb"> <i class="ap-sbi-aside-btn-minimize__icon ap-icon-chevron-right"></i></div> <!----></div></div> <div class="ap-sbi-alibaba-act-wrapper"><div class="ap-sbi-alibaba-act__inner"><div class="ap-sbi-alibaba-act-compared-list-wrapper"><div class="ap-sbi-alibaba-act-next ap-sbi-alibaba-act-next__prev ap-icon-chevron-left ap-is-disabled"></div> <div class="ap-sbi-alibaba-act-compared-list-container"><div class="ap-sbi-alibaba-act-compared-list" style="width: 1000%; height: 100%; transform: translate3d(0px, 0px, 0px);"></div> <!----></div> <div class="ap-sbi-alibaba-act-next ap-sbi-alibaba-act-next__next ap-icon-chevron-right ap-is-disabled"></div></div> <div class="ap-sbi-alibaba-act-ctrls ap-sbi-alibaba-act-ctrls__compare ap-is-disabled">
+      Сравнить (0/20)
+    </div> <div class="ap-sbi-alibaba-act-ctrls ap-sbi-alibaba-act-ctrls__contact ap-is-disabled">
+      Связаться с нами
+    </div> <div class="ap-sbi-alibaba-act-ctrls ap-sbi-alibaba-act-ctrls__clear ap-is-disabled">
+      Очистить все
+    </div> <div title="Закрыть" class="ap-sbi-alibaba-act-ctrls ap-sbi-alibaba-act-ctrls__close ap-icon-close"></div></div></div> </div> <div class="ap-acc-tooltip" style="position: fixed; top: 0px; left: 0px; display: none;">
+  
+</div> <div></div> <!----> <!----> <div></div> <div></div> <!----> <!----></div></div> <script type="text/javascript" id="">(function(a,e,f,g,b,c,d){a[b]=a[b]||function(){(a[b].a=a[b].a||[]).push(arguments)};a[b].l=1*new Date;c=e.createElement(f);d=e.getElementsByTagName(f)[0];c.async=1;c.src=g;d.parentNode.insertBefore(c,d)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(52619253,"init",{id:52619253,clickmap:!0,trackLinks:!0,accurateTrackBounce:!0,webvisor:!0});</script> <noscript><div><img src="https://mc.yandex.ru/watch/52619253" style="position:absolute; left:-9999px;" alt=""></div></noscript> <script type="text/javascript" id="">(function(e,a){function f(b,a){b.prototype[a]=function(){this._q.push([a].concat(Array.prototype.slice.call(arguments,0)));return this}}function g(b){function a(a){b[a]=function(){b._q.push([a].concat(Array.prototype.slice.call(arguments,0)))}}for(var c=0;c<h.length;c++)a(h[c])}var c=e.amplitude||{_q:[],_iq:{}},b=a.createElement("script");b.type="text/javascript";b.integrity="sha384-d/yhnowERvm+7eCU79T/bYjOiMmq4F11ElWYLmt0ktvYEVgqLDazh4+gW9CKMpYW";b.crossOrigin="anonymous";b.async=!0;b.src="https://cdn.amplitude.com/libs/amplitude-5.2.2-min.gz.js";
+b.onload=function(){e.amplitude.runQueuedFunctions||console.log("[Amplitude] Error: could not load SDK")};a=a.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a);b=function(){this._q=[];return this};a="add append clearAll prepend set setOnce unset".split(" ");for(var d=0;d<a.length;d++)f(b,a[d]);c.Identify=b;b=function(){this._q=[];return this};a=["setProductId","setQuantity","setPrice","setRevenueType","setEventProperties"];for(d=0;d<a.length;d++)f(b,a[d]);c.Revenue=b;var h="init logEvent logRevenue setUserId setUserProperties setOptOut setVersionName setDomain setDeviceId setGlobalUserProperties identify clearUserProperties setGroup logRevenueV2 regenerateDeviceId groupIdentify onInit logEventWithTimestamp logEventWithGroups setSessionId resetSessionId".split(" ");
+g(c);c.getInstance=function(a){a=(a&&0!==a.length?a:"$default_instance").toLowerCase();c._iq.hasOwnProperty(a)||(c._iq[a]={_q:[]},g(c._iq[a]));return c._iq[a]};e.amplitude=c})(window,document);amplitude.getInstance().init("f602c01f1c06db4f52768e6adaa4eb56",google_tag_manager["GAM-Q4AS61O"].macro(6),{includeUtm:!0,includeGclid:!0,includeReferrer:!0,deviceIdFromUrlParam:!0},function(e){window.amplitudeLoaded=!0});</script><script type="text/javascript" id="">var eventProperties={};eventProperties.origin=google_tag_manager["GAM-Q4AS61O"].macro(7);eventProperties.domain=google_tag_manager["GAM-Q4AS61O"].macro(8);amplitude.getInstance().logEvent("user.visit",eventProperties);</script><div class="autocomplete-suggestions "></div><iframe id="intercom-frame" style="position: absolute !important; opacity: 0 !important; width: 1px !important; height: 1px !important; top: 0 !important; left: 0 !important; border: none !important; display: block !important; z-index: -1 !important; pointer-events: none;" aria-hidden="true" tabindex="-1" title="Intercom" src="..\STYLE\2.1_files/saved_resource.html"></iframe><div class="intercom-lightweight-app"><style id="intercom-lightweight-app-style" type="text/css">
+  @keyframes intercom-lightweight-app-launcher {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes intercom-lightweight-app-gradient {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes intercom-lightweight-app-messenger {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .intercom-lightweight-app {
+    position: fixed;
+    z-index: 2147483001;
+    width: 0;
+    height: 0;
+    font-family: intercom-font, "Helvetica Neue", "Apple Color Emoji", Helvetica, Arial, sans-serif;
+  }
+
+  .intercom-lightweight-app-gradient {
+    position: fixed;
+    z-index: 2147483002;
+    width: 500px;
+    height: 500px;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at bottom right,
+      rgba(29, 39, 54, 0.16) 0%,
+      rgba(29, 39, 54, 0) 72%);
+    animation: intercom-lightweight-app-gradient 200ms ease-out;
+  }
+
+  .intercom-lightweight-app-launcher {
+    position: fixed;
+    z-index: 2147483003;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #2D2D44;
+    cursor: pointer;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.06), 0 2px 32px 0 rgba(0, 0, 0, 0.16);
+    animation: intercom-lightweight-app-launcher 250ms ease;
+  }
+
+  .intercom-lightweight-app-launcher:focus {
+    outline: none;
+    
+  }
+
+  .intercom-lightweight-app-launcher-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    transition: transform 100ms linear, opacity 80ms linear;
+  }
+
+  .intercom-lightweight-app-launcher-icon-open {
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-open svg {
+    width: 28px;
+    height: 32px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-open svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve {
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve svg {
+    height: 56px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-launcher-custom-icon-open {
+    max-height: 36px;
+    max-width: 36px;
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize {
+    
+        opacity: 0;
+        transform: rotate(-60deg) scale(0);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize svg {
+    width: 16px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-messenger {
+    position: fixed;
+    z-index: 2147483003;
+    overflow: hidden;
+    background-color: white;
+    animation: intercom-lightweight-app-messenger 250ms ease-out;
+    
+        width: 376px;
+        height: calc(100% - 40px);
+        max-height: 704px;
+        min-height: 250px;
+        right: 20px;
+        bottom: 20px;
+        box-shadow: 0 5px 40px rgba(0,0,0,0.16);
+        border-radius: 8px;
+      
+  }
+
+  .intercom-lightweight-app-messenger-header {
+    height: 75px;
+    background: linear-gradient(
+      135deg,
+      rgb(45, 45, 68) 0%,
+      rgb(4, 4, 7) 100%
+    );
+  }
+
+  @media print {
+    .intercom-lightweight-app {
+      display: none;
+    }
+  }
+</style></div></body><app-content ng-version="11.1.0"></app-content></html>

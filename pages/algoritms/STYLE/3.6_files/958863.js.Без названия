@@ -1,0 +1,2 @@
+/*! For license information please see 958863.js.LICENSE.txt */
+(window.webpackJsonp=window.webpackJsonp||[]).push([[45],{234:function(e,t,n){"use strict";var a=n(8)(n(682));(async()=>{const e=document.querySelector("[data-newsfeed]");if(!e)return;const t=e.dataset.newsfeed,n=e.dataset.newsfeedToken,s=await a.default.get("".concat(t,"/events?count=true"),{headers:{Authorization:"Bearer ".concat(n)}}).then(e=>e.data).catch(e=>console.error(e.response));s?(e.textContent=s>100?"100+":s,e.classList.remove("hidden")):e.classList.add("hidden")})()}}]);
