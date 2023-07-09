@@ -1,122 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Курсы</title>
-</head>
-<body>
-    <div class="bg-white py-24 sm:py-32">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <div class="mx-auto max-w-2xl lg:text-center">
-                <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Курсы</h1>
-              </div>
-          <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-            <dl class="grid max-w-xl grid-cols-1 gap-y-10 gap-x-8 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-              <a href="./programm.html" class="relative pl-16">
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                  <div class="absolute top-0 left-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
-                    </svg>
-                  </div>
-                  Hexlet - PHP программист
-                </dt>
-                <dd class="mt-2 text-base leading-7 text-gray-600">Изучите гибкий и масштабируемый PHP. Познакомьтесь с языками веб-разработки HTML и CSS, чтобы понимать, как устроены интернет-страницы. Разберитесь в базах данных и научитесь управлять ими с помощью SQL. Освойте самый популярный фреймворк PHP — Laravel, чтобы быстро писать код и автоматизировать рутину
-                </dd>
-            </a>
-      
-              <a href="./regFront/index.xhtml" class="relative pl-16">
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                  <div class="absolute top-0 left-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
-                      </svg>
-                  </div>
-                  [HTML Academy] Регулярные выражения для фронтендеров
-                </dt>
-                <dd class="mt-2 text-base leading-7 text-gray-600">регулярные выражения — это формальный язык поиска подстроки в строке. Они поддерживаются многими программами: редакторами, системными утилитами, базами данных.</dd>
-            </a>
-
-            <a href="./algoritms/programm/index.html" class="relative pl-16">
-              <dt class="text-base font-semibold leading-7 text-gray-900">
-                <div class="absolute top-0 left-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                  <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
-                    </svg>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Курсы</title>
+    </head>
+    <body>
+        <div class="bg-white py-24 sm:py-32">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl lg:text-center">
+                    <h1
+                        class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+                    >
+                        Курсы
+                    </h1>
                 </div>
-                [HTML Academy] Алгоритмы и структуры данных
-              </dt>
-              <dd class="mt-2 text-base leading-7 text-gray-600">Этот курс научит правильно использовать структуры данных и алгоритмов в работе фронтендера — это позволит писать более эффективный код, правильно выстраивать архитектуру проекта и отдельных модулей.</dd>
-          </a>
-      
-              <a href="./animate/index.html" class="relative pl-16">
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                  <div class="absolute top-0 left-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
-                      </svg>
-                  </div>
-                  [HTML Academy] Анимация для фронтендеров
-                </dt>
-                <dd class="mt-2 text-base leading-7 text-gray-600">На этом курсе мы изучим подходы к созданию анимации для современных веб-приложений.</dd>
-            </a>
-      
-              <a href="./animate1/index.xhtml" class="relative pl-16">
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                  <div class="absolute top-0 left-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
-                      </svg>
-                  </div>
-                  [HTML Academy] Анимации
-                </dt>
-                <dd class="mt-2 text-base leading-7 text-gray-600">Любой интерфейс можно условно поделить на две составляющие. Первая — непосредственно функционал, что он делает. Вторая — детали, как он делает. Внимание к деталям — это именно то, что выделяет хорошие сайты на общем фоне.</dd>
-            </a>
+                <div
+                    class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl"
+                >
+                    <dl
+                        class="grid max-w-xl grid-cols-1 gap-y-10 gap-x-8 lg:max-w-none lg:grid-cols-2 lg:gap-y-16"
+                    >
+                        <a href="./programm.html" class="relative pl-16">
+                            <dt
+                                class="text-base font-semibold leading-7 text-gray-900"
+                            >
+                                <div
+                                    class="absolute top-0 left-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600"
+                                >
+                                    <svg
+                                        class="h-6 w-6 text-white"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
+                                        stroke="currentColor"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
+                                        />
+                                    </svg>
+                                </div>
+                                Hexlet - PHP программист
+                            </dt>
+                            <dd class="mt-2 text-base leading-7 text-gray-600">
+                                Изучите гибкий и масштабируемый PHP.
+                                Познакомьтесь с языками веб-разработки HTML и
+                                CSS, чтобы понимать, как устроены
+                                интернет-страницы. Разберитесь в базах данных и
+                                научитесь управлять ими с помощью SQL. Освойте
+                                самый популярный фреймворк PHP — Laravel, чтобы
+                                быстро писать код и автоматизировать рутину
+                            </dd>
+                        </a>
 
-            <a href="./vue/index.html" class="relative pl-16">
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                  <div class="absolute top-0 left-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
-                      </svg>
-                  </div>
-                  [HTML Academy] Vue.js для опытных разработчиков
-                </dt>
-                <dd class="mt-2 text-base leading-7 text-gray-600">Vue.js частично реализует MVVM (Model View ViewModel) паттерн, используя ViewModel для работы своих однофайловых компонентов (Single File Component).</dd>
-            </a>
+                        <a href="./regFront/index.xhtml" class="relative pl-16">
+                            <dt
+                                class="text-base font-semibold leading-7 text-gray-900"
+                            >
+                                <div
+                                    class="absolute top-0 left-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600"
+                                >
+                                    <svg
+                                        class="h-6 w-6 text-white"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
+                                        stroke="currentColor"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
+                                        />
+                                    </svg>
+                                </div>
+                                [HTML Academy] Регулярные выражения для
+                                фронтендеров
+                            </dt>
+                            <dd class="mt-2 text-base leading-7 text-gray-600">
+                                регулярные выражения — это формальный язык
+                                поиска подстроки в строке. Они поддерживаются
+                                многими программами: редакторами, системными
+                                утилитами, базами данных.
+                            </dd>
+                        </a>
 
-            <a href="./protokols/index.htm" class="relative pl-16">
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                  <div class="absolute top-0 left-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
-                      </svg>
-                  </div>
-                  [HTML Academy]  Протоколы и сети - основы
-                </dt>
-                <dd class="mt-2 text-base leading-7 text-gray-600">Фронтенд-разработчики работают с данными, которые путешествуют по сетям и передаются разыми протоколами. Понимать как всё это устроено необходимо, чтобы лучше решать типовые задачи</dd>
-            </a>
+                        <a
+                            href="./algoritms/programm/index.html"
+                            class="relative pl-16"
+                        >
+                            <dt
+                                class="text-base font-semibold leading-7 text-gray-900"
+                            >
+                                <div
+                                    class="absolute top-0 left-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600"
+                                >
+                                    <svg
+                                        class="h-6 w-6 text-white"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
+                                        stroke="currentColor"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
+                                        />
+                                    </svg>
+                                </div>
+                                [HTML Academy] Алгоритмы и структуры данных
+                            </dt>
+                            <dd class="mt-2 text-base leading-7 text-gray-600">
+                                Этот курс научит правильно использовать
+                                структуры данных и алгоритмов в работе
+                                фронтендера — это позволит писать более
+                                эффективный код, правильно выстраивать
+                                архитектуру проекта и отдельных модулей.
+                            </dd>
+                        </a>
 
-            <a href="./typeScript/HTML/index.xhtml" class="relative pl-16">
-                <dt class="text-base font-semibold leading-7 text-gray-900">
-                  <div class="absolute top-0 left-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-                    <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
-                      </svg>
-                  </div>
-                  [HTML Academy]  TypeScript
-                </dt>
-                <dd class="mt-2 text-base leading-7 text-gray-600">TypeScript — это статически-типизированный, объектно-ориентированный, компилируемый язык программирования с глубокой поддержкой инструментов разработчика. Программы, написанные на TypeScript, исполняются в любом контексте, где работает JavaScript. TypeScript разрабатывается как open-source-проект.</dd>
-            </a>
+                        <a href="./vue/index.html" class="relative pl-16">
+                            <dt
+                                class="text-base font-semibold leading-7 text-gray-900"
+                            >
+                                <div
+                                    class="absolute top-0 left-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600"
+                                >
+                                    <svg
+                                        class="h-6 w-6 text-white"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
+                                        stroke="currentColor"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
+                                        />
+                                    </svg>
+                                </div>
+                                [HTML Academy] Vue.js для опытных разработчиков
+                            </dt>
+                            <dd class="mt-2 text-base leading-7 text-gray-600">
+                                Vue.js частично реализует MVVM (Model View
+                                ViewModel) паттерн, используя ViewModel для
+                                работы своих однофайловых компонентов (Single
+                                File Component).
+                            </dd>
+                        </a>
 
+                        <a href="./protokols/index.htm" class="relative pl-16">
+                            <dt
+                                class="text-base font-semibold leading-7 text-gray-900"
+                            >
+                                <div
+                                    class="absolute top-0 left-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600"
+                                >
+                                    <svg
+                                        class="h-6 w-6 text-white"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
+                                        stroke="currentColor"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
+                                        />
+                                    </svg>
+                                </div>
+                                [HTML Academy] Протоколы и сети - основы
+                            </dt>
+                            <dd class="mt-2 text-base leading-7 text-gray-600">
+                                Фронтенд-разработчики работают с данными,
+                                которые путешествуют по сетям и передаются
+                                разыми протоколами. Понимать как всё это
+                                устроено необходимо, чтобы лучше решать типовые
+                                задачи
+                            </dd>
+                        </a>
 
-
-            </dl>
-          </div>
+                        <a
+                            href="./typeScript/HTML/index.xhtml"
+                            class="relative pl-16"
+                        >
+                            <dt
+                                class="text-base font-semibold leading-7 text-gray-900"
+                            >
+                                <div
+                                    class="absolute top-0 left-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600"
+                                >
+                                    <svg
+                                        class="h-6 w-6 text-white"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
+                                        stroke="currentColor"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
+                                        />
+                                    </svg>
+                                </div>
+                                [HTML Academy] TypeScript
+                            </dt>
+                            <dd class="mt-2 text-base leading-7 text-gray-600">
+                                TypeScript — это статически-типизированный,
+                                объектно-ориентированный, компилируемый язык
+                                программирования с глубокой поддержкой
+                                инструментов разработчика. Программы, написанные
+                                на TypeScript, исполняются в любом контексте,
+                                где работает JavaScript. TypeScript
+                                разрабатывается как open-source-проект.
+                            </dd>
+                        </a>
+                    </dl>
+                </div>
+            </div>
         </div>
-      </div>
-</body>
+    </body>
 </html>
